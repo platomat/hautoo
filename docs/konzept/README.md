@@ -10,6 +10,35 @@ Menschen sollen eine thematische Website **selbst erstellen und pflegen** könne
 - **Astro** als Generator der statischen Website
 - **Sveltia** als CMS für strukturierte Inhalte
 
+## So hängen die Bausteine zusammen
+
+Cursor und Sveltia speisen **GitHub**. Cloudflare baut mit **Astro** und liefert die fertige Site aus.
+
+![Übersicht: Cursor und Sveltia → GitHub → Cloudflare/Astro → Website](../assets/stack-uebersicht.jpg)
+
+```mermaid
+flowchart LR
+  subgraph Bearbeiten["Wer ändert was"]
+    Cursor["Cursor<br/>Code & Dokumentation"]
+    Sveltia["Sveltia CMS<br/>Seiten, Artikel, Tags, Glossar"]
+  end
+
+  GH["GitHub<br/>Repo: Code + Inhalte"]
+
+  subgraph Ausliefern["Build & Hosting"]
+    CF["Cloudflare Pages<br/>Build starten"]
+    Astro["Astro<br/>statische Site erzeugen"]
+  end
+
+  Web["Website<br/>hautoo.storyofai.net"]
+
+  Cursor -->|Commit / Push| GH
+  Sveltia -->|schreibt Dateien ins Repo| GH
+  GH -->|bei Push| CF
+  CF --> Astro
+  Astro --> Web
+```
+
 ## Was die Website enthält
 
 | Inhalt | Beschreibung |
