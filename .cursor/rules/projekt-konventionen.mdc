@@ -1,0 +1,41 @@
+---
+description: Sprachen, Secrets und öffentliche Repo-Konventionen für hautuu
+alwaysApply: true
+---
+
+# Projekt-Konventionen (hautuu)
+
+## Sprachen
+
+| Bereich | Sprache |
+| --- | --- |
+| Projektsprache, Dokumentation, UI-Texte | Deutsch (DE) |
+| Quellcode (Variablen, Kommentare, Commit-unabhängige Identifier) | Englisch (EN) |
+| Git-Commits, GitHub Issues, Pull Requests, Discussions | Deutsch (DE) |
+
+- Dokumentation und Erklärungen an Menschen: immer auf Deutsch.
+- Code, APIs, Dateinamen technischer Module, CSS-Klassen nach bestehenden Patterns: Englisch.
+- Keine Mischsprache in Commit-Messages: klar und knapp auf Deutsch.
+
+## Öffentliches Repository — keine Secrets
+
+Dieses Repo ist **öffentlich** auf GitHub. Niemals committen:
+
+- API-Keys, Tokens, Passwörter, Private Keys
+- `.env` mit echten Werten (nur `.env.example` ohne Geheimnisse)
+- Cloudflare/GitHub Personal Access Tokens, Webhook-Secrets
+- Zugangsdaten für CMS, Vimeo, YouTube oder andere Dienste
+
+Secrets gehören in Umgebungsvariablen der jeweiligen Plattform (z. B. Cloudflare Pages, lokale `.env` die in `.gitignore` steht).
+
+## Bekannte öffentliche Angaben
+
+- Domain: `hautoo.storyofai.net` (kein Secret)
+- Stack-Ziel: Astro (statisch), Sveltia CMS, GitHub, Cloudflare, Cursor
+
+## Collections (Sveltia)
+
+- `pages`
+- `articles`
+- `tags` (für Artikel)
+- `glossar`
