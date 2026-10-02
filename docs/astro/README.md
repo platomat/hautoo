@@ -32,8 +32,15 @@ Entsprechen den Sveltia-Sammlungen:
 
 Komponenten, Props und Kommentare im Code: **Englisch**. Sichtbare Texte und Doku: **Deutsch**.
 
+## Aktueller Stand
+
+- Astro 7 (statisch), Site-URL: `https://hautoo.storyofai.net`
+- Integrationen: `@astrojs/mdx`, `@astrojs/sitemap`
+- Installation und Scripts: [Lokale Entwicklung](../entwicklung/README.md)
+
 ## Noch auszuarbeiten
 
-- Astro-Version und Integrations (MDX, Sitemap, …)
 - Design-/Layout-Grundlagen
+- Content Collections Schema (`pages`, `articles`, `tags`, `glossar`)
 - Bildpipeline (lokale Bilder vs. externe URLs)
+

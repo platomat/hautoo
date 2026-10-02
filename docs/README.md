@@ -42,8 +42,9 @@ Details: [Sprachen und Konventionen](./sprachen-und-konventionen.md)
 ## Schnellstart (Überblick)
 
 1. Repo auf GitHub klonen oder forken
-2. Mit Cursor öffnen und der KI die Aufgabe beschreiben
-3. Inhalte über Sveltia oder Markdown pflegen
-4. Änderungen committen und pushen → Cloudflare baut und veröffentlicht
+2. `npm install` und `npm run dev` (siehe [Lokale Entwicklung](./entwicklung/README.md))
+3. Mit Cursor öffnen und der KI die Aufgabe beschreiben
+4. Inhalte über Sveltia oder Markdown pflegen
+5. Änderungen committen und pushen → Cloudflare baut und veröffentlicht
 
 *(Die einzelnen Schritte werden in den Kapiteln ausführlich beschrieben.)*

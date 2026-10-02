@@ -41,6 +41,17 @@ Details: [docs/sprachen-und-konventionen.md](./docs/sprachen-und-konventionen.md
 
 Öffentliches Repository — **keine Secrets** committen. Siehe [docs/sicherheit](./docs/sicherheit/README.md).
 
+## Lokal starten
+
+Voraussetzung: Node.js **22.12+**
+
+```bash
+npm install
+npm run dev
+```
+
+Details: [docs/entwicklung](./docs/entwicklung/README.md)
+
 ## Status
 
-Frühphase: Dokumentationsstruktur steht. Astro-/CMS-Setup folgt.
+Astro-Grundsetup und Abhängigkeiten sind installiert. Content Collections und Sveltia folgen.

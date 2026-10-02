@@ -1,21 +1,40 @@
 # Lokale Entwicklung
 
-Hier entsteht die Anleitung, das Projekt auf dem eigenen Rechner zu starten — zum Testen von Layout, Inhalten und Builds vor dem Push.
+Anleitung, das Projekt auf dem eigenen Rechner zu starten — zum Testen von Layout, Inhalten und Builds vor dem Push.
 
-## Voraussetzungen (geplant)
+## Voraussetzungen
 
 - Git
-- Node.js (LTS — genaue Version folgt mit dem Astro-Setup)
+- **Node.js 22.12+** (LTS empfohlen; Astro 7 erfordert mindestens 22.12)
+- npm (kommt mit Node)
 - Editor: empfohlen **Cursor**
 - Optional: Zugang zu GitHub für Push und CMS
+
+## Installation
+
+```text
+git clone <repo-url>
+cd hautoo
+npm install
+```
+
+## Scripts
+
+| Befehl | Zweck |
+| --- | --- |
+| `npm run dev` | Astro-Dev-Server (lokal, Hot Reload) |
+| `npm run build` | Statische Site nach `dist/` bauen |
+| `npm run preview` | Gebauten Stand lokal ansehen |
+| `npm run astro` | Astro-CLI (z. B. `npm run astro check`) |
 
 ## Grober Ablauf
 
 ```text
-git clone <repo-url>
-cd hautuu
-npm install          # sobald package.json existiert
-npm run dev          # lokaler Astro-Dev-Server
+npm install
+npm run dev          # http://localhost:4321
+# … ändern, prüfen …
+npm run build        # vor dem Push optional
+git commit && git push   # → Cloudflare baut und veröffentlicht
 ```
 
 ## Wichtige Hinweise
@@ -26,7 +45,5 @@ npm run dev          # lokaler Astro-Dev-Server
 
 ## Noch auszuarbeiten
 
-- Exakte Node-/npm-Versionen
-- Scripts (`dev`, `build`, `preview`)
-- CMS lokal testen
+- CMS lokal testen (Sveltia unter `/admin/`)
 - Häufige Fehler und Lösungen
