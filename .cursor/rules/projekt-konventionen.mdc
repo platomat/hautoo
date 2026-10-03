@@ -1,5 +1,5 @@
 ---
-description: Sprachen, Secrets und öffentliche Repo-Konventionen für hautuu
+description: Sprachen, Secrets, Git-Push-Verbot und öffentliche Repo-Konventionen für hautuu
 alwaysApply: true
 ---
 
@@ -16,6 +16,14 @@ alwaysApply: true
 - Dokumentation und Erklärungen an Menschen: immer auf Deutsch.
 - Code, APIs, Dateinamen technischer Module, CSS-Klassen nach bestehenden Patterns: Englisch.
 - Keine Mischsprache in Commit-Messages: klar und knapp auf Deutsch.
+
+## Git: committen ja — pushen nur auf Anweisung
+
+**Niemals von allein `git push` (oder gleichwertig remote aktualisieren).** Nur wenn der Mensch es **ausdrücklich** verlangt.
+
+- Push auf `main` triggert bei Cloudflare einen **Website-Build/Deploy**. Ungewollte Pushes = ungewollte Deploys.
+- **Committen** lokal ist erlaubt, wenn der Mensch danach fragt (oder ausdrücklich „commit“ sagt).
+- Nach dem Commit: ggf. kurz nachfragen, ob gepusht werden soll — **nicht** selbst pushen.
 
 ## Öffentliches Repository — keine Secrets
 

@@ -1,0 +1,233 @@
+@font-face {
+	font-family: "Ubuntu";
+	src:
+		url("/fonts/ubuntu/Ubuntu-Light.woff2") format("woff2"),
+		url("/fonts/ubuntu/Ubuntu-Light.woff") format("woff");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Ubuntu";
+	src:
+		url("/fonts/ubuntu/Ubuntu-Medium.woff2") format("woff2"),
+		url("/fonts/ubuntu/Ubuntu-Medium.woff") format("woff");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--color-bg: #0f1412;
+	--color-surface: #1a211e;
+	--color-surface-raised: #232b27;
+	--color-border: #2e3833;
+	--color-text: #e8eeea;
+	--color-text-muted: #9aa89f;
+	--color-action: #3dcf8e;
+	--color-action-hover: #56d9a0;
+	--color-action-muted: #1a3d2e;
+	--color-danger: #e57373;
+
+	--font-sans: "Ubuntu", system-ui, sans-serif;
+	--font-weight-body: 300;
+	--font-weight-heading: 500;
+	--content-max-width: 42rem;
+	--shell-padding-inline: 1.25rem;
+
+	/* Breakpoints (reference tokens; use same px in @media) */
+	--bp-tablet: 1024px; /* viewport < 1024 → tablet (and below) */
+	--bp-mobile: 680px; /* viewport < 680 → mobile */
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	color-scheme: dark;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background: var(--color-bg);
+	color: var(--color-text);
+	font-family: var(--font-sans);
+	font-weight: var(--font-weight-body);
+	line-height: 1.6;
+}
+
+.shell-inner {
+	max-width: var(--content-max-width);
+	margin-inline: auto;
+	padding-inline: var(--shell-padding-inline);
+}
+
+.site-main {
+	flex: 1 0 auto;
+}
+
+.page {
+	max-width: var(--content-max-width);
+	margin: 0 auto;
+	padding: 2.5rem var(--shell-padding-inline) 4rem;
+}
+
+.page h1 {
+	margin-top: 0;
+	margin-bottom: 1.25rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: var(--font-weight-heading);
+	line-height: 1.25;
+}
+
+a {
+	color: var(--color-action);
+	text-decoration: none;
+}
+
+a:hover {
+	color: var(--color-action-hover);
+}
+
+a:focus-visible {
+	outline: 2px solid var(--color-action);
+	outline-offset: 3px;
+}
+
+code {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	padding: 3px 6px;
+	background: var(--color-surface);
+	border-radius: 4px;
+}
+
+/* --- Layout utilities (compose freely) --- */
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	gap: 1em;
+}
+
+.flex-col {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+.flex-between {
+	justify-content: space-between;
+}
+
+.flex-center {
+	align-items: center;
+	justify-content: center;
+}
+
+.flex-align-center {
+	align-items: center;
+}
+
+.flex-align-baseline {
+	align-items: baseline;
+}
+
+.flex-shrink-0 {
+	flex-shrink: 0;
+}
+
+.gap-sm {
+	gap: 0.75rem;
+}
+
+.gap-md {
+	gap: 1.25rem;
+}
+
+.gap-lg {
+	gap: 1.5rem;
+}
+
+.w-full {
+	width: 100%;
+}
+
+.min-w-0 {
+	min-width: 0;
+}
+
+.ms-auto {
+	margin-inline-start: auto;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-muted {
+	color: var(--color-text-muted);
+}
+
+.text-sm {
+	font-size: 0.875rem;
+}
+
+.list-plain {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* Tablet and below: < 1024px */
+@media (max-width: 1023px) {
+	.stack-on-tablet {
+		flex-direction: column;
+	}
+
+	.center-on-tablet {
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+
+	.center-on-tablet .ms-auto {
+		margin-inline-start: 0;
+	}
+}
+
+/* Mobile: < 680px */
+@media (max-width: 679px) {
+	.stack-on-mobile {
+		flex-direction: column;
+	}
+
+	.center-on-mobile {
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+
+	.center-on-mobile .ms-auto,
+	.stack-on-mobile .ms-auto {
+		margin-inline-start: 0;
+	}
+}

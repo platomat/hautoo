@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+import {
+	getFooterLegalPages,
+	getMenuLabel,
+	getPageHref,
+	indexPagesById,
+} from "../lib/pages";
+
+/** First calendar year of the project (copyright range start). */
+const COPYRIGHT_START_YEAR = 2026;
+const currentYear = new Date().getFullYear();
+const copyrightYears =
+	currentYear > COPYRIGHT_START_YEAR
+		? `${COPYRIGHT_START_YEAR}-${currentYear}`
+		: String(COPYRIGHT_START_YEAR);
+
+const allPages = await getCollection("pages");
+const pagesById = indexPagesById(allPages);
+const legalPages = getFooterLegalPages(allPages);
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<footer class="site-footer">
+	{/* Further rows (e.g. footer menu) can go above the copyright row. */}
+	<div
+		class="site-footer__bar flex-row flex-align-baseline flex-between gap-lg w-full stack-on-mobile center-on-mobile"
+	>
+		<p class="site-footer__copy text-sm text-muted min-w-0">
+			<span>© {copyrightYears}</span>
+			{" "}
+			<span>hautoo ∙ One of <a href="https://platomat.com/">PlatoMat</a></span>
+		</p>
+		{
+			legalPages.length > 0 && (
+				<nav class="site-footer__legal flex-shrink-0 ms-auto" aria-label="Rechtliches">
+					<ul class="flex-row flex-align-baseline gap-md list-plain text-sm">
+						{legalPages.map((page) => {
+							const href = getPageHref(page, pagesById);
+							const hrefKey = href.replace(/\/$/, "") || "/";
+							const current = pathname === hrefKey;
+							return (
+								<li>
+									<a href={href} aria-current={current ? "page" : undefined}>
+										{getMenuLabel(page)}
+									</a>
+								</li>
+							);
+						})}
+					</ul>
+				</nav>
+			)
+		}
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		margin-top: auto;
+		background: var(--color-surface);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.site-footer__bar {
+		padding: 1rem;
+	}
+
+	.site-footer__copy {
+		margin: 0;
+	}
+
+	@media (max-width: 679px) {
+		.site-footer__bar {
+			gap: 0.75rem;
+		}
+	}
+</style>

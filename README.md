@@ -19,6 +19,7 @@ Dokumentation und (geplante) Website-Grundlage, um mit **Cursor**, **GitHub** un
 | Thema | Link |
 | --- | --- |
 | Konzept | [docs/konzept](./docs/konzept/README.md) |
+| Design | [docs/design](./docs/design/README.md) |
 | Cursor | [docs/cursor](./docs/cursor/README.md) |
 | GitHub | [docs/github](./docs/github/README.md) |
 | Cloudflare | [docs/cloudflare](./docs/cloudflare/README.md) |

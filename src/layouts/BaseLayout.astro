@@ -1,0 +1,47 @@
+---
+import "../styles/global.css";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import {
+	buildRobotsContent,
+	resolveSeo,
+	type Seo,
+} from "../cms/fields/seo";
+
+interface Props {
+	title?: string;
+	description?: string;
+	seo?: Seo;
+}
+
+const { title = "hautuu", description, seo: seoProp } = Astro.props;
+const seo = resolveSeo(seoProp);
+
+const documentTitle = seo.seo_title?.trim() || title;
+const pageTitle =
+	documentTitle === "hautuu" ? documentTitle : `${documentTitle} · hautuu`;
+const metaDescription =
+	seo.seo_description?.trim() || description?.trim() || undefined;
+const robots = buildRobotsContent(seo);
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="robots" content={robots} />
+		{metaDescription && <meta name="description" content={metaDescription} />}
+		<title>{pageTitle}</title>
+	</head>
+	<body>
+		<SiteHeader />
+		<div class="site-main">
+			<slot />
+		</div>
+		<SiteFooter />
+	</body>
+</html>

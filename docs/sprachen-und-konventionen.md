@@ -18,6 +18,8 @@ Dieses Projekt ist **öffentlich** und richtet sich an deutschsprachige Nutzerin
 - Beschreibe Aufgaben auf **Deutsch**.
 - Erwarte **deutschen** Doku- und Fließtext, aber **englischen** Code.
 - Verweise bei Unsicherheit auf diese Datei und auf `.cursor/rules/projekt-konventionen.mdc`.
+- **Kein automatisches `git push`:** Push nur auf ausdrückliche Anweisung (Cloudflare baut sonst die Live-Site). Lokal **committen** auf Wunsch ist erlaubt. Siehe auch [Cloudflare](./cloudflare/README.md).
+- Page Speed / CSS: `.cursor/rules/leistung-und-css.mdc` und [Design](./design/README.md).
 
 ## Namensgebung
 

@@ -15,8 +15,16 @@ Cloudflare hostet die gebaute statische Website und liefert sie über die Domain
 4. Cloudflare Pages liefert die Site unter der Domain aus
 
 ```text
-Cursor → Git Commit → GitHub → Cloudflare Build (Astro) → hautoo.storyofai.net
+Cursor → Git Commit (lokal) → erst nach Anweisung: Push → GitHub → Cloudflare Build (Astro) → hautoo.storyofai.net
 ```
+
+## Push = Deploy
+
+Ein **Push** auf den verbundenen Branch (typisch `main`) startet bei Cloudflare einen Build der Website.
+
+- **Lokal committen** ist ok und ändert die Live-Site nicht.
+- **Pushen nur bewusst** — Agenten dürfen **niemals von allein** pushen, nur auf ausdrückliche Anweisung.
+- Details: [Sprachen und Konventionen](../sprachen-und-konventionen.md), Regel `.cursor/rules/projekt-konventionen.mdc`.
 
 ## Was hier dokumentiert werden soll
 
@@ -33,6 +41,6 @@ API-Tokens und sensible Build-Variablen gehören ausschließlich in die Cloudfla
 
 ## Noch auszuarbeiten
 
-- Konkrete Build-Commands und Output-Directory (sobald Astro steht)
 - DNS-Details zur Subdomain unter `storyofai.net`
 - Ob Workers, Redirects oder Headers benötigt werden
+- Critical/non-critical CSS und Caching-Header feinjustieren

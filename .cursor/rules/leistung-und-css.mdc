@@ -1,0 +1,43 @@
+---
+description: Page Speed, schlankes CSS, Wiederverwendung und critical vs. non-critical CSS
+alwaysApply: true
+---
+
+# Leistung & CSS (hautuu)
+
+## Page Speed zuerst
+
+Die Site soll **schlank, schnell und optimiert** bleiben. Bei jeder UI-/Content-Änderung mitdenken:
+
+- Wenig JS für Besucher; kein unnötiges Client-JS
+- Bilder nur wo nötig; bevorzugen optimierte Formate / Astro `image()` wo vorgesehen
+- Keine schweren Drittanbieter-Scripts ohne klaren Nutzen
+- Fonts lokal, nur benötigte Schnitte (bereits: Ubuntu Light + Medium)
+
+## CSS nicht neu erfinden
+
+- Zuerst bestehende Tokens und Klassen in `src/styles/` und Layouts nutzen
+- Wiederkehrende Muster als **gemeinsame Utility-/Gruppen-Klassen** pflegen (z. B. Inhaltsbreite, Stack-Abstand) — nicht copy-paste in jeder Komponente
+- Neue Einmal-Styles vermeiden, wenn eine vorhandene Regel reicht
+- Scoped Astro-`<style>` nur für wirklich komponentenspezifisches Markup
+- Flex-Layouts: `.flex-row`, `.stack-on-mobile`, `.stack-on-tablet`, `.flex-between`, … (siehe `docs/design/README.md`)
+
+## Breakpoints
+
+| Token / Name | `@media` | Bedeutung |
+| --- | --- | --- |
+| `--bp-tablet` (1024px) | `max-width: 1023px` | Tablet und darunter |
+| `--bp-mobile` (680px) | `max-width: 679px` | Mobile |
+
+Dieselben px-Werte überall verwenden (siehe `docs/design/README.md`).
+
+## Critical vs. non-critical CSS
+
+| Art | Inhalt | Pflege |
+| --- | --- | --- |
+| **Critical** | Above-the-fold: Tokens, Reset/Basis, Typo, Header/Nav, erste Inhaltsfläche | Klein halten; früh laden (z. B. `global` / Layout) |
+| **Non-critical** | Seltene Komponenten, lange Artikel-Extras, Admin-irrelevante Site-Teile | Separat halten; nachrangig laden oder nur auf betroffenen Routen |
+
+- Critical CSS wächst nicht „mit jeder Feature-Idee“ — lieber extrahieren und gruppieren
+- Non-critical nicht in den kritischen First-Paint-Pfad mischen
+- Bei neuen Styles bewusst zuordnen und in der Design-Doku aktuell halten

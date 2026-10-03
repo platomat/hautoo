@@ -32,15 +32,21 @@ Entsprechen den Sveltia-Sammlungen:
 
 Komponenten, Props und Kommentare im Code: **Englisch**. Sichtbare Texte und Doku: **Deutsch**.
 
+## Erscheinungsbild
+
+Vorgaben zu dunklem Theme, Farbpalette (Aktionsgrün), Ubuntu und Links: **[Design & Erscheinungsbild](../design/README.md)**.
+
 ## Aktueller Stand
 
 - Astro 7 (statisch), Site-URL: `https://hautoo.storyofai.net`
 - Integrationen: `@astrojs/mdx`, `@astrojs/sitemap`
 - Installation und Scripts: [Lokale Entwicklung](../entwicklung/README.md)
+- **Medien:** Bilder neben Content-Einträgen (`src/content/...`), damit Astro sie optimieren kann — siehe [Sveltia](../sveltia/README.md) und [Inhalte](../inhalte/README.md)
+- **Design:** dunkles Theme und Ubuntu lokal (`public/fonts/ubuntu/`) — siehe [Design](../design/README.md)
 
 ## Noch auszuarbeiten
 
-- Design-/Layout-Grundlagen
-- Content Collections Schema (`pages`, `articles`, `tags`, `glossar`)
-- Bildpipeline (lokale Bilder vs. externe URLs)
+- Layouts und Seiten-Templates laut [Design](../design/README.md) ausbauen
+- Layouts und `image()`-Pipeline für Eintrags-Medien
+- Content Collections: `articles`, `tags`, `glossar`
 
