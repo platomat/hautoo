@@ -42,7 +42,8 @@ src/content/articles/mein-artikel/
 | Ordner | `src/content/pages/<slug>/index.md` |
 | Schema | `src/content.config.ts` |
 | Sveltia | Collection `pages` in `public/admin/config.yml` |
-| Routen | `/` ← Eintrag `index`; weitere Seiten unter `/<slug>/` |
+| Routen | `/` ← Eintrag `index`; weitere `/<slug>/` oder `/<parent>/…/<slug>/` |
+| Hierarchie | Feld `parent` (Relation) → verschachtelte URL |
 | Menü | Felder `showInMenu`, `menuOrder`, `menuLabel` → `SiteHeader` |
 | Footer-Rechtliches | `showInFooterLegal`, `footerLegalOrder` → rechts neben Copyright |
 
@@ -52,6 +53,7 @@ src/content/articles/mein-artikel/
 | --- | --- | --- |
 | `title` | ja | Seitentitel |
 | `description` | nein | Meta-Beschreibung |
+| `parent` | nein | ID/Slug der übergeordneten Seite → URL `/parent/child/` |
 | `menuLabel` | nein | Text im Menü/Footer-Link (sonst `title`) |
 | `menuOrder` | nein | Sortierung Hauptmenü (klein = vorne) |
 | `showInMenu` | nein | Standard `true` |
@@ -59,7 +61,7 @@ src/content/articles/mein-artikel/
 | `footerLegalOrder` | nein | Sortierung in der Footer-Rechtszeile |
 | Body | ja | Markdown-Inhalt |
 
-Beispiel-Einträge: Start, Über uns (Hauptmenü); Impressum, Datenschutz (Footer rechts).
+Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarchie kommt aus `parent` (Kette möglich). Beispiel: `beispiel-unterseite` mit `parent: ueber-uns` → `/ueber-uns/beispiel-unterseite/`.
 
 ## Collections (Sammlungen)
 

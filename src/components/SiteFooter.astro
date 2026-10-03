@@ -1,6 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import { getFooterLegalPages, getMenuLabel, getPageHref } from "../lib/pages";
+import {
+	getFooterLegalPages,
+	getMenuLabel,
+	getPageHref,
+	indexPagesById,
+} from "../lib/pages";
 
 /** First calendar year of the project (copyright range start). */
 const COPYRIGHT_START_YEAR = 2026;
@@ -10,7 +15,9 @@ const copyrightYears =
 		? `${COPYRIGHT_START_YEAR}-${currentYear}`
 		: String(COPYRIGHT_START_YEAR);
 
-const legalPages = getFooterLegalPages(await getCollection("pages"));
+const allPages = await getCollection("pages");
+const pagesById = indexPagesById(allPages);
+const legalPages = getFooterLegalPages(allPages);
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 
@@ -29,7 +36,7 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 				<nav class="site-footer__legal flex-shrink-0 ms-auto" aria-label="Rechtliches">
 					<ul class="flex-row flex-align-baseline gap-md list-plain text-sm">
 						{legalPages.map((page) => {
-							const href = getPageHref(page);
+							const href = getPageHref(page, pagesById);
 							const hrefKey = href.replace(/\/$/, "") || "/";
 							const current = pathname === hrefKey;
 							return (

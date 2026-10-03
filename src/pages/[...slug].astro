@@ -1,17 +1,16 @@
 ---
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getPageHref } from "../lib/pages";
+import { getPageHref, indexPagesById } from "../lib/pages";
 
 export async function getStaticPaths() {
 	const pages = await getCollection("pages");
+	const pagesById = indexPagesById(pages);
+
 	return pages
-		.filter((page) => {
-			const href = getPageHref(page);
-			return href !== "/";
-		})
+		.filter((page) => getPageHref(page, pagesById) !== "/")
 		.map((page) => {
-			const href = getPageHref(page);
+			const href = getPageHref(page, pagesById);
 			const slug = href.replace(/^\/|\/$/g, "");
 			return {
 				params: { slug },

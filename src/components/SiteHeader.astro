@@ -1,8 +1,10 @@
 ---
 import { getCollection } from "astro:content";
-import { getMenuLabel, getMenuPages, getPageHref } from "../lib/pages";
+import { getMenuLabel, getMenuPages, getPageHref, indexPagesById } from "../lib/pages";
 
-const menuPages = getMenuPages(await getCollection("pages"));
+const allPages = await getCollection("pages");
+const pagesById = indexPagesById(allPages);
+const menuPages = getMenuPages(allPages);
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 
@@ -13,7 +15,7 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 			<ul class="site-nav__list">
 				{
 					menuPages.map((page) => {
-						const href = getPageHref(page);
+						const href = getPageHref(page, pagesById);
 						const hrefKey = href.replace(/\/$/, "") || "/";
 						const current = pathname === hrefKey;
 						return (

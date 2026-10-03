@@ -17,6 +17,7 @@ Umgesetzt: Content unter `src/content/pages/<slug>/index.md`, CMS-Collection in 
 
 - Start → `/`
 - Weitere Seiten → `/<slug>/`
+- Mit `parent` → `/<eltern-slug>/<slug>/` (auch mehrstufig)
 - Details: [Sveltia](../sveltia/README.md)
 
 ## Artikel

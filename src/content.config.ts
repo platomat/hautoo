@@ -11,6 +11,8 @@ const pages = defineCollection({
 		showInMenu: z.boolean().default(true),
 		showInFooterLegal: z.boolean().default(false),
 		footerLegalOrder: z.number().int().optional(),
+		/** Parent page id (folder slug), builds nested URLs like `/parent/child/`. */
+		parent: z.string().optional(),
 	}),
 });
 
