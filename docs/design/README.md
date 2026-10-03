@@ -111,6 +111,16 @@ CSS-Tokens in `:root` (`src/styles/global.css`): `--bp-tablet: 1024px`, `--bp-mo
 
 Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-on-mobile` + `center-on-mobile`).
 
+### Mobile-Navigation (Burger)
+
+Unter **680px** (`max-width: 679px`):
+
+- Burger-Button rechts neben dem Brand; horizontale Nav wird zum Panel darunter
+- Icon: drei Linien → animiertes Kreuz beim Öffnen (`transform` / `opacity`, ~220ms)
+- Toggle-Script: `src/scripts/nav-toggle.ts` — `aria-expanded`, Escape, Klick außerhalb, Body-Scroll-Lock
+- `prefers-reduced-motion: reduce` schaltet die Transition aus
+- Ab **680px**: kein Burger, horizontale Nav wie bisher
+
 ### Layout-Utilities (`src/styles/global.css`)
 
 Beliebig kombinieren, statt Flex-CSS in jeder Komponente neu zu schreiben:

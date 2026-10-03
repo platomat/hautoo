@@ -69,8 +69,8 @@ body {
 	padding-inline: var(--shell-padding-inline);
 }
 
-.site-main {
-	flex: 1 0 auto;
+body.is-nav-locked {
+	overflow: hidden;
 }
 
 .page {

@@ -18,6 +18,7 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 hautoo.code-workspace
+docs/sessions/
 
 # Logs and caches
 npm-debug.log*

@@ -8,11 +8,25 @@ const menuPages = getMenuPages(allPages);
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 
-<header class="site-header">
+<header class="site-header" data-site-header>
 	<div class="site-header__inner shell-inner">
 		<a class="site-header__brand" href="/">hautuu</a>
-		<nav class="site-nav" aria-label="Hauptnavigation">
-			<ul class="site-nav__list">
+		<button
+			type="button"
+			class="site-nav-toggle"
+			data-nav-toggle
+			aria-expanded="false"
+			aria-controls="site-nav"
+			aria-label="Menü öffnen"
+		>
+			<span class="site-nav-toggle__bars" aria-hidden="true">
+				<span class="site-nav-toggle__bar"></span>
+				<span class="site-nav-toggle__bar"></span>
+				<span class="site-nav-toggle__bar"></span>
+			</span>
+		</button>
+		<nav id="site-nav" class="site-nav" data-site-nav aria-label="Hauptnavigation">
+			<ul class="site-nav__list list-plain">
 				{
 					menuPages.map((page) => {
 						const href = getPageHref(page, pagesById);
@@ -32,8 +46,14 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 	</div>
 </header>
 
+<script>
+	import "../scripts/nav-toggle";
+</script>
+
 <style>
 	.site-header {
+		position: relative;
+		z-index: 20;
 		background: var(--color-surface);
 		border-bottom: 1px solid var(--color-border);
 	}
@@ -42,7 +62,6 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		justify-content: space-between;
 		gap: 1rem 1.5rem;
 		padding-block: 1rem;
 	}
@@ -57,16 +76,158 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 		color: var(--color-action-hover);
 	}
 
+	.site-nav-toggle {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		border-radius: 4px;
+		background: transparent;
+		color: var(--color-text);
+		cursor: pointer;
+	}
+
+	.site-nav-toggle:focus-visible {
+		outline: 2px solid var(--color-action);
+		outline-offset: 3px;
+	}
+
+	.site-nav-toggle__bars {
+		position: relative;
+		display: block;
+		width: 1.375rem;
+		height: 1rem;
+	}
+
+	.site-nav-toggle__bar {
+		position: absolute;
+		left: 0;
+		display: block;
+		width: 100%;
+		height: 2px;
+		border-radius: 1px;
+		background: currentColor;
+		transform-origin: center;
+		transition:
+			transform 0.22s ease,
+			opacity 0.22s ease,
+			top 0.22s ease;
+	}
+
+	.site-nav-toggle__bar:nth-child(1) {
+		top: 0;
+	}
+
+	.site-nav-toggle__bar:nth-child(2) {
+		top: calc(50% - 1px);
+	}
+
+	.site-nav-toggle__bar:nth-child(3) {
+		top: calc(100% - 2px);
+	}
+
+	.site-header.is-nav-open .site-nav-toggle__bar:nth-child(1) {
+		top: calc(50% - 1px);
+		transform: rotate(45deg);
+	}
+
+	.site-header.is-nav-open .site-nav-toggle__bar:nth-child(2) {
+		opacity: 0;
+		transform: scaleX(0);
+	}
+
+	.site-header.is-nav-open .site-nav-toggle__bar:nth-child(3) {
+		top: calc(50% - 1px);
+		transform: rotate(-45deg);
+	}
+
+	.site-nav {
+		margin-inline-start: auto;
+	}
+
 	.site-nav__list {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.75rem 1.25rem;
-		margin: 0;
-		padding: 0;
-		list-style: none;
 	}
 
 	.site-nav a[aria-current="page"] {
 		color: var(--color-text);
+	}
+
+	@media (max-width: 679px) {
+		.site-header {
+			border-bottom: none;
+		}
+
+		.site-header__inner {
+			flex-wrap: nowrap;
+			border-bottom: 1px solid var(--color-border);
+		}
+
+		.site-nav-toggle {
+			display: inline-flex;
+			margin-inline-start: auto;
+			flex-shrink: 0;
+		}
+
+		.site-nav {
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			z-index: 30;
+			width: 100vw;
+			margin: 0;
+			padding: 0.5rem var(--shell-padding-inline);
+			background: var(--color-surface);
+			border-bottom: 1px solid var(--color-border);
+			visibility: hidden;
+			opacity: 0;
+			pointer-events: none;
+			transform: translate(-50%, -0.35rem);
+			transition:
+				opacity 0.22s ease,
+				transform 0.22s ease,
+				visibility 0.22s;
+		}
+
+		.site-header.is-nav-open .site-nav {
+			visibility: visible;
+			opacity: 1;
+			pointer-events: auto;
+			transform: translate(-50%, 0);
+		}
+
+		.site-nav__list {
+			flex-direction: column;
+			flex-wrap: nowrap;
+			gap: 0;
+		}
+
+		.site-nav__list > li + li {
+			border-top: 1px solid var(--color-border);
+		}
+
+		.site-nav a {
+			display: block;
+			padding: 0.75rem 0;
+		}
+	}
+
+	@media (min-width: 680px) {
+		.site-nav-toggle {
+			display: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.site-nav-toggle__bar,
+		.site-nav {
+			transition: none;
+		}
 	}
 </style>
