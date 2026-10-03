@@ -4,43 +4,168 @@ Sveltia ist das geplante CMS, mit dem Redaktion Inhalte im Browser pflegen kann.
 
 ## Entscheidungen (Stand)
 
-| Thema | Entscheidung |
-| --- | --- |
-| Auth | Zuerst **Personal Access Token (PAT)**; später GitHub App + Cloudflare Worker |
-| Speichern | Direkt auf Branch **`main`** |
-| Medien | **Neben dem Content** (Variante B) — siehe unten |
+
+| Thema     | Entscheidung                                                                  |
+| --------- | ----------------------------------------------------------------------------- |
+| Auth      | Zuerst **Personal Access Token (PAT)**; später GitHub App + Cloudflare Worker |
+| Speichern | Direkt auf Branch `main`                                                      |
+| Medien    | **Neben dem Content** (Variante B) — siehe unten                              |
+
 
 Tracking: GitHub [#2](https://github.com/platomat/hautoo/issues/2) und Sub-Issues #3–#6.
 
 ## Medienablage (Variante B)
 
-Bilder liegen **neben dem jeweiligen Content-Eintrag**, nicht unter `public/media`.
-
-Beispiel (Artikel):
+Bilder, die zu einem Eintrag gehören, liegen **im selben Ordner** wie die Markdown-Datei — nicht unter `public/media`.
 
 ```text
 src/content/articles/mein-artikel/
   index.md          # Frontmatter + Text
-  hero.jpg          # Bild zum Eintrag
+  hero.jpg          # Bild zum Eintrag (relativ referenziert)
 ```
 
-**Warum:** Astro kann solche Bilder mit dem Schema-Helfer `image()` optimieren (Größe, Format). Eintrag und Medien gehören zusammen im Repo.
+**Warum:** Astro kann Dateien unter `src/` mit dem Schema-Helfer `image()` optimieren. Eintrag und Medien bleiben im Repo zusammen.
 
 **Abgrenzung:** How-to-Videos bleiben **Embeds** (Vimeo/YouTube), keine Videodateien im Repo. Siehe [Inhalte](../inhalte/README.md).
 
+**Geteilte/generische Bilder:** Variante B gilt für eintragsbezogene Medien. Wiederverwendbare Assets (Logo, Icons, Illustrationen) können zusätzlich unter `src/assets/` liegen (globaler Fallback in der CMS-Config). Siehe Abschnitt „Gemeinsamer Medienpool“ unten.
+
+### Variante B in Sveltia zum Laufen bringen
+
+Ziel: Upload im CMS speichert Dateien neben `index.md`; Frontmatter/Markdown enthält **eintragsrelative** Pfade (z. B. `hero.jpg`), die Astro mit `image()` verstehen kann.
+
+#### Schritt 1 — Collection als Ordner-Einträge (nicht Einzeldatei)
+
+Pro Eintrag ein Unterordner + `index.md`. In `public/admin/config.yml` pro Collection:
+
+```yaml
+collections:
+  - name: articles   # Beispiel; bei pages bereits so umgesetzt
+    folder: src/content/articles
+    create: true
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    extension: md
+    format: yaml-frontmatter
+```
+
+| Option | Wert | Bedeutung |
+| --- | --- | --- |
+| `path` | `"{{slug}}/index"` | Datei = `…/<slug>/index.md` |
+| `media_folder` | `""` (leer) | Medien **relativ zum Eintrag** |
+| `public_folder` | `""` (leer) | Gespeicherter Pfad ebenfalls eintragsrelativ (für Astro `image()`) |
+
+Ohne leeres `media_folder`/`public_folder` würden Uploads in den globalen Ordner wandern (Variante A / Fallback).
+
+**Stand `pages`:** `path`, `media_folder: ""` und `public_folder: ""` sind bereits gesetzt. Bild-Felder kommen, sobald Seiten Bilder brauchen; bei **articles** (#4) ist das der Standardfall.
+
+#### Schritt 2 — Globalen Fallback behalten (optional, für geteilte Assets)
+
+Oben in `config.yml` (bereits vorhanden):
+
+```yaml
+media_folder: src/assets
+public_folder: /assets
+```
+
+Das ist der **gemeinsame Pool**, wenn eine Collection *keine* leeren `media_folder`/`public_folder` setzt — oder für Assets außerhalb der Eintragsordner. Für Variante-B-Collections überschreiben die leeren Collection-Werte diesen Fallback.
+
+#### Schritt 3 — Bildfelder im CMS
+
+Pro gewünschtes Bild ein Widget, z. B.:
+
+```yaml
+- { name: heroImage, label: Titelbild, widget: image, required: false }
+```
+
+Im Markdown-Body können Redakteure ebenfalls Bilder einfügen; bei Variante B landen Uploads ebenfalls neben dem Eintrag.
+
+#### Schritt 4 — Astro Content Schema mit `image()`
+
+In `src/content.config.ts` das Bildfeld über den Schema-Helfer `image` typisieren:
+
+```ts
+schema: ({ image }) =>
+  z.object({
+    title: z.string(),
+    heroImage: image().optional(),
+    // … weitere Felder
+  }),
+```
+
+Voraussetzungen:
+
+- Datei liegt unter `src/` (nicht nur unter `public/`)
+- Pfad im Frontmatter ist relativ zur Entry-Datei (`hero.jpg` oder `./hero.jpg`)
+- `output.omit_empty_optional_fields: true` in der CMS-Config bleibt an (bereits gesetzt) — sonst leere optionale Felder → Zod-Fehler
+
+#### Schritt 5 — In Layouts/Templates ausliefern
+
+```astro
+---
+import { Image } from "astro:assets";
+const { heroImage, title } = Astro.props.page.data;
+---
+{heroImage && <Image src={heroImage} alt={title} />}
+```
+
+Ohne `Image`/`getImage` entfällt die Optimierung — die Datei muss trotzdem korrekt referenziert sein.
+
+#### Schritt 6 — Smoke-Test
+
+1. `npm run dev` → `/admin/` → einloggen (PAT).
+2. Eintrag anlegen/öffnen, Bild hochladen, speichern.
+3. Im Repo prüfen:
+
+   ```text
+   src/content/<collection>/<slug>/
+     index.md      # enthält z. B. heroImage: hero.jpg
+     hero.jpg
+   ```
+
+4. Seite lokal öffnen — Bild sichtbar, Build ohne Schema-Fehler (`npm run build`).
+5. Nach Push auf `main`: Cloudflare-Deploy prüfen.
+
+### Gemeinsamer Medienpool (ergänzend zu B)
+
+| Nutzung | Ablage |
+| --- | --- |
+| Bild nur für diesen Eintrag | neben `index.md` (Variante B) |
+| Logo, Icons, wiederkehrende Motive | z. B. `src/assets/` (globaler `media_folder`) |
+
+Eintragsbilder aus Variante B sind in anderen Einträgen **nicht** automatisch als „alle Assets“ wählbar — sie gehören zum jeweiligen Ordner. Geteilte Dateien bewusst unter `src/assets/` ablegen.
+
+### Checkliste Variante B
+
+
+| Schritt | Status / Ort |
+| --- | --- |
+| Collection mit `path: "{{slug}}/index"` | `pages` erledigt; `articles` bei #4 |
+| `media_folder` / `public_folder`: `""` | `pages` erledigt |
+| Globaler Fallback `src/assets` | in `config.yml` |
+| `omit_empty_optional_fields: true` | in `config.yml` |
+| Image-Widget + Astro `image()` + `<Image>` | noch ausarbeiten (vor allem `articles`) |
+
+Referenz: [Sveltia — Internal Media Storage](https://sveltiacms.app/en/docs/media/internal), [Sveltia + Astro](https://sveltiacms.app/en/docs/frameworks/astro).
+
 ## Admin-Zugang (Kurz)
 
-| | |
-| --- | --- |
-| UI (Produktion) | `https://hautoo.storyofai.net/admin/` |
-| UI (lokal) | `http://localhost:4321/admin/` |
-| Admin-Shell | `src/pages/admin.html` (Astro-Route — nötig, weil `/admin/` sonst vom Catch-All `404` wird) |
-| Config | `public/admin/config.yml` (landet beim Build in `dist/admin/`) |
-| Auth jetzt | **GitHub Personal Access Token (PAT)** im Login-Dialog |
-| Auth später | GitHub OAuth-App + Cloudflare Worker ([Sveltia CMS Authenticator](https://github.com/sveltia/sveltia-cms-authenticator)) |
-| Speichern | Branch **`main`** → Cloudflare Pages baut neu |
+
+|                 |                                                                                                                          |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| UI (Produktion) | `https://hautoo.storyofai.net/admin/`                                                                                    |
+| UI (lokal)      | `http://localhost:4321/admin/`                                                                                           |
+| Admin-Shell     | `src/pages/admin.html` (Astro-Route — nötig, weil `/admin/` sonst vom Catch-All `404` wird)                              |
+| Config          | `public/admin/config.yml` (landet beim Build in `dist/admin/`)                                                           |
+| Auth jetzt      | **GitHub Personal Access Token (PAT)** im Login-Dialog                                                                   |
+| Auth später     | GitHub OAuth-App + Cloudflare Worker ([Sveltia CMS Authenticator](https://github.com/sveltia/sveltia-cms-authenticator)) |
+| Speichern       | Branch `main` → Cloudflare Pages baut neu                                                                                |
+
 
 ---
+
+
 
 ## Sveltia auf Cloudflare zum Laufen bringen
 
@@ -54,41 +179,39 @@ Browser → https://hautoo.storyofai.net/admin/
        → Cloudflare Pages Build → Live-Site aktualisiert
 ```
 
+
+
 ### Schritt 1 — Site online (Pages)
 
 1. Cloudflare Pages mit Repo `platomat/hautoo` verbinden und bauen ([Anleitung](../cloudflare/README.md)).
 2. Prüfen, dass die Admin-UI erreichbar ist:
-
-   - `https://hautoo.storyofai.net/admin/`  
-   - oder vor der Custom Domain: `https://<project>.pages.dev/admin/`
-
-3. Erwartet: Login-Bildschirm von Sveltia (noch ohne Inhaltspflege).  
-   Fehlt `/admin/`: Build prüfen — Route `src/pages/admin.html` und `public/admin/config.yml` müssen ausgeliefert werden.
+  - `https://hautoo.storyofai.net/admin/`  
+  - oder vor der Custom Domain: `https://<project>.pages.dev/admin/`
+3. Erwartet: Login-Bildschirm von Sveltia (noch ohne Inhaltspflege).
+  Fehlt `/admin/`: Build prüfen — Route `src/pages/admin.html` und `public/admin/config.yml` müssen ausgeliefert werden.
 
 Keine Cloudflare-Sonderkonfiguration für Sveltia nötig (kein Worker, kein `base_url` in der Config — solange PAT genutzt wird).
 
 ### Schritt 2 — GitHub-Rechte
 
-Dein GitHub-Konto braucht **Schreibzugriff** auf [`platomat/hautoo`](https://github.com/platomat/hautoo/) (Rolle Write, Maintain oder Admin). Nur Lesen → Login/Speichern scheitert.
+Dein GitHub-Konto braucht **Schreibzugriff** auf `[platomat/hautoo](https://github.com/platomat/hautoo/)` (Rolle Write, Maintain oder Admin). Nur Lesen → Login/Speichern scheitert.
 
 ### Schritt 3 — Personal Access Token (PAT) erzeugen
 
 1. Admin öffnen: `https://hautoo.storyofai.net/admin/`
 2. **Sign In with Token** / „Mit Token anmelden“ wählen.
 3. Dem Link im Dialog folgen (GitHub öffnet die Token-Seite mit passenden Voreinstellungen), **oder** manuell:
+  - GitHub → **Settings** → **Developer settings** → **Personal access tokens**
+  - Empfohlen: **Fine-grained token**
+  - Repository access: nur `platomat/hautoo`
+  - Permissions:
 
-   - GitHub → **Settings** → **Developer settings** → **Personal access tokens**
-   - Empfohlen: **Fine-grained token**
-   - Repository access: nur **`platomat/hautoo`**
-   - Permissions:
+    | Permission        | Zugriff        | Wofür                                      |
+    | ----------------- | -------------- | ------------------------------------------ |
+    | **Contents**      | Read and write | Inhalte lesen und committen                |
+    | **Pull requests** | Read and write | nur nötig, falls später Editorial Workflow |
 
-     | Permission | Zugriff | Wofür |
-     | --- | --- | --- |
-     | **Contents** | Read and write | Inhalte lesen und committen |
-     | **Pull requests** | Read and write | nur nötig, falls später Editorial Workflow |
-
-   - Classic-Token-Alternative: Scope **`repo`** (umfasst das Nötige; breiter als fine-grained)
-
+  - Classic-Token-Alternative: Scope `repo` (umfasst das Nötige; breiter als fine-grained)
 4. Token erzeugen, **einmalig kopieren** (wird nicht erneut angezeigt).
 5. Token in den Sveltia-Dialog einfügen → anmelden.
 
@@ -96,10 +219,12 @@ Das Token liegt nur im **Local Storage des Browsers** — nicht im Repo, nicht i
 
 > **Secret:** PAT niemals committen, nicht in Issues/Chats posten, nicht in `config.yml` eintragen. Siehe [Sicherheit](../sicherheit/README.md).
 
+
+
 ### Schritt 4 — Ersten Inhalt speichern und Deploy prüfen
 
 1. Im CMS z. B. Collection **Seiten** öffnen, kleinen Text ändern, speichern.
-2. Auf GitHub erscheint ein Commit auf **`main`** (Autor: dein GitHub-Konto).
+2. Auf GitHub erscheint ein Commit auf `main` (Autor: dein GitHub-Konto).
 3. Cloudflare Pages startet einen Build (Push auf `main`).
 4. Nach erfolgreichem Deploy die Live-Seite prüfen.
 
@@ -107,21 +232,25 @@ Lokal zum Vergleich: `npm run dev` → `http://localhost:4321/admin/` — gleich
 
 ### Schritt 5 — Alltag & Token-Pflege
 
-| Thema | Hinweis |
-| --- | --- |
-| Token abgelaufen | Neu erzeugen, im Admin erneut „Sign In with Token“ |
-| Anderer Rechner / Browser | Erneut mit PAT anmelden |
-| Mehrere Redakteure | Jede Person braucht Schreibrecht am Repo + eigenen PAT — oder später OAuth |
-| `/admin/` öffentlich | Die UI-URL ist öffentlich; **ohne gültigen Token** keine Schreibzugriffe. Trotzdem: nur Vertrauenspersonen bekommen Tokens/Rechte |
-| Site-Deploy | Speichern im CMS = Commit auf `main` = neuer Cloudflare-Build |
+
+| Thema                     | Hinweis                                                                                                                           |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Token abgelaufen          | Neu erzeugen, im Admin erneut „Sign In with Token“                                                                                |
+| Anderer Rechner / Browser | Erneut mit PAT anmelden                                                                                                           |
+| Mehrere Redakteure        | Jede Person braucht Schreibrecht am Repo + eigenen PAT — oder später OAuth                                                        |
+| `/admin/` öffentlich      | Die UI-URL ist öffentlich; **ohne gültigen Token** keine Schreibzugriffe. Trotzdem: nur Vertrauenspersonen bekommen Tokens/Rechte |
+| Site-Deploy               | Speichern im CMS = Commit auf `main` = neuer Cloudflare-Build                                                                     |
+
+
+
 
 ### Später: OAuth statt PAT (Ausblick)
 
 Für „Login with GitHub“ ohne Token-Paste:
 
-1. GitHub OAuth App anlegen  
-2. [Sveltia CMS Authenticator](https://github.com/sveltia/sveltia-cms-authenticator) als **Cloudflare Worker** deployen  
-3. In `public/admin/config.yml` unter `backend` z. B. `base_url: https://<dein-authenticator>.workers.dev` setzen  
+1. GitHub OAuth App anlegen
+2. [Sveltia CMS Authenticator](https://github.com/sveltia/sveltia-cms-authenticator) als **Cloudflare Worker** deployen
+3. In `public/admin/config.yml` unter `backend` z. B. `base_url: https://<dein-authenticator>.workers.dev` setzen
 
 Das ist **nicht** Teil des aktuellen Go-Live (PAT zuerst). Worker hier nur für Auth-Proxy — die Website selbst bleibt statisches Pages-Hosting.
 
@@ -138,33 +267,41 @@ Offizielle Referenzen: [Sveltia Getting Started](https://sveltiacms.app/en/docs/
 
 ---
 
+
+
 ## Collection `pages` (umgesetzt)
 
-| | |
-| --- | --- |
-| Ordner | `src/content/pages/<slug>/index.md` |
-| Schema | `src/content.config.ts` |
-| Sveltia | Collection `pages` in `public/admin/config.yml` |
-| Routen | `/` ← Eintrag `index`; weitere `/<slug>/` oder `/<parent>/…/<slug>/` |
-| Hierarchie | Feld `parent` (Relation) → verschachtelte URL |
-| Menü | Felder `showInMenu`, `menuOrder`, `menuLabel` → `SiteHeader` |
-| Footer-Rechtliches | `showInFooterLegal`, `footerLegalOrder` → rechts neben Copyright |
-| SEO | Shared-Objekt `seo` (`&field_seo` / `src/cms/fields/seo.ts`) |
+
+|                    |                                                                      |
+| ------------------ | -------------------------------------------------------------------- |
+| Ordner             | `src/content/pages/<slug>/index.md`                                  |
+| Schema             | `src/content.config.ts`                                              |
+| Sveltia            | Collection `pages` in `public/admin/config.yml`                      |
+| Routen             | `/` ← Eintrag `index`; weitere `/<slug>/` oder `/<parent>/…/<slug>/` |
+| Hierarchie         | Feld `parent` (Relation) → verschachtelte URL                        |
+| Menü               | Felder `showInMenu`, `menuOrder`, `menuLabel` → `SiteHeader`         |
+| Footer-Rechtliches | `showInFooterLegal`, `footerLegalOrder` → rechts neben Copyright     |
+| SEO                | Shared-Objekt `seo` (`&field_seo` / `src/cms/fields/seo.ts`)         |
+
+
+
 
 ### Felder
 
-| Feld | Pflicht | Bedeutung |
-| --- | --- | --- |
-| `title` | ja | Seitentitel |
-| `description` | nein | Meta-Beschreibung |
-| `parent` | nein | ID/Slug der übergeordneten Seite → URL `/parent/child/` |
-| `menuLabel` | nein | Text im Menü/Footer-Link (sonst `title`) |
-| `menuOrder` | nein | Sortierung Hauptmenü (klein = vorne) |
-| `showInMenu` | nein | Standard `true` |
-| `showInFooterLegal` | nein | Standard `false` — Impressum/Datenschutz o. ä. |
-| `footerLegalOrder` | nein | Sortierung in der Footer-Rechtszeile |
-| `seo` | ja (CMS) | SEO-Objekt (Titel, Description, Robots) — Partial `&field_seo` |
-| Body | ja | Markdown-Inhalt |
+
+| Feld                | Pflicht  | Bedeutung                                                      |
+| ------------------- | -------- | -------------------------------------------------------------- |
+| `title`             | ja       | Seitentitel                                                    |
+| `description`       | nein     | Meta-Beschreibung                                              |
+| `parent`            | nein     | ID/Slug der übergeordneten Seite → URL `/parent/child/`        |
+| `menuLabel`         | nein     | Text im Menü/Footer-Link (sonst `title`)                       |
+| `menuOrder`         | nein     | Sortierung Hauptmenü (klein = vorne)                           |
+| `showInMenu`        | nein     | Standard `true`                                                |
+| `showInFooterLegal` | nein     | Standard `false` — Impressum/Datenschutz o. ä.                 |
+| `footerLegalOrder`  | nein     | Sortierung in der Footer-Rechtszeile                           |
+| `seo`               | ja (CMS) | SEO-Objekt (Titel, Description, Robots) — Partial `&field_seo` |
+| Body                | ja       | Markdown-Inhalt                                                |
+
 
 Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarchie kommt aus `parent` (Kette möglich). Beispiel: `beispiel-unterseite` mit `parent: ueber-uns` → `/ueber-uns/beispiel-unterseite/`.
 
@@ -172,14 +309,20 @@ Shared Field-Partials (DRY): [CMS Fields](../cms-fields/README.md).
 
 ## Collections (Sammlungen)
 
-| Collection | Schlüssel | Status |
-| --- | --- | --- |
-| Seiten | `pages` | umgesetzt (#3) |
-| Artikel | `articles` | geplant (#4) |
-| Tags | `tags` | geplant (#5) |
-| Glossar | `glossar` | geplant (#6) |
+
+| Collection | Schlüssel  | Status         |
+| ---------- | ---------- | -------------- |
+| Seiten     | `pages`    | umgesetzt (#3) |
+| Artikel    | `articles` | geplant (#4)   |
+| Tags       | `tags`     | geplant (#5)   |
+| Glossar    | `glossar`  | geplant (#6)   |
+
+
+
 
 ## Erwartete Felder (weitere Collections)
+
+
 
 ### articles
 
@@ -190,15 +333,21 @@ Shared Field-Partials (DRY): [CMS Fields](../cms-fields/README.md).
 - Video: Anbieter (YouTube/Vimeo) + Embed-ID oder URL
 - Publikationsdatum, optional Entwurf/Veröffentlicht
 
+
+
 ### glossar
 
 - Begriff
 - Kurzdefinition
 - Optional längere Erklärung / Links zu Artikeln
 
+
+
 ### tags
 
 - Name, Slug, optionale Beschreibung
+
+
 
 ## Sicherheit
 
@@ -206,8 +355,11 @@ Shared Field-Partials (DRY): [CMS Fields](../cms-fields/README.md).
 - Token nur im Browser (Local Storage) bzw. später im Worker-Dashboard
 - Details: [Sicherheit](../sicherheit/README.md)
 
+
+
 ## Noch auszuarbeiten
 
 - OAuth mit Sveltia CMS Authenticator (Cloudflare Worker) Schritt für Schritt
-- Collections #4–#6
-- Dev-Vorschau für Bilder unter `src/content/` (falls nötig)
+- Collections #4–#6 (bei `articles`: Image-Widget + Astro `image()` laut Variante B oben)
+- Erste echte Bild-Pipeline in Templates (`<Image />`)
+

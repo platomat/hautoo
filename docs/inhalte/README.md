@@ -36,7 +36,8 @@ Entscheidung: **Variante B — neben dem Content** (nicht `public/media`).
 
 - Pro Eintrag ein Ordner unter `src/content/...`; Bilder liegen dort neben `index.md`
 - Astro kann die Dateien beim Build optimieren (`image()` im Schema)
-- Details und Auth/Branch: [Sveltia](../sveltia/README.md)
+- Geteilte Assets optional unter `src/assets/`
+- **Schritte zum Einrichten in Sveltia/Astro:** [Variante B zum Laufen bringen](../sveltia/README.md#variante-b-in-sveltia-zum-laufen-bringen)
 
 ## Glossar
 
