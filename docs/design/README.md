@@ -109,7 +109,31 @@ Gefahr          #E57373  ████
 
 CSS-Tokens in `:root` (`src/styles/global.css`): `--bp-tablet: 1024px`, `--bp-mobile: 680px`. In `@media` dieselben Pixelwerte nutzen (`max-width: 1023px` / `max-width: 679px`), weil Media Queries CSS-Variablen nicht zuverlässig auswerten.
 
-Footer-Copyright-Zeile: ab Mobile untereinander und zentriert.
+Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-on-mobile` + `center-on-mobile`).
+
+### Layout-Utilities (`src/styles/global.css`)
+
+Beliebig kombinieren, statt Flex-CSS in jeder Komponente neu zu schreiben:
+
+| Klasse | Wirkung |
+| --- | --- |
+| `.flex-row` / `.flex-col` | Flex-Zeile bzw. -Spalte, `gap: 1em` |
+| `.flex-wrap` | Umbruch erlauben |
+| `.flex-between` | `justify-content: space-between` |
+| `.flex-center` | Inhalt zentrieren |
+| `.flex-align-center` / `.flex-align-baseline` | Cross-Axis |
+| `.flex-shrink-0` | nicht schrumpfen |
+| `.gap-sm` / `.gap-md` / `.gap-lg` | Abstand überschreiben |
+| `.w-full` / `.min-w-0` | Breite |
+| `.ms-auto` | nach rechts schieben (`margin-inline-start: auto`) |
+| `.text-center` / `.text-muted` / `.text-sm` | Text |
+| `.list-plain` | Liste ohne Bullets/Margin |
+| `.stack-on-tablet` | ab `< 1024px` → Spalte |
+| `.stack-on-mobile` | ab `< 680px` → Spalte |
+| `.center-on-tablet` / `.center-on-mobile` | auf Breakpoint zentrieren; setzt `.ms-auto` zurück |
+
+Beispiel: `class="flex-row flex-between stack-on-mobile center-on-mobile"`
+
 ## Leistung & CSS
 
 Die Website soll **schnell und schlank** bleiben (Page Speed mitdenken).

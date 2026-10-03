@@ -20,6 +20,7 @@ Die Site soll **schlank, schnell und optimiert** bleiben. Bei jeder UI-/Content-
 - Wiederkehrende Muster als **gemeinsame Utility-/Gruppen-Klassen** pflegen (z. B. Inhaltsbreite, Stack-Abstand) — nicht copy-paste in jeder Komponente
 - Neue Einmal-Styles vermeiden, wenn eine vorhandene Regel reicht
 - Scoped Astro-`<style>` nur für wirklich komponentenspezifisches Markup
+- Flex-Layouts: `.flex-row`, `.stack-on-mobile`, `.stack-on-tablet`, `.flex-between`, … (siehe `docs/design/README.md`)
 
 ## Breakpoints
 
