@@ -85,4 +85,24 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 		list-style: none;
 		font-size: 0.875rem;
 	}
+
+	/* Mobile: < 680px — stack copyright + legal, centered */
+	@media (max-width: 679px) {
+		.site-footer__bar {
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			gap: 0.75rem;
+		}
+
+		.site-footer__legal {
+			margin-inline-start: 0;
+		}
+
+		.site-footer__legal-list {
+			justify-content: center;
+		}
+	}
 </style>

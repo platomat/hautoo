@@ -35,6 +35,10 @@
 	--font-weight-heading: 500;
 	--content-max-width: 42rem;
 	--shell-padding-inline: 1.25rem;
+
+	/* Breakpoints (reference tokens; use same px in @media) */
+	--bp-tablet: 1024px; /* viewport < 1024 → tablet (and below) */
+	--bp-mobile: 680px; /* viewport < 680 → mobile */
 }
 
 *,

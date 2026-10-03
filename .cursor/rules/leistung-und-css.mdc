@@ -21,6 +21,15 @@ Die Site soll **schlank, schnell und optimiert** bleiben. Bei jeder UI-/Content-
 - Neue Einmal-Styles vermeiden, wenn eine vorhandene Regel reicht
 - Scoped Astro-`<style>` nur für wirklich komponentenspezifisches Markup
 
+## Breakpoints
+
+| Token / Name | `@media` | Bedeutung |
+| --- | --- | --- |
+| `--bp-tablet` (1024px) | `max-width: 1023px` | Tablet und darunter |
+| `--bp-mobile` (680px) | `max-width: 679px` | Mobile |
+
+Dieselben px-Werte überall verwenden (siehe `docs/design/README.md`).
+
 ## Critical vs. non-critical CSS
 
 | Art | Inhalt | Pflege |

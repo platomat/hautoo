@@ -99,6 +99,17 @@ Gefahr          #E57373  ████
 - Keine Card-Optik als Default (Rahmen/Schatten nur wenn Interaktion es braucht)
 - Kontrast Text/Hintergrund prüfen (WCAG möglichst AA)
 
+## Breakpoints
+
+| Name | Bedingung | Bedeutung |
+| --- | --- | --- |
+| Desktop | `≥ 1024px` | Standard-Desktop |
+| Tablet | `< 1024px` | Tablet (und kleiner, bis Mobile greift) |
+| Mobile | `< 680px` | Smartphone |
+
+CSS-Tokens in `:root` (`src/styles/global.css`): `--bp-tablet: 1024px`, `--bp-mobile: 680px`. In `@media` dieselben Pixelwerte nutzen (`max-width: 1023px` / `max-width: 679px`), weil Media Queries CSS-Variablen nicht zuverlässig auswerten.
+
+Footer-Copyright-Zeile: ab Mobile untereinander und zentriert.
 ## Leistung & CSS
 
 Die Website soll **schnell und schlank** bleiben (Page Speed mitdenken).
