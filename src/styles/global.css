@@ -84,6 +84,18 @@ body.is-nav-locked {
 	margin-bottom: 1.25rem;
 }
 
+/* Markdown / CMS media must stay inside the content column */
+.page img,
+.page video,
+.page iframe {
+	max-width: 100%;
+	height: auto;
+}
+
+.page img {
+	display: block;
+}
+
 h1,
 h2,
 h3,
