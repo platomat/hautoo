@@ -10,10 +10,8 @@ Willkommen bei **hautuu**.
 
 Diese Startseite kommt aus der Sveltia-/Astro-Collection `pages`. Inhalte pflegst du im CMS unter `/admin/` oder direkt als Markdown im Repo.
 
-Das ist ein neuer **Abschnitt**.
-- A
-- B
-- C
+Weitere Infos kommen hierhin.
 
-1. aaa
-2. bbb
+Auch dann eine Auflistung der letzten Artikel.
+
+Projekt auf Github: https://github.com/platomat/hautoo/
