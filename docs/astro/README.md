@@ -32,6 +32,10 @@ Entsprechen den Sveltia-Sammlungen:
 
 Komponenten, Props und Kommentare im Code: **Englisch**. Sichtbare Texte und Doku: **Deutsch**.
 
+## Erscheinungsbild
+
+Vorgaben zu dunklem Theme, Farbpalette (Aktionsgrün), Ubuntu und Links: **[Design & Erscheinungsbild](../design/README.md)**.
+
 ## Aktueller Stand
 
 - Astro 7 (statisch), Site-URL: `https://hautoo.storyofai.net`
@@ -41,7 +45,7 @@ Komponenten, Props und Kommentare im Code: **Englisch**. Sichtbare Texte und Dok
 
 ## Noch auszuarbeiten
 
-- Design-/Layout-Grundlagen
-- Content Collections Schema (`pages`, `articles`, `tags`, `glossar`)
+- Globale Styles / CSS-Variablen laut [Design](../design/README.md)
 - Layouts und `image()`-Pipeline für Eintrags-Medien
+- Content Collections Schema (`pages`, `articles`, `tags`, `glossar`)
 
