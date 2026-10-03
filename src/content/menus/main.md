@@ -7,4 +7,8 @@ items:
   - label: Über uns
     linkType: page
     page: ueber-uns
+    children:
+      - label: Beispiel
+        linkType: page
+        page: beispiel-unterseite
 ---
