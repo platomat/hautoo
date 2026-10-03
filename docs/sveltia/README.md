@@ -46,6 +46,7 @@ src/content/articles/mein-artikel/
 | Hierarchie | Feld `parent` (Relation) → verschachtelte URL |
 | Menü | Felder `showInMenu`, `menuOrder`, `menuLabel` → `SiteHeader` |
 | Footer-Rechtliches | `showInFooterLegal`, `footerLegalOrder` → rechts neben Copyright |
+| SEO | Shared-Objekt `seo` (`&field_seo` / `src/cms/fields/seo.ts`) |
 
 ### Felder
 
@@ -59,9 +60,12 @@ src/content/articles/mein-artikel/
 | `showInMenu` | nein | Standard `true` |
 | `showInFooterLegal` | nein | Standard `false` — Impressum/Datenschutz o. ä. |
 | `footerLegalOrder` | nein | Sortierung in der Footer-Rechtszeile |
+| `seo` | ja (CMS) | SEO-Objekt (Titel, Description, Robots) — Partial `&field_seo` |
 | Body | ja | Markdown-Inhalt |
 
 Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarchie kommt aus `parent` (Kette möglich). Beispiel: `beispiel-unterseite` mit `parent: ueber-uns` → `/ueber-uns/beispiel-unterseite/`.
+
+Shared Field-Partials (DRY): [CMS Fields](../cms-fields/README.md).
 
 ## Collections (Sammlungen)
 

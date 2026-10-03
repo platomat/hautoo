@@ -1,5 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import { seoSchema } from "./cms/fields/seo";
 
 const pages = defineCollection({
 	loader: glob({ pattern: "**/index.md", base: "./src/content/pages" }),
@@ -13,6 +14,8 @@ const pages = defineCollection({
 		footerLegalOrder: z.number().int().optional(),
 		/** Parent page id (folder slug), builds nested URLs like `/parent/child/`. */
 		parent: z.string().optional(),
+		/** Shared SEO object (same shape as Sveltia `&field_seo`). */
+		seo: seoSchema.optional(),
 	}),
 });
 

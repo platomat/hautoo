@@ -9,7 +9,11 @@ if (!page) {
 const { Content } = await render(page);
 ---
 
-<BaseLayout title={page.data.title} description={page.data.description}>
+<BaseLayout
+	title={page.data.title}
+	description={page.data.description}
+	seo={page.data.seo}
+>
 	<main class="page">
 		<article>
 			<h1>{page.data.title}</h1>

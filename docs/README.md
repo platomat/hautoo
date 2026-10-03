@@ -30,15 +30,16 @@ Details: [Sprachen und Konventionen](./sprachen-und-konventionen.md)
 7. [Cloudflare](./cloudflare/README.md) — Hosting, Domain, Deployments
 8. [Astro](./astro/README.md) — Statische Website
 9. [Sveltia CMS](./sveltia/README.md) — Inhalte pflegen (Collections)
+10. [CMS Fields (DRY)](./cms-fields/README.md) — Wiederverwendbare Felder (z. B. SEO)
 
 ### Inhalte der Website
 
-10. [Inhalte](./inhalte/README.md) — Seiten, Artikel, Tags, Glossar, Videos
+11. [Inhalte](./inhalte/README.md) — Seiten, Artikel, Tags, Glossar, Videos
 
 ### Weiterführend
 
-11. [Lokale Entwicklung](./entwicklung/README.md) — Setup auf dem eigenen Rechner
-12. [Glossar der Doku](./glossar.md) — Begriffe kurz erklärt
+12. [Lokale Entwicklung](./entwicklung/README.md) — Setup auf dem eigenen Rechner
+13. [Glossar der Doku](./glossar.md) — Begriffe kurz erklärt
 
 ## Schnellstart (Überblick)
 

@@ -15,6 +15,12 @@ public_folder: /assets
 output:
   omit_empty_optional_fields: true
 
+# -----------------------------------------------------------------------------
+# Shared field partials (YAML anchors) — DRY across collections.
+# Aliases only work inside THIS file. Inject with: - *field_seo
+# Astro Zod mirror: src/cms/fields/seo.ts
+# -----------------------------------------------------------------------------
+
 collections:
   - name: pages
     label: Seiten
@@ -44,4 +50,115 @@ collections:
       - { name: showInMenu, label: Im Hauptmenü anzeigen, widget: boolean, default: true }
       - { name: showInFooterLegal, label: In Footer-Rechtstexten, widget: boolean, default: false, hint: "Rechts neben dem Copyright (z. B. Impressum, Datenschutz)." }
       - { name: footerLegalOrder, label: Footer-Rechts-Reihenfolge, widget: number, required: false, value_type: int }
+      - &field_seo
+        label: SEO
+        name: seo
+        widget: object
+        required: true
+        collapsed: true
+        default:
+          index_visibility: index
+          follow_visibility: follow
+          noarchive: false
+          noimageindex: false
+          nosnippet: false
+          max_snippet_enabled: true
+          max_snippet: -1
+          max_video_preview_enabled: true
+          max_video_preview: -1
+          max_image_preview_enabled: true
+          max_image_preview: large
+        summary: "{{fields.seo_title}}"
+        hint: "Titel, Meta Description und Robots. Beim Build → <title>, description und <meta name=\"robots\">."
+        fields:
+          - label: SEO Title
+            name: seo_title
+            widget: string
+            required: false
+            hint: "Optional — leer lassen = Seitentitel (H1) wird beim Build verwendet."
+          - label: Meta Description
+            name: seo_description
+            widget: text
+            required: false
+            hint: "Optional — Fallback: Feld Beschreibung der Seite."
+          - label: Index / Noindex
+            name: index_visibility
+            widget: select
+            options:
+              - { label: Index, value: index }
+              - { label: Kein Index (Noindex), value: noindex }
+            default: index
+            required: true
+            hint: "Ob Suchmaschinen diese Seite in den Suchergebnissen aufnehmen (Index) oder ausblenden (Noindex)."
+          - label: Follow / Nofollow
+            name: follow_visibility
+            widget: select
+            options:
+              - { label: Follow, value: follow }
+              - { label: Nofollow, value: nofollow }
+            default: follow
+            required: true
+            hint: "Ob Suchmaschinen Links auf dieser Seite folgen (Follow) oder ignorieren (Nofollow)."
+          - label: Kein Archiv (Noarchive)
+            name: noarchive
+            widget: boolean
+            default: false
+            hint: "Suchmaschinen sollen keine zwischengespeicherte Version der Seite anzeigen."
+          - label: Kein Bildverzeichnis (Noimageindex)
+            name: noimageindex
+            widget: boolean
+            default: false
+            hint: "Bilder auf dieser Seite nicht in der Google-Bildersuche indexieren."
+          - label: Kein Snippet (Nosnippet)
+            name: nosnippet
+            widget: boolean
+            default: false
+            hint: "Keinen Textausschnitt (Snippet) in den Suchergebnissen anzeigen."
+          - label: "Erweitert: Max Snippet"
+            name: max_snippet_enabled
+            widget: boolean
+            default: true
+            hint: "Begrenzung der Snippet-Länge in den Suchergebnissen aktivieren."
+          - label: Max Snippet (Zeichen)
+            name: max_snippet
+            widget: number
+            value_type: int
+            default: -1
+            required: false
+            hint: "-1 = unbegrenzt"
+          - label: "Erweitert: Max. Videovorschau"
+            name: max_video_preview_enabled
+            widget: boolean
+            default: true
+            hint: "Begrenzung der Videovorschau in den Suchergebnissen aktivieren."
+          - label: Max. Videovorschau (Sekunden)
+            name: max_video_preview
+            widget: number
+            value_type: int
+            default: -1
+            required: false
+            hint: "-1 = unbegrenzt"
+          - label: "Erweitert: Max. Bildvorschau"
+            name: max_image_preview_enabled
+            widget: boolean
+            default: true
+            hint: "Begrenzung der Bildvorschau in den Suchergebnissen aktivieren."
+          - label: Max. Bildvorschaugröße
+            name: max_image_preview
+            widget: select
+            options:
+              - { label: Keine, value: none }
+              - { label: Standard, value: standard }
+              - { label: Groß, value: large }
+            default: large
+            required: false
+            hint: "Maximale Bildgröße in der Google-Suchvorschau."
       - { name: body, label: Inhalt, widget: markdown }
+
+  # Later collections inject the same SEO block with: - *field_seo
+  # Example:
+  # - name: articles
+  #   fields:
+  #     - { name: title, label: Titel, widget: string }
+  #     - *field_seo
+  #     - { name: body, label: Inhalt, widget: markdown }

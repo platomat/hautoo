@@ -2,14 +2,27 @@
 import "../styles/global.css";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import {
+	buildRobotsContent,
+	resolveSeo,
+	type Seo,
+} from "../cms/fields/seo";
 
 interface Props {
 	title?: string;
 	description?: string;
+	seo?: Seo;
 }
 
-const { title = "hautuu", description } = Astro.props;
-const pageTitle = title === "hautuu" ? title : `${title} · hautuu`;
+const { title = "hautuu", description, seo: seoProp } = Astro.props;
+const seo = resolveSeo(seoProp);
+
+const documentTitle = seo.seo_title?.trim() || title;
+const pageTitle =
+	documentTitle === "hautuu" ? documentTitle : `${documentTitle} · hautuu`;
+const metaDescription =
+	seo.seo_description?.trim() || description?.trim() || undefined;
+const robots = buildRobotsContent(seo);
 ---
 
 <!doctype html>
@@ -20,7 +33,8 @@ const pageTitle = title === "hautuu" ? title : `${title} · hautuu`;
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		{description && <meta name="description" content={description} />}
+		<meta name="robots" content={robots} />
+		{metaDescription && <meta name="description" content={metaDescription} />}
 		<title>{pageTitle}</title>
 	</head>
 	<body>
