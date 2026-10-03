@@ -99,8 +99,27 @@ Gefahr          #E57373  ████
 - Keine Card-Optik als Default (Rahmen/Schatten nur wenn Interaktion es braucht)
 - Kontrast Text/Hintergrund prüfen (WCAG möglichst AA)
 
+## Leistung & CSS
+
+Die Website soll **schnell und schlank** bleiben (Page Speed mitdenken).
+
+### Styles wiederverwenden
+
+- Vorhandene Tokens und Klassen in `src/styles/` nutzen — nicht bei jeder Komponente CSS neu erfinden
+- Häufige Muster als **gemeinsame Gruppen-/Utility-Klassen** pflegen (z. B. Inhaltsbreite, vertikaler Abstand)
+- Scoped Astro-`<style>` nur für wirklich komponentenspezifisches Markup
+
+### Critical vs. non-critical CSS
+
+| Art | Inhalt | Regel |
+| --- | --- | --- |
+| **Critical** | Above-the-fold: Tokens, Basis, Typo, Header/Nav, erste Inhaltsfläche | Klein halten, früh laden |
+| **Non-critical** | Seltene Komponenten, Artikel-Extras | Separat; nicht in den First-Paint-Pfad mischen |
+
+Stand der Dateien: Critical-Basis in `src/styles/global.css` (weiter aufteilen, sobald die Site wächst). Agenten-Regeln: `.cursor/rules/leistung-und-css.mdc`.
+
 ## Bezug
 
 - Stack und Zielgruppe: [Konzept](../konzept/README.md)
 - Technische Umsetzung: [Astro](../astro/README.md)
-- Offene Layout-Arbeit: folgt mit ersten Seiten-Templates
+- Deploy nur nach bewusstem Push: [Cloudflare](../cloudflare/README.md)
