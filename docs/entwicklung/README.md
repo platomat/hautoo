@@ -45,7 +45,7 @@ git commit && git push   # → Cloudflare baut und veröffentlicht
 
 ## CMS lokal
 
-`npm run dev` → [http://localhost:4321/admin/](http://localhost:4321/admin/) (Route `src/pages/admin.html`) — Login wie in Produktion per GitHub-PAT. Live-Setup: [Sveltia auf Cloudflare](../sveltia/README.md#sveltia-auf-cloudflare-zum-laufen-bringen).
+`npm run dev` → [http://localhost:4321/admin/](http://localhost:4321/admin/) (Route `src/pages/admin.html`) — Login wie in Produktion per GitHub-PAT. Live-Setup: [Sveltia — Zugang / Cloudflare](../sveltia/zugang-cloudflare.md).
 
 ## Noch auszuarbeiten
 

@@ -19,6 +19,7 @@ Dieses Repository ist **öffentlich** auf GitHub. Alles, was committed wird, kan
 | Cloudflare Dashboard / GitHub Secrets | Echte Secrets zur Laufzeit |
 | Lokale `.env` (gitignored) | Nur auf dem eigenen Rechner |
 | Browser Local Storage (Sveltia PAT) | GitHub-Token nur lokal im Browser — nie committen |
+| Cloudflare Worker Variables (OAuth) | `GITHUB_CLIENT_SECRET` nur als verschlüsseltes Worker-Secret |
 
 ## Domain
 

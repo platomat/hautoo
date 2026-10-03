@@ -4,6 +4,8 @@ Diese Dokumentation richtet sich an Menschen, die mit Hilfe von **KI (zuerst Cur
 
 Die Live-Domain lautet: [hautoo.storyofai.net](https://hautoo.storyofai.net)
 
+**Ordner unter `docs/`:** ein Thema pro Ordner (z. B. `sveltia/`, `cloudflare/`). Darin ist `README.md` die Übersicht; längere Anleitungen liegen als eigene Dateien daneben (Beispiel: [Sveltia](./sveltia/README.md)).
+
 ## Sprachen in diesem Projekt
 
 | Bereich | Sprache |

@@ -93,7 +93,7 @@ Danach: **Save and Deploy**.
 
 4. Diese URL im Browser öffnen und kurz prüfen (Startseite, Navigation, `/admin/` erreichbar).
 
-CMS (Sveltia) unter `/admin/` mit GitHub-PAT einrichten: [Sveltia — auf Cloudflare](../sveltia/README.md#sveltia-auf-cloudflare-zum-laufen-bringen).
+CMS (Sveltia) unter `/admin/`: [PAT](../sveltia/zugang-cloudflare.md) oder optional [OAuth über Worker](../sveltia/zugang-worker.md).
 
 Erst wenn `*.pages.dev` funktioniert, die Custom Domain anbinden — so trennst du Build-Probleme von DNS-Problemen.
 

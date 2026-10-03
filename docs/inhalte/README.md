@@ -18,7 +18,7 @@ Umgesetzt: Content unter `src/content/pages/<slug>/index.md`, CMS-Collection in 
 - Start → `/`
 - Weitere Seiten → `/<slug>/`
 - Mit `parent` → `/<eltern-slug>/<slug>/` (auch mehrstufig)
-- Details: [Sveltia](../sveltia/README.md)
+- Details: [Sveltia — Collections](../sveltia/collections.md)
 
 ## Artikel
 
@@ -37,7 +37,7 @@ Entscheidung: **Variante B — neben dem Content** (nicht `public/media`).
 - Pro Eintrag ein Ordner unter `src/content/...`; Bilder liegen dort neben `index.md`
 - Astro kann die Dateien beim Build optimieren (`image()` im Schema)
 - Geteilte Assets optional unter `src/assets/`
-- **Schritte zum Einrichten in Sveltia/Astro:** [Variante B zum Laufen bringen](../sveltia/README.md#variante-b-in-sveltia-zum-laufen-bringen)
+- **Schritte zum Einrichten in Sveltia/Astro:** [Medien — Variante B](../sveltia/medien-variante-b.md)
 
 ## Glossar
 
