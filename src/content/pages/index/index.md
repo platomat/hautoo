@@ -8,10 +8,10 @@ showInMenu: true
 
 Willkommen bei **hautuu**.
 
-Diese Startseite kommt aus der Sveltia-/Astro-Collection `pages`. Inhalte pflegst du im CMS unter `/admin/` oder direkt als Markdown im Repo.
+Diese Website entsteht mit Cursor, wird über **GitHub** versioniert und auf Cloudflare ausgeliefert. Quellcode und Inhalte liegen im öffentlichen Repository:
 
-Weitere Infos kommen hierhin.
+[github.com/platomat/hautoo](https://github.com/platomat/hautoo/)
 
-Auch dann eine Auflistung der letzten Artikel.
+Die Startseite gehört zur Content-Collection `pages`. Du pflegst Texte im CMS unter `/admin/` oder direkt als Markdown im Repo — jede Änderung landet per Commit auf GitHub und erscheint nach dem Deploy online.
 
-Projekt auf Github: https://github.com/platomat/hautoo/
+Später folgen hier weitere Einstiege und eine Übersicht der neuesten Artikel.
