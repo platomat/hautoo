@@ -11,6 +11,14 @@ Die Website publiziert thematische Inhalte. Technisch stecken sie in den Sveltia
 | Tags | `tags` | Themen-Labels für Artikel |
 | Glossar | `glossar` | Begriffserklärungen |
 
+## Seiten (`pages`)
+
+Umgesetzt: Content unter `src/content/pages/<slug>/index.md`, CMS-Collection in Sveltia, Navigation über `showInMenu` / `menuOrder` / `menuLabel`.
+
+- Start → `/`
+- Weitere Seiten → `/<slug>/`
+- Details: [Sveltia](../sveltia/README.md)
+
 ## Artikel
 
 Ein Artikel soll typischerweise enthalten:

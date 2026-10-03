@@ -1,0 +1,36 @@
+---
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: platomat/hautoo
+  branch: main
+
+# PAT login for now; GitHub App + Cloudflare Worker later.
+# Local: open /admin/index.html while `npm run dev` is running.
+
+media_folder: src/assets # unused for entry-relative media; kept as fallback
+public_folder: /assets
+
+output:
+  omit_empty_optional_fields: true
+
+collections:
+  - name: pages
+    label: Seiten
+    label_singular: Seite
+    folder: src/content/pages
+    create: true
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    slug: "{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Titel, widget: string }
+      - { name: description, label: Beschreibung, widget: string, required: false }
+      - { name: menuLabel, label: Menü-Label, widget: string, required: false, hint: "Falls leer, wird der Titel verwendet." }
+      - { name: menuOrder, label: Menü-Reihenfolge, widget: number, required: false, value_type: int, hint: "Kleinere Zahl = weiter vorne." }
+      - { name: showInMenu, label: Im Menü anzeigen, widget: boolean, default: true }
+      - { name: body, label: Inhalt, widget: markdown }

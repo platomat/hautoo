@@ -1,18 +1,32 @@
 ---
+import { getEntry, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const page = await getEntry("pages", "index");
+if (!page) {
+	throw new Error('Missing pages collection entry "index".');
+}
+const { Content } = await render(page);
 ---
 
-<BaseLayout title="hautuu" description="Statische Website mit Astro — Setup läuft.">
-	<main>
-		<h1>hautuu</h1>
-		<p>Statische Website mit Astro — Setup läuft.</p>
+<BaseLayout title={page.data.title} description={page.data.description}>
+	<main class="page">
+		<article>
+			<h1>{page.data.title}</h1>
+			<Content />
+		</article>
 	</main>
 </BaseLayout>
 
 <style>
-	main {
+	.page {
 		max-width: var(--content-max-width);
 		margin: 0 auto;
-		padding: 3rem 1.25rem;
+		padding: 2.5rem 1.25rem 4rem;
+	}
+
+	.page h1 {
+		margin-top: 0;
+		margin-bottom: 1.25rem;
 	}
 </style>

@@ -28,16 +28,46 @@ src/content/articles/mein-artikel/
 
 **Abgrenzung:** How-to-Videos bleiben **Embeds** (Vimeo/YouTube), keine Videodateien im Repo. Siehe [Inhalte](../inhalte/README.md).
 
+## Admin-Zugang
+
+- UI: `/admin/` bzw. lokal `http://localhost:4321/admin/index.html`
+- Config: `public/admin/config.yml`
+- Auth vorerst: **GitHub PAT** (im Login-Dialog); später GitHub App + Cloudflare Worker
+- Speichern: Branch **`main`**
+
+## Collection `pages` (umgesetzt)
+
+| | |
+| --- | --- |
+| Ordner | `src/content/pages/<slug>/index.md` |
+| Schema | `src/content.config.ts` |
+| Sveltia | Collection `pages` in `public/admin/config.yml` |
+| Routen | `/` ← Eintrag `index`; weitere Seiten unter `/<slug>/` |
+| Menü | Felder `showInMenu`, `menuOrder`, `menuLabel` → `SiteHeader` |
+
+### Felder
+
+| Feld | Pflicht | Bedeutung |
+| --- | --- | --- |
+| `title` | ja | Seitentitel |
+| `description` | nein | Meta-Beschreibung |
+| `menuLabel` | nein | Text im Menü (sonst `title`) |
+| `menuOrder` | nein | Sortierung (klein = vorne) |
+| `showInMenu` | nein | Standard `true` |
+| Body | ja | Markdown-Inhalt |
+
+Beispiel-Einträge: Start, Über uns, Impressum.
+
 ## Collections (Sammlungen)
 
-| Collection | Schlüssel | Inhalt |
+| Collection | Schlüssel | Status |
 | --- | --- | --- |
-| Seiten | `pages` | Statische Seiten |
-| Artikel | `articles` | Text, Bilder, How-to-Video (Vimeo/YouTube) |
-| Tags | `tags` | Verschlagwortung für Artikel |
-| Glossar | `glossar` | Begriffe und Erklärungen |
+| Seiten | `pages` | umgesetzt (#3) |
+| Artikel | `articles` | geplant (#4) |
+| Tags | `tags` | geplant (#5) |
+| Glossar | `glossar` | geplant (#6) |
 
-## Erwartete Felder (Entwurf)
+## Erwartete Felder (weitere Collections)
 
 ### articles
 
@@ -58,24 +88,12 @@ src/content/articles/mein-artikel/
 
 - Name, Slug, optionale Beschreibung
 
-### pages
-
-- Titel, Slug, Body
-- Optional Navigation/Menü-Reihenfolge
-
-## Was hier dokumentiert werden soll
-
-- `admin`-Zugang und Auth (noch festzulegen)
-- Konfigurationsdatei für Sveltia
-- Workflow: Inhalt speichern → Commit/PR → Deploy
-- Rechte: wer darf publizieren?
-
 ## Sicherheit
 
 CMS-Zugangsdaten und Backend-Tokens sind Secrets — nicht ins öffentliche Repo. Siehe [Sicherheit](../sicherheit/README.md).
 
 ## Noch auszuarbeiten
 
-- PAT-Workflow und später OAuth (GitHub App + Cloudflare Worker) dokumentieren
-- Konkrete `config.yml` und Astro-Schemas (Sub-Issues #3–#6)
+- PAT-Workflow Schritt für Schritt dokumentieren; später OAuth (GitHub App + Cloudflare Worker)
+- Collections #4–#6
 - Dev-Vorschau für Bilder unter `src/content/` (falls nötig)

@@ -1,0 +1,72 @@
+---
+import { getCollection } from "astro:content";
+import { getMenuLabel, getMenuPages, getPageHref } from "../lib/pages";
+
+const menuPages = getMenuPages(await getCollection("pages"));
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<header class="site-header">
+	<div class="site-header__inner">
+		<a class="site-header__brand" href="/">hautuu</a>
+		<nav class="site-nav" aria-label="Hauptnavigation">
+			<ul class="site-nav__list">
+				{
+					menuPages.map((page) => {
+						const href = getPageHref(page);
+						const hrefKey = href.replace(/\/$/, "") || "/";
+						const current = pathname === hrefKey;
+						return (
+							<li>
+								<a href={href} aria-current={current ? "page" : undefined}>
+									{getMenuLabel(page)}
+								</a>
+							</li>
+						);
+					})
+				}
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<style>
+	.site-header {
+		background: var(--color-surface);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.site-header__inner {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem 1.5rem;
+		max-width: var(--content-max-width);
+		margin: 0 auto;
+		padding: 1rem 1.25rem;
+	}
+
+	.site-header__brand {
+		font-weight: var(--font-weight-heading);
+		font-size: 1.125rem;
+		color: var(--color-text);
+	}
+
+	.site-header__brand:hover {
+		color: var(--color-action-hover);
+	}
+
+	.site-nav__list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 1.25rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.site-nav a[aria-current="page"] {
+		color: var(--color-text);
+	}
+</style>
