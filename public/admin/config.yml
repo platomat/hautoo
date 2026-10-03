@@ -5,6 +5,7 @@ backend:
   name: github
   repo: platomat/hautoo
   branch: main
+  base_url: https://hautoo-sveltia-cms-auth.platomat.workers.dev
 
 # PAT login for now; GitHub App + Cloudflare Worker later.
 # Admin UI: /admin/ (src/pages/admin.html); config: this file.
