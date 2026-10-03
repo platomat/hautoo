@@ -108,6 +108,13 @@ a:focus-visible {
 	outline-offset: 3px;
 }
 
+code {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	padding: 3px 6px;
+	background: var(--color-surface);
+	border-radius: 4px;
+}
+
 /* --- Layout utilities (compose freely) --- */
 
 .flex-row {
