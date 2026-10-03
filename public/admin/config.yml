@@ -7,7 +7,7 @@ backend:
   branch: main
 
 # PAT login for now; GitHub App + Cloudflare Worker later.
-# Local: open /admin/index.html while `npm run dev` is running.
+# Admin UI: /admin/ (src/pages/admin.html); config: this file.
 
 media_folder: src/assets # unused for entry-relative media; kept as fallback
 public_folder: /assets

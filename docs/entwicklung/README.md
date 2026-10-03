@@ -43,7 +43,10 @@ git commit && git push   # → Cloudflare baut und veröffentlicht
 - Commits und Issues auf **Deutsch**, Code auf **Englisch**
 - Vor dem Push: [Sicherheits-Checkliste](../sicherheit/README.md)
 
+## CMS lokal
+
+`npm run dev` → [http://localhost:4321/admin/](http://localhost:4321/admin/) (Route `src/pages/admin.html`) — Login wie in Produktion per GitHub-PAT. Live-Setup: [Sveltia auf Cloudflare](../sveltia/README.md#sveltia-auf-cloudflare-zum-laufen-bringen).
+
 ## Noch auszuarbeiten
 
-- CMS lokal testen (Sveltia unter `/admin/`)
 - Häufige Fehler und Lösungen

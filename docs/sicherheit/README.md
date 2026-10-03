@@ -18,6 +18,7 @@ Dieses Repository ist **öffentlich** auf GitHub. Alles, was committed wird, kan
 | `.env.example` | Platzhalter ohne echte Werte, als Vorlage |
 | Cloudflare Dashboard / GitHub Secrets | Echte Secrets zur Laufzeit |
 | Lokale `.env` (gitignored) | Nur auf dem eigenen Rechner |
+| Browser Local Storage (Sveltia PAT) | GitHub-Token nur lokal im Browser — nie committen |
 
 ## Domain
 

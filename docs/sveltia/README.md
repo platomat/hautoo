@@ -28,12 +28,115 @@ src/content/articles/mein-artikel/
 
 **Abgrenzung:** How-to-Videos bleiben **Embeds** (Vimeo/YouTube), keine Videodateien im Repo. Siehe [Inhalte](../inhalte/README.md).
 
-## Admin-Zugang
+## Admin-Zugang (Kurz)
 
-- UI: `/admin/` bzw. lokal `http://localhost:4321/admin/index.html`
-- Config: `public/admin/config.yml`
-- Auth vorerst: **GitHub PAT** (im Login-Dialog); später GitHub App + Cloudflare Worker
-- Speichern: Branch **`main`**
+| | |
+| --- | --- |
+| UI (Produktion) | `https://hautoo.storyofai.net/admin/` |
+| UI (lokal) | `http://localhost:4321/admin/` |
+| Admin-Shell | `src/pages/admin.html` (Astro-Route — nötig, weil `/admin/` sonst vom Catch-All `404` wird) |
+| Config | `public/admin/config.yml` (landet beim Build in `dist/admin/`) |
+| Auth jetzt | **GitHub Personal Access Token (PAT)** im Login-Dialog |
+| Auth später | GitHub OAuth-App + Cloudflare Worker ([Sveltia CMS Authenticator](https://github.com/sveltia/sveltia-cms-authenticator)) |
+| Speichern | Branch **`main`** → Cloudflare Pages baut neu |
+
+---
+
+## Sveltia auf Cloudflare zum Laufen bringen
+
+Voraussetzung: Die Website ist über **Cloudflare Pages** deployed (siehe [Cloudflare](../cloudflare/README.md)). Das CMS ist keine Extra-App — es sind die statischen Dateien unter `/admin/`, die Astro aus `public/admin/` mit ausliefert.
+
+```text
+Browser → https://hautoo.storyofai.net/admin/
+       → Sveltia (JS) + config.yml
+       → Login mit GitHub-PAT
+       → schreibt Dateien ins Repo platomat/hautoo (Branch main)
+       → Cloudflare Pages Build → Live-Site aktualisiert
+```
+
+### Schritt 1 — Site online (Pages)
+
+1. Cloudflare Pages mit Repo `platomat/hautoo` verbinden und bauen ([Anleitung](../cloudflare/README.md)).
+2. Prüfen, dass die Admin-UI erreichbar ist:
+
+   - `https://hautoo.storyofai.net/admin/`  
+   - oder vor der Custom Domain: `https://<project>.pages.dev/admin/`
+
+3. Erwartet: Login-Bildschirm von Sveltia (noch ohne Inhaltspflege).  
+   Fehlt `/admin/`: Build prüfen — Route `src/pages/admin.html` und `public/admin/config.yml` müssen ausgeliefert werden.
+
+Keine Cloudflare-Sonderkonfiguration für Sveltia nötig (kein Worker, kein `base_url` in der Config — solange PAT genutzt wird).
+
+### Schritt 2 — GitHub-Rechte
+
+Dein GitHub-Konto braucht **Schreibzugriff** auf [`platomat/hautoo`](https://github.com/platomat/hautoo/) (Rolle Write, Maintain oder Admin). Nur Lesen → Login/Speichern scheitert.
+
+### Schritt 3 — Personal Access Token (PAT) erzeugen
+
+1. Admin öffnen: `https://hautoo.storyofai.net/admin/`
+2. **Sign In with Token** / „Mit Token anmelden“ wählen.
+3. Dem Link im Dialog folgen (GitHub öffnet die Token-Seite mit passenden Voreinstellungen), **oder** manuell:
+
+   - GitHub → **Settings** → **Developer settings** → **Personal access tokens**
+   - Empfohlen: **Fine-grained token**
+   - Repository access: nur **`platomat/hautoo`**
+   - Permissions:
+
+     | Permission | Zugriff | Wofür |
+     | --- | --- | --- |
+     | **Contents** | Read and write | Inhalte lesen und committen |
+     | **Pull requests** | Read and write | nur nötig, falls später Editorial Workflow |
+
+   - Classic-Token-Alternative: Scope **`repo`** (umfasst das Nötige; breiter als fine-grained)
+
+4. Token erzeugen, **einmalig kopieren** (wird nicht erneut angezeigt).
+5. Token in den Sveltia-Dialog einfügen → anmelden.
+
+Das Token liegt nur im **Local Storage des Browsers** — nicht im Repo, nicht in Cloudflare-Umgebungsvariablen.
+
+> **Secret:** PAT niemals committen, nicht in Issues/Chats posten, nicht in `config.yml` eintragen. Siehe [Sicherheit](../sicherheit/README.md).
+
+### Schritt 4 — Ersten Inhalt speichern und Deploy prüfen
+
+1. Im CMS z. B. Collection **Seiten** öffnen, kleinen Text ändern, speichern.
+2. Auf GitHub erscheint ein Commit auf **`main`** (Autor: dein GitHub-Konto).
+3. Cloudflare Pages startet einen Build (Push auf `main`).
+4. Nach erfolgreichem Deploy die Live-Seite prüfen.
+
+Lokal zum Vergleich: `npm run dev` → `http://localhost:4321/admin/` — gleicher PAT-Login, schreibt ebenfalls gegen GitHub `main` (nicht gegen uncommittete lokale Dateien, solange der GitHub-Backend-Modus aktiv ist).
+
+### Schritt 5 — Alltag & Token-Pflege
+
+| Thema | Hinweis |
+| --- | --- |
+| Token abgelaufen | Neu erzeugen, im Admin erneut „Sign In with Token“ |
+| Anderer Rechner / Browser | Erneut mit PAT anmelden |
+| Mehrere Redakteure | Jede Person braucht Schreibrecht am Repo + eigenen PAT — oder später OAuth |
+| `/admin/` öffentlich | Die UI-URL ist öffentlich; **ohne gültigen Token** keine Schreibzugriffe. Trotzdem: nur Vertrauenspersonen bekommen Tokens/Rechte |
+| Site-Deploy | Speichern im CMS = Commit auf `main` = neuer Cloudflare-Build |
+
+### Später: OAuth statt PAT (Ausblick)
+
+Für „Login with GitHub“ ohne Token-Paste:
+
+1. GitHub OAuth App anlegen  
+2. [Sveltia CMS Authenticator](https://github.com/sveltia/sveltia-cms-authenticator) als **Cloudflare Worker** deployen  
+3. In `public/admin/config.yml` unter `backend` z. B. `base_url: https://<dein-authenticator>.workers.dev` setzen  
+
+Das ist **nicht** Teil des aktuellen Go-Live (PAT zuerst). Worker hier nur für Auth-Proxy — die Website selbst bleibt statisches Pages-Hosting.
+
+### Checkliste CMS live
+
+- [ ] Cloudflare Pages Deploy läuft, Site unter `hautoo.storyofai.net` erreichbar
+- [ ] `https://hautoo.storyofai.net/admin/` zeigt Sveltia-Login
+- [ ] GitHub-Konto hat Schreibrecht auf `platomat/hautoo`
+- [ ] PAT mit Contents Read/Write (fine-grained) erzeugt
+- [ ] Login im Admin erfolgreich
+- [ ] Test-Änderung speichert → Commit auf `main` → Cloudflare-Build → Inhalt live
+
+Offizielle Referenzen: [Sveltia Getting Started](https://sveltiacms.app/en/docs/start), [GitHub Backend](https://sveltiacms.app/en/docs/backends/github).
+
+---
 
 ## Collection `pages` (umgesetzt)
 
@@ -99,10 +202,12 @@ Shared Field-Partials (DRY): [CMS Fields](../cms-fields/README.md).
 
 ## Sicherheit
 
-CMS-Zugangsdaten und Backend-Tokens sind Secrets — nicht ins öffentliche Repo. Siehe [Sicherheit](../sicherheit/README.md).
+- **PAT** und spätere OAuth-Secrets: nie ins Repo, nie in die öffentliche `config.yml`
+- Token nur im Browser (Local Storage) bzw. später im Worker-Dashboard
+- Details: [Sicherheit](../sicherheit/README.md)
 
 ## Noch auszuarbeiten
 
-- PAT-Workflow Schritt für Schritt dokumentieren; später OAuth (GitHub App + Cloudflare Worker)
+- OAuth mit Sveltia CMS Authenticator (Cloudflare Worker) Schritt für Schritt
 - Collections #4–#6
 - Dev-Vorschau für Bilder unter `src/content/` (falls nötig)
