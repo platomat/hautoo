@@ -17,7 +17,7 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 <footer class="site-footer">
 	{/* Further rows (e.g. footer menu) can go above the copyright row. */}
 	<div
-		class="site-footer__bar flex-row flex-align-baseline flex-between gap-lg w-full stack-on-mobile center-on-mobile gap-sm"
+		class="site-footer__bar flex-row flex-align-baseline flex-between gap-lg w-full stack-on-mobile center-on-mobile"
 	>
 		<p class="site-footer__copy text-sm text-muted min-w-0">
 			<span>© {copyrightYears}</span>
@@ -60,5 +60,11 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 	.site-footer__copy {
 		margin: 0;
+	}
+
+	@media (max-width: 679px) {
+		.site-footer__bar {
+			gap: 0.75rem;
+		}
 	}
 </style>
