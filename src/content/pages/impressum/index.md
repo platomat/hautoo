@@ -1,10 +1,6 @@
 ---
 title: Impressum
 description: Rechtliche Angaben (Platzhalter).
-menuLabel: Impressum
-showInMenu: false
-showInFooterLegal: true
-footerLegalOrder: 1
 seo:
   index_visibility: noindex
   follow_visibility: follow

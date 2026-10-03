@@ -2,9 +2,6 @@
 title: Beispiel Unterseite
 description: Zeigt die Parent/Child-URL unter Über uns.
 parent: ueber-uns
-menuLabel: Beispiel Unterseite
-showInMenu: true
-showInFooterLegal: false
 seo:
   index_visibility: index
   follow_visibility: follow

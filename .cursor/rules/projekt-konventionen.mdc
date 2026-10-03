@@ -44,6 +44,7 @@ Secrets gehören in Umgebungsvariablen der jeweiligen Plattform (z. B. Cloudflar
 ## Collections (Sveltia)
 
 - `pages`
+- `menus` (Hauptmenü `main`, Footer `footer-legal`, …)
 - `articles`
 - `tags` (für Artikel)
 - `glossar`

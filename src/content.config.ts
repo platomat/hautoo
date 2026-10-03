@@ -1,5 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import { menuSchema } from "./cms/fields/menu";
 import { seoSchema } from "./cms/fields/seo";
 
 const pages = defineCollection({
@@ -7,11 +8,6 @@ const pages = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string().optional(),
-		menuLabel: z.string().optional(),
-		menuOrder: z.number().int().optional(),
-		showInMenu: z.boolean().default(true),
-		showInFooterLegal: z.boolean().default(false),
-		footerLegalOrder: z.number().int().optional(),
 		/** Parent page id (folder slug), builds nested URLs like `/parent/child/`. */
 		parent: z.string().optional(),
 		/** Shared SEO object (same shape as Sveltia `&field_seo`). */
@@ -19,4 +15,9 @@ const pages = defineCollection({
 	}),
 });
 
-export const collections = { pages };
+const menus = defineCollection({
+	loader: glob({ pattern: "*.md", base: "./src/content/menus" }),
+	schema: menuSchema,
+});
+
+export const collections = { pages, menus };

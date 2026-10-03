@@ -1,10 +1,6 @@
 ---
 title: Start
 description: hautuu — thematische Website mit Cursor, GitHub und Cloudflare.
-menuLabel: Start
-menuOrder: 1
-showInMenu: true
-showInFooterLegal: false
 seo:
   index_visibility: index
   follow_visibility: follow

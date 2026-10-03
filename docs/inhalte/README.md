@@ -7,18 +7,23 @@ Die Website publiziert thematische Inhalte. Technisch stecken sie in den Sveltia
 | Art | Collection | Typischer Inhalt |
 | --- | --- | --- |
 | Seiten | `pages` | Startseite, Über uns, rechtliche Seiten |
+| Menüs | `menus` | Hauptmenü, Footer-Rechtliches, später weitere |
 | Artikel | `articles` | Text, Bilder, eingebettetes How-to-Video |
 | Tags | `tags` | Themen-Labels für Artikel |
 | Glossar | `glossar` | Begriffserklärungen |
 
 ## Seiten (`pages`)
 
-Umgesetzt: Content unter `src/content/pages/<slug>/index.md`, CMS-Collection in Sveltia, Navigation über `showInMenu` / `menuOrder` / `menuLabel`.
+Umgesetzt: Content unter `src/content/pages/<slug>/index.md`, CMS-Collection in Sveltia. Navigation über Collection `menus` (nicht über Seiten-Flags).
 
 - Start → `/`
 - Weitere Seiten → `/<slug>/`
 - Mit `parent` → `/<eltern-slug>/<slug>/` (auch mehrstufig)
 - Details: [Sveltia — Collections](../sveltia/collections.md)
+
+## Menüs (`menus`)
+
+Umgesetzt (#13): eigene Collection statt Flags an Seiten. Slots `main` (Header) und `footer-legal` (Copyright-Zeile); Einträge mit Seite oder URL, optional eine Untermenü-Ebene. Details: [Collections — menus](../sveltia/collections.md#collection-menus-umgesetzt).
 
 ## Artikel
 

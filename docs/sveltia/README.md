@@ -19,7 +19,7 @@ Tracking: GitHub [#2](https://github.com/platomat/hautoo/issues/2) und Sub-Issue
 | [Zugang / Cloudflare (PAT)](./zugang-cloudflare.md) | Admin live schalten, Token, Speichern → Deploy |
 | [Zugang / Worker (OAuth)](./zugang-worker.md) | „Login with GitHub“ über `sveltia-cms-auth` |
 | [Medien — Variante B](./medien-variante-b.md) | Bilder neben dem Eintrag, CMS- + Astro-Schritte |
-| [Collections](./collections.md) | `pages` (umgesetzt), geplante `articles` / `tags` / `glossar` |
+| [Collections](./collections.md) | `pages`, `menus` (umgesetzt); geplant `articles` / `tags` / `glossar` |
 
 Verwandt: [CMS Fields (DRY)](../cms-fields/README.md), [Inhalte](../inhalte/README.md), [Cloudflare](../cloudflare/README.md).
 

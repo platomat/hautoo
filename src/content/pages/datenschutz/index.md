@@ -1,10 +1,6 @@
 ---
 title: Datenschutz
 description: Hinweise zum Datenschutz (Platzhalter).
-menuLabel: Datenschutz
-showInMenu: false
-showInFooterLegal: true
-footerLegalOrder: 2
 seo:
   index_visibility: noindex
   follow_visibility: follow

@@ -16,6 +16,7 @@ Entsprechen den Sveltia-Sammlungen:
 | Collection | Zweck |
 | --- | --- |
 | `pages` | Allgemeine Seiten |
+| `menus` | Hauptmenü, Footer-Links (Slots per Dateiname) |
 | `articles` | Artikel inkl. Medien und Video-Embed |
 | `tags` | Tags für Artikel |
 | `glossar` | Begriffserklärungen |

@@ -1,11 +1,15 @@
 ---
 import { getCollection } from "astro:content";
-import { getMenuLabel, getMenuPages, getPageHref, indexPagesById } from "../lib/pages";
+import { getResolvedMenu, MENU_MAIN } from "../lib/menus";
 
-const allPages = await getCollection("pages");
-const pagesById = indexPagesById(allPages);
-const menuPages = getMenuPages(allPages);
+const pages = await getCollection("pages");
+const menuItems = await getResolvedMenu(MENU_MAIN, pages);
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+function isCurrent(href: string): boolean {
+	const key = href.replace(/\/$/, "") || "/";
+	return pathname === key;
+}
 ---
 
 <header class="site-header" data-site-header>
@@ -28,15 +32,40 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 		<nav id="site-nav" class="site-nav" data-site-nav aria-label="Hauptnavigation">
 			<ul class="site-nav__list list-plain">
 				{
-					menuPages.map((page) => {
-						const href = getPageHref(page, pagesById);
-						const hrefKey = href.replace(/\/$/, "") || "/";
-						const current = pathname === hrefKey;
+					menuItems.map((item) => {
+						const current = !item.external && isCurrent(item.href);
 						return (
-							<li>
-								<a href={href} aria-current={current ? "page" : undefined}>
-									{getMenuLabel(page)}
+							<li class:list={{ "has-children": item.children.length > 0 }}>
+								<a
+									href={item.href}
+									aria-current={current ? "page" : undefined}
+									target={item.external ? "_blank" : undefined}
+									rel={item.external ? "noopener noreferrer" : undefined}
+								>
+									{item.label}
 								</a>
+								{item.children.length > 0 && (
+									<ul class="site-nav__sub list-plain">
+										{item.children.map((child) => {
+											const childCurrent =
+												!child.external && isCurrent(child.href);
+											return (
+												<li>
+													<a
+														href={child.href}
+														aria-current={childCurrent ? "page" : undefined}
+														target={child.external ? "_blank" : undefined}
+														rel={
+															child.external ? "noopener noreferrer" : undefined
+														}
+													>
+														{child.label}
+													</a>
+												</li>
+											);
+										})}
+									</ul>
+								)}
 							</li>
 						);
 					})
@@ -80,12 +109,12 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 		display: none;
 		align-items: center;
 		justify-content: center;
-		width: 2.5rem;
-		height: 2.5rem;
+		width: 2.75rem;
+		height: 2.75rem;
 		margin: 0;
 		padding: 0;
 		border: 0;
-		border-radius: 4px;
+		border-radius: 0;
 		background: transparent;
 		color: var(--color-text);
 		cursor: pointer;
@@ -93,13 +122,13 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 	.site-nav-toggle:focus-visible {
 		outline: 2px solid var(--color-action);
-		outline-offset: 3px;
+		outline-offset: 2px;
 	}
 
 	.site-nav-toggle__bars {
 		position: relative;
 		display: block;
-		width: 1.375rem;
+		width: 1.35rem;
 		height: 1rem;
 	}
 
@@ -109,9 +138,7 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 		display: block;
 		width: 100%;
 		height: 2px;
-		border-radius: 1px;
 		background: currentColor;
-		transform-origin: center;
 		transition:
 			transform 0.22s ease,
 			opacity 0.22s ease,
@@ -152,7 +179,16 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 	.site-nav__list {
 		display: flex;
 		flex-wrap: wrap;
+		align-items: flex-start;
 		gap: 0.75rem 1.25rem;
+	}
+
+	.site-nav__sub {
+		margin: 0.35rem 0 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
 	}
 
 	.site-nav a[aria-current="page"] {
@@ -212,15 +248,36 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 			border-top: 1px solid var(--color-border);
 		}
 
-		.site-nav a {
+		.site-nav__list > li > a {
 			display: block;
 			padding: 0.75rem 0;
+		}
+
+		.site-nav__sub {
+			margin: 0 0 0.5rem;
+			padding-inline-start: 0.75rem;
+			gap: 0;
+		}
+
+		.site-nav__sub a {
+			display: block;
+			padding: 0.5rem 0;
+			font-size: 0.95em;
+			color: var(--color-text-muted);
 		}
 	}
 
 	@media (min-width: 680px) {
 		.site-nav-toggle {
 			display: none;
+		}
+
+		.site-nav__sub {
+			font-size: 0.9em;
+		}
+
+		.site-nav__sub a {
+			color: var(--color-text-muted);
 		}
 	}
 

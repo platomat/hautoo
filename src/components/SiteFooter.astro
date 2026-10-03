@@ -1,11 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import {
-	getFooterLegalPages,
-	getMenuLabel,
-	getPageHref,
-	indexPagesById,
-} from "../lib/pages";
+import { getResolvedMenu, MENU_FOOTER_LEGAL } from "../lib/menus";
 
 /** First calendar year of the project (copyright range start). */
 const COPYRIGHT_START_YEAR = 2026;
@@ -15,14 +10,18 @@ const copyrightYears =
 		? `${COPYRIGHT_START_YEAR}-${currentYear}`
 		: String(COPYRIGHT_START_YEAR);
 
-const allPages = await getCollection("pages");
-const pagesById = indexPagesById(allPages);
-const legalPages = getFooterLegalPages(allPages);
+const pages = await getCollection("pages");
+const legalItems = await getResolvedMenu(MENU_FOOTER_LEGAL, pages);
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+function isCurrent(href: string): boolean {
+	const key = href.replace(/\/$/, "") || "/";
+	return pathname === key;
+}
 ---
 
 <footer class="site-footer">
-	{/* Further rows (e.g. footer menu) can go above the copyright row. */}
+	{/* Further footer menus can render above the copyright row. */}
 	<div
 		class="site-footer__bar flex-row flex-align-baseline flex-between gap-lg w-full stack-on-mobile center-on-mobile"
 	>
@@ -32,17 +31,20 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 			<span>hautoo ∙ One of <a href="https://platomat.com/">PlatoMat</a></span>
 		</p>
 		{
-			legalPages.length > 0 && (
+			legalItems.length > 0 && (
 				<nav class="site-footer__legal flex-shrink-0 ms-auto" aria-label="Rechtliches">
 					<ul class="flex-row flex-align-baseline gap-md list-plain text-sm">
-						{legalPages.map((page) => {
-							const href = getPageHref(page, pagesById);
-							const hrefKey = href.replace(/\/$/, "") || "/";
-							const current = pathname === hrefKey;
+						{legalItems.map((item) => {
+							const current = !item.external && isCurrent(item.href);
 							return (
 								<li>
-									<a href={href} aria-current={current ? "page" : undefined}>
-										{getMenuLabel(page)}
+									<a
+										href={item.href}
+										aria-current={current ? "page" : undefined}
+										target={item.external ? "_blank" : undefined}
+										rel={item.external ? "noopener noreferrer" : undefined}
+									>
+										{item.label}
 									</a>
 								</li>
 							);
