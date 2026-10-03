@@ -9,6 +9,8 @@ const pages = defineCollection({
 		menuLabel: z.string().optional(),
 		menuOrder: z.number().int().optional(),
 		showInMenu: z.boolean().default(true),
+		showInFooterLegal: z.boolean().default(false),
+		footerLegalOrder: z.number().int().optional(),
 	}),
 });
 

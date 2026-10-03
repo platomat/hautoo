@@ -1,0 +1,80 @@
+---
+import { getCollection } from "astro:content";
+import { getFooterLegalPages, getMenuLabel, getPageHref } from "../lib/pages";
+
+/** First calendar year of the project (copyright range start). */
+const COPYRIGHT_START_YEAR = 2026;
+const currentYear = new Date().getFullYear();
+const copyrightYears =
+	currentYear > COPYRIGHT_START_YEAR
+		? `${COPYRIGHT_START_YEAR}-${currentYear}`
+		: String(COPYRIGHT_START_YEAR);
+
+const legalPages = getFooterLegalPages(await getCollection("pages"));
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<footer class="site-footer">
+	{/* Further rows (e.g. footer menu) can go above the copyright row. */}
+	<div class="site-footer__bar shell-inner">
+		<p class="site-footer__copy">
+			<span>© {copyrightYears}</span>
+			{" "}
+			<span>hautoo ∙ One of <a href="https://platomat.com/">PlatoMat</a></span>
+		</p>
+		{
+			legalPages.length > 0 && (
+				<nav class="site-footer__legal" aria-label="Rechtliches">
+					<ul class="site-footer__legal-list">
+						{legalPages.map((page) => {
+							const href = getPageHref(page);
+							const hrefKey = href.replace(/\/$/, "") || "/";
+							const current = pathname === hrefKey;
+							return (
+								<li>
+									<a href={href} aria-current={current ? "page" : undefined}>
+										{getMenuLabel(page)}
+									</a>
+								</li>
+							);
+						})}
+					</ul>
+				</nav>
+			)
+		}
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		margin-top: auto;
+		background: var(--color-surface);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.site-footer__bar {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.75rem 1.5rem;
+		padding-block: 1rem;
+	}
+
+	.site-footer__copy {
+		margin: 0;
+		font-size: 0.875rem;
+		color: var(--color-text-muted);
+	}
+
+	.site-footer__legal-list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		gap: 0.75rem 1.25rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-size: 0.875rem;
+	}
+</style>

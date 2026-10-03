@@ -7,7 +7,7 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 
 <header class="site-header">
-	<div class="site-header__inner">
+	<div class="site-header__inner shell-inner">
 		<a class="site-header__brand" href="/">hautuu</a>
 		<nav class="site-nav" aria-label="Hauptnavigation">
 			<ul class="site-nav__list">
@@ -42,9 +42,7 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 		align-items: center;
 		justify-content: space-between;
 		gap: 1rem 1.5rem;
-		max-width: var(--content-max-width);
-		margin: 0 auto;
-		padding: 1rem 1.25rem;
+		padding-block: 1rem;
 	}
 
 	.site-header__brand {

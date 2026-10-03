@@ -44,6 +44,7 @@ src/content/articles/mein-artikel/
 | Sveltia | Collection `pages` in `public/admin/config.yml` |
 | Routen | `/` ← Eintrag `index`; weitere Seiten unter `/<slug>/` |
 | Menü | Felder `showInMenu`, `menuOrder`, `menuLabel` → `SiteHeader` |
+| Footer-Rechtliches | `showInFooterLegal`, `footerLegalOrder` → rechts neben Copyright |
 
 ### Felder
 
@@ -51,12 +52,14 @@ src/content/articles/mein-artikel/
 | --- | --- | --- |
 | `title` | ja | Seitentitel |
 | `description` | nein | Meta-Beschreibung |
-| `menuLabel` | nein | Text im Menü (sonst `title`) |
-| `menuOrder` | nein | Sortierung (klein = vorne) |
+| `menuLabel` | nein | Text im Menü/Footer-Link (sonst `title`) |
+| `menuOrder` | nein | Sortierung Hauptmenü (klein = vorne) |
 | `showInMenu` | nein | Standard `true` |
+| `showInFooterLegal` | nein | Standard `false` — Impressum/Datenschutz o. ä. |
+| `footerLegalOrder` | nein | Sortierung in der Footer-Rechtszeile |
 | Body | ja | Markdown-Inhalt |
 
-Beispiel-Einträge: Start, Über uns, Impressum.
+Beispiel-Einträge: Start, Über uns (Hauptmenü); Impressum, Datenschutz (Footer rechts).
 
 ## Collections (Sammlungen)
 

@@ -32,5 +32,7 @@ collections:
       - { name: description, label: Beschreibung, widget: string, required: false }
       - { name: menuLabel, label: Menü-Label, widget: string, required: false, hint: "Falls leer, wird der Titel verwendet." }
       - { name: menuOrder, label: Menü-Reihenfolge, widget: number, required: false, value_type: int, hint: "Kleinere Zahl = weiter vorne." }
-      - { name: showInMenu, label: Im Menü anzeigen, widget: boolean, default: true }
+      - { name: showInMenu, label: Im Hauptmenü anzeigen, widget: boolean, default: true }
+      - { name: showInFooterLegal, label: In Footer-Rechtstexten, widget: boolean, default: false, hint: "Rechts neben dem Copyright (z. B. Impressum, Datenschutz)." }
+      - { name: footerLegalOrder, label: Footer-Rechts-Reihenfolge, widget: number, required: false, value_type: int }
       - { name: body, label: Inhalt, widget: markdown }

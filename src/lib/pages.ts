@@ -30,3 +30,17 @@ export function getMenuPages(pages: PageEntry[]): PageEntry[] {
 			return getMenuLabel(a).localeCompare(getMenuLabel(b), "de");
 		});
 }
+
+/** Legal links in the footer copyright row (right side), sorted by footerLegalOrder. */
+export function getFooterLegalPages(pages: PageEntry[]): PageEntry[] {
+	return pages
+		.filter((page) => page.data.showInFooterLegal)
+		.sort((a, b) => {
+			const orderA = a.data.footerLegalOrder ?? Number.POSITIVE_INFINITY;
+			const orderB = b.data.footerLegalOrder ?? Number.POSITIVE_INFINITY;
+			if (orderA !== orderB) {
+				return orderA - orderB;
+			}
+			return getMenuLabel(a).localeCompare(getMenuLabel(b), "de");
+		});
+}

@@ -34,6 +34,7 @@
 	--font-weight-body: 300;
 	--font-weight-heading: 500;
 	--content-max-width: 42rem;
+	--shell-padding-inline: 1.25rem;
 }
 
 *,
@@ -49,11 +50,34 @@ html {
 body {
 	margin: 0;
 	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 	background: var(--color-bg);
 	color: var(--color-text);
 	font-family: var(--font-sans);
 	font-weight: var(--font-weight-body);
 	line-height: 1.6;
+}
+
+.shell-inner {
+	max-width: var(--content-max-width);
+	margin-inline: auto;
+	padding-inline: var(--shell-padding-inline);
+}
+
+.site-main {
+	flex: 1 0 auto;
+}
+
+.page {
+	max-width: var(--content-max-width);
+	margin: 0 auto;
+	padding: 2.5rem var(--shell-padding-inline) 4rem;
+}
+
+.page h1 {
+	margin-top: 0;
+	margin-bottom: 1.25rem;
 }
 
 h1,
