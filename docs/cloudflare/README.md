@@ -1,46 +1,186 @@
-# Cloudflare
+# Cloudflare — Website online bringen
 
-Cloudflare hostet die gebaute statische Website und liefert sie über die Domain aus.
+Cloudflare hostet die gebaute **statische** Website (Astro → Ordner `dist/`) und liefert sie unter der Produktions-Domain aus.
 
-## Domain
+## Ziel
 
-- **Produktions-Domain:** `hautoo.storyofai.net`
-- Die Domain ist öffentlich und kein Secret.
-
-## Typische Rolle im Stack
-
-1. GitHub enthält den Stand des Projekts
-2. Bei Push (z. B. auf `main`) startet Cloudflare einen Build
-3. Astro erzeugt statische Dateien
-4. Cloudflare Pages liefert die Site unter der Domain aus
+| Was | Wert |
+| --- | --- |
+| Produktions-Domain | `https://hautoo.storyofai.net` |
+| Hauptdomain (Zone) | `storyofai.net` — bereits bei Cloudflare |
+| Hosting | Cloudflare Pages |
+| Quelle | GitHub-Repo [`platomat/hautoo`](https://github.com/platomat/hautoo/) |
+| Produktions-Branch | `main` |
 
 ```text
-Cursor → Git Commit (lokal) → erst nach Anweisung: Push → GitHub → Cloudflare Build (Astro) → hautoo.storyofai.net
+Cursor → Commit (lokal) → Push (bewusst) → GitHub → Cloudflare Pages Build → hautoo.storyofai.net
 ```
 
-## Push = Deploy
+## Voraussetzungen
 
-Ein **Push** auf den verbundenen Branch (typisch `main`) startet bei Cloudflare einen Build der Website.
+Bevor du startest:
 
-- **Lokal committen** ist ok und ändert die Live-Site nicht.
-- **Pushen nur bewusst** — Agenten dürfen **niemals von allein** pushen, nur auf ausdrückliche Anweisung.
-- Details: [Sprachen und Konventionen](../sprachen-und-konventionen.md), Regel `.cursor/rules/projekt-konventionen.mdc`.
+1. Zugang zum **Cloudflare-Account**, in dem die Zone `storyofai.net` liegt (gleiche Account-Umgebung nutzen, in der die Hauptdomain verwaltet wird).
+2. Zugang zum **GitHub-Repo** `platomat/hautoo` (mindestens Lesen; für die GitHub-Anbindung oft Admin/Owner-Rechte am Repo oder an der Org).
+3. Lokal prüfen, dass der Build klappt:
 
-## Was hier dokumentiert werden soll
+```bash
+npm install
+npm run build
+```
 
-- Cloudflare-Account und Projekt anlegen
-- Verbindung zum GitHub-Repo
-- Build-Einstellungen (Framework Astro, Build-Befehl, Ausgabeordner)
-- Custom Domain `hautoo.storyofai.net` anbinden (DNS)
-- Umgebungsvariablen / Secrets **nur** im Cloudflare-Dashboard — nie im Repo
-- Preview-Deployments für Branches (optional)
+Erwartet: Ordner `dist/` mit fertigen HTML/CSS/Assets. Scheitert der Build lokal, scheitert er auch bei Cloudflare.
 
-## Secrets
+> **Wichtig:** Diese Site ist **statisch**. Es wird **kein** `@astrojs/cloudflare`-Adapter benötigt. Der Adapter ist für SSR/Workers gedacht und würde das Projekt unnötig komplizieren.
 
-API-Tokens und sensible Build-Variablen gehören ausschließlich in die Cloudflare-Projekt-Einstellungen bzw. lokale, gitignorierte Dateien. Siehe [Sicherheit](../sicherheit/README.md).
+---
 
-## Noch auszuarbeiten
+## Schritt 1 — Cloudflare Pages mit GitHub verbinden
 
-- DNS-Details zur Subdomain unter `storyofai.net`
-- Ob Workers, Redirects oder Headers benötigt werden
-- Critical/non-critical CSS und Caching-Header feinjustieren
+1. Im [Cloudflare Dashboard](https://dash.cloudflare.com/) einloggen (Account mit Zone `storyofai.net`).
+2. Links: **Workers & Pages** (manchmal unter „Compute“).
+3. **Create** / **Create application** → Tab **Pages**.
+4. **Import an existing Git repository** (bzw. „Connect to Git“).
+5. GitHub autorisieren, falls noch nicht geschehen:
+   - Cloudflare die Installation der GitHub-App erlauben
+   - Zugriff auf das Repo `platomat/hautoo` freigeben (nur dieses Repo oder die ganze Org — je nach Wunsch)
+6. Repository **`platomat/hautoo`** auswählen → **Begin setup** / Weiter.
+
+---
+
+## Schritt 2 — Build-Einstellungen
+
+Im Setup-Formular genau diese Werte setzen:
+
+| Einstellung | Wert | Hinweis |
+| --- | --- | --- |
+| **Project name** | z. B. `hautoo` | Wird zur URL `hautoo.pages.dev` (oder ähnlich). Muss nicht dem Repo-Namen entsprechen, aber „hautoo“ ist klar. |
+| **Production branch** | `main` | Jeder Push auf `main` = Produktions-Deploy. |
+| **Framework preset** | Astro (falls angeboten) | Füllt Build-Befehl und Ausgabeordner vor; Werte unten trotzdem prüfen. |
+| **Build command** | `npm run build` | Entspricht `package.json`. |
+| **Build output directory** | `dist` | Astro-Standardausgabe. |
+| **Root directory** | `/` (leer / Projektwurzel) | Kein Monorepo-Unterordner. |
+
+### Node-Version (Pflicht für dieses Repo)
+
+`package.json` verlangt **Node.js ≥ 22.12**. In den Projekt-Einstellungen unter **Settings → Environment variables** (für Production und idealerweise auch Preview) setzen:
+
+| Variable | Wert |
+| --- | --- |
+| `NODE_VERSION` | `22` |
+
+Ohne passende Node-Version kann der Cloudflare-Build fehlschlagen, obwohl lokal alles funktioniert.
+
+### Secrets / weitere Variablen
+
+Aktuell braucht der reine Astro-Static-Build **keine** geheimen Umgebungsvariablen. Kommen später welche dazu:
+
+- nur im Cloudflare-Dashboard setzen
+- **niemals** ins öffentliche Repo committen  
+  Siehe [Sicherheit](../sicherheit/README.md).
+
+Danach: **Save and Deploy**.
+
+---
+
+## Schritt 3 — Ersten Build prüfen
+
+1. Im Pages-Projekt unter **Deployments** den laufenden Build öffnen.
+2. Build-Log prüfen: `npm install` → `npm run build` → Upload von `dist/`.
+3. Bei Erfolg erscheint eine URL der Form:
+
+   `https://<project-name>.pages.dev`
+
+4. Diese URL im Browser öffnen und kurz prüfen (Startseite, Navigation, `/admin/` erreichbar).
+
+Erst wenn `*.pages.dev` funktioniert, die Custom Domain anbinden — so trennst du Build-Probleme von DNS-Problemen.
+
+**Bei Build-Fehler:** Log lesen (oft Node-Version, fehlende Dependency, Astro-Fehler). Lokal denselben Befehl `npm run build` nachstellen.
+
+---
+
+## Schritt 4 — Custom Domain `hautoo.storyofai.net`
+
+Die Zone `storyofai.net` liegt bereits bei Cloudflare. Die Subdomain `hautoo` wird an das Pages-Projekt gehängt.
+
+### 4a — Domain im Pages-Projekt eintragen
+
+1. Pages-Projekt öffnen → **Custom domains**.
+2. **Set up a domain** / **Add domain**.
+3. Eintragen: `hautoo.storyofai.net`
+4. Bestätigen / Continue.
+
+### 4b — DNS (CNAME)
+
+Weil `storyofai.net` **dieselbe Cloudflare-Zone** ist, legt Cloudflare den DNS-Eintrag in der Regel **automatisch** an, sobald du die Domain im Pages-Projekt bestätigst.
+
+Erwarteter Eintrag in **DNS** der Zone `storyofai.net`:
+
+| Typ | Name | Ziel | Proxy |
+| --- | --- | --- | --- |
+| `CNAME` | `hautoo` | `<project-name>.pages.dev` | Proxied (orange Wolke) |
+
+Beispiel: Projekt heißt `hautoo` → Ziel `hautoo.pages.dev`.
+
+**Manuell nur nötig**, wenn der Eintrag nicht automatisch erscheint:
+
+1. Zone `storyofai.net` → **DNS** → **Records**.
+2. CNAME wie in der Tabelle anlegen (Proxy an).
+3. Wichtig: Die Domain muss **zuerst** im Pages-Projekt unter Custom domains verknüpft sein. Ein reiner manueller CNAME ohne diese Verknüpfung führt oft zu Fehlern (z. B. HTTP 522).
+
+### 4c — TLS / HTTPS
+
+Cloudflare stellt das Zertifikat für `hautoo.storyofai.net` automatisch aus. Warte, bis der Status der Custom Domain im Pages-Projekt auf **Active** steht (oft wenige Minuten, manchmal länger).
+
+SSL/TLS-Modus der Zone: üblicherweise **Full** (oder **Full (strict)**), konsistent mit dem Rest von `storyofai.net`.
+
+### 4d — Fertig prüfen
+
+1. `https://hautoo.storyofai.net` öffnen — Inhalt wie auf `*.pages.dev`.
+2. In `astro.config.mjs` ist `site: 'https://hautoo.storyofai.net'` gesetzt (Sitemap, absolute URLs).
+3. Optional: `https://hautoo.pages.dev` später per Redirect auf die Custom Domain umleiten (Account-/Pages-Einstellung oder Redirect Rule) — nicht zwingend für den ersten Go-Live.
+
+---
+
+## Schritt 5 — Alltagsbetrieb (Deploy)
+
+| Aktion | Wirkung auf die Live-Site |
+| --- | --- |
+| Lokal committen | keine |
+| Push auf `main` | neuer Produktions-Build und Deploy |
+| Push auf anderen Branch / PR | Preview-Deployment (eigene URL), nicht die Produktions-Domain |
+
+- **Push nur bewusst** — Agenten pushen nie von allein. Siehe [Sprachen und Konventionen](../sprachen-und-konventionen.md).
+- Vor dem Push: [Sicherheits-Checkliste](../sicherheit/README.md).
+
+---
+
+## Kurz-Checkliste Go-Live
+
+- [ ] `npm run build` lokal erfolgreich
+- [ ] Cloudflare Pages-Projekt angelegt, Repo `platomat/hautoo` verbunden
+- [ ] Build: `npm run build`, Output: `dist`, Branch: `main`
+- [ ] Umgebungsvariable `NODE_VERSION=22` gesetzt
+- [ ] Erster Deploy unter `*.pages.dev` ok
+- [ ] Custom Domain `hautoo.storyofai.net` im Pages-Projekt aktiv
+- [ ] DNS: CNAME `hautoo` → `<project>.pages.dev` (proxied), Zone `storyofai.net`
+- [ ] `https://hautoo.storyofai.net` lädt mit HTTPS
+
+---
+
+## Was wir bewusst nicht brauchen (Stand jetzt)
+
+| Thema | Status |
+| --- | --- |
+| `@astrojs/cloudflare` / Workers SSR | Nein — rein statisch |
+| Wrangler / `wrangler.toml` | Nein für den ersten Go-Live |
+| Eigene Cloudflare-API-Tokens im Repo | Niemals |
+| Apex-Domain (`storyofai.net` selbst) | Bleibt bei der Hauptdomain; hier nur Subdomain `hautoo` |
+
+Später optional: Caching-Header, Redirects, Security Headers, Preview-Branch-Regeln — wenn der Bedarf klar ist.
+
+## Offizielle Referenzen
+
+- [Astro auf Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)
+- [Custom domains](https://developers.cloudflare.com/pages/configuration/custom-domains/)
+- [Build configuration](https://developers.cloudflare.com/pages/configuration/build-configuration/)

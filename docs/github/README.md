@@ -31,9 +31,12 @@ GitHub speichert Quellcode, Inhalte und die Geschichte aller Änderungen. Issues
 - README und `docs/` sollen Einsteigern den Einstieg erklären
 - Lizenz und Beitragsregeln noch festlegen (siehe offene Fragen)
 
+## Verknüpfung mit Cloudflare
+
+Go-Live und Anbindung GitHub → Cloudflare Pages: [Cloudflare](../cloudflare/README.md).
+
 ## Noch auszuarbeiten
 
 - Branch-Strategie (`main` only vs. Feature-Branches)
 - Issue-Vorlagen (Bug, Inhalt, Doku)
 - Rechte: wer darf direkt auf `main` pushen?
-- Verknüpfung GitHub ↔ Cloudflare Pages
