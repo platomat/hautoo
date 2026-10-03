@@ -10,10 +10,10 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 
 ## Typografie
 
-| Rolle | Schrift | Stärke (`font-weight`) |
-| --- | --- | --- |
-| Fließtext | **Ubuntu** | **300** (Light) |
-| Überschriften (`h1`–`h6`) | **Ubuntu** | **600** (Semi Bold) |
+| Rolle | Schrift | Schnitt | Stärke (`font-weight`) |
+| --- | --- | --- | --- |
+| Fließtext | **Ubuntu** | Light | **300** |
+| Überschriften (`h1`–`h6`) | **Ubuntu** | Medium | **500** |
 
 - `font-family`: `'Ubuntu', system-ui, sans-serif`
 - Keine zweite Display-Schrift — eine Familie für alles
@@ -21,9 +21,14 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 
 ### Bereitstellung
 
-Schriften werden **lokal im Repo** gehostet (kein Google-Fonts-CDN). Dateien und `@font-face` liefert das Projekt bzw. die Maintainer; Einbindung z. B. unter `public/fonts/` oder `src/assets/fonts/`.
+Schriften werden **lokal** unter `public/fonts/ubuntu/` gehostet (kein CDN):
 
-Benötigte Schnitte: **300** und **600** (falls 600 als Datei fehlt: nächstgelegenen Schnitt dokumentieren und mapping in CSS festhalten).
+| Datei | Schnitt |
+| --- | --- |
+| `Ubuntu-Light.woff2` / `.woff` | Light (300) |
+| `Ubuntu-Medium.woff2` / `.woff` | Medium (500) |
+
+`@font-face` und Design-Tokens liegen in `src/styles/global.css`, eingebunden über `src/layouts/BaseLayout.astro`.
 
 ## Links
 
@@ -83,7 +88,7 @@ Gefahr          #E57373  ████
 
   --font-sans: "Ubuntu", system-ui, sans-serif;
   --font-weight-body: 300;
-  --font-weight-heading: 600;
+  --font-weight-heading: 500;
 }
 ```
 
