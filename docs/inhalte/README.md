@@ -16,10 +16,18 @@ Die Website publiziert thematische Inhalte. Technisch stecken sie in den Sveltia
 Ein Artikel soll typischerweise enthalten:
 
 1. **Text** — verständlich, auf Deutsch
-2. **Bilder** — zur Veranschaulichung
+2. **Bilder** — zur Veranschaulichung; Ablage **neben dem Content-Eintrag** (siehe unten)
 3. **How-to-Video** — Einbettung von **Vimeo** oder **YouTube** (nicht als Datei im Repo)
 
 Videos werden eingebettet (Embed), nicht als große Videodateien versioniert.
+
+## Bilder (Medienablage)
+
+Entscheidung: **Variante B — neben dem Content** (nicht `public/media`).
+
+- Pro Eintrag ein Ordner unter `src/content/...`; Bilder liegen dort neben `index.md`
+- Astro kann die Dateien beim Build optimieren (`image()` im Schema)
+- Details und Auth/Branch: [Sveltia](../sveltia/README.md)
 
 ## Glossar
 

@@ -37,10 +37,11 @@ Komponenten, Props und Kommentare im Code: **Englisch**. Sichtbare Texte und Dok
 - Astro 7 (statisch), Site-URL: `https://hautoo.storyofai.net`
 - Integrationen: `@astrojs/mdx`, `@astrojs/sitemap`
 - Installation und Scripts: [Lokale Entwicklung](../entwicklung/README.md)
+- **Medien:** Bilder neben Content-Einträgen (`src/content/...`), damit Astro sie optimieren kann — siehe [Sveltia](../sveltia/README.md) und [Inhalte](../inhalte/README.md)
 
 ## Noch auszuarbeiten
 
 - Design-/Layout-Grundlagen
 - Content Collections Schema (`pages`, `articles`, `tags`, `glossar`)
-- Bildpipeline (lokale Bilder vs. externe URLs)
+- Layouts und `image()`-Pipeline für Eintrags-Medien
 
