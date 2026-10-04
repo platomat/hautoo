@@ -4,6 +4,7 @@ import "../styles/global.css";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import PageBackground from "../components/PageBackground.astro";
+import { formatModifiedDateMeta } from "../cms/fields/dates";
 import {
 	buildRobotsContent,
 	resolveSeo,
@@ -15,6 +16,8 @@ interface Props {
 	title?: string;
 	description?: string;
 	seo?: Seo;
+	/** Last editorial change — emitted as SEO meta only. */
+	modifiedDate?: Date;
 	backgroundImage?: ImageMetadata;
 	backgroundOverlay?: number;
 }
@@ -23,6 +26,7 @@ const {
 	title = "hautuu",
 	description,
 	seo: seoProp,
+	modifiedDate,
 	backgroundImage,
 	backgroundOverlay,
 } = Astro.props;
@@ -36,6 +40,9 @@ const metaDescription =
 const robots = buildRobotsContent(seo);
 const buildId = getBuildId();
 const hasPageBackground = Boolean(backgroundImage);
+const modifiedMeta = modifiedDate
+	? formatModifiedDateMeta(modifiedDate)
+	: undefined;
 ---
 
 <!doctype html>
@@ -49,6 +56,14 @@ const hasPageBackground = Boolean(backgroundImage);
 		<meta name="build-id" content={buildId} />
 		<meta name="robots" content={robots} />
 		{metaDescription && <meta name="description" content={metaDescription} />}
+		{
+			modifiedMeta && (
+				<>
+					<meta property="article:modified_time" content={modifiedMeta} />
+					<meta property="og:updated_time" content={modifiedMeta} />
+				</>
+			)
+		}
 		<title>{pageTitle}</title>
 	</head>
 	<body class:list={{ "has-page-bg": hasPageBackground }}>

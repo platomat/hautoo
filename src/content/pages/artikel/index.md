@@ -1,6 +1,7 @@
 ---
 title: Artikel
 status: published
+modifiedDate: 2026-10-04
 description: Beiträge und How-tos von hautuu.
 backgroundImage: /assets/alex-gruber-ATMEDyTPQG4-unsplash.webp
 backgroundOverlay: 40

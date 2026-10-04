@@ -1,6 +1,7 @@
 ---
 title: Über uns
 status: published
+modifiedDate: 2026-10-04
 description: Kurzvorstellung des Projekts hautuu.
 backgroundImage: /assets/599-1920x1280.webp
 backgroundOverlay: 84

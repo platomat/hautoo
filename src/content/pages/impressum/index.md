@@ -1,6 +1,7 @@
 ---
 title: Impressum
 status: published
+modifiedDate: 2026-10-04
 description: Rechtliche Angaben (Platzhalter).
 seo:
   index_visibility: noindex

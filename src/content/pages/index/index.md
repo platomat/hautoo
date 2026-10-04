@@ -1,6 +1,7 @@
 ---
 title: Start
 status: published
+modifiedDate: 2026-10-04
 description: hautuu — thematische Website mit Cursor, GitHub und Cloudflare.
 backgroundImage: /assets/filip-kvasnak-NwmR1EDtiFg-unsplash.webp
 backgroundOverlay: 77

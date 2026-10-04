@@ -1,5 +1,6 @@
 ---
 title: Hauptmenü
+modifiedDate: 2026-10-04
 items:
   - label: Start
     linkType: page

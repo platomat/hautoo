@@ -21,7 +21,8 @@ output:
 # -----------------------------------------------------------------------------
 # Shared field partials (YAML anchors) — DRY across collections.
 # Aliases only work inside THIS file. Inject with: - *field_seo
-# Astro Zod mirrors: src/cms/fields/seo.ts, src/cms/fields/page-background.ts, src/cms/fields/status.ts
+# Astro Zod mirrors: src/cms/fields/seo.ts, src/cms/fields/page-background.ts,
+# src/cms/fields/status.ts, src/cms/fields/dates.ts
 # -----------------------------------------------------------------------------
 
 # Page / article full-viewport background (inject as three list items).
@@ -32,6 +33,9 @@ output:
 # Editorial status (pages, articles, glossar — not tags/menus)
 # - *field_status
 # - *field_publish_date  (pages/glossar; articles use pubDate)
+
+# Last change (all collections; SEO meta only for now)
+# - *field_modified_date
 
 collections:
   - name: pages
@@ -68,6 +72,14 @@ collections:
         time_format: false
         required: false
         hint: "Für Status „Geplant“: ab diesem Datum öffentlich (nach dem nächsten Build)."
+      - &field_modified_date
+        name: modifiedDate
+        label: Zuletzt geändert
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        required: false
+        hint: "Letzte inhaltliche Änderung. Wird im Seitenkopf als SEO-Meta ausgegeben (noch nicht sichtbar auf der Seite)."
       - name: parent
         label: Übergeordnete Seite
         widget: relation
@@ -230,6 +242,7 @@ collections:
           widget: string,
           hint: "Anzeige im CMS (z. B. Hauptmenü). Der Dateiname/Slug steuert, wo das Menü erscheint.",
         }
+      - *field_modified_date
       - name: items
         label: Einträge
         widget: list
@@ -323,6 +336,7 @@ collections:
           widget: text,
           required: false,
         }
+      - *field_modified_date
 
   - name: articles
     label: Artikel
@@ -355,6 +369,7 @@ collections:
           hint: "Auch Termin für Status „Geplant“.",
         }
       - *field_status
+      - *field_modified_date
       - {
           name: heroImage,
           label: Titelbild,
@@ -415,6 +430,7 @@ collections:
       - { name: title, label: Begriff, widget: string }
       - *field_status
       - *field_publish_date
+      - *field_modified_date
       - {
           name: definition,
           label: Kurzdefinition,

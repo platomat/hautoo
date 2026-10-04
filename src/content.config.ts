@@ -1,5 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import { modifiedDateSchema } from "./cms/fields/dates";
 import { menuSchema } from "./cms/fields/menu";
 import {
 	backgroundAttributionSchema,
@@ -20,6 +21,8 @@ const pages = defineCollection({
 		status: entryStatusSchema,
 		/** Schedule date when status is `future`. */
 		publishDate: publishDateSchema,
+		/** Last editorial change (SEO meta; not shown in page UI yet). */
+		modifiedDate: modifiedDateSchema,
 		/** Parent page id (folder slug), builds nested URLs like `/parent/child/`. */
 		parent: z.string().optional(),
 		/**
@@ -46,6 +49,7 @@ const tags = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string().optional(),
+		modifiedDate: modifiedDateSchema,
 	}),
 });
 
@@ -58,6 +62,8 @@ const articles = defineCollection({
 			pubDate: z.coerce.date(),
 			/** draft | published | future | trash (`pubDate` gates `future`) */
 			status: entryStatusSchema,
+			/** Last editorial change (SEO meta; not shown in article UI yet). */
+			modifiedDate: modifiedDateSchema,
 			/** Entry-relative only (Variante B) — use `image()` for optimization. */
 			heroImage: image().optional(),
 			backgroundImage: backgroundImageSchema,
@@ -77,6 +83,7 @@ const glossar = defineCollection({
 		definition: z.string(),
 		status: entryStatusSchema,
 		publishDate: publishDateSchema,
+		modifiedDate: modifiedDateSchema,
 		relatedArticles: z.array(z.string()).default([]),
 	}),
 });

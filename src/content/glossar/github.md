@@ -1,6 +1,7 @@
 ---
 title: GitHub
 status: published
+modifiedDate: 2026-10-04
 definition: Plattform für Git-Repositories, Issues und Zusammenarbeit am Quellcode.
 ---
 

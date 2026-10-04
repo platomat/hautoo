@@ -37,6 +37,7 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | Feld | Bedeutung |
 | --- | --- |
 | `title` | Name im CMS |
+| `modifiedDate` | Letzte Änderung (gespeichert; Menüs haben keine eigene SEO-Seite) |
 | `items[]` | Einträge (Reihenfolge = Anzeige) |
 | `items[].label` | Linktext |
 | `items[].linkType` | `page` oder `url` |
@@ -69,6 +70,7 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | `backgroundOverlay` | nein | Abdunkelung 0–100 % (schwarzes Overlay) |
 | `status` | ja | `draft` / `published` / `future` / `trash` |
 | `publishDate` | nein | Termin für Status `future` |
+| `modifiedDate` | nein | Letzte Änderung → SEO-Meta im `<head>` |
 | `backgroundAttribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |
 | `seo` | ja (CMS) | SEO-Objekt (Titel, Description, Robots) — Partial `&field_seo` |
 | Body | ja | Markdown-Inhalt |
@@ -90,6 +92,7 @@ Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarch
 | --- | --- | --- |
 | `title` | ja | Anzeigename |
 | `description` | nein | Kurze Erklärung |
+| `modifiedDate` | nein | Letzte Änderung → SEO-Meta im `<head>` |
 | Dateiname | — | Slug (z. B. `astro.md` → `astro`) |
 
 ## Collection `articles` (umgesetzt)
@@ -110,6 +113,7 @@ Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarch
 | `summary` | nein | Kurztext / Meta |
 | `pubDate` | ja | Publikationsdatum |
 | `status` | ja | `draft` / `published` / `future` / `trash` |
+| `modifiedDate` | nein | Letzte Änderung → SEO-Meta im `<head>` |
 | `heroImage` | nein | Titelbild neben dem Eintrag |
 | `backgroundImage` | nein | Vollflächiger Viewport-Hintergrund |
 | `backgroundOverlay` | nein | Abdunkelung 0–100 % |
@@ -136,6 +140,7 @@ Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarch
 | `title` | ja | Begriff |
 | `status` | ja | `draft` / `published` / `future` / `trash` |
 | `publishDate` | nein | Termin für Status `future` |
+| `modifiedDate` | nein | Letzte Änderung → SEO-Meta im `<head>` |
 | `definition` | ja | Kurzdefinition |
 | `relatedArticles` | nein | Relation zu `articles` |
 | Body | nein | Längere Erklärung (Markdown) |

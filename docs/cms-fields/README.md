@@ -15,6 +15,17 @@ Werte: `draft` · `published` · `future` · `trash`.
 - Öffentlich: `published`, sowie `future` sobald das Datum erreicht ist (`pubDate` bei Artikeln, `publishDate` bei Seiten/Glossar).
 - CMS-Default für neue Einträge: `draft`. Fehlendes Feld im Repo → beim Build wie `published` (Migration).
 
+## Änderungsdatum (`modifiedDate`)
+
+| Seite | Ort |
+| --- | --- |
+| Sveltia | Anchor `&field_modified_date` / Alias `*field_modified_date` |
+| Astro (Zod) | `src/cms/fields/dates.ts` → in allen Collections |
+| Collections | `pages`, `menus`, `tags`, `articles`, `glossar` |
+| Ausgabe | SEO-Meta im `<head>`: `article:modified_time`, `og:updated_time` (noch keine sichtbare Anzeige) |
+
+Optional. Bei inhaltlichen Änderungen im CMS setzen.
+
 ## SEO (`seo`)
 
 | Seite | Ort |

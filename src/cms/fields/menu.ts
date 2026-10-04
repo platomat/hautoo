@@ -1,4 +1,5 @@
 import { z } from "astro/zod";
+import { modifiedDateSchema } from "./dates";
 
 /** One link in a menu (page relation or external URL). */
 export const menuLeafSchema = z.object({
@@ -19,6 +20,8 @@ export const menuItemSchema = menuLeafSchema.extend({
 
 export const menuSchema = z.object({
 	title: z.string(),
+	/** Last editorial change (stored; SEO meta if a page ever surfaces the menu). */
+	modifiedDate: modifiedDateSchema,
 	items: z.array(menuItemSchema).default([]),
 });
 

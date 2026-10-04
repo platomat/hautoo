@@ -1,6 +1,7 @@
 ---
 title: Datenschutz
 status: published
+modifiedDate: 2026-10-04
 description: Hinweise zum Datenschutz (Platzhalter).
 seo:
   index_visibility: noindex
