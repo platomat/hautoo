@@ -1,0 +1,74 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getArticleHref } from "../../lib/articles";
+import { getGlossarHref } from "../../lib/glossar";
+
+export async function getStaticPaths() {
+	const entries = await getCollection("glossar");
+	return entries.map((entry) => ({
+		params: { slug: entry.id },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const articles = await getCollection("articles");
+const articleMap = new Map(articles.map((article) => [article.id, article]));
+const related = (entry.data.relatedArticles ?? [])
+	.map((id) => articleMap.get(id))
+	.filter((article): article is (typeof articles)[number] => Boolean(article))
+	.filter((article) => !article.data.draft);
+---
+
+<BaseLayout
+	title={entry.data.title}
+	description={entry.data.definition}
+>
+	<main class="page">
+		<p class="text-sm text-muted"><a href="/glossar/">Glossar</a></p>
+		<article>
+			<h1>{entry.data.title}</h1>
+			<p class="glossar-definition">{entry.data.definition}</p>
+			<Content />
+			{
+				related.length > 0 && (
+					<section class="glossar-related">
+						<h2>Verwandte Artikel</h2>
+						<ul class="list-plain">
+							{related.map((article) => (
+								<li>
+									<a href={getArticleHref(article)}>{article.data.title}</a>
+								</li>
+							))}
+						</ul>
+					</section>
+				)
+			}
+		</article>
+		<p class="text-sm">
+			<a href="/glossar/">← Alle Begriffe</a>
+			{" · "}
+			<a href={getGlossarHref(entry)} aria-current="page">Permalink</a>
+		</p>
+	</main>
+</BaseLayout>
+
+<style>
+	.glossar-definition {
+		font-size: 1.05rem;
+		color: var(--color-text-muted);
+	}
+
+	.glossar-related {
+		margin-top: 2rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.glossar-related h2 {
+		font-size: 1.125rem;
+		margin-top: 0;
+	}
+</style>

@@ -334,4 +334,36 @@ collections:
       - *field_seo
       - { name: body, label: Inhalt, widget: markdown }
 
-  # Later: glossar
+  - name: glossar
+    label: Glossar
+    label_singular: Begriff
+    folder: src/content/glossar
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{title}}"
+    hint: "Fachbegriffe. URL: /glossar/<slug>/."
+    fields:
+      - { name: title, label: Begriff, widget: string }
+      - {
+          name: definition,
+          label: Kurzdefinition,
+          widget: text,
+          hint: "Ein bis drei Sätze — erscheint in der Glossar-Liste.",
+        }
+      - name: relatedArticles
+        label: Verwandte Artikel
+        widget: relation
+        collection: articles
+        value_field: "{{slug}}"
+        search_fields: [title]
+        display_fields: [title]
+        multiple: true
+        required: false
+      - {
+          name: body,
+          label: Längere Erklärung,
+          widget: markdown,
+          required: false,
+        }

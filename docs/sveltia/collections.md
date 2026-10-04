@@ -10,7 +10,7 @@ Zurück zur [Sveltia-Übersicht](./README.md). Shared Field-Partials: [CMS Field
 | Menüs | `menus` | umgesetzt (#13) |
 | Tags | `tags` | umgesetzt (#5) |
 | Artikel | `articles` | umgesetzt (#4) |
-| Glossar | `glossar` | geplant (#6) |
+| Glossar | `glossar` | umgesetzt (#6) |
 
 ## Collection `menus` (umgesetzt)
 
@@ -111,10 +111,20 @@ Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarch
 | `seo` | ja (CMS) | SEO-Partial |
 | Body | ja | Markdown |
 
-## Erwartete Felder (weitere Collections)
+## Collection `glossar` (umgesetzt)
 
-### glossar
+| | |
+| --- | --- |
+| Ordner | `src/content/glossar/<slug>.md` |
+| Schema | `src/content.config.ts` |
+| Sveltia | Collection `glossar` (Issue-Titel „glossary“, Schlüssel im Projekt: `glossar`) |
+| Routen | `/glossar/`, `/glossar/<slug>/` |
 
-- Begriff
-- Kurzdefinition
-- Optional längere Erklärung / Links zu Artikeln
+### Felder
+
+| Feld | Pflicht | Bedeutung |
+| --- | --- | --- |
+| `title` | ja | Begriff |
+| `definition` | ja | Kurzdefinition |
+| `relatedArticles` | nein | Relation zu `articles` |
+| Body | nein | Längere Erklärung (Markdown) |

@@ -46,9 +46,9 @@ Entscheidung: **Variante B — neben dem Content** (nicht `public/media`).
 - Geteilte Assets optional unter `src/assets/`
 - **Schritte zum Einrichten in Sveltia/Astro:** [Medien — Variante B](../sveltia/medien-variante-b.md)
 
-## Glossar
+## Glossar (`glossar`)
 
-Fachbegriffe werden im Glossar erklärt und können aus Artikeln verlinkt werden. Ziel: Einsteiger verstehen die Sprache von GitHub, Cloudflare, Astro usw. — sowohl auf der Website als auch in dieser Doku (siehe [Glossar der Doku](../glossar.md)).
+Umgesetzt (#6): Collection unter `src/content/glossar/<slug>.md`, Übersicht `/glossar/`, Eintrag `/glossar/<slug>/`. Optional Verweise auf Artikel. Ziel: Einsteiger verstehen GitHub, Cloudflare, Astro usw. — siehe auch [Glossar der Doku](../glossar.md). Details: [Collections — glossar](../sveltia/collections.md#collection-glossar-umgesetzt).
 
 ## Tags (`tags`)
 

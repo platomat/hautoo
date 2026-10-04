@@ -44,4 +44,13 @@ const articles = defineCollection({
 		}),
 });
 
-export const collections = { pages, menus, tags, articles };
+const glossar = defineCollection({
+	loader: glob({ pattern: "*.md", base: "./src/content/glossar" }),
+	schema: z.object({
+		title: z.string(),
+		definition: z.string(),
+		relatedArticles: z.array(z.string()).default([]),
+	}),
+});
+
+export const collections = { pages, menus, tags, articles, glossar };

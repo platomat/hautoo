@@ -43,6 +43,5 @@ Verwandt: [CMS Fields (DRY)](../cms-fields/README.md), [Inhalte](../inhalte/READ
 
 ## Noch auszuarbeiten
 
-- Collection #6 `glossar`
-- Erste echte Bild-Pipeline in Templates (`<Image />`)
+- Erste echte Bild-Pipeline in Templates (`<Image />`) für Artikel-Titelbilder
 - Worker optional live schalten (`base_url` in `config.yml`, wenn OAuth gewünscht)
