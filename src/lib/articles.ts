@@ -61,6 +61,28 @@ export function getArticleHref(article: ArticleEntry): string {
 	return `/artikel/${article.id}/`;
 }
 
+/** Published articles for the given ids, preserving id order. */
+export async function getArticlesByIds(
+	ids: string[],
+): Promise<ArticleEntry[]> {
+	if (ids.length === 0) return [];
+	const articles = await getCollection("articles");
+	const byId = new Map(articles.map((article) => [article.id, article]));
+	return ids
+		.map((id) => byId.get(id))
+		.filter((article): article is ArticleEntry => Boolean(article))
+		.filter(isArticlePublic);
+}
+
+/** Published articles that include a tag slug. */
+export async function getArticlesByTag(
+	tagId: string,
+	options: ArticleListingOptions = {},
+): Promise<ArticleEntry[]> {
+	const articles = await getPublishedArticles(options);
+	return articles.filter((article) => (article.data.tags ?? []).includes(tagId));
+}
+
 /**
  * Neighbors by publish date: older = past (left), newer = future (right).
  * Same-day ties use title (A–Z).

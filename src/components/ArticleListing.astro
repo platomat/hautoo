@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import {
 	formatArticleDate,
 	getArticleHref,
+	getArticlesByIds,
+	getArticlesByTag,
 	getPublishedArticles,
 	type ArticleSort,
 } from "../lib/articles";
@@ -15,6 +17,12 @@ interface Props {
 	columns?: number;
 	/** Gap between items, in rem (grid and list). */
 	gap?: number;
+	/** Only these article slugs, in listed order (published only). */
+	articleIds?: string[];
+	/** Only articles with this tag (`count === 0` → all matches). */
+	tagId?: string;
+	/** Less vertical margin (e.g. glossar related block). */
+	compact?: boolean;
 }
 
 const {
@@ -23,13 +31,23 @@ const {
 	layout = "grid",
 	columns = 3,
 	gap = 1.25,
+	articleIds,
+	tagId,
+	compact = false,
 } = Astro.props;
 
-/** `count === 0` → all published articles. */
-const articles = await getPublishedArticles({
-	sort,
-	limit: count === 0 ? undefined : count,
-});
+/** `count === 0` → all published articles (or all with `tagId`). */
+const articles = articleIds?.length
+	? await getArticlesByIds(articleIds)
+	: tagId
+		? await getArticlesByTag(tagId, {
+				sort,
+				limit: count === 0 ? undefined : count,
+			})
+		: await getPublishedArticles({
+				sort,
+				limit: count === 0 ? undefined : count,
+			});
 const tags = await getCollection("tags");
 const tagMap = new Map(tags.map((tag) => [tag.id, tag]));
 const col = Math.min(4, Math.max(1, columns));
@@ -53,6 +71,7 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 			class:list={[
 				"article-listing",
 				layout === "list" ? "article-listing--list" : "article-listing--grid",
+				compact && "article-listing--compact",
 			]}
 			style={`--article-listing-cols: ${col}; --article-listing-gap: ${gapRem}rem`}
 			aria-label="Artikel"
@@ -97,6 +116,10 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 <style>
 	.article-listing {
 		margin: 2rem 0;
+	}
+
+	.article-listing--compact {
+		margin: 0;
 	}
 
 	.article-listing__list {

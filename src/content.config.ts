@@ -101,6 +101,8 @@ const glossar = defineCollection({
 		publishDate: publishDateSchema,
 		modifiedDate: modifiedDateSchema,
 		relatedArticles: z.array(z.string()).default([]),
+		/** Tag slugs; same slug as glossar id is added automatically when a tag exists. */
+		relatedTags: z.array(z.string()).default([]),
 	}),
 });
 

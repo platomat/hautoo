@@ -2,7 +2,9 @@
 title: Merge
 status: published
 modifiedDate: 2026-10-04
+relatedTags:
+  - github
 definition: Führt einen Branch in einen anderen ein, oft sichtbar als Merge-Commit.
 ---
 
-Merge behält die echte Verzweigung in der Historie. Bei Konflikten in derselben Datei entscheidest du, welche Zeilen bleiben.
+Merge behält die echte Verzweigung eines [Branch](/glossar/branch/) in der [Git-Historie](/glossar/git-history/). Bei Konflikten in derselben Datei entscheidest du, welche Zeilen bleiben — oft nach [Rebase](/glossar/rebase/) oder zusätzlichem [Pull](/glossar/pull/).

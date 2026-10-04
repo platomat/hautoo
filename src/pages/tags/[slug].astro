@@ -2,11 +2,9 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
-import {
-	formatArticleDate,
-	getArticleHref,
-	getPublishedArticles,
-} from "../../lib/articles";
+import ArticleListing from "../../components/ArticleListing.astro";
+import { getArticlesByTag } from "../../lib/articles";
+import { getGlossarForTag, getGlossarHref } from "../../lib/glossar";
 import { formatTagHashtag } from "../../lib/tags";
 
 export async function getStaticPaths() {
@@ -18,10 +16,9 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.props;
-const articles = (await getPublishedArticles()).filter((article) =>
-	(article.data.tags ?? []).includes(tag.id),
-);
+const articles = await getArticlesByTag(tag.id, { sort: "newest" });
 const hashtag = formatTagHashtag(tag);
+const glossarEntry = await getGlossarForTag(tag.id);
 ---
 
 <BaseLayout
@@ -33,24 +30,25 @@ const hashtag = formatTagHashtag(tag);
 		<p class="text-sm text-muted"><a href="/artikel/">Artikel</a></p>
 		<PageHero title={hashtag} description={tag.data.description} />
 		{
+			glossarEntry && (
+				<p class="tag-glossar-link text-sm">
+					Was ist {glossarEntry.data.title}?{" "}
+					<a href={getGlossarHref(glossarEntry)}>Glossar</a>
+				</p>
+			)
+		}
+		{
 			articles.length === 0 ? (
 				<p>Keine veröffentlichten Artikel mit diesem Tag.</p>
 			) : (
-				<ul class="article-list list-plain">
-					{articles.map((article) => (
-						<li>
-							<a href={getArticleHref(article)}>{article.data.title}</a>
-							{article.data.summary && (
-								<p class="text-sm text-muted">{article.data.summary}</p>
-							)}
-							<p class="text-sm text-muted">
-								<time datetime={article.data.pubDate.toISOString()}>
-									{formatArticleDate(article.data.pubDate)}
-								</time>
-							</p>
-						</li>
-					))}
-				</ul>
+				<ArticleListing
+					tagId={tag.id}
+					count={0}
+					sort="newest"
+					layout="grid"
+					columns={1}
+					gap={3}
+				/>
 			)
 		}
 	</main>
