@@ -42,6 +42,8 @@ Videos werden eingebettet (Embed), nicht als große Videodateien versioniert. De
 
 **Bausteine in Artikeln:** Wie auf CMS-Seiten per Zeile `{{block id="<slug>"}}` (Toolbar „Baustein“ in Sveltia). Der Inhalt kommt aus `src/content/blocks/<slug>.md` — eine Quelle, gleiche Darstellung überall (z. B. `stack-uebersicht` in Folgen zum Gesamt-Stack). Einführung: [Folge 020](/artikel/folge-020-bausteine-fork/). Siehe [Collections — blocks](../sveltia/collections.md#collection-blocks-bausteine).
 
+**Repo-Dokumente in Artikeln:** Vertiefung aus `docs/` per Embed `{{repodoc path="docs/…/README.md" title="…" description="…"}}` (Toolbar **Repo-Dokument** in Sveltia). Linkziel ist die Datei auf GitHub (`main`). Rendering: `RepoDocLink.astro` über `content-embeds.ts`. Regeln: [Redaktion](../redaktion/README.md#repo-dokumente-docs).
+
 ## Bilder (Medienablage)
 
 Entscheidung: **Variante B — neben dem Content** (nicht `public/media`).

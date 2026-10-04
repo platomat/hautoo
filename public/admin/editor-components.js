@@ -352,6 +352,54 @@
 	});
 
 	CMS.registerEditorComponent({
+		id: "repodoc",
+		label: "Repo-Dokument",
+		icon: "description",
+		fields: [
+			{
+				name: "path",
+				label: "Pfad im Repo",
+				widget: "string",
+				hint: 'z. B. docs/github/README.md (muss unter docs/ existieren).',
+			},
+			{
+				name: "title",
+				label: "Titel",
+				widget: "string",
+				required: false,
+				hint: "Optional. Leer = erste Überschrift aus der Datei.",
+			},
+			{
+				name: "description",
+				label: "Kurzbeschreibung",
+				widget: "text",
+				required: false,
+				hint: "Optional, ein Satz für die Box.",
+			},
+		],
+		pattern: /^\{\{repodoc(?<attrs>[^}]*)\}\}\s*$/m,
+		fromBlock: (match) => {
+			const attrs = parseAttrs(match?.groups?.attrs || "");
+			return {
+				path: attrs.path || "",
+				title: attrs.title || "",
+				description: attrs.description || "",
+			};
+		},
+		toBlock: ({ path = "", title = "", description = "" }) => {
+			const parts = [`path="${path}"`];
+			if (title) parts.push(`title="${title}"`);
+			if (description) parts.push(`description="${description}"`);
+			return `{{repodoc ${parts.join(" ")}}}`;
+		},
+		toPreview: ({ path = "", title = "", description = "" }) => {
+			const label = title || path || "?";
+			const desc = description ? ` · ${description}` : "";
+			return `<div style="padding:0.75rem 1rem;border:1px solid #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem;display:flex;gap:0.75rem;align-items:flex-start"><span style="color:#3dcf8e">ⓘ</span><span><strong style="color:#e8eeea">Vertiefung im Repo</strong><br>${label}${desc}</span></div>`;
+		},
+	});
+
+	CMS.registerEditorComponent({
 		id: "separator",
 		label: "Trennlinie",
 		icon: "horizontal_rule",

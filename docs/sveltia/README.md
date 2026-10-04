@@ -41,6 +41,12 @@ Verwandt: [CMS Fields (DRY)](../cms-fields/README.md), [Inhalte](../inhalte/READ
 - Token nur im Browser (Local Storage) bzw. später im Worker-Dashboard
 - Details: [Sicherheit](../sicherheit/README.md)
 
+## Screencast-Folgen (Website)
+
+- [Folge 013: PAT und /admin](https://hautoo.storyofai.net/artikel/folge-013-sveltia-pat/)
+- [Folge 014: Worker und OAuth](https://hautoo.storyofai.net/artikel/folge-014-sveltia-worker/)
+- [Folge 020: Bausteine](https://hautoo.storyofai.net/artikel/folge-020-bausteine-fork/)
+
 ## Noch auszuarbeiten
 
 - Erste echte Bild-Pipeline in Templates (`<Image />`) für Artikel-Titelbilder

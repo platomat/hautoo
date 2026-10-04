@@ -30,7 +30,10 @@ Du legst ein [**Repository**](/glossar/repository/) an, so heißt der Projektord
 - **Public:** Bei hautuu ist das Repo öffentlich, andere dürfen mitlesen und lernen. Alles Geheime bleibt draußen.
 - Nach dem Anlegen zeigt GitHub oft einen Block mit Befehlen (`git init`, erste Commit-Message, **remote** setzen, **push**). Einfach kopieren, Terminal auf, Enter — geht auch.
 
-Kurz die Wörter: [**Git**](/glossar/git/) versioniert Dateien. Ein [**Commit**](/glossar/commit/) ist ein gespeicherter Stand. [**Push**](/glossar/push/) schiebt deine Commits zu GitHub. [**Origin**](/glossar/origin/) heißt das Remote-Repo, [**main**](/glossar/main/) ist der Hauptzweig (deine „Live-Linie“ im Code).
+Kurz die Wörter:
+
+{{repodoc path="docs/github/README.md" title="GitHub" description="Repository, Remote und Zusammenarbeit im Überblick der Doku."}}
+ [**Git**](/glossar/git/) versioniert Dateien. Ein [**Commit**](/glossar/commit/) ist ein gespeicherter Stand. [**Push**](/glossar/push/) schiebt deine Commits zu GitHub. [**Origin**](/glossar/origin/) heißt das Remote-Repo, [**main**](/glossar/main/) ist der Hauptzweig (deine „Live-Linie“ im Code).
 
 ## Lokal holen
 
@@ -43,6 +46,9 @@ Bei einem **privaten** Repo verweigert GitHub oft den Zugriff, bis SSH-Keys eing
 Der versteckte Ordner `.git` (unter Linux oft mit Strg+H sichtbar) ist das Tagebuch des Projekts, inklusive Adresse von **origin**.
 
 ## Cursor: Ordner auf, Agent an
+
+{{repodoc path="docs/cursor/README.md" title="Cursor (KI)" description="IDE, Agenten und typische Workflows im Projekt."}}
+
 
 **Open Folder**, dein geklonter Ordner. Typischer Start:
 

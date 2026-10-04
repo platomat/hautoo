@@ -24,6 +24,9 @@ Manchmal startet Cursor chat-lastig. Für hautuu willst du den **IDE**-Modus: Da
 Du kannst auch einen beliebigen **Ordner ohne Git** öffnen (Fotos, Notizen) und dem Agenten sagen: „Pack das ins Projekt.“
 
 ## Drei Modi, drei Temperamentstufen
+{{repodoc path="docs/cursor/README.md" title="Cursor (KI)" description="Modi, Agenten und Grenzen in der Cursor-Doku."}}
+
+
 
 | Modus | Wofür |
 |--------|--------|

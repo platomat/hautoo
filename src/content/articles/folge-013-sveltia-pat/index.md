@@ -43,11 +43,17 @@ Ein [**PAT**](/glossar/pat/) ist ein persönlicher **Zugangsschlüssel** für Gi
 
 In Sveltia: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar/commit/) auf GitHub → Cloudflare baut (`main`).
 
-**Token = Passwort.** Nicht ins Repo, nicht im Video zeigen.
+**Token = Passwort.**
+
+{{repodoc path="docs/sicherheit/README.md" title="Sicherheit & Secrets" description="PAT, ENV und was nicht ins Repo gehört."}}
+ Nicht ins Repo, nicht im Video zeigen.
 
 {{block id="stack-uebersicht"}}
 
 ## Was beim Speichern passiert
+{{repodoc path="docs/sveltia/README.md" title="Sveltia CMS" description="Collections, /admin und Git als Speicher."}}
+
+
 
 Beispiel: Beispiel-Unterseite im Menü sichtbar → Commit „Update page …“ → Build → Menüpunkt live. Parent/Child an der Seite allein baut nicht automatisch die Navigation, dafür gibt’s die **menus**-Collection.
 

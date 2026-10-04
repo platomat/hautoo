@@ -89,6 +89,13 @@ Mit **Screencast-Transkript** oder ohne:
 - **Ausnahme:** [Folge 020](/artikel/folge-020-bausteine-fork/) bindet `stack-uebersicht` bewusst als **Live-Beispiel** für die Baustein-Collection ein (Abschnitt „Bausteine statt zehnmal das gleiche Bild“), nicht als zusätzliche Pipeline-Folge.
 - Nicht in jede Folge inflationär. Siehe [Collections — blocks](../sveltia/collections.md).
 
+### Repo-Dokumente (`docs/`)
+
+- Vertiefung aus dem Repository in **Artikeln** (und ggf. CMS-Seiten) per Embed: `{{repodoc path="docs/github/README.md" title="GitHub" description="Optionaler Satz"}}` (Toolbar **Repo-Dokument** in Sveltia).
+- **Nur** existierende Pfade unter `docs/` (`.md`), Linkziel: [GitHub `main`](https://github.com/platomat/hautoo/tree/main/docs). Technik: `src/lib/repodoc.ts`, `RepoDocLink.astro`, [CMS Fields — Inhalts-Blöcke](../cms-fields/README.md#inhalts-blöcke-seiten-artikel-body).
+- **Sparingly:** Richtwert **0–3** Boxen pro Artikel, nur wo die Doku wirklich vertieft; nicht zwei Boxen direkt hintereinander; keine leere/doppelte H2 nur für die Box.
+- **Neue oder geänderte `docs/`:** prüfen, welche **Artikel** die Box brauchen oder ob in der Doku eine **Screencast-Folgen**-Liste (Links zur Live-Site) ergänzt wird.
+
 ---
 
 ## SEO-Felder (alle Collections mit öffentlicher URL)
@@ -124,6 +131,7 @@ Hilfsskript (Bulk, einmalig): `scripts/fill-seo-fields.py` (manuell anpassen, ni
 - [ ] **Glossar:** neue/angepasste Einträge, relatedTags, Querverweise
 - [ ] **FAQ:** neue Fragen in der richtigen Gruppe, verlinkt
 - [ ] **Querverweise:** Folge ↔ Glossar ↔ bestehende Inhalte (Regeln oben)
+- [ ] **Repo-Docs:** passende `{{repodoc …}}` in Artikeln; bei Doku-Änderungen Rückverweise zu Folgen prüfen
 - [ ] **Bausteine:** wo sinnvoll, keine Duplikate
 - [ ] **`npm run build`** grün
 - [ ] **PR-Beschreibung** mit:
@@ -134,6 +142,11 @@ Hilfsskript (Bulk, einmalig): `scripts/fill-seo-fields.py` (manuell anpassen, ni
   - ggf. Screenshot bei sichtbaren UI-Änderungen
 
 ---
+
+## Screencast-Folgen (Website)
+
+- [Folge 015: Transkript und Artikel aus Screencasts](https://hautoo.storyofai.net/artikel/folge-015-transkript-artikel/)
+- [Folge 016: Pull Request und Listing](https://hautoo.storyofai.net/artikel/folge-016-artikel-pull-request/)
 
 ## Siehe auch
 
