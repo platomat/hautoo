@@ -1,0 +1,24 @@
+---
+description: Redaktionsregeln für Artikel, Glossar und FAQ — vor Inhaltsänderungen docs/redaktion/README.md lesen
+globs:
+  - src/content/**
+  - docs/redaktion/**
+alwaysApply: false
+---
+
+# Redaktion (Inhalte)
+
+**Vor jeder Änderung** an `src/content/` (Artikel, Glossar, `pages`, Bausteine): **[docs/redaktion/README.md](../../docs/redaktion/README.md) vollständig lesen und befolgen.**
+
+## Kurzfassung für Agenten
+
+- Transkripte: Fehler sinngemäß korrigieren, **nichts erfinden**; externe Fakten nur **verifiziert**, mit Quelle.
+- Artikel: `Folge nnn: <Titel>`, Slug `folge-nnn-<kurz>`, pubDate aus Aufnahmezeit, summary mit Nutzen, wenige bestehende Tags, Video leer, Quellkommentar am Ende.
+- Stil: knackig, Du-Form, laienverständlich; **keine Gedankenstriche** in Titel, Teaser, FAQ-Fragen; im Fließtext sparsam (siehe `deutsche-prosa.mdc`).
+- Glossar anlegen/ergänzen, `relatedTags`, Cross-Links (ggf. `scripts/link-glossar-crosslinks.py`).
+- FAQ: richtige Gruppe, offen sichtbar, verlinkt; keine Accordion-Idee.
+- Links: erstes Glossar-Vorkommen sinnvoll; Folgenlinks zur Detail-Folge; **nicht** Glossar + Folge am selben Wort; **max. ein Link pro Ziel-Folge** pro Artikel; neue Folgen rückverlinken.
+- Bausteine: `{{block id="…"}}` statt duplizieren, nur thematisch passend.
+- PR: Checkliste in `docs/redaktion/README.md`, Build grün, Beschreibung mit Tabellen und unsicheren Transkriptstellen.
+
+Sprachen und Git-Push: weiterhin `projekt-konventionen.mdc`.

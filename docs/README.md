@@ -37,11 +37,12 @@ Details: [Sprachen und Konventionen](./sprachen-und-konventionen.md)
 ### Inhalte der Website
 
 11. [Inhalte](./inhalte/README.md) — Seiten, Artikel, Tags, Glossar, Videos
+12. [Redaktion](./redaktion/README.md) — Regeln für Folgen, Glossar, FAQ und Querverweise (verbindlich für Menschen und Agenten)
 
 ### Weiterführend
 
-12. [Lokale Entwicklung](./entwicklung/README.md) — Setup auf dem eigenen Rechner
-13. [Glossar der Doku](./glossar.md) — Begriffe kurz erklärt
+13. [Lokale Entwicklung](./entwicklung/README.md) — Setup auf dem eigenen Rechner
+14. [Glossar der Doku](./glossar.md) — Begriffe kurz erklärt
 
 ## Schnellstart (Überblick)
 
