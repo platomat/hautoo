@@ -69,15 +69,9 @@ Wenn du uns per E-Mail kontaktierst, verarbeiten wir die von dir mitgeteilten Da
 
 Die Daten werden gelöscht, wenn die Konversation erledigt ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
 
-## CMS / Admin-Bereich
-
-Der geschützte Bereich `/admin/` (Sveltia CMS) ist nur für Berechtigte zur Pflege der Inhalte gedacht. Die Anmeldung kann über GitHub (OAuth bzw. Token) erfolgen. Dabei gelten zusätzlich die Datenschutzhinweise von GitHub. Für Website-Besucher ohne Admin-Zugang ist dieser Bereich nicht erforderlich.
-
 ## Cookies und lokale Speicherung
 
 Für den öffentlichen Teil der Website setzen wir **keine** eigenen Cookies zu Analyse- oder Werbezwecken. Der Hoster bzw. eingebundene Drittanbieter (z. B. Video-Player) können eigene Cookies oder ähnliche Techniken verwenden — siehe deren Hinweise.
-
-Im Admin-Bereich können Anmeldedaten lokal im Browser gespeichert werden (z. B. Token) — nur für eingeloggte Redaktion.
 
 ## Speicherdauer
 
