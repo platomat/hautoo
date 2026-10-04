@@ -126,26 +126,29 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 								)}
 							</a>
 							{showMeta && (
-								<p class="article-listing__meta text-sm text-muted">
-									{showDate && (
-										<time datetime={article.data.pubDate.toISOString()}>
-											{formatArticleDate(article.data.pubDate)}
-										</time>
+								<div class="article-listing__meta text-sm text-muted">
+									{(showDate || showReadingTime) && (
+										<p class="article-listing__meta-row">
+											{showDate && (
+												<time datetime={article.data.pubDate.toISOString()}>
+													{formatArticleDate(article.data.pubDate)}
+												</time>
+											)}
+											{showDate && showReadingTime && " · "}
+											{showReadingTime && <span>{readingLabel}</span>}
+										</p>
 									)}
-									{showDate && showReadingTime && " · "}
-									{showReadingTime && <span>{readingLabel}</span>}
 									{showTags && articleTags.length > 0 && (
-										<>
-											{(showDate || showReadingTime) && " · "}
+										<p class="article-listing__tags">
 											{articleTags.map((tag, index) => (
 												<>
 													{index > 0 && " "}
 													<a href={getTagHref(tag)}>{formatTagHashtag(tag)}</a>
 												</>
 											))}
-										</>
+										</p>
 									)}
-								</p>
+								</div>
 							)}
 						</li>
 					);
@@ -232,10 +235,32 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 
 	.article-listing__meta {
 		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.15rem 0.5rem;
 	}
 
+	.article-listing__meta-row,
+	.article-listing__tags {
+		margin: 0;
+	}
+
+	/* Grid cards: tags on their own line under date / reading time. */
 	.article-listing--grid .article-listing__meta {
 		margin-top: auto;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.35rem;
+	}
+
+	.article-listing--list .article-listing__meta-row,
+	.article-listing--list .article-listing__tags {
+		display: inline;
+	}
+
+	.article-listing--list .article-listing__meta-row:not(:empty) + .article-listing__tags::before {
+		content: " · ";
 	}
 
 	.article-listing__meta a {
