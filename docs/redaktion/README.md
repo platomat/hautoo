@@ -79,7 +79,10 @@ Mit **Screencast-Transkript** oder ohne:
 ### Bausteine (DRY)
 
 - Wiederkehrende Inhalte (z. B. Stack-Grafik) als Block einbinden: `{{block id="stack-uebersicht"}}`, nicht Bild und Überschrift kopieren.
-- Bausteine mit **eigener Überschrift** im Markdown (z. B. `stack-uebersicht` mit `## Stack-Übersicht`): **keine zusätzliche H2** im Artikel direkt davor, die nur die Grafik einleitet oder inhaltlich dieselbe Überschrift wiederholt. Stattdessen Fließtext, **Fettdruck** oder die echte nächste Abschnittsüberschrift **nach** dem Block.
+- Bausteine mit **eigener Überschrift** im Markdown (z. B. `stack-uebersicht` mit `## Stack-Übersicht`): **keine doppelte** oder **leere H2** direkt davor.
+  - **Leere H2** = Überschrift ohne eigenen Absatztext, danach sofort der Block (nur Leerzeile dazwischen).
+  - **Dann:** (a) unter die H2 **ein bis zwei knackige Sätze** schreiben, die zum Block hinführen, **oder** (b) die H2 **entfernen** bzw. **unter** den Block setzen, wenn der folgende Inhalt zur Überschrift gehört.
+  - Keine Überschrift, die nur die Block-Grafik wiederholt; Fließtext ohne H2 ist oft genug.
 - Nur an **thematisch passenden** Stellen (Pipeline, Gesamtüberblick), nicht in jede Folge. Siehe [Collections — blocks](../sveltia/collections.md).
 
 ---
