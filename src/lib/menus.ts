@@ -8,6 +8,8 @@ export type ResolvedMenuLink = {
 	label: string;
 	href: string;
 	external: boolean;
+	/** Sanitized CSS class tokens for the `<a>` element. */
+	cssClasses: string[];
 };
 
 export type ResolvedMenuItem = ResolvedMenuLink & {
@@ -17,6 +19,17 @@ export type ResolvedMenuItem = ResolvedMenuLink & {
 /** Well-known menu ids (filename / collection id). */
 export const MENU_MAIN = "main";
 export const MENU_FOOTER_LEGAL = "footer-legal";
+
+/** Split and keep only safe CSS class identifiers (WordPress-style input). */
+export function parseCssClasses(value?: string): string[] {
+	if (!value?.trim()) {
+		return [];
+	}
+	return value
+		.trim()
+		.split(/\s+/)
+		.filter((token) => /^[a-zA-Z_][\w-]*$/.test(token));
+}
 
 export async function getMenuEntry(
 	id: string,
@@ -34,13 +47,15 @@ function resolveLeafHref(
 		return null;
 	}
 
+	const cssClasses = parseCssClasses(item.cssClass);
+
 	if (item.linkType === "url") {
 		const href = item.url?.trim();
 		if (!href) {
 			return null;
 		}
 		const external = /^https?:\/\//i.test(href);
-		return { label, href, external };
+		return { label, href, external, cssClasses };
 	}
 
 	const pageId = item.page?.trim();
@@ -55,6 +70,7 @@ function resolveLeafHref(
 		label,
 		href: getPageHref(page, pagesById),
 		external: false,
+		cssClasses,
 	};
 }
 

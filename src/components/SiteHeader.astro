@@ -47,6 +47,7 @@ function isCurrent(href: string): boolean {
 								<div class="site-nav__item-row">
 									<a
 										href={item.href}
+										class:list={item.cssClasses}
 										aria-current={current ? "page" : undefined}
 										target={item.external ? "_blank" : undefined}
 										rel={item.external ? "noopener noreferrer" : undefined}
@@ -79,6 +80,7 @@ function isCurrent(href: string): boolean {
 												<li>
 													<a
 														href={child.href}
+														class:list={child.cssClasses}
 														aria-current={childCurrent ? "page" : undefined}
 														target={child.external ? "_blank" : undefined}
 														rel={

@@ -199,6 +199,13 @@ collections:
               required: false,
               hint: "Bei Link-Art „URL“ — intern (/pfad/) oder https://…",
             }
+          - {
+              name: cssClass,
+              label: CSS-Klasse,
+              widget: string,
+              required: false,
+              hint: "Optional am <a>-Link (wie WordPress). Mehrere Klassen mit Leerzeichen, z. B. btn highlight.",
+            }
           - name: children
             label: Untermenü
             widget: list
@@ -228,6 +235,13 @@ collections:
                   label: URL,
                   widget: string,
                   required: false,
+                }
+              - {
+                  name: cssClass,
+                  label: CSS-Klasse,
+                  widget: string,
+                  required: false,
+                  hint: "Optional am <a>-Link. Mehrere Klassen mit Leerzeichen.",
                 }
 
   # Later collections inject the same SEO block with: - *field_seo

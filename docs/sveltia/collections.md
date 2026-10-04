@@ -42,6 +42,7 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | `items[].linkType` | `page` oder `url` |
 | `items[].page` | Relation zur Collection `pages` (Slug) |
 | `items[].url` | Externe/interne URL bei `linkType: url` |
+| `items[].cssClass` | Optionale CSS-Klasse(n) am `<a>` (Leerzeichen-getrennt, wie WordPress) |
 | `items[].children[]` | Optionales Untermenü (eine Ebene, gleiche Link-Felder ohne weitere Kinder) |
 
 ## Collection `pages` (umgesetzt)

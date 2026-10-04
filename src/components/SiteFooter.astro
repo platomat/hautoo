@@ -40,6 +40,7 @@ function isCurrent(href: string): boolean {
 								<li>
 									<a
 										href={item.href}
+										class:list={item.cssClasses}
 										aria-current={current ? "page" : undefined}
 										target={item.external ? "_blank" : undefined}
 										rel={item.external ? "noopener noreferrer" : undefined}

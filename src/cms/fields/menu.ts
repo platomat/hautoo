@@ -8,6 +8,8 @@ export const menuLeafSchema = z.object({
 	page: z.string().optional(),
 	/** External or absolute path when linkType is `url`. */
 	url: z.string().optional(),
+	/** Optional CSS class(es) on the link (WordPress-style, space-separated). */
+	cssClass: z.string().optional(),
 });
 
 /** Top-level menu item with optional one-level children (submenu). */
