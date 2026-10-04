@@ -3,7 +3,7 @@ title: FAQ
 description: Häufige Fragen zu hautuu, Git, Cursor, Cloudflare und dem CMS.
 status: published
 publishDate: 2026-10-04
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-05
 backgroundImage: /assets/sebastien-goldberg-9R_bNdo4-2I-unsplash.webp
 backgroundOverlay: 88
 backgroundAttribution: Photo by <a href="https://unsplash.com/@sebastiengoldberg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sébastien Goldberg</a> on <a href="https://unsplash.com/photos/a-sea-turtle-swimming-in-the-ocean-9R_bNdo4-2I?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
@@ -36,6 +36,10 @@ Ein öffentliches Lernprojekt: [**Astro**](/glossar/astro/) baut statische Seite
 ### Kann ich das für meine eigene Website nachbauen?
 
 Ja, das ist die Idee. Du brauchst Accounts, etwas Geduld und die Folgen Schritt für Schritt. hautuu zeigt einen Weg, kein fertiger Shop-Baukasten. [Folge 001](/artikel/folge-001-hautuu-intro/), [Über uns](/ueber-uns/).
+
+### Wie forke ich hautoo für mein eigenes Projekt?
+
+Auf GitHub beim Repo **Fork** wählen (deine Kopie unter deinem Account), dann den Fork klonen und in Cursor weiterbauen: Inhalte ersetzen, eigenes Hosting anbinden. [Glossar Fork](/glossar/fork/), [Folge 020](/artikel/folge-020-bausteine-fork/).
 
 ### Brauche ich Programmierkenntnisse?
 
@@ -195,7 +199,7 @@ Bei hautuu ja: **öffentliches** Repo, jeder kann lesen. Schreiben nur mit Berec
 
 ### Was ist ein Fork?
 
-Deine Kopie eines fremden Repos unter deinem Account. [Glossar Fork](/glossar/fork/), [Folge 002](/artikel/folge-002-github-issues/).
+Deine Kopie eines fremden Repos unter deinem Account. Nicht verwechseln mit `git clone` allein. [Glossar Fork](/glossar/fork/), [Folge 002](/artikel/folge-002-github-issues/), [Folge 020](/artikel/folge-020-bausteine-fork/).
 
 ### Was ist `origin`?
 
@@ -307,7 +311,11 @@ Mit [**PAT**](/glossar/pat/) oder später GitHub-Login über [**Worker**](/gloss
 
 ### Was sind Collections?
 
-Inhaltstypen wie pages, articles, menus. [Glossar Collection](/glossar/collection/), [Folge 004](/artikel/folge-004-collection-pages/).
+Inhaltstypen wie pages, articles, menus, blocks (Bausteine). [Glossar Collection](/glossar/collection/), [Folge 004](/artikel/folge-004-collection-pages/).
+
+### Was ist ein Baustein und wie nutze ich ihn?
+
+Wiederverwendbarer Inhalt ohne eigene URL in der Collection **blocks**. Einbinden mit `{{block id="slug"}}` oder Toolbar **Baustein** in Sveltia. [Glossar Baustein](/glossar/baustein/), [Folge 020](/artikel/folge-020-bausteine-fork/).
 
 ### Was ist Frontmatter?
 
@@ -400,6 +408,10 @@ Stichworte zu Artikeln, keine tiefe Kategorie-Hierarchie. [Folge 004](/artikel/f
 ### Wie pflege ich das Glossar?
 
 Eigene Collection `glossar`, Übersicht unter `/glossar/`. [Glossar](/glossar/), [Folge 004](/artikel/folge-004-collection-pages/).
+
+### Kann ich Glossarbegriffe nachschlagen, ohne den Artikel zu verlassen?
+
+In **Firefox** (Desktop, Link Previews ab Version 142): Rechtsklick auf den Glossar-Link → **Link-Vorschau**, oder Link lange gedrückt halten. Die Vorschau öffnet sich in Firefox, der Artikel bleibt im Hintergrund. Lokal mit `localhost` funktioniert das oft nicht; auf der Live-Site schon. [Folge 020](/artikel/folge-020-bausteine-fork/), [Mozilla-Hilfe](https://support.mozilla.org/kb/use-link-previews-firefox).
 
 ### Kann ich Artikel aus Videos erzeugen lassen?
 

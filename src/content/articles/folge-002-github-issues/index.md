@@ -18,7 +18,7 @@ GitHub ist nicht nur Datei-Ablage, es ist dein **Projektbüro**. [**Issues**](/g
 
 ## Forks und Pull Requests (kurz)
 
-Du kannst fremde Projekte [**forken**](/glossar/fork/), eine Kopie unter deinem Account. Änderst du was Nützliches, schickst du einen [**Pull Request**](/glossar/pull-request/) (PR) an den Originalautor. Der entscheidet, ob er’s übernimmt. Allein im eigenen Repo? Dann sind Issues trotzdem Gold wert.
+Du kannst fremde Projekte [**forken**](/glossar/fork/), eine Kopie unter deinem Account. Änderst du was Nützliches, schickst du einen [**Pull Request**](/glossar/pull-request/) (PR) an den Originalautor. Der entscheidet, ob er’s übernimmt. hautuu selbst als Vorlage forken: [Folge 020](/artikel/folge-020-bausteine-fork/). Allein im eigenen Repo? Dann sind Issues trotzdem Gold wert.
 
 ## „Bitte Issue #1 umsetzen“
 
