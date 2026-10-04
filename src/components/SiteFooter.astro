@@ -1,7 +1,7 @@
 ---
-import { getCollection } from "astro:content";
 import { getResolvedMenu, MENU_FOOTER_LEGAL } from "../lib/menus";
 import { withBuildId } from "../lib/build-id";
+import { getPublicPages } from "../lib/pages";
 
 /** First calendar year of the project (copyright range start). */
 const COPYRIGHT_START_YEAR = 2026;
@@ -14,7 +14,7 @@ const copyrightYears =
 const REPO_URL = "https://github.com/platomat/hautoo/";
 const REPO_TITLE = "hautuu auf GitHub (platomat/hautoo)";
 
-const pages = await getCollection("pages");
+const pages = await getPublicPages();
 const legalItems = await getResolvedMenu(MENU_FOOTER_LEGAL, pages);
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 

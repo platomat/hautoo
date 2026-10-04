@@ -1,4 +1,5 @@
 import { getCollection, type CollectionEntry } from "astro:content";
+import { isEntryPublic } from "../cms/fields/status";
 
 export type ArticleEntry = CollectionEntry<"articles">;
 
@@ -36,13 +37,17 @@ function sortArticles(
 	}
 }
 
-/** Published articles with optional sort and limit. */
+export function isArticlePublic(article: ArticleEntry): boolean {
+	return isEntryPublic(article.data.status, article.data.pubDate);
+}
+
+/** Public articles with optional sort and limit. */
 export async function getPublishedArticles(
 	options: ArticleListingOptions = {},
 ): Promise<ArticleEntry[]> {
 	const { sort = "newest", limit } = options;
 	const articles = await getCollection("articles");
-	const published = articles.filter((article) => !article.data.draft);
+	const published = articles.filter(isArticlePublic);
 	const sorted = sortArticles(published, sort);
 	if (typeof limit === "number" && Number.isFinite(limit) && limit >= 0) {
 		return sorted.slice(0, limit);

@@ -2,6 +2,19 @@
 
 Wiederverwendbare Feldgruppen für Sveltia und Astro.
 
+## Status (`status`)
+
+| Seite | Ort |
+| --- | --- |
+| Sveltia | Anchor `&field_status` (+ `&field_publish_date` für pages/glossar) |
+| Astro | `src/cms/fields/status.ts` — `isEntryPublic()` |
+| Collections | `pages`, `articles`, `glossar` (nicht `tags` / `menus`) |
+
+Werte: `draft` · `published` · `future` · `trash`.
+
+- Öffentlich: `published`, sowie `future` sobald das Datum erreicht ist (`pubDate` bei Artikeln, `publishDate` bei Seiten/Glossar).
+- CMS-Default für neue Einträge: `draft`. Fehlendes Feld im Repo → beim Build wie `published` (Migration).
+
 ## SEO (`seo`)
 
 | Seite | Ort |

@@ -1,6 +1,12 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import type { MenuItem, MenuLeaf } from "../cms/fields/menu";
-import { getPageHref, indexPagesById, type PageEntry } from "./pages";
+import {
+	getPageHref,
+	getPublicPages,
+	indexPagesById,
+	isPagePublic,
+	type PageEntry,
+} from "./pages";
 
 export type MenuEntry = CollectionEntry<"menus">;
 
@@ -63,7 +69,7 @@ function resolveLeafHref(
 		return null;
 	}
 	const page = pagesById.get(pageId);
-	if (!page) {
+	if (!page || !isPagePublic(page)) {
 		return null;
 	}
 	return {
@@ -104,6 +110,6 @@ export async function getResolvedMenu(
 	if (!menu) {
 		return [];
 	}
-	const allPages = pages ?? (await getCollection("pages"));
+	const allPages = pages ?? (await getPublicPages());
 	return resolveMenuItems(menu.data.items, allPages);
 }

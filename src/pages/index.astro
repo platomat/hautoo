@@ -4,10 +4,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CmsContent from "../components/CmsContent.astro";
 import { hasArticleListingEmbed, hasContentEmbeds } from "../lib/content-embeds";
 import { resolveCmsImage } from "../lib/cms-image";
+import { isPagePublic } from "../lib/pages";
 
 const page = await getEntry("pages", "index");
 if (!page) {
 	throw new Error('Missing pages collection entry "index".');
+}
+if (!isPagePublic(page)) {
+	throw new Error('Start page "index" is not public (check status / publishDate).');
 }
 const useEmbeds = hasContentEmbeds(page.body);
 const { Content } = await render(page);

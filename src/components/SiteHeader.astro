@@ -1,8 +1,8 @@
 ---
-import { getCollection } from "astro:content";
 import { getResolvedMenu, MENU_MAIN } from "../lib/menus";
+import { getPublicPages } from "../lib/pages";
 
-const pages = await getCollection("pages");
+const pages = await getPublicPages();
 const menuItems = await getResolvedMenu(MENU_MAIN, pages);
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 

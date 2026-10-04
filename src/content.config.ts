@@ -7,12 +7,19 @@ import {
 	backgroundOverlaySchema,
 } from "./cms/fields/page-background";
 import { seoSchema } from "./cms/fields/seo";
+import { entryStatusSchema } from "./cms/fields/status";
+
+const publishDateSchema = z.coerce.date().optional();
 
 const pages = defineCollection({
 	loader: glob({ pattern: "**/index.md", base: "./src/content/pages" }),
 	schema: z.object({
 		title: z.string(),
 		description: z.string().optional(),
+		/** draft | published | future | trash */
+		status: entryStatusSchema,
+		/** Schedule date when status is `future`. */
+		publishDate: publishDateSchema,
 		/** Parent page id (folder slug), builds nested URLs like `/parent/child/`. */
 		parent: z.string().optional(),
 		/**
@@ -49,7 +56,8 @@ const articles = defineCollection({
 			title: z.string(),
 			summary: z.string().optional(),
 			pubDate: z.coerce.date(),
-			draft: z.boolean().default(false),
+			/** draft | published | future | trash (`pubDate` gates `future`) */
+			status: entryStatusSchema,
 			/** Entry-relative only (Variante B) — use `image()` for optimization. */
 			heroImage: image().optional(),
 			backgroundImage: backgroundImageSchema,
@@ -67,6 +75,8 @@ const glossar = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		definition: z.string(),
+		status: entryStatusSchema,
+		publishDate: publishDateSchema,
 		relatedArticles: z.array(z.string()).default([]),
 	}),
 });

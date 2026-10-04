@@ -1,5 +1,5 @@
 ---
-import { getCollection, render } from "astro:content";
+import { render } from "astro:content";
 import ArticleIndexList from "../components/ArticleIndexList.astro";
 import BackgroundAttributions from "../components/BackgroundAttributions.astro";
 import CmsContent from "../components/CmsContent.astro";
@@ -10,10 +10,10 @@ import {
 	hasContentEmbeds,
 } from "../lib/content-embeds";
 import { resolveCmsImage } from "../lib/cms-image";
-import { getPageHref, indexPagesById } from "../lib/pages";
+import { getPageHref, getPublicPages, indexPagesById } from "../lib/pages";
 
 export async function getStaticPaths() {
-	const pages = await getCollection("pages");
+	const pages = await getPublicPages();
 	const pagesById = indexPagesById(pages);
 
 	return pages

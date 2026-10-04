@@ -1,11 +1,15 @@
 ---
-import { getCollection, render } from "astro:content";
+import { render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getArticleHref } from "../../lib/articles";
-import { getGlossarHref } from "../../lib/glossar";
+import {
+	getArticleHref,
+	getPublishedArticles,
+	isArticlePublic,
+} from "../../lib/articles";
+import { getGlossarEntries, getGlossarHref } from "../../lib/glossar";
 
 export async function getStaticPaths() {
-	const entries = await getCollection("glossar");
+	const entries = await getGlossarEntries();
 	return entries.map((entry) => ({
 		params: { slug: entry.id },
 		props: { entry },
@@ -14,12 +18,12 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const articles = await getCollection("articles");
+const articles = await getPublishedArticles();
 const articleMap = new Map(articles.map((article) => [article.id, article]));
 const related = (entry.data.relatedArticles ?? [])
 	.map((id) => articleMap.get(id))
 	.filter((article): article is (typeof articles)[number] => Boolean(article))
-	.filter((article) => !article.data.draft);
+	.filter(isArticlePublic);
 ---
 
 <BaseLayout

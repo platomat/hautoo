@@ -1,8 +1,8 @@
 ---
 title: Willkommen bei hautuu
+status: published
 summary: Kurzer Einstieg, wie Cursor, GitHub und Cloudflare zusammenspielen.
 pubDate: 2026-10-04
-draft: false
 tags:
   - astro
   - github

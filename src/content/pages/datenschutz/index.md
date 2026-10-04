@@ -1,5 +1,6 @@
 ---
 title: Datenschutz
+status: published
 description: Hinweise zum Datenschutz (Platzhalter).
 seo:
   index_visibility: noindex

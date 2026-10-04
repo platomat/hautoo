@@ -1,5 +1,6 @@
 ---
 title: Astro
+status: published
 definition: Framework für schnelle, inhaltsorientierte Websites — oft mit wenig Client-JavaScript.
 relatedArticles:
   - willkommen-bei-hautuu

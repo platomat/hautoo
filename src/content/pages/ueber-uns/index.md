@@ -1,5 +1,6 @@
 ---
 title: Über uns
+status: published
 description: Kurzvorstellung des Projekts hautuu.
 backgroundImage: /assets/599-1920x1280.webp
 backgroundOverlay: 84

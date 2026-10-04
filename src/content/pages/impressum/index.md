@@ -1,5 +1,6 @@
 ---
 title: Impressum
+status: published
 description: Rechtliche Angaben (Platzhalter).
 seo:
   index_visibility: noindex

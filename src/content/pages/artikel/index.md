@@ -1,5 +1,6 @@
 ---
 title: Artikel
+status: published
 description: Beiträge und How-tos von hautuu.
 backgroundImage: /assets/alex-gruber-ATMEDyTPQG4-unsplash.webp
 backgroundOverlay: 40

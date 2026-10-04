@@ -1,5 +1,6 @@
 ---
 title: GitHub
+status: published
 definition: Plattform für Git-Repositories, Issues und Zusammenarbeit am Quellcode.
 ---
 

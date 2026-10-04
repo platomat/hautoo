@@ -1,11 +1,10 @@
-import { getCollection } from "astro:content";
 import {
 	classifyAttribution,
 	sanitizeAttributionHtml,
 	type AttributionKind,
 } from "../cms/fields/page-background";
 import { getArticleHref, getPublishedArticles } from "./articles";
-import { getPageHref, indexPagesById } from "./pages";
+import { getPageHref, getPublicPages, indexPagesById } from "./pages";
 
 export type BackgroundAttributionItem = {
 	/** Raw CMS value (text, URL, or stock-platform HTML). */
@@ -26,7 +25,7 @@ export type BackgroundAttributionItem = {
 export async function collectBackgroundAttributions(): Promise<
 	BackgroundAttributionItem[]
 > {
-	const pages = await getCollection("pages");
+	const pages = await getPublicPages();
 	const pagesById = indexPagesById(pages);
 	const articles = await getPublishedArticles();
 	const items: BackgroundAttributionItem[] = [];

@@ -67,6 +67,8 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | `parent` | nein | ID/Slug der übergeordneten Seite → URL `/parent/child/` |
 | `backgroundImage` | nein | Vollflächiger Viewport-Hintergrund (Variante B) |
 | `backgroundOverlay` | nein | Abdunkelung 0–100 % (schwarzes Overlay) |
+| `status` | ja | `draft` / `published` / `future` / `trash` |
+| `publishDate` | nein | Termin für Status `future` |
 | `backgroundAttribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |
 | `seo` | ja (CMS) | SEO-Objekt (Titel, Description, Robots) — Partial `&field_seo` |
 | Body | ja | Markdown-Inhalt |
@@ -107,7 +109,7 @@ Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarch
 | `title` | ja | Titel |
 | `summary` | nein | Kurztext / Meta |
 | `pubDate` | ja | Publikationsdatum |
-| `draft` | nein | `true` = nicht öffentlich |
+| `status` | ja | `draft` / `published` / `future` / `trash` |
 | `heroImage` | nein | Titelbild neben dem Eintrag |
 | `backgroundImage` | nein | Vollflächiger Viewport-Hintergrund |
 | `backgroundOverlay` | nein | Abdunkelung 0–100 % |
@@ -132,6 +134,8 @@ Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarch
 | Feld | Pflicht | Bedeutung |
 | --- | --- | --- |
 | `title` | ja | Begriff |
+| `status` | ja | `draft` / `published` / `future` / `trash` |
+| `publishDate` | nein | Termin für Status `future` |
 | `definition` | ja | Kurzdefinition |
 | `relatedArticles` | nein | Relation zu `articles` |
 | Body | nein | Längere Erklärung (Markdown) |

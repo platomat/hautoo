@@ -21,13 +21,17 @@ output:
 # -----------------------------------------------------------------------------
 # Shared field partials (YAML anchors) — DRY across collections.
 # Aliases only work inside THIS file. Inject with: - *field_seo
-# Astro Zod mirrors: src/cms/fields/seo.ts, src/cms/fields/page-background.ts
+# Astro Zod mirrors: src/cms/fields/seo.ts, src/cms/fields/page-background.ts, src/cms/fields/status.ts
 # -----------------------------------------------------------------------------
 
 # Page / article full-viewport background (inject as three list items).
 # - *field_background_image
 # - *field_background_overlay
 # - *field_background_attribution
+
+# Editorial status (pages, articles, glossar — not tags/menus)
+# - *field_status
+# - *field_publish_date  (pages/glossar; articles use pubDate)
 
 collections:
   - name: pages
@@ -44,6 +48,26 @@ collections:
     fields:
       - { name: title, label: Titel, widget: string }
       - { name: description, label: Beschreibung, widget: string, required: false }
+      - &field_status
+        name: status
+        label: Status
+        widget: select
+        options:
+          - { label: Entwurf, value: draft }
+          - { label: Veröffentlicht, value: published }
+          - { label: Geplant, value: future }
+          - { label: Papierkorb, value: trash }
+        default: draft
+        required: true
+        hint: "Nur „Veröffentlicht“ und fällige „Geplant“-Einträge erscheinen auf der Website."
+      - &field_publish_date
+        name: publishDate
+        label: Veröffentlichungsdatum
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        required: false
+        hint: "Für Status „Geplant“: ab diesem Datum öffentlich (nach dem nächsten Build)."
       - name: parent
         label: Übergeordnete Seite
         widget: relation
@@ -328,14 +352,9 @@ collections:
           date_format: YYYY-MM-DD,
           time_format: false,
           required: true,
+          hint: "Auch Termin für Status „Geplant“.",
         }
-      - {
-          name: draft,
-          label: Entwurf,
-          widget: boolean,
-          default: false,
-          hint: "Entwürfe erscheinen nicht auf der Website.",
-        }
+      - *field_status
       - {
           name: heroImage,
           label: Titelbild,
@@ -394,6 +413,8 @@ collections:
     hint: "Fachbegriffe. URL: /glossar/<slug>/."
     fields:
       - { name: title, label: Begriff, widget: string }
+      - *field_status
+      - *field_publish_date
       - {
           name: definition,
           label: Kurzdefinition,

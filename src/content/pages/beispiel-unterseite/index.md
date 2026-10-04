@@ -1,5 +1,6 @@
 ---
 title: Beispiel Unterseite
+status: published
 description: Zeigt die Parent/Child-URL unter Über uns.
 parent: ueber-uns
 seo:

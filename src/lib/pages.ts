@@ -1,4 +1,5 @@
-import type { CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { isEntryPublic } from "../cms/fields/status";
 
 export type PageEntry = CollectionEntry<"pages">;
 
@@ -45,4 +46,14 @@ export function getPageHref(
 		return "/";
 	}
 	return `/${segments.join("/")}/`;
+}
+
+export function isPagePublic(page: PageEntry): boolean {
+	return isEntryPublic(page.data.status, page.data.publishDate);
+}
+
+/** Public pages only (draft/trash/future-not-yet hidden). */
+export async function getPublicPages(): Promise<PageEntry[]> {
+	const pages = await getCollection("pages");
+	return pages.filter(isPagePublic);
 }
