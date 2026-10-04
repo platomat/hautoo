@@ -20,6 +20,19 @@ seo:
   max_image_preview: large
 ---
 
-**hautuu** zeigt, wie man mit KI (Cursor), GitHub und Cloudflare eine thematische, statische Website erstellt und pflegt.
+**hautuu** ist ein Lern- und Demo-Projekt: Wie man mit Cursor (KI), GitHub und Cloudflare eine thematische, statische Website baut und pflegt, von leerem Repo bis zur laufenden Site.
 
-Mehr dazu in der Projektdokumentation im Repository.
+## Repository
+
+Quellcode, Inhalte und Dokumentation liegen öffentlich auf GitHub:
+
+[github.com/platomat/hautoo](https://github.com/platomat/hautoo/)
+
+Dort findest du auch Issues, den Build-Verlauf und die technische Doku unter [`docs/`](https://github.com/platomat/hautoo/tree/main/docs).
+
+## Infos auf der Website
+
+- **[Artikel](/artikel/):** Beiträge und How-tos Schritt für Schritt. Über **Tags** filterst du nach Themen (z. B. Cursor, GitHub, Cloudflare).
+- **[Glossar](/glossar/):** kurze Begriffserklärungen zum Stack.
+
+Startseite und Menü führen dich zu den Übersichten; einzelne Einträge sind untereinander verlinkt.

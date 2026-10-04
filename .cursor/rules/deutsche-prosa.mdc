@@ -1,0 +1,40 @@
+---
+description: Deutsche Prosa ohne KI-Gedankenstriche; klassische Satzzeichen bevorzugen
+alwaysApply: true
+---
+
+# Deutsche Prosa (hautuu)
+
+## Kein Gedankenstrich-Stil (—)
+
+Beim Schreiben von **Website-Texten, CMS-Inhalten, UI-Copy und Doku** möglichst **nicht** den langen Gedankenstrich `—` (U+2014) verwenden. Das wirkt schnell nach generierter KI-Prosa.
+
+Dasselbe gilt weitgehend für den halbbreiten Gedankenstrich `–` (U+2013) als Satz- oder Listen-Trenner.
+
+### Stattdessen (klassisch)
+
+| Situation | Besser |
+| --- | --- |
+| Titel / Untertitel | Doppelpunkt: `hautuu: thematische Website` |
+| Einschub / Erklärung | Komma, Klammern oder eigener Satz |
+| Listen-Label | Doppelpunkt nach dem Label: `**Artikel:** …` |
+| Gegensatz / Spanne | `bis`, `oder`, `bzw.`, Komma |
+| Abbruch / Pause | Punkt und neuer Satz |
+
+### Seltene Ausnahmen
+
+Nur wenn es wirklich nötig ist (z. B. gesetzliche Zitate, feststehende Schreibweisen) und kein klarer Ersatz passt. Im Zweifel weglassen.
+
+### Beispiele
+
+```markdown
+<!-- Vermeiden -->
+hautuu — thematische Website mit Cursor.
+**[Artikel](/artikel/)** — Beiträge und How-tos.
+
+<!-- Bevorzugen -->
+hautuu: thematische Website mit Cursor.
+**[Artikel](/artikel/):** Beiträge und How-tos.
+```
+
+Beim Überarbeiten bestehender Texte Gedankenstriche mitentfernen, wenn der Satz dadurch natürlicher wird.

@@ -1,6 +1,6 @@
 ---
 title: Glossar
-description: 'TODO: bitte ausfüllen'
+description: Kurze Erklärungen zu Begriffen rund um hautuu und den Stack.
 status: published
 publishDate: 2026-10-04
 backgroundImage: /assets/pavel-marianov-8nAb6Rt4CEs-unsplash.webp
@@ -20,6 +20,6 @@ seo:
   max_image_preview: large
 ---
 
-TODO: etwas text
+Kurze Erklärungen zu Begriffen rund um hautuu: Astro, GitHub, Cloudflare und Co.
 
-TODO: glossar listing, ähnlich wie bei artikeln
+{{glossar-listing count="0" sort="title-asc" layout="grid" columns="3" gap="1.5"}}
