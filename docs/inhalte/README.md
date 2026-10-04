@@ -48,9 +48,9 @@ Entscheidung: **Variante B — neben dem Content** (nicht `public/media`).
 
 Fachbegriffe werden im Glossar erklärt und können aus Artikeln verlinkt werden. Ziel: Einsteiger verstehen die Sprache von GitHub, Cloudflare, Astro usw. — sowohl auf der Website als auch in dieser Doku (siehe [Glossar der Doku](../glossar.md)).
 
-## Tags
+## Tags (`tags`)
 
-Tags gruppieren Artikel. Ein Artikel kann mehrere Tags haben.
+Umgesetzt (#5): Collection unter `src/content/tags/<slug>.md` (Name + optionale Beschreibung). Artikel referenzieren Tags per Relation. Details: [Collections — tags](../sveltia/collections.md#collection-tags-umgesetzt).
 
 ## Redaktioneller Ablauf (Entwurf)
 

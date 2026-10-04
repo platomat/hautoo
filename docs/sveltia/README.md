@@ -43,6 +43,6 @@ Verwandt: [CMS Fields (DRY)](../cms-fields/README.md), [Inhalte](../inhalte/READ
 
 ## Noch auszuarbeiten
 
-- Collections #4–#6 (bei `articles`: Image-Widget + Astro `image()` laut [Variante B](./medien-variante-b.md))
+- Collection #4 `articles` (Image-Widget + Astro `image()` laut [Variante B](./medien-variante-b.md)); #6 `glossar`
 - Erste echte Bild-Pipeline in Templates (`<Image />`)
 - Worker optional live schalten (`base_url` in `config.yml`, wenn OAuth gewünscht)

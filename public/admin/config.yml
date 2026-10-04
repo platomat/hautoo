@@ -244,10 +244,23 @@ collections:
                   hint: "Optional am <a>-Link. Mehrere Klassen mit Leerzeichen.",
                 }
 
-  # Later collections inject the same SEO block with: - *field_seo
-  # Example:
-  # - name: articles
-  #   fields:
-  #     - { name: title, label: Titel, widget: string }
-  #     - *field_seo
-  #     - { name: body, label: Inhalt, widget: markdown }
+  - name: tags
+    label: Tags
+    label_singular: Tag
+    folder: src/content/tags
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{title}}"
+    hint: "Schlagworte für Artikel. Dateiname = Slug."
+    fields:
+      - { name: title, label: Name, widget: string }
+      - {
+          name: description,
+          label: Beschreibung,
+          widget: text,
+          required: false,
+        }
+
+  # Later: articles, glossar — inject SEO with: - *field_seo

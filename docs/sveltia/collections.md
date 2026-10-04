@@ -8,8 +8,8 @@ Zurück zur [Sveltia-Übersicht](./README.md). Shared Field-Partials: [CMS Field
 | --- | --- | --- |
 | Seiten | `pages` | umgesetzt (#3) |
 | Menüs | `menus` | umgesetzt (#13) |
+| Tags | `tags` | umgesetzt (#5) |
 | Artikel | `articles` | geplant (#4) |
-| Tags | `tags` | geplant (#5) |
 | Glossar | `glossar` | geplant (#6) |
 
 ## Collection `menus` (umgesetzt)
@@ -69,6 +69,23 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 
 Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarchie kommt aus `parent` (Kette möglich). Beispiel: `beispiel-unterseite` mit `parent: ueber-uns` → `/ueber-uns/beispiel-unterseite/`.
 
+## Collection `tags` (umgesetzt)
+
+| | |
+| --- | --- |
+| Ordner | `src/content/tags/<slug>.md` |
+| Schema | `src/content.config.ts` |
+| Sveltia | Collection `tags` |
+| Nutzung | Relation von `articles` |
+
+### Felder
+
+| Feld | Pflicht | Bedeutung |
+| --- | --- | --- |
+| `title` | ja | Anzeigename |
+| `description` | nein | Kurze Erklärung |
+| Dateiname | — | Slug (z. B. `astro.md` → `astro`) |
+
 ## Erwartete Felder (weitere Collections)
 
 ### articles
@@ -85,7 +102,3 @@ Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarch
 - Begriff
 - Kurzdefinition
 - Optional längere Erklärung / Links zu Artikeln
-
-### tags
-
-- Name, Slug, optionale Beschreibung

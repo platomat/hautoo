@@ -23,7 +23,7 @@ Dieses Projekt ist **öffentlich** und richtet sich an deutschsprachige Nutzerin
 
 ## Namensgebung
 
-- Collections (Sveltia): `pages`, `menus`, `articles`, `tags`, `glossar`
+- Collections (Sveltia): `pages`, `menus`, `tags`, `articles`, `glossar`
 - Öffentliche Domain: `hautoo.storyofai.net`
 - Repo-Name: `hautuu` (GitHub)
 
