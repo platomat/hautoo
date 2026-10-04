@@ -13,7 +13,7 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 | Rolle | Schrift | Schnitt | Stärke (`font-weight`) |
 | --- | --- | --- | --- |
 | Fließtext | **Ubuntu** | Light | **300** |
-| Überschriften (`h1`–`h6`) | **Ubuntu** | Medium | **500** |
+| Überschriften (`h1`–`h6`) | **Ubuntu** | Bold | **700** |
 
 - `font-family`: `'Ubuntu', system-ui, sans-serif`
 - Keine zweite Display-Schrift — eine Familie für alles
