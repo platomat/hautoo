@@ -81,10 +81,11 @@ Im CMS über die Markdown-Toolbar einfügen (wie Bilder):
 | CMS-Block | Gespeicherter Marker | Optionen |
 | --- | --- | --- |
 | **Artikel-Listing** | `{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25"}}` | Anzahl (`0` = alle), Sortierung (`newest` / `oldest` / `title-asc` / `title-desc`), Layout (`grid` / `list`), Spalten 1–4 (nur Grid), Abstand in rem |
+| **Glossar-Listing** | `{{glossar-listing count="0" sort="title-asc" layout="list" columns="2" gap="1.5"}}` | Anzahl (`0` = alle), Sortierung (`title-asc` / `title-desc` / `newest` / `oldest`), Layout (`list` / `grid`), Spalten 1–4 (nur Grid), Abstand in rem |
 | **Tagwolke** | `{{tag-cloud}}` | — |
 | **Trennlinie** | `{{separator height="1" width="100"}}` | Höhe in px (Default 1), Breite in % (Default 100), zentriert, Abstand oben/unten |
 | **Kontakt-E-Mail** | `{{contact-email}}` | Adresse aus Build-Variable `CONTACT_EMAIL` (nicht im Markdown speichern) |
 
-Registrierung: `public/admin/editor-components.js`. Rendering: `ArticleListing.astro` / `TagCloud.astro` / `Separator.astro` / `ContactEmail.astro`.
+Registrierung: `public/admin/editor-components.js`. Rendering: `ArticleListing.astro` / `GlossarListing.astro` / `TagCloud.astro` / `Separator.astro` / `ContactEmail.astro`.
 
 **Externe Links** im Markdown-Inhalt (Seiten, Artikel, Glossar, Embed-Markdown) öffnen in einem neuen Tab (`target="_blank"` + `rel="noopener noreferrer"`). Intern (`/…`, Anker, gleiche Domain) bleiben im selben Tab. Plugin: `src/lib/hast-external-links.ts`.

@@ -1,0 +1,147 @@
+---
+import {
+	getGlossarEntries,
+	getGlossarHref,
+	type GlossarSort,
+} from "../lib/glossar";
+
+interface Props {
+	count?: number;
+	sort?: GlossarSort;
+	layout?: "grid" | "list";
+	columns?: number;
+	/** Gap between items, in rem. */
+	gap?: number;
+}
+
+const {
+	count = 0,
+	sort = "title-asc",
+	layout = "list",
+	columns = 2,
+	gap = 1.5,
+} = Astro.props;
+
+/** `count === 0` → all public entries. */
+const entries = await getGlossarEntries({
+	sort,
+	limit: count === 0 ? undefined : count,
+});
+const col = Math.min(4, Math.max(1, columns));
+const gapRem = Math.min(8, Math.max(0, gap));
+---
+
+{
+	entries.length === 0 ? (
+		<p>Noch keine Glossar-Einträge.</p>
+	) : (
+		<section
+			class:list={[
+				"glossar-listing",
+				layout === "list" ? "glossar-listing--list" : "glossar-listing--grid",
+			]}
+			style={`--glossar-listing-cols: ${col}; --glossar-listing-gap: ${gapRem}rem`}
+			aria-label="Glossar"
+		>
+			<ul class="glossar-listing__list list-plain">
+				{entries.map((entry) => (
+					<li class="glossar-listing__item">
+						<a class="glossar-listing__link" href={getGlossarHref(entry)}>
+							<h2 class="glossar-listing__title">{entry.data.title}</h2>
+							<p class="glossar-listing__definition text-sm text-muted">
+								{entry.data.definition}
+							</p>
+						</a>
+					</li>
+				))}
+			</ul>
+		</section>
+	)
+}
+
+<style>
+	.glossar-listing {
+		margin: 2rem 0;
+	}
+
+	.glossar-listing__list {
+		margin: 0;
+		padding: 0;
+	}
+
+	.glossar-listing--grid .glossar-listing__list {
+		display: grid;
+		grid-template-columns: repeat(var(--glossar-listing-cols, 2), minmax(0, 1fr));
+		gap: var(--glossar-listing-gap, 1.25rem);
+	}
+
+	.glossar-listing--list .glossar-listing__list {
+		display: flex;
+		flex-direction: column;
+		gap: var(--glossar-listing-gap, 1.5rem);
+	}
+
+	.glossar-listing--grid .glossar-listing__item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		padding: 1.1rem 1.15rem;
+		background: var(--color-surface-glass);
+		border: 1px solid var(--color-border);
+		border-radius: 6px;
+		min-width: 0;
+		-webkit-backdrop-filter: blur(8px);
+		backdrop-filter: blur(8px);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.glossar-listing--grid .glossar-listing__item {
+			-webkit-backdrop-filter: none;
+			backdrop-filter: none;
+		}
+	}
+
+	.glossar-listing__link {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: inherit;
+		text-decoration: none;
+		flex: 1 1 auto;
+	}
+
+	.glossar-listing__link:hover .glossar-listing__title {
+		color: var(--color-action);
+	}
+
+	.glossar-listing__title {
+		margin: 0;
+		font-size: 1.1rem;
+		font-weight: var(--font-weight-heading);
+		line-height: 1.3;
+		color: var(--color-text);
+	}
+
+	.glossar-listing--list .glossar-listing__title {
+		font-size: 1.125rem;
+	}
+
+	.glossar-listing__definition {
+		margin: 0;
+	}
+
+	@media (max-width: 1023px) {
+		.glossar-listing--grid .glossar-listing__list {
+			grid-template-columns: repeat(
+				min(2, var(--glossar-listing-cols, 2)),
+				minmax(0, 1fr)
+			);
+		}
+	}
+
+	@media (max-width: 679px) {
+		.glossar-listing--grid .glossar-listing__list {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

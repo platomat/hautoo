@@ -1,6 +1,7 @@
 ---
 import ArticleListing from "./ArticleListing.astro";
 import ContactEmail from "./ContactEmail.astro";
+import GlossarListing from "./GlossarListing.astro";
 import Separator from "./Separator.astro";
 import TagCloud from "./TagCloud.astro";
 import { buildContentSegments } from "../lib/content-embeds";
@@ -21,6 +22,17 @@ const segments = await buildContentSegments(body);
 		if (segment.type === "article-listing") {
 			return (
 				<ArticleListing
+					count={segment.props.count}
+					sort={segment.props.sort}
+					layout={segment.props.layout}
+					columns={segment.props.columns}
+					gap={segment.props.gap}
+				/>
+			);
+		}
+		if (segment.type === "glossar-listing") {
+			return (
+				<GlossarListing
 					count={segment.props.count}
 					sort={segment.props.sort}
 					layout={segment.props.layout}

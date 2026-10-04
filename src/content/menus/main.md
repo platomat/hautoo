@@ -2,12 +2,12 @@
 title: Hauptmenü
 modifiedDate: 2026-10-04
 items:
-  - label: Start
-    linkType: page
-    page: index
   - label: Artikel
     linkType: page
     page: artikel
+  - label: Glossar
+    linkType: page
+    page: glossar
   - label: Über uns
     linkType: page
     page: ueber-uns

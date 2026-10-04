@@ -217,11 +217,12 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Blöcke „Artikel-Listing“, „Tagwolke“, „Trennlinie“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tagwolke“, „Trennlinie“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
         editor_components:
           - image
           - code-block
           - article-listing
+          - glossar-listing
           - tag-cloud
           - contact-email
           - separator
@@ -411,11 +412,12 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Blöcke „Artikel-Listing“, „Tagwolke“, „Trennlinie“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tagwolke“, „Trennlinie“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
         editor_components:
           - image
           - code-block
           - article-listing
+          - glossar-listing
           - tag-cloud
           - contact-email
           - separator

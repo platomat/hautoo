@@ -1,5 +1,6 @@
 import { createSatteriMarkdownProcessor } from "@astrojs/markdown-satteri";
 import type { ArticleSort } from "./articles";
+import type { GlossarSort } from "./glossar";
 import { hastExternalLinks } from "./hast-external-links";
 
 export type ArticleListingEmbedProps = {
@@ -8,6 +9,14 @@ export type ArticleListingEmbedProps = {
 	layout: "grid" | "list";
 	columns: number;
 	/** Gap between items, in rem. */
+	gap: number;
+};
+
+export type GlossarListingEmbedProps = {
+	count: number;
+	sort: GlossarSort;
+	layout: "grid" | "list";
+	columns: number;
 	gap: number;
 };
 
@@ -21,6 +30,7 @@ export type SeparatorEmbedProps = {
 export type ContentSegment =
 	| { type: "html"; html: string }
 	| { type: "article-listing"; props: ArticleListingEmbedProps }
+	| { type: "glossar-listing"; props: GlossarListingEmbedProps }
 	| { type: "tag-cloud" }
 	| { type: "separator"; props: SeparatorEmbedProps }
 	| { type: "contact-email" };
@@ -33,20 +43,35 @@ const DEFAULT_LISTING: ArticleListingEmbedProps = {
 	gap: 1.25,
 };
 
+const DEFAULT_GLOSSAR_LISTING: GlossarListingEmbedProps = {
+	count: 0,
+	sort: "title-asc",
+	layout: "list",
+	columns: 2,
+	gap: 1.5,
+};
+
 const DEFAULT_SEPARATOR: SeparatorEmbedProps = {
 	height: 1,
 	width: 100,
 };
 
-/** Line must be only the embed (optional attrs for article-listing). */
+/** Line must be only the embed (optional attrs). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|tag-cloud|separator|contact-email)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|glossar-listing|tag-cloud|separator|contact-email)(?<attrs>[^}]*)\}\}\s*$/gm;
 
-const SORTS = new Set<ArticleSort>([
+const ARTICLE_SORTS = new Set<ArticleSort>([
 	"newest",
 	"oldest",
 	"title-asc",
 	"title-desc",
+]);
+
+const GLOSSAR_SORTS = new Set<GlossarSort>([
+	"title-asc",
+	"title-desc",
+	"newest",
+	"oldest",
 ]);
 
 let markdownProcessor: Awaited<
@@ -73,6 +98,18 @@ export function hasArticleListingEmbed(body: string | undefined): boolean {
 		return false;
 	}
 	return /\{\{article-listing\b/.test(body);
+}
+
+export function hasGlossarListingEmbed(body: string | undefined): boolean {
+	if (!body) {
+		return false;
+	}
+	return /\{\{glossar-listing\b/.test(body);
+}
+
+/** Wide content column for card/list embeds. */
+export function hasWideListingEmbed(body: string | undefined): boolean {
+	return hasArticleListingEmbed(body) || hasGlossarListingEmbed(body);
 }
 
 function parseAttrs(raw: string): Record<string, string> {
@@ -114,7 +151,7 @@ export function parseArticleListingProps(
 	attrsRaw: string | undefined,
 ): ArticleListingEmbedProps {
 	const attrs = parseAttrs(attrsRaw ?? "");
-	const sort = SORTS.has(attrs.sort as ArticleSort)
+	const sort = ARTICLE_SORTS.has(attrs.sort as ArticleSort)
 		? (attrs.sort as ArticleSort)
 		: DEFAULT_LISTING.sort;
 	const layout = attrs.layout === "list" ? "list" : "grid";
@@ -125,6 +162,24 @@ export function parseArticleListingProps(
 		layout,
 		columns: clampInt(attrs.columns, DEFAULT_LISTING.columns, 1, 4),
 		gap: clampRem(attrs.gap, DEFAULT_LISTING.gap, 0, 8),
+	};
+}
+
+export function parseGlossarListingProps(
+	attrsRaw: string | undefined,
+): GlossarListingEmbedProps {
+	const attrs = parseAttrs(attrsRaw ?? "");
+	const sort = GLOSSAR_SORTS.has(attrs.sort as GlossarSort)
+		? (attrs.sort as GlossarSort)
+		: DEFAULT_GLOSSAR_LISTING.sort;
+	const layout = attrs.layout === "grid" ? "grid" : "list";
+	return {
+		/** `0` = all public entries (no limit). */
+		count: clampInt(attrs.count, DEFAULT_GLOSSAR_LISTING.count, 0, 48),
+		sort,
+		layout,
+		columns: clampInt(attrs.columns, DEFAULT_GLOSSAR_LISTING.columns, 1, 4),
+		gap: clampRem(attrs.gap, DEFAULT_GLOSSAR_LISTING.gap, 0, 8),
 	};
 }
 
@@ -184,6 +239,11 @@ export async function buildContentSegments(
 			segments.push({
 				type: "article-listing",
 				props: parseArticleListingProps(attrs),
+			});
+		} else if (name === "glossar-listing") {
+			segments.push({
+				type: "glossar-listing",
+				props: parseGlossarListingProps(attrs),
 			});
 		}
 

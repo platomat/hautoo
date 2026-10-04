@@ -6,8 +6,8 @@ import PageHero from "../components/PageHero.astro";
 import TagSidebar from "../components/TagSidebar.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
-	hasArticleListingEmbed,
 	hasContentEmbeds,
+	hasWideListingEmbed,
 } from "../lib/content-embeds";
 import { resolveCmsImage } from "../lib/cms-image";
 import { getPageHref, getPublicPages, indexPagesById } from "../lib/pages";
@@ -39,7 +39,7 @@ const backgroundImage = resolveCmsImage(
 const showBackgroundAttributions = page.id === "impressum";
 /** Artikel overview keeps Tag-Sidebar; listing comes from CMS embed. */
 const showArticleSidebar = page.id === "artikel";
-const wide = showArticleSidebar || hasArticleListingEmbed(page.body);
+const wide = showArticleSidebar || hasWideListingEmbed(page.body);
 ---
 
 <BaseLayout
