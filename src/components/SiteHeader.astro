@@ -1,5 +1,6 @@
 ---
 import LogoMark from "./LogoMark.astro";
+import SiteSearch from "./SiteSearch.astro";
 import { getResolvedMenu, MENU_MAIN } from "../lib/menus";
 import { getPublicPages } from "../lib/pages";
 
@@ -19,20 +20,6 @@ function isCurrent(href: string): boolean {
 			<LogoMark class="site-header__logo-mark" />
 			<span class="site-header__logo-text">hautuu</span>
 		</a>
-		<button
-			type="button"
-			class="site-nav-toggle"
-			data-nav-toggle
-			aria-expanded="false"
-			aria-controls="site-nav"
-			aria-label="Menü öffnen"
-		>
-			<span class="site-nav-toggle__bars" aria-hidden="true">
-				<span class="site-nav-toggle__bar"></span>
-				<span class="site-nav-toggle__bar"></span>
-				<span class="site-nav-toggle__bar"></span>
-			</span>
-		</button>
 		<nav id="site-nav" class="site-nav" data-site-nav aria-label="Hauptnavigation">
 			<ul class="site-nav__list list-plain">
 				{
@@ -104,6 +91,23 @@ function isCurrent(href: string): boolean {
 				}
 			</ul>
 		</nav>
+		<div class="site-header__actions">
+			<SiteSearch />
+			<button
+				type="button"
+				class="site-nav-toggle"
+				data-nav-toggle
+				aria-expanded="false"
+				aria-controls="site-nav"
+				aria-label="Menü öffnen"
+			>
+				<span class="site-nav-toggle__bars" aria-hidden="true">
+					<span class="site-nav-toggle__bar"></span>
+					<span class="site-nav-toggle__bar"></span>
+					<span class="site-nav-toggle__bar"></span>
+				</span>
+			</button>
+		</div>
 	</div>
 </header>
 
@@ -147,6 +151,13 @@ function isCurrent(href: string): boolean {
 
 	.site-header__brand:hover {
 		color: var(--color-action-hover);
+	}
+
+	.site-header__actions {
+		display: flex;
+		align-items: center;
+		gap: 0.15rem;
+		flex-shrink: 0;
 	}
 
 	.site-nav-toggle {
@@ -373,9 +384,12 @@ function isCurrent(href: string): boolean {
 			border-bottom: 1px solid var(--color-border);
 		}
 
+		.site-header__actions {
+			margin-inline-start: auto;
+		}
+
 		.site-nav-toggle {
 			display: inline-flex;
-			margin-inline-start: auto;
 			flex-shrink: 0;
 		}
 
