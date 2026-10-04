@@ -39,6 +39,8 @@ output:
 
 # Optional TOC after hero (pages, articles)
 # - *field_show_toc
+# - *field_toc_levels
+# - *field_toc_title
 
 collections:
 
@@ -121,7 +123,26 @@ collections:
         widget: boolean
         default: false
         required: false
-        hint: "Wenn aktiv: nach dem Hero ein Inhaltsverzeichnis aus h2/h3-Überschriften im Inhalt."
+        hint: "Wenn aktiv: nach dem Hero ein Inhaltsverzeichnis anzeigen."
+      - &field_toc_levels
+        name: tocLevels
+        label: TOC-Ebenen
+        widget: select
+        multiple: true
+        options:
+          - { label: h2, value: h2 }
+          - { label: h3, value: h3 }
+          - { label: h4, value: h4 }
+        default: [h2]
+        required: false
+        hint: "Welche Überschriften ins Verzeichnis. Standard: nur h2."
+      - &field_toc_title
+        name: tocTitle
+        label: TOC-Titel
+        widget: string
+        default: Inhalt
+        required: false
+        hint: "Überschrift über dem Verzeichnis. Leer = „Inhalt“."
       - &field_seo
         label: SEO
         name: seo
@@ -322,6 +343,8 @@ collections:
           hint: "YouTube-/Vimeo-ID oder URL.",
         }
       - *field_show_toc
+      - *field_toc_levels
+      - *field_toc_title
       - *field_seo
       - name: body
         label: Inhalt

@@ -63,7 +63,13 @@ const showToc = article.data.showToc === true;
 				</time>
 			</p>
 			<PageHero title={article.data.title} description={article.data.summary} />
-			{showToc && <TableOfContents body={article.body} />}
+			{showToc && (
+				<TableOfContents
+					body={article.body}
+					levels={article.data.tocLevels}
+					title={article.data.tocTitle}
+				/>
+			)}
 			{
 				linkedTags.length > 0 && (
 					<ul class="article-tags list-plain flex-row flex-wrap gap-md text-sm">

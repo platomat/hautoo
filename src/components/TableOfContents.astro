@@ -1,21 +1,30 @@
 ---
-import { extractTocEntries, type TocEntry } from "../lib/toc";
+import {
+	extractTocEntries,
+	resolveTocTitle,
+	type TocEntry,
+} from "../lib/toc";
 
 interface Props {
 	body: string | undefined;
+	/** Heading levels to include, e.g. `["h2"]` or `["h2","h3"]`. Default h2. */
+	levels?: string[] | null;
+	/** Heading above the list. Default „Inhalt“. */
+	title?: string | null;
 	/** Optional override when entries were precomputed. */
 	entries?: TocEntry[];
 }
 
-const { body, entries: entriesProp } = Astro.props;
-const entries = entriesProp ?? extractTocEntries(body);
+const { body, levels, title, entries: entriesProp } = Astro.props;
+const entries = entriesProp ?? extractTocEntries(body, levels);
+const heading = resolveTocTitle(title);
 ---
 
 {
 	entries.length > 0 && (
 		<nav class="toc" aria-labelledby="toc-heading">
 			<h2 id="toc-heading" class="toc__title text-sm">
-				Inhalt
+				{heading}
 			</h2>
 			<ol class="toc__list list-plain">
 				{entries.map((entry) => (
@@ -23,6 +32,7 @@ const entries = entriesProp ?? extractTocEntries(body);
 						class:list={[
 							"toc__item",
 							entry.depth === 3 && "toc__item--h3",
+							entry.depth === 4 && "toc__item--h4",
 						]}
 					>
 						<a href={`#${entry.id}`}>{entry.text}</a>
@@ -64,6 +74,11 @@ const entries = entriesProp ?? extractTocEntries(body);
 	.toc__item--h3 {
 		padding-inline-start: 1rem;
 		font-size: 0.95rem;
+	}
+
+	.toc__item--h4 {
+		padding-inline-start: 1.75rem;
+		font-size: 0.9rem;
 	}
 
 	.toc__item a {

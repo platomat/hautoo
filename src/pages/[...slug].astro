@@ -70,7 +70,13 @@ const showToc = page.data.showToc === true;
 								title={page.data.title}
 								description={page.data.description}
 							/>
-							{showToc && <TableOfContents body={page.body} />}
+							{showToc && (
+								<TableOfContents
+									body={page.body}
+									levels={page.data.tocLevels}
+									title={page.data.tocTitle}
+								/>
+							)}
 							{useEmbeds ? <CmsContent body={page.body} /> : <Content />}
 						</article>
 					</div>
@@ -82,7 +88,13 @@ const showToc = page.data.showToc === true;
 						title={page.data.title}
 						description={page.data.description}
 					/>
-					{showToc && <TableOfContents body={page.body} />}
+					{showToc && (
+						<TableOfContents
+							body={page.body}
+							levels={page.data.tocLevels}
+							title={page.data.tocTitle}
+						/>
+					)}
 					{useEmbeds ? <CmsContent body={page.body} /> : <Content />}
 					{showBackgroundAttributions && <BackgroundAttributions />}
 				</article>

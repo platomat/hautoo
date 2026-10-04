@@ -38,6 +38,10 @@ const pages = defineCollection({
 		seo: seoSchema.optional(),
 		/** Show heading TOC after the page hero (default off). */
 		showToc: z.boolean().default(false),
+		/** Which heading levels appear in the TOC (default h2 only). */
+		tocLevels: z.array(z.enum(["h2", "h3", "h4"])).default(["h2"]),
+		/** TOC heading label (default „Inhalt”). */
+		tocTitle: z.string().default("Inhalt"),
 		/** Raw HTML/JS/CSS injected before `</head>` (trusted CMS editors). */
 		headCode: z.string().optional(),
 		/** Raw HTML/JS/CSS injected before `</body>` (trusted CMS editors). */
@@ -81,6 +85,10 @@ const articles = defineCollection({
 			seo: seoSchema.optional(),
 			/** Show heading TOC after the page hero (default off). */
 			showToc: z.boolean().default(false),
+			/** Which heading levels appear in the TOC (default h2 only). */
+			tocLevels: z.array(z.enum(["h2", "h3", "h4"])).default(["h2"]),
+			/** TOC heading label (default „Inhalt”). */
+			tocTitle: z.string().default("Inhalt"),
 		}),
 });
 
