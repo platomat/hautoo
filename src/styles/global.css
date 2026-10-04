@@ -105,9 +105,11 @@ body.has-page-bg .site-nav__sub {
 }
 
 @media (max-width: 679px) {
+	/* Mobile panel must stay readable over page BG (glass alone is too thin). */
 	body.has-page-bg .site-nav {
-		backdrop-filter: blur(10px);
-		-webkit-backdrop-filter: blur(10px);
+		background: var(--color-surface);
+		backdrop-filter: none;
+		-webkit-backdrop-filter: none;
 	}
 }
 
