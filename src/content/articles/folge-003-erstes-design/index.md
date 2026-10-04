@@ -14,7 +14,7 @@ seo:
   follow_visibility: follow
 ---
 
-Jetzt wird’s hübsch. **Design** heißt hier: Dateien und Regeln, die der Agent pflegt, und du siehst das mit `npm run dev` quasi live mit.
+Jetzt wird’s hübsch. **Design** heißt hier: Dateien und Regeln, die der Agent pflegt, und du siehst das mit [`npm run dev`](/glossar/npm/) quasi live mit.
 
 ## Ubuntu einbinden (ohne Font-Drama)
 
@@ -37,9 +37,9 @@ Baut der Agent während der Server läuft, kann die Vorschau hüpfen — kurz st
 
 Schreib sie in Doku und `.cursor/rules`:
 
-1. **Niemals von allein pushen.** Commits lokal sind okay. Push nur auf Anweisung, sonst baut Cloudflare einen Zwischenstand live.
+1. **Niemals von allein pushen.** Commits lokal sind okay. [**Push**](/glossar/push/) nur auf Anweisung, sonst baut [**Cloudflare**](/glossar/cloudflare-pages/) einen Zwischenstand live.
 2. **CSS nicht jedes Mal neu erfinden**: bestehende Klassen und Tokens nutzen.
-3. **Page Speed:** Wichtiges CSS früh (**critical**. Menü, Kopf der Seite); Rest später (**non-critical**), sonst springt das Layout und Google schmunzelt nicht.
+3. **Page Speed:** Wichtiges [**CSS**](/glossar/css/) früh (critical: Menü, Kopf der Seite); Rest später (non-critical), sonst springt das Layout und Google schmunzelt nicht.
 
 ## Seiten, Menü, Footer
 

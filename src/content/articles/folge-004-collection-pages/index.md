@@ -13,7 +13,7 @@ seo:
   follow_visibility: follow
 ---
 
-Keine Datenbank, kein WordPress-Monster: **Pages** sind normale Markdown-Dateien unter `src/content/pages/`. **Collections** sind die Typen. „Pages“, „Articles“, später mehr.
+Keine Datenbank, kein WordPress-Monster: **Pages** sind normale Markdown-Dateien unter `src/content/pages/`. [**Collections**](/glossar/collection/) sind die Typen. „Pages“, „Articles“, später mehr.
 
 ## Was `config.yml` macht
 
@@ -27,8 +27,8 @@ Früher hing das Menü an jeder Seite, bei hautuu gibt’s eine eigene **menus**
 
 `src/content/pages/index/index.md` = Startseite.
 
-- Oben **Frontmatter** = ausgefüllte Felder.
-- Darunter **Body** = Markdown.
+- Oben [**Frontmatter**](/glossar/frontmatter/) = ausgefüllte Felder.
+- Darunter **Body** = [**Markdown**](/glossar/markdown/).
 
 Du speicherst → Datei ändert sich → beim Build wird HTML. In der IDE-**Preview** siehst du ungefähr, was GitHub auch rendert.
 
@@ -49,6 +49,6 @@ Backlog-Idee aus dem Video: optionales **Inhaltsverzeichnis** oben bei langen Te
 
 ## Editor heute, CMS morgen
 
-Jetzt tippst du Markdown oder lässt Cursor schreiben, später **Sveltia** unter `/admin/`. Gleiche Felder, gleiche Dateien, gleiche Git-**History**.
+Jetzt tippst du Markdown oder lässt Cursor schreiben, später [**Sveltia**](/glossar/sveltia/) unter `/admin/`. Gleiche Felder, gleiche Dateien, gleiche Git-**History**.
 
 <!-- Quelle: 2026-10-03--23-00-06--obs-screencast - hautoo - collection-pages.txt -->

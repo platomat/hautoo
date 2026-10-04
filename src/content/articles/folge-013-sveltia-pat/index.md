@@ -13,7 +13,7 @@ seo:
   follow_visibility: follow
 ---
 
-**CMS** = Content-Management, bei hautuu **Sveltia**: Redaktion im Browser, Inhalt landet als Dateien in Git. Keine WordPress-Datenbank.
+[**CMS**](/glossar/cms/) = Content-Management, bei hautuu **Sveltia**: Redaktion im Browser, Inhalt landet als Dateien in Git. Keine WordPress-Datenbank.
 
 ## Lokal: `/admin` ohne Login
 
@@ -31,7 +31,7 @@ Speichern = Datei lokal geändert, noch **nicht** live.
 
 ### Variante A: Personal Access Token (PAT)
 
-Ein **PAT** ist ein persönlicher **Zugangsschlüssel** für GitHub:
+Ein [**PAT**](/glossar/pat/) ist ein persönlicher **Zugangsschlüssel** für GitHub:
 
 1. GitHub → **Settings** → **Developer settings** → **Personal access tokens** (fine-grained).
 2. Beschreibung z. B. „Sveltia CMS hautuu“.
@@ -39,7 +39,7 @@ Ein **PAT** ist ein persönlicher **Zugangsschlüssel** für GitHub:
 4. Ablauf setzen (z. B. 90 Tage). Schlüssel rotieren.
 5. Token **einmal** kopieren — danach unsichtbar. Weg = neuen erstellen.
 
-In Sveltia: Token einfügen → **Sign in**. Speichern → **Commit** auf GitHub → Cloudflare baut (`main`).
+In Sveltia: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar/commit/) auf GitHub → Cloudflare baut (`main`).
 
 **Token = Passwort.** Nicht ins Repo, nicht im Video zeigen.
 
@@ -49,6 +49,6 @@ Beispiel: Beispiel-Unterseite im Menü sichtbar → Commit „Update page …“
 
 ## Variante B
 
-**Sign in with GitHub** ohne PAT, braucht einen **Cloudflare Worker** als Brücke. Eigenes Thema, gleiche Idee: weniger Copy-Paste mit Tokens.
+**Sign in with GitHub** ohne PAT, braucht einen [**Cloudflare Worker**](/glossar/cloudflare-worker/) als Brücke. Eigenes Thema, gleiche Idee: weniger Copy-Paste mit Tokens.
 
 <!-- Quelle: 2026-10-04--01-09-23--obs-screencast - hautoo - sveltia - variante PAT.txt -->

@@ -15,7 +15,7 @@ Ein Chat für alles wird schnell Matsch.
 
 ## Inspector und Fixer
 
-Gleicher Trick wie mit zwei Spezial-Agenten in einer VM, nur in Cursor:
+Gleicher Trick wie mit zwei Spezial-Agenten in einer VM, nur in [**Cursor**](/glossar/cursor/):
 
 1. **Chat A:** „Deine Rolle: penibel Fehler und Sicherheitslücken suchen.“
 2. **Chat B:** „Deine Rolle: gefundenes sauber und minimal fixen.“

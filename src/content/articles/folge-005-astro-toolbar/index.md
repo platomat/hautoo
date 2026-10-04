@@ -17,7 +17,7 @@ Kurze Folge, viel Praxis.
 
 ## Die Astro-Dev-Leiste
 
-Mit `npm run dev` klebt oft die **Astro-Dev-Toolbar** am Rand, nur bei dir, nicht live. **Astro** ist das Framework, das Markdown und Komponenten zu fertigem HTML backt.
+Mit [`npm run dev`](/glossar/npm/) klebt oft die **Astro-Dev-Toolbar** am Rand, nur bei dir, nicht live. [**Astro**](/glossar/astro/) ist das Framework, das Markdown und Komponenten zu fertigem HTML backt.
 
 Stört sie? Einklappen, oder den Agenten fragen, wie du sie dauerhaft ausblendest. Besucher sehen sie nie.
 
@@ -28,7 +28,7 @@ Im Projekt:
 - **Tablet:** unter 1024 px  
 - **Mobil:** unter 680 px  
 
-Einmal gesagt, gilt’s fürs Menü, den Footer, was auch immer. Test: Entwicklertools, Breite ziehen. 679 px fühlt sich anders an als 680 px.
+Einmal gesagt, gilt’s fürs Menü, den Footer, was auch immer. Test: Entwicklertools, Breite ziehen. Unter [**680 px**](/glossar/breakpoint/) fühlt sich das Layout anders an.
 
 ## Klartext statt Fachchinesisch
 
@@ -36,7 +36,7 @@ Du musst nicht „padding“ sagen. **„Im Footer bitte mehr Abstand links und 
 
 Wenn du’s genau willst:
 
-- **Padding**: Innenabstand.
+- [**Padding**](/glossar/css/): Innenabstand.
 - **Margin**: Abstand nach außen.
 - **Border-Radius**: runde Ecken.
 

@@ -13,7 +13,7 @@ seo:
   follow_visibility: follow
 ---
 
-Cursor ist mehr als Chat, eine **IDE** (Entwicklungsumgebung) mit **Agenten**, die Dateien lesen und schreiben.
+[**Cursor**](/glossar/cursor/) ist mehr als Chat, eine **IDE** (Entwicklungsumgebung) mit **Agenten**, die Dateien lesen und schreiben.
 
 ## Chat-Oberfläche vs. IDE
 
@@ -25,7 +25,7 @@ Du kannst auch einen beliebigen **Ordner ohne Git** öffnen (Fotos, Notizen) und
 
 | Modus | Wofür |
 |--------|--------|
-| **Ask** | Nur fragen. Ideal, wenn nichts am Code geändert werden soll. `Frage:` am Anfang ist ein guter Hinweis. |
+| [**Ask**](/glossar/cursor-modi/) | Nur fragen. Ideal, wenn nichts am Code geändert werden soll. `Frage:` am Anfang ist ein guter Hinweis. |
 | **Agent** | Alles: lesen, schreiben, Terminal, Commits. Der Vollgas-Modus. |
 | **Plan** | Erst Plan mit To-dos, du liest, korrigierst, **dann** Umsetzung im Agent-Modus. |
 
@@ -40,7 +40,7 @@ Aufgabe: mobiles Menü, Icon wird zum Kreuz, animiert.
 1. **Plan:** „Umsetzungsplan, noch nicht bauen.“
 2. Plan lesen, gut, wenn „kein Push ohne Anweisung“ drinsteht.
 3. Feedback: Trennlinien, Abstände oben/unten.
-4. **Agent** baut → `npm run dev` → gucken.
+4. **Agent** baut → [`npm run dev`](/glossar/npm/) → gucken.
 5. Commit, wenn du zufrieden bist.
 
 Mobil greift ab 679 px — Menü nutzt die globalen Design-Tokens.

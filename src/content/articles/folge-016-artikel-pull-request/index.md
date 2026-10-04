@@ -14,22 +14,22 @@ seo:
   follow_visibility: follow
 ---
 
-Der Agent hat über Nacht gearbeitet: Mail von **Cloudflare**, dass ein **Zweig** gebaut wurde (z. B. ein Branch wie `PerseScreencastArticles-e016`, Name variiert). Nicht auf **main** gepusht, sondern eigener Branch mit vielen neuen Artikeln, nachgeschärftem Ton und automatischen **Checks**.
+Der Agent hat über Nacht gearbeitet: Mail von [**Cloudflare**](/glossar/cloudflare-pages/), dass ein **Zweig** gebaut wurde (z. B. ein Branch wie `PerseScreencastArticles-e016`, Name variiert). Nicht auf **main** gepusht, sondern eigener [**Branch**](/glossar/branch/) mit vielen neuen Artikeln, nachgeschärftem Ton und automatischen **Checks**.
 
 ## Pull Request lesen
 
-Auf GitHub siehst du:
+Auf GitHub siehst du den [**Pull Request**](/glossar/pull-request/):
 
 - **Zusammenfassung** mit Titeln, Slugs und Hinweisen auf unklare Transkript-Stellen.
 - **Preview-Link** (derselbe wie in der Build-Mail): die Site, wie sie mit dem Branch aussehen würde.
-- **CI**: z. B. `npm run build` im Workflow. Scheitert der Build, landet nichts Sinnvolles auf main.
+- **CI**: z. B. [`npm run build`](/glossar/build/) im Workflow. Scheitert der Build, landet nichts Sinnvolles auf main.
 - **Konflikt-Check**, falls parallel auf main etwas geändert wurde.
 
 Zwei Commits sind normal: erst Anlegen der Artikel, dann Stil/Ton. Issue-Nummern und PR-Nummern laufen getrennt; eine „fehlende“ Issue-Nummer ist kein Drama.
 
 ## Merge und Live
 
-**Ready for review**, Konflikte prüfen, dann **Merge** (Rebase nur, wenn du weißt, warum). **Cloudflare** baut **main** neu. Lokal: `git pull`, ggf. **Rebase**, wenn du zwischendurch selbst committet hast, dann pushen.
+**Ready for review**, Konflikte prüfen, dann [**Merge**](/glossar/merge/) (Rebase nur, wenn du weißt, warum). **Cloudflare** baut [**main**](/glossar/main/) neu. Lokal: `git pull`, ggf. **Rebase**, wenn du zwischendurch selbst committet hast, dann pushen.
 
 Parallel kannst du Layout anpassen (Hero tiefer, Inhaltsbreite wie auf der Startseite). Die **Artikelübersicht** und Tag-Seiten nutzen die neuen Inhalte.
 

@@ -13,7 +13,7 @@ seo:
   follow_visibility: follow
 ---
 
-Du nimmst den Screencast auf, die **Speech-to-Text**-Software hört mit und liefert Rohtext. Den packst du zusammen mit der Aufnahme in einen Ordner auf deiner **virtuellen Maschine** und gibst dem **Cloud Agent** in Cursor eine klare Aufgabe: aus jedem Video **einen Artikel**, Beispielinhalt weg, Platzhalter fürs spätere Video, alles als **Pull Request**, damit du vor dem Live-Gang drüber schauen kannst.
+Du nimmst den Screencast auf, die **Speech-to-Text**-Software hört mit und liefert Rohtext. Den packst du zusammen mit der Aufnahme in einen Ordner auf deiner **virtuellen Maschine** und gibst dem [**Cloud Agent**](/glossar/cloud-agent/) in Cursor eine klare Aufgabe: aus jedem Video **einen Artikel**, Beispielinhalt weg, Platzhalter fürs spätere Video, alles als [**Pull Request**](/glossar/pull-request/), damit du vor dem Live-Gang drüber schauen kannst.
 
 ## Was die Site schon kann
 
@@ -21,7 +21,7 @@ Zwischen den Sessions ist viel passiert: **Menüs** als Collection, **Artikel** 
 
 ## Agent starten
 
-Zuerst prüfen, ob Cursor **Zugriff auf das Repository** hat. Fehlt der, in den Cursor-Einstellungen nach dem How-To für GitHub/OAuth schauen (ähnlich wie bei privaten Repos und SSH in einer späteren Folge).
+Zuerst prüfen, ob [**Cursor**](/glossar/cursor/) Zugriff auf das [**Repository**](/glossar/repository/) hat. Fehlt der, in den Cursor-Einstellungen nach dem How-To für GitHub/OAuth schauen (ähnlich wie bei privaten Repos und SSH in einer späteren Folge).
 
 Dann die Anweisung: Ordner mit Transkripten anhängen oder benennen, **pro Video ein Artikel**, Beispielartikel löschen, **Video-Platzhalter** im Frontmatter oder Body vorsehen, **kein direkter Push auf main**, sondern Branch und PR.
 

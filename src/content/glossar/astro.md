@@ -2,7 +2,7 @@
 title: Astro
 status: published
 modifiedDate: 2026-10-04
-definition: Framework für schnelle, inhaltsorientierte Websites — oft mit wenig Client-JavaScript.
+definition: Framework für schnelle, inhaltsorientierte Websites, oft mit wenig Client-JavaScript.
 relatedArticles:
   - folge-001-hautuu-intro
 ---

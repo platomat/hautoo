@@ -14,21 +14,21 @@ seo:
   follow_visibility: follow
 ---
 
-Impressum und Datenschutz für einen in **Deutschland** betriebenen Auftritt, gehostet auf **Cloudflare**, mit den Tools aus dem Projekt: das kann der Agent ausformulieren, du prüfst Inhalt und Ton. **Kontakt-E-Mail** gehört nicht als Klartext ins öffentliche Repo.
+Impressum und Datenschutz für einen in **Deutschland** betriebenen Auftritt, gehostet auf [**Cloudflare**](/glossar/cloudflare-pages/), mit den Tools aus dem Projekt: das kann der Agent ausformulieren, du prüfst Inhalt und Ton. **Kontakt-E-Mail** gehört nicht als Klartext ins öffentliche Repo.
 
 ## E-Mail schützen
 
 Öffentliches GitHub bedeutet: jede Adresse im Code ist scrapebar. Stattdessen:
 
-- **Cloudflare Pages** → dein Projekt → **Settings** → **Variables and Secrets**: z. B. `CONTACT_EMAIL` als Secret.
-- **Lokal** dieselbe Variable in `.env` (liegt in `.gitignore`), z. B. `CONTACT_EMAIL=du@example.de`.
-- Build (`npm run build`) und Dev-Server lesen die Variable; die Impressums-Komponente rendert einen `mailto:`-Link ohne die Adresse im Markdown zu committen.
+- Cloudflare Pages → dein Projekt → **Settings** → **Variables and Secrets**: z. B. `CONTACT_EMAIL` als Secret.
+- **Lokal** dieselbe Variable in [`.env`](/glossar/env/) (liegt in `.gitignore`), z. B. `CONTACT_EMAIL=du@example.de`.
+- Build ([`npm run build`](/glossar/build/)) und Dev-Server lesen die Variable; die Impressums-Komponente rendert einen `mailto:`-Link ohne die Adresse im Markdown zu committen.
 
-Kurz: **ENV** = Umgebungsvariablen, getrennt für lokal und Production.
+Kurz: ENV = Umgebungsvariablen, getrennt für lokal und Production.
 
 ## Separator im CMS
 
-Neue **Komponente** im Seiten-/Artikel-Editor: **Trennlinie** mit **Höhe** (1 dezent, 10 kräftig) und **Breite** in Prozent (z. B. 50 % zentriert). Optional später: Farbe aus der Design-Palette, Standard ein dezentes Grau. Einfügen, verschieben, löschen wie bei Bildern.
+Neue [**Komponente**](/glossar/komponente/) im Seiten-/Artikel-Editor des [**CMS**](/glossar/cms/): **Trennlinie** mit **Höhe** (1 dezent, 10 kräftig) und **Breite** in Prozent (z. B. 50 % zentriert). Optional später: Farbe aus der Design-Palette, Standard ein dezentes Grau. Einfügen, verschieben, löschen wie bei Bildern.
 
 ## Artikel-Listing gezielt einsetzen
 
@@ -37,7 +37,7 @@ Statt fest verdrahteter Listen auf der Artikel-Route: Block **Artikel-Listing** 
 - **Startseite:** letzte drei, neueste zuerst, **Grid**, drei Spalten.
 - **Seite „Artikel“:** alle Einträge (`limit` null), neueste oder älteste zuerst, **eine Spalte**, Kartenstil ähnlich Startseite oder Liste ohne Karte.
 
-Im CMS explizit sagen, in welcher **Collection** (Seiten vs. Artikel vs. Glossar) der Block verfügbar sein soll.
+Im CMS explizit sagen, in welcher [**Collection**](/glossar/collection/) (Seiten vs. Artikel vs. Glossar) der Block verfügbar sein soll.
 
 ## Glossar und Bilder
 

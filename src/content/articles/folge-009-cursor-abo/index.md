@@ -22,7 +22,7 @@ KI frisst Rechenzeit. Bei **Cursor** siehst du das unter Account → **Usage**.
 
 ## Cloud Agents vs. lokal
 
-**Cloud Agents** laufen nicht auf deiner CPU. Du startest eine Aufgabe, am Ende oft ein **Pull Request** auf GitHub. Praktisch, aber **deutlich mehr Tokens** als lokal ein kleines Skript laufen lassen.
+[**Cloud Agents**](/glossar/cloud-agent/) laufen nicht auf deiner CPU. Du startest eine Aufgabe, am Ende oft ein [**Pull Request**](/glossar/pull-request/) auf GitHub. Praktisch, aber **deutlich mehr Tokens** als lokal ein kleines Skript laufen lassen.
 
 ## On-Demand: Finger weg, wenn’s geht
 

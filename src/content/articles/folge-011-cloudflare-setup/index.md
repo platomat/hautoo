@@ -13,11 +13,11 @@ seo:
   follow_visibility: follow
 ---
 
-Bisher: lokal und GitHub. Jetzt wird’s öffentlich: **Cloudflare Pages** baut und hostet die fertige Site.
+Bisher: lokal und GitHub. Jetzt wird’s öffentlich: [**Cloudflare Pages**](/glossar/cloudflare-pages/) baut und hostet die fertige Site.
 
 ## Begriffe ohne Panik
 
-- **Workers & Pages** unter „Compute“. **Pages** = statische Sites aus Git, passt zu **Astro**. **Workers** = Extra-Logik am Edge (später z. B. CMS-Login).
+- **Workers & Pages** unter „Compute“. **Pages** = statische Sites aus Git, passt zu **Astro**. [**Workers**](/glossar/cloudflare-worker/) = Extra-Logik am Edge (später z. B. CMS-Login).
 - **R2 / Databases**: für hautuu erst mal egal, aber gut zu wissen.
 - **Ask AI** in Cloudflare. Deutsch geht, hilft bei DNS und Regeln.
 
@@ -27,7 +27,7 @@ Bisher: lokal und GitHub. Jetzt wird’s öffentlich: **Cloudflare Pages** baut 
 Cursor → commit → push → GitHub → Cloudflare Build → Live
 ```
 
-Push auf **`main`** = Production (wenn so eingestellt).
+Push auf **[`main`](/glossar/main/)** = Production (wenn so eingestellt).
 
 ## Projekt anlegen
 
@@ -35,11 +35,11 @@ Push auf **`main`** = Production (wenn so eingestellt).
 2. Repo wählen (z. B. hautuu).
 3. **Production branch:** `main`.
 4. **Framework:** Astro.
-5. **Build command:** `npm run build`
+5. **Build command:** [`npm run build`](/glossar/build/)
 6. **Output:** `dist` (fertiges HTML).
 7. **Save and Deploy**
 
-Erst **Build**, dann **Deploy**. Unter **Deployments** jeder Lauf; Erfolg = `*.pages.dev`-URL.
+Erst **Build**, dann [**Deploy**](/glossar/deploy/). Unter **Deployments** jeder Lauf; Erfolg = `*.pages.dev`-URL.
 
 ## Eigene Domain
 

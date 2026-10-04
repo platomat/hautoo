@@ -15,7 +15,7 @@ Kurzer Nachtrag zum Experiment mit zwei Projektordnern.
 
 ## Was dich im Tool verwirrt
 
-Nach einem **Merge** kann der Graph so aussehen, als hättest du nur noch ein paar Commits. Die vielen Schritte davor stecken **im Merge-Commit** drin. Auf **GitHub** unter „Commits“ siehst du die Einzelteile weiter (im Video z. B. 21 Stück).
+Nach einem [**Merge**](/glossar/merge/) kann der Graph so aussehen, als hättest du nur noch ein paar Commits. Die vielen Schritte davor stecken **im Merge-Commit** drin. Auf [**GitHub**](/glossar/github/) unter „Commits“ siehst du die Einzelteile weiter (im Video z. B. 21 Stück).
 
 ## Merge (dein Freund fürs Team)
 
@@ -29,10 +29,10 @@ feature:        C - D - E
 
 ## Rebase (die lineare Alternative)
 
-Commits `C D E` würden **hinten an** `main` hängen, als wäre alles nacheinander passiert. Hübsch, aber: nicht rebasen, was andere schon gezogen haben.
+[**Rebase**](/glossar/rebase/): Commits `C D E` würden **hinten an** `main` hängen, als wäre alles nacheinander passiert. Hübsch, aber: nicht rebasen, was andere schon gezogen haben.
 
 ## Was du wirklich brauchst
 
-Stand ist gespeichert. Du kannst alte Dateiversionen ansehen („Copyright früher vs. jetzt“). Ob Merge oder Rebase. Geschmackssache. Mit KI-Agent reicht **Merge + Pull vor Push**.
+Stand ist gespeichert. Du kannst alte Dateiversionen ansehen („Copyright früher vs. jetzt“). Ob Merge oder Rebase. Geschmackssache. Mit KI-Agent reicht Merge + [**Pull**](/glossar/pull/) vor [**Push**](/glossar/push/).
 
 <!-- Quelle: 2026-10-03--23-44-04--obs-screencast - hautoo - github - merge, rebase.txt -->
