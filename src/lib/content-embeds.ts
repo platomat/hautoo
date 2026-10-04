@@ -2,6 +2,7 @@ import { createSatteriMarkdownProcessor } from "@astrojs/markdown-satteri";
 import type { ArticleSort } from "./articles";
 import type { GlossarSort } from "./glossar";
 import { hastExternalLinks } from "./hast-external-links";
+import type { TagSort } from "./tags";
 
 export type ArticleListingEmbedProps = {
 	count: number;
@@ -20,6 +21,14 @@ export type GlossarListingEmbedProps = {
 	gap: number;
 };
 
+export type TagListingEmbedProps = {
+	count: number;
+	sort: TagSort;
+	layout: "cloud" | "list" | "grid";
+	columns: number;
+	gap: number;
+};
+
 export type SeparatorEmbedProps = {
 	/** Thickness in px. */
 	height: number;
@@ -31,6 +40,7 @@ export type ContentSegment =
 	| { type: "html"; html: string }
 	| { type: "article-listing"; props: ArticleListingEmbedProps }
 	| { type: "glossar-listing"; props: GlossarListingEmbedProps }
+	| { type: "tag-listing"; props: TagListingEmbedProps }
 	| { type: "tag-cloud" }
 	| { type: "separator"; props: SeparatorEmbedProps }
 	| { type: "contact-email" };
@@ -51,6 +61,14 @@ const DEFAULT_GLOSSAR_LISTING: GlossarListingEmbedProps = {
 	gap: 1.5,
 };
 
+const DEFAULT_TAG_LISTING: TagListingEmbedProps = {
+	count: 0,
+	sort: "title-asc",
+	layout: "cloud",
+	columns: 3,
+	gap: 1.25,
+};
+
 const DEFAULT_SEPARATOR: SeparatorEmbedProps = {
 	height: 1,
 	width: 100,
@@ -58,7 +76,7 @@ const DEFAULT_SEPARATOR: SeparatorEmbedProps = {
 
 /** Line must be only the embed (optional attrs). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|glossar-listing|tag-cloud|separator|contact-email)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|tag-cloud|separator|contact-email)(?<attrs>[^}]*)\}\}\s*$/gm;
 
 const ARTICLE_SORTS = new Set<ArticleSort>([
 	"newest",
@@ -73,6 +91,8 @@ const GLOSSAR_SORTS = new Set<GlossarSort>([
 	"newest",
 	"oldest",
 ]);
+
+const TAG_SORTS = new Set<TagSort>(["title-asc", "title-desc", "most-used"]);
 
 let markdownProcessor: Awaited<
 	ReturnType<typeof createSatteriMarkdownProcessor>
@@ -107,9 +127,20 @@ export function hasGlossarListingEmbed(body: string | undefined): boolean {
 	return /\{\{glossar-listing\b/.test(body);
 }
 
+export function hasTagListingEmbed(body: string | undefined): boolean {
+	if (!body) {
+		return false;
+	}
+	return /\{\{tag-listing\b/.test(body);
+}
+
 /** Wide content column for card/list embeds. */
 export function hasWideListingEmbed(body: string | undefined): boolean {
-	return hasArticleListingEmbed(body) || hasGlossarListingEmbed(body);
+	return (
+		hasArticleListingEmbed(body) ||
+		hasGlossarListingEmbed(body) ||
+		hasTagListingEmbed(body)
+	);
 }
 
 function parseAttrs(raw: string): Record<string, string> {
@@ -183,6 +214,27 @@ export function parseGlossarListingProps(
 	};
 }
 
+export function parseTagListingProps(
+	attrsRaw: string | undefined,
+): TagListingEmbedProps {
+	const attrs = parseAttrs(attrsRaw ?? "");
+	const sort = TAG_SORTS.has(attrs.sort as TagSort)
+		? (attrs.sort as TagSort)
+		: DEFAULT_TAG_LISTING.sort;
+	const layout =
+		attrs.layout === "list" || attrs.layout === "grid"
+			? attrs.layout
+			: "cloud";
+	return {
+		/** `0` = all used tags (no limit). */
+		count: clampInt(attrs.count, DEFAULT_TAG_LISTING.count, 0, 48),
+		sort,
+		layout,
+		columns: clampInt(attrs.columns, DEFAULT_TAG_LISTING.columns, 1, 4),
+		gap: clampRem(attrs.gap, DEFAULT_TAG_LISTING.gap, 0, 8),
+	};
+}
+
 export function parseSeparatorProps(
 	attrsRaw: string | undefined,
 ): SeparatorEmbedProps {
@@ -228,6 +280,11 @@ export async function buildContentSegments(
 		const attrs = match.groups?.attrs ?? "";
 		if (name === "tag-cloud") {
 			segments.push({ type: "tag-cloud" });
+		} else if (name === "tag-listing") {
+			segments.push({
+				type: "tag-listing",
+				props: parseTagListingProps(attrs),
+			});
 		} else if (name === "contact-email") {
 			segments.push({ type: "contact-email" });
 		} else if (name === "separator") {

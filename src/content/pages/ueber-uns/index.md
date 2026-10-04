@@ -32,7 +32,8 @@ Dort findest du auch Issues, den Build-Verlauf und die technische Doku unter [`d
 
 ## Infos auf der Website
 
-- **[Artikel](/artikel/):** Beiträge und How-tos Schritt für Schritt. Über **Tags** filterst du nach Themen (z. B. Cursor, GitHub, Cloudflare).
+- **[Artikel](/artikel/):** Beiträge und How-tos Schritt für Schritt.
+- **[Tags](/tags/):** Themen-Stichworte zu den Artikeln (z. B. Cursor, GitHub, Cloudflare).
 - **[Glossar](/glossar/):** kurze Begriffserklärungen zum Stack.
 
 Startseite und Menü führen dich zu den Übersichten; einzelne Einträge sind untereinander verlinkt.

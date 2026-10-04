@@ -57,7 +57,7 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | Hierarchie | Feld `parent` (Relation) → verschachtelte URL |
 | SEO | Shared-Objekt `seo` (`&field_seo` / `src/cms/fields/seo.ts`) |
 | Medien | Variante B vorbereitet (`path` + leere `media_*`) — siehe [Medien](./medien-variante-b.md) |
-| System | Eintrag-ID `artikel` → Tag-Sidebar + `{{article-listing …}}`; `glossar` → CMS-Seite + `{{glossar-listing …}}`; `impressum` → Bildnachweise |
+| System | Eintrag-ID `artikel` → Tag-Sidebar + `{{article-listing …}}`; `tags` → CMS-Seite + `{{tag-listing …}}`; `glossar` → CMS-Seite + `{{glossar-listing …}}`; `impressum` → Bildnachweise |
 
 ### Felder
 
@@ -84,7 +84,7 @@ Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarch
 | Ordner | `src/content/tags/<slug>.md` |
 | Schema | `src/content.config.ts` |
 | Sveltia | Collection `tags` |
-| Nutzung | Relation von `articles` |
+| Nutzung | Relation von `articles`; Übersicht = CMS-Seite `pages/tags` mit `{{tag-listing …}}`; Einzelansicht `/tags/<slug>/` |
 
 ### Felder
 

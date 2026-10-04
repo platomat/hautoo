@@ -194,6 +194,93 @@
 	});
 
 	CMS.registerEditorComponent({
+		id: "tag-listing",
+		label: "Tag-Listing",
+		icon: "sell",
+		fields: [
+			{
+				name: "count",
+				label: "Anzahl",
+				widget: "number",
+				value_type: "int",
+				default: 0,
+				min: 0,
+				max: 48,
+				hint: "0 = alle genutzten Tags.",
+			},
+			{
+				name: "sort",
+				label: "Sortierung",
+				widget: "select",
+				default: "title-asc",
+				options: [
+					{ label: "Titel A–Z", value: "title-asc" },
+					{ label: "Titel Z–A", value: "title-desc" },
+					{ label: "Häufigste zuerst", value: "most-used" },
+				],
+			},
+			{
+				name: "layout",
+				label: "Layout",
+				widget: "select",
+				default: "cloud",
+				options: [
+					{ label: "Wolke", value: "cloud" },
+					{ label: "Liste", value: "list" },
+					{ label: "Grid (Karten)", value: "grid" },
+				],
+			},
+			{
+				name: "columns",
+				label: "Spalten (nur Grid)",
+				widget: "number",
+				value_type: "int",
+				default: 3,
+				min: 1,
+				max: 4,
+				hint: "Wird bei Layout „Wolke“ und „Liste“ ignoriert.",
+			},
+			{
+				name: "gap",
+				label: "Abstand (rem)",
+				widget: "number",
+				value_type: "float",
+				default: 1.25,
+				min: 0,
+				max: 8,
+				step: 0.25,
+			},
+		],
+		pattern: /^\{\{tag-listing(?<attrs>[^}]*)\}\}\s*$/m,
+		fromBlock: (match) => {
+			const attrs = parseAttrs(match?.groups?.attrs || "");
+			return {
+				count: attrs.count !== undefined && attrs.count !== "" ? attrs.count : "0",
+				sort: attrs.sort || "title-asc",
+				layout: attrs.layout || "cloud",
+				columns: attrs.columns || "3",
+				gap: attrs.gap || "1.25",
+			};
+		},
+		toBlock: ({
+			count = 0,
+			sort = "title-asc",
+			layout = "cloud",
+			columns = 3,
+			gap = 1.25,
+		}) =>
+			`{{tag-listing count="${count}" sort="${sort}" layout="${layout}" columns="${columns}" gap="${gap}"}}`,
+		toPreview: ({
+			count = 0,
+			sort = "title-asc",
+			layout = "cloud",
+			columns = 3,
+			gap = 1.25,
+		}) =>
+			`<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Tag-Listing · ${count === 0 || count === "0" ? "alle" : count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem</div>`,
+	});
+
+	CMS.registerEditorComponent({
 		id: "tag-cloud",
 		label: "Tagwolke",
 		icon: "sell",
@@ -201,7 +288,7 @@
 		pattern: /^\{\{tag-cloud\}\}\s*$/m,
 		toBlock: () => "{{tag-cloud}}",
 		toPreview: () =>
-			'<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Tagwolke</div>',
+			'<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Tagwolke (Kurzform für Tag-Listing Layout Wolke)</div>',
 	});
 
 	CMS.registerEditorComponent({

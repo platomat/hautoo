@@ -1,6 +1,6 @@
 ---
 title: Start
-description: hautuu: thematische Website mit Cursor, GitHub und Cloudflare.
+description: "hautuu: thematische Website mit Cursor, GitHub und Cloudflare."
 status: published
 modifiedDate: 2026-10-04
 backgroundImage: /assets/filip-kvasnak-NwmR1EDtiFg-unsplash.webp
@@ -38,4 +38,6 @@ Diese Website entsteht mit Cursor, wird über **GitHub** versioniert und auf Clo
 
 ## Tags
 
-{{tag-cloud}}
+{{tag-listing count="0" sort="title-asc" layout="cloud" columns="3" gap="1.25"}}
+
+[Alle Tags](/tags/)
