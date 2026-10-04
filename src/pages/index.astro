@@ -3,7 +3,6 @@ import { getEntry, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CmsContent from "../components/CmsContent.astro";
 import PageHero from "../components/PageHero.astro";
-import TableOfContents from "../components/TableOfContents.astro";
 import {
 	contentNeedsWideLayout,
 	hasContentEmbeds,
@@ -26,6 +25,10 @@ const backgroundImage = resolveCmsImage(
 );
 const wide = await contentNeedsWideLayout(page.body);
 const showToc = page.data.showToc === true;
+/** Dynamic import: avoid shipping TOC CSS on pages that do not show a TOC. */
+const TableOfContents = showToc
+	? (await import("../components/TableOfContents.astro")).default
+	: null;
 ---
 
 <BaseLayout
@@ -41,7 +44,7 @@ const showToc = page.data.showToc === true;
 	<main class:list={["page", { "page--wide": wide }]}>
 		<article>
 			<PageHero title={page.data.title} description={page.data.description} />
-			{showToc && (
+			{TableOfContents && (
 				<TableOfContents
 					body={page.body}
 					levels={page.data.tocLevels}

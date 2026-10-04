@@ -191,6 +191,8 @@ SSL/TLS-Modus der Zone: üblicherweise **Full** (oder **Full (strict)**), konsis
 
 Astro-Bundles unter `/_astro/` haben bereits Hash-Dateinamen — lange Cache-Dauer ist dort sicher.
 
+Fehlende Pfade ohne eigene Datei liefert Pages oft als Startseiten-HTML (HTTP 200). Deshalb liegen feste Dateien im Repo, u. a. `public/robots.txt` und die Astro-Route `src/pages/404.astro` → `dist/404.html`.
+
 ## Screencast-Folgen (Website)
 
 - [Folge 011: Cloudflare Pages Setup](https://hautoo.storyofai.net/artikel/folge-011-cloudflare-setup/)

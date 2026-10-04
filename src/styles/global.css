@@ -21,8 +21,8 @@
 :root {
 	--color-bg: #0f1412;
 	--color-surface: #1a211e;
-	/* Same hue as surface at ~50% — chrome over page background images */
-	--color-surface-glass: rgba(26, 33, 30, 0.5);
+	/* Opaque enough for WCAG text over page backgrounds (Lighthouse contrast) */
+	--color-surface-glass: rgba(26, 33, 30, 0.9);
 	/* Header / footer / nav panels (overridable when a page BG is set) */
 	--color-chrome: var(--color-surface);
 	--color-surface-raised: #232b27;
