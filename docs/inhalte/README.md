@@ -2,6 +2,8 @@
 
 Die Website publiziert thematische Inhalte. Technisch stecken sie in den Sveltia-/Astro-Collections.
 
+**Redaktionsregeln** (Stil, Folgen-Schema, Glossar, FAQ, Querverweise, Checkliste): [Redaktion](../redaktion/README.md).
+
 ## Überblick
 
 | Art | Collection | Typischer Inhalt |

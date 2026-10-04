@@ -26,6 +26,7 @@ Dokumentation und (geplante) Website-Grundlage, um mit **Cursor**, **GitHub** un
 | Astro | [docs/astro](./docs/astro/README.md) |
 | Sveltia | [docs/sveltia](./docs/sveltia/README.md) |
 | Inhalte | [docs/inhalte](./docs/inhalte/README.md) |
+| Redaktion | [docs/redaktion](./docs/redaktion/README.md) |
 | Sicherheit | [docs/sicherheit](./docs/sicherheit/README.md) |
 
 ## Sprachen
