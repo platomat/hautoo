@@ -7,10 +7,27 @@ Dokumentation und (geplante) Website-Grundlage, um mit **Cursor**, **GitHub** un
 ## Was hier entsteht
 
 - Statische Website mit **Astro**
-- Inhalte über **Sveltia** (`pages`, `articles`, `tags`, `glossar`)
+- Inhalte über **Sveltia** (`pages`, `articles`, `tags`, `glossar`, `menus`, `blocks`)
 - Artikel mit Text, Bildern und eingebetteten How-to-Videos (Vimeo/YouTube)
 - Glossar für Begriffe
 - Anleitungen für Menschen, die das nachbauen oder mitarbeiten wollen
+
+Live-Überblick: **[Features auf der Site](https://hautoo.storyofai.net/features/)**
+
+## Features
+
+Kurzliste dessen, was auf `main` schon umgesetzt ist (Details und Erläuterungen auf der [Features-Seite](https://hautoo.storyofai.net/features/)):
+
+| Bereich | Punkte |
+| --- | --- |
+| **Inhalte** | 20 Screencast-Folgen als Artikel, statische Pages, Redaktionsregeln in `docs/redaktion/` |
+| **CMS** | Sveltia `/admin/`, Collections, Menüs, Entwurfsstatus, optionales TOC, Head/Footer-Code pro Seite |
+| **Glossar & FAQ** | Glossar mit Related Tags/Artikeln, FAQ mit Themengruppen, Tag-Seiten mit Artikel-Grid |
+| **Embeds** | Bausteine, Artikel-/Glossar-/Tag-Listing, Tagwolke, Trennlinie, Kontakt-E-Mail aus ENV |
+| **SEO** | `seo`-Felder, Open Graph/Twitter, Canonical, Sitemap (ohne Legal), Lesezeit, noindex für Impressum/Datenschutz |
+| **Design** | Dark Theme, Breakpoints, Page-Hero, Vollbild-Hintergrund mit Nachweis, responsive Navigation |
+| **Deploy** | Astro-Build, Cloudflare Pages aus GitHub, Preview/Rollback, Cache-Header und Build-ID |
+| **Doku & Agenten** | `docs/`-Handbuch, Cursor-Regeln, Hilfsskripte für Glossar und SEO |
 
 ## Dokumentation
 
@@ -56,4 +73,4 @@ Details: [docs/entwicklung](./docs/entwicklung/README.md)
 
 ## Status
 
-Astro-Grundsetup und Abhängigkeiten sind installiert. Content Collections und Sveltia folgen.
+Astro-Site mit Sveltia-CMS, Glossar, FAQ, 20 Folgen-Artikeln und Cloudflare-Deploy ist live unter [hautoo.storyofai.net](https://hautoo.storyofai.net). Details: [Features](https://hautoo.storyofai.net/features/).

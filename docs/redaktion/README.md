@@ -114,6 +114,11 @@ Schema und Ausgabe: `src/cms/fields/seo.ts`, gebaut in `BaseLayout.astro` (`<tit
 
 Hilfsskript (Bulk, einmalig): `scripts/fill-seo-fields.py` (manuell anpassen, nicht blind wiederholen).
 
+### Feature-Überblick (README und Features-Seite)
+
+- Sichtbare **neue Funktionen** auf `main` (nach Merge) in der **Root-[README.md](../../README.md)** (Abschnitt Features) und auf der CMS-Seite **`/features/`** (`src/content/pages/features/`) **nachpflegen**: kurzer Punkt in der README-Tabelle, auf der Seite ein Satz Erläuterung im passenden Themenblock (offen sichtbar, keine Accordion).
+- Nur tatsächlich umgesetzte Features, nichts erfinden.
+
 ---
 
 ## Checkliste vor dem Pull Request
@@ -125,6 +130,7 @@ Hilfsskript (Bulk, einmalig): `scripts/fill-seo-fields.py` (manuell anpassen, ni
 - [ ] **FAQ:** neue Fragen in der richtigen Gruppe, verlinkt
 - [ ] **Querverweise:** Folge ↔ Glossar ↔ bestehende Inhalte (Regeln oben)
 - [ ] **Bausteine:** wo sinnvoll, keine Duplikate
+- [ ] **Features:** bei neuen Funktionen README und Seite `/features/` aktualisieren
 - [ ] **`npm run build`** grün
 - [ ] **PR-Beschreibung** mit:
   - Tabelle **Datei → Slug → Titel → Tags** (neue/geänderte Artikel)
