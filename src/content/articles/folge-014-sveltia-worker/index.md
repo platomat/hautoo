@@ -16,8 +16,6 @@ seo:
 
 [**PAT**](/glossar/pat/) funktioniert, aber kopieren, ablaufen, verlegen nervt (Einrichtung: [Folge 013](/artikel/folge-013-sveltia-pat/)). **Variante B:** normal bei GitHub anmelden. Dazwischen sitzt ein [**Cloudflare Worker**](/glossar/cloudflare-worker/) (kleines Programm auf Cloudflares Servern).
 
-{{block id="stack-uebersicht"}}
-
 ## Wer macht was?
 
 ```text

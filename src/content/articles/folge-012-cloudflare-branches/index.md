@@ -2,7 +2,7 @@
 title: "Folge 012: Test-Zweig, geheime URL, Rollback (ohne die Live-Seite zu grillen)"
 summary: "Am Branch experimentieren, Preview-Link verschicken, mergen wenn’s passt. Oder mit einem Klick in die Vergangenheit springen."
 pubDate: 2026-10-04T00:44:03Z
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-05
 status: published
 tags:
   - cloudflare
@@ -13,8 +13,6 @@ seo:
 ---
 
 [**main**](/glossar/main/) ist, was die Welt sieht. Trotzdem willst du rumprobieren, ohne die Startseite live zu verbiegen. Pages an GitHub koppeln ging in [Folge 011](/artikel/folge-011-cloudflare-setup/).
-
-{{block id="stack-uebersicht"}}
 
 ## Branch lokal
 

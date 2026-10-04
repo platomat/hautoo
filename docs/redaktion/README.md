@@ -83,7 +83,9 @@ Mit **Screencast-Transkript** oder ohne:
   - **Leere H2** = Überschrift ohne eigenen Absatztext, danach sofort der Block (nur Leerzeile dazwischen).
   - **Dann:** (a) unter die H2 **ein bis zwei knackige Sätze** schreiben, die zum Block hinführen, **oder** (b) die H2 **entfernen** bzw. **unter** den Block setzen, wenn der folgende Inhalt zur Überschrift gehört.
   - Keine Überschrift, die nur die Block-Grafik wiederholt; Fließtext ohne H2 ist oft genug.
-- Nur an **thematisch passenden** Stellen (Pipeline, Gesamtüberblick), nicht in jede Folge. Siehe [Collections — blocks](../sveltia/collections.md).
+- **Nur**, wenn der umgebende Text den **Gesamt-Stack** oder den Ablauf **GitHub → Cloudflare → Live-Seite** (bzw. die nummerierte Kette Cursor → GitHub → Build → Live) **wirklich erklärt** — nicht nur, weil Cloudflare oder Push irgendwo erwähnt werden.
+- Themen wie **Branch/Preview/Rollback**, **Pull Request + Merge**, **Worker/OAuth** oder **CMS-Listing** tragen oft **keinen** Stack-Baustein; dort reicht Fließtext oder ein **eigenes** ASCII/Diagramm zum Abschnitt.
+- Nicht in jede Folge inflationär. Siehe [Collections — blocks](../sveltia/collections.md).
 
 ---
 
