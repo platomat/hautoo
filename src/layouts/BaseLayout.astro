@@ -1,4 +1,5 @@
 ---
+import { getImage } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import "../styles/global.css";
 import SiteHeader from "../components/SiteHeader.astro";
@@ -60,6 +61,20 @@ const canonicalURL = Astro.site
 const sitemapURL = Astro.site
 	? new URL("sitemap-index.xml", Astro.site)
 	: "/sitemap-index.xml";
+
+/** Absolute OG share image from page/article background (1200×630). */
+let ogImageURL: string | undefined;
+if (backgroundImage && Astro.site) {
+	const ogImage = await getImage({
+		src: backgroundImage,
+		width: 1200,
+		height: 630,
+		fit: "cover",
+		format: "jpg",
+	});
+	ogImageURL = new URL(ogImage.src, Astro.site).href;
+}
+const twitterCard = ogImageURL ? "summary_large_image" : "summary";
 ---
 
 <!doctype html>
@@ -81,7 +96,17 @@ const sitemapURL = Astro.site
 		<meta property="og:locale" content="de_DE" />
 		<meta property="og:site_name" content="hautuu" />
 		{canonicalURL && <meta property="og:url" content={canonicalURL.href} />}
-		<meta name="twitter:card" content="summary" />
+		{
+			ogImageURL && (
+				<>
+					<meta property="og:image" content={ogImageURL} />
+					<meta property="og:image:width" content="1200" />
+					<meta property="og:image:height" content="630" />
+					<meta name="twitter:image" content={ogImageURL} />
+				</>
+			)
+		}
+		<meta name="twitter:card" content={twitterCard} />
 		<meta name="twitter:title" content={pageTitle} />
 		{metaDescription && <meta name="twitter:description" content={metaDescription} />}
 		{

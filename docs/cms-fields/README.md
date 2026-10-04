@@ -22,7 +22,7 @@ Werte: `draft` · `published` · `future` · `trash`.
 | Sveltia | Anchor `&field_modified_date` / Alias `*field_modified_date` |
 | Astro (Zod) | `src/cms/fields/dates.ts` → in allen Collections |
 | Collections | `pages`, `menus`, `tags`, `articles`, `glossar` |
-| Ausgabe | SEO-Meta im `<head>`: `description`, `og:title` / `og:description` / `og:url`, Twitter-Card, Canonical, Sitemap-Link; bei `modifiedDate` auch `article:modified_time` / `og:updated_time` |
+| Ausgabe | SEO-Meta im `<head>`: `description`, `og:title` / `og:description` / `og:url`, bei Hintergrundbild auch `og:image` (1200×630), Twitter-Card, Canonical, Sitemap-Link; bei `modifiedDate` auch `article:modified_time` / `og:updated_time` |
 
 Optional. Bei inhaltlichen Änderungen im CMS setzen.
 
