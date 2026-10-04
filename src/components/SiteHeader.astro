@@ -32,20 +32,46 @@ function isCurrent(href: string): boolean {
 		<nav id="site-nav" class="site-nav" data-site-nav aria-label="Hauptnavigation">
 			<ul class="site-nav__list list-plain">
 				{
-					menuItems.map((item) => {
+					menuItems.map((item, index) => {
 						const current = !item.external && isCurrent(item.href);
+						const hasChildren = item.children.length > 0;
+						const subId = `site-nav-sub-${index}`;
 						return (
-							<li class:list={{ "has-children": item.children.length > 0 }}>
-								<a
-									href={item.href}
-									aria-current={current ? "page" : undefined}
-									target={item.external ? "_blank" : undefined}
-									rel={item.external ? "noopener noreferrer" : undefined}
-								>
-									{item.label}
-								</a>
-								{item.children.length > 0 && (
-									<ul class="site-nav__sub list-plain">
+							<li
+								class:list={{
+									"site-nav__item": true,
+									"has-children": hasChildren,
+								}}
+								data-nav-item={hasChildren ? "" : undefined}
+							>
+								<div class="site-nav__item-row">
+									<a
+										href={item.href}
+										aria-current={current ? "page" : undefined}
+										target={item.external ? "_blank" : undefined}
+										rel={item.external ? "noopener noreferrer" : undefined}
+									>
+										{item.label}
+									</a>
+									{hasChildren && (
+										<button
+											type="button"
+											class="site-nav__sub-toggle"
+											data-nav-sub-toggle
+											aria-expanded="false"
+											aria-controls={subId}
+											aria-label={`Untermenü ${item.label}`}
+										>
+											<span class="site-nav__chevron" aria-hidden="true" />
+										</button>
+									)}
+								</div>
+								{hasChildren && (
+									<ul
+										id={subId}
+										class="site-nav__sub list-plain"
+										data-nav-sub
+									>
 										{item.children.map((child) => {
 											const childCurrent =
 												!child.external && isCurrent(child.href);
@@ -77,6 +103,7 @@ function isCurrent(href: string): boolean {
 
 <script>
 	import "../scripts/nav-toggle";
+	import "../scripts/nav-submenu";
 </script>
 
 <style>
@@ -179,22 +206,125 @@ function isCurrent(href: string): boolean {
 	.site-nav__list {
 		display: flex;
 		flex-wrap: wrap;
-		align-items: flex-start;
+		align-items: center;
 		gap: 0.75rem 1.25rem;
 	}
 
-	.site-nav__sub {
-		margin: 0.35rem 0 0;
-		padding: 0;
+	.site-nav__item-row {
 		display: flex;
-		flex-direction: column;
-		gap: 0.35rem;
+		align-items: center;
+		gap: 0.2rem;
+	}
+
+	.site-nav__sub-toggle {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.75rem;
+		height: 1.75rem;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		border-radius: 0;
+		background: transparent;
+		color: var(--color-text-muted);
+		cursor: pointer;
+	}
+
+	.site-nav__sub-toggle:hover,
+	.site-nav__sub-toggle:focus-visible {
+		color: var(--color-action);
+	}
+
+	.site-nav__sub-toggle:focus-visible {
+		outline: 2px solid var(--color-action);
+		outline-offset: 2px;
+	}
+
+	.site-nav__chevron {
+		display: block;
+		width: 0.45rem;
+		height: 0.45rem;
+		border-right: 1.5px solid currentColor;
+		border-bottom: 1.5px solid currentColor;
+		transform: rotate(45deg) translateY(-1px);
+		transition: transform 0.2s ease;
+	}
+
+	.site-nav__item.is-sub-open .site-nav__chevron {
+		transform: rotate(225deg) translateY(-1px);
+	}
+
+	.site-nav__sub {
+		margin: 0;
+		padding: 0;
+		list-style: none;
 	}
 
 	.site-nav a[aria-current="page"] {
 		color: var(--color-text);
 	}
 
+	/* Desktop: flyout dropdown */
+	@media (min-width: 680px) {
+		.site-nav-toggle {
+			display: none;
+		}
+
+		.site-nav__item {
+			position: relative;
+		}
+
+		.site-nav__sub {
+			position: absolute;
+			top: calc(100% + 0.35rem);
+			left: 0;
+			z-index: 40;
+			min-width: 11rem;
+			padding: 0.4rem 0;
+			background: var(--color-surface);
+			border: 1px solid var(--color-border);
+			visibility: hidden;
+			opacity: 0;
+			pointer-events: none;
+			transform: translateY(-0.25rem);
+			transition:
+				opacity 0.18s ease,
+				transform 0.18s ease,
+				visibility 0.18s;
+		}
+
+		.site-nav__sub a {
+			display: block;
+			padding: 0.45rem 0.9rem;
+			font-size: 0.95em;
+			color: var(--color-text-muted);
+			white-space: nowrap;
+		}
+
+		.site-nav__sub a:hover,
+		.site-nav__sub a:focus-visible {
+			color: var(--color-action);
+			background: var(--color-action-muted);
+		}
+
+		.site-nav__item:hover .site-nav__sub,
+		.site-nav__item:focus-within .site-nav__sub,
+		.site-nav__item.is-sub-open .site-nav__sub {
+			visibility: visible;
+			opacity: 1;
+			pointer-events: auto;
+			transform: translateY(0);
+		}
+
+		.site-nav__item:hover .site-nav__chevron,
+		.site-nav__item:focus-within .site-nav__chevron,
+		.site-nav__item.is-sub-open .site-nav__chevron {
+			transform: rotate(225deg) translateY(-1px);
+		}
+	}
+
+	/* Mobile: accordion under parent */
 	@media (max-width: 679px) {
 		.site-header {
 			border-bottom: none;
@@ -241,6 +371,7 @@ function isCurrent(href: string): boolean {
 		.site-nav__list {
 			flex-direction: column;
 			flex-wrap: nowrap;
+			align-items: stretch;
 			gap: 0;
 		}
 
@@ -248,42 +379,38 @@ function isCurrent(href: string): boolean {
 			border-top: 1px solid var(--color-border);
 		}
 
-		.site-nav__list > li > a {
-			display: block;
+		.site-nav__item-row {
+			justify-content: space-between;
+		}
+
+		.site-nav__item-row > a {
+			flex: 1;
 			padding: 0.75rem 0;
 		}
 
 		.site-nav__sub {
-			margin: 0 0 0.5rem;
-			padding-inline-start: 0.75rem;
-			gap: 0;
+			display: none;
+			padding: 0 0 0.5rem 0.75rem;
+			border-top: 1px solid var(--color-border);
+		}
+
+		.site-nav__item.is-sub-open .site-nav__sub {
+			display: block;
 		}
 
 		.site-nav__sub a {
 			display: block;
-			padding: 0.5rem 0;
+			padding: 0.55rem 0;
 			font-size: 0.95em;
-			color: var(--color-text-muted);
-		}
-	}
-
-	@media (min-width: 680px) {
-		.site-nav-toggle {
-			display: none;
-		}
-
-		.site-nav__sub {
-			font-size: 0.9em;
-		}
-
-		.site-nav__sub a {
 			color: var(--color-text-muted);
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
 		.site-nav-toggle__bar,
-		.site-nav {
+		.site-nav,
+		.site-nav__sub,
+		.site-nav__chevron {
 			transition: none;
 		}
 	}

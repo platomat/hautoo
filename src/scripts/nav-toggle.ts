@@ -18,6 +18,9 @@ function initNavToggle() {
 		document.body.classList.toggle(BODY_LOCK_CLASS, open);
 		toggle.setAttribute("aria-expanded", open ? "true" : "false");
 		toggle.setAttribute("aria-label", open ? labelClose : labelOpen);
+		if (!open) {
+			document.dispatchEvent(new Event("nav:close"));
+		}
 	};
 
 	const close = () => setOpen(false);

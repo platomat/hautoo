@@ -118,6 +118,7 @@ Unter **680px** (`max-width: 679px`):
 - Burger-Button rechts neben dem Brand; horizontale Nav wird zum Panel darunter
 - Icon: drei Linien → animiertes Kreuz beim Öffnen (`transform` / `opacity`, ~220ms)
 - Toggle-Script: `src/scripts/nav-toggle.ts` — `aria-expanded`, Escape, Klick außerhalb, Body-Scroll-Lock
+- Untermenüs: Desktop als Flyout (Hover/Fokus/Chevron); Mobile als Akkordeon (`src/scripts/nav-submenu.ts`)
 - `prefers-reduced-motion: reduce` schaltet die Transition aus
 - Ab **680px**: kein Burger, horizontale Nav wie bisher
 

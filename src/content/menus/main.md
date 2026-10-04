@@ -8,7 +8,7 @@ items:
     linkType: page
     page: ueber-uns
     children:
-      - label: Beispiel 123
+      - label: Beispiel Unterseite
         linkType: page
         page: beispiel-unterseite
 ---
