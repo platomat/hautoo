@@ -2,7 +2,7 @@
 title: Impressum
 status: published
 modifiedDate: 2026-10-04
-description: Rechtliche Angaben (Platzhalter).
+description: Angaben gemäß § 5 DDG — Betreiber und Kontakt.
 seo:
   index_visibility: noindex
   follow_visibility: follow
@@ -14,4 +14,33 @@ seo:
   max_image_preview_enabled: false
 ---
 
-Platzhalter für das Impressum. Bitte mit den tatsächlichen Angaben ersetzen, bevor die Site öffentlich beworben wird.
+## Angaben gemäß § 5 DDG
+
+Wasilij Pfeifer  
+Bergstr. 14  
+98744 Unterweißbach  
+Deutschland
+
+## Kontakt
+
+E-Mail:
+
+{{contact-email}}
+
+## Verantwortlichkeit
+
+Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV: Wasilij Pfeifer (Anschrift wie oben).
+
+## Haftung für Inhalte
+
+Die Inhalte dieser Website wurden mit Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität wird keine Gewähr übernommen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach allgemeinen Gesetzen bleiben unberührt.
+
+## Haftung für Links
+
+Diese Website enthält Links zu externen Websites Dritter. Auf deren Inhalte haben wir keinen Einfluss; deshalb übernehmen wir für diese fremden Inhalte keine Gewähr. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.
+
+## Urheberrecht
+
+Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Rechteinhabers.
+
+Bildnachweise zu Seitenhintergründen stehen am Ende dieser Seite.

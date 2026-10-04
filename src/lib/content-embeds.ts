@@ -22,7 +22,8 @@ export type ContentSegment =
 	| { type: "html"; html: string }
 	| { type: "article-listing"; props: ArticleListingEmbedProps }
 	| { type: "tag-cloud" }
-	| { type: "separator"; props: SeparatorEmbedProps };
+	| { type: "separator"; props: SeparatorEmbedProps }
+	| { type: "contact-email" };
 
 const DEFAULT_LISTING: ArticleListingEmbedProps = {
 	count: 3,
@@ -39,7 +40,7 @@ const DEFAULT_SEPARATOR: SeparatorEmbedProps = {
 
 /** Line must be only the embed (optional attrs for article-listing). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|tag-cloud|separator)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|tag-cloud|separator|contact-email)(?<attrs>[^}]*)\}\}\s*$/gm;
 
 const SORTS = new Set<ArticleSort>([
 	"newest",
@@ -172,6 +173,8 @@ export async function buildContentSegments(
 		const attrs = match.groups?.attrs ?? "";
 		if (name === "tag-cloud") {
 			segments.push({ type: "tag-cloud" });
+		} else if (name === "contact-email") {
+			segments.push({ type: "contact-email" });
 		} else if (name === "separator") {
 			segments.push({
 				type: "separator",

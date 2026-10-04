@@ -25,6 +25,16 @@ Dieses Repository ist **öffentlich** auf GitHub. Alles, was committed wird, kan
 
 Die Domain `hautoo.storyofai.net` ist **kein Secret**. Sie darf in Doku und Code vorkommen.
 
+## Kontakt-E-Mail (Impressum)
+
+Die Adresse **nicht** fest in Markdown committen (öffentliches Repo = Scraping auf GitHub). Stattdessen:
+
+1. Lokal in `.env`: `CONTACT_EMAIL=name@example.de`
+2. Bei Cloudflare Pages dieselbe Variable als Environment Variable setzen
+3. Im Inhalt den Block `{{contact-email}}` verwenden
+
+Zusätzlich empfohlen: im Cloudflare-Dashboard unter **Scrape Shield** → **Email Address Obfuscation** aktiv lassen — Cloudflare verschleiert E-Mail-Adressen in der ausgelieferten HTML.
+
 ## Checkliste vor jedem Push
 
 1. Enthält der Diff Keys, Tokens oder Passwörter?

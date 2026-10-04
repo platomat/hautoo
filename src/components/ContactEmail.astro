@@ -1,0 +1,81 @@
+---
+import { getContactEmail, splitContactEmail } from "../lib/contact-email";
+
+const email = getContactEmail();
+const parts = email ? splitContactEmail(email) : undefined;
+---
+
+{
+	parts ? (
+		<a
+			class="contact-email"
+			href="#kontakt-email"
+			data-contact-user={parts.user}
+			data-contact-domain={parts.domain}
+		>
+			<span class="contact-email__user">{parts.user}</span>
+			<span class="contact-email__at" aria-hidden="true">
+				{" [at] "}
+			</span>
+			<span class="visually-hidden">@</span>
+			<span class="contact-email__domain">{parts.domain}</span>
+		</a>
+	) : (
+		<span class="text-muted text-sm">
+			E-Mail-Adresse folgt (Build-Variable <code>CONTACT_EMAIL</code>).
+		</span>
+	)
+}
+
+<style>
+	.contact-email {
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+			"Courier New", monospace;
+		font-size: 0.95em;
+		word-break: break-word;
+	}
+
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+</style>
+
+<script>
+	/**
+	 * Assemble a real mailto only on interaction — keeps a clear @ out of
+	 * the visible text for lazy scrapers. Cloudflare Email Obfuscation can
+	 * still rewrite the href when Scrape Shield is enabled.
+	 */
+	function wireContactEmail(root: ParentNode = document) {
+		root.querySelectorAll<HTMLAnchorElement>("a.contact-email[data-contact-user]").forEach(
+			(link) => {
+				if (link.dataset.wired === "1") {
+					return;
+				}
+				link.dataset.wired = "1";
+				const user = link.dataset.contactUser;
+				const domain = link.dataset.contactDomain;
+				if (!user || !domain) {
+					return;
+				}
+				const address = `${user}@${domain}`;
+				const activate = () => {
+					link.href = `mailto:${address}`;
+				};
+				link.addEventListener("focus", activate, { once: true });
+				link.addEventListener("pointerdown", activate, { once: true });
+			},
+		);
+	}
+
+	wireContactEmail();
+	document.addEventListener("astro:page-load", () => wireContactEmail());
+</script>

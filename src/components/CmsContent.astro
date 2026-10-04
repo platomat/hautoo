@@ -1,5 +1,6 @@
 ---
 import ArticleListing from "./ArticleListing.astro";
+import ContactEmail from "./ContactEmail.astro";
 import Separator from "./Separator.astro";
 import TagCloud from "./TagCloud.astro";
 import { buildContentSegments } from "../lib/content-embeds";
@@ -30,6 +31,9 @@ const segments = await buildContentSegments(body);
 		}
 		if (segment.type === "tag-cloud") {
 			return <TagCloud />;
+		}
+		if (segment.type === "contact-email") {
+			return <ContactEmail />;
 		}
 		if (segment.type === "separator") {
 			return (
