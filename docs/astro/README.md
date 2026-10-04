@@ -49,5 +49,5 @@ Vorgaben zu dunklem Theme, Farbpalette (Aktionsgrün), Ubuntu und Links: **[Desi
 
 - Layouts und Seiten-Templates laut [Design](../design/README.md) ausbauen
 - Layouts und `image()`-Pipeline für Eintrags-Medien
-- Content Collections: `tags` umgesetzt; `articles`, `glossar` folgen
+- Content Collections: `tags`, `articles` umgesetzt; `glossar` folgt
 

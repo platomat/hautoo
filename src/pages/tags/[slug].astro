@@ -1,0 +1,42 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getArticleHref, getPublishedArticles } from "../../lib/articles";
+
+export async function getStaticPaths() {
+	const tags = await getCollection("tags");
+	return tags.map((tag) => ({
+		params: { slug: tag.id },
+		props: { tag },
+	}));
+}
+
+const { tag } = Astro.props;
+const articles = (await getPublishedArticles()).filter((article) =>
+	(article.data.tags ?? []).includes(tag.id),
+);
+---
+
+<BaseLayout
+	title={`Tag: ${tag.data.title}`}
+	description={tag.data.description}
+>
+	<main class="page">
+		<p class="text-sm text-muted"><a href="/artikel/">Artikel</a></p>
+		<h1>{tag.data.title}</h1>
+		{tag.data.description && <p class="text-muted">{tag.data.description}</p>}
+		{
+			articles.length === 0 ? (
+				<p>Keine veröffentlichten Artikel mit diesem Tag.</p>
+			) : (
+				<ul class="list-plain">
+					{articles.map((article) => (
+						<li>
+							<a href={getArticleHref(article)}>{article.data.title}</a>
+						</li>
+					))}
+				</ul>
+			)
+		}
+	</main>
+</BaseLayout>

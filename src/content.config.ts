@@ -28,4 +28,20 @@ const tags = defineCollection({
 	}),
 });
 
-export const collections = { pages, menus, tags };
+const articles = defineCollection({
+	loader: glob({ pattern: "**/index.md", base: "./src/content/articles" }),
+	schema: ({ image }) =>
+		z.object({
+			title: z.string(),
+			summary: z.string().optional(),
+			pubDate: z.coerce.date(),
+			draft: z.boolean().default(false),
+			heroImage: image().optional(),
+			tags: z.array(z.string()).default([]),
+			videoProvider: z.enum(["youtube", "vimeo"]).optional(),
+			videoId: z.string().optional(),
+			seo: seoSchema.optional(),
+		}),
+});
+
+export const collections = { pages, menus, tags, articles };

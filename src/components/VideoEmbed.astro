@@ -1,0 +1,48 @@
+---
+import { videoEmbedSrc, type VideoProvider } from "../lib/video";
+
+interface Props {
+	provider?: string;
+	id?: string;
+	title?: string;
+}
+
+const { provider, id, title = "Video" } = Astro.props;
+const src =
+	provider === "youtube" || provider === "vimeo"
+		? videoEmbedSrc(provider as VideoProvider, id ?? "")
+		: undefined;
+---
+
+{
+	src && (
+		<div class="video-embed">
+			<iframe
+				src={src}
+				title={title}
+				loading="lazy"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				allowfullscreen
+			/>
+		</div>
+	)
+}
+
+<style>
+	.video-embed {
+		position: relative;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		margin: 1.5rem 0;
+		background: var(--color-surface);
+		overflow: hidden;
+	}
+
+	.video-embed iframe {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+</style>

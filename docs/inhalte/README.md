@@ -25,7 +25,9 @@ Umgesetzt: Content unter `src/content/pages/<slug>/index.md`, CMS-Collection in 
 
 Umgesetzt (#13): eigene Collection statt Flags an Seiten. Slots `main` (Header) und `footer-legal` (Copyright-Zeile); Einträge mit Seite oder URL, optional eine Untermenü-Ebene. Details: [Collections — menus](../sveltia/collections.md#collection-menus-umgesetzt).
 
-## Artikel
+## Artikel (`articles`)
+
+Umgesetzt (#4): Collection unter `src/content/articles/<slug>/index.md`, Liste unter `/artikel/`, Einzelansicht `/artikel/<slug>/`.
 
 Ein Artikel soll typischerweise enthalten:
 
@@ -33,7 +35,7 @@ Ein Artikel soll typischerweise enthalten:
 2. **Bilder** — zur Veranschaulichung; Ablage **neben dem Content-Eintrag** (siehe unten)
 3. **How-to-Video** — Einbettung von **Vimeo** oder **YouTube** (nicht als Datei im Repo)
 
-Videos werden eingebettet (Embed), nicht als große Videodateien versioniert.
+Videos werden eingebettet (Embed), nicht als große Videodateien versioniert. Details: [Collections — articles](../sveltia/collections.md#collection-articles-umgesetzt).
 
 ## Bilder (Medienablage)
 

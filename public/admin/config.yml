@@ -263,4 +263,75 @@ collections:
           required: false,
         }
 
-  # Later: articles, glossar — inject SEO with: - *field_seo
+  - name: articles
+    label: Artikel
+    label_singular: Artikel
+    folder: src/content/articles
+    create: true
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    slug: "{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{title}}"
+    hint: "Medien neben dem Eintrag (Variante B). URL: /artikel/<slug>/."
+    fields:
+      - { name: title, label: Titel, widget: string }
+      - {
+          name: summary,
+          label: Zusammenfassung,
+          widget: text,
+          required: false,
+        }
+      - {
+          name: pubDate,
+          label: Publikationsdatum,
+          widget: datetime,
+          date_format: YYYY-MM-DD,
+          time_format: false,
+          required: true,
+        }
+      - {
+          name: draft,
+          label: Entwurf,
+          widget: boolean,
+          default: false,
+          hint: "Entwürfe erscheinen nicht auf der Website.",
+        }
+      - {
+          name: heroImage,
+          label: Titelbild,
+          widget: image,
+          required: false,
+          hint: "Wird neben index.md gespeichert (Variante B).",
+        }
+      - name: tags
+        label: Tags
+        widget: relation
+        collection: tags
+        value_field: "{{slug}}"
+        search_fields: [title]
+        display_fields: [title]
+        multiple: true
+        required: false
+      - name: videoProvider
+        label: Video-Anbieter
+        widget: select
+        options:
+          - { label: Keins, value: "" }
+          - { label: YouTube, value: youtube }
+          - { label: Vimeo, value: vimeo }
+        default: ""
+        required: false
+      - {
+          name: videoId,
+          label: Video-ID oder URL,
+          widget: string,
+          required: false,
+          hint: "YouTube-/Vimeo-ID oder URL.",
+        }
+      - *field_seo
+      - { name: body, label: Inhalt, widget: markdown }
+
+  # Later: glossar

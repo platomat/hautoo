@@ -9,7 +9,7 @@ Zurück zur [Sveltia-Übersicht](./README.md). Shared Field-Partials: [CMS Field
 | Seiten | `pages` | umgesetzt (#3) |
 | Menüs | `menus` | umgesetzt (#13) |
 | Tags | `tags` | umgesetzt (#5) |
-| Artikel | `articles` | geplant (#4) |
+| Artikel | `articles` | umgesetzt (#4) |
 | Glossar | `glossar` | geplant (#6) |
 
 ## Collection `menus` (umgesetzt)
@@ -86,16 +86,32 @@ Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarch
 | `description` | nein | Kurze Erklärung |
 | Dateiname | — | Slug (z. B. `astro.md` → `astro`) |
 
+## Collection `articles` (umgesetzt)
+
+| | |
+| --- | --- |
+| Ordner | `src/content/articles/<slug>/index.md` |
+| Schema | `src/content.config.ts` (`image()` für Titelbild) |
+| Sveltia | Collection `articles` |
+| Routen | `/artikel/`, `/artikel/<slug>/` |
+| Medien | Variante B (`media_folder: ""`) — [Medien](./medien-variante-b.md) |
+
+### Felder
+
+| Feld | Pflicht | Bedeutung |
+| --- | --- | --- |
+| `title` | ja | Titel |
+| `summary` | nein | Kurztext / Meta |
+| `pubDate` | ja | Publikationsdatum |
+| `draft` | nein | `true` = nicht öffentlich |
+| `heroImage` | nein | Titelbild neben dem Eintrag |
+| `tags` | nein | Relation zu `tags` (mehrere) |
+| `videoProvider` | nein | `youtube` / `vimeo` |
+| `videoId` | nein | ID oder URL |
+| `seo` | ja (CMS) | SEO-Partial |
+| Body | ja | Markdown |
+
 ## Erwartete Felder (weitere Collections)
-
-### articles
-
-- Titel, Slug, Zusammenfassung
-- Fließtext (Markdown)
-- Bilder (Variante B — [Medien](./medien-variante-b.md))
-- Tags (Relation zu `tags`)
-- Video: Anbieter (YouTube/Vimeo) + Embed-ID oder URL
-- Publikationsdatum, optional Entwurf/Veröffentlicht
 
 ### glossar
 
