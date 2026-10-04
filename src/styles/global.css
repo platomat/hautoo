@@ -38,6 +38,7 @@
 	--font-weight-body: 300;
 	--font-weight-heading: 500;
 	--content-max-width: 42rem;
+	--content-wide-max-width: 64rem;
 	--shell-padding-inline: 1.25rem;
 
 	/* Breakpoints (reference tokens; use same px in @media) */
@@ -183,6 +184,10 @@ body.has-page-bg .site-nav__sub {
 	padding-inline: var(--shell-padding-inline);
 }
 
+.site-header .shell-inner {
+	max-width: var(--content-wide-max-width);
+}
+
 body.is-nav-locked {
 	overflow: hidden;
 }
@@ -196,7 +201,7 @@ body.is-nav-locked {
 /* Wider content (article index, homepage cards, …) */
 .page--wide,
 .page--with-sidebar {
-	max-width: 64rem;
+	max-width: var(--content-wide-max-width);
 }
 
 .page-layout {
@@ -213,14 +218,17 @@ body.is-nav-locked {
 }
 
 /* Title + optional lead; spacing before body content */
+.hero,
 .page-hero {
 	margin-bottom: 2.5rem;
 }
 
+.hero h1,
 .page-hero h1 {
 	margin-bottom: 0.5rem;
 }
 
+.hero__lead,
 .page-hero__lead {
 	margin: 0;
 	max-width: 40rem;
@@ -228,7 +236,8 @@ body.is-nav-locked {
 	line-height: 1.45;
 }
 
-.page-hero:not(:has(.page-hero__lead)) h1 {
+.hero:not(:has(.hero__lead)):not(:has(.page-hero__lead)) h1,
+.page-hero:not(:has(.hero__lead)):not(:has(.page-hero__lead)) h1 {
 	margin-bottom: 0;
 }
 

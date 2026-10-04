@@ -64,6 +64,17 @@
 				max: 4,
 				hint: "Wird bei Layout „Liste“ ignoriert.",
 			},
+			{
+				name: "gap",
+				label: "Abstand (rem)",
+				widget: "number",
+				value_type: "float",
+				default: 1.25,
+				min: 0,
+				max: 8,
+				step: 0.25,
+				hint: "Abstand zwischen Karten bzw. Listeneinträgen.",
+			},
 		],
 		pattern: /^\{\{article-listing(?<attrs>[^}]*)\}\}\s*$/m,
 		fromBlock: (match) => {
@@ -73,12 +84,25 @@
 				sort: attrs.sort || "newest",
 				layout: attrs.layout || "grid",
 				columns: attrs.columns || "3",
+				gap: attrs.gap || "1.25",
 			};
 		},
-		toBlock: ({ count = 3, sort = "newest", layout = "grid", columns = 3 }) =>
-			`{{article-listing count="${count}" sort="${sort}" layout="${layout}" columns="${columns}"}}`,
-		toPreview: ({ count = 3, sort = "newest", layout = "grid", columns = 3 }) =>
-			`<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Artikel-Listing · ${count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""}</div>`,
+		toBlock: ({
+			count = 3,
+			sort = "newest",
+			layout = "grid",
+			columns = 3,
+			gap = 1.25,
+		}) =>
+			`{{article-listing count="${count}" sort="${sort}" layout="${layout}" columns="${columns}" gap="${gap}"}}`,
+		toPreview: ({
+			count = 3,
+			sort = "newest",
+			layout = "grid",
+			columns = 3,
+			gap = 1.25,
+		}) =>
+			`<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Artikel-Listing · ${count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem</div>`,
 	});
 
 	CMS.registerEditorComponent({

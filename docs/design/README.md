@@ -149,9 +149,9 @@ Beliebig kombinieren, statt Flex-CSS in jeder Komponente neu zu schreiben:
 | `.stack-on-tablet` | ab `< 1024px` → Spalte |
 | `.stack-on-mobile` | ab `< 680px` → Spalte |
 | `.center-on-tablet` / `.center-on-mobile` | auf Breakpoint zentrieren; setzt `.ms-auto` zurück |
-| `.page--with-sidebar` | breitere Inhaltsbreite (64rem) für Hauptspalte + Sidebar |
+| `.page--wide` / `.page--with-sidebar` | breitere Inhaltsbreite (`--content-wide-max-width`, 64rem) |
 | `.page-layout` / `.page-layout__main` | Flex-Zeile Inhalt/Sidebar (mit `.stack-on-tablet`) |
-| `.page-hero` | Seiten-Titelblock (`PageHero.astro`: `h1` + optionale `description`) |
+| `.hero` / `.page-hero` | Titelblock überall (`PageHero.astro`: `h1` + optionale Beschreibung, Abstand zum Inhalt) |
 | `.article-list` | Artikelliste (Titel, Summary, Datum) |
 
 Beispiel: `class="flex-row flex-between stack-on-mobile center-on-mobile"`

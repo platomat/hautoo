@@ -80,7 +80,7 @@ Im CMS über die Markdown-Toolbar einfügen (wie Bilder):
 
 | CMS-Block | Gespeicherter Marker | Optionen |
 | --- | --- | --- |
-| **Artikel-Listing** | `{{article-listing count="3" sort="newest" layout="grid" columns="3"}}` | Anzahl, Sortierung (`newest` / `oldest` / `title-asc` / `title-desc`), Layout (`grid` / `list`), Spalten 1–4 (nur Grid) |
+| **Artikel-Listing** | `{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25"}}` | Anzahl, Sortierung (`newest` / `oldest` / `title-asc` / `title-desc`), Layout (`grid` / `list`), Spalten 1–4 (nur Grid), Abstand in rem |
 | **Tagwolke** | `{{tag-cloud}}` | — |
 
 Registrierung: `public/admin/editor-components.js`. Rendering: `ArticleListing.astro` / `TagCloud.astro`.

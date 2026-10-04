@@ -13,6 +13,8 @@ interface Props {
 	sort?: ArticleSort;
 	layout?: "grid" | "list";
 	columns?: number;
+	/** Gap between items, in rem (grid and list). */
+	gap?: number;
 }
 
 const {
@@ -20,12 +22,14 @@ const {
 	sort = "newest",
 	layout = "grid",
 	columns = 3,
+	gap = 1.25,
 } = Astro.props;
 
 const articles = await getPublishedArticles({ sort, limit: count });
 const tags = await getCollection("tags");
 const tagMap = new Map(tags.map((tag) => [tag.id, tag]));
 const col = Math.min(4, Math.max(1, columns));
+const gapRem = Math.min(8, Math.max(0, gap));
 
 function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 	return (article.data.tags ?? [])
@@ -44,7 +48,7 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 				"article-listing",
 				layout === "list" ? "article-listing--list" : "article-listing--grid",
 			]}
-			style={layout === "grid" ? `--article-listing-cols: ${col}` : undefined}
+			style={`--article-listing-cols: ${col}; --article-listing-gap: ${gapRem}rem`}
 			aria-label="Artikel"
 		>
 			<ul class="article-listing__list list-plain">
@@ -97,13 +101,13 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 	.article-listing--grid .article-listing__list {
 		display: grid;
 		grid-template-columns: repeat(var(--article-listing-cols, 3), minmax(0, 1fr));
-		gap: 1.25rem;
+		gap: var(--article-listing-gap, 1.25rem);
 	}
 
 	.article-listing--list .article-listing__list {
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem;
+		gap: var(--article-listing-gap, 1.5rem);
 	}
 
 	.article-listing--grid .article-listing__item {

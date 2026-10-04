@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
 import { getGlossarEntries, getGlossarHref } from "../../lib/glossar";
 
 const entries = await getGlossarEntries();
@@ -10,10 +11,10 @@ const entries = await getGlossarEntries();
 	description="Kurze Erklärungen zu Fachbegriffen rund um hautuu."
 >
 	<main class="page">
-		<h1>Glossar</h1>
-		<p class="text-muted">
-			Fachbegriffe kurz erklärt — für Einsteiger in GitHub, Cloudflare, Astro und Co.
-		</p>
+		<PageHero
+			title="Glossar"
+			description="Fachbegriffe kurz erklärt — für Einsteiger in GitHub, Cloudflare, Astro und Co."
+		/>
 		{
 			entries.length === 0 ? (
 				<p>Noch keine Einträge.</p>
@@ -35,7 +36,7 @@ const entries = await getGlossarEntries();
 
 <style>
 	.glossar-list {
-		margin: 1.5rem 0 0;
+		margin: 0;
 		padding: 0;
 	}
 

@@ -6,6 +6,8 @@ export type ArticleListingEmbedProps = {
 	sort: ArticleSort;
 	layout: "grid" | "list";
 	columns: number;
+	/** Gap between items, in rem. */
+	gap: number;
 };
 
 export type ContentSegment =
@@ -18,6 +20,7 @@ const DEFAULT_LISTING: ArticleListingEmbedProps = {
 	sort: "newest",
 	layout: "grid",
 	columns: 3,
+	gap: 1.25,
 };
 
 /** Line must be only the embed (optional attrs for article-listing). */
@@ -77,6 +80,19 @@ function clampInt(
 	return Math.min(max, Math.max(min, n));
 }
 
+function clampRem(
+	value: string | undefined,
+	fallback: number,
+	min: number,
+	max: number,
+): number {
+	const n = Number.parseFloat((value ?? "").replace(/rem$/i, ""));
+	if (!Number.isFinite(n)) {
+		return fallback;
+	}
+	return Math.min(max, Math.max(min, n));
+}
+
 export function parseArticleListingProps(
 	attrsRaw: string | undefined,
 ): ArticleListingEmbedProps {
@@ -90,6 +106,7 @@ export function parseArticleListingProps(
 		sort,
 		layout,
 		columns: clampInt(attrs.columns, DEFAULT_LISTING.columns, 1, 4),
+		gap: clampRem(attrs.gap, DEFAULT_LISTING.gap, 0, 8),
 	};
 }
 
