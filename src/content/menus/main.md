@@ -4,6 +4,9 @@ items:
   - label: Start
     linkType: page
     page: index
+  - label: Artikel
+    linkType: page
+    page: artikel
   - label: Über uns
     linkType: page
     page: ueber-uns

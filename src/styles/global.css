@@ -89,12 +89,20 @@ body.has-page-bg {
 	--color-chrome: var(--color-surface-glass);
 }
 
+/* Blur only full chrome bars / floating panels — not the inline desktop nav
+   (extra backdrop-filter there looked like a dark blob behind the links). */
 body.has-page-bg .site-header,
 body.has-page-bg .site-footer,
-body.has-page-bg .site-nav,
 body.has-page-bg .site-nav__sub {
 	backdrop-filter: blur(10px);
 	-webkit-backdrop-filter: blur(10px);
+}
+
+@media (max-width: 679px) {
+	body.has-page-bg .site-nav {
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -127,9 +135,44 @@ body.is-nav-locked {
 	padding: 2.5rem var(--shell-padding-inline) 4rem;
 }
 
+/* Content + sidebar (e.g. article index) */
+.page--with-sidebar {
+	max-width: 64rem;
+}
+
+.page-layout {
+	align-items: flex-start;
+}
+
+.page-layout__main {
+	flex: 1 1 auto;
+}
+
 .page h1 {
 	margin-top: 0;
 	margin-bottom: 1.25rem;
+}
+
+/* Article / tag listing */
+.article-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	margin: 0;
+	padding: 0;
+}
+
+.article-list li > a {
+	font-weight: var(--font-weight-heading);
+	font-size: 1.125rem;
+}
+
+.article-list p {
+	margin: 0.35rem 0 0;
+}
+
+.article-list__meta a {
+	color: var(--color-action);
 }
 
 /* Markdown / CMS media must stay inside the content column */

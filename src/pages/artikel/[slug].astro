@@ -3,8 +3,9 @@ import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import VideoEmbed from "../../components/VideoEmbed.astro";
-import { getArticleHref } from "../../lib/articles";
+import { formatArticleDate, getArticleHref } from "../../lib/articles";
 import { resolveCmsImage } from "../../lib/cms-image";
+import { formatTagHashtag, getTagHref } from "../../lib/tags";
 
 export async function getStaticPaths() {
 	const articles = await getCollection("articles");
@@ -42,11 +43,7 @@ const backgroundImage = resolveCmsImage(
 				<a href="/artikel/">Artikel</a>
 				{" · "}
 				<time datetime={article.data.pubDate.toISOString()}>
-					{article.data.pubDate.toLocaleDateString("de-DE", {
-						year: "numeric",
-						month: "long",
-						day: "numeric",
-					})}
+					{formatArticleDate(article.data.pubDate)}
 				</time>
 			</p>
 			<h1>{article.data.title}</h1>
@@ -60,7 +57,7 @@ const backgroundImage = resolveCmsImage(
 					<ul class="article-tags list-plain flex-row flex-wrap gap-md text-sm">
 						{linkedTags.map((tag) => (
 							<li>
-								<a href={`/tags/${tag.id}/`}>{tag.data.title}</a>
+								<a href={getTagHref(tag)}>{formatTagHashtag(tag)}</a>
 							</li>
 						))}
 					</ul>

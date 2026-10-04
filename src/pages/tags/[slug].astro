@@ -1,7 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getArticleHref, getPublishedArticles } from "../../lib/articles";
+import {
+	formatArticleDate,
+	getArticleHref,
+	getPublishedArticles,
+} from "../../lib/articles";
+import { formatTagHashtag } from "../../lib/tags";
 
 export async function getStaticPaths() {
 	const tags = await getCollection("tags");
@@ -15,24 +20,33 @@ const { tag } = Astro.props;
 const articles = (await getPublishedArticles()).filter((article) =>
 	(article.data.tags ?? []).includes(tag.id),
 );
+const hashtag = formatTagHashtag(tag);
 ---
 
 <BaseLayout
-	title={`Tag: ${tag.data.title}`}
+	title={hashtag}
 	description={tag.data.description}
 >
 	<main class="page">
 		<p class="text-sm text-muted"><a href="/artikel/">Artikel</a></p>
-		<h1>{tag.data.title}</h1>
+		<h1>{hashtag}</h1>
 		{tag.data.description && <p class="text-muted">{tag.data.description}</p>}
 		{
 			articles.length === 0 ? (
 				<p>Keine veröffentlichten Artikel mit diesem Tag.</p>
 			) : (
-				<ul class="list-plain">
+				<ul class="article-list list-plain">
 					{articles.map((article) => (
 						<li>
 							<a href={getArticleHref(article)}>{article.data.title}</a>
+							{article.data.summary && (
+								<p class="text-sm text-muted">{article.data.summary}</p>
+							)}
+							<p class="text-sm text-muted">
+								<time datetime={article.data.pubDate.toISOString()}>
+									{formatArticleDate(article.data.pubDate)}
+								</time>
+							</p>
 						</li>
 					))}
 				</ul>

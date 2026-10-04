@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from "astro:content";
+import ArticleIndexList from "../components/ArticleIndexList.astro";
 import BackgroundAttributions from "../components/BackgroundAttributions.astro";
+import TagSidebar from "../components/TagSidebar.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { resolveCmsImage } from "../lib/cms-image";
 import { getPageHref, indexPagesById } from "../lib/pages";
@@ -27,7 +29,9 @@ const backgroundImage = resolveCmsImage(
 	page.data.backgroundImage,
 	`content/pages/${page.id}/`,
 );
+/** Hardwired system pages (same idea as Impressum attributions). */
 const showBackgroundAttributions = page.id === "impressum";
+const showArticleIndex = page.id === "artikel";
 ---
 
 <BaseLayout
@@ -37,11 +41,26 @@ const showBackgroundAttributions = page.id === "impressum";
 	backgroundImage={backgroundImage}
 	backgroundOverlay={page.data.backgroundOverlay}
 >
-	<main class="page">
-		<article>
-			<h1>{page.data.title}</h1>
-			<Content />
-			{showBackgroundAttributions && <BackgroundAttributions />}
-		</article>
+	<main class:list={["page", { "page--with-sidebar": showArticleIndex }]}>
+		{
+			showArticleIndex ? (
+				<div class="page-layout flex-row gap-lg stack-on-tablet">
+					<div class="page-layout__main min-w-0 w-full">
+						<article>
+							<h1>{page.data.title}</h1>
+							<Content />
+							<ArticleIndexList />
+						</article>
+					</div>
+					<TagSidebar />
+				</div>
+			) : (
+				<article>
+					<h1>{page.data.title}</h1>
+					<Content />
+					{showBackgroundAttributions && <BackgroundAttributions />}
+				</article>
+			)
+		}
 	</main>
 </BaseLayout>
