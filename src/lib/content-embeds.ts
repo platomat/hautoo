@@ -1,5 +1,6 @@
 import { createSatteriMarkdownProcessor } from "@astrojs/markdown-satteri";
 import type { ArticleSort } from "./articles";
+import { getPublicBlock } from "./blocks";
 import type { GlossarSort } from "./glossar";
 import { hastCmsAssets } from "./hast-cms-assets";
 import { hastExternalLinks } from "./hast-external-links";
@@ -77,7 +78,7 @@ const DEFAULT_SEPARATOR: SeparatorEmbedProps = {
 
 /** Line must be only the embed (optional attrs). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|tag-cloud|separator|contact-email)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|tag-cloud|separator|contact-email|block)(?<attrs>[^}]*)\}\}\s*$/gm;
 
 const ARTICLE_SORTS = new Set<ArticleSort>([
 	"newest",
@@ -135,12 +136,38 @@ export function hasTagListingEmbed(body: string | undefined): boolean {
 	return /\{\{tag-listing\b/.test(body);
 }
 
-/** Wide content column for card/list embeds. */
+/** Wide content column for card/list embeds (direct markers only). */
 export function hasWideListingEmbed(body: string | undefined): boolean {
 	return (
 		hasArticleListingEmbed(body) ||
 		hasGlossarListingEmbed(body) ||
 		hasTagListingEmbed(body)
+	);
+}
+
+export function hasBlockEmbed(body: string | undefined): boolean {
+	if (!body) {
+		return false;
+	}
+	return /\{\{block\b/.test(body);
+}
+
+/** True if body (incl. nested public blocks) needs the wide content column. */
+export async function contentNeedsWideLayout(
+	body: string | undefined,
+): Promise<boolean> {
+	if (hasWideListingEmbed(body)) {
+		return true;
+	}
+	if (!hasBlockEmbed(body)) {
+		return false;
+	}
+	const segments = await buildContentSegments(body);
+	return segments.some(
+		(segment) =>
+			segment.type === "article-listing" ||
+			segment.type === "glossar-listing" ||
+			segment.type === "tag-listing",
 	);
 }
 
@@ -251,11 +278,18 @@ export function parseSeparatorProps(
 	};
 }
 
+function parseBlockId(attrsRaw: string | undefined): string {
+	const attrs = parseAttrs(attrsRaw ?? "");
+	return (attrs.id ?? attrs.slug ?? "").trim();
+}
+
 /**
  * Split CMS Markdown on embed placeholders and render Markdown parts to HTML.
+ * `{{block id="slug"}}` expands nested public block bodies (cycle-safe).
  */
 export async function buildContentSegments(
 	body: string | undefined,
+	options?: { visitedBlocks?: Set<string> },
 ): Promise<ContentSegment[]> {
 	const source = body ?? "";
 	if (!source.trim()) {
@@ -264,6 +298,7 @@ export async function buildContentSegments(
 
 	const processor = await getProcessor();
 	const segments: ContentSegment[] = [];
+	const visitedBlocks = options?.visitedBlocks ?? new Set<string>();
 	let cursor = 0;
 	EMBED_LINE.lastIndex = 0;
 
@@ -303,6 +338,18 @@ export async function buildContentSegments(
 				type: "glossar-listing",
 				props: parseGlossarListingProps(attrs),
 			});
+		} else if (name === "block") {
+			const id = parseBlockId(attrs);
+			if (id && !visitedBlocks.has(id)) {
+				visitedBlocks.add(id);
+				const block = await getPublicBlock(id);
+				if (block?.body) {
+					const nested = await buildContentSegments(block.body, {
+						visitedBlocks,
+					});
+					segments.push(...nested);
+				}
+			}
 		}
 
 		cursor = index + match[0].length;

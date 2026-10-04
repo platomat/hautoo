@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
 import ArticleNav from "../../components/ArticleNav.astro";
+import CmsContent from "../../components/CmsContent.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import VideoEmbed from "../../components/VideoEmbed.astro";
@@ -12,6 +13,10 @@ import {
 	getPublishedArticles,
 } from "../../lib/articles";
 import { resolveCmsImage } from "../../lib/cms-image";
+import {
+	contentNeedsWideLayout,
+	hasContentEmbeds,
+} from "../../lib/content-embeds";
 import { formatTagHashtag, getTagHref } from "../../lib/tags";
 
 export async function getStaticPaths() {
@@ -23,7 +28,9 @@ export async function getStaticPaths() {
 }
 
 const { article } = Astro.props;
+const useEmbeds = hasContentEmbeds(article.body);
 const { Content } = await render(article);
+const wide = await contentNeedsWideLayout(article.body);
 const { older, newer } = await getAdjacentArticles(article);
 const tags = await getCollection("tags");
 const tagMap = new Map(tags.map((tag) => [tag.id, tag]));
@@ -44,7 +51,7 @@ const backgroundImage = resolveCmsImage(
 	backgroundImage={backgroundImage}
 	backgroundOverlay={article.data.backgroundOverlay}
 >
-	<main class="page">
+	<main class:list={["page", { "page--wide": wide }]}>
 		<article>
 			<p class="text-sm text-muted">
 				<a href="/artikel/">Artikel</a>
@@ -82,7 +89,7 @@ const backgroundImage = resolveCmsImage(
 				id={article.data.videoId}
 				title={`Video: ${article.data.title}`}
 			/>
-			<Content />
+			{useEmbeds ? <CmsContent body={article.body} /> : <Content />}
 			<ArticleNav older={older} newer={newer} />
 		</article>
 		<p class="text-sm">

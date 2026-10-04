@@ -218,13 +218,14 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Tagwolke“, „Trennlinie“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Baustein“, „Tagwolke“, „Trennlinie“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
         editor_components:
           - image
           - code-block
           - article-listing
           - glossar-listing
           - tag-listing
+          - block
           - tag-cloud
           - contact-email
           - separator
@@ -300,13 +301,14 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Tagwolke“, „Trennlinie“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Baustein“, „Tagwolke“, „Trennlinie“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
         editor_components:
           - image
           - code-block
           - article-listing
           - glossar-listing
           - tag-listing
+          - block
           - tag-cloud
           - contact-email
           - separator
@@ -367,6 +369,41 @@ collections:
           widget: markdown,
           required: false,
         }
+
+  - name: blocks
+    label: Bausteine
+    label_singular: Baustein
+    folder: src/content/blocks
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{title}} ({{slug}})"
+    hint: "Wiederverwendbare Inhaltsstücke ohne eigene URL. Einbinden mit Toolbar „Baustein“ bzw. {{block id=\"slug\"}}."
+    fields:
+      - {
+          name: title,
+          label: Titel,
+          widget: string,
+          hint: "Nur im CMS. Der Dateiname/Slug ist die id für {{block id=\"…\"}}.",
+        }
+      - *field_status
+      - *field_publish_date
+      - *field_modified_date
+      - name: body
+        label: Inhalt
+        widget: markdown
+        hint: "Gleicher Markdown-Editor wie bei Seiten; kann Listings, Bilder und weitere Bausteine enthalten."
+        editor_components:
+          - image
+          - code-block
+          - article-listing
+          - glossar-listing
+          - tag-listing
+          - block
+          - tag-cloud
+          - contact-email
+          - separator
 
   # Menus: filename = slot id (main, footer-legal, …). Navigation is not driven by page flags.
   - name: menus

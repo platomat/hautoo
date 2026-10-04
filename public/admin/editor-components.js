@@ -292,6 +292,32 @@
 	});
 
 	CMS.registerEditorComponent({
+		id: "block",
+		label: "Baustein",
+		icon: "widgets",
+		fields: [
+			{
+				name: "id",
+				label: "Baustein",
+				widget: "relation",
+				collection: "blocks",
+				value_field: "{{slug}}",
+				search_fields: ["title"],
+				display_fields: ["title"],
+				hint: "Wiederverwendbarer Inhalt aus der Collection „Bausteine“. Dateiname = id.",
+			},
+		],
+		pattern: /^\{\{block(?<attrs>[^}]*)\}\}\s*$/m,
+		fromBlock: (match) => {
+			const attrs = parseAttrs(match?.groups?.attrs || "");
+			return { id: attrs.id || attrs.slug || "" };
+		},
+		toBlock: ({ id = "" }) => `{{block id="${id}"}}`,
+		toPreview: ({ id = "" }) =>
+			`<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Baustein · ${id || "?"}</div>`,
+	});
+
+	CMS.registerEditorComponent({
 		id: "contact-email",
 		label: "Kontakt-E-Mail",
 		icon: "mail",

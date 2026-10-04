@@ -88,4 +88,15 @@ const glossar = defineCollection({
 	}),
 });
 
-export const collections = { pages, menus, tags, articles, glossar };
+/** Reusable CMS snippets; injected via `{{block id="slug"}}` (no own URL). */
+const blocks = defineCollection({
+	loader: glob({ pattern: "*.md", base: "./src/content/blocks" }),
+	schema: z.object({
+		title: z.string(),
+		status: entryStatusSchema,
+		publishDate: publishDateSchema,
+		modifiedDate: modifiedDateSchema,
+	}),
+});
+
+export const collections = { pages, menus, tags, articles, glossar, blocks };

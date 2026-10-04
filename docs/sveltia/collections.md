@@ -7,10 +7,11 @@ Zurück zur [Sveltia-Übersicht](./README.md). Shared Field-Partials: [CMS Field
 | Collection | Schlüssel | Status |
 | --- | --- | --- |
 | Seiten | `pages` | umgesetzt (#3) |
-| Menüs | `menus` | umgesetzt (#13) |
-| Tags | `tags` | umgesetzt (#5) |
 | Artikel | `articles` | umgesetzt (#4) |
+| Tags | `tags` | umgesetzt (#5) |
 | Glossar | `glossar` | umgesetzt (#6) |
+| Bausteine | `blocks` | umgesetzt |
+| Menüs | `menus` | umgesetzt (#13) |
 
 ## Collection `menus` (umgesetzt)
 
@@ -76,6 +77,30 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | Body | ja | Markdown-Inhalt |
 
 Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarchie kommt aus `parent` (Kette möglich). Beispiel: Seite `team` mit `parent: ueber-uns` → `/ueber-uns/team/`.
+
+## Collection `blocks` (Bausteine)
+
+Wiederverwendbare Inhaltsstücke (ähnlich WordPress-Reusable-Blocks). Keine eigene Website-URL.
+
+| | |
+| --- | --- |
+| Ordner | `src/content/blocks/<slug>.md` |
+| Schema | `src/content.config.ts` |
+| Sveltia | Collection `blocks` (Label „Bausteine“) |
+| Einbinden | `{{block id="<slug>"}}` in Seiten-/Artikel-/Baustein-Body |
+| Resolve | `src/lib/blocks.ts` + Expand in `src/lib/content-embeds.ts` |
+
+### Felder
+
+| Feld | Pflicht | Bedeutung |
+| --- | --- | --- |
+| `title` | ja | Name im CMS |
+| `status` | ja | `draft` / `published` / `future` / `trash` |
+| `publishDate` | nein | Termin für Status `future` |
+| `modifiedDate` | nein | Letzte Änderung |
+| Body | ja | Markdown inkl. anderer Embeds; verschachtelte Bausteine mit Zyklusschutz |
+
+Beispiel: Baustein `stack-uebersicht` → auf der Startseite `{{block id="stack-uebersicht"}}`. Änderung am Baustein gilt überall.
 
 ## Collection `tags` (umgesetzt)
 
