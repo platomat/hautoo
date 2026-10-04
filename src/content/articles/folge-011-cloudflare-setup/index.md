@@ -1,6 +1,6 @@
 ---
-title: "Von GitHub ins Netz: Cloudflare Pages in echten Schritten"
-summary: "Repo verbinden, Astro bauen lassen, eigene Subdomain drauf — und an der Commit-ID erkennen, was wirklich live ist."
+title: "Folge 011: Von GitHub ins Netz: Cloudflare Pages in echten Schritten"
+summary: "Repo verbinden, Astro bauen lassen, eigene Subdomain drauf. An der Commit-ID erkennst du, was wirklich live ist."
 pubDate: 2026-10-04T00:22:44Z
 modifiedDate: 2026-10-04
 status: published
@@ -17,9 +17,9 @@ Bisher: lokal und GitHub. Jetzt wird’s öffentlich: **Cloudflare Pages** baut 
 
 ## Begriffe ohne Panik
 
-- **Workers & Pages** unter „Compute“. **Pages** = statische Sites aus Git — passt zu **Astro**. **Workers** = Extra-Logik am Edge (später z. B. CMS-Login).
-- **R2 / Databases** — für hautuu erst mal egal, aber gut zu wissen.
-- **Ask AI** in Cloudflare — Deutsch geht, hilft bei DNS und Regeln.
+- **Workers & Pages** unter „Compute“. **Pages** = statische Sites aus Git, passt zu **Astro**. **Workers** = Extra-Logik am Edge (später z. B. CMS-Login).
+- **R2 / Databases**: für hautuu erst mal egal, aber gut zu wissen.
+- **Ask AI** in Cloudflare. Deutsch geht, hilft bei DNS und Regeln.
 
 ## Die Pipeline (Merksatz)
 
@@ -47,7 +47,7 @@ Erst **Build**, dann **Deploy**. Unter **Deployments** jeder Lauf; Erfolg = `*.p
 
 ## Welche Version ist live?
 
-Kurze **Commit-ID** in Pages (z. B. endet auf `9a0`) = dieselbe auf GitHub. Burger-Menü nur lokal? Live zeigt’s noch nicht — bis du pushst.
+Kurze **Commit-ID** in Pages (z. B. endet auf `9a0`) = dieselbe auf GitHub. Burger-Menü nur lokal? Live zeigt’s noch nicht, bis du pushst.
 
 GitHub-App checken: Unter Applications nur das hautuu-Repo erlauben.
 
