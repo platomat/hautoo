@@ -8,7 +8,7 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 - **Statikdatei:** `public/img/logo-mark.svg` mit weißen Konturen (`#e8eeea`, Textfarbe)
 - **Header:** `LogoMark.astro` mit `currentColor` (Hover wie die Wortmarke)
 - **Wortmarke:** `hautuu` neben dem Mark (Header)
-- **Favicon (später):** Doppel-`u` (UU), noch nicht aktiv
+- **Favicon:** `public/img/favicon.svg` (Blatt-Mark; dunkel bei hellem System, hell bei dunklem), Fallback `favicon.ico` (helle Kontur)
 
 ## Prinzipien
 
