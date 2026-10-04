@@ -22,9 +22,11 @@ seo:
 
 Willkommen bei **hautuu**.
 
-Diese Website entsteht mit Cursor, wird über **GitHub** versioniert und auf Cloudflare ausgeliefert. Quellcode und Inhalte liegen im öffentlichen Repository:
+Diese Website entsteht mit Cursor, wird über **GitHub** versioniert und auf Cloudflare ausgeliefert. Quellcode und Inhalte liegen im öffentlichen Repository: [github.com/platomat/hautoo](https://github.com/platomat/hautoo/)
 
-[github.com/platomat/hautoo](https://github.com/platomat/hautoo/)
+## Stack-Übersicht
+
+![Stack-Übersicht - So hängen die Bausteine zusammen](/assets/stack-uebersicht-invert.webp)
 
 {{separator height="1" width="100"}}
 

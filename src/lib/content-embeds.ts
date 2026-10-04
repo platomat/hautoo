@@ -1,6 +1,7 @@
 import { createSatteriMarkdownProcessor } from "@astrojs/markdown-satteri";
 import type { ArticleSort } from "./articles";
 import type { GlossarSort } from "./glossar";
+import { hastCmsAssets } from "./hast-cms-assets";
 import { hastExternalLinks } from "./hast-external-links";
 import type { TagSort } from "./tags";
 
@@ -100,7 +101,7 @@ let markdownProcessor: Awaited<
 
 async function getProcessor() {
 	markdownProcessor ??= await createSatteriMarkdownProcessor({
-		hastPlugins: [hastExternalLinks],
+		hastPlugins: [hastCmsAssets, hastExternalLinks],
 	});
 	return markdownProcessor;
 }

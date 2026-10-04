@@ -70,6 +70,8 @@ Pfade:
 
 Nicht Astro-`image()` im Schema — das scheitert an `/assets/…`. Genutzt bei `pages` und `articles`.
 
+**Markdown-Bilder im Body** mit `/assets/…` werden beim Render über `hast-cms-assets` auf die gebauten Asset-URLs umgeschrieben (gleiche Auflösung wie Background). Ohne Embeds/`CmsContent` greift das nicht; Seiten mit Bildern im Text brauchen also Embeds oder diesen Pfad.
+
 **Bildnachweis:** Ein Feld reicht — Freitext, alleinstehende `http(s)`-URL (dann verlinkt) oder HTML 1:1 von Stock-Plattformen (z. B. Unsplash „Copy attribution“ mit `<a href>`). HTML wird auf erlaubte Links sanitisiert (`sanitizeAttributionHtml`). Sammlung: `src/lib/background-attributions.ts` (alle Pages + veröffentlichte Articles). Am Asset selbst speichert Sveltia keine Beschreibung; der Nachweis hängt am Eintrag.
 
 **Hinweis:** YAML-Anchors gelten nur **innerhalb derselben** `config.yml` (Sveltia-Limit). Zod und YAML bei Feldänderungen gemeinsam pflegen.

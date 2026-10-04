@@ -1,8 +1,8 @@
 ---
 title: Über uns
+description: Kurzvorstellung des Projekts hautuu.
 status: published
 modifiedDate: 2026-10-04
-description: Kurzvorstellung des Projekts hautuu.
 backgroundImage: /assets/599-1920x1280.webp
 backgroundOverlay: 84
 backgroundAttribution: https://picsum.photos/id/599/1920/1280
@@ -32,11 +32,17 @@ Dort findest du auch Issues, den Build-Verlauf und die technische Doku unter [`d
 
 ## Infos auf der Website
 
-- **[Artikel](/artikel/)**  
+- [**Artikel**](/artikel/)  
   Beiträge und How-tos Schritt für Schritt.
-- **[Tags](/tags/)**  
+- [**Tags**](/tags/)  
   Themen-Stichworte zu den Artikeln (z. B. Cursor, GitHub, Cloudflare).
-- **[Glossar](/glossar/)**  
+- [**Glossar**](/glossar/)  
   Kurze Begriffserklärungen zum Stack.
 
-Startseite und Menü führen dich zu den Übersichten; einzelne Einträge sind untereinander verlinkt.
+{{separator height="1" width="100"}}
+
+## Über den Autor
+
+Ich bin Wasilij, **Der Sprechende Schnurbart**. Ich bin Software-Entwickler und beschäftige mich mit Webseiten-Entwicklung schon seit 2003. Mit diesem Projekt will ich anderen Interessierten zeigen, wie man heutzutage mit Hilfe von KI schnell eine Webseite erstellen kann, auch ohne Vorkenntnisse.
+
+![Der Sprechende Schnurbart](/assets/Der-sprechende-Schnurrbart-transparent.webp)

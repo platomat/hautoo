@@ -38,6 +38,7 @@ output:
 # - *field_modified_date
 
 collections:
+
   - name: pages
     label: Seiten
     label_singular: Seite
@@ -228,6 +229,145 @@ collections:
           - contact-email
           - separator
 
+  - name: articles
+    label: Artikel
+    label_singular: Artikel
+    folder: src/content/articles
+    create: true
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    slug: "{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{title}}"
+    hint: "Medien neben dem Eintrag (Variante B). URL: /artikel/<slug>/."
+    fields:
+      - { name: title, label: Titel, widget: string }
+      - {
+          name: summary,
+          label: Zusammenfassung,
+          widget: text,
+          required: false,
+        }
+      - {
+          name: pubDate,
+          label: Publikationsdatum,
+          widget: datetime,
+          date_format: YYYY-MM-DD,
+          time_format: false,
+          required: true,
+          hint: "Auch Termin für Status „Geplant“.",
+        }
+      - *field_status
+      - *field_modified_date
+      - {
+          name: heroImage,
+          label: Titelbild,
+          widget: image,
+          required: false,
+          hint: "Wird neben index.md gespeichert (Variante B).",
+        }
+      - *field_background_image
+      - *field_background_overlay
+      - *field_background_attribution
+      - name: tags
+        label: Tags
+        widget: relation
+        collection: tags
+        value_field: "{{slug}}"
+        search_fields: [title]
+        display_fields: [title]
+        multiple: true
+        required: false
+      - name: videoProvider
+        label: Video-Anbieter
+        widget: select
+        options:
+          - { label: Keins, value: "" }
+          - { label: YouTube, value: youtube }
+          - { label: Vimeo, value: vimeo }
+        default: ""
+        required: false
+      - {
+          name: videoId,
+          label: Video-ID oder URL,
+          widget: string,
+          required: false,
+          hint: "YouTube-/Vimeo-ID oder URL.",
+        }
+      - *field_seo
+      - name: body
+        label: Inhalt
+        widget: markdown
+        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Tagwolke“, „Trennlinie“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        editor_components:
+          - image
+          - code-block
+          - article-listing
+          - glossar-listing
+          - tag-listing
+          - tag-cloud
+          - contact-email
+          - separator
+
+  - name: tags
+    label: Tags
+    label_singular: Tag
+    folder: src/content/tags
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{title}}"
+    hint: "Schlagworte für Artikel. Dateiname = Slug."
+    fields:
+      - { name: title, label: Name, widget: string }
+      - {
+          name: description,
+          label: Beschreibung,
+          widget: text,
+          required: false,
+        }
+      - *field_modified_date
+
+  - name: glossar
+    label: Glossar
+    label_singular: Begriff
+    folder: src/content/glossar
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{title}}"
+    hint: "Fachbegriffe. URL: /glossar/<slug>/."
+    fields:
+      - { name: title, label: Begriff, widget: string }
+      - *field_status
+      - *field_publish_date
+      - *field_modified_date
+      - {
+          name: definition,
+          label: Kurzdefinition,
+          widget: text,
+          hint: "Ein bis drei Sätze — erscheint in der Glossar-Liste.",
+        }
+      - name: relatedArticles
+        label: Verwandte Artikel
+        widget: relation
+        collection: articles
+        value_field: "{{slug}}"
+        search_fields: [title]
+        display_fields: [title]
+        multiple: true
+        required: false
+      - {
+          name: body,
+          label: Längere Erklärung,
+          widget: markdown,
+          required: false,
+        }
+
   # Menus: filename = slot id (main, footer-legal, …). Navigation is not driven by page flags.
   - name: menus
     label: Menüs
@@ -321,142 +461,3 @@ collections:
                   required: false,
                   hint: "Optional am <a>-Link. Mehrere Klassen mit Leerzeichen.",
                 }
-
-  - name: tags
-    label: Tags
-    label_singular: Tag
-    folder: src/content/tags
-    create: true
-    slug: "{{slug}}"
-    extension: md
-    format: yaml-frontmatter
-    summary: "{{title}}"
-    hint: "Schlagworte für Artikel. Dateiname = Slug."
-    fields:
-      - { name: title, label: Name, widget: string }
-      - {
-          name: description,
-          label: Beschreibung,
-          widget: text,
-          required: false,
-        }
-      - *field_modified_date
-
-  - name: articles
-    label: Artikel
-    label_singular: Artikel
-    folder: src/content/articles
-    create: true
-    path: "{{slug}}/index"
-    media_folder: ""
-    public_folder: ""
-    slug: "{{slug}}"
-    extension: md
-    format: yaml-frontmatter
-    summary: "{{title}}"
-    hint: "Medien neben dem Eintrag (Variante B). URL: /artikel/<slug>/."
-    fields:
-      - { name: title, label: Titel, widget: string }
-      - {
-          name: summary,
-          label: Zusammenfassung,
-          widget: text,
-          required: false,
-        }
-      - {
-          name: pubDate,
-          label: Publikationsdatum,
-          widget: datetime,
-          date_format: YYYY-MM-DD,
-          time_format: false,
-          required: true,
-          hint: "Auch Termin für Status „Geplant“.",
-        }
-      - *field_status
-      - *field_modified_date
-      - {
-          name: heroImage,
-          label: Titelbild,
-          widget: image,
-          required: false,
-          hint: "Wird neben index.md gespeichert (Variante B).",
-        }
-      - *field_background_image
-      - *field_background_overlay
-      - *field_background_attribution
-      - name: tags
-        label: Tags
-        widget: relation
-        collection: tags
-        value_field: "{{slug}}"
-        search_fields: [title]
-        display_fields: [title]
-        multiple: true
-        required: false
-      - name: videoProvider
-        label: Video-Anbieter
-        widget: select
-        options:
-          - { label: Keins, value: "" }
-          - { label: YouTube, value: youtube }
-          - { label: Vimeo, value: vimeo }
-        default: ""
-        required: false
-      - {
-          name: videoId,
-          label: Video-ID oder URL,
-          widget: string,
-          required: false,
-          hint: "YouTube-/Vimeo-ID oder URL.",
-        }
-      - *field_seo
-      - name: body
-        label: Inhalt
-        widget: markdown
-        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Tagwolke“, „Trennlinie“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
-        editor_components:
-          - image
-          - code-block
-          - article-listing
-          - glossar-listing
-          - tag-listing
-          - tag-cloud
-          - contact-email
-          - separator
-
-  - name: glossar
-    label: Glossar
-    label_singular: Begriff
-    folder: src/content/glossar
-    create: true
-    slug: "{{slug}}"
-    extension: md
-    format: yaml-frontmatter
-    summary: "{{title}}"
-    hint: "Fachbegriffe. URL: /glossar/<slug>/."
-    fields:
-      - { name: title, label: Begriff, widget: string }
-      - *field_status
-      - *field_publish_date
-      - *field_modified_date
-      - {
-          name: definition,
-          label: Kurzdefinition,
-          widget: text,
-          hint: "Ein bis drei Sätze — erscheint in der Glossar-Liste.",
-        }
-      - name: relatedArticles
-        label: Verwandte Artikel
-        widget: relation
-        collection: articles
-        value_field: "{{slug}}"
-        search_fields: [title]
-        display_fields: [title]
-        multiple: true
-        required: false
-      - {
-          name: body,
-          label: Längere Erklärung,
-          widget: markdown,
-          required: false,
-        }
