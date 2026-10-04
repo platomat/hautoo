@@ -22,7 +22,7 @@ KI frisst Rechenzeit. Bei **Cursor** siehst du das unter Account → **Usage**.
 
 ## Cloud Agents vs. lokal
 
-**Cloud Agents** laufen nicht auf deiner CPU. Du startest eine Aufgabe, am Ende oft ein **Pull Request** auf GitHub. Praktisch, aber **deutlich mehr Tokens** als lokal ein kleines Skript laufen lassen.
+[**Cloud Agents**](/glossar/cloud-agent/) laufen nicht auf deiner CPU. Du startest eine Aufgabe, am Ende oft ein [**Pull Request**](/glossar/pull-request/) auf GitHub. Workflow mit Transkripten und PR: [Folge 015](/artikel/folge-015-transkript-artikel/) und [Folge 016](/artikel/folge-016-artikel-pull-request/). Praktisch, aber **deutlich mehr Tokens** als lokal ein kleines Skript laufen lassen.
 
 ## On-Demand: Finger weg, wenn’s geht
 
@@ -32,7 +32,7 @@ Im Dashboard siehst du Tokens pro Anfrage — 40-Millionen-Monster sind möglich
 
 ## VM & Grok (optional)
 
-Wasilij nutzt manchmal eine **virtuelle Maschine**, abgeschottet vom Haupt-PC. Spezial-Agenten (Audit, Bugfix, nochmal Audit) erzeugen Issues. Geht auch mit **zwei normalen Chats** und klaren Rollen, ohne Extra-Hardware.
+Wasilij nutzt manchmal eine **virtuelle Maschine**, abgeschottet vom Haupt-PC. Spezial-Agenten (Audit, Bugfix, nochmal Audit) erzeugen Issues. Geht auch mit **zwei normalen Chats** und klaren Rollen, ohne Extra-Hardware ([Folge 010](/artikel/folge-010-cursor-chats/)).
 
 **Grok** in Cursor kann ab höheren Plänen relevant sein, im Account nachsehen, ob du’s brauchst.
 

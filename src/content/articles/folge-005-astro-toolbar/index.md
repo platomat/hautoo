@@ -17,7 +17,7 @@ Kurze Folge, viel Praxis.
 
 ## Die Astro-Dev-Leiste
 
-Mit `npm run dev` klebt oft die **Astro-Dev-Toolbar** am Rand, nur bei dir, nicht live. **Astro** ist das Framework, das Markdown und Komponenten zu fertigem HTML backt.
+Mit [`npm run dev`](/glossar/npm/) klebt oft die **Astro-Dev-Toolbar** am Rand, nur bei dir, nicht live. Installation von Node/npm: [Folge 018](/artikel/folge-018-node-npm/). [**Astro**](/glossar/astro/) ist das Framework, das Markdown und Komponenten zu fertigem HTML backt.
 
 Stört sie? Einklappen, oder den Agenten fragen, wie du sie dauerhaft ausblendest. Besucher sehen sie nie.
 
@@ -28,7 +28,7 @@ Im Projekt:
 - **Tablet:** unter 1024 px  
 - **Mobil:** unter 680 px  
 
-Einmal gesagt, gilt’s fürs Menü, den Footer, was auch immer. Test: Entwicklertools, Breite ziehen. 679 px fühlt sich anders an als 680 px.
+Einmal gesagt, gilt’s fürs Menü, den Footer, was auch immer. Test: Entwicklertools, Breite ziehen. Unter [**680 px**](/glossar/breakpoint/) fühlt sich das Layout anders an.
 
 ## Klartext statt Fachchinesisch
 
@@ -36,10 +36,10 @@ Du musst nicht „padding“ sagen. **„Im Footer bitte mehr Abstand links und 
 
 Wenn du’s genau willst:
 
-- **Padding**: Innenabstand.
+- [**Padding**](/glossar/css/): Innenabstand.
 - **Margin**: Abstand nach außen.
 - **Border-Radius**: runde Ecken.
 
-Der Agent soll bestehende Klassen im Projekt nutzen, nicht bei jedem Prompt neues Inline-CSS erfinden. Deine **Page Speed** dankt’s dir.
+Der Agent soll bestehende Klassen im Projekt nutzen, nicht bei jedem Prompt neues Inline-CSS erfinden. Deine **Page Speed** dankt’s dir. Fonts, Tokens und erster Look: [Folge 003](/artikel/folge-003-erstes-design/).
 
 <!-- Quelle: 2026-10-03--23-23-55--obs-screencast - hautoo - astro bar, breakpoints, css fachchinesisch.txt -->

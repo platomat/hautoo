@@ -13,7 +13,7 @@ seo:
   follow_visibility: follow
 ---
 
-Das Repo enthält Quellcode und `package.json`, aber nicht den ganzen **`node_modules`**-Berg. Lokal brauchst du **Node.js** (für hautuu empfohlen: **Version 22**) und **npm**, damit `npm run dev` und `npm run build` laufen.
+Das Repo enthält Quellcode und `package.json`, aber nicht den ganzen **`node_modules`**-Berg. Lokal brauchst du [**Node.js**](/glossar/nodejs/) (für hautuu empfohlen: **Version 22**) und **npm**, damit `npm run dev` und `npm run build` laufen.
 
 ## Node installieren
 
@@ -24,7 +24,7 @@ sudo apt update
 sudo apt install curl
 ```
 
-Kaputte Paketlisten auf einer frischen VM fixst du ggf. mit `sudo apt-get update` und den Hinweisen aus `apt` (broken packages, fix-missing). Danach das Node-Skript erneut ausführen. Das Setup legt oft **nvm** mit, sodass mehrere Node-Versionen parallel möglich sind.
+Kaputte Paketlisten auf einer frischen VM fixst du ggf. mit `sudo apt-get update` und den Hinweisen aus `apt` (broken packages, fix-missing). Danach das Node-Skript erneut ausführen. Das Setup legt oft [**nvm**](/glossar/nvm/) mit, sodass mehrere Node-Versionen parallel möglich sind.
 
 Prüfen:
 
@@ -43,12 +43,12 @@ npm install
 npm run dev
 ```
 
-`npm install` lädt alle in `package.json` genannten Pakete (Astro, Sveltia-Build-Tools, …). `npm run dev` baut die Site im **Entwicklungsmodus** und zeigt eine lokale URL (oft `localhost:4321`). Link im Terminal anklicken oder URL kopieren.
+[`npm install`](/glossar/npm/) lädt alle in `package.json` genannten Pakete (Astro, Sveltia-Build-Tools, …). `npm run dev` baut die Site im **Entwicklungsmodus** und zeigt eine lokale URL (oft `localhost:4321`). Link im Terminal anklicken oder URL kopieren.
 
-So testest du Änderungen **ohne** jedes Mal auf **main** zu pushen. Für öffentliche Previews nutzt du weiter **Branches** und Cloudflare-**Preview**-URLs, wie in den Cloudflare-Folgen.
+So testest du Änderungen **ohne** jedes Mal auf **main** zu pushen. Für öffentliche Previews nutzt du weiter [**Branches**](/glossar/branch/) und Cloudflare-**Preview**-URLs ([Folge 012](/artikel/folge-012-cloudflare-branches/)).
 
 ## Was npm hier nicht ist
 
-Du hostest die fertige Site nicht mit `npm run dev`. Production läuft über **Cloudflare Pages** nach Push. Lokal ist npm nur Werkzeugkiste: installieren, entwickeln, `npm run build` vor dem Commit wenn du den Produktionsbuild prüfen willst.
+Du hostest die fertige Site nicht mit `npm run dev`. Production läuft über [**Cloudflare Pages**](/glossar/cloudflare-pages/) nach Push ([Folge 011](/artikel/folge-011-cloudflare-setup/)). Lokal ist npm nur Werkzeugkiste: installieren, entwickeln, `npm run build` vor dem Commit wenn du den Produktionsbuild prüfen willst.
 
 <!-- Quelle: 2026-10-04--20-22-22--obs-screencast - hautoo - 018 - nvm, npm, node.txt -->

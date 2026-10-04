@@ -13,7 +13,7 @@ seo:
   follow_visibility: follow
 ---
 
-Öffentliche How-To-Repos siehst du ohne Login. **Private** Projekte wie dein echtes hautuu-Repo verweigern `git clone` mit **Permission denied**, bis GitHub deinen Rechner kennt. Dafür nutzt du **SSH** statt Passwort im URL.
+Öffentliche How-To-Repos siehst du ohne Login. **Private** Projekte wie dein echtes hautuu-Repo verweigern [`git clone`](/glossar/clone/) mit **Permission denied**, bis GitHub deinen Rechner kennt. Grundlagen zu Clone und Push/Pull: [Folge 001](/artikel/folge-001-hautuu-intro/) und [Folge 006](/artikel/folge-006-git-push-pull/). Dafür nutzt du einen [**SSH-Key**](/glossar/ssh-key/) statt Passwort in der URL.
 
 ## Ordner `.ssh`
 
@@ -51,7 +51,7 @@ Host github.com
 
 ## Key bei GitHub
 
-**Settings** → **SSH and GPG keys** → **New SSH key**. Titel (z. B. „Lab-Test“), Inhalt = komplette `.pub`-Datei (beginnt oft mit `ssh-ed25519` oder `ssh-rsa`). **Private** Keys beginnen mit `BEGIN OPENSSH PRIVATE KEY`, die gehören nicht nach GitHub.
+**Settings** auf [**GitHub**](/glossar/github/) → **SSH and GPG keys** → **New SSH key**. Titel (z. B. „Lab-Test“), Inhalt = komplette `.pub`-Datei (beginnt oft mit `ssh-ed25519` oder `ssh-rsa`). **Private** Keys beginnen mit `BEGIN OPENSSH PRIVATE KEY`, die gehören nicht nach GitHub.
 
 Test:
 
