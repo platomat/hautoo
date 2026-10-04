@@ -4,9 +4,9 @@ description: Themen-Tags zu den Artikeln auf hautuu. Nach Stichwort filtern und 
 status: published
 publishDate: 2026-10-04
 modifiedDate: 2026-10-04
-backgroundImage: /assets/alex-gruber-ATMEDyTPQG4-unsplash.webp
-backgroundOverlay: 50
-backgroundAttribution: Photo by <a href="https://unsplash.com/@alex_gruber?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alex Gruber</a> on <a href="https://unsplash.com/photos/a-man-standing-in-a-forest-ATMEDyTPQG4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+backgroundImage: /assets/casey-horner-mLPjQs-YK5g-unsplash.webp
+backgroundOverlay: 77
+backgroundAttribution: Photo by <a href="https://unsplash.com/@mischievous_penguins?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Casey Horner</a> on <a href="https://unsplash.com/photos/brown-house-overseeing-stars-mLPjQs-YK5g?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 seo:
   index_visibility: index
   follow_visibility: follow
