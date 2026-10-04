@@ -18,6 +18,8 @@ seo:
 
 ## Wer macht was?
 
+{{block id="stack-uebersicht"}}
+
 ```text
 Du → /admin → Sveltia → Worker (Auth) → GitHub API
                 ↓

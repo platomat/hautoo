@@ -18,6 +18,8 @@ Willkommen in Folge eins. Hier musst du noch nicht alles verstehen, du brauchst 
 
 Die Wahrheit liegt bei [**GitHub**](/glossar/github/) (Server in der Cloud). Bei dir auf der Platte ist eine Kopie, an der du mit [**Cursor**](/glossar/cursor/) arbeitest. Später baut [**Astro**](/glossar/astro/) daraus statische HTML-Seiten ([**Frontend**](/glossar/frontend/)), und [**Cloudflare**](/glossar/cloudflare-pages/) stellt sie ins Netz. Mehr Details kommen Stück für Stück, heute die grobe **Richtung**.
 
+{{block id="stack-uebersicht"}}
+
 ## GitHub: dein Projekt in der Cloud
 
 Du legst ein [**Repository**](/glossar/repository/) an, so heißt der Projektordner bei GitHub.
