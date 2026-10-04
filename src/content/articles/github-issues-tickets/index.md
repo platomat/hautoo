@@ -1,6 +1,6 @@
 ---
-title: "GitHub Issues: Tickets, Meilensteine und die große Grafik"
-summary: So hältst du mit Issues den Überblick, lässt die KI abarbeiten und verstehst, wie GitHub, Cursor und Cloudflare zusammenhängen.
+title: "Issues statt Chaos: So behältst du die KI auf Kurs"
+summary: "Tickets, Meilensteine und ein Bild, wie Cursor, GitHub und Cloudflare zusammenspielen — damit du nicht jeden Tag alles neu erklären musst."
 pubDate: 2026-10-03T01:35:20Z
 modifiedDate: 2026-10-04
 status: published
@@ -14,51 +14,47 @@ seo:
   follow_visibility: follow
 ---
 
-GitHub ist nicht nur Speicher für Code — es ist auch dein **Projektbüro**. **Issues** sind Tickets: Bugs, Ideen, Features. **Meilensteine** gruppieren sie (z. B. „Version 1 – Setup“). **Labels** helfen beim Filtern (Documentation, Design, …).
+GitHub ist nicht nur Datei-Ablage — es ist dein **Projektbüro**. **Issues** sind Tickets: Bug, Idee, Feature. **Meilensteine** bündeln sie (z. B. „Version 1 – Setup“). **Labels** helfen beim Sortieren (Documentation, Design, …).
 
-## Zusammenarbeit und Pull Requests
+## Forks und Pull Requests (kurz)
 
-Du kannst fremde Projekte **forken** (Kopie unter deinem Account), ändern und einen **Pull Request** (PR) an den Originalautor schicken — der entscheidet, ob er deine Änderungen übernimmt. Oder du arbeitest allein im eigenen Repo. Issues funktionieren in beiden Welten gleich.
+Du kannst fremde Projekte **forken** — eine Kopie unter deinem Account. Änderst du was Nützliches, schickst du einen **Pull Request** (PR) an den Originalautor. Der entscheidet, ob er’s übernimmt. Allein im eigenen Repo? Dann sind Issues trotzdem Gold wert.
 
-## Workflow mit Cursor
+## „Bitte Issue #1 umsetzen“
 
-Statt jedes Mal alles neu zu erklären, sagst du z. B.:
+Statt jedes Mal die halbe Projektgeschichte zu tippen, sagst du:
 
 > Bitte Issue #1 umsetzen.
 
-Der Agent liest Titel und Kommentare (bei **öffentlichen** Repos auch ohne extra Login — aber Vorsicht: Jeder kann den Code und die History lesen, also **nie Passwörter oder Tokens** committen).
+Der Agent liest Titel und Kommentare. Bei einem **öffentlichen** Repo kann das jeder mitlesen — deshalb: **nie Passwörter, Tokens oder API-Keys** committen. Die **History** vergisst nichts.
 
-In Commit-Messages kannst du Issues verknüpfen (`Fixes #1`, `Closes #1`, `Refs #2`). GitHub schließt das Ticket dann automatisch oder verlinkt die Commits — praktisch für die Nachvollziehbarkeit.
+In Commit-Messages kannst du Issues erwähnen (`Fixes #1`, `Closes #1`). GitHub verlinkt oder schließt das Ticket — du siehst später, welcher Commit was gelöst hat.
 
-## Die Bausteine-Grafik (sinngemäß)
+## Die Kette (die Grafik im Kopf)
 
-Kurz die Kette:
+1. **Cursor** — du arbeitest lokal, commit, push.
+2. **GitHub** — Quelle der Wahrheit.
+3. **Cloudflare** — merkt Änderungen, **baut** mit Astro.
+4. **Sveltia** — später: Tippfehler im Browser fixen, landet wieder in Git.
+5. **Astro** — macht schnelle statische Seiten, kein WordPress, keine Datenbank auf dem Server.
 
-1. **Cursor** — du bearbeitest lokal, commit & push.
-2. **GitHub** — zentrale Quelle der Wahrheit.
-3. **Cloudflare** — merkt Änderungen und **baut** die Site mit Astro.
-4. **Sveltia CMS** — später: manuelle Textkorrekturen im Browser, landen wieder in Git.
-5. **Astro** — erzeugt schnelle statische HTML-Seiten (kein WordPress, keine Datenbank auf dem Server).
+## Issues klein schneiden
 
-## Issues anlegen und zerlegen
+„Astro Collections erstellen“ klingt riesig. Die KI kann **Sub-Issues** vorschlagen (Pages, Articles, Tags …). Dann siehst du Fortschritt statt einen endlosen Klumpen.
 
-Beispiel: „Astro Collections erstellen“. Die KI kann **Sub-Issues** vorschlagen (Pages, Articles, Tags, …). So siehst du Fortschritt („0 von 4“) statt eines monolithischen Monsters.
+Vor dem Bauen fragt der Agent oft nach:
 
-Vor der Umsetzung klärt der Agent oft Fragen — z. B.:
+- **CMS-Login:** später per Token oder GitHub (eigenes Thema).
+- **Direkt auf `main`:** Speichern kann sofort auf den Hauptzweig gehen → Cloudflare baut neu. Simpel, aber jeder Klick kann live werden.
+- **Bilder „Variante B“:** Dateien liegen neben dem Artikel — Astro kann sie optimieren (gut für **Page Speed**).
 
-- **CMS-Zugang:** später PAT oder GitHub-Login (kommt in eigenen Folgen).
-- **Direkt auf `main` speichern** vs. Pull Request — beim einfachen Setup: Speichern geht direkt auf `main` → Cloudflare baut sofort neu (Vorteil: simpel; Nachteil: jeder Klick kann live gehen).
-- **Medien:** „Variante B“ — Bilder liegen neben dem Content-Eintrag, Astro kann optimieren (Page Speed).
+## Erst lokal gucken
 
-## Lokal testen vor dem großen Push
+- `npm install` — holt Pakete (macht Cloudflare beim Build auch).
+- `npm run dev` — Vorschau auf deinem Rechner.
 
-- `npm install` — holt Abhängigkeiten (passiert auch auf Cloudflare beim Build).
-- `npm run dev` — Vorschau auf dem Rechner, ohne die Live-Seite zu berühren.
+Ist Cloudflare schon dran? **Push = Build.** Darum pusht der Agent bei hautuu nur **auf dein Wort**.
 
-Wenn Cloudflare schon verbunden ist: **Push = Build**. Deshalb pusht der Agent bei euch nur **auf Anweisung** (siehe Projektregeln).
-
-## Ausblick Design & Cloudflare
-
-In derselben Session ging es schon um dunkles Theme, grüne Action-Farbe, Ubuntu-Schrift — und dass man Features lieber als Issues festhält als nur im Chat. Cloudflare-Doku kommt in einer eigenen Folge.
+In derselben Session ging’s schon um dunkles Theme, grüne Klick-Farbe, Ubuntu-Schrift — und dass Issues besser sind als „hab ich mal im Chat gesagt“.
 
 <!-- Quelle: 2026-10-03--01-35-20--obs-screencast - hautoo - github - issues.txt -->

@@ -1,6 +1,6 @@
 ---
-title: "Cursor: Ask, Agent, Plan — und das Burger-Menü"
-summary: Wann die KI nur redet, wann sie baut, und warum du zuerst planen lassen solltest.
+title: "Ask, Agent, Plan: Wann die KI nur reden darf"
+summary: "Unterschied zwischen „bitte nichts anfassen“ und „bau mir das Burger-Menü“ — plus wo dein Chat-Schnack nicht im Repo landen soll."
 pubDate: 2026-10-03T23:48:14Z
 modifiedDate: 2026-10-04
 status: published
@@ -13,40 +13,40 @@ seo:
   follow_visibility: follow
 ---
 
-Cursor ist mehr als Chat — es ist eine **IDE** (Entwicklungsumgebung) mit eingebauten **Agenten**.
+Cursor ist mehr als Chat — eine **IDE** (Entwicklungsumgebung) mit **Agenten**, die Dateien lesen und schreiben.
 
-## Chat-Ansicht vs. IDE
+## Chat-Oberfläche vs. IDE
 
-Beim Start siehst du manchmal eine chat-lastige Oberfläche. Für Projektarbeit: **IDE**-Modus — Dateibaum, Editor, Terminal, Agentenleiste.
+Manchmal startet Cursor chat-lastig. Für hautuu willst du den **IDE**-Modus: Dateien, Terminal, Agentenleiste. Button **IDE** hilft.
 
-Du kannst auch **Ordner ohne Git** öffnen (Fotos sortieren, Docs sammeln) und dem Agenten Kontext geben.
+Du kannst auch einen beliebigen **Ordner ohne Git** öffnen (Fotos, Notizen) und dem Agenten sagen: „Pack das ins Projekt.“
 
-## Drei Modi (unten in der Leiste)
+## Drei Modi — drei Temperamentstufen
 
 | Modus | Wofür |
 |--------|--------|
-| **Ask** | Fragen stellen — idealerweise **keine** Dateiänderungen. Auch `Frage:` am Anfang signalisiert Nur-Lesen. |
-| **Agent** | Lesen, schreiben, Terminal, Commits — der Vollwerkmodus. |
-| **Plan** | Erst **Plan** schreiben (To-dos, Schritte, Grenzen), du liest mit, korrigierst, **dann** Umsetzung im Agent-Modus. |
+| **Ask** | Nur fragen. Ideal, wenn nichts am Code geändert werden soll. `Frage:` am Anfang ist ein guter Hinweis. |
+| **Agent** | Alles: lesen, schreiben, Terminal, Commits. Der Vollgas-Modus. |
+| **Plan** | Erst Plan mit To-dos — du liest, korrigierst, **dann** Umsetzung im Agent-Modus. |
 
-**Tab** = Autovervollständigung im Code (nicht überall im Chat).
+**Tab** = Autovervollständigung im Code (im Chat klappt das nicht immer).
 
-Tipp aus dem Video: Erstes Projekt ohne Plan — zweites mit Phasen und Plänen. Deutlich entspannter.
+Tipp aus dem Video: Erstes Projekt ohne Plan war hektisch. Mit Plan-Modus: entspannter.
 
-## Beispiel: Burger-Menü
+## Burger-Menü: Plan zuerst, Bau zweites
 
-Aufgabe: Mobiles Menü, Icon wird zum Kreuz, animiert. Workflow:
+Aufgabe: mobiles Menü, Icon wird zum Kreuz, animiert.
 
-1. Plan-Modus: „Bitte Umsetzungsplan, noch nicht bauen.“
-2. Plan lesen (CSS, Doku, kein Push ohne Anweisung — gut).
-3. Feedback („Trennlinien zwischen Einträgen“, Abstände oben/unten).
-4. Agent setzt um → in `npm run dev` testen.
-5. Commit auf Anweisung.
+1. **Plan:** „Umsetzungsplan, noch nicht bauen.“
+2. Plan lesen — gut, wenn „kein Push ohne Anweisung“ drinsteht.
+3. Feedback: Trennlinien, Abstände oben/unten.
+4. **Agent** baut → `npm run dev` → gucken.
+5. Commit, wenn du zufrieden bist.
 
-Breakpoints: Mobil ab 679 px im Projekt — Menü nutzt die globalen Tokens.
+Mobil greift ab 679 px — Menü nutzt die globalen Design-Tokens.
 
-## Chat-Transkripte privat halten
+## Transkripte: privat lassen
 
-Unter `docs/sessions/` kannst du **Export Transcript** ablegen — persönlicher Verlauf. Ordner in **`.gitignore`** packen (`docs/sessions/`), sonst landet Schnack im öffentlichen Repo. Commits enthalten dann nur Website-relevantes.
+**Export Transcript** nach `docs/sessions/` — dein Schnack mit der KI. Ordner in **`.gitignore`** (`docs/sessions/`), sonst landet’s im öffentlichen Repo. Commits = nur Website-Zeug.
 
 <!-- Quelle: 2026-10-03--23-48-14--obs-screencast - hautoo - cursor - plan, agent, ask.txt -->

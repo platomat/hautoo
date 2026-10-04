@@ -1,6 +1,6 @@
 ---
-title: "Sveltia CMS lokal und online — Variante mit PAT"
-summary: /admin im Browser, Collections bearbeiten und dich mit einem GitHub Personal Access Token anmelden.
+title: "/admin aufmachen — lokal ohne Passwort, online mit GitHub-Schlüssel"
+summary: "Sveltia fühlt sich wie ein Mini-CMS an, speichert aber nur Dateien. So loggst du dich ein, ohne dass jeder Hans deine Startseite umschreibt."
 pubDate: 2026-10-04T01:09:23Z
 modifiedDate: 2026-10-04
 status: published
@@ -13,40 +13,42 @@ seo:
   follow_visibility: follow
 ---
 
-Das **CMS** (Content-Management-System) ist bei hautuu **Sveltia** — Git-basiert, keine WordPress-Datenbank.
+**CMS** = Content-Management — bei hautuu **Sveltia**: Redaktion im Browser, Inhalt landet als Dateien in Git. Keine WordPress-Datenbank.
 
-## Lokal: `npm run dev` + `/admin`
+## Lokal: `/admin` ohne Login
 
-- URL: `http://localhost:…/admin/` (Port steht im Terminal).
-- **Nur Chromium/Chrome** — Firefox geht für das Backend oft nicht.
-- Modus **„local“**: Ordner des Repos auswählen, fertig — **keine Anmeldung**, weil die Dateien schon bei dir liegen.
+- `npm run dev`, dann `http://localhost:…/admin/` (Port im Terminal).
+- **Chrome/Chromium** — Firefox klappt fürs Backend oft nicht.
+- Modus **„local“**: Projektordner wählen — **kein Passwort**, die Dateien liegen ja schon bei dir.
 
-Links Felder aus `config.yml`, rechts eine einfache Preview. Markdown, Bilder (z. B. Platzhalter von Lorem Picsum), SEO-Block (Titel im **Browser-Tab** vs. sichtbare Überschrift, Meta Description für Telegram/Facebook-Vorschau).
+Links die Felder aus der Config, rechts eine simple Preview. Markdown, Bilder (z. B. Platzhalter), **SEO**: was im **Browser-Tab** steht vs. Überschrift auf der Seite, **Meta Description** für Link-Vorschau in Telegram & Co.
 
-Speichern = Markdown-Datei ändert sich lokal — noch **nicht** live.
+Speichern = Datei lokal geändert — noch **nicht** live.
 
-## Online: Warum Auth?
+## Online: Warum ein Schlüssel?
 
-Öffentliches Repo = jeder darf **lesen**, niemand darf **schreiben**. Für `/admin` auf der echten Domain brauchst du einen Schlüssel.
+Öffentliches Repo = alle dürfen **lesen**, niemand **schreiben**. Für `/admin` auf der echten Domain brauchst du Zugang.
 
 ### Variante A — Personal Access Token (PAT)
 
-1. GitHub → **Settings** → **Developer settings** → **Personal access tokens** (fine-grained empfohlen).
+Ein **PAT** ist ein persönlicher **Zugangsschlüssel** für GitHub:
+
+1. GitHub → **Settings** → **Developer settings** → **Personal access tokens** (fine-grained).
 2. Beschreibung z. B. „Sveltia CMS hautuu“.
-3. **Nur** das hautuu-Repository, Permission **Contents: Read and write**.
-4. Ablaufdatum setzen (z. B. 90 Tage) — Token rotieren, nicht ewig.
-5. Token **einmal** kopieren — danach nicht mehr sichtbar. Verloren = neuen erstellen, alte Integrationen sterben.
+3. Nur das hautuu-Repo, **Contents: Read and write**.
+4. Ablauf setzen (z. B. 90 Tage) — Schlüssel rotieren.
+5. Token **einmal** kopieren — danach unsichtbar. Weg = neuen erstellen.
 
-Im Sveltia-Login: Token einfügen → **Sign in**. Änderung an einer Seite → **Commit** auf GitHub → Cloudflare baut (weil `main`).
+In Sveltia: Token einfügen → **Sign in**. Speichern → **Commit** auf GitHub → Cloudflare baut (`main`).
 
-**Sicherheit:** Token wie ein Passwort behandeln. Nicht ins Repo committen, nicht im Screencast zeigen. Besser Umgebungsvariable oder Cloudflare Secret (in der Worker-Variante).
+**Token = Passwort.** Nicht ins Repo, nicht im Video zeigen.
 
-## Was passiert beim Speichern?
+## Was beim Speichern passiert
 
-Beispiel: „Beispiel-Unterseite“ im Menü sichtbar schalten → Commit „Update page …“ → Build → Menüpunkt live. Parent/Child an Seiten allein erzeugt nicht automatisch die Navigation — dafür gibt es die **menus**-Collection (nächste Folge).
+Beispiel: Beispiel-Unterseite im Menü sichtbar → Commit „Update page …“ → Build → Menüpunkt live. Parent/Child an der Seite allein baut nicht automatisch die Navigation — dafür gibt’s die **menus**-Collection.
 
-## Variante B (Ausblick)
+## Variante B
 
-**Sign in with GitHub** ohne PAT — braucht einen **Cloudflare Worker** als OAuth-Brücke. Kommt in der Folge „Worker & GitHub OAuth“.
+**Sign in with GitHub** ohne PAT — braucht einen **Cloudflare Worker** als Brücke. Eigenes Thema, gleiche Idee: weniger Copy-Paste mit Tokens.
 
 <!-- Quelle: 2026-10-04--01-09-23--obs-screencast - hautoo - sveltia - variante PAT.txt -->

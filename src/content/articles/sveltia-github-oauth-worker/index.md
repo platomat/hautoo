@@ -1,6 +1,6 @@
 ---
-title: "Sveltia mit GitHub-Login: Cloudflare Worker als Brücke"
-summary: OAuth-App, Worker deployen, Secrets setzen — und Menüs als eigene Collection pflegen.
+title: "Lieber mit GitHub einloggen: Der Worker als Türsteher fürs CMS"
+summary: "Schluss mit Token-Zettel am Monitor — OAuth, Secrets in Cloudflare und Menüs, die du selbst zusammenklickst."
 pubDate: 2026-10-04T01:38:06Z
 modifiedDate: 2026-10-04
 status: published
@@ -14,55 +14,52 @@ seo:
   follow_visibility: follow
 ---
 
-Der **PAT** funktioniert, ist aber umständlich (kopieren, rotieren, vergessen). **Variante B:** normal bei GitHub anmelden — dafür sitzt ein **Worker** zwischen Browser, Sveltia und GitHub.
+**PAT** funktioniert — aber kopieren, ablaufen, verlegen nervt. **Variante B:** normal bei GitHub anmelden. Dazwischen sitzt ein **Cloudflare Worker** (kleines Programm auf Cloudflares Servern).
 
-## Architektur (vereinfacht)
+## Wer macht was?
 
 ```text
 Du → /admin → Sveltia → Worker (Auth) → GitHub API
                 ↓
-         Content-Commits → GitHub → Cloudflare Pages Build
+         Commits → GitHub → Cloudflare Pages Build
 ```
 
-Der Worker ist **nicht** die Hauptwebsite — er ist die **Tür** fürs CMS.
+Der Worker ist **nicht** deine Website — nur die **Tür** fürs CMS.
 
-## Issue & Umsetzung
+## Umsetzung (grober Ablauf)
 
-Per Issue (z. B. Menüs als Collection, GitHub-Login) lässt du den Agenten den Worker vorbereiten — oft inkl. **Deploy to Cloudflare**-Button im Repo. Worker-URL notieren (`….workers.dev` o. ä.).
+Per Issue (z. B. Menüs + GitHub-Login) lässt du den Agenten den Worker vorbereiten — oft mit **Deploy to Cloudflare**. Worker-URL notieren.
 
-Parallel: **GitHub OAuth App**
+Parallel **GitHub OAuth App**:
 
-- Developer settings → **OAuth Apps** → New.
+- **OAuth Apps** → New.
 - **Homepage URL:** deine Site (z. B. `https://hautuu.storyofai.net`).
-- **Authorization callback URL:** `https://<worker-url>/callback` (exakt wie in der Doku).
+- **Callback URL:** `https://<worker-url>/callback` — exakt wie in der Doku.
 
-**Client ID** und **Client Secret** in Cloudflare Worker → **Settings** → **Variables** (Secret wirklich als Secret, nicht plain).
+**Client ID** und **Client Secret** im Worker unter **Settings** → **Variables** — Secret wirklich als **Secret**, nicht als Klartext.
 
-**Allowed domains** / erlaubte Origins: deine CMS-Domain.
+**Allowed domains:** deine CMS-Domain.
 
-`public/admin/config.yml`: `backend` auf GitHub mit Worker-URL (ohne Platzhalter), Branch `main`, committen und pushen.
+In `public/admin/config.yml`: GitHub-**backend** mit Worker-URL, Branch `main`, committen, pushen.
 
-## PAT löschen
+## PAT wegwerfen
 
-Wenn OAuth läuft: alten **fine-grained Token** unter GitHub revoken — weniger Schlüssel, weniger Risiko.
+OAuth läuft? Alten Token bei GitHub **revoken** — weniger Schlüssel im Umlauf.
 
-## Menüs-Collection
+## Menüs selbst bauen
 
-Statt Menü aus Seiten-Flags:
+Collection **menus**: z. B. `main`, Footer legal. Einträge mit Label, Link zur **Seite** oder freie **URL**, optional **Untermenü** (eine Ebene).
 
-- Collection **menus** — z. B. `main`, Footer legal.
-- Einträge: Label, Link zu **Seite** oder freie **URL**, optional **Untermenü** (eine Ebene).
+Speichern im CMS → Commit „Update menu …“ → Cloudflare baut. Manchmal dauert der Hook einen Moment — unter Pages nach dem Deployment schauen (**Retry** baut denselben Commit nochmal, ersetzt keinen fehlenden Build).
 
-Im CMS speichern → Commit „Update menu …“ → Cloudflare baut. Manchmal dauert der Hook einen Moment — bei Zweifel kleine Änderung nochmal speichern oder Deployment in Pages prüfen (**Retry** baut denselben Commit neu, ersetzt nicht „fehlenden“ Build).
+## Wenn’s knallt: Rebase-Konflikt
 
-## Rebase-Konflikt (Realität)
+Lokal und im Live-CMS dieselbe Datei? **Pull/Rebase** kann stolpern. Dann Konflikt lösen — Remote-Stand behalten oder manuell mergen. Dem Agenten die Situation beschreiben hilft.
 
-Wer parallel lokal und im Live-CMS editiert, kann bei **pull/rebase** an derselben Datei hängen. Dann: Konflikt lösen (oft „Server-/Remote-Stand behalten“ oder manuell mergen) — der Agent kann helfen, wenn du die Situation beschreibst.
+## CI/CD in einem Satz
 
-## CI/CD zum Abschluss
+Code in Cursor → Push → Build. Text im CMS → Commit → Build. Kein FTP. Preview-Branches und Rollback von Cloudflare gelten weiter.
 
-Code in Cursor → Push → Build. Text im CMS → Commit → Build. Kein manuelles FTP. Preview-Branches und Rollbacks aus der Cloudflare-Folge bleiben gültig.
-
-Untermenü-Darstellung (Aufklappen vs. Klick) ist Feintuning — Inhalt und Pipeline stehen.
+Untermenü-Aussehen (Aufklappen vs. Klick) ist Feintuning — Pipeline und Zugang stehen.
 
 <!-- Quelle: 2026-10-04--01-38-06--obs-screencast - hautoo - sveltia - worker.txt -->

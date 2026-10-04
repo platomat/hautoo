@@ -1,6 +1,6 @@
 ---
-title: "Branches, Preview-URLs und Rollbacks bei Cloudflare"
-summary: Am Test-Branch basteln, live schauen ohne Production zu berühren — und notfalls eine Version zurückdrehen.
+title: "Test-Zweig, geheime URL, Rollback — ohne die Live-Seite zu grillen"
+summary: "Am Branch experimentieren, Preview-Link verschicken, mergen wenn’s passt — oder mit einem Klick in die Vergangenheit springen."
 pubDate: 2026-10-04T00:44:03Z
 modifiedDate: 2026-10-04
 status: published
@@ -12,38 +12,35 @@ seo:
   follow_visibility: follow
 ---
 
-**main** = was Besucher sehen. Trotzdem willst du experimentieren — ohne die Startseite live zu zerschießen.
+**main** ist, was die Welt sieht. Trotzdem willst du rumprobieren — ohne die Startseite live zu verbiegen.
 
 ## Branch lokal
 
 ```text
-git branch test        # Zweig anlegen / wechseln
-git checkout test      # oder: git switch test
+git branch test
+git checkout test    # oder: git switch test
 ```
 
-Alles, was du jetzt commitest, liegt auf **test**, nicht auf **main**. In der IDE siehst du den aktiven Branch; wechselst du zurück zu `main`, sind die Test-Änderungen „weg“ (nur auf dem anderen Zweig).
+Alles, was du jetzt commitest, liegt auf **test**, nicht auf **main**. Zurück zu `main` wechseln → Test-Änderungen „weg“ (sie leben nur auf dem anderen Zweig).
 
-Der Agent kann auch einen Branch anlegen und z. B. die Startseite umformulieren.
+Der Agent kann den Branch auch anlegen und z. B. die Startseite umschreiben.
 
-## Push → Preview-Deployment
+## Push = Preview, nicht Production
 
-Push des **Test-Branches** zu GitHub → Cloudflare baut **nicht** automatisch Production um, sondern legt unter **All deployments** eine **Preview** an — eigene URL auf `pages.dev`, die niemand errät.
+Push vom **Test-Branch** → Cloudflare baut eine **Preview** unter **All deployments** — eigene `pages.dev`-URL, die niemand errät.
 
-Link an Freundin/Freund: „Gefällt dir die neue Startseite?“ — Live bleibt unberührt.
+Link an jemanden: „Gefällt dir das?“ — Live bleibt unangetastet.
 
-## Merge nach main
+## Wenn’s gut ist: Merge
 
-Wenn’s passt:
+In der Git-UI: **test** → **Merge into main**, dann **push** `main`. Cloudflare baut **Production** — jetzt ist’s öffentlich.
 
-- In der Git-UI: Branch **test** → **Merge into main** (oder Agenten-Befehl).
-- Dann **push** `main` → Cloudflare baut **Production** — jetzt ist die getestete Version live.
-
-Parallel kann auf `main` ein Bugfix laufen, während du wochenlang auf `test` Features stapelst — klassisches Team-Szenario.
+Parallel kann auf `main` ein Bugfix laufen, während du auf `test` wochenlang Features stapelst. Klassisches Team-Spiel, auch solo sinnvoll.
 
 ## Rollback
 
-Unter Deployments: **Rollback to this deployment** — innerhalb weniger Sekunden wieder der alte Stand (im Video: Startseiten-Variante von Commit `7.8…`). Danach wieder vorwärts deployen, wenn du die neue Version zurückwillst.
+**Rollback to this deployment** — in Sekunden wieder alter Stand (im Video eine Startseiten-Variante von Commit `7.8…`). Danach wieder vorwärts deployen, wenn du die neue Version zurückwillst.
 
-Das ist kein FTP-Hickhack — **CI/CD** (Continuous Integration / Delivery): Push, Build, Preview, Merge, Production.
+Kein FTP. **CI/CD** heißt: Push, Build, Preview, Merge, Live — und rückwärts geht auch.
 
 <!-- Quelle: 2026-10-04--00-44-03--obs-screencast - hautoo - cloudflare - branches, rollbacks.txt -->

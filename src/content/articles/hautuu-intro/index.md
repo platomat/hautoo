@@ -1,6 +1,6 @@
 ---
-title: "hautuu starten: GitHub, Cursor und die grobe Ritmi"
-summary: Vom leeren Repository bis zum ersten Push — so legst du das Projekt an und gibst der KI den richtigen Kontext.
+title: "Folge 1: Leeres Repo, voller Plan — so startet hautuu"
+summary: "Du legst GitHub an, holst das Projekt auf den Rechner und sagst Cursor in normaler Sprache, worum es geht. Kein Zauber — nur der Ablauf, den du danach immer wieder brauchst."
 pubDate: 2026-10-03T01:04:26Z
 modifiedDate: 2026-10-04
 status: published
@@ -14,44 +14,46 @@ seo:
   follow_visibility: follow
 ---
 
-Willkommen in Folge eins. Hier geht’s nicht um Programmieren im Kopf, sondern um den **Ablauf**: Wo liegt die „Quelle der Wahrheit“, wie holst du sie auf deinen Rechner und wie redet Cursor mit dem Rest der Welt?
+Willkommen in Folge eins. Hier musst du noch nicht alles verstehen — du brauchst nur ein Bild im Kopf: **Wo liegt die Wahrheit**, und **wo bastelst du dran rum**?
 
-## Neues Repository auf GitHub
+Die Wahrheit liegt bei **GitHub** (Server in der Cloud). Bei dir auf der Platte ist eine Kopie, an der du mit **Cursor** arbeitest. Später baut **Astro** daraus statische HTML-Seiten, und **Cloudflare** stellt sie ins Netz. Mehr Details kommen Stück für Stück — heute die grobe **Richtung**.
 
-Auf GitHub legst du ein **Repository** an — sozusagen der Ordner in der Cloud, in dem später alles versioniert liegt.
+## GitHub: dein Projekt in der Cloud
 
-- **Name:** klein schreiben, Wörter mit Bindestrich (z. B. `hautuu`), keine Leerzeichen.
-- **Public vs. private:** Bei hautuu ist das Repo **öffentlich**, damit andere mitlesen und lernen können. Geheimes bleibt draußen — nur du entscheidest, was rein darf.
-- **README:** GitHub schlägt dir nach dem Anlegen erste Befehle vor (`git init`, erste Commit-Message, `remote` setzen, `push`). Du kannst den Block auch einfach kopieren und im Terminal ausführen.
+Du legst ein **Repository** an — so heißt der Projektordner bei GitHub.
 
-**Git** ist das Versionswerkzeug: Jeder **Commit** ist ein festgehaltener Stand. **Push** schiebt deine Commits zu GitHub; **Origin** ist der Name für dieses Remote-Repository, **main** der Hauptzweig (früher oft `master`).
+- **Name:** klein, Bindestriche, keine Leerzeichen (z. B. `hautuu`).
+- **Public:** Bei hautuu ist das Repo öffentlich — andere dürfen mitlesen und lernen. Alles Geheime bleibt draußen.
+- Nach dem Anlegen zeigt GitHub oft einen Block mit Befehlen (`git init`, erste **Commit**-Message, **remote** setzen, **push**). Einfach kopieren, Terminal auf, Enter — geht auch.
 
-## Lokal klonen und arbeiten
+Kurz die Wörter: **Git** versioniert Dateien. Ein **Commit** ist ein gespeicherter Stand. **Push** schiebt deine Commits zu GitHub. **Origin** heißt das Remote-Repo, **main** ist der Hauptzweig (deine „Live-Linie“ im Code).
 
-1. Terminal öffnen (unter Linux z. B. mit der Tastenkombination für „Run“ + Terminal suchen).
-2. Mit `cd` in den Ordner gehen, in dem das Projekt liegen soll (Rechtsklick → Pfad kopieren hilft).
-3. `git clone` mit der Repository-URL — dann liegt ein Projektordner bei dir.
+## Lokal holen
 
-Der versteckte Ordner `.git` (unter Linux oft mit Strg+H sichtbar) enthält die Konfiguration — darin steht auch, wohin **origin** zeigt.
+1. Terminal öffnen.
+2. Mit `cd` in den Ordner, wo das Projekt liegen soll.
+3. `git clone` + URL aus GitHub — fertig, Ordner da.
 
-## Erste Schritte in Cursor
+Der versteckte Ordner `.git` (unter Linux oft mit Strg+H sichtbar) ist das Tagebuch des Projekts — inklusive Adresse von **origin**.
 
-In **Cursor** öffnest du den Projektordner (**Open Folder**). Typischer Start:
+## Cursor: Ordner auf, Agent an
 
-- Ordner `docs/` für Dokumentation anlegen.
-- Dem **Agenten** in normaler Sprache erklären, worum es geht: Dokumentation für Menschen, die mit **KI**, **GitHub** und **Cloudflare** eine statische **Astro**-Website bauen; Artikel mit Text, Bildern und eingebetteten Videos (YouTube/Vimeo); Glossar; später ein **CMS** (Sveltia).
-- **Regeln** festhalten: UI/Doku auf Deutsch, Code-Kommentare und Identifier auf Englisch, Commits und GitHub-Issues auf Deutsch, **keine Secrets** ins öffentliche Repo (auch gelöschte Dateien bleiben in der History).
+**Open Folder** — dein geklonter Ordner. Typischer Start:
 
-Wenn du das Repository umbenennst, ändert sich die GitHub-URL — lokal musst du ggf. die Remote-URL in `.git/config` anpassen und den Ordner umbenennen. **Workspace speichern** (`Save Project As`) hilft, Chats und Einstellungen beim nächsten Öffnen wiederzufinden.
+- `docs/` für Dokumentation.
+- Dem **Agenten** erzählen, was das Projekt ist: Lern-Website mit **KI**, **GitHub**, **Cloudflare**; statische **Astro**-Seiten; Artikel mit Bildern und eingebetteten Videos (YouTube/Vimeo); Glossar; später **CMS** (**Sveltia** — Redaktion im Browser, speichert trotzdem in Git).
+- Regeln aufschreiben: Texte/Doku auf Deutsch, Code auf Englisch, Commits/Issues auf Deutsch, **keine Secrets** ins öffentliche Repo (auch gelöschte Dateien bleiben in der **History**).
 
-## Commit, Source Control und Push
+Repo umbenannt? URL auf GitHub ändert sich — lokal Remote in `.git/config` anpassen. **Save Project As** speichert deinen Cursor-Workspace, damit Chats nicht jedes Mal weg sind.
 
-Cursor zeigt geänderte Dateien in der **Source-Control**-Ansicht (ähnlich wie Git in der IDE). **Commit** = Stand lokal festhalten; **Push** = zu GitHub hochladen.
+## Commit, Push, gitignore
 
-Wichtig für später: Dateien, die nur auf deinem Rechner leben sollen (z. B. `.code-workspace`), kommen in **`.gitignore`** — dann werden sie beim Push nicht mitgeschickt.
+In **Source Control** siehst du Änderungen. **Commit** = Stand lokal festhalten. **Push** = hoch zu GitHub.
 
-## Was als Nächstes passiert
+Nur für dich: z. B. `.code-workspace` in **`.gitignore`** — dann wandert die Datei nicht mit ins Repo.
 
-In den nächsten Folgen gehen wir Issues, Design, Cloudflare und das CMS durch. Hier reicht der Überblick: **GitHub** = zentrale Wahrheit, **lokal** = wo du mit Cursor bastelst, **Astro** = baut statische Seiten, **Cloudflare** = hostet später das Ergebnis.
+## Merksatz
+
+**GitHub** = zentrale Wahrheit. **Lokal** = Werkstatt. **Astro** = Bäckerei für HTML. **Cloudflare** = Schaufenster im Internet. Den Rest füllen wir in den nächsten Schritten auf.
 
 <!-- Quelle: 2026-10-03--01-04-26--obs-screencast - hautoo - intro.txt -->

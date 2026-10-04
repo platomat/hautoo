@@ -1,6 +1,6 @@
 ---
-title: "Cursor-Abo, Usage-Balken und Cloud Agents"
-summary: Was die Kontingente bedeuten, warum On-Demand teuer ist und wozu eine VM mit Grok-Bot taugt.
+title: "Cursor-Abo: Balken, Tokens und warum On-Demand bösartig teuer ist"
+summary: "Du siehst, was die KI frisst — und wann Auto reicht oder du lieber kurz upgradest, statt die Kreditkarte heiß laufen zu lassen."
 pubDate: 2026-10-04T00:05:52Z
 modifiedDate: 2026-10-04
 status: published
@@ -11,29 +11,29 @@ seo:
   follow_visibility: follow
 ---
 
-KI kostet Rechenzeit — bei **Cursor** siehst du das unter Account → **Usage**.
+KI frisst Rechenzeit. Bei **Cursor** siehst du das unter Account → **Usage**.
 
-## Tarife und Balken
+## Die Balken verstehen
 
-- Es gibt verschiedene Pläne (im Video z. B. 20 $/60 $ — prüf aktuelle Preise auf cursor.com).
-- **Composer / Auto:** Der Alltagsmodus frisst ein Kontingent pro Abrechnungsperiode.
-- **Premium-Modelle** („Thinking“, große Kontextfenster): Eigenes Budget — für knifflige Aufgaben, wenn Auto nicht reicht.
-- **Kontextfenster:** Wie viel Text/Code das Modell gleichzeitig „im Kopf“ hat — große Fenster = mehr Tokens.
+- Verschiedene Pläne (im Video z. B. 20 $/60 $ — check aktuelle Preise auf cursor.com).
+- **Composer / Auto:** Alltag, frisst ein Kontingent pro Periode.
+- **Stärkere Modelle** („Thinking“, großes **Kontextfenster**): extra Budget — wenn Auto zu lasch ist.
+- **Kontextfenster** = wie viel Text/Code das Modell auf einmal „im Kopf“ hat. Größer = mehr **Tokens** = teurer.
 
 ## Cloud Agents vs. lokal
 
-**Cloud Agents** laufen nicht auf deiner CPU: Aufgabe starten, am Ende oft ein **Pull Request** auf GitHub. Praktisch, aber **deutlich mehr Token-Verbrauch** als lokal ein kleines Skript ausführen zu lassen.
+**Cloud Agents** laufen nicht auf deiner CPU. Du startest eine Aufgabe, am Ende oft ein **Pull Request** auf GitHub. Praktisch — aber **deutlich mehr Tokens** als lokal ein kleines Skript laufen lassen.
 
-## On-Demand Spending
+## On-Demand: Finger weg, wenn’s geht
 
-Wenn das Paket leer ist, kannst du **On-Demand** nachkaufen — im Video: drei kleine Anfragen, schon merklich teurer. Empfehlung für Einsteiger: **lieber kurz upgraden** oder warten bis zur neuen Periode statt On-Demand Dauerfeuer.
+Paket leer? **On-Demand** nachkaufen geht — im Video: drei Mini-Aufgaben, schon übler Preis. Besser: kurz **upgraden** oder bis zur neuen Periode warten.
 
-Im Dashboard siehst du Token pro Anfrage (auch 40-Millionen-Monster sind möglich, wenn du alles mit reinschiebst).
+Im Dashboard siehst du Tokens pro Anfrage — 40-Millionen-Monster sind möglich, wenn du halb das Repo reinwirfst.
 
-## Grok-Bot & VM (persönlicher Workflow)
+## VM & Grok (optional)
 
-Wasilij nutzt teils eine **virtuelle Maschine** — abgeschottet vom Hauptsystem, falls Tools breit lesen. Spezial-Agenten (Audit, Bugfix, nochmal Audit) können strukturiert Issues erzeugen. Das geht auch mit **mehreren Chats** im gleichen Projekt (Rollen: „finde Fehler“ / „behebe sauber“) — siehe nächste Folge.
+Wasilij nutzt manchmal eine **virtuelle Maschine** — abgeschottet vom Haupt-PC. Spezial-Agenten (Audit, Bugfix, nochmal Audit) erzeugen Issues. Geht auch mit **zwei normalen Chats** und klaren Rollen — ohne Extra-Hardware.
 
-Feature-Hinweis im Video: **Grok**-Integration kann ab höheren Plänen relevant sein — im Account nachsehen, ob du es brauchst.
+**Grok** in Cursor kann ab höheren Plänen relevant sein — im Account nachsehen, ob du’s brauchst.
 
 <!-- Quelle: 2026-10-04--00-05-52--obs-screencast - hautoo - cursor - account, usage, grok-bot.txt -->

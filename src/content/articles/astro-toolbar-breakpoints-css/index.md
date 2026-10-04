@@ -1,6 +1,6 @@
 ---
-title: "Astro-Dev-Leiste, Breakpoints und CSS in Klartext"
-summary: Die Astro-Toolbar nur lokal, globale Breakpoints und warum du Margin nicht auswendig lernen musst.
+title: "Die Astro-Leiste nervt? Breakpoints retten den Tag"
+summary: "Lokal siehst du Werkzeugkram, den Besucher nie sehen — und du kannst der KI sagen „mehr Luft im Footer“, ohne CSS-Professor zu sein."
 pubDate: 2026-10-03T23:23:55Z
 modifiedDate: 2026-10-04
 status: published
@@ -13,36 +13,33 @@ seo:
   follow_visibility: follow
 ---
 
-Kurze Folge, viele praktische Häkchen.
+Kurze Folge, viel Praxis.
 
-## Die Astro-Leiste (Dev Toolbar)
+## Die Astro-Dev-Leiste
 
-Während `npm run dev` siehst du oft die **Astro-Dev-Toolbar** am Rand — nur lokal, nicht auf der Live-Seite. Sie hilft beim Debuggen (Astro ist das Framework, das deine Dateien zu HTML „backt“).
+Mit `npm run dev` klebt oft die **Astro-Dev-Toolbar** am Rand — nur bei dir, nicht live. **Astro** ist das Framework, das Markdown und Komponenten zu fertigem HTML backt.
 
-- Stört sie? Einklappen oder den Agenten fragen, wie du sie dauerhaft ausblendest.
-- Live-Besucher sehen das nie.
+Stört sie? Einklappen — oder den Agenten fragen, wie du sie dauerhaft ausblendest. Besucher sehen sie nie.
 
-## Breakpoints global nutzen
+## Breakpoints: einmal festlegen, überall nutzen
 
-Im Projekt gelten u. a.:
+Im Projekt:
 
 - **Tablet:** unter 1024 px  
 - **Mobil:** unter 680 px  
 
-Einmal definiert, kannst du überall sagen: „Ab Tablet soll das Menü zum Burger werden“ — nicht nur im Footer, sondern sitewide.
+Einmal gesagt, gilt’s fürs Menü, den Footer, was auch immer. Test: Entwicklertools, Breite ziehen — 679 px fühlt sich anders an als 680 px.
 
-Testen: Browser-Entwicklertools, Breite schieben (679 px vs. 680 px macht den Unterschied).
+## Klartext statt Fachchinesisch
 
-## Mit der KI ohne Fachchinesisch
+Du musst nicht „padding“ sagen. **„Im Footer bitte mehr Abstand links und rechts zum Browserrand“** reicht oft. Klarer formuliert = weniger Korrekturrunden.
 
-Du musst nicht „margin“ oder „padding“ sagen. **„Innenabstand zum Browserrand links und rechts im Footer größer“** reicht oft. Trotzdem: Je klarer die Beschreibung, desto weniger Runden.
+Wenn du’s genau willst:
 
-Wenn du es präzise willst:
+- **Padding** — Innenabstand.
+- **Margin** — Abstand nach außen.
+- **Border-Radius** — runde Ecken.
 
-- **Padding** — Innenabstand innerhalb eines Elements.
-- **Margin** — Abstand nach außen zum Nachbarn.
-- **Border-Radius** — abgerundete Ecken.
-
-Der Agent mappt Klartext auf die bestehenden CSS-Klassen und Tokens im Projekt — bitte nicht jedes Mal neues Inline-Zeug erfinden (Page Speed!).
+Der Agent soll bestehende Klassen im Projekt nutzen — nicht bei jedem Prompt neues Inline-CSS erfinden. Deine **Page Speed** dankt’s dir.
 
 <!-- Quelle: 2026-10-03--23-23-55--obs-screencast - hautoo - astro bar, breakpoints, css fachchinesisch.txt -->

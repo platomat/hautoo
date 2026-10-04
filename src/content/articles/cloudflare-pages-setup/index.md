@@ -1,6 +1,6 @@
 ---
-title: "Cloudflare Pages: Build, Deploy und Custom Domain"
-summary: GitHub verbinden, Astro bauen lassen und hautuu unter deiner Subdomain erreichbar machen.
+title: "Von GitHub ins Netz: Cloudflare Pages in echten Schritten"
+summary: "Repo verbinden, Astro bauen lassen, eigene Subdomain drauf — und an der Commit-ID erkennen, was wirklich live ist."
 pubDate: 2026-10-04T00:22:44Z
 modifiedDate: 2026-10-04
 status: published
@@ -13,42 +13,42 @@ seo:
   follow_visibility: follow
 ---
 
-Bis hier war alles lokal oder auf GitHub. **Cloudflare Pages** baut und hostet die fertige Website.
+Bisher: lokal und GitHub. Jetzt wird’s öffentlich: **Cloudflare Pages** baut und hostet die fertige Site.
 
-## Begriffe bei Cloudflare
+## Begriffe ohne Panik
 
-- **Workers & Pages** — unter „Compute“. **Pages** = statische Sites aus Git (passt zu Astro). **Workers** = mehr Logik am Edge (später z. B. CMS-Auth).
-- **R2 / Databases** — für hautuu erst mal irrelevant, aber gut zu wissen, dass es da ist.
-- **Ask AI** in der Cloudflare-Oberfläche — hilft bei DNS, Redirects etc. (Deutsch geht).
+- **Workers & Pages** unter „Compute“. **Pages** = statische Sites aus Git — passt zu **Astro**. **Workers** = Extra-Logik am Edge (später z. B. CMS-Login).
+- **R2 / Databases** — für hautuu erst mal egal, aber gut zu wissen.
+- **Ask AI** in Cloudflare — Deutsch geht, hilft bei DNS und Regeln.
 
-## Pipeline im Kopf
+## Die Pipeline (Merksatz)
 
 ```
 Cursor → commit → push → GitHub → Cloudflare Build → Live
 ```
 
-Push auf **`main`** = Production-Deploy (wenn so konfiguriert).
+Push auf **`main`** = Production (wenn so eingestellt).
 
 ## Projekt anlegen
 
-1. Dashboard → **Workers & Pages** → Create → **Pages** → Mit **GitHub** verbinden (OAuth — nur das **ausgewählte** Repo freigeben, nicht „all repositories“).
-2. Repository wählen (z. B. hautuu).
+1. **Workers & Pages** → Create → **Pages** → **GitHub** verbinden. Nur das **eine** Repo freigeben, nicht „all repositories“.
+2. Repo wählen (z. B. hautuu).
 3. **Production branch:** `main`.
-4. **Framework preset:** Astro.
+4. **Framework:** Astro.
 5. **Build command:** `npm run build`
-6. **Output directory:** `dist` (da landet das fertige HTML).
+6. **Output:** `dist` (fertiges HTML).
 7. **Save and Deploy**
 
-Erst **Build**, dann **Deploy**. Unter **Deployments** siehst du jeden Lauf; bei Erfolg gibt’s eine `*.pages.dev`-URL.
+Erst **Build**, dann **Deploy**. Unter **Deployments** jeder Lauf; Erfolg = `*.pages.dev`-URL.
 
-## Custom Domain
+## Eigene Domain
 
-**Custom domains** → Subdomain eintragen (z. B. `hautuu.storyofai.net`). Cloudflare legt meist **CNAME** und **TLS-Zertifikat** automatisch an, wenn die Zone schon bei Cloudflare liegt.
+**Custom domains** → z. B. `hautuu.storyofai.net`. Cloudflare legt oft **CNAME** und **TLS** automatisch an, wenn die Zone schon dort liegt.
 
-## Commit auf Production erkennen
+## Welche Version ist live?
 
-In der Pages-Übersicht steht oft die **kurze Commit-ID** (z. B. endet auf `9a0`) — passt zu GitHub. So siehst du: Live entspricht noch nicht deinem lokalen Burger-Menü, bis du pushst.
+Kurze **Commit-ID** in Pages (z. B. endet auf `9a0`) = dieselbe auf GitHub. Burger-Menü nur lokal? Live zeigt’s noch nicht — bis du pushst.
 
-GitHub-App-Berechtigung checken: Unter GitHub → Settings → Applications nur das How-to/hautuu-Repo erlauben, sonst meckert die Verbindung.
+GitHub-App checken: Unter Applications nur das hautuu-Repo erlauben.
 
 <!-- Quelle: 2026-10-04--00-22-44--obs-screencast - hautoo - cloudflare - setup.txt -->

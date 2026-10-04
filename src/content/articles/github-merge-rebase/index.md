@@ -1,6 +1,6 @@
 ---
-title: "Merge vs. Rebase: Historie im Git-Graph"
-summary: Warum nach einem Merge plötzlich weniger Commits sichtbar wirken — und wann Rebase hübscher wäre.
+title: "Merge oder Rebase: Warum die Historie manchmal lügt"
+summary: "Nach dem Zusammenführen sieht’s im Tool oft leer aus — auf GitHub steckt trotzdem alles drin. Kurz erklärt, ohne Git-Guru-Werbung."
 pubDate: 2026-10-03T23:44:04Z
 modifiedDate: 2026-10-04
 status: published
@@ -11,13 +11,13 @@ seo:
   follow_visibility: follow
 ---
 
-Kurzer Nachtrag zum Git-Experiment mit zwei Ordnern.
+Kurzer Nachtrag zum Experiment mit zwei Projektordnern.
 
-## Was du im Tool siehst
+## Was dich im Tool verwirrt
 
-Nach einem **Merge** kann die lokale Graph-Ansicht so aussehen, als hättest du nur noch wenige Commits — die vielen Feature-Commits stecken **im Merge-Commit** drin. Auf **GitHub** unter „Commits“ siehst du weiterhin die einzelnen Schritte (z. B. 21 Stück).
+Nach einem **Merge** kann der Graph so aussehen, als hättest du nur noch ein paar Commits. Die vielen Schritte davor stecken **im Merge-Commit** drin. Auf **GitHub** unter „Commits“ siehst du die Einzelteile weiter (im Video z. B. 21 Stück).
 
-## Merge (Standard)
+## Merge (dein Freund fürs Team)
 
 ```
 main:     A --- B ------- M
@@ -25,14 +25,14 @@ main:     A --- B ------- M
 feature:        C - D - E
 ```
 
-`M` fasst alles zusammen. Nachvollziehbar, sicher für Teams.
+`M` fasst zusammen. Nachvollziehbar, robust.
 
-## Rebase (alternative)
+## Rebase (die lineare Alternative)
 
-Deine Commits `C D E` würden **hinten an** `main` angehängt, als wären sie nacheinander passiert — schön lineär, aber man darf nicht rebasen, was andere schon gezogen haben (sonst Chaos).
+Commits `C D E` würden **hinten an** `main` hängen — als wäre alles nacheinander passiert. Hübsch, aber: nicht rebasen, was andere schon gezogen haben.
 
-## Praxis für hautuu
+## Was du wirklich brauchst
 
-Hauptsache: Stand ist festgehalten, du kannst alte Versionen von Dateien ansehen („Copyright früher vs. jetzt“). Ob Merge oder Rebase ist Geschmack — für Laien mit KI-Agent reicht **Merge + Pull vor Push**.
+Stand ist gespeichert. Du kannst alte Dateiversionen ansehen („Copyright früher vs. jetzt“). Ob Merge oder Rebase — Geschmackssache. Mit KI-Agent reicht **Merge + Pull vor Push**.
 
 <!-- Quelle: 2026-10-03--23-44-04--obs-screencast - hautoo - github - merge, rebase.txt -->

@@ -1,6 +1,6 @@
 ---
-title: "Mehrere Chats, Rollen und Archiv"
-summary: Bug-Suche und Bug-Fix in getrennten Conversations — ohne extra Grok-Hardware.
+title: "Zwei Chats, zwei Rollen: Erst meckern, dann fixen"
+summary: "Kein Extra-Bot nötig — ein Chat sucht Fehler, der andere räumt auf. So bleibt der Kopf frei."
 pubDate: 2026-10-04T00:14:37Z
 modifiedDate: 2026-10-04
 status: published
@@ -11,21 +11,21 @@ seo:
   follow_visibility: follow
 ---
 
-Ein Chat pro Thema reicht nicht immer.
+Ein Chat für alles wird schnell Matsch.
 
-## Zwei (oder mehr) Agenten-Chats
+## Inspector und Fixer
 
-Gleicher Trick wie „Inspector + Fixer“ in einer VM:
+Gleicher Trick wie mit zwei Spezial-Agenten in einer VM — nur in Cursor:
 
-1. **Chat A:** Rolle festlegen — „Du suchst penibel nach Fehlern und Sicherheitslücken.“
-2. **Chat B:** „Du behebst gefundene Probleme möglichst minimal und sauber.“
+1. **Chat A:** „Deine Rolle: penibel Fehler und Sicherheitslücken suchen.“
+2. **Chat B:** „Deine Rolle: gefundenes sauber und minimal fixen.“
 
-So bleibt der Kontext übersichtlicher als ein endloser Monolog.
+Zwei Köpfe, zwei Aufgaben — statt einem endlosen Monolog.
 
-## Chat geschlossen?
+## Chat weggeklickt?
 
-In der Chat-Historie (Uhr-Symbol / Archiv) findest du alte Conversations wieder — oder du exportierst Transkripte nach `docs/sessions/` (und ignorierst den Ordner in Git).
+In der Historie (Uhr-Symbol / Archiv) findest du alte Gespräche wieder. Oder **Export Transcript** nach `docs/sessions/` — und den Ordner in `.gitignore`.
 
-Der Grok-Bot aus der vorherigen Folge ist **optional** — derselbe Workflow funktioniert mit normalen Cursor-Chats und klaren Rollen-Prompts.
+Ein optionaler **Grok-Bot** in einer VM ist nice-to-have. Zwei Chats mit klaren Rollen reichen völlig.
 
 <!-- Quelle: 2026-10-04--00-14-37--obs-screencast - hautoo - cursor - chats.txt -->
