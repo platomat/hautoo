@@ -26,7 +26,7 @@ Diese Website entsteht mit Cursor, wird über **GitHub** versioniert und auf Clo
 
 [github.com/platomat/hautoo](https://github.com/platomat/hautoo/)
 
-{{separator}}
+{{separator height="1" width="100"}}
 
 ## Neuste Artikel
 
@@ -34,7 +34,7 @@ Diese Website entsteht mit Cursor, wird über **GitHub** versioniert und auf Clo
 
 [Alle Artikel](/artikel/)
 
-{{separator}}
+{{separator height="1" width="100"}}
 
 ## Tags
 

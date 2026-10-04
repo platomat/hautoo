@@ -11,6 +11,10 @@ export type ArticleListingOptions = {
 	sort?: ArticleSort;
 };
 
+function compareByTitle(a: ArticleEntry, b: ArticleEntry): number {
+	return a.data.title.localeCompare(b.data.title, "de", { sensitivity: "base" });
+}
+
 function sortArticles(
 	articles: ArticleEntry[],
 	sort: ArticleSort,
@@ -18,22 +22,20 @@ function sortArticles(
 	const list = [...articles];
 	switch (sort) {
 		case "oldest":
-			return list.sort(
-				(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
-			);
+			return list.sort((a, b) => {
+				const byDate = a.data.pubDate.valueOf() - b.data.pubDate.valueOf();
+				return byDate !== 0 ? byDate : compareByTitle(a, b);
+			});
 		case "title-asc":
-			return list.sort((a, b) =>
-				a.data.title.localeCompare(b.data.title, "de", { sensitivity: "base" }),
-			);
+			return list.sort(compareByTitle);
 		case "title-desc":
-			return list.sort((a, b) =>
-				b.data.title.localeCompare(a.data.title, "de", { sensitivity: "base" }),
-			);
+			return list.sort((a, b) => compareByTitle(b, a));
 		case "newest":
 		default:
-			return list.sort(
-				(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-			);
+			return list.sort((a, b) => {
+				const byDate = b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+				return byDate !== 0 ? byDate : compareByTitle(a, b);
+			});
 	}
 }
 
@@ -57,6 +59,25 @@ export async function getPublishedArticles(
 
 export function getArticleHref(article: ArticleEntry): string {
 	return `/artikel/${article.id}/`;
+}
+
+/**
+ * Neighbors by publish date: older = past (left), newer = future (right).
+ * Same-day ties use title (A–Z).
+ */
+export async function getAdjacentArticles(current: ArticleEntry): Promise<{
+	older: ArticleEntry | undefined;
+	newer: ArticleEntry | undefined;
+}> {
+	const chronological = await getPublishedArticles({ sort: "oldest" });
+	const index = chronological.findIndex((entry) => entry.id === current.id);
+	if (index < 0) {
+		return { older: undefined, newer: undefined };
+	}
+	return {
+		older: chronological[index - 1],
+		newer: chronological[index + 1],
+	};
 }
 
 /** Display date as dd.mm.yyyy (UTC — CMS stores date-only). */

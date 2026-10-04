@@ -1,11 +1,13 @@
 ---
 import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
+import ArticleNav from "../../components/ArticleNav.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import VideoEmbed from "../../components/VideoEmbed.astro";
 import {
 	formatArticleDate,
+	getAdjacentArticles,
 	getArticleHref,
 	getPublishedArticles,
 } from "../../lib/articles";
@@ -22,6 +24,7 @@ export async function getStaticPaths() {
 
 const { article } = Astro.props;
 const { Content } = await render(article);
+const { older, newer } = await getAdjacentArticles(article);
 const tags = await getCollection("tags");
 const tagMap = new Map(tags.map((tag) => [tag.id, tag]));
 const linkedTags = (article.data.tags ?? [])
@@ -80,6 +83,7 @@ const backgroundImage = resolveCmsImage(
 				title={`Video: ${article.data.title}`}
 			/>
 			<Content />
+			<ArticleNav older={older} newer={newer} />
 		</article>
 		<p class="text-sm">
 			<a href="/artikel/">← Alle Artikel</a>

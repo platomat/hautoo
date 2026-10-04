@@ -1,5 +1,6 @@
 import { createSatteriMarkdownProcessor } from "@astrojs/markdown-satteri";
 import type { ArticleSort } from "./articles";
+import { hastExternalLinks } from "./hast-external-links";
 
 export type ArticleListingEmbedProps = {
 	count: number;
@@ -52,7 +53,9 @@ let markdownProcessor: Awaited<
 > | null = null;
 
 async function getProcessor() {
-	markdownProcessor ??= await createSatteriMarkdownProcessor();
+	markdownProcessor ??= await createSatteriMarkdownProcessor({
+		hastPlugins: [hastExternalLinks],
+	});
 	return markdownProcessor;
 }
 

@@ -1,0 +1,117 @@
+---
+import {
+	formatArticleDate,
+	getArticleHref,
+	type ArticleEntry,
+} from "../lib/articles";
+
+interface Props {
+	older?: ArticleEntry;
+	newer?: ArticleEntry;
+}
+
+const { older, newer } = Astro.props;
+---
+
+{
+	(older || newer) && (
+		<nav class="article-nav" aria-label="Artikel-Navigation">
+			{older ? (
+				<a class="article-nav__link article-nav__link--older" href={getArticleHref(older)}>
+					<span class="article-nav__dir text-sm text-muted">← Älter</span>
+					<span class="article-nav__title">{older.data.title}</span>
+					<time class="article-nav__date text-sm text-muted" datetime={older.data.pubDate.toISOString()}>
+						{formatArticleDate(older.data.pubDate)}
+					</time>
+				</a>
+			) : (
+				<span class="article-nav__link article-nav__link--empty" aria-hidden="true" />
+			)}
+			{
+				older && newer && (
+					<span class="article-nav__divider" aria-hidden="true" />
+				)
+			}
+			{newer ? (
+				<a class="article-nav__link article-nav__link--newer" href={getArticleHref(newer)}>
+					<span class="article-nav__dir text-sm text-muted">Neuer →</span>
+					<span class="article-nav__title">{newer.data.title}</span>
+					<time class="article-nav__date text-sm text-muted" datetime={newer.data.pubDate.toISOString()}>
+						{formatArticleDate(newer.data.pubDate)}
+					</time>
+				</a>
+			) : (
+				<span class="article-nav__link article-nav__link--empty" aria-hidden="true" />
+			)}
+		</nav>
+	)
+}
+
+<style>
+	.article-nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+		gap: 1.25rem;
+		margin-top: 2.5rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.article-nav__divider {
+		flex: 0 0 1px;
+		width: 1px;
+		align-self: stretch;
+		background: var(--color-border);
+		opacity: 0.65;
+	}
+
+	.article-nav__link {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		min-width: 0;
+		flex: 1 1 0;
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.article-nav__link--empty {
+		pointer-events: none;
+	}
+
+	.article-nav__link--newer {
+		text-align: end;
+		align-items: flex-end;
+	}
+
+	.article-nav__title {
+		font-weight: var(--font-weight-heading);
+		line-height: 1.3;
+		color: var(--color-text);
+	}
+
+	.article-nav__link:hover .article-nav__title {
+		color: var(--color-action);
+	}
+
+	@media (max-width: 679px) {
+		.article-nav {
+			flex-direction: column;
+			gap: 1.25rem;
+		}
+
+		.article-nav__divider {
+			display: none;
+		}
+
+		.article-nav__link--newer {
+			text-align: start;
+			align-items: flex-start;
+		}
+
+		.article-nav__link--empty {
+			display: none;
+		}
+	}
+</style>
