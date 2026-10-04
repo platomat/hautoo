@@ -46,13 +46,13 @@ const heading = resolveTocTitle(title);
 <style>
 	.toc {
 		margin: 0 0 2.5rem;
-		padding: 1rem 0 1.25rem;
+		padding: 1.25rem 0 1.5rem;
 		border-top: 1px solid var(--color-border);
 		border-bottom: 1px solid var(--color-border);
 	}
 
 	.toc__title {
-		margin: 0 0 0.75rem;
+		margin: 0 0 0.85rem;
 		font-weight: var(--font-weight-heading);
 		color: var(--color-text-muted);
 		text-transform: uppercase;
@@ -61,8 +61,10 @@ const heading = resolveTocTitle(title);
 
 	.toc__list {
 		margin: 0;
-		padding-inline-start: 1.5rem;
-		list-style: decimal;
+		padding-left: 2rem;
+		padding-right: 0.25rem;
+		list-style-type: decimal;
+		list-style-position: outside;
 	}
 
 	.toc__item {
