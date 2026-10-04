@@ -1,15 +1,17 @@
 ---
-title: "Folge 012: Test-Zweig, geheime URL, Rollback (ohne die Live-Seite zu grillen)"
-summary: "Am Branch experimentieren, Preview-Link verschicken, mergen wenn’s passt. Oder mit einem Klick in die Vergangenheit springen."
-pubDate: 2026-10-04T00:44:03Z
+title: 'Folge 012: Test-Zweig, geheime URL, Rollback (ohne die Live-Seite zu grillen)'
+summary: Am Branch experimentieren, Preview-Link verschicken, mergen wenn’s passt. Oder mit einem Klick in die Vergangenheit springen.
+pubDate: 2026-10-04 00:44:03+00:00
 modifiedDate: 2026-10-05
 status: published
 tags:
-  - cloudflare
-  - github
+- cloudflare
+- github
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 012: Test-Zweig, geheime URL, Rollback (ohne die Live-Seite zu grillen)'
+  seo_description: 'Am Branch testen, Preview Link teilen, mergen wenn es passt oder per Rollback zurück. Folge 012: sicher experimentieren ohne die Live Seite zu riskieren.'
 ---
 
 [**main**](/glossar/main/) ist, was die Welt sieht. Trotzdem willst du rumprobieren, ohne die Startseite live zu verbiegen. Pages an GitHub koppeln ging in [Folge 011](/artikel/folge-011-cloudflare-setup/).

@@ -3,8 +3,11 @@ title: npm
 status: published
 modifiedDate: 2026-10-04
 relatedTags:
-  - node
-definition: "Paketmanager für Node: installiert Abhängigkeiten und startet Skripte aus package.json."
+- node
+definition: 'Paketmanager für Node: installiert Abhängigkeiten und startet Skripte aus package.json.'
+seo:
+  seo_title: npm · Glossar
+  seo_description: 'Paketmanager für Node: installiert Abhängigkeiten und startet Skripte aus package.json. npm install lädt Bibliotheken in nodemodules. Mehr im Glossar auf'
 ---
 
 [Node.js](/glossar/nodejs/) liefert npm mit. `npm install` lädt Bibliotheken in `node_modules`. `npm run dev` und `npm run build` starten den Dev-Server bzw. den [Build](/glossar/build/) für hautuu.

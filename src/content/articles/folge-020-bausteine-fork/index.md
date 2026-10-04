@@ -1,17 +1,19 @@
 ---
-title: "Folge 020: Bausteine, FAQ und hautoo forken"
-summary: "Wiederverwendbare CMS Bausteine statt Copy Paste, Überblick über Glossar und FAQ und dein eigenes Projekt per GitHub Fork starten."
-pubDate: 2026-10-04T23:47:38Z
+title: 'Folge 020: Bausteine, FAQ und hautoo forken'
+summary: Wiederverwendbare CMS Bausteine statt Copy Paste, Überblick über Glossar und FAQ und dein eigenes Projekt per GitHub Fork starten.
+pubDate: 2026-10-04 23:47:38+00:00
 modifiedDate: 2026-10-05
 status: published
 tags:
-  - github
-  - cursor
-  - sveltia
-  - astro
+- github
+- cursor
+- sveltia
+- astro
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 020: Bausteine, FAQ und hautoo forken'
+  seo_description: CMS Bausteine statt Copy Paste, Glossar und FAQ im Überblick und hautuu per GitHub Fork als Vorlage. Folge 020 für Wiederverwendung und eigenes Projekt.
 ---
 
 Zwischen den Sessions ist hautuu richtig gewachsen: **20 Folgen** als Artikel, ein ausgebautes [**Glossar**](/glossar/), eine lange [**FAQ**](/faq/) mit Querverweisen und eine Navigation, die sich anfühlt wie eine kleine Site statt wie ein Ordner voller Dateien. In dieser Folge geht es um **Bausteine** (wiederverwendbare Inhalte), den Überblick und die Einladung: **forke** das Repo, wenn du Struktur und Features für dein eigenes Projekt nutzen willst.

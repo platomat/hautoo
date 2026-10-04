@@ -1,15 +1,17 @@
 ---
-title: "Folge 006: Zwei Ordner, ein GitHub: Pull, Push und kein Datenmüll"
-summary: "Warum der Server manchmal „nein“ sagt, bevor du pushen darfst. Und wie Klonen und Merge dich wieder einen Stand bringen."
-pubDate: 2026-10-03T23:28:46Z
+title: 'Folge 006: Zwei Ordner, ein GitHub: Pull, Push und kein Datenmüll'
+summary: Warum der Server manchmal „nein“ sagt, bevor du pushen darfst. Und wie Klonen und Merge dich wieder einen Stand bringen.
+pubDate: 2026-10-03 23:28:46+00:00
 modifiedDate: 2026-10-04
 status: published
 tags:
-  - github
-  - cursor
+- github
+- cursor
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 006: Zwei Ordner, ein GitHub: Pull, Push und kein Datenmüll'
+  seo_description: Warum Push manchmal abgelehnt wird und wie Pull, Clone und Merge dich wieder auf einen Stand bringen. Git Alltag mit zwei Projektordnern in Folge 006.
 ---
 
 Git klingt erst nach Kauderwelsch. Wird aber easy, wenn du eine Idee akzeptierst: [**GitHub**](/glossar/github/) ist der Boss, dein Rechner ist die Werkstatt.

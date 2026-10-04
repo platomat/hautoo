@@ -27,7 +27,7 @@ Mit **Screencast-Transkript** oder ohne:
 | **pubDate** | Aus **Aufnahmezeitpunkt** im Originaldateinamen (`YYYY-MM-DD--HH-MM-SS--…`) als ISO-UTC, z. B. `2026-10-04T23:47:38Z` |
 | **summary** | Teaser mit **Leser-Nutzen**, Du-Form, **kein** Gedankenstrich |
 | **tags** | Vorhandene Tags aus `src/content/tags/` **bevorzugen**, **wenige** (typisch 3–5), thematisch passend |
-| **seo** | Wie bestehende Folgen (`index_visibility`, `follow_visibility`, …) |
+| **seo** | `seo_title`, `seo_description`, `index_visibility`, `follow_visibility`, … (siehe Abschnitt SEO-Felder) |
 | **Video** | `videoProvider` / `videoId` **leer lassen**, bis ein echtes Video eingepflegt ist |
 | **Quelle** | Am Ende des Body ein HTML-Kommentar mit Original-Transkriptdateiname, z. B. `<!-- Quelle: 2026-10-04--23-47-38--obs-screencast - … -->` |
 | **modifiedDate** | Bei inhaltlicher Änderung setzen |
@@ -49,6 +49,7 @@ Mit **Screencast-Transkript** oder ohne:
 - **`relatedTags`** pflegen, wenn ein Tag thematisch passt (siehe Schema in [Collections — glossar](../sveltia/collections.md)).
 - Glossar-Texte **untereinander verlinken** (erstes sinnvolles Vorkommen pro Ziel-Eintrag, nicht auf sich selbst, nicht in Überschriften). Hilfsskript: `scripts/link-glossar-crosslinks.py` (falls im Repo; danach manuell prüfen).
 - Optional **`relatedArticles`** auf die Folge mit der ausführlichen Anleitung.
+- **`seo`:** `seo_title` (z. B. `Begriff · Glossar`), `seo_description` für Meta; sichtbare Kurzdefinition bleibt `definition`.
 
 ---
 
@@ -90,9 +91,35 @@ Mit **Screencast-Transkript** oder ohne:
 
 ---
 
+## SEO-Felder (alle Collections mit öffentlicher URL)
+
+Schema und Ausgabe: `src/cms/fields/seo.ts`, gebaut in `BaseLayout.astro` (`<title>`, `<meta name="description">`, `<meta name="robots">`). CMS-Anker `&field_seo` in `public/admin/config.yml`.
+
+**Pflicht für Agenten:** Bei **jedem neuen oder geänderten** Eintrag in `articles`, `pages`, `glossar`, `tags` (und wo `seo` im Schema existiert) die SEO-relevanten Felder **mit erzeugen oder aktualisieren**, inhaltlich aus dem Text abgeleitet, nichts erfinden. Bestehende gute Werte nicht verschlechtern, **keine doppelten** Meta-Descriptions zwischen Seiten.
+
+| Collection | Felder | Ausgabe / Hinweis |
+| --- | --- | --- |
+| **articles** | `seo.seo_title`, `seo.seo_description`, `index_visibility`, `follow_visibility`, … | Fallback Titel: `title`, Description: `summary`. Robots-Defaults: index, follow. |
+| **pages** | wie oben + Seiten-`description` | **Impressum** und **Datenschutz:** `index_visibility: noindex` **beibehalten** (nicht auf index stellen). |
+| **glossar** | `seo.seo_title`, `seo.seo_description`, … | Sichtbare Kurzdefinition bleibt `definition`; Meta kann länger sein. |
+| **tags** | `description` (kein `seo`-Objekt) | Wird als Meta-Description auf `/tags/<slug>/` genutzt. |
+| **blocks**, **menus** | kein eigenes SEO (keine URL) | Nur `title` / Menütext pflegen. |
+
+### Stil und Länge
+
+- **Sprache:** Deutsch, **Du-Form**, laienverständlich; **keine Gedankenstriche** in SEO-Titel und Meta-Description.
+- **SEO Title (`seo_title`):** knackig, ca. **50–60 Zeichen**; bei Folgen oft gleich `title` (`Folge nnn: …`). Leer = Fallback auf Seitentitel.
+- **Meta Description (`seo_description` bzw. Tag-`description`):** informativ, einladend, ca. **140–160 Zeichen**; aus Summary, Definition oder Seiteninhalt, nicht copy-paste von anderen URLs.
+- **Robots:** nur ändern, wenn inhaltlich begründet; Legal-Seiten **noindex** wie oben.
+
+Hilfsskript (Bulk, einmalig): `scripts/fill-seo-fields.py` (manuell anpassen, nicht blind wiederholen).
+
+---
+
 ## Checkliste vor dem Pull Request
 
-- [ ] **Schema:** Titel `Folge nnn: …`, Slug `folge-nnn-<kurz>`, pubDate, summary, tags, SEO, Video leer, Quellkommentar
+- [ ] **Schema:** Titel `Folge nnn: …`, Slug `folge-nnn-<kurz>`, pubDate, summary, tags, Video leer, Quellkommentar
+- [ ] **SEO:** Meta-Titel und Description (bzw. Tag-`description`, Glossar-`seo`) gesetzt oder aktualisiert; Länge und Stil wie oben; Impressum/Datenschutz **noindex**
 - [ ] **Stil:** Du-Form, laienverständlich, keine Striche in Titel/Teaser/FAQ-Fragen
 - [ ] **Glossar:** neue/angepasste Einträge, relatedTags, Querverweise
 - [ ] **FAQ:** neue Fragen in der richtigen Gruppe, verlinkt

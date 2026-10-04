@@ -9,7 +9,7 @@ backgroundAttribution: https://picsum.photos/id/599/1920/1280
 showToc: false
 tocTitle: Inhalt
 tocLevels:
-  - h2
+- h2
 seo:
   index_visibility: index
   follow_visibility: follow
@@ -22,6 +22,8 @@ seo:
   max_video_preview: -1
   max_image_preview_enabled: true
   max_image_preview: large
+  seo_title: Über hautuu
+  seo_description: Was hautuu ist, warum das Projekt öffentlich auf GitHub liegt und wie du mit den Artikeln deine eigene Site nachbauen kannst. Kurzvorstellung des Projekts.
 ---
 
 **hautuu** ist ein Lern- und Demo-Projekt: Wie man mit [**Cursor**](/glossar/cursor/) (KI), [**GitHub**](/glossar/github/) und [**Cloudflare**](/glossar/cloudflare-pages/) eine thematische, statische Website baut und pflegt, von leerem [**Repo**](/glossar/repository/) bis zur laufenden Site.

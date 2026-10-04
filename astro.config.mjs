@@ -15,7 +15,15 @@ const buildId =
 // https://astro.build/config
 export default defineConfig({
   site: 'https://hautoo.storyofai.net',
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) =>
+        !page.includes('/impressum/') &&
+        !page.includes('/datenschutz/') &&
+        !page.includes('/admin/'),
+    }),
+  ],
   markdown: {
     processor: satteri({
       hastPlugins: [hastExternalLinks],

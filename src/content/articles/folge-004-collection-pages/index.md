@@ -1,16 +1,18 @@
 ---
-title: "Folge 004: Seiten sind nur Dateien und trotzdem schlau strukturiert"
-summary: "Was in der CMS-Config steckt, warum Unterseiten wie Ordner funktionieren und SEO lieber einmal definiert wird statt zwanzigmal copy-paste."
-pubDate: 2026-10-03T23:00:06Z
+title: 'Folge 004: Seiten sind nur Dateien und trotzdem schlau strukturiert'
+summary: Was in der CMS-Config steckt, warum Unterseiten wie Ordner funktionieren und SEO lieber einmal definiert wird statt zwanzigmal copy-paste.
+pubDate: 2026-10-03 23:00:06+00:00
 modifiedDate: 2026-10-04
 status: published
 tags:
-  - astro
-  - sveltia
-  - github
+- astro
+- sveltia
+- github
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 004: Seiten sind nur Dateien und trotzdem schlau strukturiert'
+  seo_description: Pages als Markdown, Collections in Astro und SEO Felder einmal zentral pflegen. Folge 004 erklärt die CMS Struktur von hautuu für Einsteiger.
 ---
 
 Keine Datenbank, kein WordPress-Monster: **Pages** sind normale Markdown-Dateien unter `src/content/pages/`. [**Collections**](/glossar/collection/) sind die Typen: Pages, Articles, Menüs, Tags, Glossar, **Bausteine** (`blocks`). Warum Issues dafür sinnvoll sind: [Folge 002](/artikel/folge-002-github-issues/). Bausteine im Alltag: [Folge 020](/artikel/folge-020-bausteine-fork/).

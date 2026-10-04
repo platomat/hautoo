@@ -1,14 +1,16 @@
 ---
-title: "Folge 009: Cursor-Abo: Balken, Tokens und warum On-Demand bösartig teuer ist"
-summary: "Du siehst, was die KI frisst. Und wann Auto reicht oder du lieber kurz upgradest, statt die Kreditkarte heiß laufen zu lassen."
-pubDate: 2026-10-04T00:05:52Z
+title: 'Folge 009: Cursor-Abo: Balken, Tokens und warum On-Demand bösartig teuer ist'
+summary: Du siehst, was die KI frisst. Und wann Auto reicht oder du lieber kurz upgradest, statt die Kreditkarte heiß laufen zu lassen.
+pubDate: 2026-10-04 00:05:52+00:00
 modifiedDate: 2026-10-04
 status: published
 tags:
-  - cursor
+- cursor
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 009: Cursor-Abo: Balken, Tokens und warum On-Demand bösartig teuer ist'
+  seo_description: 'Cursor Usage verstehen: Token Verbrauch, Auto Modus und wann ein Upgrade sinnvoller ist als On Demand. Folge 009 zu Kosten und Kontrolle beim KI Coding.'
 ---
 
 KI frisst Rechenzeit. Bei **Cursor** siehst du das unter Account → **Usage**.

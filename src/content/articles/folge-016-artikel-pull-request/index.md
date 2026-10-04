@@ -1,17 +1,19 @@
 ---
-title: "Folge 016: Vierzehn Artikel im PR: Preview, Merge und Listing-Kontrolle"
-summary: "Branch statt main, Cloudflare-Preview in der Mail, grüne Checks und Merge. Warum die Artikel-Seite lieber ein CMS-Listing will."
-pubDate: 2026-10-04T19:11:35Z
+title: 'Folge 016: Vierzehn Artikel im PR: Preview, Merge und Listing-Kontrolle'
+summary: Branch statt main, Cloudflare-Preview in der Mail, grüne Checks und Merge. Warum die Artikel-Seite lieber ein CMS-Listing will.
+pubDate: 2026-10-04 19:11:35+00:00
 modifiedDate: 2026-10-05
 status: published
 tags:
-  - cursor
-  - github
-  - cloudflare
-  - astro
+- cursor
+- github
+- cloudflare
+- astro
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 016: Vierzehn Artikel im PR: Preview, Merge und Listing-Kontrolle'
+  seo_description: 'Großer PR mit Cloudflare Preview, grünen Checks und Merge auf main. Folge 016: Artikel Listing redaktionell steuern statt alles automatisch listen.'
 ---
 
 Der Agent hat über Nacht gearbeitet (Ablauf ab [Folge 015](/artikel/folge-015-transkript-artikel/)): Mail von [**Cloudflare**](/glossar/cloudflare-pages/), dass ein **Zweig** gebaut wurde (z. B. ein Branch wie `PerseScreencastArticles-e016`, Name variiert). Nicht auf **main** gepusht, sondern eigener [**Branch**](/glossar/branch/) mit vielen neuen Artikeln, nachgeschärftem Ton und automatischen **Checks**.

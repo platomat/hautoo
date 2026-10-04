@@ -1,16 +1,18 @@
 ---
-title: "Folge 018: Node 22, npm install und npm run dev lokal"
-summary: "Nach dem Clone: Node über das offizielle Install-Skript, Abhängigkeiten mit npm install, Entwicklungsserver mit npm run dev."
-pubDate: 2026-10-04T20:22:22Z
+title: 'Folge 018: Node 22, npm install und npm run dev lokal'
+summary: 'Nach dem Clone: Node über das offizielle Install-Skript, Abhängigkeiten mit npm install, Entwicklungsserver mit npm run dev.'
+pubDate: 2026-10-04 20:22:22+00:00
 modifiedDate: 2026-10-04
 status: published
 tags:
-  - node
-  - astro
-  - cursor
+- node
+- astro
+- cursor
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 018: Node 22, npm install und npm run dev lokal'
+  seo_description: Nach dem Clone Node 22 installieren, npm install und npm run dev für Astro lokal. Folge 018 bringt deine Entwicklungsumgebung zum Laufen.
 ---
 
 Das Repo enthält Quellcode und `package.json`, aber nicht den ganzen **`node_modules`**-Berg. Lokal brauchst du [**Node.js**](/glossar/nodejs/) (für hautuu empfohlen: **Version 22**) und **npm**, damit `npm run dev` und `npm run build` laufen.

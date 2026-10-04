@@ -12,6 +12,8 @@ seo:
   max_snippet_enabled: false
   max_video_preview_enabled: false
   max_image_preview_enabled: false
+  seo_title: Impressum
+  seo_description: 'Angaben gemäß DDG: Betreiber, Adresse und Kontakt zu hautuu. Diese Seite ist für Pflichtangaben gedacht und nicht für die Google Suche optimiert.'
 ---
 
 ## Angaben gemäß § 5 DDG

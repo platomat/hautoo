@@ -1,16 +1,18 @@
 ---
-title: "Folge 015: Transkript rein, Artikel raus: Screencast und Cloud Agent"
-summary: "Speech-to-Text aus OBS, Texte auf der VM sammeln und den Cloud Agenten nachts die Artikel als Pull Request schreiben lassen."
-pubDate: 2026-10-04T04:29:47Z
+title: 'Folge 015: Transkript rein, Artikel raus: Screencast und Cloud Agent'
+summary: Speech-to-Text aus OBS, Texte auf der VM sammeln und den Cloud Agenten nachts die Artikel als Pull Request schreiben lassen.
+pubDate: 2026-10-04 04:29:47+00:00
 modifiedDate: 2026-10-04
 status: published
 tags:
-  - cursor
-  - github
-  - astro
+- cursor
+- github
+- astro
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 015: Transkript rein, Artikel raus: Screencast und Cloud Agent'
+  seo_description: 'OBS Transkript und Cloud Agent: über Nacht Artikel aus Screencasts als Pull Request. Folge 015 beschreibt den Ablauf von Rohtext bis Review auf hautuu.'
 ---
 
 Du nimmst den Screencast auf, die **Speech-to-Text**-Software hört mit und liefert Rohtext. Den packst du zusammen mit der Aufnahme in einen Ordner auf deiner **virtuellen Maschine** und gibst dem [**Cloud Agent**](/glossar/cloud-agent/) in Cursor eine klare Aufgabe: aus jedem Video **einen Artikel**, Beispielinhalt weg, Platzhalter fürs spätere Video, alles als [**Pull Request**](/glossar/pull-request/), damit du vor dem Live-Gang drüber schauen kannst.

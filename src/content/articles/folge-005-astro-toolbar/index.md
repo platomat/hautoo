@@ -1,16 +1,18 @@
 ---
-title: "Folge 005: Die Astro-Leiste nervt? Breakpoints retten den Tag"
-summary: "Lokal siehst du Werkzeugkram, den Besucher nie sehen. Und du kannst der KI sagen „mehr Luft im Footer“, ohne CSS-Professor zu sein."
-pubDate: 2026-10-03T23:23:55Z
+title: 'Folge 005: Die Astro-Leiste nervt? Breakpoints retten den Tag'
+summary: Lokal siehst du Werkzeugkram, den Besucher nie sehen. Und du kannst der KI sagen „mehr Luft im Footer“, ohne CSS-Professor zu sein.
+pubDate: 2026-10-03 23:23:55+00:00
 modifiedDate: 2026-10-04
 status: published
 tags:
-  - astro
-  - css
-  - cursor
+- astro
+- css
+- cursor
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 005: Die Astro-Leiste nervt? Breakpoints retten den Tag'
+  seo_description: 'Die Astro Dev Toolbar lokal verstehen und mit Breakpoints Layout Probleme finden. Folge 005: Footer Abstand und Feintuning ohne CSS Profi zu sein.'
 ---
 
 Kurze Folge, viel Praxis.

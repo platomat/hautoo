@@ -1,16 +1,18 @@
 ---
-title: "Folge 011: Von GitHub ins Netz: Cloudflare Pages in echten Schritten"
-summary: "Repo verbinden, Astro bauen lassen, eigene Subdomain drauf. An der Commit-ID erkennst du, was wirklich live ist."
-pubDate: 2026-10-04T00:22:44Z
+title: 'Folge 011: Von GitHub ins Netz: Cloudflare Pages in echten Schritten'
+summary: Repo verbinden, Astro bauen lassen, eigene Subdomain drauf. An der Commit-ID erkennst du, was wirklich live ist.
+pubDate: 2026-10-04 00:22:44+00:00
 modifiedDate: 2026-10-05
 status: published
 tags:
-  - cloudflare
-  - github
-  - astro
+- cloudflare
+- github
+- astro
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 011: Von GitHub ins Netz: Cloudflare Pages in echten Schritten'
+  seo_description: Cloudflare Pages mit GitHub verbinden, Astro bauen lassen und an der Commit ID sehen, was live ist. Folge 011 führt dich Schritt für Schritt ins Netz.
 ---
 
 Bisher: lokal und GitHub. Jetzt wird’s öffentlich: [**Cloudflare Pages**](/glossar/cloudflare-pages/) baut und hostet die fertige Site.

@@ -18,6 +18,8 @@ seo:
   max_video_preview: -1
   max_image_preview_enabled: true
   max_image_preview: large
+  seo_title: Artikel und How-tos
+  seo_description: 'Alle Folgen und Anleitungen von hautuu: von GitHub Setup über Cloudflare Pages bis Sveltia CMS. Finde die passende Episode für deinen nächsten Schritt.'
 ---
 
 Hier findest du Beiträge und How-tos rund um hautuu — Cursor, GitHub, Cloudflare und den Stack dahinter.
