@@ -2,7 +2,7 @@
 title: "Folge 014: Lieber mit GitHub einloggen: Der Worker als Türsteher fürs CMS"
 summary: "Schluss mit Token-Zettel am Monitor: OAuth, Secrets in Cloudflare und Menüs, die du selbst zusammenklickst."
 pubDate: 2026-10-04T01:38:06Z
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-05
 status: published
 tags:
   - sveltia
@@ -17,8 +17,6 @@ seo:
 [**PAT**](/glossar/pat/) funktioniert, aber kopieren, ablaufen, verlegen nervt (Einrichtung: [Folge 013](/artikel/folge-013-sveltia-pat/)). **Variante B:** normal bei GitHub anmelden. Dazwischen sitzt ein [**Cloudflare Worker**](/glossar/cloudflare-worker/) (kleines Programm auf Cloudflares Servern).
 
 ## Wer macht was?
-
-{{block id="stack-uebersicht"}}
 
 ```text
 Du → /admin → Sveltia → Worker (Auth) → GitHub API

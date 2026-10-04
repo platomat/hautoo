@@ -2,7 +2,7 @@
 title: "Folge 002: Issues statt Chaos: So behältst du die KI auf Kurs"
 summary: "Tickets, Meilensteine und ein Bild, wie Cursor, GitHub und Cloudflare zusammenspielen. Damit du nicht jeden Tag alles neu erklären musst."
 pubDate: 2026-10-03T01:35:20Z
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-05
 status: published
 tags:
   - github
@@ -29,8 +29,6 @@ Statt jedes Mal die halbe Projektgeschichte zu tippen, sagst du:
 Der Agent liest Titel und Kommentare. Bei einem **öffentlichen** Repo kann das jeder mitlesen, deshalb: **nie Passwörter, Tokens oder API-Keys** committen. Die [**History**](/glossar/git-history/) vergisst nichts.
 
 In Commit-Messages kannst du Issues erwähnen (`Fixes #1`, `Closes #1`). GitHub verlinkt oder schließt das Ticket, du siehst später, welcher [**Commit**](/glossar/commit/) was gelöst hat.
-
-## Die Kette (die Grafik im Kopf)
 
 {{block id="stack-uebersicht"}}
 

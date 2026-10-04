@@ -2,7 +2,7 @@
 title: "Folge 013: /admin aufmachen: lokal ohne Passwort, online mit GitHub-Schlüssel"
 summary: "Sveltia fühlt sich wie ein Mini-CMS an, speichert aber nur Dateien. So loggst du dich ein, ohne dass jeder Hans deine Startseite umschreibt."
 pubDate: 2026-10-04T01:09:23Z
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-05
 status: published
 tags:
   - sveltia
@@ -43,9 +43,9 @@ In Sveltia: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar
 
 **Token = Passwort.** Nicht ins Repo, nicht im Video zeigen.
 
-## Was beim Speichern passiert
-
 {{block id="stack-uebersicht"}}
+
+## Was beim Speichern passiert
 
 Beispiel: Beispiel-Unterseite im Menü sichtbar → Commit „Update page …“ → Build → Menüpunkt live. Parent/Child an der Seite allein baut nicht automatisch die Navigation, dafür gibt’s die **menus**-Collection.
 

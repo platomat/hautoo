@@ -2,7 +2,7 @@
 title: "Folge 011: Von GitHub ins Netz: Cloudflare Pages in echten Schritten"
 summary: "Repo verbinden, Astro bauen lassen, eigene Subdomain drauf. An der Commit-ID erkennst du, was wirklich live ist."
 pubDate: 2026-10-04T00:22:44Z
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-05
 status: published
 tags:
   - cloudflare
@@ -21,9 +21,9 @@ Bisher: lokal und GitHub. Jetzt wird’s öffentlich: [**Cloudflare Pages**](/gl
 - **R2 / Databases**: für hautuu erst mal egal, aber gut zu wissen.
 - **Ask AI** in Cloudflare. Deutsch geht, hilft bei DNS und Regeln.
 
-## Die Pipeline (Merksatz)
-
 {{block id="stack-uebersicht"}}
+
+**Merksatz:**
 
 ```
 Cursor → commit → push → GitHub → Cloudflare Build → Live

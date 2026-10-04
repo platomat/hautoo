@@ -18,7 +18,7 @@ alwaysApply: false
 - Glossar anlegen/ergänzen, `relatedTags`, Cross-Links (ggf. `scripts/link-glossar-crosslinks.py`).
 - FAQ: richtige Gruppe, offen sichtbar, verlinkt; keine Accordion-Idee.
 - Links: erstes Glossar-Vorkommen sinnvoll; Folgenlinks zur Detail-Folge; **nicht** Glossar + Folge am selben Wort; **max. ein Link pro Ziel-Folge** pro Artikel; neue Folgen rückverlinken.
-- Bausteine: `{{block id="…"}}` statt duplizieren, nur thematisch passend.
+- Bausteine: `{{block id="…"}}` statt duplizieren; `stack-uebersicht` **nur** bei echter Stack-/Pipeline-Erklärung im Text (siehe Redaktions-README); **keine leere/doppelte H2** direkt vor Bausteinen mit eigener Überschrift (Sätze darunter oder H2 weg/verschieben).
 - PR: Checkliste in `docs/redaktion/README.md`, Build grün, Beschreibung mit Tabellen und unsicheren Transkriptstellen.
 
 Sprachen und Git-Push: weiterhin `projekt-konventionen.mdc`.

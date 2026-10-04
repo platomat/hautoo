@@ -79,7 +79,14 @@ Mit **Screencast-Transkript** oder ohne:
 ### Bausteine (DRY)
 
 - Wiederkehrende Inhalte (z. B. Stack-Grafik) als Block einbinden: `{{block id="stack-uebersicht"}}`, nicht Bild und Überschrift kopieren.
-- Nur an **thematisch passenden** Stellen (Pipeline, Gesamtüberblick), nicht in jede Folge. Siehe [Collections — blocks](../sveltia/collections.md).
+- Bausteine mit **eigener Überschrift** im Markdown (z. B. `stack-uebersicht` mit `## Stack-Übersicht`): **keine doppelte** oder **leere H2** direkt davor.
+  - **Leere H2** = Überschrift ohne eigenen Absatztext, danach sofort der Block (nur Leerzeile dazwischen).
+  - **Dann:** (a) unter die H2 **ein bis zwei knackige Sätze** schreiben, die zum Block hinführen, **oder** (b) die H2 **entfernen** bzw. **unter** den Block setzen, wenn der folgende Inhalt zur Überschrift gehört.
+  - Keine Überschrift, die nur die Block-Grafik wiederholt; Fließtext ohne H2 ist oft genug.
+- **Nur**, wenn der umgebende Text den **Gesamt-Stack** oder den Ablauf **GitHub → Cloudflare → Live-Seite** (bzw. die nummerierte Kette Cursor → GitHub → Build → Live) **wirklich erklärt** — nicht nur, weil Cloudflare oder Push irgendwo erwähnt werden.
+- Themen wie **Branch/Preview/Rollback**, **Pull Request + Merge**, **Worker/OAuth** oder **CMS-Listing** tragen oft **keinen** Stack-Baustein; dort reicht Fließtext oder ein **eigenes** ASCII/Diagramm zum Abschnitt.
+- **Ausnahme:** [Folge 020](/artikel/folge-020-bausteine-fork/) bindet `stack-uebersicht` bewusst als **Live-Beispiel** für die Baustein-Collection ein (Abschnitt „Bausteine statt zehnmal das gleiche Bild“), nicht als zusätzliche Pipeline-Folge.
+- Nicht in jede Folge inflationär. Siehe [Collections — blocks](../sveltia/collections.md).
 
 ---
 
