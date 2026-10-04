@@ -7,6 +7,7 @@ import {
 	resolveSeo,
 	type Seo,
 } from "../cms/fields/seo";
+import { getBuildId, withBuildId } from "../lib/build-id";
 
 interface Props {
 	title?: string;
@@ -23,16 +24,18 @@ const pageTitle =
 const metaDescription =
 	seo.seo_description?.trim() || description?.trim() || undefined;
 const robots = buildRobotsContent(seo);
+const buildId = getBuildId();
 ---
 
 <!doctype html>
 <html lang="de">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href={withBuildId("/favicon.svg")} />
+		<link rel="icon" href={withBuildId("/favicon.ico")} />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="build-id" content={buildId} />
 		<meta name="robots" content={robots} />
 		{metaDescription && <meta name="description" content={metaDescription} />}
 		<title>{pageTitle}</title>

@@ -179,7 +179,17 @@ SSL/TLS-Modus der Zone: üblicherweise **Full** (oder **Full (strict)**), konsis
 | Eigene Cloudflare-API-Tokens im Repo | Niemals |
 | Apex-Domain (`storyofai.net` selbst) | Bleibt bei der Hauptdomain; hier nur Subdomain `hautoo` |
 
-Später optional: Caching-Header, Redirects, Security Headers, Preview-Branch-Regeln — wenn der Bedarf klar ist.
+## Caching & Build-ID (#11)
+
+| Was | Wo |
+| --- | --- |
+| Cache-Header | `public/_headers` → landet in `dist/` (Cloudflare Pages) |
+| `/_astro/*`, `/fonts/*` | `max-age=31536000, immutable` (fingerprinted bzw. selten geändert) |
+| HTML / Rest | `max-age=0, must-revalidate` |
+| Build-ID | `import.meta.env.BUILD_ID` / `CF_PAGES_COMMIT_SHA` über `src/lib/build-id.ts` |
+| Version-Param | Favicons u. ä. als `?v=<buildId>` in `BaseLayout`; Meta `build-id` |
+
+Astro-Bundles unter `/_astro/` haben bereits Hash-Dateinamen — lange Cache-Dauer ist dort sicher.
 
 ## Offizielle Referenzen
 
