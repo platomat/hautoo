@@ -39,8 +39,8 @@ output:
 
 # Optional TOC after hero (pages, articles)
 # - *field_show_toc
-# - *field_toc_levels
 # - *field_toc_title
+# - *field_toc_levels
 
 collections:
 
@@ -124,6 +124,13 @@ collections:
         default: false
         required: false
         hint: "Wenn aktiv: nach dem Hero ein Inhaltsverzeichnis anzeigen."
+      - &field_toc_title
+        name: tocTitle
+        label: TOC-Titel
+        widget: string
+        default: Inhalt
+        required: false
+        hint: "Überschrift über dem Verzeichnis. Leer = „Inhalt“."
       - &field_toc_levels
         name: tocLevels
         label: TOC-Ebenen
@@ -136,13 +143,34 @@ collections:
         default: [h2]
         required: false
         hint: "Welche Überschriften ins Verzeichnis. Standard: nur h2."
-      - &field_toc_title
-        name: tocTitle
-        label: TOC-Titel
-        widget: string
-        default: Inhalt
+      - name: headCode
+        label: Header-Code
+        widget: code
         required: false
-        hint: "Überschrift über dem Verzeichnis. Leer = „Inhalt“."
+        output_code_only: true
+        default_language: html
+        hint: "Optional. Roh eingefügt vor </head> — z. B. <style>…</style> oder <script>…</script>. Nur für vertrauenswürdige Redaktion."
+      - name: footerCode
+        label: Footer-Code
+        widget: code
+        required: false
+        output_code_only: true
+        default_language: html
+        hint: "Optional. Roh eingefügt vor </body> — z. B. <script>…</script>. Nur für vertrauenswürdige Redaktion."
+      - name: body
+        label: Inhalt
+        widget: markdown
+        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Baustein“, „Tagwolke“, „Trennlinie“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        editor_components:
+          - image
+          - code-block
+          - article-listing
+          - glossar-listing
+          - tag-listing
+          - block
+          - tag-cloud
+          - contact-email
+          - separator
       - &field_seo
         label: SEO
         name: seo
@@ -246,34 +274,6 @@ collections:
             default: large
             required: false
             hint: "Maximale Bildgröße in der Google-Suchvorschau."
-      - name: headCode
-        label: Header-Code
-        widget: code
-        required: false
-        output_code_only: true
-        default_language: html
-        hint: "Optional. Roh eingefügt vor </head> — z. B. <style>…</style> oder <script>…</script>. Nur für vertrauenswürdige Redaktion."
-      - name: footerCode
-        label: Footer-Code
-        widget: code
-        required: false
-        output_code_only: true
-        default_language: html
-        hint: "Optional. Roh eingefügt vor </body> — z. B. <script>…</script>. Nur für vertrauenswürdige Redaktion."
-      - name: body
-        label: Inhalt
-        widget: markdown
-        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Baustein“, „Tagwolke“, „Trennlinie“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
-        editor_components:
-          - image
-          - code-block
-          - article-listing
-          - glossar-listing
-          - tag-listing
-          - block
-          - tag-cloud
-          - contact-email
-          - separator
 
   - name: articles
     label: Artikel
@@ -343,9 +343,8 @@ collections:
           hint: "YouTube-/Vimeo-ID oder URL.",
         }
       - *field_show_toc
-      - *field_toc_levels
       - *field_toc_title
-      - *field_seo
+      - *field_toc_levels
       - name: body
         label: Inhalt
         widget: markdown
@@ -360,6 +359,7 @@ collections:
           - tag-cloud
           - contact-email
           - separator
+      - *field_seo
 
   - name: tags
     label: Tags

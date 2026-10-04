@@ -38,8 +38,8 @@ In weiteren Collections (z. B. `articles`) nur injizieren:
 ```yaml
 fields:
   - { name: title, label: Titel, widget: string }
-  - *field_seo
   - { name: body, label: Inhalt, widget: markdown }
+  - *field_seo
 ```
 
 Und im Astro-Schema:
