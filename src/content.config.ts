@@ -1,18 +1,24 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 import { menuSchema } from "./cms/fields/menu";
+import { backgroundOverlaySchema } from "./cms/fields/page-background";
 import { seoSchema } from "./cms/fields/seo";
 
 const pages = defineCollection({
 	loader: glob({ pattern: "**/index.md", base: "./src/content/pages" }),
-	schema: z.object({
-		title: z.string(),
-		description: z.string().optional(),
-		/** Parent page id (folder slug), builds nested URLs like `/parent/child/`. */
-		parent: z.string().optional(),
-		/** Shared SEO object (same shape as Sveltia `&field_seo`). */
-		seo: seoSchema.optional(),
-	}),
+	schema: ({ image }) =>
+		z.object({
+			title: z.string(),
+			description: z.string().optional(),
+			/** Parent page id (folder slug), builds nested URLs like `/parent/child/`. */
+			parent: z.string().optional(),
+			/** Full-viewport background image (entry-relative, Variante B). */
+			backgroundImage: image().optional(),
+			/** Black overlay over background, 0–100%. */
+			backgroundOverlay: backgroundOverlaySchema.optional(),
+			/** Shared SEO object (same shape as Sveltia `&field_seo`). */
+			seo: seoSchema.optional(),
+		}),
 });
 
 const menus = defineCollection({
@@ -37,6 +43,8 @@ const articles = defineCollection({
 			pubDate: z.coerce.date(),
 			draft: z.boolean().default(false),
 			heroImage: image().optional(),
+			backgroundImage: image().optional(),
+			backgroundOverlay: backgroundOverlaySchema.optional(),
 			tags: z.array(z.string()).default([]),
 			videoProvider: z.enum(["youtube", "vimeo"]).optional(),
 			videoId: z.string().optional(),

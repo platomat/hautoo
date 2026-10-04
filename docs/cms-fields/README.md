@@ -30,4 +30,14 @@ schema: z.object({
 }),
 ```
 
+## Seitenhintergrund (`backgroundImage` / `backgroundOverlay`)
+
+| Seite | Ort |
+| --- | --- |
+| Sveltia | Anchors `&field_background_image` / `&field_background_overlay` in `public/admin/config.yml` |
+| Astro | `src/cms/fields/page-background.ts` + `image()` im Collection-Schema |
+| UI | `PageBackground.astro` — fixed, full viewport; schwarzes Overlay 0–100 % |
+
+Genutzt bei `pages` und `articles`. Header/Footer bleiben darüber (eigene Fläche).
+
 **Hinweis:** YAML-Anchors gelten nur **innerhalb derselben** `config.yml` (Sveltia-Limit). Zod und YAML bei Feldänderungen gemeinsam pflegen.

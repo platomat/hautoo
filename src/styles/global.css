@@ -63,6 +63,22 @@ body {
 	line-height: 1.6;
 }
 
+/* Full-viewport CMS background: keep chrome above the fixed layer */
+body.has-page-bg {
+	background: transparent;
+}
+
+body.has-page-bg .site-header,
+body.has-page-bg .site-main,
+body.has-page-bg .site-footer {
+	position: relative;
+	z-index: 1;
+}
+
+.site-main {
+	flex: 1 0 auto;
+}
+
 .shell-inner {
 	max-width: var(--content-max-width);
 	margin-inline: auto;

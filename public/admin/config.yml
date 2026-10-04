@@ -19,8 +19,12 @@ output:
 # -----------------------------------------------------------------------------
 # Shared field partials (YAML anchors) — DRY across collections.
 # Aliases only work inside THIS file. Inject with: - *field_seo
-# Astro Zod mirror: src/cms/fields/seo.ts
+# Astro Zod mirrors: src/cms/fields/seo.ts, src/cms/fields/page-background.ts
 # -----------------------------------------------------------------------------
+
+# Page / article full-viewport background (inject as two list items).
+# - *field_background_image
+# - *field_background_overlay
 
 collections:
   - name: pages
@@ -46,6 +50,22 @@ collections:
         display_fields: [title]
         required: false
         hint: "Optional. URL wird /eltern-slug/diese-seite/."
+      - &field_background_image
+        name: backgroundImage
+        label: Seitenhintergrund
+        widget: image
+        required: false
+        hint: "Vollflächig hinter der sichtbaren Seite (Viewport). Header und Footer bleiben darüber."
+      - &field_background_overlay
+        name: backgroundOverlay
+        label: Abdunkelung (%)
+        widget: number
+        value_type: int
+        min: 0
+        max: 100
+        default: 40
+        required: false
+        hint: "Schwarzes Overlay über dem Hintergrundbild. 0 = keine Abdunkelung, 100 = fast schwarz."
       - &field_seo
         label: SEO
         name: seo
@@ -306,6 +326,8 @@ collections:
           required: false,
           hint: "Wird neben index.md gespeichert (Variante B).",
         }
+      - *field_background_image
+      - *field_background_overlay
       - name: tags
         label: Tags
         widget: relation
