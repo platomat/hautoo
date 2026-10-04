@@ -1,5 +1,5 @@
 ---
-title: "Seiten sind nur Dateien — und trotzdem schlau strukturiert"
+title: "Folge 004: Seiten sind nur Dateien und trotzdem schlau strukturiert"
 summary: "Was in der CMS-Config steckt, warum Unterseiten wie Ordner funktionieren und SEO lieber einmal definiert wird statt zwanzigmal copy-paste."
 pubDate: 2026-10-03T23:00:06Z
 modifiedDate: 2026-10-04
@@ -13,15 +13,15 @@ seo:
   follow_visibility: follow
 ---
 
-Keine Datenbank, kein WordPress-Monster: **Pages** sind normale Markdown-Dateien unter `src/content/pages/`. **Collections** sind die Typen — „Pages“, „Articles“, später mehr.
+Keine Datenbank, kein WordPress-Monster: **Pages** sind normale Markdown-Dateien unter `src/content/pages/`. **Collections** sind die Typen. „Pages“, „Articles“, später mehr.
 
 ## Was `config.yml` macht
 
 In `public/admin/config.yml` steht in **YAML** (strukturierte Textdatei), was Redakteure im CMS sehen: Titel, Beschreibung, Body, …
 
-Früher hing das Menü an jeder Seite — bei hautuu gibt’s eine eigene **menus**-Collection. Für Pages kam hinzu:
+Früher hing das Menü an jeder Seite, bei hautuu gibt’s eine eigene **menus**-Collection. Für Pages kam hinzu:
 
-- **`parent`** — Verweis auf eine übergeordnete Seite → URL wie `/ueber-uns/preise/` statt flach `/preise/`.
+- **`parent`**: Verweis auf eine übergeordnete Seite → URL wie `/ueber-uns/preise/` statt flach `/preise/`.
 
 ## Eine Seite angucken
 
@@ -34,7 +34,7 @@ Du speicherst → Datei ändert sich → beim Build wird HTML. In der IDE-**Prev
 
 ## Articles & Tags (kurz)
 
-**Articles** kriegen **Tags** wie Hashtags — keine Kategorien-Wüste. Verwandte Artikel per Extra-Feld wäre möglich; Tags reichen oft.
+**Articles** kriegen **Tags** wie Hashtags, keine Kategorien-Wüste. Verwandte Artikel per Extra-Feld wäre möglich; Tags reichen oft.
 
 ## SEO: einmal definieren
 
@@ -42,13 +42,13 @@ Statt überall lose Felder zu kopieren: ein **SEO-Objekt** für mehrere Collecti
 
 Praktisch:
 
-- **index / noindex** — Impressum & Datenschutz oft **noindex**, damit Google nicht den Legal-Text als Hauptinhalt feiert.
+- **index / noindex**: Impressum & Datenschutz oft **noindex**, damit Google nicht den Legal-Text als Hauptinhalt feiert.
 - Tab-Titel und Meta-Beschreibung getrennt vom sichtbaren Seitentitel.
 
 Backlog-Idee aus dem Video: optionales **Inhaltsverzeichnis** oben bei langen Texten.
 
 ## Editor heute, CMS morgen
 
-Jetzt tippst du Markdown oder lässt Cursor schreiben — später **Sveltia** unter `/admin/`. Gleiche Felder, gleiche Dateien, gleiche Git-**History**.
+Jetzt tippst du Markdown oder lässt Cursor schreiben, später **Sveltia** unter `/admin/`. Gleiche Felder, gleiche Dateien, gleiche Git-**History**.
 
 <!-- Quelle: 2026-10-03--23-00-06--obs-screencast - hautoo - collection-pages.txt -->
