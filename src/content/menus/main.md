@@ -11,6 +11,9 @@ items:
   - label: Glossar
     linkType: page
     page: glossar
+  - label: FAQ
+    linkType: page
+    page: faq
   - label: Über uns
     linkType: page
     page: ueber-uns

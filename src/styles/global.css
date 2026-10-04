@@ -252,6 +252,15 @@ body.is-nav-locked {
 	opacity: 0.65;
 }
 
+/* Markdown horizontal rule (e.g. FAQ section dividers) */
+.page hr {
+	border: 0;
+	height: 1px;
+	margin: 2.75rem 0;
+	background: var(--color-border);
+	opacity: 0.65;
+}
+
 /* Article / tag listing */
 .article-list {
 	display: flex;
