@@ -24,7 +24,7 @@ seo:
   max_image_preview: large
 ---
 
-**hautuu** ist ein Lern- und Demo-Projekt: Wie man mit Cursor (KI), GitHub und Cloudflare eine thematische, statische Website baut und pflegt, von leerem Repo bis zur laufenden Site.
+**hautuu** ist ein Lern- und Demo-Projekt: Wie man mit [**Cursor**](/glossar/cursor/) (KI), [**GitHub**](/glossar/github/) und [**Cloudflare**](/glossar/cloudflare-pages/) eine thematische, statische Website baut und pflegt, von leerem [**Repo**](/glossar/repository/) bis zur laufenden Site.
 
 ## Repository
 
