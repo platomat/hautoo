@@ -74,6 +74,8 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | `modifiedDate` | nein | Letzte Änderung → SEO-Meta im `<head>` |
 | `backgroundAttribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |
 | `seo` | ja (CMS) | SEO-Objekt (Titel, Description, Robots) — Partial `&field_seo` |
+| `headCode` | nein | Roh-HTML vor `</head>` (`<style>` / `<script>`) |
+| `footerCode` | nein | Roh-HTML vor `</body>` |
 | Body | ja | Markdown-Inhalt |
 
 Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarchie kommt aus `parent` (Kette möglich). Beispiel: Seite `team` mit `parent: ueber-uns` → `/ueber-uns/team/`.

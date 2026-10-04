@@ -4,6 +4,9 @@ description: Häufige Fragen zu hautuu, Git, Cursor, Cloudflare und dem CMS.
 status: published
 publishDate: 2026-10-04
 modifiedDate: 2026-10-04
+backgroundImage: /assets/sebastien-goldberg-9R_bNdo4-2I-unsplash.webp
+backgroundOverlay: 88
+backgroundAttribution: Photo by <a href="https://unsplash.com/@sebastiengoldberg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sébastien Goldberg</a> on <a href="https://unsplash.com/photos/a-sea-turtle-swimming-in-the-ocean-9R_bNdo4-2I?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 seo:
   index_visibility: index
   follow_visibility: follow
@@ -505,4 +508,3 @@ Noch nicht auf **main** gemergt und deployed. [Folge 012](/artikel/folge-012-clo
 ### Der Agent hat 120 Gedankenstriche eingebaut?
 
 Issue: Stil bereinigen, wie nach dem großen Artikel-Import. [Folge 016](/artikel/folge-016-artikel-pull-request/), [Folge 019](/artikel/folge-019-impressum-komponenten/).
-

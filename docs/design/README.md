@@ -18,6 +18,7 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 - `font-family`: `'Ubuntu', system-ui, sans-serif`
 - Keine zweite Display-Schrift — eine Familie für alles
 - Zeilenlänge Fließtext: ca. 60–75 Zeichen, angenehme `line-height` (z. B. 1.6)
+- Content-Überschriften (`.page h2`–`h6` ohne Klasse): **mehr Abstand nach oben** als nach unten, damit Überschrift + folgender Text als Block wirken (z. B. FAQ Frage→Antwort)
 
 ### Bereitstellung
 
@@ -95,7 +96,7 @@ Gefahr          #E57373  ████
 
   --font-sans: "Ubuntu", system-ui, sans-serif;
   --font-weight-body: 300;
-  --font-weight-heading: 500;
+  --font-weight-heading: 700;
 }
 ```
 

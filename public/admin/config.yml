@@ -215,6 +215,20 @@ collections:
             default: large
             required: false
             hint: "Maximale Bildgröße in der Google-Suchvorschau."
+      - name: headCode
+        label: Header-Code
+        widget: code
+        required: false
+        output_code_only: true
+        default_language: html
+        hint: "Optional. Roh eingefügt vor </head> — z. B. <style>…</style> oder <script>…</script>. Nur für vertrauenswürdige Redaktion."
+      - name: footerCode
+        label: Footer-Code
+        widget: code
+        required: false
+        output_code_only: true
+        default_language: html
+        hint: "Optional. Roh eingefügt vor </body> — z. B. <script>…</script>. Nur für vertrauenswürdige Redaktion."
       - name: body
         label: Inhalt
         widget: markdown

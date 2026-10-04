@@ -33,6 +33,8 @@ const wide = await contentNeedsWideLayout(page.body);
 	modifiedDate={page.data.modifiedDate}
 	backgroundImage={backgroundImage}
 	backgroundOverlay={page.data.backgroundOverlay}
+	headCode={page.data.headCode}
+	footerCode={page.data.footerCode}
 >
 	<main class:list={["page", { "page--wide": wide }]}>
 		<article>

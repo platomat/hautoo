@@ -76,6 +76,16 @@ Nicht Astro-`image()` im Schema — das scheitert an `/assets/…`. Genutzt bei 
 
 **Hinweis:** YAML-Anchors gelten nur **innerhalb derselben** `config.yml` (Sveltia-Limit). Zod und YAML bei Feldänderungen gemeinsam pflegen.
 
+## Header-/Footer-Code (`headCode` / `footerCode`)
+
+| Seite | Ort |
+| --- | --- |
+| Sveltia | Collection `pages`, Felder „Header-Code“ / „Footer-Code“ (`widget: code`, `output_code_only: true`) |
+| Astro | `pages` Schema → Props an `BaseLayout.astro` |
+| Injection | `headCode` vor `</head>`, `footerCode` vor `</body>` (nach Site-Footer), per `set:html` |
+
+Optional. Für seitenspezifisches `<style>` / `<script>`. Nur für vertrauenswürdige Redaktion (kein Sanitizing). Nicht nötig für FAQ-Abstände — die kommen aus generischem Heading-CSS.
+
 ## Inhalts-Blöcke (Seiten-/Artikel-Body)
 
 Im CMS über die Markdown-Toolbar einfügen (wie Bilder):

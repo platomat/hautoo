@@ -36,6 +36,10 @@ const pages = defineCollection({
 		backgroundAttribution: backgroundAttributionSchema,
 		/** Shared SEO object (same shape as Sveltia `&field_seo`). */
 		seo: seoSchema.optional(),
+		/** Raw HTML/JS/CSS injected before `</head>` (trusted CMS editors). */
+		headCode: z.string().optional(),
+		/** Raw HTML/JS/CSS injected before `</body>` (trusted CMS editors). */
+		footerCode: z.string().optional(),
 	}),
 });
 
