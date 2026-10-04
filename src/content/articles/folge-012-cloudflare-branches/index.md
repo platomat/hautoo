@@ -14,6 +14,8 @@ seo:
 
 [**main**](/glossar/main/) ist, was die Welt sieht. Trotzdem willst du rumprobieren, ohne die Startseite live zu verbiegen. Pages an GitHub koppeln ging in [Folge 011](/artikel/folge-011-cloudflare-setup/).
 
+{{block id="stack-uebersicht"}}
+
 ## Branch lokal
 
 ```text

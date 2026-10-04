@@ -11,7 +11,7 @@ Die Website publiziert thematische Inhalte. Technisch stecken sie in den Sveltia
 | Artikel | `articles` | Text, Bilder, eingebettetes How-to-Video |
 | Tags | `tags` | Themen-Labels für Artikel |
 | Glossar | `glossar` | Begriffserklärungen |
-| Bausteine | `blocks` | Wiederverwendbare Snippets (z. B. Stack-Grafik) |
+| Bausteine | `blocks` | Wiederverwendbare Snippets ohne eigene URL (z. B. Stack-Grafik) |
 
 ## Seiten (`pages`)
 
@@ -38,7 +38,7 @@ Ein Artikel soll typischerweise enthalten:
 
 Videos werden eingebettet (Embed), nicht als große Videodateien versioniert. Details: [Collections — articles](../sveltia/collections.md#collection-articles-umgesetzt).
 
-**Bausteine in Artikeln:** `{{block id="<slug>"}}` wie auf CMS-Seiten; Einführung in [Folge 020](/artikel/folge-020-bausteine-fork/) (öffentlich nach Deploy). Technik: [Collections — blocks](../sveltia/collections.md#collection-blocks-bausteine).
+**Bausteine in Artikeln:** Wie auf CMS-Seiten per Zeile `{{block id="<slug>"}}` (Toolbar „Baustein“ in Sveltia). Der Inhalt kommt aus `src/content/blocks/<slug>.md` — eine Quelle, gleiche Darstellung überall (z. B. `stack-uebersicht` in Folgen zum Gesamt-Stack). Einführung: [Folge 020](/artikel/folge-020-bausteine-fork/). Siehe [Collections — blocks](../sveltia/collections.md#collection-blocks-bausteine).
 
 ## Bilder (Medienablage)
 

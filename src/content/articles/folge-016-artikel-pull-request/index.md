@@ -16,6 +16,8 @@ seo:
 
 Der Agent hat über Nacht gearbeitet (Ablauf ab [Folge 015](/artikel/folge-015-transkript-artikel/)): Mail von [**Cloudflare**](/glossar/cloudflare-pages/), dass ein **Zweig** gebaut wurde (z. B. ein Branch wie `PerseScreencastArticles-e016`, Name variiert). Nicht auf **main** gepusht, sondern eigener [**Branch**](/glossar/branch/) mit vielen neuen Artikeln, nachgeschärftem Ton und automatischen **Checks**.
 
+{{block id="stack-uebersicht"}}
+
 ## Pull Request lesen
 
 Auf GitHub siehst du den [**Pull Request**](/glossar/pull-request/):

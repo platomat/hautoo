@@ -23,6 +23,8 @@ Bisher: lokal und GitHub. Jetzt wird’s öffentlich: [**Cloudflare Pages**](/gl
 
 ## Die Pipeline (Merksatz)
 
+{{block id="stack-uebersicht"}}
+
 ```
 Cursor → commit → push → GitHub → Cloudflare Build → Live
 ```

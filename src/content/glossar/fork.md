@@ -1,7 +1,9 @@
 ---
 title: Fork
 status: published
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-05
+relatedTags:
+  - github
 definition: Eigene Kopie eines fremden GitHub-Repos unter deinem Account.
 relatedArticles:
   - folge-020-bausteine-fork

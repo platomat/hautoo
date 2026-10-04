@@ -176,4 +176,7 @@ Beispiel: Baustein `stack-uebersicht` → auf der Startseite `{{block id="stack-
 | `modifiedDate` | nein | Letzte Änderung → SEO-Meta im `<head>` |
 | `definition` | ja | Kurzdefinition |
 | `relatedArticles` | nein | Relation zu `articles` |
+| `relatedTags` | nein | Relation zu `tags`; zusätzlich automatisch Tag mit gleichem Slug, falls vorhanden |
 | Body | nein | Längere Erklärung (Markdown) |
+
+Auf der Glossar-Detailseite erscheinen **Verwandte Tags** (mit Artikelanzahl). Auf Tag-Seiten verlinkt ein Glossar-Hinweis den passenden Begriff, wenn der Slug gleich ist oder genau ein Glossar den Tag über `relatedTags` zugeordnet hat.

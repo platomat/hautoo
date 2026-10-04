@@ -45,6 +45,8 @@ In Sveltia: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar
 
 ## Was beim Speichern passiert
 
+{{block id="stack-uebersicht"}}
+
 Beispiel: Beispiel-Unterseite im Menü sichtbar → Commit „Update page …“ → Build → Menüpunkt live. Parent/Child an der Seite allein baut nicht automatisch die Navigation, dafür gibt’s die **menus**-Collection.
 
 ## Variante B
