@@ -7,4 +7,4 @@ relatedArticles:
   - folge-001-hautuu-intro
 ---
 
-Astro erzeugt aus Markdown, Komponenten und Content Collections statische HTML-Seiten. Bei hautuu baut Cloudflare Pages die Site mit Astro und liefert sie aus.
+Astro erzeugt aus Markdown, Komponenten und Content Collections statische HTML-Seiten für das [**Frontend**](/glossar/frontend/). Bei hautuu baut Cloudflare Pages die Site mit Astro und liefert sie aus.

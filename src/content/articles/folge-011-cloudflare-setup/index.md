@@ -17,7 +17,7 @@ Bisher: lokal und GitHub. Jetzt wird’s öffentlich: [**Cloudflare Pages**](/gl
 
 ## Begriffe ohne Panik
 
-- **Workers & Pages** unter „Compute“. **Pages** = statische Sites aus Git, passt zu **Astro**. [**Workers**](/glossar/cloudflare-worker/) = Extra-Logik am Edge (später z. B. CMS-Login; OAuth-Brücke: [Folge 014](/artikel/folge-014-sveltia-worker/)).
+- **Workers & Pages** unter „Compute“. **Pages** = statische Sites aus Git (dein [**Frontend**](/glossar/frontend/)), passt zu **Astro**. [**Workers**](/glossar/cloudflare-worker/) = Extra-Logik am Edge (später z. B. CMS-Login; OAuth-Brücke: [Folge 014](/artikel/folge-014-sveltia-worker/)).
 - **R2 / Databases**: für hautuu erst mal egal, aber gut zu wissen.
 - **Ask AI** in Cloudflare. Deutsch geht, hilft bei DNS und Regeln.
 

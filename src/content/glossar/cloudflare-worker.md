@@ -5,4 +5,4 @@ modifiedDate: 2026-10-04
 definition: Kleines Programm auf Cloudflares Edge, z. B. OAuth-Brücke fürs CMS.
 ---
 
-Der Worker ist nicht deine Website, sondern z. B. die Tür, durch die Sveltia sicher mit GitHub spricht.
+Der Worker ist nicht deine Website, sondern ein kleines [**Backend**](/glossar/backend/)-Stück, z. B. die Tür, durch die Sveltia sicher mit GitHub spricht.
