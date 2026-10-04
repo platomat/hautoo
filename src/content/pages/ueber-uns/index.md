@@ -6,6 +6,10 @@ modifiedDate: 2026-10-04
 backgroundImage: /assets/599-1920x1280.webp
 backgroundOverlay: 84
 backgroundAttribution: https://picsum.photos/id/599/1920/1280
+showToc: false
+tocTitle: Inhalt
+tocLevels:
+  - h2
 seo:
   index_visibility: index
   follow_visibility: follow
@@ -38,6 +42,12 @@ Dort findest du auch Issues, den Build-Verlauf und die technische Doku unter [`d
   Themen-Stichworte zu den Artikeln (z. B. Cursor, GitHub, Cloudflare).
 - [**Glossar**](/glossar/)  
   Kurze Begriffserklärungen zum Stack.
+
+{{separator height="1" width="100"}}
+
+## Sag danke
+
+Wenn dir das Projekt gefällt und dich weiterbringt und du mir einen Kaffee spendieren willst ... sehr gerne: [Buy me a coffee](https://www.buymeacoffee.com/wasilijArt/) oder [PayPal](https://paypal.me/wasilijArt/). Würde mich sehr freuen, aber auch über ein Feedback.
 
 {{separator height="1" width="100"}}
 

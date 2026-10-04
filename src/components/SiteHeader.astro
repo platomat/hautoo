@@ -1,4 +1,5 @@
 ---
+import LogoMark from "./LogoMark.astro";
 import { getResolvedMenu, MENU_MAIN } from "../lib/menus";
 import { getPublicPages } from "../lib/pages";
 
@@ -14,7 +15,10 @@ function isCurrent(href: string): boolean {
 
 <header class="site-header" data-site-header>
 	<div class="site-header__inner shell-inner">
-		<a class="site-header__brand" href="/">hautuu</a>
+		<a class="site-header__brand" href="/" aria-label="hautuu Startseite">
+			<LogoMark class="site-header__logo-mark" />
+			<span class="site-header__logo-text">hautuu</span>
+		</a>
 		<button
 			type="button"
 			class="site-nav-toggle"
@@ -125,9 +129,20 @@ function isCurrent(href: string): boolean {
 	}
 
 	.site-header__brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
 		font-weight: var(--font-weight-heading);
 		font-size: 1.125rem;
 		color: var(--color-text);
+		line-height: 1;
+	}
+
+	.site-header__brand :global(.site-header__logo-mark) {
+		display: block;
+		width: 1.35rem;
+		height: 1.35rem;
+		flex-shrink: 0;
 	}
 
 	.site-header__brand:hover {

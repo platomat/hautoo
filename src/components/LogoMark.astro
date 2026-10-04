@@ -1,0 +1,70 @@
+---
+/**
+ * Leaf mark: midrib + forking veins (nature + git-style branches).
+ * Inherits color from parent via currentColor.
+ */
+interface Props {
+	class?: string;
+	title?: string;
+}
+
+const { class: className, title } = Astro.props;
+const labelled = Boolean(title);
+---
+
+<svg
+	class:list={["logo-mark", className]}
+	xmlns="http://www.w3.org/2000/svg"
+	viewBox="0 0 32 32"
+	width="22"
+	height="22"
+	fill="none"
+	aria-hidden={labelled ? undefined : "true"}
+	role={labelled ? "img" : undefined}
+	aria-label={title}
+>
+	{
+		title ? (
+			<title>{title}</title>
+		) : null
+	}
+	{/* Soft leaf body */}
+	<path
+		class="logo-mark__leaf"
+		d="M16 2.2c-5.2 6.2-8.6 12-8.6 17.6 0 5.4 3.6 9.2 8.6 9.2s8.6-3.8 8.6-9.2c0-5.6-3.4-11.4-8.6-17.6Z"
+		fill="currentColor"
+		opacity="0.18"
+	/>
+	{/* Leaf outline */}
+	<path
+		d="M16 2.2c-5.2 6.2-8.6 12-8.6 17.6 0 5.4 3.6 9.2 8.6 9.2s8.6-3.8 8.6-9.2c0-5.6-3.4-11.4-8.6-17.6Z"
+		stroke="currentColor"
+		stroke-width="1.7"
+		stroke-linejoin="round"
+	/>
+	{/* Midrib = main line */}
+	<path
+		d="M16 27.2V7.4"
+		stroke="currentColor"
+		stroke-width="1.7"
+		stroke-linecap="round"
+	/>
+	{/* Left fork (feature branch) */}
+	<path
+		d="M16 14.2c-2.6-.7-4.4-2.6-5.4-5.2"
+		stroke="currentColor"
+		stroke-width="1.55"
+		stroke-linecap="round"
+	/>
+	{/* Right fork + tip node */}
+	<path
+		d="M16 17.6c2.8-.4 4.8-2.4 5.8-5"
+		stroke="currentColor"
+		stroke-width="1.55"
+		stroke-linecap="round"
+	/>
+	{/* Small nodes on branch tips (commit dots) */}
+	<circle cx="10.4" cy="8.7" r="1.15" fill="currentColor" />
+	<circle cx="22" cy="12.3" r="1.15" fill="currentColor" />
+	<circle cx="16" cy="27.2" r="1.2" fill="currentColor" />
+</svg>
