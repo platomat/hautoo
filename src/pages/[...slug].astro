@@ -3,6 +3,7 @@ import { render } from "astro:content";
 import BackgroundAttributions from "../components/BackgroundAttributions.astro";
 import CmsContent from "../components/CmsContent.astro";
 import PageHero from "../components/PageHero.astro";
+import TableOfContents from "../components/TableOfContents.astro";
 import TagSidebar from "../components/TagSidebar.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
@@ -41,6 +42,7 @@ const showBackgroundAttributions = page.id === "impressum";
 const showArticleSidebar = page.id === "artikel";
 const wide =
 	showArticleSidebar || (await contentNeedsWideLayout(page.body));
+const showToc = page.data.showToc === true;
 ---
 
 <BaseLayout
@@ -68,6 +70,7 @@ const wide =
 								title={page.data.title}
 								description={page.data.description}
 							/>
+							{showToc && <TableOfContents body={page.body} />}
 							{useEmbeds ? <CmsContent body={page.body} /> : <Content />}
 						</article>
 					</div>
@@ -79,6 +82,7 @@ const wide =
 						title={page.data.title}
 						description={page.data.description}
 					/>
+					{showToc && <TableOfContents body={page.body} />}
 					{useEmbeds ? <CmsContent body={page.body} /> : <Content />}
 					{showBackgroundAttributions && <BackgroundAttributions />}
 				</article>

@@ -76,6 +76,16 @@ Nicht Astro-`image()` im Schema — das scheitert an `/assets/…`. Genutzt bei 
 
 **Hinweis:** YAML-Anchors gelten nur **innerhalb derselben** `config.yml` (Sveltia-Limit). Zod und YAML bei Feldänderungen gemeinsam pflegen.
 
+## Inhaltsverzeichnis (`showToc`)
+
+| Seite | Ort |
+| --- | --- |
+| Sveltia | Anchor `&field_show_toc` / Alias `*field_show_toc` (pages, articles) |
+| Astro | `showToc: z.boolean().default(false)` in `src/content.config.ts` |
+| UI | `TableOfContents.astro` nach dem Hero; Einträge aus `src/lib/toc.ts` (h2/h3) |
+
+Default: aus. Anker-IDs entsprechen den gerenderten Heading-IDs (`github-slugger`).
+
 ## Header-/Footer-Code (`headCode` / `footerCode`)
 
 | Seite | Ort |

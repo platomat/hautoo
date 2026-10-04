@@ -74,6 +74,7 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | `modifiedDate` | nein | Letzte Änderung → SEO-Meta im `<head>` |
 | `backgroundAttribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |
 | `seo` | ja (CMS) | SEO-Objekt (Titel, Description, Robots) — Partial `&field_seo` |
+| `showToc` | nein | Inhaltsverzeichnis nach Hero aus h2/h3 (Default aus) |
 | `headCode` | nein | Roh-HTML vor `</head>` (`<style>` / `<script>`) |
 | `footerCode` | nein | Roh-HTML vor `</body>` |
 | Body | ja | Markdown-Inhalt |
@@ -148,6 +149,7 @@ Beispiel: Baustein `stack-uebersicht` → auf der Startseite `{{block id="stack-
 | `tags` | nein | Relation zu `tags` (mehrere) |
 | `videoProvider` | nein | `youtube` / `vimeo` |
 | `videoId` | nein | ID oder URL |
+| `showToc` | nein | Inhaltsverzeichnis nach Hero aus h2/h3 (Default aus) |
 | `seo` | ja (CMS) | SEO-Partial |
 | Body | ja | Markdown |
 

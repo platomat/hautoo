@@ -5,6 +5,7 @@ import ArticleNav from "../../components/ArticleNav.astro";
 import CmsContent from "../../components/CmsContent.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
+import TableOfContents from "../../components/TableOfContents.astro";
 import VideoEmbed from "../../components/VideoEmbed.astro";
 import {
 	formatArticleDate,
@@ -41,6 +42,7 @@ const backgroundImage = resolveCmsImage(
 	article.data.backgroundImage,
 	`content/articles/${article.id}/`,
 );
+const showToc = article.data.showToc === true;
 ---
 
 <BaseLayout
@@ -61,6 +63,7 @@ const backgroundImage = resolveCmsImage(
 				</time>
 			</p>
 			<PageHero title={article.data.title} description={article.data.summary} />
+			{showToc && <TableOfContents body={article.body} />}
 			{
 				linkedTags.length > 0 && (
 					<ul class="article-tags list-plain flex-row flex-wrap gap-md text-sm">

@@ -1,0 +1,76 @@
+---
+import { extractTocEntries, type TocEntry } from "../lib/toc";
+
+interface Props {
+	body: string | undefined;
+	/** Optional override when entries were precomputed. */
+	entries?: TocEntry[];
+}
+
+const { body, entries: entriesProp } = Astro.props;
+const entries = entriesProp ?? extractTocEntries(body);
+---
+
+{
+	entries.length > 0 && (
+		<nav class="toc" aria-labelledby="toc-heading">
+			<h2 id="toc-heading" class="toc__title text-sm">
+				Inhalt
+			</h2>
+			<ol class="toc__list list-plain">
+				{entries.map((entry) => (
+					<li
+						class:list={[
+							"toc__item",
+							entry.depth === 3 && "toc__item--h3",
+						]}
+					>
+						<a href={`#${entry.id}`}>{entry.text}</a>
+					</li>
+				))}
+			</ol>
+		</nav>
+	)
+}
+
+<style>
+	.toc {
+		margin: 0 0 2.5rem;
+		padding: 1rem 0 0;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.toc__title {
+		margin: 0 0 0.75rem;
+		font-weight: var(--font-weight-heading);
+		color: var(--color-text-muted);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+	}
+
+	.toc__list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		margin: 0;
+		padding: 0;
+	}
+
+	.toc__item {
+		margin: 0;
+		line-height: 1.35;
+	}
+
+	.toc__item--h3 {
+		padding-inline-start: 1rem;
+		font-size: 0.95rem;
+	}
+
+	.toc__item a {
+		color: var(--color-text);
+	}
+
+	.toc__item a:hover {
+		color: var(--color-action);
+	}
+</style>

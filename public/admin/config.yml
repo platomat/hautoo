@@ -37,6 +37,9 @@ output:
 # Last change (all collections; SEO meta only for now)
 # - *field_modified_date
 
+# Optional TOC after hero (pages, articles)
+# - *field_show_toc
+
 collections:
 
   - name: pages
@@ -112,6 +115,13 @@ collections:
         widget: text
         required: false
         hint: "Text, reine URL oder HTML 1:1 von Unsplash/Pexels („Copy attribution“). Nur <a href> wird übernommen; erscheint automatisch am Ende des Impressums."
+      - &field_show_toc
+        name: showToc
+        label: Inhaltsverzeichnis
+        widget: boolean
+        default: false
+        required: false
+        hint: "Wenn aktiv: nach dem Hero ein Inhaltsverzeichnis aus h2/h3-Überschriften im Inhalt."
       - &field_seo
         label: SEO
         name: seo
@@ -311,6 +321,7 @@ collections:
           required: false,
           hint: "YouTube-/Vimeo-ID oder URL.",
         }
+      - *field_show_toc
       - *field_seo
       - name: body
         label: Inhalt
