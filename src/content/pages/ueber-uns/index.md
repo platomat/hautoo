@@ -2,7 +2,7 @@
 title: Über uns
 description: Kurzvorstellung des Projekts hautuu.
 status: published
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-05
 backgroundImage: /assets/599-1920x1280.webp
 backgroundOverlay: 84
 backgroundAttribution: https://picsum.photos/id/599/1920/1280
@@ -25,8 +25,6 @@ seo:
 ---
 
 **hautuu** ist ein Lern- und Demo-Projekt: Wie man mit Cursor (KI), GitHub und Cloudflare eine thematische, statische Website baut und pflegt, von leerem Repo bis zur laufenden Site.
-
-![](/assets/logo-mark.svg)
 
 ## Repository
 
