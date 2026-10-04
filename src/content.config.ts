@@ -1,24 +1,29 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 import { menuSchema } from "./cms/fields/menu";
-import { backgroundOverlaySchema } from "./cms/fields/page-background";
+import {
+	backgroundImageSchema,
+	backgroundOverlaySchema,
+} from "./cms/fields/page-background";
 import { seoSchema } from "./cms/fields/seo";
 
 const pages = defineCollection({
 	loader: glob({ pattern: "**/index.md", base: "./src/content/pages" }),
-	schema: ({ image }) =>
-		z.object({
-			title: z.string(),
-			description: z.string().optional(),
-			/** Parent page id (folder slug), builds nested URLs like `/parent/child/`. */
-			parent: z.string().optional(),
-			/** Full-viewport background image (entry-relative, Variante B). */
-			backgroundImage: image().optional(),
-			/** Black overlay over background, 0–100%. */
-			backgroundOverlay: backgroundOverlaySchema.optional(),
-			/** Shared SEO object (same shape as Sveltia `&field_seo`). */
-			seo: seoSchema.optional(),
-		}),
+	schema: z.object({
+		title: z.string(),
+		description: z.string().optional(),
+		/** Parent page id (folder slug), builds nested URLs like `/parent/child/`. */
+		parent: z.string().optional(),
+		/**
+		 * Full-viewport background. CMS may store `/assets/…` (shared library)
+		 * or an entry-relative filename — resolved via resolveCmsImage.
+		 */
+		backgroundImage: backgroundImageSchema,
+		/** Black overlay over background, 0–100%. */
+		backgroundOverlay: backgroundOverlaySchema.optional(),
+		/** Shared SEO object (same shape as Sveltia `&field_seo`). */
+		seo: seoSchema.optional(),
+	}),
 });
 
 const menus = defineCollection({
@@ -42,8 +47,9 @@ const articles = defineCollection({
 			summary: z.string().optional(),
 			pubDate: z.coerce.date(),
 			draft: z.boolean().default(false),
+			/** Entry-relative only (Variante B) — use `image()` for optimization. */
 			heroImage: image().optional(),
-			backgroundImage: image().optional(),
+			backgroundImage: backgroundImageSchema,
 			backgroundOverlay: backgroundOverlaySchema.optional(),
 			tags: z.array(z.string()).default([]),
 			videoProvider: z.enum(["youtube", "vimeo"]).optional(),

@@ -8,12 +8,17 @@ export const backgroundOverlaySchema = z.coerce
 	.default(40);
 
 /**
- * Shared page/article background fields (except the image, which needs
- * the collection `image()` helper).
+ * Background image path from Sveltia (`/assets/…` or entry-relative).
+ * Resolved at render via `resolveCmsImage` — not Astro `image()`, which
+ * cannot load global `/assets/` paths.
  */
-export const pageBackgroundMetaSchema = {
-	backgroundOverlay: backgroundOverlaySchema.optional(),
-};
+export const backgroundImageSchema = z.preprocess((value) => {
+	if (typeof value !== "string") {
+		return value;
+	}
+	const trimmed = value.trim();
+	return trimmed === "" ? undefined : trimmed;
+}, z.string().min(1).optional());
 
 export type BackgroundOverlay = z.infer<typeof backgroundOverlaySchema>;
 

@@ -10,7 +10,9 @@ backend:
 # PAT login for now; GitHub App + Cloudflare Worker later.
 # Admin UI: /admin/ (src/pages/admin.html); config: this file.
 
-media_folder: src/assets # unused for entry-relative media; kept as fallback
+# Shared media library (Sveltia “Uncategorized” / all assets).
+# Files live in src/assets; frontmatter stores /assets/… — resolved by src/lib/cms-image.ts
+media_folder: src/assets
 public_folder: /assets
 
 output:

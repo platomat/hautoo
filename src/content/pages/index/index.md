@@ -1,6 +1,8 @@
 ---
 title: Start
 description: hautuu — thematische Website mit Cursor, GitHub und Cloudflare.
+backgroundImage: /assets/599-1920x1280.webp
+backgroundOverlay: 66
 seo:
   index_visibility: index
   follow_visibility: follow

@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { resolveCmsImage } from "../lib/cms-image";
 import { getPageHref, indexPagesById } from "../lib/pages";
 
 export async function getStaticPaths() {
@@ -21,13 +22,17 @@ export async function getStaticPaths() {
 
 const { page } = Astro.props;
 const { Content } = await render(page);
+const backgroundImage = resolveCmsImage(
+	page.data.backgroundImage,
+	`content/pages/${page.id}/`,
+);
 ---
 
 <BaseLayout
 	title={page.data.title}
 	description={page.data.description}
 	seo={page.data.seo}
-	backgroundImage={page.data.backgroundImage}
+	backgroundImage={backgroundImage}
 	backgroundOverlay={page.data.backgroundOverlay}
 >
 	<main class="page">

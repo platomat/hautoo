@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import VideoEmbed from "../../components/VideoEmbed.astro";
 import { getArticleHref } from "../../lib/articles";
+import { resolveCmsImage } from "../../lib/cms-image";
 
 export async function getStaticPaths() {
 	const articles = await getCollection("articles");
@@ -22,13 +23,17 @@ const tagMap = new Map(tags.map((tag) => [tag.id, tag]));
 const linkedTags = (article.data.tags ?? [])
 	.map((id) => tagMap.get(id))
 	.filter((tag): tag is (typeof tags)[number] => Boolean(tag));
+const backgroundImage = resolveCmsImage(
+	article.data.backgroundImage,
+	`content/articles/${article.id}/`,
+);
 ---
 
 <BaseLayout
 	title={article.data.title}
 	description={article.data.summary}
 	seo={article.data.seo}
-	backgroundImage={article.data.backgroundImage}
+	backgroundImage={backgroundImage}
 	backgroundOverlay={article.data.backgroundOverlay}
 >
 	<main class="page">

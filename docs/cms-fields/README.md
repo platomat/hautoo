@@ -35,9 +35,14 @@ schema: z.object({
 | Seite | Ort |
 | --- | --- |
 | Sveltia | Anchors `&field_background_image` / `&field_background_overlay` in `public/admin/config.yml` |
-| Astro | `src/cms/fields/page-background.ts` + `image()` im Collection-Schema |
+| Astro | Pfad als String (`backgroundImageSchema`); Auflösung `src/lib/cms-image.ts` |
 | UI | `PageBackground.astro` — fixed, full viewport; schwarzes Overlay 0–100 % |
 
-Genutzt bei `pages` und `articles`. Header/Footer bleiben darüber (eigene Fläche).
+Pfade:
+
+- Shared Library: `/assets/datei.webp` → Datei unter `src/assets/` (globaler CMS-`media_folder`)
+- Eintragsrelativ: `datei.webp` neben `index.md` (Variante B)
+
+Nicht Astro-`image()` im Schema — das scheitert an `/assets/…`. Genutzt bei `pages` und `articles`.
 
 **Hinweis:** YAML-Anchors gelten nur **innerhalb derselben** `config.yml` (Sveltia-Limit). Zod und YAML bei Feldänderungen gemeinsam pflegen.
