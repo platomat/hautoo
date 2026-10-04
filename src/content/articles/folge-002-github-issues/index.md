@@ -32,6 +32,8 @@ In Commit-Messages kannst du Issues erwähnen (`Fixes #1`, `Closes #1`). GitHub 
 
 ## Die Kette (die Grafik im Kopf)
 
+{{block id="stack-uebersicht"}}
+
 1. [**Cursor**](/glossar/cursor/): du arbeitest lokal, commit, push.
 2. [**GitHub**](/glossar/github/): Quelle der Wahrheit.
 3. [**Cloudflare**](/glossar/cloudflare-pages/): merkt Änderungen, [**baut**](/glossar/build/) mit Astro.
