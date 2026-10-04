@@ -109,6 +109,11 @@ def protected_ranges_in_line(line: str) -> list[tuple[int, int]]:
         ranges.append(m.span())
     for m in re.finditer(r"\[[^\]]*\]\([^)]*\)", line):
         ranges.append(m.span())
+    # Incomplete markdown link: protect from `[` through end of line (no `](` yet).
+    for m in re.finditer(r"\[[^\]]*$", line):
+        ranges.append(m.span())
+    for m in re.finditer(r"\{\{repodoc[^}]*\}\}", line):
+        ranges.append(m.span())
     return ranges
 
 
