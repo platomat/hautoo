@@ -17,9 +17,9 @@ export type ArticleCardField =
 export const ARTICLE_CARD_FIELDS = [
 	"title",
 	"intro",
+	"tags",
 	"date",
 	"readingTime",
-	"tags",
 ] as const satisfies readonly ArticleCardField[];
 
 export type ArticleListingEmbedProps = {
@@ -68,9 +68,9 @@ export type ContentSegment =
 const DEFAULT_SHOW: ArticleCardField[] = [
 	"title",
 	"intro",
+	"tags",
 	"date",
 	"readingTime",
-	"tags",
 ];
 
 const DEFAULT_LISTING: ArticleListingEmbedProps = {

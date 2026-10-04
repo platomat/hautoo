@@ -106,7 +106,7 @@ Im CMS über die Markdown-Toolbar einfügen (wie Bilder):
 
 | CMS-Block | Gespeicherter Marker | Optionen |
 | --- | --- | --- |
-| **Artikel-Listing** | `{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25" show="title,intro,date,readingTime,tags"}}` | Anzahl (`0` = alle), Sortierung, Layout (`grid` / `list`), Spalten, Abstand, Kartenfelder (`title` / `intro` / `date` / `readingTime` / `tags`) |
+| **Artikel-Listing** | `{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25" show="title,intro,tags,date,readingTime"}}` | Anzahl (`0` = alle), Sortierung, Layout (`grid` / `list`), Spalten, Abstand, Kartenfelder (`title` / `intro` / `tags` / `date` / `readingTime`; Tags eigene Zeile über Datum/Lesezeit) |
 | **Glossar-Listing** | `{{glossar-listing count="0" sort="title-asc" layout="list" columns="2" gap="1.5"}}` | Anzahl (`0` = alle), Sortierung (`title-asc` / `title-desc` / `newest` / `oldest`), Layout (`list` / `grid`), Spalten 1–4 (nur Grid), Abstand in rem |
 | **Tag-Listing** | `{{tag-listing count="0" sort="title-asc" layout="cloud" columns="3" gap="1.25"}}` | Anzahl (`0` = alle genutzten), Sortierung (`title-asc` / `title-desc` / `most-used`), Layout (`cloud` / `list` / `grid`), Spalten 1–4 (nur Grid), Abstand in rem |
 | **Baustein** | `{{block id="stack-uebersicht"}}` | `id` = Slug aus Collection `blocks` (Bausteine); Inhalt wird an Ort und Stelle injiziert |

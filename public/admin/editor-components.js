@@ -81,21 +81,21 @@
 				label: "Felder auf der Karte",
 				widget: "select",
 				multiple: true,
-				default: ["title", "intro", "date", "readingTime", "tags"],
+				default: ["title", "intro", "tags", "date", "readingTime"],
 				options: [
 					{ label: "Titel", value: "title" },
 					{ label: "Intro", value: "intro" },
+					{ label: "Tags", value: "tags" },
 					{ label: "Datum", value: "date" },
 					{ label: "Lesezeit", value: "readingTime" },
-					{ label: "Tags", value: "tags" },
 				],
-				hint: "Welche Infos auf jeder Karte erscheinen.",
+				hint: "Anzeige: Tags in eigener Zeile über Datum und Lesezeit.",
 			},
 		],
 		pattern: /^\{\{article-listing(?<attrs>[^}]*)\}\}\s*$/m,
 		fromBlock: (match) => {
 			const attrs = parseAttrs(match?.groups?.attrs || "");
-			const showDefault = "title,intro,date,readingTime,tags";
+			const showDefault = "title,intro,tags,date,readingTime";
 			return {
 				count: attrs.count !== undefined && attrs.count !== "" ? attrs.count : "3",
 				sort: attrs.sort || "newest",
@@ -111,7 +111,7 @@
 			layout = "grid",
 			columns = 3,
 			gap = 1.25,
-			show = ["title", "intro", "date", "readingTime", "tags"],
+			show = ["title", "intro", "tags", "date", "readingTime"],
 		}) => {
 			const showAttr = Array.isArray(show) ? show.join(",") : String(show || "");
 			return `{{article-listing count="${count}" sort="${sort}" layout="${layout}" columns="${columns}" gap="${gap}" show="${showAttr}"}}`;
@@ -122,7 +122,7 @@
 			layout = "grid",
 			columns = 3,
 			gap = 1.25,
-			show = ["title", "intro", "date", "readingTime", "tags"],
+			show = ["title", "intro", "tags", "date", "readingTime"],
 		}) => {
 			const showLabel = Array.isArray(show) ? show.join(", ") : String(show || "");
 			return `<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Artikel-Listing · ${count === 0 || count === "0" ? "alle" : count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem · ${showLabel}</div>`;
