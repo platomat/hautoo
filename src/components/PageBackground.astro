@@ -10,14 +10,21 @@ interface Props {
 
 const { image, overlay } = Astro.props;
 
+/** Viewport cover: match common phone / tablet / desktop widths (project breakpoints ~680 / 1024). */
+const BG_WIDTHS = [640, 960, 1280, 1920];
+
 let src: string | undefined;
+let srcset: string | undefined;
 if (image) {
 	const optimized = await getImage({
 		src: image,
 		width: 1920,
+		widths: BG_WIDTHS,
+		sizes: "100vw",
 		format: "webp",
 	});
 	src = optimized.src;
+	srcset = optimized.srcSet.attribute || undefined;
 }
 
 const alpha = overlayAlpha(overlay);
@@ -26,7 +33,15 @@ const alpha = overlayAlpha(overlay);
 {
 	src && (
 		<div class="page-bg" aria-hidden="true">
-			<img class="page-bg__image" src={src} alt="" decoding="async" />
+			<img
+				class="page-bg__image"
+				src={src}
+				srcset={srcset}
+				sizes="100vw"
+				alt=""
+				decoding="async"
+				fetchpriority="high"
+			/>
 			<div class="page-bg__overlay" style={`opacity: ${alpha}`} />
 		</div>
 	)

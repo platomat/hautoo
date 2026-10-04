@@ -60,7 +60,7 @@ schema: z.object({
 | --- | --- |
 | Sveltia | Anchors `&field_background_image` / `&field_background_overlay` / `&field_background_attribution` in `public/admin/config.yml` |
 | Astro | Pfad als String (`backgroundImageSchema`); Auflösung `src/lib/cms-image.ts` |
-| UI | `PageBackground.astro` — fixed, full viewport; schwarzes Overlay 0–100 % |
+| UI | `PageBackground.astro` — fixed, full viewport; `srcset` 640–1920 px WebP; schwarzes Overlay 0–100 % |
 | Nachweis | `backgroundAttribution` (Text oder reine URL) → Liste auf `/impressum/` via `BackgroundAttributions.astro` |
 
 Pfade:
