@@ -5,6 +5,7 @@ import { satteri } from '@astrojs/markdown-satteri';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { hastExternalLinks } from './src/lib/hast-external-links.ts';
+import { sitemapPageFilter } from './src/lib/sitemap.ts';
 
 const buildId =
 	process.env.CF_PAGES_COMMIT_SHA?.slice(0, 8) ||
@@ -18,10 +19,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      filter: (page) =>
-        !page.includes('/impressum/') &&
-        !page.includes('/datenschutz/') &&
-        !page.includes('/admin/'),
+      filter: sitemapPageFilter,
     }),
   ],
   markdown: {

@@ -16,6 +16,8 @@ interface Props {
 	title?: string;
 	description?: string;
 	seo?: Seo;
+	/** Open Graph type (default website; articles pass `article`). */
+	ogType?: "website" | "article";
 	/** Last editorial change — emitted as SEO meta only. */
 	modifiedDate?: Date;
 	backgroundImage?: ImageMetadata;
@@ -30,6 +32,7 @@ const {
 	title = "hautuu",
 	description,
 	seo: seoProp,
+	ogType = "website",
 	modifiedDate,
 	backgroundImage,
 	backgroundOverlay,
@@ -51,6 +54,12 @@ const hasPageBackground = Boolean(backgroundImage);
 const modifiedMeta = modifiedDate
 	? formatModifiedDateMeta(modifiedDate)
 	: undefined;
+const canonicalURL = Astro.site
+	? new URL(Astro.url.pathname, Astro.site)
+	: undefined;
+const sitemapURL = Astro.site
+	? new URL("sitemap-index.xml", Astro.site)
+	: "/sitemap-index.xml";
 ---
 
 <!doctype html>
@@ -59,11 +68,22 @@ const modifiedMeta = modifiedDate
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href={withBuildId("/img/favicon.svg")} />
 		<link rel="icon" href={withBuildId("/img/favicon.ico")} />
+		<link rel="sitemap" type="application/xml" href={sitemapURL.toString()} title="Sitemap" />
+		{canonicalURL && <link rel="canonical" href={canonicalURL.href} />}
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="build-id" content={buildId} />
 		<meta name="robots" content={robots} />
 		{metaDescription && <meta name="description" content={metaDescription} />}
+		<meta property="og:title" content={pageTitle} />
+		{metaDescription && <meta property="og:description" content={metaDescription} />}
+		<meta property="og:type" content={ogType} />
+		<meta property="og:locale" content="de_DE" />
+		<meta property="og:site_name" content="hautuu" />
+		{canonicalURL && <meta property="og:url" content={canonicalURL.href} />}
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={pageTitle} />
+		{metaDescription && <meta name="twitter:description" content={metaDescription} />}
 		{
 			modifiedMeta && (
 				<>
