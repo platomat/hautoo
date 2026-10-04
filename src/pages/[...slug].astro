@@ -5,7 +5,10 @@ import BackgroundAttributions from "../components/BackgroundAttributions.astro";
 import CmsContent from "../components/CmsContent.astro";
 import TagSidebar from "../components/TagSidebar.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { hasContentEmbeds } from "../lib/content-embeds";
+import {
+	hasArticleListingEmbed,
+	hasContentEmbeds,
+} from "../lib/content-embeds";
 import { resolveCmsImage } from "../lib/cms-image";
 import { getPageHref, indexPagesById } from "../lib/pages";
 
@@ -35,8 +38,7 @@ const backgroundImage = resolveCmsImage(
 /** Hardwired system pages (same idea as Impressum attributions). */
 const showBackgroundAttributions = page.id === "impressum";
 const showArticleIndex = page.id === "artikel";
-const wide =
-	showArticleIndex || (page.body?.includes("{{latest-articles}}") ?? false);
+const wide = showArticleIndex || hasArticleListingEmbed(page.body);
 ---
 
 <BaseLayout

@@ -7,6 +7,13 @@
 		<title>Sveltia CMS · hautuu</title>
 	</head>
 	<body>
+		<script>
+			window.CMS_MANUAL_INIT = true;
+		</script>
 		<script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+		<script src="/admin/editor-components.js"></script>
+		<script>
+			CMS.init();
+		</script>
 	</body>
 </html>

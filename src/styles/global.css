@@ -221,6 +221,10 @@ body.is-nav-locked {
 	padding: 0;
 }
 
+.article-list > li {
+	border-radius: 6px;
+}
+
 .article-list li > a {
 	font-weight: var(--font-weight-heading);
 	font-size: 1.125rem;

@@ -1,20 +1,31 @@
 ---
+import { getCollection } from "astro:content";
 import {
 	formatArticleDate,
 	getArticleHref,
 	getPublishedArticles,
+	type ArticleSort,
 } from "../lib/articles";
 import { formatTagHashtag, getTagHref, type TagEntry } from "../lib/tags";
-import { getCollection } from "astro:content";
 
 interface Props {
-	limit?: number;
+	count?: number;
+	sort?: ArticleSort;
+	layout?: "grid" | "list";
+	columns?: number;
 }
 
-const { limit = 3 } = Astro.props;
-const articles = (await getPublishedArticles()).slice(0, limit);
+const {
+	count = 3,
+	sort = "newest",
+	layout = "grid",
+	columns = 3,
+} = Astro.props;
+
+const articles = await getPublishedArticles({ sort, limit: count });
 const tags = await getCollection("tags");
 const tagMap = new Map(tags.map((tag) => [tag.id, tag]));
+const col = Math.min(4, Math.max(1, columns));
 
 function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 	return (article.data.tags ?? [])
@@ -28,21 +39,28 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 
 {
 	articles.length > 0 && (
-		<section class="latest-articles" aria-label="Neueste Artikel">
-			<ul class="latest-articles__list list-plain">
+		<section
+			class:list={[
+				"article-listing",
+				layout === "list" ? "article-listing--list" : "article-listing--grid",
+			]}
+			style={layout === "grid" ? `--article-listing-cols: ${col}` : undefined}
+			aria-label="Artikel"
+		>
+			<ul class="article-listing__list list-plain">
 				{articles.map((article) => {
 					const articleTags = tagsFor(article);
 					return (
-						<li class="latest-articles__card">
-							<a class="latest-articles__link" href={getArticleHref(article)}>
-								<h2 class="latest-articles__title">{article.data.title}</h2>
+						<li class="article-listing__item">
+							<a class="article-listing__link" href={getArticleHref(article)}>
+								<h2 class="article-listing__title">{article.data.title}</h2>
 								{article.data.summary && (
-									<p class="latest-articles__summary text-sm text-muted">
+									<p class="article-listing__summary text-sm text-muted">
 										{article.data.summary}
 									</p>
 								)}
 							</a>
-							<p class="latest-articles__meta text-sm text-muted">
+							<p class="article-listing__meta text-sm text-muted">
 								<time datetime={article.data.pubDate.toISOString()}>
 									{formatArticleDate(article.data.pubDate)}
 								</time>
@@ -67,29 +85,39 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 }
 
 <style>
-	.latest-articles {
+	.article-listing {
 		margin: 2rem 0;
 	}
 
-	.latest-articles__list {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 1.25rem;
+	.article-listing__list {
 		margin: 0;
 		padding: 0;
 	}
 
-	.latest-articles__card {
+	.article-listing--grid .article-listing__list {
+		display: grid;
+		grid-template-columns: repeat(var(--article-listing-cols, 3), minmax(0, 1fr));
+		gap: 1.25rem;
+	}
+
+	.article-listing--list .article-listing__list {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.article-listing--grid .article-listing__item {
 		display: flex;
 		flex-direction: column;
 		gap: 0.75rem;
 		padding: 1.1rem 1.15rem;
 		background: var(--color-surface);
 		border: 1px solid var(--color-border);
+		border-radius: 6px;
 		min-width: 0;
 	}
 
-	.latest-articles__link {
+	.article-listing__link {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
@@ -98,11 +126,11 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 		flex: 1 1 auto;
 	}
 
-	.latest-articles__link:hover .latest-articles__title {
+	.article-listing__link:hover .article-listing__title {
 		color: var(--color-action);
 	}
 
-	.latest-articles__title {
+	.article-listing__title {
 		margin: 0;
 		font-size: 1.1rem;
 		font-weight: var(--font-weight-heading);
@@ -110,21 +138,34 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 		color: var(--color-text);
 	}
 
-	.latest-articles__summary {
+	.article-listing--list .article-listing__title {
+		font-size: 1.125rem;
+	}
+
+	.article-listing__summary {
 		margin: 0;
 	}
 
-	.latest-articles__meta {
+	.article-listing__meta {
 		margin: 0;
+	}
+
+	.article-listing--grid .article-listing__meta {
 		margin-top: auto;
 	}
 
-	.latest-articles__meta a {
+	.article-listing__meta a {
 		color: var(--color-action);
 	}
 
+	@media (max-width: 1023px) {
+		.article-listing--grid .article-listing__list {
+			grid-template-columns: repeat(min(2, var(--article-listing-cols, 3)), minmax(0, 1fr));
+		}
+	}
+
 	@media (max-width: 679px) {
-		.latest-articles__list {
+		.article-listing--grid .article-listing__list {
 			grid-template-columns: 1fr;
 		}
 	}

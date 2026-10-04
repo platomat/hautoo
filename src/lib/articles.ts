@@ -2,14 +2,52 @@ import { getCollection, type CollectionEntry } from "astro:content";
 
 export type ArticleEntry = CollectionEntry<"articles">;
 
-/** Published articles, newest first. */
-export async function getPublishedArticles(): Promise<ArticleEntry[]> {
+export type ArticleSort = "newest" | "oldest" | "title-asc" | "title-desc";
+
+export type ArticleListingOptions = {
+	/** How many to return (after sort). */
+	limit?: number;
+	sort?: ArticleSort;
+};
+
+function sortArticles(
+	articles: ArticleEntry[],
+	sort: ArticleSort,
+): ArticleEntry[] {
+	const list = [...articles];
+	switch (sort) {
+		case "oldest":
+			return list.sort(
+				(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+			);
+		case "title-asc":
+			return list.sort((a, b) =>
+				a.data.title.localeCompare(b.data.title, "de", { sensitivity: "base" }),
+			);
+		case "title-desc":
+			return list.sort((a, b) =>
+				b.data.title.localeCompare(a.data.title, "de", { sensitivity: "base" }),
+			);
+		case "newest":
+		default:
+			return list.sort(
+				(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+			);
+	}
+}
+
+/** Published articles with optional sort and limit. */
+export async function getPublishedArticles(
+	options: ArticleListingOptions = {},
+): Promise<ArticleEntry[]> {
+	const { sort = "newest", limit } = options;
 	const articles = await getCollection("articles");
-	return articles
-		.filter((article) => !article.data.draft)
-		.sort(
-			(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-		);
+	const published = articles.filter((article) => !article.data.draft);
+	const sorted = sortArticles(published, sort);
+	if (typeof limit === "number" && Number.isFinite(limit) && limit >= 0) {
+		return sorted.slice(0, limit);
+	}
+	return sorted;
 }
 
 export function getArticleHref(article: ArticleEntry): string {

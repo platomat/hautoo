@@ -178,7 +178,15 @@ collections:
             default: large
             required: false
             hint: "Maximale Bildgröße in der Google-Suchvorschau."
-      - { name: body, label: Inhalt, widget: markdown }
+      - name: body
+        label: Inhalt
+        widget: markdown
+        hint: "Blöcke „Artikel-Listing“ und „Tagwolke“ über die Toolbar einfügen (wie Bilder)."
+        editor_components:
+          - image
+          - code-block
+          - article-listing
+          - tag-cloud
 
   # Menus: filename = slot id (main, footer-legal, …). Navigation is not driven by page flags.
   - name: menus
@@ -364,7 +372,15 @@ collections:
           hint: "YouTube-/Vimeo-ID oder URL.",
         }
       - *field_seo
-      - { name: body, label: Inhalt, widget: markdown }
+      - name: body
+        label: Inhalt
+        widget: markdown
+        hint: "Blöcke „Artikel-Listing“ und „Tagwolke“ über die Toolbar einfügen (wie Bilder)."
+        editor_components:
+          - image
+          - code-block
+          - article-listing
+          - tag-cloud
 
   - name: glossar
     label: Glossar

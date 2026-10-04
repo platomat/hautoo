@@ -50,13 +50,13 @@ Nicht Astro-`image()` im Schema — das scheitert an `/assets/…`. Genutzt bei 
 
 **Hinweis:** YAML-Anchors gelten nur **innerhalb derselben** `config.yml` (Sveltia-Limit). Zod und YAML bei Feldänderungen gemeinsam pflegen.
 
-## Inhalts-Platzhalter (Seiten-Body)
+## Inhalts-Blöcke (Seiten-/Artikel-Body)
 
-Allein auf einer Zeile im Markdown (CMS oder Repo):
+Im CMS über die Markdown-Toolbar einfügen (wie Bilder):
 
-| Platzhalter | Wirkung |
-| --- | --- |
-| `{{latest-articles}}` | Die 3 neuesten Artikel als Karten (waagerecht, mobil gestapelt) |
-| `{{tag-cloud}}` | Tagwolke der genutzten Tags als `#Hashtags` |
+| CMS-Block | Gespeicherter Marker | Optionen |
+| --- | --- | --- |
+| **Artikel-Listing** | `{{article-listing count="3" sort="newest" layout="grid" columns="3"}}` | Anzahl, Sortierung (`newest` / `oldest` / `title-asc` / `title-desc`), Layout (`grid` / `list`), Spalten 1–4 (nur Grid) |
+| **Tagwolke** | `{{tag-cloud}}` | — |
 
-Umsetzung: `src/lib/content-embeds.ts`, Komponenten `LatestArticles.astro` / `TagCloud.astro`.
+Registrierung: `public/admin/editor-components.js`. Rendering: `ArticleListing.astro` / `TagCloud.astro`.

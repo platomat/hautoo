@@ -2,7 +2,7 @@
 import { getEntry, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CmsContent from "../components/CmsContent.astro";
-import { hasContentEmbeds } from "../lib/content-embeds";
+import { hasArticleListingEmbed, hasContentEmbeds } from "../lib/content-embeds";
 import { resolveCmsImage } from "../lib/cms-image";
 
 const page = await getEntry("pages", "index");
@@ -15,7 +15,7 @@ const backgroundImage = resolveCmsImage(
 	page.data.backgroundImage,
 	`content/pages/${page.id}/`,
 );
-const wide = page.body?.includes("{{latest-articles}}") ?? false;
+const wide = hasArticleListingEmbed(page.body);
 ---
 
 <BaseLayout

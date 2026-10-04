@@ -2,7 +2,7 @@
 title: Start
 description: hautuu — thematische Website mit Cursor, GitHub und Cloudflare.
 backgroundImage: /assets/filip-kvasnak-NwmR1EDtiFg-unsplash.webp
-backgroundOverlay: 66
+backgroundOverlay: 77
 backgroundAttribution: Photo by <a href="https://unsplash.com/@filipkvasnak?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Filip Kvasnak</a> on <a href="https://unsplash.com/photos/person-with-backpack-by-forest-lake-NwmR1EDtiFg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 seo:
   index_visibility: index
@@ -24,8 +24,6 @@ Diese Website entsteht mit Cursor, wird über **GitHub** versioniert und auf Clo
 
 [github.com/platomat/hautoo](https://github.com/platomat/hautoo/)
 
-{{latest-articles}}
+{{article-listing count="3" sort="newest" layout="grid" columns="3"}}
 
 {{tag-cloud}}
-
-Die Startseite gehört zur Content-Collection `pages`. Du pflegst Texte im CMS unter `/admin/` oder direkt als Markdown im Repo — jede Änderung landet per Commit auf GitHub und erscheint nach dem Deploy online.
