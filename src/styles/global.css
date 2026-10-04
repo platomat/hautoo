@@ -241,6 +241,17 @@ body.is-nav-locked {
 	margin-bottom: 0;
 }
 
+.separator {
+	display: block;
+	width: var(--separator-width, 100%);
+	height: var(--separator-height, 1px);
+	margin-block: 2.5rem;
+	margin-inline: auto;
+	border: 0;
+	background: var(--color-border);
+	opacity: 0.65;
+}
+
 /* Article / tag listing */
 .article-list {
 	display: flex;

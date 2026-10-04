@@ -29,8 +29,9 @@
 				widget: "number",
 				value_type: "int",
 				default: 3,
-				min: 1,
+				min: 0,
 				max: 48,
+				hint: "0 = alle veröffentlichten Artikel.",
 			},
 			{
 				name: "sort",
@@ -80,7 +81,7 @@
 		fromBlock: (match) => {
 			const attrs = parseAttrs(match?.groups?.attrs || "");
 			return {
-				count: attrs.count || "3",
+				count: attrs.count !== undefined && attrs.count !== "" ? attrs.count : "3",
 				sort: attrs.sort || "newest",
 				layout: attrs.layout || "grid",
 				columns: attrs.columns || "3",
@@ -102,7 +103,7 @@
 			columns = 3,
 			gap = 1.25,
 		}) =>
-			`<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Artikel-Listing · ${count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem</div>`,
+			`<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Artikel-Listing · ${count === 0 || count === "0" ? "alle" : count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem</div>`,
 	});
 
 	CMS.registerEditorComponent({
@@ -114,5 +115,44 @@
 		toBlock: () => "{{tag-cloud}}",
 		toPreview: () =>
 			'<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Tagwolke</div>',
+	});
+
+	CMS.registerEditorComponent({
+		id: "separator",
+		label: "Trennlinie",
+		icon: "horizontal_rule",
+		fields: [
+			{
+				name: "height",
+				label: "Höhe (px)",
+				widget: "number",
+				value_type: "int",
+				default: 1,
+				min: 1,
+				max: 24,
+			},
+			{
+				name: "width",
+				label: "Breite (%)",
+				widget: "number",
+				value_type: "int",
+				default: 100,
+				min: 1,
+				max: 100,
+				hint: "Prozent der Inhaltsbreite; zentriert.",
+			},
+		],
+		pattern: /^\{\{separator(?<attrs>[^}]*)\}\}\s*$/m,
+		fromBlock: (match) => {
+			const attrs = parseAttrs(match?.groups?.attrs || "");
+			return {
+				height: attrs.height || "1",
+				width: (attrs.width || "100").replace(/%$/, ""),
+			};
+		},
+		toBlock: ({ height = 1, width = 100 }) =>
+			`{{separator height="${height}" width="${width}"}}`,
+		toPreview: ({ height = 1, width = 100 }) =>
+			`<hr style="display:block;border:0;background:#2e3833;opacity:.65;height:${height}px;width:${width}%;margin:1.25rem auto">`,
 	});
 })();

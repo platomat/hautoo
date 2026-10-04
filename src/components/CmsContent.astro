@@ -1,5 +1,6 @@
 ---
 import ArticleListing from "./ArticleListing.astro";
+import Separator from "./Separator.astro";
 import TagCloud from "./TagCloud.astro";
 import { buildContentSegments } from "../lib/content-embeds";
 
@@ -29,6 +30,14 @@ const segments = await buildContentSegments(body);
 		}
 		if (segment.type === "tag-cloud") {
 			return <TagCloud />;
+		}
+		if (segment.type === "separator") {
+			return (
+				<Separator
+					height={segment.props.height}
+					width={segment.props.width}
+				/>
+			);
 		}
 		return null;
 	})

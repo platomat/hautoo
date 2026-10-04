@@ -10,10 +10,18 @@ export type ArticleListingEmbedProps = {
 	gap: number;
 };
 
+export type SeparatorEmbedProps = {
+	/** Thickness in px. */
+	height: number;
+	/** Width in percent of the content column. */
+	width: number;
+};
+
 export type ContentSegment =
 	| { type: "html"; html: string }
 	| { type: "article-listing"; props: ArticleListingEmbedProps }
-	| { type: "tag-cloud" };
+	| { type: "tag-cloud" }
+	| { type: "separator"; props: SeparatorEmbedProps };
 
 const DEFAULT_LISTING: ArticleListingEmbedProps = {
 	count: 3,
@@ -23,9 +31,14 @@ const DEFAULT_LISTING: ArticleListingEmbedProps = {
 	gap: 1.25,
 };
 
+const DEFAULT_SEPARATOR: SeparatorEmbedProps = {
+	height: 1,
+	width: 100,
+};
+
 /** Line must be only the embed (optional attrs for article-listing). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|tag-cloud)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|tag-cloud|separator)(?<attrs>[^}]*)\}\}\s*$/gm;
 
 const SORTS = new Set<ArticleSort>([
 	"newest",
@@ -102,11 +115,27 @@ export function parseArticleListingProps(
 		: DEFAULT_LISTING.sort;
 	const layout = attrs.layout === "list" ? "list" : "grid";
 	return {
-		count: clampInt(attrs.count, DEFAULT_LISTING.count, 1, 48),
+		/** `0` = all published articles (no limit). */
+		count: clampInt(attrs.count, DEFAULT_LISTING.count, 0, 48),
 		sort,
 		layout,
 		columns: clampInt(attrs.columns, DEFAULT_LISTING.columns, 1, 4),
 		gap: clampRem(attrs.gap, DEFAULT_LISTING.gap, 0, 8),
+	};
+}
+
+export function parseSeparatorProps(
+	attrsRaw: string | undefined,
+): SeparatorEmbedProps {
+	const attrs = parseAttrs(attrsRaw ?? "");
+	return {
+		height: clampInt(attrs.height, DEFAULT_SEPARATOR.height, 1, 24),
+		width: clampInt(
+			(attrs.width ?? "").replace(/%$/, ""),
+			DEFAULT_SEPARATOR.width,
+			1,
+			100,
+		),
 	};
 }
 
@@ -140,6 +169,11 @@ export async function buildContentSegments(
 		const attrs = match.groups?.attrs ?? "";
 		if (name === "tag-cloud") {
 			segments.push({ type: "tag-cloud" });
+		} else if (name === "separator") {
+			segments.push({
+				type: "separator",
+				props: parseSeparatorProps(attrs),
+			});
 		} else if (name === "article-listing") {
 			segments.push({
 				type: "article-listing",

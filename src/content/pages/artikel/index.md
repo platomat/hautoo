@@ -1,8 +1,8 @@
 ---
 title: Artikel
+description: Beiträge und How-tos von hautuu.
 status: published
 modifiedDate: 2026-10-04
-description: Beiträge und How-tos von hautuu.
 backgroundImage: /assets/alex-gruber-ATMEDyTPQG4-unsplash.webp
 backgroundOverlay: 40
 backgroundAttribution: Photo by <a href="https://unsplash.com/@alex_gruber?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alex Gruber</a> on <a href="https://unsplash.com/photos/a-man-standing-in-a-forest-ATMEDyTPQG4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
@@ -21,3 +21,5 @@ seo:
 ---
 
 Hier findest du Beiträge und How-tos rund um hautuu — Cursor, GitHub, Cloudflare und den Stack dahinter.
+
+{{article-listing count="0" sort="newest" layout="grid" columns="1" gap="3"}}

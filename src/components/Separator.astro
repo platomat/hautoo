@@ -1,0 +1,17 @@
+---
+interface Props {
+	/** Line thickness in px. */
+	height?: number;
+	/** Width as percent of content column (1–100). */
+	width?: number;
+}
+
+const { height = 1, width = 100 } = Astro.props;
+const heightPx = Math.min(24, Math.max(1, height));
+const widthPct = Math.min(100, Math.max(1, width));
+---
+
+<hr
+	class="separator"
+	style={`--separator-height: ${heightPx}px; --separator-width: ${widthPct}%`}
+/>

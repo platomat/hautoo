@@ -1,6 +1,5 @@
 ---
 import { render } from "astro:content";
-import ArticleIndexList from "../components/ArticleIndexList.astro";
 import BackgroundAttributions from "../components/BackgroundAttributions.astro";
 import CmsContent from "../components/CmsContent.astro";
 import PageHero from "../components/PageHero.astro";
@@ -38,8 +37,9 @@ const backgroundImage = resolveCmsImage(
 );
 /** Hardwired system pages (same idea as Impressum attributions). */
 const showBackgroundAttributions = page.id === "impressum";
-const showArticleIndex = page.id === "artikel";
-const wide = showArticleIndex || hasArticleListingEmbed(page.body);
+/** Artikel overview keeps Tag-Sidebar; listing comes from CMS embed. */
+const showArticleSidebar = page.id === "artikel";
+const wide = showArticleSidebar || hasArticleListingEmbed(page.body);
 ---
 
 <BaseLayout
@@ -53,11 +53,11 @@ const wide = showArticleIndex || hasArticleListingEmbed(page.body);
 	<main
 		class:list={[
 			"page",
-			{ "page--with-sidebar": showArticleIndex, "page--wide": wide && !showArticleIndex },
+			{ "page--with-sidebar": showArticleSidebar, "page--wide": wide && !showArticleSidebar },
 		]}
 	>
 		{
-			showArticleIndex ? (
+			showArticleSidebar ? (
 				<div class="page-layout flex-row gap-lg stack-on-tablet">
 					<div class="page-layout__main min-w-0 w-full">
 						<article>
@@ -66,7 +66,6 @@ const wide = showArticleIndex || hasArticleListingEmbed(page.body);
 								description={page.data.description}
 							/>
 							{useEmbeds ? <CmsContent body={page.body} /> : <Content />}
-							<ArticleIndexList />
 						</article>
 					</div>
 					<TagSidebar />

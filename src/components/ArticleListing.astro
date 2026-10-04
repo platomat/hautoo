@@ -25,7 +25,11 @@ const {
 	gap = 1.25,
 } = Astro.props;
 
-const articles = await getPublishedArticles({ sort, limit: count });
+/** `count === 0` → all published articles. */
+const articles = await getPublishedArticles({
+	sort,
+	limit: count === 0 ? undefined : count,
+});
 const tags = await getCollection("tags");
 const tagMap = new Map(tags.map((tag) => [tag.id, tag]));
 const col = Math.min(4, Math.max(1, columns));
@@ -42,7 +46,9 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 ---
 
 {
-	articles.length > 0 && (
+	articles.length === 0 ? (
+		<p>Noch keine veröffentlichten Artikel.</p>
+	) : (
 		<section
 			class:list={[
 				"article-listing",
@@ -115,10 +121,19 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 		flex-direction: column;
 		gap: 0.75rem;
 		padding: 1.1rem 1.15rem;
-		background: var(--color-surface);
+		background: var(--color-surface-glass);
 		border: 1px solid var(--color-border);
 		border-radius: 6px;
 		min-width: 0;
+		-webkit-backdrop-filter: blur(8px);
+		backdrop-filter: blur(8px);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.article-listing--grid .article-listing__item {
+			-webkit-backdrop-filter: none;
+			backdrop-filter: none;
+		}
 	}
 
 	.article-listing__link {

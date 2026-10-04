@@ -217,12 +217,13 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Blöcke „Artikel-Listing“ und „Tagwolke“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Blöcke „Artikel-Listing“, „Tagwolke“ und „Trennlinie“ über die Toolbar einfügen (wie Bilder)."
         editor_components:
           - image
           - code-block
           - article-listing
           - tag-cloud
+          - separator
 
   # Menus: filename = slot id (main, footer-legal, …). Navigation is not driven by page flags.
   - name: menus
@@ -409,12 +410,13 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Blöcke „Artikel-Listing“ und „Tagwolke“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Blöcke „Artikel-Listing“, „Tagwolke“ und „Trennlinie“ über die Toolbar einfügen (wie Bilder)."
         editor_components:
           - image
           - code-block
           - article-listing
           - tag-cloud
+          - separator
 
   - name: glossar
     label: Glossar
