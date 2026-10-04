@@ -19,6 +19,8 @@ interface Props {
 	seo?: Seo;
 	/** Open Graph type (default website; articles pass `article`). */
 	ogType?: "website" | "article";
+	/** Estimated reading time in minutes (articles). */
+	readingTimeMinutes?: number;
 	/** Last editorial change — emitted as SEO meta only. */
 	modifiedDate?: Date;
 	backgroundImage?: ImageMetadata;
@@ -34,6 +36,7 @@ const {
 	description,
 	seo: seoProp,
 	ogType = "website",
+	readingTimeMinutes,
 	modifiedDate,
 	backgroundImage,
 	backgroundOverlay,
@@ -75,6 +78,12 @@ if (backgroundImage && Astro.site) {
 	ogImageURL = new URL(ogImage.src, Astro.site).href;
 }
 const twitterCard = ogImageURL ? "summary_large_image" : "summary";
+const readingMinutes =
+	typeof readingTimeMinutes === "number" &&
+	Number.isFinite(readingTimeMinutes) &&
+	readingTimeMinutes > 0
+		? Math.round(readingTimeMinutes)
+		: undefined;
 ---
 
 <!doctype html>
@@ -109,6 +118,20 @@ const twitterCard = ogImageURL ? "summary_large_image" : "summary";
 		<meta name="twitter:card" content={twitterCard} />
 		<meta name="twitter:title" content={pageTitle} />
 		{metaDescription && <meta name="twitter:description" content={metaDescription} />}
+		{
+			readingMinutes !== undefined && (
+				<>
+					<meta name="reading-time" content={`${readingMinutes}`} />
+					<meta name="twitter:label1" content="Lesezeit" />
+					<meta
+						name="twitter:data1"
+						content={
+							readingMinutes === 1 ? "1 Minute" : `${readingMinutes} Minuten`
+						}
+					/>
+				</>
+			)
+		}
 		{
 			modifiedMeta && (
 				<>

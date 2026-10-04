@@ -18,6 +18,10 @@ import {
 	contentNeedsWideLayout,
 	hasContentEmbeds,
 } from "../../lib/content-embeds";
+import {
+	estimateReadingTimeMinutes,
+	formatReadingTime,
+} from "../../lib/reading-time";
 import { formatTagHashtag, getTagHref } from "../../lib/tags";
 
 export async function getStaticPaths() {
@@ -43,6 +47,8 @@ const backgroundImage = resolveCmsImage(
 	`content/articles/${article.id}/`,
 );
 const showToc = article.data.showToc === true;
+const readingTimeMinutes = estimateReadingTimeMinutes(article.body);
+const readingTimeLabel = formatReadingTime(readingTimeMinutes);
 ---
 
 <BaseLayout
@@ -50,6 +56,7 @@ const showToc = article.data.showToc === true;
 	description={article.data.summary}
 	seo={article.data.seo}
 	ogType="article"
+	readingTimeMinutes={readingTimeMinutes}
 	modifiedDate={article.data.modifiedDate}
 	backgroundImage={backgroundImage}
 	backgroundOverlay={article.data.backgroundOverlay}
@@ -62,6 +69,8 @@ const showToc = article.data.showToc === true;
 				<time datetime={article.data.pubDate.toISOString()}>
 					{formatArticleDate(article.data.pubDate)}
 				</time>
+				{" · "}
+				<span>{readingTimeLabel}</span>
 			</p>
 			<PageHero title={article.data.title} description={article.data.summary} />
 			{showToc && (

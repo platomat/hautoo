@@ -22,7 +22,7 @@ Werte: `draft` · `published` · `future` · `trash`.
 | Sveltia | Anchor `&field_modified_date` / Alias `*field_modified_date` |
 | Astro (Zod) | `src/cms/fields/dates.ts` → in allen Collections |
 | Collections | `pages`, `menus`, `tags`, `articles`, `glossar` |
-| Ausgabe | SEO-Meta im `<head>`: `description`, `og:title` / `og:description` / `og:url`, bei Hintergrundbild auch `og:image` (1200×630), Twitter-Card, Canonical, Sitemap-Link; bei `modifiedDate` auch `article:modified_time` / `og:updated_time` |
+| Ausgabe | SEO-Meta im `<head>`: `description`, `og:title` / `og:description` / `og:url`, bei Hintergrundbild auch `og:image` (1200×630), Twitter-Card, Canonical, Sitemap-Link; bei Artikeln `reading-time` (+ Twitter Lesezeit); bei `modifiedDate` auch `article:modified_time` / `og:updated_time` |
 
 Optional. Bei inhaltlichen Änderungen im CMS setzen.
 
@@ -106,7 +106,7 @@ Im CMS über die Markdown-Toolbar einfügen (wie Bilder):
 
 | CMS-Block | Gespeicherter Marker | Optionen |
 | --- | --- | --- |
-| **Artikel-Listing** | `{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25"}}` | Anzahl (`0` = alle), Sortierung (`newest` / `oldest` / `title-asc` / `title-desc`), Layout (`grid` / `list`), Spalten 1–4 (nur Grid), Abstand in rem |
+| **Artikel-Listing** | `{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25" show="title,intro,date,readingTime,tags"}}` | Anzahl (`0` = alle), Sortierung, Layout (`grid` / `list`), Spalten, Abstand, Kartenfelder (`title` / `intro` / `date` / `readingTime` / `tags`) |
 | **Glossar-Listing** | `{{glossar-listing count="0" sort="title-asc" layout="list" columns="2" gap="1.5"}}` | Anzahl (`0` = alle), Sortierung (`title-asc` / `title-desc` / `newest` / `oldest`), Layout (`list` / `grid`), Spalten 1–4 (nur Grid), Abstand in rem |
 | **Tag-Listing** | `{{tag-listing count="0" sort="title-asc" layout="cloud" columns="3" gap="1.25"}}` | Anzahl (`0` = alle genutzten), Sortierung (`title-asc` / `title-desc` / `most-used`), Layout (`cloud` / `list` / `grid`), Spalten 1–4 (nur Grid), Abstand in rem |
 | **Baustein** | `{{block id="stack-uebersicht"}}` | `id` = Slug aus Collection `blocks` (Bausteine); Inhalt wird an Ort und Stelle injiziert |

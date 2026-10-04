@@ -8,6 +8,15 @@ import {
 	getPublishedArticles,
 	type ArticleSort,
 } from "../lib/articles";
+import {
+	ARTICLE_CARD_FIELDS,
+	parseArticleCardShow,
+	type ArticleCardField,
+} from "../lib/content-embeds";
+import {
+	estimateReadingTimeMinutes,
+	formatReadingTime,
+} from "../lib/reading-time";
 import { formatTagHashtag, getTagHref, type TagEntry } from "../lib/tags";
 
 interface Props {
@@ -17,6 +26,8 @@ interface Props {
 	columns?: number;
 	/** Gap between items, in rem (grid and list). */
 	gap?: number;
+	/** Card fields: title, intro, date, readingTime, tags. */
+	show?: ArticleCardField[] | string;
 	/** Only these article slugs, in listed order (published only). */
 	articleIds?: string[];
 	/** Only articles with this tag (`count === 0` → all matches). */
@@ -31,10 +42,28 @@ const {
 	layout = "grid",
 	columns = 3,
 	gap = 1.25,
+	show: showProp,
 	articleIds,
 	tagId,
 	compact = false,
 } = Astro.props;
+
+const showFields = new Set(
+	typeof showProp === "string"
+		? parseArticleCardShow(showProp)
+		: showProp?.length
+			? showProp.filter((field) =>
+					(ARTICLE_CARD_FIELDS as readonly string[]).includes(field),
+				)
+			: parseArticleCardShow(undefined),
+);
+
+const showTitle = showFields.has("title");
+const showIntro = showFields.has("intro");
+const showDate = showFields.has("date");
+const showReadingTime = showFields.has("readingTime");
+const showTags = showFields.has("tags");
+const showMeta = showDate || showReadingTime || showTags;
 
 /** `count === 0` → all published articles (or all with `tagId`). */
 const articles = articleIds?.length
@@ -79,32 +108,45 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 			<ul class="article-listing__list list-plain">
 				{articles.map((article) => {
 					const articleTags = tagsFor(article);
+					const minutes = estimateReadingTimeMinutes(article.body);
+					const readingLabel = formatReadingTime(minutes);
 					return (
 						<li class="article-listing__item">
 							<a class="article-listing__link" href={getArticleHref(article)}>
-								<h2 class="article-listing__title">{article.data.title}</h2>
-								{article.data.summary && (
+								{showTitle && (
+									<h2 class="article-listing__title">{article.data.title}</h2>
+								)}
+								{showIntro && article.data.summary && (
 									<p class="article-listing__summary text-sm text-muted">
 										{article.data.summary}
 									</p>
 								)}
-							</a>
-							<p class="article-listing__meta text-sm text-muted">
-								<time datetime={article.data.pubDate.toISOString()}>
-									{formatArticleDate(article.data.pubDate)}
-								</time>
-								{articleTags.length > 0 && (
-									<>
-										{" · "}
-										{articleTags.map((tag, index) => (
-											<>
-												{index > 0 && " "}
-												<a href={getTagHref(tag)}>{formatTagHashtag(tag)}</a>
-											</>
-										))}
-									</>
+								{!showTitle && !showIntro && (
+									<span class="visually-hidden">{article.data.title}</span>
 								)}
-							</p>
+							</a>
+							{showMeta && (
+								<p class="article-listing__meta text-sm text-muted">
+									{showDate && (
+										<time datetime={article.data.pubDate.toISOString()}>
+											{formatArticleDate(article.data.pubDate)}
+										</time>
+									)}
+									{showDate && showReadingTime && " · "}
+									{showReadingTime && <span>{readingLabel}</span>}
+									{showTags && articleTags.length > 0 && (
+										<>
+											{(showDate || showReadingTime) && " · "}
+											{articleTags.map((tag, index) => (
+												<>
+													{index > 0 && " "}
+													<a href={getTagHref(tag)}>{formatTagHashtag(tag)}</a>
+												</>
+											))}
+										</>
+									)}
+								</p>
+							)}
 						</li>
 					);
 				})}
@@ -198,6 +240,18 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 
 	.article-listing__meta a {
 		color: var(--color-action);
+	}
+
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
 	}
 
 	@media (max-width: 1023px) {

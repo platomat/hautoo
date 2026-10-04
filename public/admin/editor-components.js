@@ -76,16 +76,33 @@
 				step: 0.25,
 				hint: "Abstand zwischen Karten bzw. Listeneinträgen.",
 			},
+			{
+				name: "show",
+				label: "Felder auf der Karte",
+				widget: "select",
+				multiple: true,
+				default: ["title", "intro", "date", "readingTime", "tags"],
+				options: [
+					{ label: "Titel", value: "title" },
+					{ label: "Intro", value: "intro" },
+					{ label: "Datum", value: "date" },
+					{ label: "Lesezeit", value: "readingTime" },
+					{ label: "Tags", value: "tags" },
+				],
+				hint: "Welche Infos auf jeder Karte erscheinen.",
+			},
 		],
 		pattern: /^\{\{article-listing(?<attrs>[^}]*)\}\}\s*$/m,
 		fromBlock: (match) => {
 			const attrs = parseAttrs(match?.groups?.attrs || "");
+			const showDefault = "title,intro,date,readingTime,tags";
 			return {
 				count: attrs.count !== undefined && attrs.count !== "" ? attrs.count : "3",
 				sort: attrs.sort || "newest",
 				layout: attrs.layout || "grid",
 				columns: attrs.columns || "3",
 				gap: attrs.gap || "1.25",
+				show: (attrs.show || showDefault).split(",").filter(Boolean),
 			};
 		},
 		toBlock: ({
@@ -94,16 +111,22 @@
 			layout = "grid",
 			columns = 3,
 			gap = 1.25,
-		}) =>
-			`{{article-listing count="${count}" sort="${sort}" layout="${layout}" columns="${columns}" gap="${gap}"}}`,
+			show = ["title", "intro", "date", "readingTime", "tags"],
+		}) => {
+			const showAttr = Array.isArray(show) ? show.join(",") : String(show || "");
+			return `{{article-listing count="${count}" sort="${sort}" layout="${layout}" columns="${columns}" gap="${gap}" show="${showAttr}"}}`;
+		},
 		toPreview: ({
 			count = 3,
 			sort = "newest",
 			layout = "grid",
 			columns = 3,
 			gap = 1.25,
-		}) =>
-			`<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Artikel-Listing · ${count === 0 || count === "0" ? "alle" : count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem</div>`,
+			show = ["title", "intro", "date", "readingTime", "tags"],
+		}) => {
+			const showLabel = Array.isArray(show) ? show.join(", ") : String(show || "");
+			return `<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Artikel-Listing · ${count === 0 || count === "0" ? "alle" : count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem · ${showLabel}</div>`;
+		},
 	});
 
 	CMS.registerEditorComponent({

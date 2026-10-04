@@ -6,6 +6,22 @@ import { hastCmsAssets } from "./hast-cms-assets";
 import { hastExternalLinks } from "./hast-external-links";
 import type { TagSort } from "./tags";
 
+/** Fields shown on article listing cards (CMS `show="…"`). */
+export type ArticleCardField =
+	| "title"
+	| "intro"
+	| "date"
+	| "readingTime"
+	| "tags";
+
+export const ARTICLE_CARD_FIELDS = [
+	"title",
+	"intro",
+	"date",
+	"readingTime",
+	"tags",
+] as const satisfies readonly ArticleCardField[];
+
 export type ArticleListingEmbedProps = {
 	count: number;
 	sort: ArticleSort;
@@ -13,6 +29,8 @@ export type ArticleListingEmbedProps = {
 	columns: number;
 	/** Gap between items, in rem. */
 	gap: number;
+	/** Which card fields to render. */
+	show: ArticleCardField[];
 };
 
 export type GlossarListingEmbedProps = {
@@ -47,13 +65,37 @@ export type ContentSegment =
 	| { type: "separator"; props: SeparatorEmbedProps }
 	| { type: "contact-email" };
 
+const DEFAULT_SHOW: ArticleCardField[] = [
+	"title",
+	"intro",
+	"date",
+	"readingTime",
+	"tags",
+];
+
 const DEFAULT_LISTING: ArticleListingEmbedProps = {
 	count: 3,
 	sort: "newest",
 	layout: "grid",
 	columns: 3,
 	gap: 1.25,
+	show: DEFAULT_SHOW,
 };
+
+const ARTICLE_CARD_FIELD_SET = new Set<string>(ARTICLE_CARD_FIELDS);
+
+export function parseArticleCardShow(
+	raw: string | undefined,
+): ArticleCardField[] {
+	if (!raw?.trim()) return [...DEFAULT_SHOW];
+	const fields = raw
+		.split(/[,\s]+/)
+		.map((part) => part.trim())
+		.filter((part): part is ArticleCardField =>
+			ARTICLE_CARD_FIELD_SET.has(part),
+		);
+	return fields.length > 0 ? fields : [...DEFAULT_SHOW];
+}
 
 const DEFAULT_GLOSSAR_LISTING: GlossarListingEmbedProps = {
 	count: 0,
@@ -221,6 +263,7 @@ export function parseArticleListingProps(
 		layout,
 		columns: clampInt(attrs.columns, DEFAULT_LISTING.columns, 1, 4),
 		gap: clampRem(attrs.gap, DEFAULT_LISTING.gap, 0, 8),
+		show: parseArticleCardShow(attrs.show),
 	};
 }
 
