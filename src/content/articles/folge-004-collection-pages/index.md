@@ -40,6 +40,9 @@ Du speicherst → Datei ändert sich → beim Build wird HTML. In der IDE-**Prev
 
 ## SEO: einmal definieren
 
+{{repodoc path="docs/cms-fields/README.md" title="CMS field partials (DRY)" description="SEO-Objekt, Hintergrund und Embeds in der Config."}}
+
+
 Statt überall lose Felder zu kopieren: ein **SEO-Objekt** für mehrere Collections (**DRY** = don’t repeat yourself).
 
 Praktisch:
@@ -51,6 +54,9 @@ Backlog-Idee aus dem Video: optionales **Inhaltsverzeichnis** oben bei langen Te
 
 ## Editor heute, CMS morgen
 
-Jetzt tippst du Markdown oder lässt Cursor schreiben, später [**Sveltia**](/glossar/sveltia/) unter `/admin/` ([Folge 013](/artikel/folge-013-sveltia-pat/) zeigt PAT und ersten Login). Gleiche Felder, gleiche Dateien, gleiche Git-**History**.
+Jetzt tippst du Markdown oder lässt Cursor schreiben, später [**Sveltia**](/glossar/sveltia/) unter `/admin/` ([Folge 013](/artikel/folge-013-sveltia-pat/) zeigt PAT und ersten Login). Gleiche Felder, gleiche Dateien
+
+{{repodoc path="docs/sveltia/collections.md" title="Collections (Sveltia)" description="Alle Content-Typen und CMS-Felder im Detail."}}
+, gleiche Git-**History**.
 
 <!-- Quelle: 2026-10-03--23-00-06--obs-screencast - hautoo - collection-pages.txt -->

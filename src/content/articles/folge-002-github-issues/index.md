@@ -40,9 +40,15 @@ In Commit-Messages kannst du Issues erwähnen (`Fixes #1`, `Closes #1`). GitHub 
 4. [**Sveltia**](/glossar/sveltia/): später: Tippfehler im Browser fixen, landet wieder in Git.
 5. [**Astro**](/glossar/astro/): macht schnelle statische Seiten ([**Frontend**](/glossar/frontend/)), kein WordPress, keine Datenbank auf dem Server.
 
-Cloudflare richtest du Schritt für Schritt in [Folge 011](/artikel/folge-011-cloudflare-setup/) ein. Sveltia und PAT/Login: [Folge 013](/artikel/folge-013-sveltia-pat/).
+Cloudflare richtest du Schritt für Schritt in [Folge 011]
+
+{{repodoc path="docs/konzept/README.md" title="Konzept" description="Ziele, Stack und wie die Teile zusammenspielen."}}
+(/artikel/folge-011-cloudflare-setup/) ein. Sveltia und PAT/Login: [Folge 013](/artikel/folge-013-sveltia-pat/).
 
 ## Issues klein schneiden
+{{repodoc path="docs/github/README.md" title="GitHub" description="Issues, Meilensteine und Pull Requests in der Projekt-Doku."}}
+
+
 
 „Astro Collections erstellen“ klingt riesig. Die KI kann **Sub-Issues** vorschlagen (Pages, Articles, Tags …). Dann siehst du Fortschritt statt einen endlosen Klumpen. Was Collections sind, steht in [Folge 004](/artikel/folge-004-collection-pages/).
 

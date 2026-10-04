@@ -5,6 +5,7 @@ import GlossarListing from "./GlossarListing.astro";
 import Separator from "./Separator.astro";
 import TagCloud from "./TagCloud.astro";
 import TagListing from "./TagListing.astro";
+import RepoDocLink from "./RepoDocLink.astro";
 import { buildContentSegments } from "../lib/content-embeds";
 
 interface Props {
@@ -67,6 +68,9 @@ const segments = await buildContentSegments(body);
 					width={segment.props.width}
 				/>
 			);
+		}
+		if (segment.type === "repodoc") {
+			return <RepoDocLink {...segment.props} />;
 		}
 		return null;
 	})

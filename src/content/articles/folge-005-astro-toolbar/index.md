@@ -19,11 +19,17 @@ Kurze Folge, viel Praxis.
 
 ## Die Astro-Dev-Leiste
 
-Mit [`npm run dev`](/glossar/npm/) klebt oft die **Astro-Dev-Toolbar** am Rand, nur bei dir, nicht live. Installation von Node/npm: [Folge 018](/artikel/folge-018-node-npm/). [**Astro**](/glossar/astro/) ist das Framework, das Markdown und Komponenten zu fertigem HTML für dein [**Frontend**](/glossar/frontend/) backt.
+Mit [`npm run dev`](/glossar/npm/) klebt oft die **Astro-Dev-Toolbar**
+
+{{repodoc path="docs/astro/README.md" title="Astro" description="Build, Dev-Server und Projektstruktur in der Doku."}}
+ am Rand, nur bei dir, nicht live. Installation von Node/npm: [Folge 018](/artikel/folge-018-node-npm/). [**Astro**](/glossar/astro/) ist das Framework, das Markdown und Komponenten zu fertigem HTML für dein [**Frontend**](/glossar/frontend/) backt.
 
 Stört sie? Einklappen, oder den Agenten fragen, wie du sie dauerhaft ausblendest. Besucher sehen sie nie.
 
 ## Breakpoints: einmal festlegen, überall nutzen
+{{repodoc path="docs/design/README.md" title="Design & Erscheinungsbild" description="Breakpoints und Flex-Hilfsklassen nachschlagen."}}
+
+
 
 Im Projekt:
 

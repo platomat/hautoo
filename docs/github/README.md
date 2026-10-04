@@ -25,6 +25,14 @@ GitHub speichert Quellcode, Inhalte und die Geschichte aller Änderungen. Issues
 4. Optional: Pull Request mit kurzer Beschreibung auf Deutsch
 5. Nach Merge/Push: Cloudflare baut die Site neu
 
+## Screencast-Folgen (Website)
+
+- [Folge 001: Einstieg](https://hautoo.storyofai.net/artikel/folge-001-hautuu-intro/)
+- [Folge 002: Issues](https://hautoo.storyofai.net/artikel/folge-002-github-issues/)
+- [Folge 006: Push und Pull](https://hautoo.storyofai.net/artikel/folge-006-git-push-pull/)
+- [Folge 007: Merge und Rebase](https://hautoo.storyofai.net/artikel/folge-007-merge-rebase/)
+- [Folge 017: SSH](https://hautoo.storyofai.net/artikel/folge-017-github-ssh/)
+
 ## Öffentliches Repo
 
 - Keine Secrets (siehe [Sicherheit](../sicherheit/README.md))

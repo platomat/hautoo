@@ -113,7 +113,8 @@ Im CMS über die Markdown-Toolbar einfügen (wie Bilder):
 | **Tagwolke** | `{{tag-cloud}}` | Kurzform für Tag-Listing mit Layout Wolke |
 | **Trennlinie** | `{{separator height="1" width="100"}}` | Höhe in px (Default 1), Breite in % (Default 100), zentriert, Abstand oben/unten |
 | **Kontakt-E-Mail** | `{{contact-email}}` | Adresse aus Build-Variable `CONTACT_EMAIL` (nicht im Markdown speichern) |
+| **Repo-Dokument** | `{{repodoc path="docs/github/README.md" title="GitHub" description="Kurzer Satz"}}` | `path` = existierende Datei unter `docs/`; Link zu GitHub `main`; optional `title` / `description` |
 
-Registrierung: `public/admin/editor-components.js`. Rendering: `ArticleListing.astro` / `GlossarListing.astro` / `TagListing.astro` / `Separator.astro` / `ContactEmail.astro`; Bausteine werden in `content-embeds.ts` expandiert.
+Registrierung: `public/admin/editor-components.js`. Rendering: `ArticleListing.astro` / `GlossarListing.astro` / `TagListing.astro` / `Separator.astro` / `ContactEmail.astro` / `RepoDocLink.astro`; Bausteine werden in `content-embeds.ts` expandiert.
 
 **Externe Links** im Markdown-Inhalt (Seiten, Artikel, Glossar, Embed-Markdown) öffnen in einem neuen Tab (`target="_blank"` + `rel="noopener noreferrer"`). Intern (`/…`, Anker, gleiche Domain) bleiben im selben Tab. Plugin: `src/lib/hast-external-links.ts`.

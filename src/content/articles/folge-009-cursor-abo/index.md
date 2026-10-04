@@ -28,6 +28,9 @@ KI frisst Rechenzeit. Bei **Cursor** siehst du das unter Account → **Usage**.
 
 ## On-Demand: Finger weg, wenn’s geht
 
+{{repodoc path="docs/cursor/README.md" title="Cursor (KI)" description="Abo, Usage und Kosten im Überblick."}}
+
+
 Paket leer? **On-Demand** nachkaufen geht, im Video: drei Mini-Aufgaben, schon übler Preis. Besser: kurz **upgraden** oder bis zur neuen Periode warten.
 
 Im Dashboard siehst du Tokens pro Anfrage — 40-Millionen-Monster sind möglich, wenn du halb das Repo reinwirfst.
