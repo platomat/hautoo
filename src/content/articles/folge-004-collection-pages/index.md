@@ -13,7 +13,7 @@ seo:
   follow_visibility: follow
 ---
 
-Keine Datenbank, kein WordPress-Monster: **Pages** sind normale Markdown-Dateien unter `src/content/pages/`. [**Collections**](/glossar/collection/) sind die Typen. „Pages“, „Articles“, später mehr. Warum Issues dafür sinnvoll sind: [Folge 002](/artikel/folge-002-github-issues/).
+Keine Datenbank, kein WordPress-Monster: **Pages** sind normale Markdown-Dateien unter `src/content/pages/`. [**Collections**](/glossar/collection/) sind die Typen: Pages, Articles, Menüs, Tags, Glossar, **Bausteine** (`blocks`). Warum Issues dafür sinnvoll sind: [Folge 002](/artikel/folge-002-github-issues/). Bausteine im Alltag: [Folge 020](/artikel/folge-020-bausteine-fork/).
 
 ## Was `config.yml` macht
 

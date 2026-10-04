@@ -37,6 +37,10 @@ Ein öffentliches Lernprojekt: [**Astro**](/glossar/astro/) baut statische Seite
 
 Ja, das ist die Idee. Du brauchst Accounts, etwas Geduld und die Folgen Schritt für Schritt. hautuu zeigt einen Weg, kein fertiger Shop-Baukasten. [Folge 001](/artikel/folge-001-hautuu-intro/), [Über uns](/ueber-uns/).
 
+### Wie forke ich hautoo für mein eigenes Projekt?
+
+Auf GitHub beim Repo **Fork** wählen (deine Kopie unter deinem Account), dann den Fork klonen und in Cursor weiterbauen: Inhalte ersetzen, eigenes Hosting anbinden. [Glossar Fork](/glossar/fork/), [Folge 020](/artikel/folge-020-bausteine-fork/).
+
 ### Brauche ich Programmierkenntnisse?
 
 Nein im klassischen Sinn. Du beschreibst Ziele in normaler Sprache, der Agent ändert Dateien. Terminal-Befehle kannst du oft kopieren. Trotzdem hilft Neugier, wenn etwas hakt. [Folge 008](/artikel/folge-008-cursor-modi/), [Folge 001](/artikel/folge-001-hautuu-intro/).
@@ -195,7 +199,7 @@ Bei hautuu ja: **öffentliches** Repo, jeder kann lesen. Schreiben nur mit Berec
 
 ### Was ist ein Fork?
 
-Deine Kopie eines fremden Repos unter deinem Account. [Glossar Fork](/glossar/fork/), [Folge 002](/artikel/folge-002-github-issues/).
+Deine Kopie eines fremden Repos unter deinem Account. Nicht verwechseln mit `git clone` allein. [Glossar Fork](/glossar/fork/), [Folge 002](/artikel/folge-002-github-issues/), [Folge 020](/artikel/folge-020-bausteine-fork/).
 
 ### Was ist `origin`?
 
@@ -307,7 +311,11 @@ Mit [**PAT**](/glossar/pat/) oder später GitHub-Login über [**Worker**](/gloss
 
 ### Was sind Collections?
 
-Inhaltstypen wie pages, articles, menus. [Glossar Collection](/glossar/collection/), [Folge 004](/artikel/folge-004-collection-pages/).
+Inhaltstypen wie pages, articles, menus, blocks (Bausteine). [Glossar Collection](/glossar/collection/), [Folge 004](/artikel/folge-004-collection-pages/).
+
+### Was ist ein Baustein und wie nutze ich ihn?
+
+Wiederverwendbarer Inhalt ohne eigene URL in der Collection **blocks**. Einbinden mit `{{block id="slug"}}` oder Toolbar **Baustein** in Sveltia. [Glossar Baustein](/glossar/baustein/), [Folge 020](/artikel/folge-020-bausteine-fork/).
 
 ### Was ist Frontmatter?
 

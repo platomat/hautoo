@@ -17,7 +17,7 @@ Du nimmst den Screencast auf, die **Speech-to-Text**-Software hört mit und lief
 
 ## Was die Site schon kann
 
-Zwischen den Sessions ist viel passiert: **Menüs** als Collection, **Artikel** in einer Übersicht, **Seiten** mit optionalem **Hintergrundbild** und Lesbarkeits-Overlay. Im CMS fügst du Blöcke ein wie ein Schlagwort, z. B. **Artikel-Listing** (Anzahl und Sortierung konfigurierbar). Credits für Bilder von **Unsplash** mit Attribution sind vorgesehen. Status **veröffentlicht** vs. Entwurf steuert, was live geht.
+Zwischen den Sessions ist viel passiert: **Menüs** als Collection, **Artikel** in einer Übersicht, **Seiten** mit optionalem **Hintergrundbild** und Lesbarkeits-Overlay. Im CMS fügst du Blöcke ein wie ein Schlagwort, z. B. **Artikel-Listing** (Anzahl und Sortierung konfigurierbar). Später kommen wiederverwendbare **Bausteine** für Grafiken und Snippets dazu ([Folge 020](/artikel/folge-020-bausteine-fork/)). Credits für Bilder von **Unsplash** mit Attribution sind vorgesehen. Status **veröffentlicht** vs. Entwurf steuert, was live geht.
 
 ## Agent starten
 
