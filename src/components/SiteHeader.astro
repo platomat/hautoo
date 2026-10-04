@@ -286,7 +286,9 @@ function isCurrent(href: string): boolean {
 		.site-nav__sub {
 			position: absolute;
 			top: 100%;
-			left: 0;
+			/* Grow left from the item so right-edge menus don't widen the page */
+			right: 0;
+			left: auto;
 			z-index: 40;
 			min-width: 11rem;
 			padding: 0.4rem 0;
@@ -295,6 +297,8 @@ function isCurrent(href: string): boolean {
 			visibility: hidden;
 			opacity: 0;
 			pointer-events: none;
+			/* Hidden panels must not contribute to document scroll width */
+			overflow: hidden;
 			transition:
 				opacity 0.15s ease,
 				visibility 0.15s;
@@ -359,9 +363,11 @@ function isCurrent(href: string): boolean {
 		.site-nav {
 			position: absolute;
 			top: 100%;
-			left: 50%;
+			/* Stretch to header edges — avoid 100vw (scrollbar overflow) */
+			left: 0;
+			right: 0;
 			z-index: 30;
-			width: 100vw;
+			width: auto;
 			margin: 0;
 			padding: 0.5rem var(--shell-padding-inline);
 			background: var(--color-chrome);
@@ -369,7 +375,7 @@ function isCurrent(href: string): boolean {
 			visibility: hidden;
 			opacity: 0;
 			pointer-events: none;
-			transform: translate(-50%, -0.35rem);
+			transform: translateY(-0.35rem);
 			transition:
 				opacity 0.22s ease,
 				transform 0.22s ease,
@@ -380,7 +386,7 @@ function isCurrent(href: string): boolean {
 			visibility: visible;
 			opacity: 1;
 			pointer-events: auto;
-			transform: translate(-50%, 0);
+			transform: translateY(0);
 		}
 
 		.site-nav__list {

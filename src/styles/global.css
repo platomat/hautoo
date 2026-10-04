@@ -53,6 +53,8 @@
 
 html {
 	color-scheme: dark;
+	/* Absolute menus / 100vw must not create a horizontal scrollbar */
+	overflow-x: clip;
 }
 
 body {
@@ -65,6 +67,9 @@ body {
 	font-family: var(--font-sans);
 	font-weight: var(--font-weight-body);
 	line-height: 1.6;
+	overflow-x: clip;
+	width: 100%;
+	max-width: 100%;
 }
 
 /* Full-viewport CMS background: keep chrome above the fixed layer */
