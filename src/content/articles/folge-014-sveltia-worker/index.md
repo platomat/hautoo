@@ -40,7 +40,7 @@ Parallel [**GitHub OAuth App**](/glossar/oauth/):
 
 **Allowed domains:** deine CMS-Domain.
 
-In `public/admin/config.yml`: GitHub-**backend** mit Worker-URL, Branch [`main`](/glossar/main/), committen, pushen.
+In `public/admin/config.yml`: GitHub-[**backend**](/glossar/backend/) mit Worker-URL, Branch [`main`](/glossar/main/), committen, pushen.
 
 ## PAT wegwerfen
 

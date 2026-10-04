@@ -16,7 +16,7 @@ seo:
 
 Willkommen in Folge eins. Hier musst du noch nicht alles verstehen, du brauchst nur ein Bild im Kopf: **Wo liegt die Wahrheit**, und **wo bastelst du dran rum**?
 
-Die Wahrheit liegt bei [**GitHub**](/glossar/github/) (Server in der Cloud). Bei dir auf der Platte ist eine Kopie, an der du mit [**Cursor**](/glossar/cursor/) arbeitest. Später baut [**Astro**](/glossar/astro/) daraus statische HTML-Seiten, und [**Cloudflare**](/glossar/cloudflare-pages/) stellt sie ins Netz. Mehr Details kommen Stück für Stück, heute die grobe **Richtung**.
+Die Wahrheit liegt bei [**GitHub**](/glossar/github/) (Server in der Cloud). Bei dir auf der Platte ist eine Kopie, an der du mit [**Cursor**](/glossar/cursor/) arbeitest. Später baut [**Astro**](/glossar/astro/) daraus statische HTML-Seiten ([**Frontend**](/glossar/frontend/)), und [**Cloudflare**](/glossar/cloudflare-pages/) stellt sie ins Netz. Mehr Details kommen Stück für Stück, heute die grobe **Richtung**.
 
 ## GitHub: dein Projekt in der Cloud
 

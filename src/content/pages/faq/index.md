@@ -40,7 +40,15 @@ hautuu ist **statisch**: keine Datenbank auf dem Server, Inhalte liegen als Date
 
 ### Was heißt „statische Website“?
 
-Fertige HTML-Seiten werden ausgeliefert, nicht bei jedem Klick neu aus einer Datenbank zusammengebaut. Schnell und schlicht, dafür kein klassisches Plugin-Ökosystem. [Glossar Astro](/glossar/astro/), [Folge 002](/artikel/folge-002-github-issues/).
+Fertige HTML-Seiten werden ausgeliefert, nicht bei jedem Klick neu aus einer Datenbank zusammengebaut. Das ist dein [**Frontend**](/glossar/frontend/). Schnell und schlicht, dafür kein klassisches Plugin-Ökosystem. [Glossar Astro](/glossar/astro/), [Folge 002](/artikel/folge-002-github-issues/).
+
+### Was ist der Unterschied zwischen Frontend und Backend?
+
+**Frontend** sehen Besucher (gebautes HTML/CSS). Das [**Backend**](/glossar/backend/) ist bei hautuu vor allem Speicher (GitHub), Redaktion (`/admin/`) und optional der [**Worker**](/glossar/cloudflare-worker/) für OAuth, keine WordPress-Datenbank. [Folge 002](/artikel/folge-002-github-issues/), [Folge 014](/artikel/folge-014-sveltia-worker/).
+
+### Hat meine Seite überhaupt ein Backend?
+
+Kein klassisches Server-Backend mit Datenbank. Inhalte liegen in Git, die Live-Site ist statisch. Kleine Backend-Bausteine gibt es fürs CMS-Login. [Folge 011](/artikel/folge-011-cloudflare-setup/), [Folge 013](/artikel/folge-013-sveltia-pat/).
 
 ### Wo fange ich sinnvoll an?
 

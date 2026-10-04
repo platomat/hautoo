@@ -18,7 +18,7 @@ seo:
 ## Lokal: `/admin` ohne Login
 
 - `npm run dev`, dann `http://localhost:…/admin/` (Port im Terminal).
-- **Chrome/Chromium**: Firefox klappt fürs Backend oft nicht.
+- **Chrome/Chromium**: Firefox klappt fürs [**Backend**](/glossar/backend/) oft nicht.
 - Modus **„local“**: Projektordner wählen. **kein Passwort**, die Dateien liegen ja schon bei dir.
 
 Links die Felder aus der Config, rechts eine simple Preview. Markdown, Bilder (z. B. Platzhalter), **SEO**: was im **Browser-Tab** steht vs. Überschrift auf der Seite, **Meta Description** für Link-Vorschau in Telegram & Co.
