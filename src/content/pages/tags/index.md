@@ -7,6 +7,10 @@ modifiedDate: 2026-10-04
 backgroundImage: /assets/casey-horner-mLPjQs-YK5g-unsplash.webp
 backgroundOverlay: 77
 backgroundAttribution: Photo by <a href="https://unsplash.com/@mischievous_penguins?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Casey Horner</a> on <a href="https://unsplash.com/photos/brown-house-overseeing-stars-mLPjQs-YK5g?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+showToc: false
+tocTitle: Inhalt
+tocLevels:
+  - h2
 seo:
   index_visibility: index
   follow_visibility: follow
@@ -23,4 +27,4 @@ seo:
 
 Themen-Tags bündeln die Artikel nach Stichwort. Tippe auf ein Tag, um die passenden Beiträge zu sehen.
 
-{{tag-listing count="0" sort="title-asc" layout="cloud" columns="3" gap="1.25"}}
+{{tag-listing count="0" sort="title-asc" layout="grid" columns="3" gap="1.25"}}
