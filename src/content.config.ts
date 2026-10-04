@@ -2,6 +2,7 @@ import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 import { menuSchema } from "./cms/fields/menu";
 import {
+	backgroundAttributionSchema,
 	backgroundImageSchema,
 	backgroundOverlaySchema,
 } from "./cms/fields/page-background";
@@ -21,6 +22,8 @@ const pages = defineCollection({
 		backgroundImage: backgroundImageSchema,
 		/** Black overlay over background, 0–100%. */
 		backgroundOverlay: backgroundOverlaySchema.optional(),
+		/** Credit text or bare URL; listed on Impressum. */
+		backgroundAttribution: backgroundAttributionSchema,
 		/** Shared SEO object (same shape as Sveltia `&field_seo`). */
 		seo: seoSchema.optional(),
 	}),
@@ -51,6 +54,7 @@ const articles = defineCollection({
 			heroImage: image().optional(),
 			backgroundImage: backgroundImageSchema,
 			backgroundOverlay: backgroundOverlaySchema.optional(),
+			backgroundAttribution: backgroundAttributionSchema,
 			tags: z.array(z.string()).default([]),
 			videoProvider: z.enum(["youtube", "vimeo"]).optional(),
 			videoId: z.string().optional(),

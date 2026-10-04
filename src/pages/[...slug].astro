@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
+import BackgroundAttributions from "../components/BackgroundAttributions.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { resolveCmsImage } from "../lib/cms-image";
 import { getPageHref, indexPagesById } from "../lib/pages";
@@ -26,6 +27,7 @@ const backgroundImage = resolveCmsImage(
 	page.data.backgroundImage,
 	`content/pages/${page.id}/`,
 );
+const showBackgroundAttributions = page.id === "impressum";
 ---
 
 <BaseLayout
@@ -39,6 +41,7 @@ const backgroundImage = resolveCmsImage(
 		<article>
 			<h1>{page.data.title}</h1>
 			<Content />
+			{showBackgroundAttributions && <BackgroundAttributions />}
 		</article>
 	</main>
 </BaseLayout>

@@ -1,0 +1,52 @@
+---
+import { collectBackgroundAttributions } from "../lib/background-attributions";
+
+const items = await collectBackgroundAttributions();
+---
+
+{
+	items.length > 0 && (
+		<section class="bg-credits" aria-labelledby="bg-credits-heading">
+			<h2 id="bg-credits-heading">Bildnachweise</h2>
+			<p class="text-sm text-muted">
+				Quellen der Seitenhintergründe (automatisch aus dem CMS).
+			</p>
+			<ul class="bg-credits__list">
+				{items.map((item) => (
+					<li>
+						<strong>
+							<a href={item.usedOnHref}>{item.usedOnTitle}</a>
+						</strong>
+						<br />
+						{item.kind === "url" ? (
+							<a href={item.credit} rel="noopener noreferrer" target="_blank">
+								{item.credit}
+							</a>
+						) : item.kind === "html" ? (
+							<span set:html={item.creditHtml} />
+						) : (
+							<span>{item.credit}</span>
+						)}
+					</li>
+				))}
+			</ul>
+		</section>
+	)
+}
+
+<style>
+	.bg-credits {
+		margin-top: 3rem;
+		padding-top: 2rem;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.bg-credits__list {
+		margin: 1rem 0 0;
+		padding-left: 1.25rem;
+	}
+
+	.bg-credits__list li + li {
+		margin-top: 0.5rem;
+	}
+</style>

@@ -66,6 +66,7 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | `parent` | nein | ID/Slug der übergeordneten Seite → URL `/parent/child/` |
 | `backgroundImage` | nein | Vollflächiger Viewport-Hintergrund (Variante B) |
 | `backgroundOverlay` | nein | Abdunkelung 0–100 % (schwarzes Overlay) |
+| `backgroundAttribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |
 | `seo` | ja (CMS) | SEO-Objekt (Titel, Description, Robots) — Partial `&field_seo` |
 | Body | ja | Markdown-Inhalt |
 
@@ -109,6 +110,7 @@ Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarch
 | `heroImage` | nein | Titelbild neben dem Eintrag |
 | `backgroundImage` | nein | Vollflächiger Viewport-Hintergrund |
 | `backgroundOverlay` | nein | Abdunkelung 0–100 % |
+| `backgroundAttribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |
 | `tags` | nein | Relation zu `tags` (mehrere) |
 | `videoProvider` | nein | `youtube` / `vimeo` |
 | `videoId` | nein | ID oder URL |

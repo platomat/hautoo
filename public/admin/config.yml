@@ -24,9 +24,10 @@ output:
 # Astro Zod mirrors: src/cms/fields/seo.ts, src/cms/fields/page-background.ts
 # -----------------------------------------------------------------------------
 
-# Page / article full-viewport background (inject as two list items).
+# Page / article full-viewport background (inject as three list items).
 # - *field_background_image
 # - *field_background_overlay
+# - *field_background_attribution
 
 collections:
   - name: pages
@@ -68,6 +69,12 @@ collections:
         default: 40
         required: false
         hint: "Schwarzes Overlay über dem Hintergrundbild. 0 = keine Abdunkelung, 100 = fast schwarz."
+      - &field_background_attribution
+        name: backgroundAttribution
+        label: Bildnachweis
+        widget: text
+        required: false
+        hint: "Text, reine URL oder HTML 1:1 von Unsplash/Pexels („Copy attribution“). Nur <a href> wird übernommen; erscheint automatisch am Ende des Impressums."
       - &field_seo
         label: SEO
         name: seo
@@ -330,6 +337,7 @@ collections:
         }
       - *field_background_image
       - *field_background_overlay
+      - *field_background_attribution
       - name: tags
         label: Tags
         widget: relation
