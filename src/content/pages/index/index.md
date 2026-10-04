@@ -6,6 +6,10 @@ modifiedDate: 2026-10-04
 backgroundImage: /assets/filip-kvasnak-NwmR1EDtiFg-unsplash.webp
 backgroundOverlay: 77
 backgroundAttribution: Photo by <a href="https://unsplash.com/@filipkvasnak?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Filip Kvasnak</a> on <a href="https://unsplash.com/photos/person-with-backpack-by-forest-lake-NwmR1EDtiFg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+showToc: false
+tocTitle: Inhalt
+tocLevels:
+  - h2
 seo:
   index_visibility: index
   follow_visibility: follow
@@ -39,3 +43,7 @@ Diese Website entsteht mit Cursor, wird über **GitHub** versioniert und auf Clo
 ## Tags
 
 {{tag-listing count="0" sort="title-asc" layout="cloud" columns="3" gap="1.25"}}
+
+{{separator height="1" width="100"}}
+
+![hautoo Logo](/assets/logo-mark.svg "hautoo Logo")
