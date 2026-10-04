@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { getResolvedMenu, MENU_FOOTER_LEGAL } from "../lib/menus";
+import { withBuildId } from "../lib/build-id";
 
 /** First calendar year of the project (copyright range start). */
 const COPYRIGHT_START_YEAR = 2026;
@@ -9,6 +10,9 @@ const copyrightYears =
 	currentYear > COPYRIGHT_START_YEAR
 		? `${COPYRIGHT_START_YEAR}-${currentYear}`
 		: String(COPYRIGHT_START_YEAR);
+
+const REPO_URL = "https://github.com/platomat/hautoo/";
+const REPO_TITLE = "hautuu auf GitHub (platomat/hautoo)";
 
 const pages = await getCollection("pages");
 const legalItems = await getResolvedMenu(MENU_FOOTER_LEGAL, pages);
@@ -22,17 +26,31 @@ function isCurrent(href: string): boolean {
 
 <footer class="site-footer">
 	{/* Further footer menus can render above the copyright row. */}
-	<div
-		class="site-footer__bar flex-row flex-align-baseline flex-between gap-lg w-full stack-on-mobile center-on-mobile"
-	>
-		<p class="site-footer__copy text-sm text-muted min-w-0">
+	<div class="site-footer__bar">
+		<p class="site-footer__copy text-sm text-muted">
 			<span>© {copyrightYears}</span>
 			{" "}
 			<span>hautoo ∙ One of <a href="https://platomat.com/">PlatoMat</a></span>
 		</p>
+		<a
+			class="site-footer__github"
+			href={REPO_URL}
+			title={REPO_TITLE}
+			aria-label={REPO_TITLE}
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<img
+				src={withBuildId("/icons/github.svg")}
+				alt=""
+				width="28"
+				height="28"
+				decoding="async"
+			/>
+		</a>
 		{
-			legalItems.length > 0 && (
-				<nav class="site-footer__legal flex-shrink-0 ms-auto" aria-label="Rechtliches">
+			legalItems.length > 0 ? (
+				<nav class="site-footer__legal" aria-label="Rechtliches">
 					<ul class="flex-row flex-align-baseline gap-md list-plain text-sm">
 						{legalItems.map((item) => {
 							const current = !item.external && isCurrent(item.href);
@@ -52,6 +70,8 @@ function isCurrent(href: string): boolean {
 						})}
 					</ul>
 				</nav>
+			) : (
+				<span class="site-footer__legal" aria-hidden="true" />
 			)
 		}
 	</div>
@@ -62,19 +82,5 @@ function isCurrent(href: string): boolean {
 		margin-top: auto;
 		background: var(--color-chrome);
 		border-top: 1px solid var(--color-border);
-	}
-
-	.site-footer__bar {
-		padding: 1rem;
-	}
-
-	.site-footer__copy {
-		margin: 0;
-	}
-
-	@media (max-width: 679px) {
-		.site-footer__bar {
-			gap: 0.75rem;
-		}
 	}
 </style>

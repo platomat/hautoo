@@ -1,0 +1,131 @@
+---
+import {
+	formatArticleDate,
+	getArticleHref,
+	getPublishedArticles,
+} from "../lib/articles";
+import { formatTagHashtag, getTagHref, type TagEntry } from "../lib/tags";
+import { getCollection } from "astro:content";
+
+interface Props {
+	limit?: number;
+}
+
+const { limit = 3 } = Astro.props;
+const articles = (await getPublishedArticles()).slice(0, limit);
+const tags = await getCollection("tags");
+const tagMap = new Map(tags.map((tag) => [tag.id, tag]));
+
+function tagsFor(article: (typeof articles)[number]): TagEntry[] {
+	return (article.data.tags ?? [])
+		.map((id) => tagMap.get(id))
+		.filter((tag): tag is TagEntry => Boolean(tag))
+		.sort((a, b) =>
+			a.data.title.localeCompare(b.data.title, "de", { sensitivity: "base" }),
+		);
+}
+---
+
+{
+	articles.length > 0 && (
+		<section class="latest-articles" aria-label="Neueste Artikel">
+			<ul class="latest-articles__list list-plain">
+				{articles.map((article) => {
+					const articleTags = tagsFor(article);
+					return (
+						<li class="latest-articles__card">
+							<a class="latest-articles__link" href={getArticleHref(article)}>
+								<h2 class="latest-articles__title">{article.data.title}</h2>
+								{article.data.summary && (
+									<p class="latest-articles__summary text-sm text-muted">
+										{article.data.summary}
+									</p>
+								)}
+							</a>
+							<p class="latest-articles__meta text-sm text-muted">
+								<time datetime={article.data.pubDate.toISOString()}>
+									{formatArticleDate(article.data.pubDate)}
+								</time>
+								{articleTags.length > 0 && (
+									<>
+										{" · "}
+										{articleTags.map((tag, index) => (
+											<>
+												{index > 0 && " "}
+												<a href={getTagHref(tag)}>{formatTagHashtag(tag)}</a>
+											</>
+										))}
+									</>
+								)}
+							</p>
+						</li>
+					);
+				})}
+			</ul>
+		</section>
+	)
+}
+
+<style>
+	.latest-articles {
+		margin: 2rem 0;
+	}
+
+	.latest-articles__list {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.25rem;
+		margin: 0;
+		padding: 0;
+	}
+
+	.latest-articles__card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		padding: 1.1rem 1.15rem;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		min-width: 0;
+	}
+
+	.latest-articles__link {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: inherit;
+		text-decoration: none;
+		flex: 1 1 auto;
+	}
+
+	.latest-articles__link:hover .latest-articles__title {
+		color: var(--color-action);
+	}
+
+	.latest-articles__title {
+		margin: 0;
+		font-size: 1.1rem;
+		font-weight: var(--font-weight-heading);
+		line-height: 1.3;
+		color: var(--color-text);
+	}
+
+	.latest-articles__summary {
+		margin: 0;
+	}
+
+	.latest-articles__meta {
+		margin: 0;
+		margin-top: auto;
+	}
+
+	.latest-articles__meta a {
+		color: var(--color-action);
+	}
+
+	@media (max-width: 679px) {
+		.latest-articles__list {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

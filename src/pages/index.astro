@@ -1,17 +1,21 @@
 ---
 import { getEntry, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CmsContent from "../components/CmsContent.astro";
+import { hasContentEmbeds } from "../lib/content-embeds";
 import { resolveCmsImage } from "../lib/cms-image";
 
 const page = await getEntry("pages", "index");
 if (!page) {
 	throw new Error('Missing pages collection entry "index".');
 }
+const useEmbeds = hasContentEmbeds(page.body);
 const { Content } = await render(page);
 const backgroundImage = resolveCmsImage(
 	page.data.backgroundImage,
 	`content/pages/${page.id}/`,
 );
+const wide = page.body?.includes("{{latest-articles}}") ?? false;
 ---
 
 <BaseLayout
@@ -21,10 +25,10 @@ const backgroundImage = resolveCmsImage(
 	backgroundImage={backgroundImage}
 	backgroundOverlay={page.data.backgroundOverlay}
 >
-	<main class="page">
+	<main class:list={["page", { "page--wide": wide }]}>
 		<article>
 			<h1>{page.data.title}</h1>
-			<Content />
+			{useEmbeds ? <CmsContent body={page.body} /> : <Content />}
 		</article>
 	</main>
 </BaseLayout>

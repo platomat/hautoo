@@ -2,8 +2,10 @@
 import { getCollection, render } from "astro:content";
 import ArticleIndexList from "../components/ArticleIndexList.astro";
 import BackgroundAttributions from "../components/BackgroundAttributions.astro";
+import CmsContent from "../components/CmsContent.astro";
 import TagSidebar from "../components/TagSidebar.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { hasContentEmbeds } from "../lib/content-embeds";
 import { resolveCmsImage } from "../lib/cms-image";
 import { getPageHref, indexPagesById } from "../lib/pages";
 
@@ -24,6 +26,7 @@ export async function getStaticPaths() {
 }
 
 const { page } = Astro.props;
+const useEmbeds = hasContentEmbeds(page.body);
 const { Content } = await render(page);
 const backgroundImage = resolveCmsImage(
 	page.data.backgroundImage,
@@ -32,6 +35,8 @@ const backgroundImage = resolveCmsImage(
 /** Hardwired system pages (same idea as Impressum attributions). */
 const showBackgroundAttributions = page.id === "impressum";
 const showArticleIndex = page.id === "artikel";
+const wide =
+	showArticleIndex || (page.body?.includes("{{latest-articles}}") ?? false);
 ---
 
 <BaseLayout
@@ -41,14 +46,19 @@ const showArticleIndex = page.id === "artikel";
 	backgroundImage={backgroundImage}
 	backgroundOverlay={page.data.backgroundOverlay}
 >
-	<main class:list={["page", { "page--with-sidebar": showArticleIndex }]}>
+	<main
+		class:list={[
+			"page",
+			{ "page--with-sidebar": showArticleIndex, "page--wide": wide && !showArticleIndex },
+		]}
+	>
 		{
 			showArticleIndex ? (
 				<div class="page-layout flex-row gap-lg stack-on-tablet">
 					<div class="page-layout__main min-w-0 w-full">
 						<article>
 							<h1>{page.data.title}</h1>
-							<Content />
+							{useEmbeds ? <CmsContent body={page.body} /> : <Content />}
 							<ArticleIndexList />
 						</article>
 					</div>
@@ -57,7 +67,7 @@ const showArticleIndex = page.id === "artikel";
 			) : (
 				<article>
 					<h1>{page.data.title}</h1>
-					<Content />
+					{useEmbeds ? <CmsContent body={page.body} /> : <Content />}
 					{showBackgroundAttributions && <BackgroundAttributions />}
 				</article>
 			)

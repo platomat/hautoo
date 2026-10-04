@@ -24,10 +24,8 @@ Diese Website entsteht mit Cursor, wird über **GitHub** versioniert und auf Clo
 
 [github.com/platomat/hautoo](https://github.com/platomat/hautoo/)
 
+{{latest-articles}}
+
+{{tag-cloud}}
+
 Die Startseite gehört zur Content-Collection `pages`. Du pflegst Texte im CMS unter `/admin/` oder direkt als Markdown im Repo — jede Änderung landet per Commit auf GitHub und erscheint nach dem Deploy online.
-
-`Später folgen hier weitere Einstiege und eine Übersicht der neuesten Artikel.`
-
-Testsatz [schreiben](https://example.com/)....
-
-![](https://picsum.photos/id/599/1920/1280.webp)

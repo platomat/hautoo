@@ -124,6 +124,59 @@ body.has-page-bg .site-nav__sub {
 	flex: 1 0 auto;
 }
 
+/* Footer bar: copyright | GitHub | legal */
+.site-footer__bar {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+	gap: 1rem 1.5rem;
+	padding: 1rem;
+}
+
+.site-footer__copy {
+	margin: 0;
+	justify-self: start;
+	min-width: 0;
+}
+
+.site-footer__github {
+	justify-self: center;
+	display: inline-flex;
+	line-height: 0;
+	opacity: 0.85;
+	transition: opacity 0.15s ease;
+}
+
+.site-footer__github:hover,
+.site-footer__github:focus-visible {
+	opacity: 1;
+}
+
+.site-footer__github img {
+	display: block;
+	width: 1.75rem;
+	height: 1.75rem;
+}
+
+.site-footer__legal {
+	justify-self: end;
+}
+
+@media (max-width: 679px) {
+	.site-footer__bar {
+		grid-template-columns: 1fr;
+		justify-items: center;
+		text-align: center;
+		gap: 0.85rem;
+	}
+
+	.site-footer__copy,
+	.site-footer__github,
+	.site-footer__legal {
+		justify-self: center;
+	}
+}
+
 .shell-inner {
 	max-width: var(--content-max-width);
 	margin-inline: auto;
@@ -140,7 +193,8 @@ body.is-nav-locked {
 	padding: 2.5rem var(--shell-padding-inline) 4rem;
 }
 
-/* Content + sidebar (e.g. article index) */
+/* Wider content (article index, homepage cards, …) */
+.page--wide,
 .page--with-sidebar {
 	max-width: 64rem;
 }

@@ -1,0 +1,56 @@
+---
+import { getPublishedArticles } from "../lib/articles";
+import {
+	formatTagHashtag,
+	getTagHref,
+	getUsedTagsSorted,
+} from "../lib/tags";
+
+const tags = await getUsedTagsSorted();
+const articles = await getPublishedArticles();
+const counts = new Map<string, number>();
+for (const article of articles) {
+	for (const id of article.data.tags ?? []) {
+		counts.set(id, (counts.get(id) ?? 0) + 1);
+	}
+}
+const max = Math.max(1, ...counts.values());
+---
+
+{
+	tags.length > 0 && (
+		<section class="tag-cloud" aria-label="Tags">
+			<ul class="tag-cloud__list list-plain">
+				{tags.map((tag) => {
+					const count = counts.get(tag.id) ?? 1;
+					const weight = 0.85 + (count / max) * 0.45;
+					return (
+						<li>
+							<a
+								href={getTagHref(tag)}
+								style={`font-size: ${weight.toFixed(2)}rem`}
+							>
+								{formatTagHashtag(tag)}
+							</a>
+						</li>
+					);
+				})}
+			</ul>
+		</section>
+	)
+}
+
+<style>
+	.tag-cloud {
+		margin: 2rem 0;
+	}
+
+	.tag-cloud__list {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.65rem 1.1rem;
+		margin: 0;
+		padding: 0;
+	}
+</style>

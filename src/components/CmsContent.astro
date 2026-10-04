@@ -1,0 +1,27 @@
+---
+import LatestArticles from "./LatestArticles.astro";
+import TagCloud from "./TagCloud.astro";
+import { buildContentSegments } from "../lib/content-embeds";
+
+interface Props {
+	body: string | undefined;
+}
+
+const { body } = Astro.props;
+const segments = await buildContentSegments(body);
+---
+
+{
+	segments.map((segment) => {
+		if (segment.type === "html") {
+			return <div class="cms-md" set:html={segment.html} />;
+		}
+		if (segment.name === "latest-articles") {
+			return <LatestArticles limit={3} />;
+		}
+		if (segment.name === "tag-cloud") {
+			return <TagCloud />;
+		}
+		return null;
+	})
+}

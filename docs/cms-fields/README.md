@@ -49,3 +49,14 @@ Nicht Astro-`image()` im Schema — das scheitert an `/assets/…`. Genutzt bei 
 **Bildnachweis:** Ein Feld reicht — Freitext, alleinstehende `http(s)`-URL (dann verlinkt) oder HTML 1:1 von Stock-Plattformen (z. B. Unsplash „Copy attribution“ mit `<a href>`). HTML wird auf erlaubte Links sanitisiert (`sanitizeAttributionHtml`). Sammlung: `src/lib/background-attributions.ts` (alle Pages + veröffentlichte Articles). Am Asset selbst speichert Sveltia keine Beschreibung; der Nachweis hängt am Eintrag.
 
 **Hinweis:** YAML-Anchors gelten nur **innerhalb derselben** `config.yml` (Sveltia-Limit). Zod und YAML bei Feldänderungen gemeinsam pflegen.
+
+## Inhalts-Platzhalter (Seiten-Body)
+
+Allein auf einer Zeile im Markdown (CMS oder Repo):
+
+| Platzhalter | Wirkung |
+| --- | --- |
+| `{{latest-articles}}` | Die 3 neuesten Artikel als Karten (waagerecht, mobil gestapelt) |
+| `{{tag-cloud}}` | Tagwolke der genutzten Tags als `#Hashtags` |
+
+Umsetzung: `src/lib/content-embeds.ts`, Komponenten `LatestArticles.astro` / `TagCloud.astro`.
