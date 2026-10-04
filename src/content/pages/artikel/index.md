@@ -1,6 +1,9 @@
 ---
 title: Artikel
 description: Beiträge und How-tos von hautuu.
+backgroundImage: /assets/alex-gruber-ATMEDyTPQG4-unsplash.webp
+backgroundOverlay: 40
+backgroundAttribution: Photo by <a href="https://unsplash.com/@alex_gruber?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alex Gruber</a> on <a href="https://unsplash.com/photos/a-man-standing-in-a-forest-ATMEDyTPQG4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 seo:
   index_visibility: index
   follow_visibility: follow

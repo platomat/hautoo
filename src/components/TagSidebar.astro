@@ -29,6 +29,8 @@ const tags = await getUsedTagsSorted();
 	.tag-sidebar {
 		flex: 0 0 11rem;
 		min-width: 9rem;
+		padding-inline-start: 1.5rem;
+		border-inline-start: 1px solid var(--color-border);
 	}
 
 	.tag-sidebar__title {
@@ -51,6 +53,8 @@ const tags = await getUsedTagsSorted();
 		.tag-sidebar {
 			flex-basis: auto;
 			min-width: 0;
+			padding-inline-start: 0;
+			border-inline-start: none;
 			padding-top: 1.5rem;
 			border-top: 1px solid var(--color-border);
 		}

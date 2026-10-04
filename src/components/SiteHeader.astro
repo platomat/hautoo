@@ -297,8 +297,7 @@ function isCurrent(href: string): boolean {
 			visibility: hidden;
 			opacity: 0;
 			pointer-events: none;
-			/* Hidden panels must not contribute to document scroll width */
-			overflow: hidden;
+			/* Do not use overflow:hidden — it clips the ::before hover bridge */
 			transition:
 				opacity 0.15s ease,
 				visibility 0.15s;

@@ -77,7 +77,12 @@ body.has-page-bg {
 	background: transparent;
 }
 
-body.has-page-bg .site-header,
+/* Header above main so dropdowns aren't covered (same z-index painted main on top). */
+body.has-page-bg .site-header {
+	position: relative;
+	z-index: 20;
+}
+
 body.has-page-bg .site-main,
 body.has-page-bg .site-footer {
 	position: relative;
