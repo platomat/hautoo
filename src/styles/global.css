@@ -263,6 +263,22 @@ body.is-nav-locked {
 	opacity: 0.65;
 }
 
+.page blockquote {
+	margin: 1.5rem 0;
+	padding: 0.15rem 0 0.15rem 1rem;
+	border-inline-start: 3px solid var(--color-border);
+	font-style: italic;
+	color: var(--color-text-muted);
+}
+
+.page blockquote > :first-child {
+	margin-top: 0;
+}
+
+.page blockquote > :last-child {
+	margin-bottom: 0;
+}
+
 /* Article / tag listing */
 .article-list {
 	display: flex;
