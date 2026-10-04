@@ -43,10 +43,12 @@ Grün ist die **primäre Aktionsfarbe**. Die übrigen Töne sind kühl-neutral m
 
 ### Tokens (CSS-Variablen, Englisch)
 
-| Token | Hex | Rolle |
+| Token | Hex / Wert | Rolle |
 | --- | --- | --- |
 | `--color-bg` | `#0F1412` | Seitenhintergrund |
 | `--color-surface` | `#1A211E` | Flächen (Header, Footer, abgesetzte Bereiche) |
+| `--color-surface-glass` | `rgba(26, 33, 30, 0.5)` | Halbtransparente Fläche (~50 %) |
+| `--color-chrome` | standard: `var(--color-surface)` | Header/Footer/Nav; bei Seiten-BG → `surface-glass` |
 | `--color-surface-raised` | `#232B27` | leicht angehoben (z. B. Code, Zitat) |
 | `--color-border` | `#2E3833` | Linien, Trenner |
 | `--color-text` | `#E8EEEA` | Haupttext |
@@ -56,11 +58,14 @@ Grün ist die **primäre Aktionsfarbe**. Die übrigen Töne sind kühl-neutral m
 | `--color-action-muted` | `#1A3D2E` | dezenter Aktions-Hintergrund (z. B. Chip, Hover-Fläche) |
 | `--color-danger` | `#E57373` | Fehler, destruktive Hinweise |
 
+Wenn eine Seite/ein Artikel ein Hintergrundbild hat (`body.has-page-bg`), nutzen Header, Footer und Nav-Panels `--color-surface-glass` plus leichtes `backdrop-filter`, damit das Bild durchscheint.
+
 ### Kurzüberblick
 
 ```text
 Hintergrund     #0F1412  ████
 Fläche          #1A211E  ████
+Fläche Glas     rgba(26,33,30,.5)  (über BG-Bild)
 Erhöht          #232B27  ████
 Rahmen          #2E3833  ████
 Text            #E8EEEA  ████
@@ -77,6 +82,8 @@ Gefahr          #E57373  ████
 :root {
   --color-bg: #0f1412;
   --color-surface: #1a211e;
+  --color-surface-glass: rgba(26, 33, 30, 0.5);
+  --color-chrome: var(--color-surface);
   --color-surface-raised: #232b27;
   --color-border: #2e3833;
   --color-text: #e8eeea;

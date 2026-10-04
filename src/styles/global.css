@@ -21,6 +21,10 @@
 :root {
 	--color-bg: #0f1412;
 	--color-surface: #1a211e;
+	/* Same hue as surface at ~50% — chrome over page background images */
+	--color-surface-glass: rgba(26, 33, 30, 0.5);
+	/* Header / footer / nav panels (overridable when a page BG is set) */
+	--color-chrome: var(--color-surface);
 	--color-surface-raised: #232b27;
 	--color-border: #2e3833;
 	--color-text: #e8eeea;
@@ -73,6 +77,29 @@ body.has-page-bg .site-main,
 body.has-page-bg .site-footer {
 	position: relative;
 	z-index: 1;
+}
+
+/* Translucent chrome so the page background shows through (~50%) */
+body.has-page-bg {
+	--color-chrome: var(--color-surface-glass);
+}
+
+body.has-page-bg .site-header,
+body.has-page-bg .site-footer,
+body.has-page-bg .site-nav,
+body.has-page-bg .site-nav__sub {
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body.has-page-bg .site-header,
+	body.has-page-bg .site-footer,
+	body.has-page-bg .site-nav,
+	body.has-page-bg .site-nav__sub {
+		backdrop-filter: none;
+		-webkit-backdrop-filter: none;
+	}
 }
 
 .site-main {
