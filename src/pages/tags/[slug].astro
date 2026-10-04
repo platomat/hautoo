@@ -7,6 +7,7 @@ import {
 	getArticleHref,
 	getPublishedArticles,
 } from "../../lib/articles";
+import { getGlossarForTag, getGlossarHref } from "../../lib/glossar";
 import { formatTagHashtag } from "../../lib/tags";
 
 export async function getStaticPaths() {
@@ -22,6 +23,7 @@ const articles = (await getPublishedArticles()).filter((article) =>
 	(article.data.tags ?? []).includes(tag.id),
 );
 const hashtag = formatTagHashtag(tag);
+const glossarEntry = await getGlossarForTag(tag.id);
 ---
 
 <BaseLayout
@@ -32,6 +34,14 @@ const hashtag = formatTagHashtag(tag);
 	<main class="page">
 		<p class="text-sm text-muted"><a href="/artikel/">Artikel</a></p>
 		<PageHero title={hashtag} description={tag.data.description} />
+		{
+			glossarEntry && (
+				<p class="tag-glossar-link text-sm">
+					Was ist {glossarEntry.data.title}?{" "}
+					<a href={getGlossarHref(glossarEntry)}>Glossar</a>
+				</p>
+			)
+		}
 		{
 			articles.length === 0 ? (
 				<p>Keine veröffentlichten Artikel mit diesem Tag.</p>

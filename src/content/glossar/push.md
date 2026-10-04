@@ -2,7 +2,9 @@
 title: Push
 status: published
 modifiedDate: 2026-10-04
+relatedTags:
+  - github
 definition: Schickt deine lokalen Commits zum Remote-Repository (z. B. GitHub).
 ---
 
-Nach dem Push liegt der neue Stand auf GitHub. Bei hautuu startet Cloudflare Pages oft automatisch einen neuen Build der Live-Site.
+Nach dem Push liegt der neue Stand auf [GitHub](/glossar/github/). Bei hautuu startet [Cloudflare Pages](/glossar/cloudflare-pages/) oft automatisch einen neuen [Build](/glossar/build/) der Live-Site.

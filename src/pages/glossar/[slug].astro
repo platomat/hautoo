@@ -7,7 +7,12 @@ import {
 	getPublishedArticles,
 	isArticlePublic,
 } from "../../lib/articles";
-import { getGlossarEntries, getGlossarHref } from "../../lib/glossar";
+import TagListing from "../../components/TagListing.astro";
+import {
+	getGlossarEntries,
+	getGlossarHref,
+	getGlossarRelatedTags,
+} from "../../lib/glossar";
 
 export async function getStaticPaths() {
 	const entries = await getGlossarEntries();
@@ -25,6 +30,8 @@ const related = (entry.data.relatedArticles ?? [])
 	.map((id) => articleMap.get(id))
 	.filter((article): article is (typeof articles)[number] => Boolean(article))
 	.filter(isArticlePublic);
+const relatedTags = await getGlossarRelatedTags(entry);
+const relatedTagIds = relatedTags.map(({ tag }) => tag.id);
 ---
 
 <BaseLayout
@@ -38,17 +45,33 @@ const related = (entry.data.relatedArticles ?? [])
 			<PageHero title={entry.data.title} description={entry.data.definition} />
 			<Content />
 			{
-				related.length > 0 && (
-					<section class="glossar-related">
-						<h2>Verwandte Artikel</h2>
-						<ul class="list-plain">
-							{related.map((article) => (
-								<li>
-									<a href={getArticleHref(article)}>{article.data.title}</a>
-								</li>
-							))}
-						</ul>
-					</section>
+				(related.length > 0 || relatedTags.length > 0) && (
+					<div class="glossar-related">
+						{relatedTags.length > 0 && (
+							<section class="glossar-related__block">
+								<h2>Verwandte Tags</h2>
+								<TagListing
+									layout="list"
+									tagIds={relatedTagIds}
+									usedOnly={true}
+									compact={true}
+									gap={1}
+								/>
+							</section>
+						)}
+						{related.length > 0 && (
+							<section class="glossar-related__block">
+								<h2>Verwandte Artikel</h2>
+								<ul class="list-plain">
+									{related.map((article) => (
+										<li>
+											<a href={getArticleHref(article)}>{article.data.title}</a>
+										</li>
+									))}
+								</ul>
+							</section>
+						)}
+					</div>
 				)
 			}
 		</article>
@@ -65,10 +88,14 @@ const related = (entry.data.relatedArticles ?? [])
 		margin-top: 2rem;
 		padding-top: 1.25rem;
 		border-top: 1px solid var(--color-border);
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
 	}
 
-	.glossar-related h2 {
+	.glossar-related__block h2 {
 		font-size: 1.125rem;
 		margin-top: 0;
+		margin-bottom: 1rem;
 	}
 </style>

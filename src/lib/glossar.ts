@@ -1,5 +1,9 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import { isEntryPublic } from "../cms/fields/status";
+import {
+	getTagListingsByIds,
+	type TagListingEntry,
+} from "./tags";
 
 export type GlossarEntry = CollectionEntry<"glossar">;
 
@@ -70,4 +74,34 @@ export async function getGlossarEntries(
 
 export function getGlossarHref(entry: GlossarEntry): string {
 	return `/glossar/${entry.id}/`;
+}
+
+/** Tag slugs for a glossar entry: same slug (if tag exists) + optional relatedTags. */
+export async function getGlossarRelatedTags(
+	entry: GlossarEntry,
+): Promise<TagListingEntry[]> {
+	const tags = await getCollection("tags");
+	const tagIds = new Set(tags.map((tag) => tag.id));
+	const ids = new Set(entry.data.relatedTags ?? []);
+	if (tagIds.has(entry.id)) {
+		ids.add(entry.id);
+	}
+	return getTagListingsByIds([...ids], { usedOnly: true });
+}
+
+/**
+ * Glossar entry to highlight on a tag page: exact slug match, else sole relatedTags mapping.
+ */
+export async function getGlossarForTag(
+	tagId: string,
+): Promise<GlossarEntry | undefined> {
+	const entries = await getGlossarEntries();
+	const exact = entries.find((entry) => entry.id === tagId);
+	if (exact) return exact;
+
+	const related = entries.filter((entry) =>
+		(entry.data.relatedTags ?? []).includes(tagId),
+	);
+	if (related.length === 1) return related[0];
+	return undefined;
 }

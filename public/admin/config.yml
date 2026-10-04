@@ -411,6 +411,16 @@ collections:
         display_fields: [title]
         multiple: true
         required: false
+      - name: relatedTags
+        label: Verwandte Tags
+        widget: relation
+        collection: tags
+        value_field: "{{slug}}"
+        search_fields: [title]
+        display_fields: [title]
+        multiple: true
+        required: false
+        hint: "Zusätzlich zum automatischen Tag mit gleichem Slug (z. B. Glossar astro → #astro)."
       - {
           name: body,
           label: Längere Erklärung,

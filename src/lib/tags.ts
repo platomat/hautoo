@@ -21,7 +21,7 @@ export function formatTagHashtag(tag: TagEntry): string {
 	return `#${label}`;
 }
 
-async function articleCountsByTag(): Promise<Map<string, number>> {
+export async function articleCountsByTag(): Promise<Map<string, number>> {
 	const articles = await getPublishedArticles();
 	const counts = new Map<string, number>();
 	for (const article of articles) {
@@ -89,4 +89,33 @@ export async function getTagEntries(options?: {
 		entries = entries.slice(0, options.limit);
 	}
 	return entries;
+}
+
+/** Resolve tag entries by id (order: title asc). Skips unknown ids. */
+export async function getTagListingsByIds(
+	ids: string[],
+	options?: { usedOnly?: boolean },
+): Promise<TagListingEntry[]> {
+	const unique = [...new Set(ids)];
+	if (unique.length === 0) return [];
+
+	const [tags, counts] = await Promise.all([
+		getCollection("tags"),
+		articleCountsByTag(),
+	]);
+	const tagMap = new Map(tags.map((tag) => [tag.id, tag]));
+
+	let entries: TagListingEntry[] = unique
+		.map((id) => {
+			const tag = tagMap.get(id);
+			if (!tag) return null;
+			return { tag, count: counts.get(id) ?? 0 };
+		})
+		.filter((entry): entry is TagListingEntry => entry !== null);
+
+	if (options?.usedOnly) {
+		entries = entries.filter((entry) => entry.count > 0);
+	}
+
+	return sortTagListings(entries, "title-asc");
 }

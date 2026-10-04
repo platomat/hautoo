@@ -5,4 +5,4 @@ modifiedDate: 2026-10-04
 definition: Plattform für Git-Repositories, Issues, Pull Requests und Zusammenarbeit am Code.
 ---
 
-Änderungen an Code und Inhalten von hautuu liegen in einem öffentlichen GitHub-Repository. Sveltia und Cursor schreiben dorthin; nach dem Push baut Cloudflare Pages die Site.
+Änderungen an Code und Inhalten von hautuu liegen in einem öffentlichen GitHub-[Repository](/glossar/repository/). [Sveltia](/glossar/sveltia/) und [Cursor](/glossar/cursor/) schreiben dorthin; nach dem [Push](/glossar/push/) baut [Cloudflare Pages](/glossar/cloudflare-pages/) die Site.

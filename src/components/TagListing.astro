@@ -2,6 +2,7 @@
 import {
 	formatTagHashtag,
 	getTagEntries,
+	getTagListingsByIds,
 	getTagHref,
 	type TagSort,
 } from "../lib/tags";
@@ -13,6 +14,12 @@ interface Props {
 	columns?: number;
 	/** Gap between items, in rem. */
 	gap?: number;
+	/** When set, only these tag slugs (e.g. glossar related tags). */
+	tagIds?: string[];
+	/** For `tagIds` mode: hide tags with zero articles (default true). */
+	usedOnly?: boolean;
+	/** Tighter vertical margin (e.g. glossar related block). */
+	compact?: boolean;
 }
 
 const {
@@ -21,14 +28,19 @@ const {
 	layout = "cloud",
 	columns = 3,
 	gap = 1.25,
+	tagIds,
+	usedOnly = true,
+	compact = false,
 } = Astro.props;
 
 /** `count === 0` → all matching tags. */
-const entries = await getTagEntries({
-	sort,
-	limit: count === 0 ? undefined : count,
-	usedOnly: true,
-});
+const entries = tagIds?.length
+	? await getTagListingsByIds(tagIds, { usedOnly })
+	: await getTagEntries({
+			sort,
+			limit: count === 0 ? undefined : count,
+			usedOnly: true,
+		});
 const col = Math.min(4, Math.max(1, columns));
 const gapRem = Math.min(8, Math.max(0, gap));
 const max = Math.max(1, ...entries.map((entry) => entry.count));
@@ -39,7 +51,7 @@ const max = Math.max(1, ...entries.map((entry) => entry.count));
 		<p>Noch keine Tags.</p>
 	) : layout === "cloud" ? (
 		<section
-			class="tag-listing tag-listing--cloud"
+			class:list={["tag-listing", "tag-listing--cloud", compact && "tag-listing--compact"]}
 			style={`--tag-listing-gap: ${gapRem}rem`}
 			aria-label="Tags"
 		>
@@ -64,6 +76,7 @@ const max = Math.max(1, ...entries.map((entry) => entry.count));
 			class:list={[
 				"tag-listing",
 				layout === "list" ? "tag-listing--list" : "tag-listing--grid",
+				compact && "tag-listing--compact",
 			]}
 			style={`--tag-listing-cols: ${col}; --tag-listing-gap: ${gapRem}rem`}
 			aria-label="Tags"
@@ -92,6 +105,10 @@ const max = Math.max(1, ...entries.map((entry) => entry.count));
 <style>
 	.tag-listing {
 		margin: 2rem 0;
+	}
+
+	.tag-listing--compact {
+		margin: 0;
 	}
 
 	.tag-listing__list {
