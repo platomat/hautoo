@@ -16,6 +16,7 @@ alwaysApply: true
 - Dokumentation und Erklärungen an Menschen: immer auf Deutsch.
 - Code, APIs, Dateinamen technischer Module, CSS-Klassen nach bestehenden Patterns: Englisch.
 - Keine Mischsprache in Commit-Messages: klar und knapp auf Deutsch.
+- **Website-Inhalte** (Artikel, Glossar, FAQ): verbindliche Redaktionsregeln in [docs/redaktion/README.md](../../docs/redaktion/README.md); Cursor-Regel `.cursor/rules/redaktion.mdc` für `src/content/**`.
 
 ## Git: committen ja — pushen nur auf Anweisung
 
