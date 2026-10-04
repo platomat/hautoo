@@ -75,7 +75,7 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | `seo` | ja (CMS) | SEO-Objekt (Titel, Description, Robots) — Partial `&field_seo` |
 | Body | ja | Markdown-Inhalt |
 
-Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarchie kommt aus `parent` (Kette möglich). Beispiel: `beispiel-unterseite` mit `parent: ueber-uns` → `/ueber-uns/beispiel-unterseite/`.
+Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarchie kommt aus `parent` (Kette möglich). Beispiel: Seite `team` mit `parent: ueber-uns` → `/ueber-uns/team/`.
 
 ## Collection `tags` (umgesetzt)
 

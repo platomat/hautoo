@@ -14,8 +14,4 @@ items:
   - label: Über uns
     linkType: page
     page: ueber-uns
-    children:
-      - label: Beispiel Unterseite
-        linkType: page
-        page: beispiel-unterseite
 ---
