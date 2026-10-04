@@ -2,12 +2,9 @@
 import { render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
-import {
-	getArticleHref,
-	getPublishedArticles,
-	isArticlePublic,
-} from "../../lib/articles";
+import ArticleListing from "../../components/ArticleListing.astro";
 import TagListing from "../../components/TagListing.astro";
+import { getArticlesByIds } from "../../lib/articles";
 import {
 	getGlossarEntries,
 	getGlossarHref,
@@ -24,12 +21,8 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const articles = await getPublishedArticles();
-const articleMap = new Map(articles.map((article) => [article.id, article]));
-const related = (entry.data.relatedArticles ?? [])
-	.map((id) => articleMap.get(id))
-	.filter((article): article is (typeof articles)[number] => Boolean(article))
-	.filter(isArticlePublic);
+const relatedArticleIds = entry.data.relatedArticles ?? [];
+const related = await getArticlesByIds(relatedArticleIds);
 const relatedTags = await getGlossarRelatedTags(entry);
 const relatedTagIds = relatedTags.map(({ tag }) => tag.id);
 ---
@@ -62,13 +55,13 @@ const relatedTagIds = relatedTags.map(({ tag }) => tag.id);
 						{related.length > 0 && (
 							<section class="glossar-related__block">
 								<h2>Verwandte Artikel</h2>
-								<ul class="list-plain">
-									{related.map((article) => (
-										<li>
-											<a href={getArticleHref(article)}>{article.data.title}</a>
-										</li>
-									))}
-								</ul>
+								<ArticleListing
+									articleIds={relatedArticleIds}
+									layout="grid"
+									columns={1}
+									gap={3}
+									compact={true}
+								/>
 							</section>
 						)}
 					</div>
