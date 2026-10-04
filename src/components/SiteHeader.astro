@@ -277,9 +277,15 @@ function isCurrent(href: string): boolean {
 			position: relative;
 		}
 
+		/* Keep hover bridge to submenu (no gap that kills :hover). */
+		.site-nav__item.has-children {
+			padding-bottom: 0.45rem;
+			margin-bottom: -0.45rem;
+		}
+
 		.site-nav__sub {
 			position: absolute;
-			top: calc(100% + 0.35rem);
+			top: 100%;
 			left: 0;
 			z-index: 40;
 			min-width: 11rem;
@@ -289,11 +295,19 @@ function isCurrent(href: string): boolean {
 			visibility: hidden;
 			opacity: 0;
 			pointer-events: none;
-			transform: translateY(-0.25rem);
 			transition:
-				opacity 0.18s ease,
-				transform 0.18s ease,
-				visibility 0.18s;
+				opacity 0.15s ease,
+				visibility 0.15s;
+		}
+
+		/* Invisible hit area above the panel so the cursor can reach it. */
+		.site-nav__sub::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 100%;
+			height: 0.5rem;
 		}
 
 		.site-nav__sub a {
@@ -316,7 +330,6 @@ function isCurrent(href: string): boolean {
 			visibility: visible;
 			opacity: 1;
 			pointer-events: auto;
-			transform: translateY(0);
 		}
 
 		.site-nav__item:hover .site-nav__chevron,
