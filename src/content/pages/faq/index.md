@@ -3,7 +3,7 @@ title: FAQ
 description: Häufige Fragen zu hautuu, Git, Cursor, Cloudflare und dem CMS.
 status: published
 publishDate: 2026-10-04
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-05
 backgroundImage: /assets/sebastien-goldberg-9R_bNdo4-2I-unsplash.webp
 backgroundOverlay: 88
 backgroundAttribution: Photo by <a href="https://unsplash.com/@sebastiengoldberg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sébastien Goldberg</a> on <a href="https://unsplash.com/photos/a-sea-turtle-swimming-in-the-ocean-9R_bNdo4-2I?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
@@ -408,6 +408,10 @@ Stichworte zu Artikeln, keine tiefe Kategorie-Hierarchie. [Folge 004](/artikel/f
 ### Wie pflege ich das Glossar?
 
 Eigene Collection `glossar`, Übersicht unter `/glossar/`. [Glossar](/glossar/), [Folge 004](/artikel/folge-004-collection-pages/).
+
+### Kann ich Glossarbegriffe nachschlagen, ohne den Artikel zu verlassen?
+
+In **Firefox** (Desktop, Link Previews ab Version 142): Rechtsklick auf den Glossar-Link → **Link-Vorschau**, oder Link lange gedrückt halten. Die Vorschau öffnet sich in Firefox, der Artikel bleibt im Hintergrund. Lokal mit `localhost` funktioniert das oft nicht; auf der Live-Site schon. [Folge 020](/artikel/folge-020-bausteine-fork/), [Mozilla-Hilfe](https://support.mozilla.org/kb/use-link-previews-firefox).
 
 ### Kann ich Artikel aus Videos erzeugen lassen?
 

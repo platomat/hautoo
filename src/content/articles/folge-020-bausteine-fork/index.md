@@ -2,7 +2,7 @@
 title: "Folge 020: Bausteine, FAQ und hautoo forken"
 summary: "Wiederverwendbare CMS Bausteine statt Copy Paste, Überblick über Glossar und FAQ und dein eigenes Projekt per GitHub Fork starten."
 pubDate: 2026-10-04T23:47:38Z
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-05
 status: published
 tags:
   - github
@@ -14,7 +14,7 @@ seo:
   follow_visibility: follow
 ---
 
-Zwischen den Sessions ist hautuu richtig gewachsen: **19 Folgen** als Artikel, ein ausgebautes [**Glossar**](/glossar/), eine lange [**FAQ**](/faq/) mit Querverweisen und eine Navigation, die sich anfühlt wie eine kleine Site statt wie ein Ordner voller Dateien. In dieser Folge geht es um **Bausteine** (wiederverwendbare Inhalte), den Überblick und die Einladung: **forke** das Repo, wenn du Struktur und Features für dein eigenes Projekt nutzen willst.
+Zwischen den Sessions ist hautuu richtig gewachsen: **20 Folgen** als Artikel, ein ausgebautes [**Glossar**](/glossar/), eine lange [**FAQ**](/faq/) mit Querverweisen und eine Navigation, die sich anfühlt wie eine kleine Site statt wie ein Ordner voller Dateien. In dieser Folge geht es um **Bausteine** (wiederverwendbare Inhalte), den Überblick und die Einladung: **forke** das Repo, wenn du Struktur und Features für dein eigenes Projekt nutzen willst.
 
 ## Bausteine statt zehnmal das gleiche Bild
 
@@ -36,6 +36,21 @@ Die [**FAQ**](/faq/) bündelt viele Fragen in **Themengruppen** (Überschriften 
 
 Glossar-Einträge und Folgen sind von dort verlinkt, damit du nicht alles auswendig lernen musst.
 
+## Glossar nachschlagen mit Link-Vorschau (Firefox)
+
+In den Artikeln verlinken wir [**Glossar**](/glossar/)-Begriffe, z. B. [**SSH-Key**](/glossar/ssh-key/). Statt jeden Begriff in einem neuen Tab zu öffnen, kannst du in **Firefox** auf dem Desktop eine **Link-Vorschau** nutzen: Du bleibst im Artikel und siehst kurz Titel und Beschreibung der Zielseite in einer **eigenen Firefox-Karte**, nicht als Overlay der Website.
+
+So geht’s laut Mozilla (Stand **Firefox 142**, Desktop):
+
+- **Rechtsklick** auf den Link → Eintrag **Link-Vorschau** (englische Oberfläche: *Preview Link*).
+- Alternativ den Link **lange gedrückt halten** (Desktop, wie in den [Firefox-142-Release-Notes](https://www.firefox.com/firefox/142.0/releasenotes/) beschrieben).
+
+Die Funktion heißt offiziell **Link Previews** und wird **schrittweise** ausgerollt (z. B. zunächst für einige englische Firefox-Locales und Rechner mit genug freiem RAM). Wenn du den Menüpunkt nicht siehst: Firefox aktualisieren, einmal neu starten und unter **Einstellungen → Allgemein → Surfen** nach einer Option für Link-Vorschau schauen. In Einzelfällen hilft laut Community-Hinweisen `browser.ml.linkPreview.enabled` in `about:config` (nur wenn du weißt, was du tust). Details und Schalter können sich je nach Version ändern, die [Mozilla-Hilfe zu Link Previews](https://support.mozilla.org/kb/use-link-previews-firefox) ist die Referenz.
+
+**Lokal** (`npm run dev`, `localhost`) klappt die Vorschau oft **nicht** (Firefox meldet dann, dass keine Vorschau möglich ist). Auf der **öffentlichen Site** mit SEO-Beschreibung im Glossar ist das Nachschlagen angenehmer. Optional können KI-Stichpunkte in der Vorschau angeboten werden; für Glossar reicht meist die normale Vorschau aus Seiten-Metadaten.
+
+Früher gab es die Idee experimentell in **Firefox Labs** (eigene Tastenkombination beim Überfahren eines Links). Die heutige Variante ist die Link-Vorschau über Kontextmenü bzw. langes Drücken.
+
 ## Fork statt nur klonen
 
 Wenn dir **Struktur**, **Bausteine**, **Menüs**, **Artikel** und **Seiten** gefallen, musst du nicht bei null anfangen:
@@ -51,7 +66,7 @@ Hast du ein gutes Feature gebaut, schick einen [**Pull Request**](/glossar/pull-
 ## Was du mitnehmen kannst
 
 - **Bausteine** für wiederkehrende Inhalte (Stack, Kontakt, Trenner).
-- **Glossar**, **FAQ** und **Tags** als Lern-Netz, nicht als Pflichtlektüre.
+- **Glossar**, **FAQ** und **Tags** als Lern-Netz; in Firefox Link-Vorschau zum Nachschlagen.
 - **Fork** als Einstieg in dein eigenes Projekt mit gleichem Stack ([Folge 001](/artikel/folge-001-hautuu-intro/) für die grobe Kette).
 
 <!-- Quelle: 2026-10-04--23-47-38--obs-screencast - hautoo - 020 - neue bausteine, neue features, hautoo forken.txt -->
