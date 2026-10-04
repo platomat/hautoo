@@ -26,6 +26,8 @@ seo:
 
 **hautuu** ist ein Lern- und Demo-Projekt: Wie man mit Cursor (KI), GitHub und Cloudflare eine thematische, statische Website baut und pflegt, von leerem Repo bis zur laufenden Site.
 
+![](/assets/logo-mark.svg)
+
 ## Repository
 
 Quellcode, Inhalte und Dokumentation liegen öffentlich auf GitHub:
