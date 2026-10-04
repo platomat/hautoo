@@ -31,7 +31,7 @@ Du kannst auch einen beliebigen **Ordner ohne Git** öffnen (Fotos, Notizen) und
 
 **Tab** = Autovervollständigung im Code (im Chat klappt das nicht immer).
 
-Tipp aus dem Video: Erstes Projekt ohne Plan war hektisch. Mit Plan-Modus: entspannter.
+Tipp aus dem Video: Erstes Projekt ohne Plan war hektisch. Mit Plan-Modus: entspannter. Zwei Chats mit Rollen statt ein Mega-Chat: [Folge 010](/artikel/folge-010-cursor-chats/).
 
 ## Burger-Menü: Plan zuerst, Bau zweites
 
@@ -40,7 +40,7 @@ Aufgabe: mobiles Menü, Icon wird zum Kreuz, animiert.
 1. **Plan:** „Umsetzungsplan, noch nicht bauen.“
 2. Plan lesen, gut, wenn „kein Push ohne Anweisung“ drinsteht.
 3. Feedback: Trennlinien, Abstände oben/unten.
-4. **Agent** baut → [`npm run dev`](/glossar/npm/) → gucken.
+4. **Agent** baut → [`npm run dev`](/glossar/npm/) → gucken ([Folge 018](/artikel/folge-018-node-npm/), falls npm noch fehlt).
 5. Commit, wenn du zufrieden bist.
 
 Mobil greift ab 679 px — Menü nutzt die globalen Design-Tokens.

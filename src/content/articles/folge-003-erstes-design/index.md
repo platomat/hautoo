@@ -27,7 +27,7 @@ In der Design-Doku siehst du die Palette: dunkler Hintergrund, heller Text (nich
 
 ## Terminal-Kniffe
 
-- `npm run dev`. Vorschau an.
+- `npm run dev`. Vorschau an. Wenn Node oder npm noch fehlen: [Folge 018](/artikel/folge-018-node-npm/).
 - **Strg+C**: stoppen (im Terminal ist Strg+C nicht Kopieren!).
 - Pfeil **hoch**, letzter Befehl nochmal.
 
@@ -37,13 +37,13 @@ Baut der Agent während der Server läuft, kann die Vorschau hüpfen — kurz st
 
 Schreib sie in Doku und `.cursor/rules`:
 
-1. **Niemals von allein pushen.** Commits lokal sind okay. [**Push**](/glossar/push/) nur auf Anweisung, sonst baut [**Cloudflare**](/glossar/cloudflare-pages/) einen Zwischenstand live.
+1. **Niemals von allein pushen.** Commits lokal sind okay. [**Push**](/glossar/push/) nur auf Anweisung, sonst baut [**Cloudflare**](/glossar/cloudflare-pages/) einen Zwischenstand live (Hosting-Setup: [Folge 011](/artikel/folge-011-cloudflare-setup/)).
 2. **CSS nicht jedes Mal neu erfinden**: bestehende Klassen und Tokens nutzen.
 3. **Page Speed:** Wichtiges [**CSS**](/glossar/css/) früh (critical: Menü, Kopf der Seite); Rest später (non-critical), sonst springt das Layout und Google schmunzelt nicht.
 
 ## Seiten, Menü, Footer
 
-Per Issue kamen **Pages** (Start, Über uns, Impressum …). Der **Footer** kriegt Copyright mit dynamischem Jahr (`2026` oder `2026 bis 2027`), Domain, Signatur.
+Per Issue kamen **Pages** (Start, Über uns, Impressum …; Collections: [Folge 004](/artikel/folge-004-collection-pages/)). Der **Footer** kriegt Copyright mit dynamischem Jahr (`2026` oder `2026 bis 2027`), Domain, Signatur.
 
 **Impressum** und **Datenschutz** nicht ins Hauptmenü, unten rechts. Copyright links. Auf dem Handy: untereinander, zentriert.
 

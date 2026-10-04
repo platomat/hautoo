@@ -45,10 +45,10 @@ npm run dev
 
 [`npm install`](/glossar/npm/) lädt alle in `package.json` genannten Pakete (Astro, Sveltia-Build-Tools, …). `npm run dev` baut die Site im **Entwicklungsmodus** und zeigt eine lokale URL (oft `localhost:4321`). Link im Terminal anklicken oder URL kopieren.
 
-So testest du Änderungen **ohne** jedes Mal auf **main** zu pushen. Für öffentliche Previews nutzt du weiter [**Branches**](/glossar/branch/) und Cloudflare-**Preview**-URLs, wie in den Cloudflare-Folgen.
+So testest du Änderungen **ohne** jedes Mal auf **main** zu pushen. Für öffentliche Previews nutzt du weiter [**Branches**](/glossar/branch/) und Cloudflare-**Preview**-URLs ([Folge 012](/artikel/folge-012-cloudflare-branches/)).
 
 ## Was npm hier nicht ist
 
-Du hostest die fertige Site nicht mit `npm run dev`. Production läuft über [**Cloudflare Pages**](/glossar/cloudflare-pages/) nach Push. Lokal ist npm nur Werkzeugkiste: installieren, entwickeln, `npm run build` vor dem Commit wenn du den Produktionsbuild prüfen willst.
+Du hostest die fertige Site nicht mit `npm run dev`. Production läuft über [**Cloudflare Pages**](/glossar/cloudflare-pages/) nach Push ([Folge 011](/artikel/folge-011-cloudflare-setup/)). Lokal ist npm nur Werkzeugkiste: installieren, entwickeln, `npm run build` vor dem Commit wenn du den Produktionsbuild prüfen willst.
 
 <!-- Quelle: 2026-10-04--20-22-22--obs-screencast - hautoo - 018 - nvm, npm, node.txt -->

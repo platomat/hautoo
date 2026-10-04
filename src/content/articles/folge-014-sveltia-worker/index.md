@@ -14,7 +14,7 @@ seo:
   follow_visibility: follow
 ---
 
-[**PAT**](/glossar/pat/) funktioniert, aber kopieren, ablaufen, verlegen nervt. **Variante B:** normal bei GitHub anmelden. Dazwischen sitzt ein [**Cloudflare Worker**](/glossar/cloudflare-worker/) (kleines Programm auf Cloudflares Servern).
+[**PAT**](/glossar/pat/) funktioniert, aber kopieren, ablaufen, verlegen nervt (Einrichtung: [Folge 013](/artikel/folge-013-sveltia-pat/)). **Variante B:** normal bei GitHub anmelden. Dazwischen sitzt ein [**Cloudflare Worker**](/glossar/cloudflare-worker/) (kleines Programm auf Cloudflares Servern).
 
 ## Wer macht was?
 
@@ -58,7 +58,7 @@ Lokal und im Live-CMS dieselbe Datei? [**Pull**](/glossar/pull/)/Rebase kann sto
 
 ## CI/CD in einem Satz
 
-Code in Cursor → Push → Build. Text im CMS → Commit → Build. Kein FTP. Preview-Branches und Rollback von Cloudflare gelten weiter.
+Code in Cursor → Push → Build. Text im CMS → Commit → Build. Kein FTP. Preview-Branches und Rollback von Cloudflare gelten weiter ([Folge 012](/artikel/folge-012-cloudflare-branches/)).
 
 Untermenü-Aussehen (Aufklappen vs. Klick) ist Feintuning. Pipeline und Zugang stehen.
 

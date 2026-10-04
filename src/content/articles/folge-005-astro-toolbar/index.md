@@ -17,7 +17,7 @@ Kurze Folge, viel Praxis.
 
 ## Die Astro-Dev-Leiste
 
-Mit [`npm run dev`](/glossar/npm/) klebt oft die **Astro-Dev-Toolbar** am Rand, nur bei dir, nicht live. [**Astro**](/glossar/astro/) ist das Framework, das Markdown und Komponenten zu fertigem HTML backt.
+Mit [`npm run dev`](/glossar/npm/) klebt oft die **Astro-Dev-Toolbar** am Rand, nur bei dir, nicht live. Installation von Node/npm: [Folge 018](/artikel/folge-018-node-npm/). [**Astro**](/glossar/astro/) ist das Framework, das Markdown und Komponenten zu fertigem HTML backt.
 
 Stört sie? Einklappen, oder den Agenten fragen, wie du sie dauerhaft ausblendest. Besucher sehen sie nie.
 
@@ -40,6 +40,6 @@ Wenn du’s genau willst:
 - **Margin**: Abstand nach außen.
 - **Border-Radius**: runde Ecken.
 
-Der Agent soll bestehende Klassen im Projekt nutzen, nicht bei jedem Prompt neues Inline-CSS erfinden. Deine **Page Speed** dankt’s dir.
+Der Agent soll bestehende Klassen im Projekt nutzen, nicht bei jedem Prompt neues Inline-CSS erfinden. Deine **Page Speed** dankt’s dir. Fonts, Tokens und erster Look: [Folge 003](/artikel/folge-003-erstes-design/).
 
 <!-- Quelle: 2026-10-03--23-23-55--obs-screencast - hautoo - astro bar, breakpoints, css fachchinesisch.txt -->

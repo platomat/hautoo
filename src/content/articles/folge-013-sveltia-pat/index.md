@@ -27,7 +27,7 @@ Speichern = Datei lokal geändert, noch **nicht** live.
 
 ## Online: Warum ein Schlüssel?
 
-Öffentliches Repo = alle dürfen **lesen**, niemand **schreiben**. Für `/admin` auf der echten Domain brauchst du Zugang.
+Öffentliches Repo = alle dürfen **lesen**, niemand **schreiben**. Für `/admin` auf der echten Domain brauchst du Zugang. Cloudflare muss die Site schon bauen ([Folge 011](/artikel/folge-011-cloudflare-setup/)).
 
 ### Variante A: Personal Access Token (PAT)
 
@@ -49,6 +49,6 @@ Beispiel: Beispiel-Unterseite im Menü sichtbar → Commit „Update page …“
 
 ## Variante B
 
-**Sign in with GitHub** ohne PAT, braucht einen [**Cloudflare Worker**](/glossar/cloudflare-worker/) als Brücke. Eigenes Thema, gleiche Idee: weniger Copy-Paste mit Tokens.
+**Sign in with GitHub** ohne PAT, braucht einen [**Cloudflare Worker**](/glossar/cloudflare-worker/) als Brücke ([Folge 014](/artikel/folge-014-sveltia-worker/)). Eigenes Thema, gleiche Idee: weniger Copy-Paste mit Tokens.
 
 <!-- Quelle: 2026-10-04--01-09-23--obs-screencast - hautoo - sveltia - variante PAT.txt -->

@@ -34,6 +34,8 @@ Kurz die Wörter: [**Git**](/glossar/git/) versioniert Dateien. Ein [**Commit**]
 2. Mit `cd` in den Ordner, wo das Projekt liegen soll.
 3. [`git clone`](/glossar/clone/) + URL aus GitHub, fertig, Ordner da.
 
+Bei einem **privaten** Repo verweigert GitHub oft den Zugriff, bis SSH-Keys eingerichtet sind ([Folge 017](/artikel/folge-017-github-ssh/)).
+
 Der versteckte Ordner `.git` (unter Linux oft mit Strg+H sichtbar) ist das Tagebuch des Projekts, inklusive Adresse von **origin**.
 
 ## Cursor: Ordner auf, Agent an
@@ -41,19 +43,19 @@ Der versteckte Ordner `.git` (unter Linux oft mit Strg+H sichtbar) ist das Tageb
 **Open Folder**, dein geklonter Ordner. Typischer Start:
 
 - `docs/` für Dokumentation.
-- Dem [**Agenten**](/glossar/cursor-modi/) erzählen, was das Projekt ist: Lern-Website mit **KI**, **GitHub**, **Cloudflare**; statische Astro-Seiten; Artikel mit Bildern und eingebetteten Videos (YouTube/Vimeo); Glossar; später [**CMS**](/glossar/cms/) ([**Sveltia**](/glossar/sveltia/). Redaktion im Browser, speichert trotzdem in Git).
-- Regeln aufschreiben: Texte/Doku auf Deutsch, Code auf Englisch, Commits/Issues auf Deutsch, **keine Secrets** ins öffentliche Repo (auch gelöschte Dateien bleiben in der [**History**](/glossar/git-history/)).
+- Dem [**Agenten**](/glossar/cursor-modi/) erzählen, was das Projekt ist (Ask, Agent, Plan: [Folge 008](/artikel/folge-008-cursor-modi/)): Lern-Website mit **KI**, **GitHub**, **Cloudflare**; statische Astro-Seiten; Artikel mit Bildern und eingebetteten Videos (YouTube/Vimeo); Glossar; später [**CMS**](/glossar/cms/) ([**Sveltia**](/glossar/sveltia/). Redaktion im Browser, speichert trotzdem in Git; Setup in [Folge 013](/artikel/folge-013-sveltia-pat/)).
+- Regeln aufschreiben: Texte/Doku auf Deutsch, Code auf Englisch, Commits/Issues auf Deutsch, **keine Secrets** ins öffentliche Repo (auch gelöschte Dateien bleiben in der [**History**](/glossar/git-history/)). Wie du mit [Issues](/artikel/folge-002-github-issues/) arbeitest, kommt in Folge 002.
 
 Repo umbenannt? URL auf GitHub ändert sich — lokal Remote in `.git/config` anpassen. **Save Project As** speichert deinen Cursor-Workspace, damit Chats nicht jedes Mal weg sind.
 
 ## Commit, Push, gitignore
 
-In **Source Control** siehst du Änderungen. **Commit** = Stand lokal festhalten. **Push** = hoch zu GitHub.
+In **Source Control** siehst du Änderungen. **Commit** = Stand lokal festhalten. **Push** = hoch zu GitHub. Wenn Push blockiert oder zwei Ordner im Spiel sind: [Folge 006](/artikel/folge-006-git-push-pull/).
 
 Nur für dich: z. B. `.code-workspace` in **`.gitignore`**, dann wandert die Datei nicht mit ins Repo.
 
 ## Merksatz
 
-**GitHub** = zentrale Wahrheit. **Lokal** = Werkstatt. **Astro** = Bäckerei für HTML. **Cloudflare** = Schaufenster im Internet. Den Rest füllen wir in den nächsten Schritten auf.
+**GitHub** = zentrale Wahrheit. **Lokal** = Werkstatt. **Astro** = Bäckerei für HTML. **Cloudflare** = Schaufenster im Internet ([Folge 011](/artikel/folge-011-cloudflare-setup/) zeigt die Einrichtung). Den Rest füllen wir in den nächsten Schritten auf.
 
 <!-- Quelle: 2026-10-03--01-04-26--obs-screencast - hautoo - intro.txt -->

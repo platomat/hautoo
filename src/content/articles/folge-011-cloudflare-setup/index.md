@@ -17,7 +17,7 @@ Bisher: lokal und GitHub. Jetzt wird’s öffentlich: [**Cloudflare Pages**](/gl
 
 ## Begriffe ohne Panik
 
-- **Workers & Pages** unter „Compute“. **Pages** = statische Sites aus Git, passt zu **Astro**. [**Workers**](/glossar/cloudflare-worker/) = Extra-Logik am Edge (später z. B. CMS-Login).
+- **Workers & Pages** unter „Compute“. **Pages** = statische Sites aus Git, passt zu **Astro**. [**Workers**](/glossar/cloudflare-worker/) = Extra-Logik am Edge (später z. B. CMS-Login; OAuth-Brücke: [Folge 014](/artikel/folge-014-sveltia-worker/)).
 - **R2 / Databases**: für hautuu erst mal egal, aber gut zu wissen.
 - **Ask AI** in Cloudflare. Deutsch geht, hilft bei DNS und Regeln.
 
@@ -39,7 +39,7 @@ Push auf **[`main`](/glossar/main/)** = Production (wenn so eingestellt).
 6. **Output:** `dist` (fertiges HTML).
 7. **Save and Deploy**
 
-Erst **Build**, dann [**Deploy**](/glossar/deploy/). Unter **Deployments** jeder Lauf; Erfolg = `*.pages.dev`-URL.
+Erst **Build**, dann [**Deploy**](/glossar/deploy/). Unter **Deployments** jeder Lauf; Erfolg = `*.pages.dev`-URL. `npm run build` lokal braucht Node ([Folge 018](/artikel/folge-018-node-npm/)).
 
 ## Eigene Domain
 
@@ -47,7 +47,7 @@ Erst **Build**, dann [**Deploy**](/glossar/deploy/). Unter **Deployments** jeder
 
 ## Welche Version ist live?
 
-Kurze **Commit-ID** in Pages (z. B. endet auf `9a0`) = dieselbe auf GitHub. Burger-Menü nur lokal? Live zeigt’s noch nicht, bis du pushst.
+Kurze **Commit-ID** in Pages (z. B. endet auf `9a0`) = dieselbe auf GitHub. Burger-Menü nur lokal? Live zeigt’s noch nicht, bis du pushst. Test-Zweige und Preview-URLs: [Folge 012](/artikel/folge-012-cloudflare-branches/).
 
 GitHub-App checken: Unter Applications nur das hautuu-Repo erlauben.
 

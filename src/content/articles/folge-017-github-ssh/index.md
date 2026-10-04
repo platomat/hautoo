@@ -13,7 +13,7 @@ seo:
   follow_visibility: follow
 ---
 
-Öffentliche How-To-Repos siehst du ohne Login. **Private** Projekte wie dein echtes hautuu-Repo verweigern [`git clone`](/glossar/clone/) mit **Permission denied**, bis GitHub deinen Rechner kennt. Dafür nutzt du einen [**SSH-Key**](/glossar/ssh-key/) statt Passwort in der URL.
+Öffentliche How-To-Repos siehst du ohne Login. **Private** Projekte wie dein echtes hautuu-Repo verweigern [`git clone`](/glossar/clone/) mit **Permission denied**, bis GitHub deinen Rechner kennt. Grundlagen zu Clone und Push/Pull: [Folge 001](/artikel/folge-001-hautuu-intro/) und [Folge 006](/artikel/folge-006-git-push-pull/). Dafür nutzt du einen [**SSH-Key**](/glossar/ssh-key/) statt Passwort in der URL.
 
 ## Ordner `.ssh`
 

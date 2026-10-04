@@ -38,9 +38,11 @@ In Commit-Messages kannst du Issues erwähnen (`Fixes #1`, `Closes #1`). GitHub 
 4. [**Sveltia**](/glossar/sveltia/): später: Tippfehler im Browser fixen, landet wieder in Git.
 5. [**Astro**](/glossar/astro/): macht schnelle statische Seiten, kein WordPress, keine Datenbank auf dem Server.
 
+Cloudflare richtest du Schritt für Schritt in [Folge 011](/artikel/folge-011-cloudflare-setup/) ein. Sveltia und PAT/Login: [Folge 013](/artikel/folge-013-sveltia-pat/).
+
 ## Issues klein schneiden
 
-„Astro Collections erstellen“ klingt riesig. Die KI kann **Sub-Issues** vorschlagen (Pages, Articles, Tags …). Dann siehst du Fortschritt statt einen endlosen Klumpen.
+„Astro Collections erstellen“ klingt riesig. Die KI kann **Sub-Issues** vorschlagen (Pages, Articles, Tags …). Dann siehst du Fortschritt statt einen endlosen Klumpen. Was Collections sind, steht in [Folge 004](/artikel/folge-004-collection-pages/).
 
 Vor dem Bauen fragt der Agent oft nach:
 
@@ -51,9 +53,9 @@ Vor dem Bauen fragt der Agent oft nach:
 ## Erst lokal gucken
 
 - [`npm install`](/glossar/npm/), holt Pakete (macht Cloudflare beim Build auch).
-- `npm run dev`. Vorschau auf deinem Rechner.
+- `npm run dev`. Vorschau auf deinem Rechner. Node, npm und die Installation lokal: [Folge 018](/artikel/folge-018-node-npm/).
 
-Ist Cloudflare schon dran? [**Push**](/glossar/push/) = Build. Darum pusht der Agent bei hautuu nur **auf dein Wort**.
+Ist Cloudflare schon dran? [**Push**](/glossar/push/) = Build. Darum pusht der Agent bei hautuu nur **auf dein Wort**. Pull, Merge und typische Stolpersteine: [Folge 006](/artikel/folge-006-git-push-pull/).
 
 In derselben Session ging’s schon um dunkles Theme, grüne Klick-Farbe, Ubuntu-Schrift, und dass Issues besser sind als „hab ich mal im Chat gesagt“.
 

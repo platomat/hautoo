@@ -18,7 +18,7 @@ Git klingt erst nach Kauderwelsch. Wird aber easy, wenn du eine Idee akzeptierst
 
 Der Ordnername auf der Festplatte ist Git egal, zählt nur `.git` drin.
 
-- [`git clone`](/glossar/clone/) `<url>`, neuer Unterordner.
+- [`git clone`](/glossar/clone/) `<url>`, neuer Unterordner. Private Repos und SSH: [Folge 017](/artikel/folge-017-github-ssh/).
 - `git clone <url> .`. **in den aktuellen Ordner** (Punkt = hier).
 
 Praktisch, wenn du einen frischen Stand willst, während du in einem anderen Ordner experimentiert hast.
@@ -41,7 +41,7 @@ In Cursor kannst du Änderungen verwerfen oder Dateien **revert**en, musst nicht
 - **Merge:** sichtbarer Merge-Commit, ehrliche Verzweigung.
 - **Rebase:** lineare Historie, etwas fummeliger.
 
-Für den Start: **Merge** reicht. [**Rebase**](/glossar/rebase/) macht die Historie linear, ist aber kniffeliger, nur anfassen, wenn du weißt, warum.
+Für den Start: **Merge** reicht. [**Rebase**](/glossar/rebase/) macht die Historie linear, ist aber kniffeliger, nur anfassen, wenn du weißt, warum. Vertiefung mit Grafiken: [Folge 007](/artikel/folge-007-merge-rebase/).
 
 ## Keine Geheimnisse in Git
 

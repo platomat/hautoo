@@ -12,7 +12,7 @@ seo:
   follow_visibility: follow
 ---
 
-[**main**](/glossar/main/) ist, was die Welt sieht. Trotzdem willst du rumprobieren, ohne die Startseite live zu verbiegen.
+[**main**](/glossar/main/) ist, was die Welt sieht. Trotzdem willst du rumprobieren, ohne die Startseite live zu verbiegen. Pages an GitHub koppeln ging in [Folge 011](/artikel/folge-011-cloudflare-setup/).
 
 ## Branch lokal
 
@@ -41,6 +41,6 @@ Parallel kann auf `main` ein Bugfix laufen, während du auf `test` wochenlang Fe
 
 [**Rollback**](/glossar/rollback/) to this deployment — in Sekunden wieder alter Stand (im Video eine Startseiten-Variante von Commit `7.8…`). Danach wieder vorwärts deployen, wenn du die neue Version zurückwillst.
 
-Kein FTP. [**CI/CD**](/glossar/ci-cd/) heißt: Push, Build, Preview, Merge, Live, und rückwärts geht auch.
+Kein FTP. [**CI/CD**](/glossar/ci-cd/) heißt: Push, Build, Preview, Merge, Live, und rückwärts geht auch. Merge vs. Rebase in der Historie: [Folge 007](/artikel/folge-007-merge-rebase/).
 
 <!-- Quelle: 2026-10-04--00-44-03--obs-screencast - hautoo - cloudflare - branches, rollbacks.txt -->

@@ -14,7 +14,7 @@ seo:
   follow_visibility: follow
 ---
 
-Der Agent hat über Nacht gearbeitet: Mail von [**Cloudflare**](/glossar/cloudflare-pages/), dass ein **Zweig** gebaut wurde (z. B. ein Branch wie `PerseScreencastArticles-e016`, Name variiert). Nicht auf **main** gepusht, sondern eigener [**Branch**](/glossar/branch/) mit vielen neuen Artikeln, nachgeschärftem Ton und automatischen **Checks**.
+Der Agent hat über Nacht gearbeitet (Ablauf ab [Folge 015](/artikel/folge-015-transkript-artikel/)): Mail von [**Cloudflare**](/glossar/cloudflare-pages/), dass ein **Zweig** gebaut wurde (z. B. ein Branch wie `PerseScreencastArticles-e016`, Name variiert). Nicht auf **main** gepusht, sondern eigener [**Branch**](/glossar/branch/) mit vielen neuen Artikeln, nachgeschärftem Ton und automatischen **Checks**.
 
 ## Pull Request lesen
 
@@ -37,10 +37,10 @@ Parallel kannst du Layout anpassen (Hero tiefer, Inhaltsbreite wie auf der Start
 
 Auf der **Startseite** steckt ein **Artikel-Listing**: z. B. die letzten drei, neueste zuerst, **Grid** mit drei Spalten.
 
-Auf der Route **Artikel** war der Wunsch anders: nicht „erst fester Seitentext, dann automatisch alle Artikel darunter“, sondern **redaktionell** entscheiden, **wo** eine Liste hinkommt und mit welcher Sortierung/Anzahl, wie auf der Startseite. Das ist ein separates Issue an den Agenten.
+Auf der Route **Artikel** war der Wunsch anders: nicht „erst fester Seitentext, dann automatisch alle Artikel darunter“, sondern **redaktionell** entscheiden, **wo** eine Liste hinkommt und mit welcher Sortierung/Anzahl, wie auf der Startseite. Das ist ein separates Issue an den Agenten (Umsetzung u. a. in [Folge 019](/artikel/folge-019-impressum-komponenten/)).
 
 ## KI-Ticks im Text
 
-Viele lange **Gedankenstriche** im ersten Entwurf sind typisch generierter Stil. Gezielt Issue: „über alle Artikel, Striche reduzieren, normaler deutscher Fließtext“. Videos und Doku-Links kannst du später pro Artikel ergänzen; Querverlinkung zwischen Folgen war bewusst noch nicht drin.
+Viele lange **Gedankenstriche** im ersten Entwurf sind typisch generierter Stil. Gezielt Issue: „über alle Artikel, Striche reduzieren, normaler deutscher Fließtext“. Videos und Doku-Links kannst du später pro Artikel ergänzen. Preview-Zweige vor dem Merge: [Folge 012](/artikel/folge-012-cloudflare-branches/).
 
 <!-- Quelle: 2026-10-04--19-11-35--obs-screencast - hautoo - 016 - transkript - artikel - resultat.txt -->

@@ -13,7 +13,7 @@ seo:
   follow_visibility: follow
 ---
 
-Keine Datenbank, kein WordPress-Monster: **Pages** sind normale Markdown-Dateien unter `src/content/pages/`. [**Collections**](/glossar/collection/) sind die Typen. „Pages“, „Articles“, später mehr.
+Keine Datenbank, kein WordPress-Monster: **Pages** sind normale Markdown-Dateien unter `src/content/pages/`. [**Collections**](/glossar/collection/) sind die Typen. „Pages“, „Articles“, später mehr. Warum Issues dafür sinnvoll sind: [Folge 002](/artikel/folge-002-github-issues/).
 
 ## Was `config.yml` macht
 
@@ -49,6 +49,6 @@ Backlog-Idee aus dem Video: optionales **Inhaltsverzeichnis** oben bei langen Te
 
 ## Editor heute, CMS morgen
 
-Jetzt tippst du Markdown oder lässt Cursor schreiben, später [**Sveltia**](/glossar/sveltia/) unter `/admin/`. Gleiche Felder, gleiche Dateien, gleiche Git-**History**.
+Jetzt tippst du Markdown oder lässt Cursor schreiben, später [**Sveltia**](/glossar/sveltia/) unter `/admin/` ([Folge 013](/artikel/folge-013-sveltia-pat/) zeigt PAT und ersten Login). Gleiche Felder, gleiche Dateien, gleiche Git-**History**.
 
 <!-- Quelle: 2026-10-03--23-00-06--obs-screencast - hautoo - collection-pages.txt -->

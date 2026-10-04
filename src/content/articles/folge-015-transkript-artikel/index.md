@@ -21,7 +21,7 @@ Zwischen den Sessions ist viel passiert: **Menüs** als Collection, **Artikel** 
 
 ## Agent starten
 
-Zuerst prüfen, ob [**Cursor**](/glossar/cursor/) Zugriff auf das [**Repository**](/glossar/repository/) hat. Fehlt der, in den Cursor-Einstellungen nach dem How-To für GitHub/OAuth schauen (ähnlich wie bei privaten Repos und SSH in einer späteren Folge).
+Zuerst prüfen, ob [**Cursor**](/glossar/cursor/) Zugriff auf das [**Repository**](/glossar/repository/) hat. Fehlt der, in den Cursor-Einstellungen nach dem How-To für GitHub/OAuth schauen. Private Repos und SSH-Keys: [Folge 017](/artikel/folge-017-github-ssh/).
 
 Dann die Anweisung: Ordner mit Transkripten anhängen oder benennen, **pro Video ein Artikel**, Beispielartikel löschen, **Video-Platzhalter** im Frontmatter oder Body vorsehen, **kein direkter Push auf main**, sondern Branch und PR.
 
@@ -33,6 +33,6 @@ Der **Cloud Agent** läuft auf Cursors Infrastruktur. Du kannst den Rechner zukl
 - Transkripte sind holprig (Fachwörter, OBS, Produktnamen): im PR steht oft eine Liste **unsicherer Stellen** zum Nachbearbeiten.
 - Inhalt vor Optik: Erst Artikel generieren, Feintuning an Abständen und Hero später.
 
-Wenn der PR da ist, gehst du den Review-Weg (Preview, Checks, Merge), so wie in der nächsten Folge.
+Wenn der PR da ist, gehst du den Review-Weg (Preview, Checks, Merge) wie in [Folge 016](/artikel/folge-016-artikel-pull-request/).
 
 <!-- Quelle: 2026-10-04--04-29-47--obs-screencast - hautoo - 015 - transkript - artikel.txt -->
