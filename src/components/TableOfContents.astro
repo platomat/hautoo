@@ -26,7 +26,7 @@ const heading = resolveTocTitle(title);
 			<h2 id="toc-heading" class="toc__title text-sm">
 				{heading}
 			</h2>
-			<ol class="toc__list list-plain">
+			<ol class="toc__list">
 				{entries.map((entry) => (
 					<li
 						class:list={[
@@ -46,8 +46,9 @@ const heading = resolveTocTitle(title);
 <style>
 	.toc {
 		margin: 0 0 2.5rem;
-		padding: 1rem 0 0;
+		padding: 1rem 0 1.25rem;
 		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
 	}
 
 	.toc__title {
@@ -59,25 +60,23 @@ const heading = resolveTocTitle(title);
 	}
 
 	.toc__list {
-		display: flex;
-		flex-direction: column;
-		gap: 0.35rem;
 		margin: 0;
-		padding: 0;
+		padding-inline-start: 1.5rem;
+		list-style: decimal;
 	}
 
 	.toc__item {
-		margin: 0;
+		margin: 0.2rem 0;
 		line-height: 1.35;
 	}
 
 	.toc__item--h3 {
-		padding-inline-start: 1rem;
+		padding-inline-start: 0.75rem;
 		font-size: 0.95rem;
 	}
 
 	.toc__item--h4 {
-		padding-inline-start: 1.75rem;
+		padding-inline-start: 1.5rem;
 		font-size: 0.9rem;
 	}
 
