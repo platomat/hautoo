@@ -1,17 +1,19 @@
 ---
-title: "Folge 003: Erstes Outfit: Ubuntu, Dark Mode und ein Footer, der nicht nervt"
-summary: "Schrift rein, Farben festlegen, Breakpoints setzen. Plus die goldene Regel: committen ja, pushen nur, wenn du es wirklich willst."
-pubDate: 2026-10-03T02:16:51Z
+title: 'Folge 003: Erstes Outfit: Ubuntu, Dark Mode und ein Footer, der nicht nervt'
+summary: 'Schrift rein, Farben festlegen, Breakpoints setzen. Plus die goldene Regel: committen ja, pushen nur, wenn du es wirklich willst.'
+pubDate: 2026-10-03 02:16:51+00:00
 modifiedDate: 2026-10-04
 status: published
 tags:
-  - design
-  - css
-  - cursor
-  - astro
+- design
+- css
+- cursor
+- astro
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 003: Erstes Outfit: Ubuntu, Dark Mode und ein Footer, der nicht nervt'
+  seo_description: 'Schrift, Farben und Breakpoints für hautuu festlegen. Plus die Regel: lokal committen ja, pushen nur wenn du es wirklich willst. Design Folge 003 Schritt für Schritt.'
 ---
 
 Jetzt wird’s hübsch. **Design** heißt hier: Dateien und Regeln, die der Agent pflegt, und du siehst das mit [`npm run dev`](/glossar/npm/) quasi live mit.

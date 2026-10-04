@@ -12,6 +12,8 @@ seo:
   max_snippet_enabled: false
   max_video_preview_enabled: false
   max_image_preview_enabled: false
+  seo_title: Datenschutz
+  seo_description: Informationen zur Verarbeitung personenbezogener Daten auf hautuu. Hosting, Kontakt und deine Rechte kompakt erklärt. Seite mit Noindex für Suchmaschinen.
 ---
 
 ## Verantwortlicher

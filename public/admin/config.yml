@@ -427,6 +427,7 @@ collections:
           widget: markdown,
           required: false,
         }
+      - *field_seo
 
   - name: blocks
     label: Bausteine

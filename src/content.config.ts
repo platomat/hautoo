@@ -103,6 +103,7 @@ const glossar = defineCollection({
 		relatedArticles: z.array(z.string()).default([]),
 		/** Tag slugs; same slug as glossar id is added automatically when a tag exists. */
 		relatedTags: z.array(z.string()).default([]),
+		seo: seoSchema.optional(),
 	}),
 });
 

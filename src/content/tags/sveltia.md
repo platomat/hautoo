@@ -1,5 +1,5 @@
 ---
 title: Sveltia CMS
 modifiedDate: 2026-10-04
-description: Git-basiertes Redaktions-Backend unter /admin/.
+description: 'Sveltia CMS unter /admin: PAT, Worker Login und Redaktion in Git. Alle Folgen zum browserbasierten Bearbeiten von hautuu Inhalten.'
 ---

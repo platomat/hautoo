@@ -1,16 +1,18 @@
 ---
-title: "Folge 013: /admin aufmachen: lokal ohne Passwort, online mit GitHub-Schlüssel"
-summary: "Sveltia fühlt sich wie ein Mini-CMS an, speichert aber nur Dateien. So loggst du dich ein, ohne dass jeder Hans deine Startseite umschreibt."
-pubDate: 2026-10-04T01:09:23Z
+title: 'Folge 013: /admin aufmachen: lokal ohne Passwort, online mit GitHub-Schlüssel'
+summary: Sveltia fühlt sich wie ein Mini-CMS an, speichert aber nur Dateien. So loggst du dich ein, ohne dass jeder Hans deine Startseite umschreibt.
+pubDate: 2026-10-04 01:09:23+00:00
 modifiedDate: 2026-10-05
 status: published
 tags:
-  - sveltia
-  - github
-  - cloudflare
+- sveltia
+- github
+- cloudflare
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 013: /admin aufmachen: lokal ohne Passwort, online mit GitHub-Schlüssel'
+  seo_description: Sveltia CMS lokal ohne Login und online mit GitHub Token. Folge 013 zeigt /admin, Speichern als Commit und warum dein Schlüssel wie ein Passwort ist.
 ---
 
 [**CMS**](/glossar/cms/) = Content-Management, bei hautuu **Sveltia**: Redaktion im Browser, Inhalt landet als Dateien in Git. Keine WordPress-Datenbank.

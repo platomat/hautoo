@@ -1,14 +1,16 @@
 ---
-title: "Folge 007: Merge oder Rebase: Warum die Historie manchmal lügt"
-summary: "Nach dem Zusammenführen sieht’s im Tool oft leer aus. Auf GitHub steckt trotzdem alles drin. Kurz erklärt, ohne Git-Guru-Werbung."
-pubDate: 2026-10-03T23:44:04Z
+title: 'Folge 007: Merge oder Rebase: Warum die Historie manchmal lügt'
+summary: Nach dem Zusammenführen sieht’s im Tool oft leer aus. Auf GitHub steckt trotzdem alles drin. Kurz erklärt, ohne Git-Guru-Werbung.
+pubDate: 2026-10-03 23:44:04+00:00
 modifiedDate: 2026-10-04
 status: published
 tags:
-  - github
+- github
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 007: Merge oder Rebase: Warum die Historie manchmal lügt'
+  seo_description: Nach Merge oder Rebase wirkt die Historie im Tool oft leer, auf GitHub liegt trotzdem alles. Folge 007 erklärt den Unterschied ohne Git Guru Werbung.
 ---
 
 Kurzer Nachtrag zum Experiment mit zwei Projektordnern ([Folge 006](/artikel/folge-006-git-push-pull/)).

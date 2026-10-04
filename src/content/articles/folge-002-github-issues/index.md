@@ -1,17 +1,19 @@
 ---
-title: "Folge 002: Issues statt Chaos: So behältst du die KI auf Kurs"
-summary: "Tickets, Meilensteine und ein Bild, wie Cursor, GitHub und Cloudflare zusammenspielen. Damit du nicht jeden Tag alles neu erklären musst."
-pubDate: 2026-10-03T01:35:20Z
+title: 'Folge 002: Issues statt Chaos: So behältst du die KI auf Kurs'
+summary: Tickets, Meilensteine und ein Bild, wie Cursor, GitHub und Cloudflare zusammenspielen. Damit du nicht jeden Tag alles neu erklären musst.
+pubDate: 2026-10-03 01:35:20+00:00
 modifiedDate: 2026-10-05
 status: published
 tags:
-  - github
-  - cursor
-  - cloudflare
-  - astro
+- github
+- cursor
+- cloudflare
+- astro
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 002: Issues statt Chaos: So behältst du die KI auf Kurs'
+  seo_description: GitHub Issues, Meilensteine und das Zusammenspiel von Cursor, GitHub und Cloudflare. So gibst du der KI klare Tickets statt jeden Tag alles neu zu erklären.
 ---
 
 GitHub ist nicht nur Datei-Ablage, es ist dein **Projektbüro**. [**Issues**](/glossar/issue/) sind Tickets: Bug, Idee, Feature. **Meilensteine** bündeln sie (z. B. „Version 1 (Setup)“). **Labels** helfen beim Sortieren (Documentation, Design, …).

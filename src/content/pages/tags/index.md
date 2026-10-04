@@ -10,7 +10,7 @@ backgroundAttribution: Photo by <a href="https://unsplash.com/@mischievous_pengu
 showToc: false
 tocTitle: Inhalt
 tocLevels:
-  - h2
+- h2
 seo:
   index_visibility: index
   follow_visibility: follow
@@ -23,6 +23,8 @@ seo:
   max_video_preview: -1
   max_image_preview_enabled: true
   max_image_preview: large
+  seo_title: Themen Tags der Artikel
+  seo_description: Stöbere hautuu Artikel nach Themen wie GitHub, Cloudflare oder Cursor. Jeder Tag zeigt passende Folgen und verlinkt zum Glossar, wenn es einen Eintrag gibt.
 ---
 
 Themen-Tags bündeln die Artikel nach Stichwort. Tippe auf ein Tag, um die passenden Beiträge zu sehen.

@@ -1,14 +1,16 @@
 ---
-title: "Folge 010: Zwei Chats, zwei Rollen: Erst meckern, dann fixen"
-summary: "Kein Extra-Bot nötig: ein Chat sucht Fehler, der andere räumt auf. So bleibt der Kopf frei."
-pubDate: 2026-10-04T00:14:37Z
+title: 'Folge 010: Zwei Chats, zwei Rollen: Erst meckern, dann fixen'
+summary: 'Kein Extra-Bot nötig: ein Chat sucht Fehler, der andere räumt auf. So bleibt der Kopf frei.'
+pubDate: 2026-10-04 00:14:37+00:00
 modifiedDate: 2026-10-04
 status: published
 tags:
-  - cursor
+- cursor
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 010: Zwei Chats, zwei Rollen: Erst meckern, dann fixen'
+  seo_description: 'Zwei Cursor Chats mit klaren Rollen: einer findet Probleme, der andere setzt um. Folge 010 zeigt einen einfachen Workflow ohne Extra Bot.'
 ---
 
 Ein Chat für alles wird schnell Matsch.

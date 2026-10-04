@@ -1,17 +1,19 @@
 ---
-title: "Folge 014: Lieber mit GitHub einloggen: Der Worker als Türsteher fürs CMS"
-summary: "Schluss mit Token-Zettel am Monitor: OAuth, Secrets in Cloudflare und Menüs, die du selbst zusammenklickst."
-pubDate: 2026-10-04T01:38:06Z
+title: 'Folge 014: Lieber mit GitHub einloggen: Der Worker als Türsteher fürs CMS'
+summary: 'Schluss mit Token-Zettel am Monitor: OAuth, Secrets in Cloudflare und Menüs, die du selbst zusammenklickst.'
+pubDate: 2026-10-04 01:38:06+00:00
 modifiedDate: 2026-10-05
 status: published
 tags:
-  - sveltia
-  - cloudflare
-  - github
-  - cursor
+- sveltia
+- cloudflare
+- github
+- cursor
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 014: Lieber mit GitHub einloggen: Der Worker als Türsteher fürs CMS'
+  seo_description: 'OAuth statt PAT Zettel: Cloudflare Worker als CMS Login, Secrets in Variables und Menüs im CMS. Folge 014 richtet GitHub Anmeldung für Sveltia ein.'
 ---
 
 [**PAT**](/glossar/pat/) funktioniert, aber kopieren, ablaufen, verlegen nervt (Einrichtung: [Folge 013](/artikel/folge-013-sveltia-pat/)). **Variante B:** normal bei GitHub anmelden. Dazwischen sitzt ein [**Cloudflare Worker**](/glossar/cloudflare-worker/) (kleines Programm auf Cloudflares Servern).

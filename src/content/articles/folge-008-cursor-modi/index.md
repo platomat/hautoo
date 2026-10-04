@@ -1,16 +1,18 @@
 ---
-title: "Folge 008: Ask, Agent, Plan: Wann die KI nur reden darf"
-summary: "Unterschied zwischen „bitte nichts anfassen“ und „bau mir das Burger-Menü“. Plus wo dein Chat-Schnack nicht im Repo landen soll."
-pubDate: 2026-10-03T23:48:14Z
+title: 'Folge 008: Ask, Agent, Plan: Wann die KI nur reden darf'
+summary: Unterschied zwischen „bitte nichts anfassen“ und „bau mir das Burger-Menü“. Plus wo dein Chat-Schnack nicht im Repo landen soll.
+pubDate: 2026-10-03 23:48:14+00:00
 modifiedDate: 2026-10-04
 status: published
 tags:
-  - cursor
-  - css
-  - design
+- cursor
+- css
+- design
 seo:
   index_visibility: index
   follow_visibility: follow
+  seo_title: 'Folge 008: Ask, Agent, Plan: Wann die KI nur reden darf'
+  seo_description: 'Cursor Modi Ask, Agent und Plan: wann die KI nur antwortet und wann sie Dateien ändert. Folge 008 hilft dir, Chats und Repo sauber zu trennen.'
 ---
 
 [**Cursor**](/glossar/cursor/) ist mehr als Chat, eine **IDE** (Entwicklungsumgebung) mit **Agenten**, die Dateien lesen und schreiben.
