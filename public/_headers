@@ -7,10 +7,7 @@
   Cache-Control: public, max-age=31536000, immutable
 
 # Versioned via ?v=buildId in HTML; still cache a day when param changes.
-/favicon.svg
-  Cache-Control: public, max-age=86400
-
-/favicon.ico
+/img/*
   Cache-Control: public, max-age=86400
 
 # HTML and everything else: revalidate so deploys show up quickly.

@@ -4,7 +4,7 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 
 ## Logo
 
-- **Markenzeichen:** Blatt mit Mittelrippe und Gabelnerven (Natur + Branch-Struktur), `LogoMark.astro` / `public/logo-mark.svg`
+- **Markenzeichen:** Blatt mit Mittelrippe und Gabelnerven (Natur + Branch-Struktur), `LogoMark.astro` / `public/img/logo-mark.svg`
 - **Wortmarke:** `hautuu` neben dem Mark (Header)
 - **Favicon (später):** Doppel-`u` (UU), noch nicht aktiv
 
