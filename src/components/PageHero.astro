@@ -1,0 +1,14 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description } = Astro.props;
+const lead = description?.trim();
+---
+
+<header class="page-hero">
+	<h1>{title}</h1>
+	{lead && <p class="page-hero__lead text-muted">{lead}</p>}
+</header>

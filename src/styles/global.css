@@ -212,6 +212,26 @@ body.is-nav-locked {
 	margin-bottom: 1.25rem;
 }
 
+/* Title + optional lead; spacing before body content */
+.page-hero {
+	margin-bottom: 2.5rem;
+}
+
+.page-hero h1 {
+	margin-bottom: 0.5rem;
+}
+
+.page-hero__lead {
+	margin: 0;
+	max-width: 40rem;
+	font-size: 1.05rem;
+	line-height: 1.45;
+}
+
+.page-hero:not(:has(.page-hero__lead)) h1 {
+	margin-bottom: 0;
+}
+
 /* Article / tag listing */
 .article-list {
 	display: flex;
