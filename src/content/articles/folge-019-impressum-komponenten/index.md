@@ -14,7 +14,7 @@ seo:
   follow_visibility: follow
 ---
 
-Impressum und Datenschutz für einen in **Deutschland** betriebenen Auftritt, gehostet auf [**Cloudflare**](/glossar/cloudflare-pages/), mit den Tools aus dem Projekt: das kann der Agent ausformulieren, du prüfst Inhalt und Ton. Footer-Platzierung und erste Seiten: [Folge 003](/artikel/folge-003-erstes-design/). **Kontakt-E-Mail** gehört nicht als Klartext ins öffentliche Repo.
+Impressum und Datenschutz für einen in **Deutschland** betriebenen Auftritt, gehostet auf [**Cloudflare**](/glossar/cloudflare-pages/), mit den Tools aus dem Projekt: das kann der Agent ausformulieren, du prüfst Inhalt und Ton. Footer-Platzierung und erste Seiten: [Folge 003](/artikel/folge-003-erstes-design/). **Kontakt-E-Mail** gehört nicht als Klartext ins öffentliche Repo (Baustein `{{contact-email}}`, siehe [Folge 020](/artikel/folge-020-bausteine-fork/)).
 
 ## E-Mail schützen
 
