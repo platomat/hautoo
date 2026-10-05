@@ -30,7 +30,7 @@ In der Design-Doku siehst du die Palette: dunkler Hintergrund, heller Text (nich
 ## Terminal-Kniffe
 
 - `npm run dev`. Vorschau an. Wenn Node oder npm noch fehlen: [Folge 018](/artikel/folge-018-node-npm/).
-- **Strg+C**: stoppen (im Terminal ist Strg+C nicht Kopieren!).
+- **Strg+C**: stoppen (im [Terminal](/glossar/terminal/) ist Strg+C nicht Kopieren!).
 - Pfeil **hoch**, letzter Befehl nochmal.
 
 Baut der Agent während der Server läuft, kann die Vorschau hüpfen — kurz stoppen, warten, neu starten.

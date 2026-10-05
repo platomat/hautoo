@@ -20,6 +20,8 @@ Git klingt erst nach Kauderwelsch. Wird aber easy, wenn du eine Idee akzeptierst
 
 Der Ordnername auf der Festplatte ist Git egal, zählt nur `.git` drin.
 
+Die `git …`-Beispiele unten tippst du im [Terminal](/glossar/terminal/). [**Git**](/glossar/git/) ist die [CLI](/glossar/cli/) dafür.
+
 - [`git clone`](/glossar/clone/) `<url>`, neuer Unterordner. Private Repos und SSH: [Folge 017](/artikel/folge-017-github-ssh/).
 - `git clone <url> .`. **in den aktuellen Ordner** (Punkt = hier).
 

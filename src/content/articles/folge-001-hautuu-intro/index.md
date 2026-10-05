@@ -28,7 +28,7 @@ Du legst ein [**Repository**](/glossar/repository/) an, so heißt der Projektord
 
 - **Name:** klein, Bindestriche, keine Leerzeichen (z. B. `hautuu`).
 - **Public:** Bei hautuu ist das Repo öffentlich, andere dürfen mitlesen und lernen. Alles Geheime bleibt draußen.
-- Nach dem Anlegen zeigt GitHub oft einen Block mit Befehlen (`git init`, erste Commit-Message, **remote** setzen, **push**). Einfach kopieren, Terminal auf, Enter — geht auch.
+- Nach dem Anlegen zeigt GitHub oft [CLI](/glossar/cli/)-Befehle (`git init`, erste Commit-Message, **remote** setzen, **push**). Einfach kopieren, [Terminal](/glossar/terminal/) auf, Enter — geht auch.
 
 Kurz die Wörter:
 
