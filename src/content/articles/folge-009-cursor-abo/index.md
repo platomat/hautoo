@@ -13,7 +13,7 @@ seo:
   seo_description: 'Cursor Usage verstehen: Token Verbrauch, Auto Modus und wann ein Upgrade sinnvoller ist als On Demand. Folge 009 zu Kosten und Kontrolle beim KI Coding.'
 ---
 
-KI frisst Rechenzeit. In **[Cursor](/glossar/cursor/)** im **Account** siehst du die Verbrauchs-Balken (im Screencast unter **Spending**): **Composer** / **Auto** frisst das Hauptkontingent, stärkere Modelle den zweiten Balken.
+KI frisst Rechenzeit. In **[Cursor](/glossar/cursor/)** im **Account** siehst du die Verbrauchs-Balken (unter **Spending**): **Composer** / **Auto** frisst das Hauptkontingent, stärkere Modelle den zweiten Balken.
 
 ## Die Balken verstehen
 

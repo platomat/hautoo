@@ -35,7 +35,7 @@ Speichern = Datei lokal geändert, noch **nicht** live.
 
 Ein [**PAT**](/glossar/pat/) ist ein persönlicher **Zugangsschlüssel** für [GitHub](/glossar/github/):
 
-1. [GitHub](/glossar/github/) **Settings** → **Developer settings** → **Personal access tokens** → neuen Token erzeugen (im Screencast: Beschreibung z. B. „Sveltia CMS“, Ablauf z. B. 90 Tage).
+1. [GitHub](/glossar/github/) **Settings** → **Developer settings** → **Personal access tokens** → neuen Token erzeugen (z. B. Beschreibung „Sveltia CMS“, Ablauf 90 Tage).
 2. Nur das hautuu-[Repo](/glossar/repository/) (**only select repositories**), Berechtigung **Contents: Read and write**.
 3. Token **einmal** kopieren — nach Reload unsichtbar. Weg = neuen erstellen.
 

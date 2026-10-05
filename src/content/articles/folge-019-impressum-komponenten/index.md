@@ -27,7 +27,7 @@ Impressum und Datenschutz für einen in **Deutschland** betriebenen Auftritt, ge
 
 Öffentliches [GitHub](/glossar/github/) bedeutet: jede Adresse im Code ist scrapebar. Stattdessen:
 
-- [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → dein Pages-Projekt → **Settings** → **Variables and Secrets** (im Screencast „Secrets Variables“): z. B. `CONTACT_EMAIL` als Secret ([Cloudflare Environment variables](https://developers.cloudflare.com/pages/configuration/build-configuration/#environment-variables)).
+- [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → dein Pages-Projekt → **Settings** → **Variables and Secrets**: z. B. `CONTACT_EMAIL` als Secret ([Cloudflare Environment variables](https://developers.cloudflare.com/pages/configuration/build-configuration/#environment-variables)).
 - **Lokal** dieselbe Variable in [`.env`](/glossar/env/) (liegt in `.gitignore`), z. B. `CONTACT_EMAIL=du@example.de`.
 - [Build](/glossar/build/) (`npm run build`; [Node](/glossar/nodejs/)/[npm](/glossar/npm/): [Folge 018](/artikel/folge-018-node-npm/)) und Dev-Server lesen die Variable; lokal testest du mit dem gleichen Befehl wie in Production. die Impressums-Komponente rendert einen `mailto:`-Link ohne die Adresse im [Markdown](/glossar/markdown/) zu [committen](/glossar/commit/).
 

@@ -15,6 +15,7 @@ alwaysApply: false
 - Transkripte: Fehler sinngemäß korrigieren, **nichts erfinden**; externe Fakten nur **verifiziert**, mit Quelle.
 - Artikel: `Folge nnn: <Titel>`, Slug `folge-nnn-<kurz>`, pubDate aus Aufnahmezeit, summary mit Nutzen, wenige bestehende Tags, Video leer, Quellkommentar am Ende.
 - Stil: knackig, Du-Form, laienverständlich; **keine Gedankenstriche** in Titel, Teaser, FAQ-Fragen; im Fließtext sparsam (siehe `deutsche-prosa.mdc`).
+- **Keine Video-/Screencast-Meta-Hinweise** im sichtbaren Text (Artikel/Pages/Glossar); Transkript nur im `<!-- Quelle: … -->`-Kommentar. Check: `check-content-no-video-hints.py`.
 - **Begriffe:** Zentrale Farben/Abstände im CSS als **CSS-Variablen** (`/glossar/css-variable/`), nicht „Design-Tokens“. „Token“ nur für PAT, OAuth, KI-Verbrauch (Redaktions-README, Abschnitt Begriffe).
 - Glossar anlegen/ergänzen, `relatedTags`, Cross-Links (ggf. `scripts/link-glossar-crosslinks.py`).
 - FAQ: richtige Gruppe, offen sichtbar, verlinkt; keine Accordion-Idee.

@@ -48,7 +48,7 @@ Geteilte Motive (Startseite, FAQ, Glossar): in `/admin/` die **Library** → Upl
 
 {{repodoc path="docs/sveltia/medien-variante-b.md" title="Medien — Variante B" description="Bilder neben dem Content-Eintrag und Astro image()."}}
 
-Im [CMS](/glossar/cms/): **Seiten** oder **Artikel** → Hintergrundbild in der **Library** wählen; optimierte Datei per **Replace** nachlegen (Screencast: Bild in der Library öffnen, **Replace**, Datei reinziehen). **Abdunkelung (%)** und **Bildnachweis** nicht vergessen ([Folge 019](/artikel/folge-019-impressum-komponenten/)).
+Im [CMS](/glossar/cms/): **Seiten** oder **Artikel** → Hintergrundbild in der **Library** wählen; optimierte Datei per **Replace** nachlegen (Bild in der Library öffnen, **Replace**, Datei reinziehen). **Abdunkelung (%)** und **Bildnachweis** nicht vergessen ([Folge 019](/artikel/folge-019-impressum-komponenten/)).
 
 ## Was Astro noch macht
 

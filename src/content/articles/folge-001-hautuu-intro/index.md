@@ -44,7 +44,7 @@ Kurz die Wörter:
 
 Bei einem **privaten** Repo verweigert GitHub oft den Zugriff, bis [SSH-Keys](/glossar/ssh-key/) eingerichtet sind ([Folge 017](/artikel/folge-017-github-ssh/)).
 
-Der versteckte Ordner `.git` (unter Linux z. B. **Strg+H** für versteckte Dateien, im Screencast „Steuerung H“) ist das Tagebuch des Projekts, inklusive Adresse von **[origin](/glossar/origin/)**.
+Der versteckte Ordner `.git` (unter Linux z. B. **Strg+H** für versteckte Dateien) ist das Tagebuch des Projekts, inklusive Adresse von **[origin](/glossar/origin/)**.
 
 ## Cursor: Ordner auf, Agent an
 

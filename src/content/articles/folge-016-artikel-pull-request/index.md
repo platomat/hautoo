@@ -33,7 +33,7 @@ Zwei [Commits](/glossar/commit/) sind normal: erst Anlegen der Artikel, dann Sti
 
 ## Merge und Live
 
-Grüne Checks abwarten, dann [**Merge**](/glossar/merge/) und **Confirm** (im Screencast der normale Merge-Button, kein [Rebase](/glossar/rebase/) nötig). Bei Konflikten dem Agenten die PR-Nummer nennen (z. B. „PR #24 hat Konflikte“). **[Cloudflare](/glossar/cloudflare-pages/)** baut **main** neu. Lokal: `git pull`, ggf. **Rebase**, wenn du zwischendurch selbst committet hast.
+Grüne Checks abwarten, dann [**Merge**](/glossar/merge/) und **Confirm** (der normale Merge-Button, kein [Rebase](/glossar/rebase/) nötig). Bei Konflikten dem Agenten die PR-Nummer nennen (z. B. „PR #24 hat Konflikte“). **[Cloudflare](/glossar/cloudflare-pages/)** baut **main** neu. Lokal: `git pull`, ggf. **Rebase**, wenn du zwischendurch selbst committet hast.
 
 Parallel kannst du Layout anpassen (Hero tiefer, Inhaltsbreite wie auf der Startseite). Die **Artikelübersicht** und Tag-Seiten nutzen die neuen Inhalte.
 
