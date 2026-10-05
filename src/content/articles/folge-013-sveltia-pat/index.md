@@ -15,7 +15,7 @@ seo:
   seo_description: Sveltia CMS lokal ohne Login und online mit GitHub Token. Folge 013 zeigt /admin, Speichern als Commit und warum dein Schlüssel wie ein Passwort ist.
 ---
 
-[**CMS**](/glossar/cms/) = Content-Management, bei hautuu **[Sveltia](/glossar/sveltia/)**: Redaktion im Browser, Inhalt landet als Dateien in [Git](/glossar/git/). Keine WordPress-Datenbank.
+[**CMS**](/glossar/cms/) = Content-Management, bei hautuu **[Sveltia](/glossar/sveltia/)**: Redaktion im Browser, Inhalt landet als Dateien in [Git](/glossar/git/). Keine [WordPress](/glossar/wordpress/)-Datenbank.
 
 ## Lokal: `/admin` ohne Login
 

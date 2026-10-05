@@ -10,4 +10,4 @@ seo:
   seo_description: Kopiert ein Remote-Repository auf deinen Rechner inklusive Git-Historie. Mit SSH oder HTTPS, je nachdem wie du bei GitHub authentifizierst. Mehr im Glossar auf
 ---
 
-`git clone` legt einen Ordner mit `.git` an. Mit [SSH](/glossar/ssh-key/) oder HTTPS, je nachdem wie du bei [GitHub](/glossar/github/) authentifizierst.
+`git clone` legt einen Ordner mit `.git` an. Mit [SSH](/glossar/ssh/) (SSH-Key) oder HTTPS, je nachdem wie du bei [GitHub](/glossar/github/) authentifizierst. Schlüssel einrichten: [Glossar SSH-Key](/glossar/ssh-key/), [Folge 017](/artikel/folge-017-github-ssh/).

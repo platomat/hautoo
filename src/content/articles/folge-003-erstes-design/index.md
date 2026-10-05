@@ -64,6 +64,6 @@ Logo-Issue mit Label **Design**, Favicon **blocked by** Logo, [GitHub](/glossar/
 
 Im Browser: Entwicklertools, Breite schieben (360 px = grobes iPhone-Feeling).
 
-Statische [Astro](/glossar/astro/)-Seite: wenig Angriffsfläche, keine DB, schnell. „This is the way.“
+Statische [Astro](/glossar/astro/)-Seite: wenig Angriffsfläche, keine [DB](/glossar/datenbank/), schnell. „This is the way.“
 
 <!-- Quelle: 2026-10-03--02-16-51--obs-screencast - hautoo - webseite - erstes design.txt -->
