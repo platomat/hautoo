@@ -39,7 +39,7 @@ Neue [**Komponente**](/glossar/komponente/) im Seiten-/Artikel-Editor des [**CMS
 
 ## Artikel-Listing gezielt einsetzen
 
-Statt fest verdrahteter Listen auf der Artikel-Route: Block **Artikel-Listing** im Inhalt. Beispiele aus dem Transkript:
+Statt fest verdrahteter Listen auf der [Route](/glossar/route/) **Artikel**: Block **Artikel-Listing** im Inhalt. Beispiele aus dem Transkript:
 
 - **Startseite:** letzte drei, neueste zuerst, **Grid**, drei Spalten.
 - **Seite „Artikel“:** alle Einträge (`limit` null), neueste oder älteste zuerst, **eine Spalte**, Kartenstil ähnlich Startseite oder Liste ohne Karte.

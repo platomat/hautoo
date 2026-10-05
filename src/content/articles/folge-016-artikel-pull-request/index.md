@@ -24,7 +24,7 @@ Auf [GitHub](/glossar/github/) siehst du den [**Pull Request**](/glossar/pull-re
 
 - **Zusammenfassung** mit Titeln, Slugs und Hinweisen auf unklare Transkript-Stellen.
 - **[Preview-Link](/glossar/preview-url/)** (derselbe wie in der Build-Mail): die Site, wie sie mit dem Branch aussehen würde.
-- **CI**: z. B. [`npm run build`](/glossar/build/) im Workflow. Scheitert der [Build](/glossar/build/), landet nichts Sinnvolles auf [main](/glossar/main/).
+- **CI**: z. B. [`npm run build`](/glossar/build/) im Workflow. Scheitert der [Build](/glossar/build/), landet nichts Sinnvolles auf main.
 - **Konflikt-Check**, falls parallel auf `main` etwas geändert wurde.
 
 {{repodoc path="docs/entwicklung/README.md" title="Lokale Entwicklung" description="Build, Tests und typischer PR-Ablauf lokal."}}
@@ -41,7 +41,7 @@ Parallel kannst du Layout anpassen (Hero tiefer, Inhaltsbreite wie auf der Start
 
 Auf der **Startseite** steckt ein **Artikel-Listing**: z. B. die letzten drei, neueste zuerst, **Grid** mit drei Spalten.
 
-Auf der Route **Artikel** war der Wunsch anders: nicht „erst fester Seitentext, dann automatisch alle Artikel darunter“, sondern **redaktionell** entscheiden, **wo** eine Liste hinkommt und mit welcher Sortierung/Anzahl, wie auf der Startseite. Das ist ein separates [Issue](/glossar/issue/) an den Agenten (Umsetzung u. a. in [Folge 019](/artikel/folge-019-impressum-komponenten/)).
+Auf der [Route](/glossar/route/) **Artikel** war der Wunsch anders: nicht „erst fester Seitentext, dann automatisch alle Artikel darunter“, sondern **redaktionell** entscheiden, **wo** eine Liste hinkommt und mit welcher Sortierung/Anzahl, wie auf der Startseite. Das ist ein separates [Issue](/glossar/issue/) an den Agenten (Umsetzung u. a. in [Folge 019](/artikel/folge-019-impressum-komponenten/)).
 
 ## KI-Ticks im Text
 
