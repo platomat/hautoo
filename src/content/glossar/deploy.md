@@ -10,4 +10,4 @@ seo:
   seo_description: Veröffentlicht einen Build auf einem Server, bei hautuu automatisch nach Push auf main. Preview-Deploys kommen von anderen Branches; Production zeigt die Welt
 ---
 
-[Preview-Deploys](/glossar/preview-url/) kommen von anderen [Branches](/glossar/branch/); Production zeigt die Welt deine `main`-Version.
+[Preview-Deploys](/glossar/preview-url/) kommen von anderen [Branches](/glossar/branch/); [Production](/glossar/production/) zeigt der Welt deine `main`-Version — typischer Schritt von [Continuous Deployment](/glossar/cd/) in [CI/CD](/glossar/ci-cd/). Statt Dateien per [FTP](/glossar/ftp/) hochzuladen, holt der Hoster den Stand aus [Git](/glossar/git/) und baut selbst.

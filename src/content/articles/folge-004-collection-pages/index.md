@@ -15,13 +15,13 @@ seo:
   seo_description: Pages als Markdown, Collections in Astro und SEO Felder einmal zentral pflegen. Folge 004 erklärt die CMS Struktur von hautuu für Einsteiger.
 ---
 
-Keine Datenbank, kein WordPress-Monster: **Pages** sind normale Markdown-Dateien unter `src/content/pages/`. [**Collections**](/glossar/collection/) sind die Typen: Pages, Articles, Menüs, Tags, Glossar, **Bausteine** (`blocks`). Warum Issues dafür sinnvoll sind: [Folge 002](/artikel/folge-002-github-issues/). Bausteine im Alltag: [Folge 020](/artikel/folge-020-bausteine-fork/).
+Keine [Datenbank](/glossar/datenbank/), kein [WordPress](/glossar/wordpress/)-Monster: **Pages** sind normale [Markdown](/glossar/markdown/)-Dateien unter `src/content/pages/`. [**Collections**](/glossar/collection/) sind die Typen: Pages, Articles, Menüs, Tags, Glossar, **Bausteine** (`blocks`). Warum [Issues](/glossar/issue/) dafür sinnvoll sind: [Folge 002](/artikel/folge-002-github-issues/). Bausteine im Alltag: [Folge 020](/artikel/folge-020-bausteine-fork/).
 
 ## Was `config.yml` macht
 
-In `public/admin/config.yml` steht in **YAML** (strukturierte Textdatei), was Redakteure im CMS sehen: Titel, Beschreibung, Body, …
+In `public/admin/config.yml` steht in **YAML** (strukturierte Textdatei), was Redakteure im [CMS](/glossar/cms/) sehen: Titel, Beschreibung, Body, …
 
-Früher hing das Menü an jeder Seite, bei hautuu gibt’s eine eigene **menus**-Collection. Für Pages kam hinzu:
+Früher hing das Menü an jeder Seite, bei hautuu gibt’s eine eigene **menus**-[Collection](/glossar/collection/). Für Pages kam hinzu:
 
 - **`parent`**: Verweis auf eine übergeordnete Seite → URL wie `/ueber-uns/preise/` statt flach `/preise/`.
 
@@ -32,7 +32,7 @@ Früher hing das Menü an jeder Seite, bei hautuu gibt’s eine eigene **menus**
 - Oben [**Frontmatter**](/glossar/frontmatter/) = ausgefüllte Felder.
 - Darunter **Body** = [**Markdown**](/glossar/markdown/).
 
-Du speicherst → Datei ändert sich → beim Build wird HTML. In der IDE-**Preview** siehst du ungefähr, was GitHub auch rendert.
+Du speicherst → Datei ändert sich → beim [Build](/glossar/build/) wird HTML. In der [IDE](/glossar/ide/)-**Preview** siehst du ungefähr, was [GitHub](/glossar/github/) auch rendert.
 
 ## Articles & Tags (kurz)
 
@@ -54,9 +54,8 @@ Backlog-Idee aus dem Video: optionales **Inhaltsverzeichnis** oben bei langen Te
 
 ## Editor heute, CMS morgen
 
-Jetzt tippst du Markdown oder lässt Cursor schreiben, später [**Sveltia**](/glossar/sveltia/) unter `/admin/` ([Folge 013](/artikel/folge-013-sveltia-pat/) zeigt PAT und ersten Login). Gleiche Felder, gleiche Dateien
+Jetzt tippst du Markdown oder lässt [Cursor](/glossar/cursor/) schreiben, später [**Sveltia**](/glossar/sveltia/) unter `/admin/` ([Folge 013](/artikel/folge-013-sveltia-pat/) zeigt [PAT](/glossar/pat/) und ersten Login). Gleiche Felder, gleiche Dateien, gleiche [Git](/glossar/git/)-**History**.
 
 {{repodoc path="docs/sveltia/collections.md" title="Collections (Sveltia)" description="Alle Content-Typen und CMS-Felder im Detail."}}
-, gleiche Git-**History**.
 
 <!-- Quelle: 2026-10-03--23-00-06--obs-screencast - hautoo - collection-pages.txt -->
