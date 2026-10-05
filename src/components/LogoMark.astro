@@ -1,7 +1,8 @@
 ---
 /**
  * Leaf mark: midrib + forking veins (nature + git-style branches).
- * Inherits color from parent via currentColor.
+ * `.logo-mark__ink` follows currentColor; `.logo-mark__accent` uses action green
+ * and swaps with ink on header hover (see SiteHeader).
  */
 interface Props {
 	class?: string;
@@ -30,41 +31,64 @@ const labelled = Boolean(title);
 	}
 	{/* Soft leaf body */}
 	<path
-		class="logo-mark__leaf"
+		class="logo-mark__ink logo-mark__leaf"
 		d="M16 2.2c-5.2 6.2-8.6 12-8.6 17.6 0 5.4 3.6 9.2 8.6 9.2s8.6-3.8 8.6-9.2c0-5.6-3.4-11.4-8.6-17.6Z"
-		fill="currentColor"
 		opacity="0.18"
 	/>
 	{/* Leaf outline */}
 	<path
+		class="logo-mark__ink"
 		d="M16 2.2c-5.2 6.2-8.6 12-8.6 17.6 0 5.4 3.6 9.2 8.6 9.2s8.6-3.8 8.6-9.2c0-5.6-3.4-11.4-8.6-17.6Z"
-		stroke="currentColor"
 		stroke-width="1.7"
 		stroke-linejoin="round"
 	/>
-	{/* Midrib = main line */}
+	{/* Midrib = main line (accent) */}
 	<path
+		class="logo-mark__accent"
 		d="M16 27.2V7.4"
-		stroke="currentColor"
 		stroke-width="1.7"
 		stroke-linecap="round"
 	/>
 	{/* Left fork (feature branch) */}
 	<path
+		class="logo-mark__ink"
 		d="M16 14.2c-2.6-.7-4.4-2.6-5.4-5.2"
-		stroke="currentColor"
 		stroke-width="1.55"
 		stroke-linecap="round"
 	/>
-	{/* Right fork + tip node */}
+	{/* Right fork */}
 	<path
+		class="logo-mark__ink"
 		d="M16 17.6c2.8-.4 4.8-2.4 5.8-5"
-		stroke="currentColor"
 		stroke-width="1.55"
 		stroke-linecap="round"
 	/>
 	{/* Small nodes on branch tips (commit dots) */}
-	<circle cx="10.4" cy="8.7" r="1.15" fill="currentColor" />
-	<circle cx="22" cy="12.3" r="1.15" fill="currentColor" />
-	<circle cx="16" cy="27.2" r="1.2" fill="currentColor" />
+	<circle class="logo-mark__ink" cx="10.4" cy="8.7" r="1.15" />
+	<circle class="logo-mark__ink" cx="22" cy="12.3" r="1.15" />
+	{/* Root tip node (accent, with midrib) */}
+	<circle class="logo-mark__accent" cx="16" cy="27.2" r="1.2" />
 </svg>
+
+<style>
+	.logo-mark__ink {
+		stroke: currentColor;
+		fill: none;
+	}
+
+	.logo-mark__ink.logo-mark__leaf,
+	circle.logo-mark__ink {
+		fill: currentColor;
+		stroke: none;
+	}
+
+	.logo-mark__accent {
+		stroke: var(--color-action);
+		fill: none;
+	}
+
+	circle.logo-mark__accent {
+		fill: var(--color-action);
+		stroke: none;
+	}
+</style>

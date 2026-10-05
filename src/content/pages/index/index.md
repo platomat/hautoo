@@ -9,8 +9,10 @@ backgroundAttribution: Photo by <a href="https://unsplash.com/@filipkvasnak?utm_
 showToc: false
 tocTitle: Inhalt
 tocLevels:
-- h2
+  - h2
 seo:
+  seo_title: 'hautuu: Website mit Cursor, GitHub und Cloudflare'
+  seo_description: hautuu zeigt Schritt für Schritt, wie du mit Cursor, GitHub und Cloudflare eine schnelle Website baust. Open Source, Artikel, Glossar und FAQ für Einsteiger.
   index_visibility: index
   follow_visibility: follow
   noarchive: false
@@ -22,13 +24,11 @@ seo:
   max_video_preview: -1
   max_image_preview_enabled: true
   max_image_preview: large
-  seo_title: 'hautuu: Website mit Cursor, GitHub und Cloudflare'
-  seo_description: hautuu zeigt Schritt für Schritt, wie du mit Cursor, GitHub und Cloudflare eine schnelle Website baust. Open Source, Artikel, Glossar und FAQ für Einsteiger.
 ---
 
 Willkommen bei **hautuu**.
 
-Diese Website entsteht mit [Cursor](/glossar/cursor/), wird über **[GitHub](/glossar/github/)** versioniert und auf [Cloudflare](/glossar/cloudflare-pages/) ausgeliefert. Quellcode und Inhalte liegen im öffentlichen [Repository](/glossar/repository/): [github.com/platomat/hautoo](https://github.com/platomat/hautoo/).
+Diese Website entsteht mit [Cursor](/glossar/cursor/), wird über [**GitHub**](/glossar/github/) versioniert und auf [Cloudflare](/glossar/cloudflare-pages/) ausgeliefert. Quellcode und Inhalte liegen im öffentlichen [Repository](/glossar/repository/): [github.com/platomat/hautoo](https://github.com/platomat/hautoo/).
 
 {{block id="stack-uebersicht"}}
 
@@ -36,7 +36,7 @@ Diese Website entsteht mit [Cursor](/glossar/cursor/), wird über **[GitHub](/gl
 
 ## Neuste Artikel
 
-{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25"}}
+{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25" show="title,intro,tags,date,readingTime"}}
 
 [Alle Artikel](/artikel/)
 
@@ -48,4 +48,4 @@ Diese Website entsteht mit [Cursor](/glossar/cursor/), wird über **[GitHub](/gl
 
 {{separator height="1" width="100"}}
 
-![hautoo Logo](/assets/logo-mark.svg "hautoo Logo")
+<img src="/img/logo-mark.svg" alt="hautuu Logo" width="120" />

@@ -5,10 +5,12 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 ## Logo
 
 - **Markenzeichen:** Blatt mit Mittelrippe und Gabelnerven (Natur + Branch-Struktur)
-- **Statikdatei:** `public/img/logo-mark.svg` mit weißen Konturen (`#e8eeea`, Textfarbe)
-- **Header:** `LogoMark.astro` mit `currentColor` (Hover wie die Wortmarke)
+- **Farben:** Konturen/Punkte = Ink (`#e8eeea` / Textfarbe); Mittelrippe + Wurzelpunkt = Accent (`#3dcf8e` / Aktionsgrün)
+- **Klassen:** `.logo-mark__ink` (folgt `currentColor`), `.logo-mark__accent` (Aktionsfarbe)
+- **Statikdatei:** `public/img/logo-mark.svg` (gleiche Geometrie/Farben für README und Einbettungen)
+- **Header:** `LogoMark.astro`. Initial Ink hell + Accent grün; Hover invertiert (Ink → Aktionsfarbe, Accent → Textfarbe)
 - **Wortmarke:** `hautuu` neben dem Mark (Header)
-- **Favicon:** `public/img/favicon.svg` (Blatt-Mark; dunkel bei hellem System, hell bei dunklem), Fallback `favicon.ico` (helle Kontur)
+- **Favicon:** `public/img/favicon.svg` (Ink dunkel bei hellem System, hell bei dunklem; Accent bleibt grün), Fallback `favicon.ico`
 
 ## Prinzipien
 

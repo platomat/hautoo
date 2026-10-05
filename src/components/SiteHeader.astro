@@ -149,8 +149,21 @@ function isCurrent(href: string): boolean {
 		flex-shrink: 0;
 	}
 
-	.site-header__brand:hover {
+	/* Hover/focus: ink → action (via currentColor), accent green → text white */
+	.site-header__brand:hover,
+	.site-header__brand:focus-visible {
 		color: var(--color-action-hover);
+	}
+
+	.site-header__brand:hover :global(.logo-mark__accent),
+	.site-header__brand:focus-visible :global(.logo-mark__accent) {
+		stroke: var(--color-text);
+	}
+
+	.site-header__brand:hover :global(circle.logo-mark__accent),
+	.site-header__brand:focus-visible :global(circle.logo-mark__accent) {
+		fill: var(--color-text);
+		stroke: none;
 	}
 
 	.site-header__actions {

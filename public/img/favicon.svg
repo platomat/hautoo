@@ -1,54 +1,62 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-	<!-- hautuu leaf favicon: dark contours on light UI, light on dark -->
+	<!-- hautuu leaf favicon: ink adapts to color-scheme; accent green stays -->
 	<style>
-		.leaf {
+		.ink-fill {
 			fill: #0f1412;
 			opacity: 0.18;
 		}
-		.line {
+		.ink-stroke {
 			stroke: #0f1412;
 			fill: none;
 		}
-		.dot {
+		.ink-dot {
 			fill: #0f1412;
 			stroke: none;
 		}
+		.accent-stroke {
+			stroke: #3dcf8e;
+			fill: none;
+		}
+		.accent-dot {
+			fill: #3dcf8e;
+			stroke: none;
+		}
 		@media (prefers-color-scheme: dark) {
-			.leaf {
+			.ink-fill {
 				fill: #e8eeea;
 			}
-			.line {
+			.ink-stroke {
 				stroke: #e8eeea;
 			}
-			.dot {
+			.ink-dot {
 				fill: #e8eeea;
 			}
 		}
 	</style>
 	<path
-		class="leaf"
+		class="ink-fill"
 		d="M16 2.2c-5.2 6.2-8.6 12-8.6 17.6 0 5.4 3.6 9.2 8.6 9.2s8.6-3.8 8.6-9.2c0-5.6-3.4-11.4-8.6-17.6Z"
 	/>
 	<path
-		class="line"
+		class="ink-stroke"
 		d="M16 2.2c-5.2 6.2-8.6 12-8.6 17.6 0 5.4 3.6 9.2 8.6 9.2s8.6-3.8 8.6-9.2c0-5.6-3.4-11.4-8.6-17.6Z"
 		stroke-width="1.7"
 		stroke-linejoin="round"
 	/>
-	<path class="line" d="M16 27.2V7.4" stroke-width="1.7" stroke-linecap="round" />
+	<path class="accent-stroke" d="M16 27.2V7.4" stroke-width="1.7" stroke-linecap="round" />
 	<path
-		class="line"
+		class="ink-stroke"
 		d="M16 14.2c-2.6-.7-4.4-2.6-5.4-5.2"
 		stroke-width="1.55"
 		stroke-linecap="round"
 	/>
 	<path
-		class="line"
+		class="ink-stroke"
 		d="M16 17.6c2.8-.4 4.8-2.4 5.8-5"
 		stroke-width="1.55"
 		stroke-linecap="round"
 	/>
-	<circle class="dot" cx="10.4" cy="8.7" r="1.15" />
-	<circle class="dot" cx="22" cy="12.3" r="1.15" />
-	<circle class="dot" cx="16" cy="27.2" r="1.2" />
+	<circle class="ink-dot" cx="10.4" cy="8.7" r="1.15" />
+	<circle class="ink-dot" cx="22" cy="12.3" r="1.15" />
+	<circle class="accent-dot" cx="16" cy="27.2" r="1.2" />
 </svg>
