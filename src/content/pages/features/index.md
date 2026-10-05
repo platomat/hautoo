@@ -20,7 +20,7 @@ seo:
   max_image_preview_enabled: true
   max_image_preview: large
   seo_title: Features von hautuu
-  seo_description: "Was auf hautoo.storyofai.net steht: 21 Folgen, Sveltia CMS, Glossar mit Querverweisen, Embeds, SEO, Bildnachweise und Cloudflare Deploy."
+  seo_description: "Was auf hautoo.storyofai.net steht: 21 Folgen, Sveltia CMS mit Config, Sticky Header, Glossar, Embeds, SEO und Cloudflare Deploy."
 ---
 
 Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches Repo auf `main`). Details zu Begriffen im [**Glossar**](/glossar/), Antworten in der [**FAQ**](/faq/), Schritt für Schritt in den [**Artikeln**](/artikel/).
@@ -36,9 +36,10 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches Repo a
 
 - **Sveltia CMS** unter `/admin/`: Inhalte im Browser bearbeiten, Speichern landet als Dateien in [Git](/glossar/git/) ([Glossar CMS](/glossar/cms/), [Folge 013](/artikel/folge-013-sveltia-pat/)).
 - **Collections** für Pages, Articles, Tags, Glossar, Menüs und **Bausteine** (`blocks`) ohne eigene URL.
+- **Config-Collection** (`config`): globale Site-Einstellungen als YAML (`site.yaml`), kein Markdown. Gruppen **Design** und **Content** im CMS.
 - **Menüs** als eigene Collection (`main`, `footer-legal`) statt Flags an einzelnen Seiten.
 - **Entwurfsstatus** (`draft`, `published`, `future`, `trash`) für Pages, Artikel und Glossar.
-- **Inhaltsverzeichnis** global in der Config und optional pro Seite/Artikel überschreibbar.
+- **Inhaltsverzeichnis** global unter Content → TOC (Seiten/Artikel: an/aus, Ebenen, Titel) und optional pro Eintrag überschreibbar.
 - **Seiten-Header und Footer-Code** für kleine HTML- oder CSS-Snippets nur auf einer Seite.
 - **Zugang über Cloudflare Worker** mit [OAuth](/glossar/oauth/) statt nur PAT ([Folge 014](/artikel/folge-014-sveltia-worker/)).
 
@@ -73,6 +74,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches Repo a
 
 - **Suche im Header** (MiniSearch): statischer Suchindex beim Build, Treffer zu Artikeln, Glossar und Seiten.
 - **Dark Theme** mit [CSS-Variablen](/glossar/css-variable/), Ubuntu-Schrift, responsive Header mit Mobile-Menü.
+- **Sticky Header** pro Breakpoint ein/aus und Leistenhöhe in px, gesteuert über Config → Design → Header.
 - **Breakpoints** und gemeinsame Layout-Hilfsklassen ([docs/design](https://github.com/platomat/hautoo/blob/main/docs/design/README.md)).
 - **Vollbild-Hintergrund** optional pro Seite oder Artikel, mit Overlay und **Bildnachweis**-Feld (`backgroundAttribution`).
 - **Bildnachweise gesammelt** am Ende des **Impressums** (automatisch aus Pages und Artikeln, [Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum)).
