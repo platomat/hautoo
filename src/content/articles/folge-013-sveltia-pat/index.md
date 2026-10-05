@@ -15,7 +15,7 @@ seo:
   seo_description: Sveltia CMS lokal ohne Login und online mit GitHub Token. Folge 013 zeigt /admin, Speichern als Commit und warum dein Schlüssel wie ein Passwort ist.
 ---
 
-[**CMS**](/glossar/cms/) = Content-Management, bei hautuu **[Sveltia](/glossar/sveltia/)**: Redaktion im Browser, Inhalt landet als Dateien in [Git](/glossar/git/). Keine WordPress-Datenbank.
+[**CMS**](/glossar/cms/) = Content-Management, bei hautuu **[Sveltia](/glossar/sveltia/)**: Redaktion im Browser, Inhalt landet als Dateien in [Git](/glossar/git/). Keine [WordPress](/glossar/wordpress/)-Datenbank.
 
 ## Lokal: `/admin` ohne Login
 
@@ -41,7 +41,7 @@ Ein [**PAT**](/glossar/pat/) ist ein persönlicher **Zugangsschlüssel** für [G
 4. Ablauf setzen (z. B. 90 Tage). Schlüssel rotieren.
 5. Token **einmal** kopieren — danach unsichtbar. Weg = neuen erstellen.
 
-In Sveltia: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar/commit/) auf GitHub → [Cloudflare](/glossar/cloudflare-pages/) baut (`main`).
+In Sveltia: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar/commit/) auf GitHub → [Cloudflare](/glossar/cloudflare-pages/) baut [`main`](/glossar/main/).
 
 **Token = Passwort.** Nicht ins Repo, nicht im Video zeigen.
 

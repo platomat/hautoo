@@ -49,7 +49,7 @@ Nein im klassischen Sinn. Du beschreibst Ziele in normaler Sprache, der Agent ä
 
 ### Was ist der Unterschied zu WordPress?
 
-hautuu ist **statisch**: keine Datenbank auf dem Server, Inhalte liegen als Dateien in [Git](/glossar/git/). [**Astro**](/glossar/astro/) erzeugt HTML beim [**Build**](/glossar/build/). [Folge 002](/artikel/folge-002-github-issues/).
+hautuu ist **statisch**: keine [Datenbank](/glossar/datenbank/) auf dem Server, Inhalte liegen als Dateien in [Git](/glossar/git/). [**Astro**](/glossar/astro/) erzeugt HTML beim [**Build**](/glossar/build/). [Folge 002](/artikel/folge-002-github-issues/).
 
 ### Was heißt „statische Website“?
 
@@ -57,7 +57,7 @@ Fertige HTML-Seiten werden ausgeliefert, nicht bei jedem Klick neu aus einer Dat
 
 ### Was ist der Unterschied zwischen Frontend und Backend?
 
-**[Frontend](/glossar/frontend/)** sehen Besucher (gebautes HTML/CSS). Das [**Backend**](/glossar/backend/) ist bei hautuu vor allem Speicher (GitHub), Redaktion (`/admin/`) und optional der [**Worker**](/glossar/cloudflare-worker/) für [OAuth](/glossar/oauth/), keine WordPress-Datenbank. [Folge 002](/artikel/folge-002-github-issues/), [Folge 014](/artikel/folge-014-sveltia-worker/).
+**[Frontend](/glossar/frontend/)** sehen Besucher (gebautes HTML/CSS). Das [**Backend**](/glossar/backend/) ist bei hautuu vor allem Speicher (GitHub), Redaktion (`/admin/`) und optional der [**Worker**](/glossar/cloudflare-worker/) für [OAuth](/glossar/oauth/), keine [WordPress](/glossar/wordpress/)-Datenbank. [Folge 002](/artikel/folge-002-github-issues/), [Folge 014](/artikel/folge-014-sveltia-worker/).
 
 ### Hat meine Seite überhaupt ein Backend?
 
@@ -89,11 +89,11 @@ Nein. Cloudflare **hostet** die gebaute Site; du pflegst Code und Inhalte in Git
 
 ### Welchen Rechner und welches Betriebssystem brauche ich?
 
-In den Folgen: **Linux** oder **Mac** (ähnliche Pfade für Terminal und [SSH](/glossar/ssh-key/)). Windows geht mit angepassten Tools, im Projekt liegt der Fokus auf Linux/Mac. [Folge 017](/artikel/folge-017-github-ssh/), [Folge 018](/artikel/folge-018-node-npm/).
+In den Folgen: **Linux** oder **Mac** (ähnliche Pfade für Terminal und [SSH](/glossar/ssh/)). Windows geht mit angepassten Tools, im Projekt liegt der Fokus auf Linux/Mac. [Folge 017](/artikel/folge-017-github-ssh/), [Folge 018](/artikel/folge-018-node-npm/).
 
 ### Brauche ich eine virtuelle Maschine?
 
-Optional. Manche nutzen eine VM für Experimente oder [Cloud Agents](/glossar/cloud-agent/); du kannst aber auch direkt auf deinem Rechner starten. [Folge 009](/artikel/folge-009-cursor-abo/).
+Optional. Manche nutzen eine [VM](/glossar/vm/) für Experimente oder [Cloud Agents](/glossar/cloud-agent/); du kannst aber auch direkt auf deinem Rechner starten. [Folge 009](/artikel/folge-009-cursor-abo/), [Folge 015](/artikel/folge-015-transkript-artikel/).
 
 ### Welche Accounts muss ich anlegen?
 
@@ -185,7 +185,7 @@ GitHub ist oft neuer als dein Ordner. Erst [**pullen**](/glossar/pull/), Konflik
 
 ### Was ist ein Pull Request?
 
-Vorschlag, einen [**Branch**](/glossar/branch/) in `main` (oder anders) zu [merge](/glossar/merge/)n, mit Checks. [Glossar Pull Request](/glossar/pull-request/), [Folge 016](/artikel/folge-016-artikel-pull-request/).
+Vorschlag, einen [**Branch**](/glossar/branch/) in [`main`](/glossar/main/) (oder anders) zu [merge](/glossar/merge/)n, mit Checks. [Glossar Pull Request](/glossar/pull-request/), [Folge 016](/artikel/folge-016-artikel-pull-request/).
 
 ### Was ist `main`?
 
@@ -270,6 +270,10 @@ Ja. Issue beschreibt die Aufgabe dauerhaft auf GitHub. [Folge 002](/artikel/folg
 ### Was macht Cloudflare Pages hier?
 
 Baut nach Git-[Push](/glossar/push/) (`npm run build`, Output `dist`) und hostet die Site. [Folge 011](/artikel/folge-011-cloudflare-setup/).
+
+### Brauche ich FTP für hautuu?
+
+Nein. Du brauchst keinen [FTP](/glossar/ftp/)-Zugang zum Hochladen von Dateien. Du committest und pushst zu GitHub; [Cloudflare Pages](/glossar/cloudflare-pages/) holt den Stand und baut. Details im Glossar-Eintrag „FTP“, Kontext [Folge 012](/artikel/folge-012-cloudflare-branches/).
 
 ### Was ist eine Preview-URL?
 

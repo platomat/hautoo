@@ -38,7 +38,7 @@ In [Commit](/glossar/commit/)-Messages kannst du Issues erwähnen (`Fixes #1`, `
 2. [**GitHub**](/glossar/github/): Quelle der Wahrheit.
 3. [**Cloudflare**](/glossar/cloudflare-pages/): merkt Änderungen, [**baut**](/glossar/build/) mit [Astro](/glossar/astro/).
 4. [**Sveltia**](/glossar/sveltia/): später: Tippfehler im Browser fixen, landet wieder in [Git](/glossar/git/).
-5. [**Astro**](/glossar/astro/): macht schnelle statische Seiten ([**Frontend**](/glossar/frontend/)), kein WordPress, keine Datenbank auf dem Server.
+5. [**Astro**](/glossar/astro/): macht schnelle statische Seiten ([**Frontend**](/glossar/frontend/)), kein [WordPress](/glossar/wordpress/), keine [Datenbank](/glossar/datenbank/) auf dem Server.
 
 [Cloudflare](/glossar/cloudflare-pages/) richtest du Schritt für Schritt in [Folge 011](/artikel/folge-011-cloudflare-setup/) ein. [Sveltia](/glossar/sveltia/) und [PAT](/glossar/pat/)/Login: [Folge 013](/artikel/folge-013-sveltia-pat/).
 

@@ -57,7 +57,7 @@ Host github.com
 
 ## Key bei GitHub
 
-**Settings** auf [**GitHub**](/glossar/github/) → **[SSH](/glossar/ssh-key/) and GPG keys** → **New SSH key**. Titel (z. B. „Lab-Test“), Inhalt = komplette `.pub`-Datei (beginnt oft mit `ssh-ed25519` oder `ssh-rsa`). **Private** Keys beginnen mit `BEGIN OPENSSH PRIVATE KEY`, die gehören nicht nach GitHub.
+**Settings** auf [**GitHub**](/glossar/github/) → **[SSH](/glossar/ssh/) and GPG keys** → **New SSH key**. Titel (z. B. „Lab-Test“), Inhalt = komplette `.pub`-Datei (beginnt oft mit `ssh-ed25519` oder `ssh-rsa`). **Private** Keys beginnen mit `BEGIN OPENSSH PRIVATE KEY`, die gehören nicht nach GitHub.
 
 Test:
 
