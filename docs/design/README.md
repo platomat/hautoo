@@ -165,7 +165,7 @@ Beliebig kombinieren, statt Flex-CSS in jeder Komponente neu zu schreiben:
 | `.page--wide` / `.page--with-sidebar` | breitere Inhaltsbreite (`--content-wide-max-width`, 64rem) |
 | `.page-layout` / `.page-layout__main` | Flex-Zeile Inhalt/Sidebar (mit `.stack-on-tablet`) |
 | `.hero` / `.page-hero` | Titelblock überall (`PageHero.astro`: `h1` + optionale Beschreibung, Abstand zum Inhalt) |
-| `.separator` | Dezente Trennlinie (`Separator.astro` / CMS `{{separator height width}}`) |
+| `.separator` | Dezente Trennlinie (`Separator.astro` / CMS `{{separator height width color}}`; Default-Farbe `border`) |
 | `.article-list` | Artikelliste (Titel, Summary, Datum) |
 
 Beispiel: `class="flex-row flex-between stack-on-mobile center-on-mobile"`

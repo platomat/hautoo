@@ -6,6 +6,11 @@ import { hastCmsAssets } from "./hast-cms-assets";
 import { hastExternalLinks } from "./hast-external-links";
 import type { TagSort } from "./tags";
 import { parseRepoDocProps, type RepoDocEmbedProps } from "./repodoc";
+import {
+	DEFAULT_SEPARATOR_COLOR,
+	resolveSeparatorColor,
+	type SeparatorColor,
+} from "./separator";
 import type { VideoProvider } from "./video";
 import { normalizeVideoId } from "./video";
 
@@ -57,6 +62,8 @@ export type SeparatorEmbedProps = {
 	height: number;
 	/** Width in percent of the content column. */
 	width: number;
+	/** Design-token color (default border). */
+	color: SeparatorColor;
 };
 
 export type VideoEmbedProps = {
@@ -129,6 +136,7 @@ const DEFAULT_TAG_LISTING: TagListingEmbedProps = {
 const DEFAULT_SEPARATOR: SeparatorEmbedProps = {
 	height: 1,
 	width: 100,
+	color: DEFAULT_SEPARATOR_COLOR,
 };
 
 /** Line must be only the embed (optional attrs). */
@@ -331,6 +339,7 @@ export function parseSeparatorProps(
 			1,
 			100,
 		),
+		color: resolveSeparatorColor(attrs.color),
 	};
 }
 

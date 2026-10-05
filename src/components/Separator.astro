@@ -1,17 +1,34 @@
 ---
+import {
+	DEFAULT_SEPARATOR_COLOR,
+	resolveSeparatorColor,
+	SEPARATOR_COLOR_CSS,
+	type SeparatorColor,
+} from "../lib/separator";
+
 interface Props {
 	/** Line thickness in px. */
 	height?: number;
 	/** Width as percent of content column (1–100). */
 	width?: number;
+	/** Design-token color (default: border, current line color). */
+	color?: SeparatorColor | string;
 }
 
-const { height = 1, width = 100 } = Astro.props;
+const {
+	height = 1,
+	width = 100,
+	color = DEFAULT_SEPARATOR_COLOR,
+} = Astro.props;
 const heightPx = Math.min(24, Math.max(1, height));
 const widthPct = Math.min(100, Math.max(1, width));
+const colorKey = resolveSeparatorColor(
+	typeof color === "string" ? color : DEFAULT_SEPARATOR_COLOR,
+);
+const colorCss = SEPARATOR_COLOR_CSS[colorKey];
 ---
 
 <hr
 	class="separator"
-	style={`--separator-height: ${heightPx}px; --separator-width: ${widthPct}%`}
+	style={`--separator-height: ${heightPx}px; --separator-width: ${widthPct}%; --separator-color: ${colorCss}`}
 />

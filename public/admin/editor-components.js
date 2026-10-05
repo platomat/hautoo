@@ -467,6 +467,19 @@
 			'<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Button: Video-Freischaltung widerrufen</div>',
 	});
 
+	const SEPARATOR_COLORS = {
+		border: "#2e3833",
+		text: "#e8eeea",
+		"text-muted": "#9aa89f",
+		action: "#3dcf8e",
+		"action-hover": "#56d9a0",
+		"action-muted": "#1a3d2e",
+		surface: "#1a211e",
+		"surface-raised": "#232b27",
+		bg: "#0f1412",
+		danger: "#e57373",
+	};
+
 	CMS.registerEditorComponent({
 		id: "separator",
 		label: "Trennlinie",
@@ -491,6 +504,25 @@
 				max: 100,
 				hint: "Prozent der Inhaltsbreite; zentriert.",
 			},
+			{
+				name: "color",
+				label: "Farbe",
+				widget: "select",
+				default: "border",
+				options: [
+					{ label: "Rahmen (Standard)", value: "border" },
+					{ label: "Text", value: "text" },
+					{ label: "Text gedämpft", value: "text-muted" },
+					{ label: "Aktion", value: "action" },
+					{ label: "Aktion Hover", value: "action-hover" },
+					{ label: "Aktion gedämpft", value: "action-muted" },
+					{ label: "Fläche", value: "surface" },
+					{ label: "Fläche angehoben", value: "surface-raised" },
+					{ label: "Hintergrund", value: "bg" },
+					{ label: "Danger", value: "danger" },
+				],
+				hint: "Design-Token aus der Palette. Standard = aktuelle Linienfarbe (border).",
+			},
 		],
 		pattern: /^\{\{separator(?<attrs>[^}]*)\}\}\s*$/m,
 		fromBlock: (match) => {
@@ -498,11 +530,17 @@
 			return {
 				height: attrs.height || "1",
 				width: (attrs.width || "100").replace(/%$/, ""),
+				color: attrs.color || "border",
 			};
 		},
-		toBlock: ({ height = 1, width = 100 }) =>
-			`{{separator height="${height}" width="${width}"}}`,
-		toPreview: ({ height = 1, width = 100 }) =>
-			`<hr style="display:block;border:0;background:#2e3833;opacity:.65;height:${height}px;width:${width}%;margin:1.25rem auto">`,
+		toBlock: ({ height = 1, width = 100, color = "border" }) => {
+			const parts = [`height="${height}"`, `width="${width}"`];
+			if (color && color !== "border") parts.push(`color="${color}"`);
+			return `{{separator ${parts.join(" ")}}}`;
+		},
+		toPreview: ({ height = 1, width = 100, color = "border" }) => {
+			const bg = SEPARATOR_COLORS[color] || SEPARATOR_COLORS.border;
+			return `<hr style="display:block;border:0;background:${bg};opacity:.65;height:${height}px;width:${width}%;margin:1.25rem auto">`;
+		},
 	});
 })();
