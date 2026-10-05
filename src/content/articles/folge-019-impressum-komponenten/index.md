@@ -2,7 +2,7 @@
 title: 'Folge 019: Impressum, Datenschutz, ENV und CMS-Komponenten'
 summary: Rechtstexte per Agent, Kontakt-E-Mail als Secret, Separator und Artikel-Listing redaktionell, Glossar-Seite im Aufbau.
 pubDate: 2026-10-04 20:57:40+00:00
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-06
 status: published
 tags:
 - astro
@@ -39,12 +39,12 @@ Neue [**Komponente**](/glossar/komponente/) im Seiten-/Artikel-Editor des [**CMS
 
 ## Artikel-Listing gezielt einsetzen
 
-Statt fest verdrahteter Listen auf der [Route](/glossar/route/) **Artikel**: Block **Artikel-Listing** im Inhalt. Beispiele aus dem Transkript:
+Statt fest verdrahteter Listen auf der [Route](/glossar/route/) **Artikel**: Block **Artikel-Listing** im Inhalt. Beispiele:
 
 - **Startseite:** letzte drei, neueste zuerst, **Grid**, drei Spalten.
 - **Seite „Artikel“:** alle Einträge (`limit` null), neueste oder älteste zuerst, **eine Spalte**, Kartenstil ähnlich Startseite oder Liste ohne Karte.
 
-Im [CMS](/glossar/cms/) explizit sagen, in welcher [**Collection**](/glossar/collection/) (Seiten vs. Artikel vs. Glossar) der Block verfügbar sein soll ([Folge 004](/artikel/folge-004-collection-pages/) erklärt das Modell).
+Sag dem [**Cloud Agent**](/glossar/cloud-agent/) explizit, in welcher [**Collection**](/glossar/collection/) (Seiten, Artikel oder Glossar) der Block verfügbar sein soll. Er verdrahtet ihn dann passend im CMS ([Folge 004](/artikel/folge-004-collection-pages/) erklärt das Modell).
 
 ## Glossar und Bilder
 
@@ -52,6 +52,6 @@ Glossar-Begriffe können vom Agenten vorbefüllt werden; **Glossar-Listing** auf
 
 ## Text-Stil nachziehen
 
-Nach dem großen Artikel-Import ([Folge 016](/artikel/folge-016-artikel-pull-request/)): [Issue](/glossar/issue/) an den Agenten, **Gedankenstriche** in der Prosa zu reduzieren (im Transkript: grob von sehr vielen auf wenige siteweit). Rechtstexte: unnötige Standard-Abschnitte raus, wenn sie nicht zum Setup passen.
+Nach dem großen Artikel-Import ([Folge 016](/artikel/folge-016-artikel-pull-request/)): [Issue](/glossar/issue/) an den Agenten, **Gedankenstriche** in der Prosa zu reduzieren (grob von sehr vielen auf wenige siteweit). Rechtstexte: unnötige Standard-Abschnitte raus, wenn sie nicht zum Setup passen.
 
 <!-- Quelle: 2026-10-04--20-57-40--obs-screencast - hautoo - 019 - inhalt, impressum, datenschutz, [komponenten](/glossar/komponente/).txt -->
