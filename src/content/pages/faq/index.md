@@ -481,7 +481,7 @@ Oft **noindex** für Impressum/Datenschutz. [Folge 004](/artikel/folge-004-colle
 
 ### Bildnachweise?
 
-Feld **`backgroundAttribution`** im CMS; gesammelte Credits auf dem Impressum. [Glossar Bildnachweis](/glossar/bildnachweis/), [Folge 019](/artikel/folge-019-impressum-komponenten/), [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/).
+Feld **`backgroundAttribution`** im CMS; gesammelte Credits auf dem Impressum. [Glossar Bildnachweis](/glossar/bildnachweis/), [Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum), [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/).
 
 ### KI-generierte Rechtstexte ungeprüft übernehmen?
 
