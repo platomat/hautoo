@@ -8,4 +8,4 @@ seo:
   seo_description: Konfiguration außerhalb des Codes, z. B. Kontakt-E-Mail in .env oder Cloudflare Secrets. Production-Werte trägst du in Cloudflare Variables and Secrets ein.
 ---
 
-`.env` ist lokal und steht in .gitignore. Production-Werte trägst du in [Cloudflare](/glossar/cloudflare-pages/) Variables and Secrets ein.
+`.env` ist lokal und steht in .gitignore. [Production](/glossar/production/)-Werte trägst du in [Cloudflare](/glossar/cloudflare-pages/) Variables and Secrets ein.

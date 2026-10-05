@@ -15,11 +15,11 @@ seo:
   seo_description: 'OBS Transkript und Cloud Agent: über Nacht Artikel aus Screencasts als Pull Request. Folge 015 beschreibt den Ablauf von Rohtext bis Review auf hautuu.'
 ---
 
-Du nimmst den Screencast auf, die **Speech-to-Text**-Software hört mit und liefert Rohtext. Den packst du zusammen mit der Aufnahme in einen Ordner auf deiner **virtuellen Maschine** und gibst dem [**Cloud Agent**](/glossar/cloud-agent/) in Cursor eine klare Aufgabe: aus jedem Video **einen Artikel**, Beispielinhalt weg, Platzhalter fürs spätere Video, alles als [**Pull Request**](/glossar/pull-request/), damit du vor dem Live-Gang drüber schauen kannst.
+Du nimmst den Screencast auf, die **Speech-to-Text**-Software hört mit und liefert Rohtext. Den packst du zusammen mit der Aufnahme in einen Ordner auf deiner **virtuellen Maschine** und gibst dem [**Cloud Agent**](/glossar/cloud-agent/) in [Cursor](/glossar/cursor/) eine klare Aufgabe: aus jedem Video **einen Artikel**, Beispielinhalt weg, Platzhalter fürs spätere Video, alles als [**Pull Request**](/glossar/pull-request/), damit du vor dem Live-Gang drüber schauen kannst.
 
 ## Was die Site schon kann
 
-Zwischen den Sessions ist viel passiert: **Menüs** als Collection, **Artikel** in einer Übersicht, **Seiten** mit optionalem **Hintergrundbild** und Lesbarkeits-Overlay (Motiv suchen und optimieren: [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/)). Im CMS fügst du Blöcke ein wie ein Schlagwort, z. B. **Artikel-Listing** (Anzahl und Sortierung konfigurierbar). Später kommen wiederverwendbare **Bausteine** für Grafiken und Snippets dazu ([Folge 020](/artikel/folge-020-bausteine-fork/)). Credits für Bilder von **Unsplash** mit Attribution sind vorgesehen. Status **veröffentlicht** vs. Entwurf steuert, was live geht.
+Zwischen den Sessions ist viel passiert: **Menüs** als [Collection](/glossar/collection/), **Artikel** in einer Übersicht, **Seiten** mit optionalem **Hintergrundbild** und Lesbarkeits-Overlay (Motiv suchen und optimieren: [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/)). Im [CMS](/glossar/cms/) fügst du Blöcke ein wie ein Schlagwort, z. B. **Artikel-Listing** (Anzahl und Sortierung konfigurierbar). Später kommen wiederverwendbare **Bausteine** für Grafiken und Snippets dazu ([Folge 020](/artikel/folge-020-bausteine-fork/)). Credits für Bilder von **Unsplash** mit Attribution sind vorgesehen. Status **veröffentlicht** vs. Entwurf steuert, was live geht.
 
 {{repodoc path="docs/inhalte/README.md" title="Inhalte der Website" description="Collections, Medienablage und Embeds."}}
 
@@ -27,18 +27,18 @@ Zwischen den Sessions ist viel passiert: **Menüs** als Collection, **Artikel** 
 
 ## Agent starten
 
-Zuerst prüfen, ob [**Cursor**](/glossar/cursor/) Zugriff auf das [**Repository**](/glossar/repository/) hat. Fehlt der, in den Cursor-Einstellungen nach dem How-To für GitHub/OAuth schauen. Private Repos und SSH-Keys: [Folge 017](/artikel/folge-017-github-ssh/).
+Zuerst prüfen, ob [**Cursor**](/glossar/cursor/) Zugriff auf das [**Repository**](/glossar/repository/) hat. Fehlt der, in den Cursor-Einstellungen nach dem How-To für [GitHub](/glossar/github/)/[OAuth](/glossar/oauth/) schauen. Private Repos und [SSH-Keys](/glossar/ssh-key/): [Folge 017](/artikel/folge-017-github-ssh/).
 
-Dann die Anweisung: Ordner mit Transkripten anhängen oder benennen, **pro Video ein Artikel**, Beispielartikel löschen, **Video-Platzhalter** im Frontmatter oder Body vorsehen, **kein direkter Push auf main**, sondern Branch und PR.
+Dann die Anweisung: Ordner mit Transkripten anhängen oder benennen, **pro Video ein Artikel**, Beispielartikel löschen, **Video-Platzhalter** im [Frontmatter](/glossar/frontmatter/) oder Body vorsehen, **kein direkter [Push](/glossar/push/) auf [main](/glossar/main/)**, sondern [Branch](/glossar/branch/) und PR.
 
-Der **Cloud Agent** läuft auf Cursors Infrastruktur. Du kannst den Rechner zuklappen, später Nachrichten nachschieben („mach noch …“) und morgens den Stand in GitHub lesen.
+Der **[Cloud Agent](/glossar/cloud-agent/)** läuft auf Cursors Infrastruktur. Du kannst den Rechner zuklappen, später Nachrichten nachschieben („mach noch …“) und morgens den Stand in GitHub lesen.
 
 ## Typische Stolpersteine
 
-- Agent „sieht“ das Repo nicht: Berechtigung in Cursor/GitHub nachziehen.
+- Agent „sieht“ das [Repo](/glossar/repository/) nicht: Berechtigung in Cursor/GitHub nachziehen.
 - Transkripte sind holprig (Fachwörter, OBS, Produktnamen): im PR steht oft eine Liste **unsicherer Stellen** zum Nachbearbeiten.
 - Inhalt vor Optik: Erst Artikel generieren, Feintuning an Abständen und Hero später.
 
-Wenn der PR da ist, gehst du den Review-Weg (Preview, Checks, Merge) wie in [Folge 016](/artikel/folge-016-artikel-pull-request/).
+Wenn der PR da ist, gehst du den Review-Weg (Preview, Checks, [Merge](/glossar/merge/)) wie in [Folge 016](/artikel/folge-016-artikel-pull-request/).
 
 <!-- Quelle: 2026-10-04--04-29-47--obs-screencast - hautoo - 015 - transkript - artikel.txt -->

@@ -29,13 +29,13 @@ E-Mail:
 
 ## Überblick
 
-Diese Website ist eine **statische** Website (HTML/CSS/Assets). Es gibt kein eigenes Nutzerkonto für Besucher und derzeit **kein** eigenes Analyse- oder Tracking-Tool (kein Google Analytics o. Ä.) und **keinen** Cookie-Banner für optionale Marketing-Cookies.
+Diese Website ist eine **statische** Website (HTML/[CSS](/glossar/css/)/Assets). Es gibt kein eigenes Nutzerkonto für Besucher und derzeit **kein** eigenes Analyse- oder Tracking-Tool (kein Google Analytics o. Ä.) und **keinen** Cookie-Banner für optionale Marketing-Cookies.
 
 Personenbezogene Daten fallen vor allem dort an, wo Technik Dritter unvermeidbar ist (Hosting, bei eingebetteten Videos) oder wenn du uns selbst kontaktierst.
 
 ## Hosting (Cloudflare)
 
-Die Website wird über **Cloudflare Pages** ausgeliefert. Dabei können technisch erforderliche Verbindungsdaten verarbeitet werden, insbesondere:
+Die Website wird über **[Cloudflare Pages](/glossar/cloudflare-pages/)** ausgeliefert. Dabei können technisch erforderliche Verbindungsdaten verarbeitet werden, insbesondere:
 
 - IP-Adresse
 - Datum und Uhrzeit der Anfrage
@@ -63,7 +63,7 @@ Anbieter:
 
 ## Externe Links
 
-Links zu anderen Websites (z. B. GitHub, Unsplash) führen zu Angeboten Dritter. Für deren Datenschutz gelten die jeweiligen Erklärungen der Anbieter. Beim Folgen eines Links verlassen Sie unsere Website.
+Links zu anderen Websites (z. B. [GitHub](/glossar/github/), Unsplash) führen zu Angeboten Dritter. Für deren Datenschutz gelten die jeweiligen Erklärungen der Anbieter. Beim Folgen eines Links verlassen Sie unsere Website.
 
 ## Kontakt per E-Mail
 
