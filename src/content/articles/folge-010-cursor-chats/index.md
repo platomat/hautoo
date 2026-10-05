@@ -17,7 +17,7 @@ Ein Chat für alles wird schnell Matsch.
 
 ## Inspector und Fixer
 
-Gleicher Trick wie mit zwei Spezial-Agenten in einer VM, nur in [**Cursor**](/glossar/cursor/):
+Gleicher Trick wie mit zwei Spezial-Agenten in einer VM, nur in der [IDE](/glossar/ide/) [**Cursor**](/glossar/cursor/):
 
 {{repodoc path="docs/cursor/README.md" title="Cursor (KI)" description="Chats, Rollen und saubere Trennung von Aufgaben."}}
 

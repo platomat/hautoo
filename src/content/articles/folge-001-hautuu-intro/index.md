@@ -51,7 +51,7 @@ Der versteckte Ordner `.git` (unter Linux oft mit Strg+H sichtbar) ist das Tageb
 {{repodoc path="docs/cursor/README.md" title="Cursor (KI)" description="IDE, Agenten und typische Workflows im Projekt."}}
 
 
-**Open Folder**, dein geklonter Ordner. Typischer Start:
+**Open Folder**, dein geklonter Ordner. In dieser [IDE](/glossar/ide/) startest du typischerweise so:
 
 - `docs/` für Dokumentation.
 - Dem [**Agenten**](/glossar/cursor-modi/) erzählen, was das Projekt ist (Ask, Agent, Plan: [Folge 008](/artikel/folge-008-cursor-modi/)): Lern-Website mit **KI**, **GitHub**, **Cloudflare**; statische Astro-Seiten; Artikel mit Bildern und eingebetteten Videos (YouTube/Vimeo); Glossar; später [**CMS**](/glossar/cms/) ([**Sveltia**](/glossar/sveltia/). Redaktion im Browser, speichert trotzdem in Git; Setup in [Folge 013](/artikel/folge-013-sveltia-pat/)).
