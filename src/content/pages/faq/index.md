@@ -123,9 +123,13 @@ Cursor-Abos enthalten Kontingente; stärkere Modelle und **Cloud Agents** verbra
 
 ## Terminal und Rechner
 
-### Was ist ein Terminal?
+### Was ist ein Terminal und brauche ich das?
 
-Ein Textfenster für Befehle an dein System (Ordner wechseln, Git, npm). In Cursor ist oft ein Terminal eingebaut. [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 008](/artikel/folge-008-cursor-modi/).
+Ein Textfenster für Befehle (auch **Konsole** oder **Kommandozeile**). In [Cursor](/glossar/cursor/) ist oft eins eingebaut. Für hautuu reicht meist: Befehle aus den Folgen kopieren oder der Agent tippt sie. [Glossar Terminal](/glossar/terminal/), [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 008](/artikel/folge-008-cursor-modi/).
+
+### Was ist eine CLI?
+
+Programme wie [Git](/glossar/git/), [npm](/glossar/npm/) oder `ssh-keygen`, die du per Text im [Terminal](/glossar/terminal/) bedienst. [Glossar CLI](/glossar/cli/), [Folge 006](/artikel/folge-006-git-push-pull/), [Folge 018](/artikel/folge-018-node-npm/).
 
 ### Wie öffne ich ein Terminal?
 
@@ -137,7 +141,7 @@ In Cursor: Terminal-Leiste. Am System: je nach OS ein Programm wie „Terminal�
 
 ### Warum beendet Strg+C meinen Server?
 
-Im Terminal ist **Strg+C** Stopp, nicht Kopieren. `npm run dev` damit beenden. [Folge 003](/artikel/folge-003-erstes-design/).
+Im [Terminal](/glossar/terminal/) ist **Strg+C** Stopp, nicht Kopieren. `npm run dev` damit beenden. [Folge 003](/artikel/folge-003-erstes-design/).
 
 ### Was sind versteckte Dateien?
 
