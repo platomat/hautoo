@@ -9,15 +9,22 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "predev": "node scripts/build-search-index.mjs",
+    "prebuild": "node scripts/build-search-index.mjs",
+    "build:search": "node scripts/build-search-index.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.2",
     "@astrojs/mdx": "^8.0.2",
     "@astrojs/sitemap": "^3.7.4",
-    "astro": "^7.3.5"
+    "astro": "^7.3.5",
+    "minisearch": "^7.2.0"
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3"
   }
 }

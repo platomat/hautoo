@@ -23,8 +23,9 @@ Kurzliste dessen, was auf `main` schon umgesetzt ist (Details und Erläuterungen
 | **Inhalte** | 20 Screencast-Folgen als Artikel, statische Pages, Redaktionsregeln in `docs/redaktion/` |
 | **CMS** | Sveltia `/admin/`, Collections, Menüs, Entwurfsstatus, optionales TOC, Head/Footer-Code pro Seite |
 | **Glossar & FAQ** | Glossar mit Related Tags/Artikeln, FAQ mit Themengruppen, Tag-Seiten mit Artikel-Grid |
-| **Embeds** | Bausteine, Artikel-/Glossar-/Tag-Listing, Tagwolke, Trennlinie, Kontakt-E-Mail aus ENV |
-| **SEO** | `seo`-Felder, Open Graph/Twitter, Canonical, Sitemap (ohne Legal), Lesezeit, noindex für Impressum/Datenschutz |
+| **Embeds** | Bausteine, Listings, Tagwolke, Trennlinie, Kontakt-E-Mail aus ENV, Repo-Docs-Box (`{{repodoc}}`) zu `docs/` |
+| **SEO** | `seo`-Felder, Open Graph/Twitter inkl. OG-Bild aus Hintergrund (1200×630), Canonical, Sitemap, Lesezeit, noindex Legal |
+| **Suche & UI** | MiniSearch im Header, Artikel-Übersicht mit wählbaren Kartenfeldern (inkl. Lesezeit) |
 | **Design** | Dark Theme, Breakpoints, Page-Hero, Vollbild-Hintergrund mit Nachweis, responsive Navigation |
 | **Deploy** | Astro-Build, Cloudflare Pages aus GitHub, Preview/Rollback, Cache-Header und Build-ID |
 | **Doku & Agenten** | `docs/`-Handbuch, Cursor-Regeln, Hilfsskripte für Glossar und SEO |

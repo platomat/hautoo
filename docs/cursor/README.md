@@ -35,6 +35,13 @@ Siehe auch: [Sprachen und Konventionen](../sprachen-und-konventionen.md)
 - Gewünschtes Ergebnis nennen: „Doku-Seite auf Deutsch unter `docs/…`“
 - Grenzen setzen: „Keine Secrets, keine neuen Dependencies ohne Bedarf“
 
+## Screencast-Folgen (Website)
+
+- [Folge 008: Modi](https://hautoo.storyofai.net/artikel/folge-008-cursor-modi/)
+- [Folge 009: Abo](https://hautoo.storyofai.net/artikel/folge-009-cursor-abo/)
+- [Folge 010: Chats](https://hautoo.storyofai.net/artikel/folge-010-cursor-chats/)
+- [Folge 015: Transkript und Cloud Agent](https://hautoo.storyofai.net/artikel/folge-015-transkript-artikel/)
+
 ## Noch auszuarbeiten
 
 - Empfohlene Cursor-Version / Einstellungen

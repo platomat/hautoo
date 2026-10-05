@@ -1,0 +1,283 @@
+---
+import { searchTypeOrder, searchUiCopy } from "../lib/searchUi";
+
+const copy = searchUiCopy;
+const dialogId = "site-search-dialog";
+const titleId = "site-search-title";
+const searchConfig = JSON.stringify({ copy, typeOrder: searchTypeOrder });
+---
+
+<button
+	type="button"
+	class="site-search__trigger"
+	aria-haspopup="dialog"
+	aria-controls={dialogId}
+	data-search-open
+	aria-label={copy.open}
+	title={`${copy.open} (Ctrl/⌘K)`}
+>
+	<svg
+		class="site-search__icon"
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 24 24"
+		width="20"
+		height="20"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2"
+		stroke-linecap="round"
+		aria-hidden="true"
+	>
+		<circle cx="11" cy="11" r="7"></circle>
+		<path d="M20 20l-3.5-3.5"></path>
+	</svg>
+</button>
+
+<dialog
+	class="site-search"
+	id={dialogId}
+	aria-labelledby={titleId}
+	data-search-config={searchConfig}
+>
+	<div class="site-search__panel">
+		<h2 id={titleId} class="visually-hidden">{copy.title}</h2>
+		<div class="site-search__header">
+			<form class="site-search__form" role="search" onsubmit="return false;">
+				<label class="visually-hidden" for="site-search-input">{copy.placeholder}</label>
+				<input
+					id="site-search-input"
+					class="site-search__input"
+					type="search"
+					name="q"
+					autocomplete="off"
+					spellcheck="false"
+					placeholder={copy.placeholder}
+					data-search-input
+				/>
+			</form>
+			<button
+				type="button"
+				class="site-search__close"
+				data-search-close
+				aria-label={copy.close}
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					width="20"
+					height="20"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					aria-hidden="true"
+				>
+					<path d="M6 6l12 12M18 6L6 18"></path>
+				</svg>
+			</button>
+		</div>
+		<p class="site-search__status" data-search-status aria-live="polite">{copy.noQuery}</p>
+		<div class="site-search__results" data-search-results hidden></div>
+	</div>
+</dialog>
+
+<script>
+	import { initSiteSearch } from "../scripts/siteSearch";
+	initSiteSearch();
+</script>
+
+<style>
+	.site-search__trigger {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		border-radius: 0;
+		background: transparent;
+		color: var(--color-text);
+		cursor: pointer;
+	}
+
+	.site-search__trigger:hover,
+	.site-search__trigger:focus-visible {
+		color: var(--color-action-hover);
+	}
+
+	.site-search__trigger:focus-visible {
+		outline: 2px solid var(--color-action);
+		outline-offset: 2px;
+	}
+
+	.site-search__icon {
+		display: block;
+	}
+
+	.site-search {
+		margin: 0;
+		padding: 0;
+		border: none;
+		max-width: none;
+		max-height: none;
+		width: 100%;
+		height: 100%;
+		background: color-mix(in srgb, var(--color-bg) 55%, transparent);
+		backdrop-filter: blur(2px);
+		-webkit-backdrop-filter: blur(2px);
+	}
+
+	.site-search::backdrop {
+		background: color-mix(in srgb, var(--color-bg) 55%, transparent);
+		backdrop-filter: blur(2px);
+		-webkit-backdrop-filter: blur(2px);
+	}
+
+	.site-search__panel {
+		box-sizing: border-box;
+		width: min(36rem, calc(100% - 2rem));
+		margin: clamp(4.5rem, 12vh, 7rem) auto 2rem;
+		padding: 1rem 1rem 0.85rem;
+		border: 1px solid var(--color-border);
+		border-radius: 6px;
+		background: var(--color-surface);
+		box-shadow: 0 18px 48px -16px rgba(0, 0, 0, 0.45);
+	}
+
+	.site-search__header {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.site-search__form {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.site-search__input {
+		display: block;
+		width: 100%;
+		box-sizing: border-box;
+		padding: 0.65rem 0.75rem;
+		border: 1px solid var(--color-border);
+		border-radius: 6px;
+		background: var(--color-bg);
+		color: var(--color-text);
+		font: inherit;
+		font-size: 1rem;
+		line-height: 1.3;
+	}
+
+	.site-search__input:focus-visible {
+		outline: 2px solid var(--color-action);
+		outline-offset: 2px;
+	}
+
+	.site-search__close {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		min-width: 2.5rem;
+		min-height: 2.5rem;
+		padding: 0.25rem;
+		border: 1px solid var(--color-border);
+		border-radius: 6px;
+		background: transparent;
+		color: var(--color-text-muted);
+		cursor: pointer;
+	}
+
+	.site-search__close:hover,
+	.site-search__close:focus-visible {
+		color: var(--color-action-hover);
+		border-color: var(--color-action);
+	}
+
+	.site-search__close:focus-visible {
+		outline: 2px solid var(--color-action);
+		outline-offset: 2px;
+	}
+
+	.site-search__status {
+		margin: 0.65rem 0 0;
+		font-size: 0.85rem;
+		color: var(--color-text-muted);
+	}
+
+	.site-search__results {
+		margin-top: 0.35rem;
+		max-height: min(52vh, 28rem);
+		overflow: auto;
+	}
+
+	/* Dynamically inserted hits have no Astro scope attrs. */
+	.site-search__results :global(.site-search__group) {
+		margin-top: 0.85rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.site-search__results :global(.site-search__group-title) {
+		margin: 0 0 0.35rem;
+		font-size: 0.72rem;
+		font-weight: var(--font-weight-heading);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-text-muted);
+	}
+
+	.site-search__results :global(.site-search__list) {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.site-search__results :global(.site-search__hit) {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+		padding: 0.55rem 0.45rem;
+		border-radius: 6px;
+		color: var(--color-text);
+	}
+
+	.site-search__results :global(.site-search__hit:hover),
+	.site-search__results :global(.site-search__hit:focus-visible) {
+		background: var(--color-action-muted);
+		outline: none;
+	}
+
+	.site-search__results :global(.site-search__hit-title) {
+		font-weight: var(--font-weight-heading);
+		line-height: 1.25;
+	}
+
+	.site-search__results :global(.site-search__hit-desc) {
+		font-size: 0.88rem;
+		line-height: 1.35;
+		color: var(--color-text-muted);
+	}
+
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.site-search,
+		.site-search::backdrop {
+			backdrop-filter: none;
+			-webkit-backdrop-filter: none;
+		}
+	}
+</style>

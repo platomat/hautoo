@@ -26,7 +26,10 @@ Du → /admin → Sveltia → Worker (Auth) → GitHub API
          Commits → GitHub → Cloudflare Pages Build
 ```
 
-Der Worker ist **nicht** deine Website, nur die **Tür** fürs CMS.
+Der Worker ist **nicht** deine Website
+
+{{repodoc path="docs/sveltia/zugang-worker.md" title="Sveltia-Zugang über Cloudflare Worker" description="OAuth, Callback und Secrets Schritt für Schritt."}}
+, nur die **Tür** fürs CMS.
 
 ## Umsetzung (grober Ablauf)
 

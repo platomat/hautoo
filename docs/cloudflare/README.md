@@ -191,6 +191,11 @@ SSL/TLS-Modus der Zone: üblicherweise **Full** (oder **Full (strict)**), konsis
 
 Astro-Bundles unter `/_astro/` haben bereits Hash-Dateinamen — lange Cache-Dauer ist dort sicher.
 
+## Screencast-Folgen (Website)
+
+- [Folge 011: Cloudflare Pages Setup](https://hautoo.storyofai.net/artikel/folge-011-cloudflare-setup/)
+- [Folge 012: Branches und Rollback](https://hautoo.storyofai.net/artikel/folge-012-cloudflare-branches/)
+
 ## Offizielle Referenzen
 
 - [Astro auf Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)

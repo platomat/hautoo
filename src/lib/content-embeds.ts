@@ -5,6 +5,7 @@ import type { GlossarSort } from "./glossar";
 import { hastCmsAssets } from "./hast-cms-assets";
 import { hastExternalLinks } from "./hast-external-links";
 import type { TagSort } from "./tags";
+import { parseRepoDocProps, type RepoDocEmbedProps } from "./repodoc";
 
 /** Fields shown on article listing cards (CMS `show="…"`). */
 export type ArticleCardField =
@@ -17,9 +18,9 @@ export type ArticleCardField =
 export const ARTICLE_CARD_FIELDS = [
 	"title",
 	"intro",
+	"tags",
 	"date",
 	"readingTime",
-	"tags",
 ] as const satisfies readonly ArticleCardField[];
 
 export type ArticleListingEmbedProps = {
@@ -63,14 +64,15 @@ export type ContentSegment =
 	| { type: "tag-listing"; props: TagListingEmbedProps }
 	| { type: "tag-cloud" }
 	| { type: "separator"; props: SeparatorEmbedProps }
-	| { type: "contact-email" };
+	| { type: "contact-email" }
+	| { type: "repodoc"; props: RepoDocEmbedProps };
 
 const DEFAULT_SHOW: ArticleCardField[] = [
 	"title",
 	"intro",
+	"tags",
 	"date",
 	"readingTime",
-	"tags",
 ];
 
 const DEFAULT_LISTING: ArticleListingEmbedProps = {
@@ -120,7 +122,7 @@ const DEFAULT_SEPARATOR: SeparatorEmbedProps = {
 
 /** Line must be only the embed (optional attrs). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|tag-cloud|separator|contact-email|block)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|tag-cloud|separator|contact-email|repodoc|block)(?<attrs>[^}]*)\}\}\s*$/gm;
 
 const ARTICLE_SORTS = new Set<ArticleSort>([
 	"newest",
@@ -366,6 +368,11 @@ export async function buildContentSegments(
 			});
 		} else if (name === "contact-email") {
 			segments.push({ type: "contact-email" });
+		} else if (name === "repodoc") {
+			const props = parseRepoDocProps(attrs);
+			if (props) {
+				segments.push({ type: "repodoc", props });
+			}
 		} else if (name === "separator") {
 			segments.push({
 				type: "separator",

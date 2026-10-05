@@ -2,7 +2,7 @@
 title: Features
 description: Überblick über die umgesetzten Funktionen von hautuu auf der Website und im Repo.
 status: published
-modifiedDate: 2026-10-05
+modifiedDate: 2026-10-06
 showToc: true
 tocTitle: Inhalt
 tocLevels:
@@ -55,6 +55,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches Repo a
 - **Artikel-Listing** im Content: Anzahl, Sortierung, Grid oder Liste, wählbare Kartenfelder inkl. Lesezeit.
 - **Trennlinie** und **Kontakt-E-Mail** als Embed (`{{contact-email}}` aus Build-Variable, nicht im Klartext).
 - **Markdown-Embeds** über die Sveltia-Toolbar; Rendering zentral in `CmsContent.astro`.
+- **Repo-Docs-Box** (`{{repodoc path="docs/…"}}`): Verlinkung zu Handbuch-Dateien auf GitHub, Toolbar **Repo-Dokument** in Sveltia ([Folge 001](/artikel/folge-001-hautuu-intro/) als Beispiel).
 
 ## SEO und Auffindbarkeit
 
@@ -63,8 +64,11 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches Repo a
 - **Open Graph und Twitter Cards**: Titel, Beschreibung, Canonical, optional OG-Bild aus dem Seitenhintergrund (1200×630).
 - **Lesezeit** in Artikel-Meta und auf der Karte im Listing.
 - **Sitemap** ohne Impressum, Datenschutz und `/admin`; Legal-Seiten mit **noindex**.
+- **Artikel-Übersicht** (`/artikel/`): Listing-Embed mit SEO-Feldern und konfigurierbaren Kartenfeldern (Titel, Teaser, Datum, Tags, Lesezeit).
 
 ## Design und Nutzung
+
+- **Suche im Header** (MiniSearch): statischer Suchindex beim Build, Treffer zu Artikeln, Glossar und Seiten ([docs/cursor](https://github.com/platomat/hautoo/blob/main/docs/cursor/README.md)).
 
 - **Dark Theme** mit Design-Tokens, Ubuntu-Schrift, responsive Header mit Mobile-Menü.
 - **Breakpoints** und gemeinsame Layout-Hilfsklassen ([docs/design](https://github.com/platomat/hautoo/blob/main/docs/design/README.md)).

@@ -1,6 +1,6 @@
 ---
 title: Hauptmenü
-modifiedDate: 2026-10-05
+modifiedDate: 2026-10-06
 items:
   - label: Artikel
     linkType: page

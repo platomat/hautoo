@@ -81,21 +81,21 @@
 				label: "Felder auf der Karte",
 				widget: "select",
 				multiple: true,
-				default: ["title", "intro", "date", "readingTime", "tags"],
+				default: ["title", "intro", "tags", "date", "readingTime"],
 				options: [
 					{ label: "Titel", value: "title" },
 					{ label: "Intro", value: "intro" },
+					{ label: "Tags", value: "tags" },
 					{ label: "Datum", value: "date" },
 					{ label: "Lesezeit", value: "readingTime" },
-					{ label: "Tags", value: "tags" },
 				],
-				hint: "Welche Infos auf jeder Karte erscheinen.",
+				hint: "Anzeige: Tags in eigener Zeile über Datum und Lesezeit.",
 			},
 		],
 		pattern: /^\{\{article-listing(?<attrs>[^}]*)\}\}\s*$/m,
 		fromBlock: (match) => {
 			const attrs = parseAttrs(match?.groups?.attrs || "");
-			const showDefault = "title,intro,date,readingTime,tags";
+			const showDefault = "title,intro,tags,date,readingTime";
 			return {
 				count: attrs.count !== undefined && attrs.count !== "" ? attrs.count : "3",
 				sort: attrs.sort || "newest",
@@ -111,7 +111,7 @@
 			layout = "grid",
 			columns = 3,
 			gap = 1.25,
-			show = ["title", "intro", "date", "readingTime", "tags"],
+			show = ["title", "intro", "tags", "date", "readingTime"],
 		}) => {
 			const showAttr = Array.isArray(show) ? show.join(",") : String(show || "");
 			return `{{article-listing count="${count}" sort="${sort}" layout="${layout}" columns="${columns}" gap="${gap}" show="${showAttr}"}}`;
@@ -122,7 +122,7 @@
 			layout = "grid",
 			columns = 3,
 			gap = 1.25,
-			show = ["title", "intro", "date", "readingTime", "tags"],
+			show = ["title", "intro", "tags", "date", "readingTime"],
 		}) => {
 			const showLabel = Array.isArray(show) ? show.join(", ") : String(show || "");
 			return `<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Artikel-Listing · ${count === 0 || count === "0" ? "alle" : count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem · ${showLabel}</div>`;
@@ -349,6 +349,54 @@
 		toBlock: () => "{{contact-email}}",
 		toPreview: () =>
 			'<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Kontakt-E-Mail (aus Build-Variable CONTACT_EMAIL)</div>',
+	});
+
+	CMS.registerEditorComponent({
+		id: "repodoc",
+		label: "Repo-Dokument",
+		icon: "description",
+		fields: [
+			{
+				name: "path",
+				label: "Pfad im Repo",
+				widget: "string",
+				hint: 'z. B. docs/github/README.md (muss unter docs/ existieren).',
+			},
+			{
+				name: "title",
+				label: "Titel",
+				widget: "string",
+				required: false,
+				hint: "Optional. Leer = erste Überschrift aus der Datei.",
+			},
+			{
+				name: "description",
+				label: "Kurzbeschreibung",
+				widget: "text",
+				required: false,
+				hint: "Optional, ein Satz für die Box.",
+			},
+		],
+		pattern: /^\{\{repodoc(?<attrs>[^}]*)\}\}\s*$/m,
+		fromBlock: (match) => {
+			const attrs = parseAttrs(match?.groups?.attrs || "");
+			return {
+				path: attrs.path || "",
+				title: attrs.title || "",
+				description: attrs.description || "",
+			};
+		},
+		toBlock: ({ path = "", title = "", description = "" }) => {
+			const parts = [`path="${path}"`];
+			if (title) parts.push(`title="${title}"`);
+			if (description) parts.push(`description="${description}"`);
+			return `{{repodoc ${parts.join(" ")}}}`;
+		},
+		toPreview: ({ path = "", title = "", description = "" }) => {
+			const label = title || path || "?";
+			const desc = description ? ` · ${description}` : "";
+			return `<div style="padding:0.75rem 1rem;border:1px solid #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem;display:flex;gap:0.75rem;align-items:flex-start"><span style="color:#3dcf8e">ⓘ</span><span><strong style="color:#e8eeea">Vertiefung im Repo</strong><br>${label}${desc}</span></div>`;
+		},
 	});
 
 	CMS.registerEditorComponent({
