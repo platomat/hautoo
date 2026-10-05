@@ -44,6 +44,8 @@ Vorgaben zu dunklem Theme, Farbpalette (Aktionsgrün), Ubuntu und Links: **[Desi
 - **robots.txt:** `public/robots.txt` (Sitemap-Hinweis, `/admin/` disallowed). Ohne Datei liefert Cloudflare fehlende Pfade oft als Startseiten-HTML aus.
 - **Suche:** MiniSearch (wie storyofai.net); Index `public/search/de.json` wird bei `predev` / `prebuild` / `npm run build:search` erzeugt (Build-Artefakt, nicht im Git); UI im Header (`SiteSearch.astro`, Ctrl/⌘K)
 - **Build-Minify:** Vite/Astro minifiziert CSS und JS im Produktions-Build (`astro build`); kein Extra-Plugin nötig.
+- **CSS inline:** `build.inlineStylesheets: 'always'` (kein extra render-blocking Stylesheet-Request).
+- **Fonts:** Ubuntu Light/Medium als Latin-Subset unter `public/fonts/ubuntu/` (~45 KiB statt ~200 KiB), Preload in `BaseLayout`.
 - Installation und Scripts: [Lokale Entwicklung](../entwicklung/README.md)
 - **Medien:** Bilder neben Content-Einträgen (`src/content/...`), damit Astro sie optimieren kann — siehe [Medien — Variante B](../sveltia/medien-variante-b.md) und [Inhalte](../inhalte/README.md). CMS-Markdown-Bilder bekommen via `hast-cms-assets` WebP-srcset; erstes Rasterbild eager + `fetchpriority=high` (LCP).
 - **Design:** dunkles Theme und Ubuntu lokal (`public/fonts/ubuntu/`) — siehe [Design](../design/README.md)

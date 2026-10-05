@@ -21,7 +21,7 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 | Rolle | Schrift | Schnitt | Stärke (`font-weight`) |
 | --- | --- | --- | --- |
 | Fließtext | **Ubuntu** | Light | **300** |
-| Überschriften (`h1`–`h6`) | **Ubuntu** | Bold | **700** |
+| Überschriften (`h1`–`h6`) | **Ubuntu** | Medium | **500** |
 
 - `font-family`: `'Ubuntu', system-ui, sans-serif`
 - Keine zweite Display-Schrift — eine Familie für alles
@@ -34,8 +34,10 @@ Schriften werden **lokal** unter `public/fonts/ubuntu/` gehostet (kein CDN):
 
 | Datei | Schnitt |
 | --- | --- |
-| `Ubuntu-Light.woff2` / `.woff` | Light (300) |
-| `Ubuntu-Medium.woff2` / `.woff` | Medium (500) |
+| `Ubuntu-Light.woff2` / `.woff` | Light (300), Latin + Latin-Extended Subset |
+| `Ubuntu-Medium.woff2` / `.woff` | Medium (500), Latin + Latin-Extended Subset |
+
+Subset mit `pyftsubset` (DE inkl. Umlaute). Preload beider WOFF2 in `BaseLayout`. Stylesheets werden im Build inline (`build.inlineStylesheets: 'always'`), damit kein render-blocking CSS-Request die FCP verzögert.
 
 `@font-face` und Design-Tokens liegen in `src/styles/global.css`, eingebunden über `src/layouts/BaseLayout.astro`.
 
