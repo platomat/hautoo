@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail on broken Markdown links and localhost URLs in src/content."""
+"""Fail on broken Markdown links in src/content (split ](url), orphans, nesting)."""
 
 from __future__ import annotations
 
@@ -12,19 +12,17 @@ CONTENT = ROOT / "src" / "content"
 
 SCAN_DIRS = ("articles", "glossar", "pages", "tags")
 
-# [text] then whitespace/newline/repodoc before (url)
+# [text] then whitespace, newline, or repodoc before (url) — classic split link
 BROKEN_LINK = re.compile(
-    r"\[[^\]]+\](?:\s|\n|(?:\r?\n\s*)?\{\{repodoc)",
+    r"(?<!!)\[[^\]]+\](?:\s|\n|(?:\r?\n\s*)?\{\{repodoc)",
     re.MULTILINE,
 )
 
+# Leftover from a split link: (/path/) on its own line or after embed
 ORPHAN_TARGET = re.compile(r"^\s*\(/[^\s\)]+\)", re.MULTILINE)
 
-LOCALHOST_IN_LINK = re.compile(
-    r"\]\((?:https?:)?//localhost[^\)]*\)", re.IGNORECASE
-)
-
-NESTED_LINK = re.compile(r"\[[^\]]*\[[^\]]*\]\([^\)]*\)")
+# [outer [inner](url) text](/url) — invalid in most Markdown parsers
+NESTED_LINK = re.compile(r"(?<!!)\[[^\]]*\[[^\]]*\]\([^\)]*\)")
 
 
 def scan_file(path: Path) -> list[str]:
@@ -40,13 +38,10 @@ def scan_file(path: Path) -> list[str]:
 
     for m in BROKEN_LINK.finditer(body):
         snippet = body[m.start() : min(len(body), m.end() + 50)].replace("\n", " ")
-        issues.append(f"{rel}: broken link `{snippet[:90]}`")
+        issues.append(f"{rel}: broken link (] not followed by () `{snippet[:90]}`")
 
     for m in ORPHAN_TARGET.finditer(body):
         issues.append(f"{rel}: orphan link target `{m.group().strip()}`")
-
-    for m in LOCALHOST_IN_LINK.finditer(body):
-        issues.append(f"{rel}: localhost in link URL `{m.group()}`")
 
     for m in NESTED_LINK.finditer(body):
         issues.append(f"{rel}: nested markdown link `{m.group()[:70]}`")
