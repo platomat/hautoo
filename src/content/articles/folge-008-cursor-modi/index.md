@@ -19,7 +19,7 @@ seo:
 
 ## Chat-Oberfläche vs. IDE
 
-Manchmal startet Cursor chat-lastig. Für hautuu willst du den **IDE**-Modus: Dateien, Terminal, Agentenleiste. Button **IDE** hilft.
+Manchmal startet Cursor chat-lastig. Für hautuu willst du den **IDE**-Modus: Dateien, [Terminal](/glossar/terminal/), Agentenleiste. Button **IDE** hilft.
 
 Du kannst auch einen beliebigen **Ordner ohne Git** öffnen (Fotos, Notizen) und dem Agenten sagen: „Pack das ins Projekt.“
 

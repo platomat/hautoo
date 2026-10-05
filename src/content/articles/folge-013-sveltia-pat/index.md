@@ -19,7 +19,7 @@ seo:
 
 ## Lokal: `/admin` ohne Login
 
-- `npm run dev`, dann `http://localhost:…/admin/` (Port im Terminal).
+- `npm run dev`, dann `http://localhost:…/admin/` (Port im [Terminal](/glossar/terminal/)).
 - **Chrome/Chromium**: Firefox klappt fürs [**Backend**](/glossar/backend/) oft nicht.
 - Modus **„local“**: Projektordner wählen. **kein Passwort**, die Dateien liegen ja schon bei dir.
 

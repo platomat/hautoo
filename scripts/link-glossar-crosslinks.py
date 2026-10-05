@@ -80,6 +80,11 @@ TERM_PATTERNS: list[tuple[str, str]] = [
     ("ide", r"\bIDE\b"),
     ("ide", r"Entwicklungsumgebung"),
     ("ide", r"Integrierte Entwicklungsumgebung"),
+    ("terminal", r"Terminal"),
+    ("terminal", r"Kommandozeile"),
+    ("terminal", r"Konsole"),
+    ("cli", r"\bCLI\b"),
+    ("cli", r"Kommandozeilenprogramm"),
 ]
 
 SLUG_MAP: dict[str, str] = {
