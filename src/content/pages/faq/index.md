@@ -341,7 +341,19 @@ Ja, z. B. Tab-Titel und Meta Description im CMS. [Folge 013](/artikel/folge-013-
 
 ### Wo landen Bilder?
 
-In der Medienbibliothek unter `src/assets` oder neben Artikeln, je nach Setup. [Folge 013](/artikel/folge-013-sveltia-pat/).
+In der Medienbibliothek unter `src/assets` (geteilte Motive) oder **neben dem Artikel** (Variante B). [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/), [Folge 013](/artikel/folge-013-sveltia-pat/).
+
+### Woher bekomme ich kostenlose Bilder?
+
+Stock-Seiten wie Pixabay, Unsplash, Pexels oder Freepik, jeweils mit **eigener Lizenz** und oft kostenpflichtigen Sponsored-Treffern. Immer die Lizenz der Plattform lesen. [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/).
+
+### Was ist WebP?
+
+Ein Bildformat fürs Web, oft kleiner als JPEG. Astro erzeugt beim Build WebP für Hintergründe. Vor dem Upload trotzdem verkleinern. [Glossar WebP](/glossar/webp/), [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/).
+
+### Brauche ich Alt-Text?
+
+Ja, wenn das Bild **Inhalt** transportiert. Reine Deko-Hintergründe können leer bleiben (`alt=""`). [Glossar Alt-Text](/glossar/alt-text/), [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/).
 
 ### Was passiert beim Speichern technisch?
 
@@ -457,7 +469,7 @@ Oft **noindex** für Impressum/Datenschutz. [Folge 004](/artikel/folge-004-colle
 
 ### Bildnachweise?
 
-Attribution-Felder; Credits können im Impressum landen. [Folge 003](/artikel/folge-003-erstes-design/), [Folge 019](/artikel/folge-019-impressum-komponenten/).
+Feld **`backgroundAttribution`** im CMS; gesammelte Credits auf dem Impressum. [Glossar Bildnachweis](/glossar/bildnachweis/), [Folge 019](/artikel/folge-019-impressum-komponenten/), [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/).
 
 ### KI-generierte Rechtstexte ungeprüft übernehmen?
 

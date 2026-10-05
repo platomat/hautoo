@@ -2,7 +2,7 @@
 title: 'Folge 020: Bausteine, FAQ und hautoo forken'
 summary: Wiederverwendbare CMS Bausteine statt Copy Paste, Überblick über Glossar und FAQ und dein eigenes Projekt per GitHub Fork starten.
 pubDate: 2026-10-04 23:47:38+00:00
-modifiedDate: 2026-10-05
+modifiedDate: 2026-10-06
 status: published
 tags:
 - github
@@ -76,5 +76,6 @@ Hast du ein gutes Feature gebaut, schick einen [**Pull Request**](/glossar/pull-
 - **Bausteine** für wiederkehrende Inhalte (Stack, Kontakt, Trenner).
 - **Glossar**, **FAQ** und **Tags** als Lern-Netz; in Firefox Link-Vorschau zum Nachschlagen.
 - **Fork** als Einstieg in dein eigenes Projekt mit gleichem Stack ([Folge 001](/artikel/folge-001-hautuu-intro/) für die grobe Kette).
+- **Bilder** für Hintergründe und Assets: Quellen, WebP und Upload ([Folge 021](/artikel/folge-021-bilder-suchen-nutzen/)).
 
 <!-- Quelle: 2026-10-04--23-47-38--obs-screencast - hautoo - 020 - neue bausteine, neue features, hautoo forken.txt -->

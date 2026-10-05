@@ -19,7 +19,7 @@ Du nimmst den Screencast auf, die **Speech-to-Text**-Software hört mit und lief
 
 ## Was die Site schon kann
 
-Zwischen den Sessions ist viel passiert: **Menüs** als Collection, **Artikel** in einer Übersicht, **Seiten** mit optionalem **Hintergrundbild** und Lesbarkeits-Overlay. Im CMS fügst du Blöcke ein wie ein Schlagwort, z. B. **Artikel-Listing** (Anzahl und Sortierung konfigurierbar). Später kommen wiederverwendbare **Bausteine** für Grafiken und Snippets dazu ([Folge 020](/artikel/folge-020-bausteine-fork/)). Credits für Bilder
+Zwischen den Sessions ist viel passiert: **Menüs** als Collection, **Artikel** in einer Übersicht, **Seiten** mit optionalem **Hintergrundbild** und Lesbarkeits-Overlay (Motiv suchen und optimieren: [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/)). Im CMS fügst du Blöcke ein wie ein Schlagwort, z. B. **Artikel-Listing** (Anzahl und Sortierung konfigurierbar). Später kommen wiederverwendbare **Bausteine** für Grafiken und Snippets dazu ([Folge 020](/artikel/folge-020-bausteine-fork/)). Credits für Bilder
 
 {{repodoc path="docs/inhalte/README.md" title="Inhalte der Website" description="Collections, Medienablage und Embeds."}}
  von **Unsplash** mit Attribution sind vorgesehen. Status **veröffentlicht** vs. Entwurf
