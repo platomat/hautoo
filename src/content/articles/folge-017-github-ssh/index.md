@@ -19,7 +19,7 @@ seo:
 
 ## Ordner `.ssh`
 
-Im **Home-Verzeichnis** liegt (oft versteckt) `.ssh`. Im Dateimanager: versteckte Dateien anzeigen (z. B. Strg+H). Im Terminal:
+Im **Home-Verzeichnis** liegt (oft versteckt) `.ssh`. Im Dateimanager: versteckte Dateien anzeigen (z. B. Strg+H). Im [Terminal](/glossar/terminal/):
 
 ```bash
 cd ~/.ssh
@@ -29,6 +29,8 @@ pwd
 Tilde `~` steht für dein Home (`/home/deinuser` unter Linux, ähnlich auf dem Mac).
 
 ## Schlüsselpaar erzeugen
+
+Mit der [CLI](/glossar/cli/) `ssh-keygen` erzeugst du ein Schlüsselpaar:
 
 ```bash
 ssh-keygen -t ed25519 -C "deine@email.de"
