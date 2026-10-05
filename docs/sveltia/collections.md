@@ -34,7 +34,7 @@ YAML-Gruppen im CMS: **Design** und **Content**.
 | `design.header.stickyDesktop` | Sticky ab Desktop (≥ 1024px) |
 | `design.header.stickyTablet` | Sticky auf Tablet (680–1023px) |
 | `design.header.stickyMobile` | Sticky auf Mobile (< 680px) |
-| `design.header.heightDesktop` / `Tablet` / `Mobile` | Min. Leistenhöhe in px (40–160) |
+| `design.header.heightDesktop` / `Tablet` / `Mobile` | Leistenhöhe in px (40–160), pro Breakpoint |
 
 Umsetzung in `SiteHeader.astro` (CSS-Klassen + Custom Properties).
 

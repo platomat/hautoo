@@ -84,9 +84,9 @@ body.has-page-bg {
 	background: transparent;
 }
 
-/* Header above main so dropdowns aren't covered (same z-index painted main on top). */
+/* Header above main so dropdowns aren't covered (same z-index painted main on top).
+   Do not set position here — sticky from SiteHeader must keep working. */
 body.has-page-bg .site-header {
-	position: relative;
 	z-index: 20;
 }
 

@@ -133,7 +133,11 @@ const headerStyle = [
 	import "../scripts/nav-submenu";
 </script>
 
-<style>
+<style is:global>
+	/*
+	  Global (not scoped): sticky must win over page-bg stacking rules,
+	  and height tokens must apply at every viewport without attribute scoping quirks.
+	*/
 	.site-header {
 		--header-bar-height: var(--header-h-desktop, 64px);
 		position: relative;
@@ -147,8 +151,10 @@ const headerStyle = [
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 1rem 1.5rem;
+		/* Config heights are the bar size; padding is inside that box. */
 		min-height: var(--header-bar-height);
-		padding-block: 0.65rem;
+		height: var(--header-bar-height);
+		padding-block: 0;
 		box-sizing: border-box;
 	}
 
@@ -166,25 +172,28 @@ const headerStyle = [
 	}
 
 	@media (min-width: 1024px) {
-		.site-header--sticky-desktop {
+		.site-header.site-header--sticky-desktop {
 			position: sticky;
 			top: 0;
 		}
 	}
 
 	@media (max-width: 1023px) and (min-width: 680px) {
-		.site-header--sticky-tablet {
+		.site-header.site-header--sticky-tablet {
 			position: sticky;
 			top: 0;
 		}
 	}
 
 	@media (max-width: 679px) {
-		.site-header--sticky-mobile {
+		.site-header.site-header--sticky-mobile {
 			position: sticky;
 			top: 0;
 		}
 	}
+</style>
+
+<style>
 
 	.site-header__brand {
 		display: inline-flex;
