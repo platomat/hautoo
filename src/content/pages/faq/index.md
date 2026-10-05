@@ -247,9 +247,13 @@ Bei größeren Features (z. B. Burger-Menü): Plan lesen, korrigieren, dann baue
 
 Nur wenn du sie committest. Exporte nach `docs/sessions/` und `.gitignore` nutzen. [Folge 008](/artikel/folge-008-cursor-modi/).
 
+### Was ist eine IDE und warum Cursor?
+
+Eine [IDE](/glossar/ide/) bündelt Dateien, Editor, Terminal und Fehlermeldungen. [Cursor](/glossar/cursor/) ist eine IDE auf Basis von VS Code mit KI-Agenten für hautuu. [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 008](/artikel/folge-008-cursor-modi/).
+
 ### Was ist der IDE-Modus?
 
-Dateibaum, Terminal, Agent: so arbeitest du am Projekt, nicht nur im Chat-Fenster. [Folge 008](/artikel/folge-008-cursor-modi/).
+Dateibaum, Terminal, Agent: so arbeitest du am Projekt, nicht nur im Chat-Fenster. [Glossar IDE](/glossar/ide/), [Folge 008](/artikel/folge-008-cursor-modi/).
 
 ### Issues statt endlos im Chat erklären?
 

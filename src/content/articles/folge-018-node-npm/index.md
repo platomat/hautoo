@@ -15,7 +15,7 @@ seo:
   seo_description: Nach dem Clone Node 22 installieren, npm install und npm run dev für Astro lokal. Folge 018 bringt deine Entwicklungsumgebung zum Laufen.
 ---
 
-Das Repo enthält Quellcode und `package.json`, aber nicht den ganzen **`node_modules`**-Berg. Lokal brauchst du [**Node.js**](/glossar/nodejs/) (für hautuu empfohlen: **Version 22**) und **npm**, damit `npm run dev` und `npm run build` laufen.
+Das Repo enthält Quellcode und `package.json`, aber nicht den ganzen **`node_modules`**-Berg. In deiner lokalen [IDE](/glossar/ide/) (Entwicklungsumgebung) brauchst du [**Node.js**](/glossar/nodejs/) (für hautuu empfohlen: **Version 22**) und **npm**, damit `npm run dev` und `npm run build` laufen.
 
 {{repodoc path="docs/astro/README.md" title="Astro" description="Framework, Build-Befehle und Ausgabeordner."}}
 

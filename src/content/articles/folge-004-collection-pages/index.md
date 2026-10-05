@@ -32,7 +32,7 @@ Früher hing das Menü an jeder Seite, bei hautuu gibt’s eine eigene **menus**
 - Oben [**Frontmatter**](/glossar/frontmatter/) = ausgefüllte Felder.
 - Darunter **Body** = [**Markdown**](/glossar/markdown/).
 
-Du speicherst → Datei ändert sich → beim Build wird HTML. In der IDE-**Preview** siehst du ungefähr, was GitHub auch rendert.
+Du speicherst → Datei ändert sich → beim Build wird HTML. In der [IDE](/glossar/ide/)-**Preview** siehst du ungefähr, was GitHub auch rendert.
 
 ## Articles & Tags (kurz)
 

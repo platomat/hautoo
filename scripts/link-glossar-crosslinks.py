@@ -77,6 +77,9 @@ TERM_PATTERNS: list[tuple[str, str]] = [
     ("css", r"\bCSS\b"),
     ("cms", r"\bCMS\b"),
     ("ssh-key", r"\bSSH\b"),
+    ("ide", r"\bIDE\b"),
+    ("ide", r"Entwicklungsumgebung"),
+    ("ide", r"Integrierte Entwicklungsumgebung"),
 ]
 
 SLUG_MAP: dict[str, str] = {

@@ -10,4 +10,4 @@ seo:
   seo_description: 'Drei Cursor-Modi: nur fragen, direkt umsetzen oder erst Plan, dann bauen. In Cursor wechselst du zwischen drei Modi. Mehr im Glossar auf hautuu.'
 ---
 
-In [Cursor](/glossar/cursor/) wechselst du zwischen drei Modi. Ask ändert keinen Code. Agent darf alles inklusive Terminal — ähnlich einem [Cloud Agent](/glossar/cloud-agent/), nur lokal. Plan erzeugt To-dos, du gibst frei, dann Agent.
+In der [IDE](/glossar/ide/) [Cursor](/glossar/cursor/) wechselst du zwischen drei Modi. Ask ändert keinen Code. Agent darf alles inklusive Terminal — ähnlich einem [Cloud Agent](/glossar/cloud-agent/), nur lokal. Plan erzeugt To-dos, du gibst frei, dann Agent.
