@@ -23,13 +23,13 @@ Jetzt wird’s hübsch. **Design** heißt hier: Dateien und Regeln, die der Agen
 1. Auf [fonts.google.com](https://fonts.google.com) **Ubuntu** wählen, hier **300** (Light) für Text, **500** (Medium) für Überschriften (600 gab’s in der Familie nicht).
 2. ZIP laden, nur die `.ttf`, die du brauchst.
 3. [transfonter.org](https://transfonter.org) → **woff/woff2** fürs Web.
-4. Dem Agenten die Dateien geben: „Bitte einbinden und committen.“
+4. Dem Agenten die Dateien geben: „Bitte einbinden und [committen](/glossar/commit/).“
 
 In der Design-Doku siehst du die Palette: dunkler Hintergrund, heller Text (nicht Knallweiß), **grüne Action-Farbe**, gedämpfte Muted-Töne.
 
 ## Terminal-Kniffe
 
-- `npm run dev`. Vorschau an. Wenn Node oder npm noch fehlen: [Folge 018](/artikel/folge-018-node-npm/).
+- `npm run dev`. Vorschau an. Wenn [Node](/glossar/nodejs/) oder [npm](/glossar/npm/) noch fehlen: [Folge 018](/artikel/folge-018-node-npm/).
 - **Strg+C**: stoppen (im [Terminal](/glossar/terminal/) ist Strg+C nicht Kopieren!).
 - Pfeil **hoch**, letzter Befehl nochmal.
 
@@ -47,13 +47,13 @@ Schreib sie in Doku und `.cursor/rules`:
 
 {{repodoc path="docs/design/README.md" title="Design & Erscheinungsbild" description="CSS-Variablen, Breakpoints und Layout-Regeln im Repo."}}
 
-Per Issue kamen **Pages** (Start, Über uns, Impressum …; Collections: [Folge 004](/artikel/folge-004-collection-pages/)). Der **Footer** kriegt Copyright mit dynamischem Jahr (`2026` oder `2026 bis 2027`), Domain, Signatur.
+Per [Issue](/glossar/issue/) kamen **Pages** (Start, Über uns, Impressum …; [Collections](/glossar/collection/): [Folge 004](/artikel/folge-004-collection-pages/)). Der **Footer** kriegt Copyright mit dynamischem Jahr (`2026` oder `2026 bis 2027`), Domain, Signatur.
 
 **Impressum** und **Datenschutz** nicht ins Hauptmenü, unten rechts. Copyright links. Auf dem Handy: untereinander, zentriert.
 
 ## Issues = dein Projekt-Trello
 
-Logo-Issue mit Label **Design**, Favicon **blocked by** Logo, GitHub-**Views** nur für Design-Tickets. Projektmanagement ohne Extra-Tool.
+Logo-Issue mit Label **Design**, Favicon **blocked by** Logo, [GitHub](/glossar/github/)-**Views** nur für Design-Tickets. Projektmanagement ohne Extra-Tool.
 
 ## Breakpoints (global merken)
 
@@ -64,6 +64,6 @@ Logo-Issue mit Label **Design**, Favicon **blocked by** Logo, GitHub-**Views** n
 
 Im Browser: Entwicklertools, Breite schieben (360 px = grobes iPhone-Feeling).
 
-Statische Astro-Seite: wenig Angriffsfläche, keine DB, schnell. „This is the way.“
+Statische [Astro](/glossar/astro/)-Seite: wenig Angriffsfläche, keine DB, schnell. „This is the way.“
 
 <!-- Quelle: 2026-10-03--02-16-51--obs-screencast - hautoo - webseite - erstes design.txt -->

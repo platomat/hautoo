@@ -19,7 +19,7 @@ Kurze Folge, viel Praxis.
 
 ## Die Astro-Dev-Leiste
 
-Mit [`npm run dev`](/glossar/npm/) klebt oft die **Astro-Dev-Toolbar** am Rand, nur bei dir, nicht live. Installation von Node/npm: [Folge 018](/artikel/folge-018-node-npm/). [**Astro**](/glossar/astro/) ist das Framework, das Markdown und Komponenten zu fertigem HTML für dein [**Frontend**](/glossar/frontend/) backt.
+Mit [`npm run dev`](/glossar/npm/) klebt oft die **[Astro](/glossar/astro/)-Dev-Toolbar** am Rand, nur bei dir, nicht live. Installation von [Node](/glossar/nodejs/)/[npm](/glossar/npm/): [Folge 018](/artikel/folge-018-node-npm/). [**Astro**](/glossar/astro/) ist das Framework, das [Markdown](/glossar/markdown/) und [Komponenten](/glossar/komponente/) zu fertigem HTML für dein [**Frontend**](/glossar/frontend/) backt.
 
 {{repodoc path="docs/astro/README.md" title="Astro" description="Build, Dev-Server und Projektstruktur in der Doku."}}
 
@@ -48,6 +48,6 @@ Wenn du’s genau willst:
 - **Margin**: Abstand nach außen.
 - **Border-Radius**: runde Ecken.
 
-Der Agent soll bestehende Klassen im Projekt nutzen, nicht bei jedem Prompt neues Inline-CSS erfinden. Deine **Page Speed** dankt’s dir. Fonts, [CSS-Variablen](/glossar/css-variable/) und erster Look: [Folge 003](/artikel/folge-003-erstes-design/).
+Der Agent soll bestehende Klassen im Projekt nutzen, nicht bei jedem Prompt neues Inline-[CSS](/glossar/css/) erfinden. Deine **Page Speed** dankt’s dir. Fonts, [CSS-Variablen](/glossar/css-variable/) und erster Look: [Folge 003](/artikel/folge-003-erstes-design/).
 
-<!-- Quelle: 2026-10-03--23-23-55--obs-screencast - hautoo - astro bar, breakpoints, css fachchinesisch.txt -->
+<!-- Quelle: 2026-10-03--23-23-55--obs-screencast - hautoo - astro bar, [breakpoints](/glossar/breakpoint/), css fachchinesisch.txt -->

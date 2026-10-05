@@ -16,7 +16,7 @@ seo:
   seo_description: Rechtstexte mit dem Agenten, Kontakt E Mail als Secret, Separator und Artikel Listing im CMS. Folge 019 zu Legal Seiten und Komponenten auf hautuu.
 ---
 
-Impressum und Datenschutz für einen in **Deutschland** betriebenen Auftritt, gehostet auf [**Cloudflare**](/glossar/cloudflare-pages/), mit den Tools aus dem Projekt: das kann der Agent ausformulieren, du prüfst Inhalt und Ton. Footer-Platzierung und erste Seiten: [Folge 003](/artikel/folge-003-erstes-design/). **Kontakt-E-Mail** gehört nicht als Klartext ins öffentliche Repo (Baustein `{{contact-email}}`, siehe [Folge 020](/artikel/folge-020-bausteine-fork/)).
+Impressum und Datenschutz für einen in **Deutschland** betriebenen Auftritt, gehostet auf [**Cloudflare**](/glossar/cloudflare-pages/), mit den Tools aus dem Projekt: das kann der Agent ausformulieren, du prüfst Inhalt und Ton. Footer-Platzierung und erste Seiten: [Folge 003](/artikel/folge-003-erstes-design/). **Kontakt-E-Mail** gehört nicht als Klartext ins öffentliche [Repo](/glossar/repository/) (Baustein `{{contact-email}}`, siehe [Folge 020](/artikel/folge-020-bausteine-fork/)).
 
 {{repodoc path="docs/cms-fields/README.md" title="CMS field partials (DRY)" description="Embeds, Kontakt-E-Mail und SEO-Felder."}}
 
@@ -25,13 +25,13 @@ Impressum und Datenschutz für einen in **Deutschland** betriebenen Auftritt, ge
 {{repodoc path="docs/sicherheit/README.md" title="Sicherheit & Secrets" description="Kontakt per ENV statt Klartext im Repo."}}
 
 
-Öffentliches GitHub bedeutet: jede Adresse im Code ist scrapebar. Stattdessen:
+Öffentliches [GitHub](/glossar/github/) bedeutet: jede Adresse im Code ist scrapebar. Stattdessen:
 
-- Cloudflare Pages → dein Projekt → **Settings** → **Variables and Secrets**: z. B. `CONTACT_EMAIL` als Secret.
+- [Cloudflare Pages](/glossar/cloudflare-pages/) → dein Projekt → **Settings** → **Variables and Secrets**: z. B. `CONTACT_EMAIL` als Secret.
 - **Lokal** dieselbe Variable in [`.env`](/glossar/env/) (liegt in `.gitignore`), z. B. `CONTACT_EMAIL=du@example.de`.
-- Build (`npm run build`; Node/npm: [Folge 018](/artikel/folge-018-node-npm/)) und Dev-Server lesen die Variable; lokal testest du mit dem gleichen Befehl wie in Production. die Impressums-Komponente rendert einen `mailto:`-Link ohne die Adresse im Markdown zu committen.
+- [Build](/glossar/build/) (`npm run build`; [Node](/glossar/nodejs/)/[npm](/glossar/npm/): [Folge 018](/artikel/folge-018-node-npm/)) und Dev-Server lesen die Variable; lokal testest du mit dem gleichen Befehl wie in Production. die Impressums-Komponente rendert einen `mailto:`-Link ohne die Adresse im [Markdown](/glossar/markdown/) zu [committen](/glossar/commit/).
 
-Kurz: ENV = Umgebungsvariablen, getrennt für lokal und Production.
+Kurz: ENV = [Umgebungsvariablen](/glossar/env/), getrennt für lokal und [Production](/glossar/production/).
 
 ## Separator im CMS
 
@@ -44,7 +44,7 @@ Statt fest verdrahteter Listen auf der Artikel-Route: Block **Artikel-Listing** 
 - **Startseite:** letzte drei, neueste zuerst, **Grid**, drei Spalten.
 - **Seite „Artikel“:** alle Einträge (`limit` null), neueste oder älteste zuerst, **eine Spalte**, Kartenstil ähnlich Startseite oder Liste ohne Karte.
 
-Im CMS explizit sagen, in welcher [**Collection**](/glossar/collection/) (Seiten vs. Artikel vs. Glossar) der Block verfügbar sein soll ([Folge 004](/artikel/folge-004-collection-pages/) erklärt das Modell).
+Im [CMS](/glossar/cms/) explizit sagen, in welcher [**Collection**](/glossar/collection/) (Seiten vs. Artikel vs. Glossar) der Block verfügbar sein soll ([Folge 004](/artikel/folge-004-collection-pages/) erklärt das Modell).
 
 ## Glossar und Bilder
 
@@ -52,6 +52,6 @@ Glossar-Begriffe können vom Agenten vorbefüllt werden; **Glossar-Listing** auf
 
 ## Text-Stil nachziehen
 
-Nach dem großen Artikel-Import ([Folge 016](/artikel/folge-016-artikel-pull-request/)): Issue an den Agenten, **Gedankenstriche** in der Prosa zu reduzieren (im Transkript: grob von sehr vielen auf wenige siteweit). Rechtstexte: unnötige Standard-Abschnitte raus, wenn sie nicht zum Setup passen.
+Nach dem großen Artikel-Import ([Folge 016](/artikel/folge-016-artikel-pull-request/)): [Issue](/glossar/issue/) an den Agenten, **Gedankenstriche** in der Prosa zu reduzieren (im Transkript: grob von sehr vielen auf wenige siteweit). Rechtstexte: unnötige Standard-Abschnitte raus, wenn sie nicht zum Setup passen.
 
-<!-- Quelle: 2026-10-04--20-57-40--obs-screencast - hautoo - 019 - inhalt, impressum, datenschutz, komponenten.txt -->
+<!-- Quelle: 2026-10-04--20-57-40--obs-screencast - hautoo - 019 - inhalt, impressum, datenschutz, [komponenten](/glossar/komponente/).txt -->

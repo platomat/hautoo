@@ -56,7 +56,7 @@ Mit **Screencast-Transkript** oder ohne:
 
 - Fehlende Begriffe **anlegen**: kurz, laienverständlich, **projektbezogen**.
 - **`relatedTags`** pflegen, wenn ein Tag thematisch passt (siehe Schema in [Collections — glossar](../sveltia/collections.md)).
-- Glossar-Texte **untereinander verlinken** (erstes sinnvolles Vorkommen pro Ziel-Eintrag, nicht auf sich selbst, nicht in Überschriften). Hilfsskript: `scripts/link-glossar-crosslinks.py` (falls im Repo; danach manuell prüfen).
+- Glossar-Texte **untereinander verlinken** (erstes sinnvolles Vorkommen pro Ziel-Eintrag, nicht auf sich selbst, nicht in Überschriften). Hilfsskript: `scripts/link-glossar-crosslinks.py` durchläuft **Glossar, alle Folgen, FAQ/CMS-Seiten und Tags**; danach manuell prüfen (keine Links in Überschriften, Codeblöcken, bestehenden Markdown-Links; keine falschen Treffer wie „Ask AI“ → Ask-Modus). Optional: `scripts/check-glossar-first-links.py` (Warnung, kein Build-Abbruch).
 - Optional **`relatedArticles`** auf die Folge mit der ausführlichen Anleitung.
 - **`seo`:** `seo_title` (z. B. `Begriff · Glossar`), `seo_description` für Meta; sichtbare Kurzdefinition bleibt `definition`.
 

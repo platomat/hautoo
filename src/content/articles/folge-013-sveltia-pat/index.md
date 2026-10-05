@@ -15,7 +15,7 @@ seo:
   seo_description: Sveltia CMS lokal ohne Login und online mit GitHub Token. Folge 013 zeigt /admin, Speichern als Commit und warum dein Schlüssel wie ein Passwort ist.
 ---
 
-[**CMS**](/glossar/cms/) = Content-Management, bei hautuu **Sveltia**: Redaktion im Browser, Inhalt landet als Dateien in Git. Keine WordPress-Datenbank.
+[**CMS**](/glossar/cms/) = Content-Management, bei hautuu **[Sveltia](/glossar/sveltia/)**: Redaktion im Browser, Inhalt landet als Dateien in [Git](/glossar/git/). Keine WordPress-Datenbank.
 
 ## Lokal: `/admin` ohne Login
 
@@ -23,25 +23,25 @@ seo:
 - **Chrome/Chromium**: Firefox klappt fürs [**Backend**](/glossar/backend/) oft nicht.
 - Modus **„local“**: Projektordner wählen. **kein Passwort**, die Dateien liegen ja schon bei dir.
 
-Links die Felder aus der Config, rechts eine simple Preview. Markdown, Bilder (z. B. Platzhalter), **SEO**: was im **Browser-Tab** steht vs. Überschrift auf der Seite, **Meta Description** für Link-Vorschau in Telegram & Co.
+Links die Felder aus der Config, rechts eine simple Preview. [Markdown](/glossar/markdown/), Bilder (z. B. Platzhalter), **SEO**: was im **Browser-Tab** steht vs. Überschrift auf der Seite, **Meta Description** für Link-Vorschau in Telegram & Co.
 
 Speichern = Datei lokal geändert, noch **nicht** live.
 
 ## Online: Warum ein Schlüssel?
 
-Öffentliches Repo = alle dürfen **lesen**, niemand **schreiben**. Für `/admin` auf der echten Domain brauchst du Zugang. Cloudflare muss die Site schon bauen ([Folge 011](/artikel/folge-011-cloudflare-setup/)).
+Öffentliches [Repo](/glossar/repository/) = alle dürfen **lesen**, niemand **schreiben**. Für `/admin` auf der echten Domain brauchst du Zugang. Cloudflare muss die Site schon bauen ([Folge 011](/artikel/folge-011-cloudflare-setup/)).
 
 ### Variante A: Personal Access Token (PAT)
 
-Ein [**PAT**](/glossar/pat/) ist ein persönlicher **Zugangsschlüssel** für GitHub:
+Ein [**PAT**](/glossar/pat/) ist ein persönlicher **Zugangsschlüssel** für [GitHub](/glossar/github/):
 
-1. GitHub → **Settings** → **Developer settings** → **Personal access tokens** (fine-grained).
-2. Beschreibung z. B. „Sveltia CMS hautuu“.
+1. GitHub → **Settings** → **Developer settings** → **[Personal access tokens](/glossar/pat/)** (fine-grained).
+2. Beschreibung z. B. „Sveltia [CMS](/glossar/cms/) hautuu“.
 3. Nur das hautuu-Repo, **Contents: Read and write**.
 4. Ablauf setzen (z. B. 90 Tage). Schlüssel rotieren.
 5. Token **einmal** kopieren — danach unsichtbar. Weg = neuen erstellen.
 
-In Sveltia: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar/commit/) auf GitHub → Cloudflare baut (`main`).
+In Sveltia: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar/commit/) auf GitHub → [Cloudflare](/glossar/cloudflare-pages/) baut (`main`).
 
 **Token = Passwort.** Nicht ins Repo, nicht im Video zeigen.
 
@@ -55,7 +55,7 @@ In Sveltia: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar
 
 
 
-Beispiel: Beispiel-Unterseite im Menü sichtbar → Commit „Update page …“ → Build → Menüpunkt live. Parent/Child an der Seite allein baut nicht automatisch die Navigation, dafür gibt’s die **menus**-Collection.
+Beispiel: Beispiel-Unterseite im Menü sichtbar → [Commit](/glossar/commit/) „Update page …“ → [Build](/glossar/build/) → Menüpunkt live. Parent/Child an der Seite allein baut nicht automatisch die Navigation, dafür gibt’s die **menus**-[Collection](/glossar/collection/).
 
 ## Variante B
 

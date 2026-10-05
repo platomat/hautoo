@@ -41,15 +41,15 @@ Ja, das ist die Idee. Du brauchst Accounts, etwas Geduld und die Folgen Schritt 
 
 ### Wie forke ich hautoo für mein eigenes Projekt?
 
-Auf GitHub beim Repo **Fork** wählen (deine Kopie unter deinem Account), dann den Fork klonen und in Cursor weiterbauen: Inhalte ersetzen, eigenes Hosting anbinden. [Glossar Fork](/glossar/fork/), [Folge 020](/artikel/folge-020-bausteine-fork/).
+Auf [GitHub](/glossar/github/) beim Repo **[Fork](/glossar/fork/)** wählen (deine Kopie unter deinem Account), dann den Fork klonen und in Cursor weiterbauen: Inhalte ersetzen, eigenes Hosting anbinden. [Glossar Fork](/glossar/fork/), [Folge 020](/artikel/folge-020-bausteine-fork/).
 
 ### Brauche ich Programmierkenntnisse?
 
-Nein im klassischen Sinn. Du beschreibst Ziele in normaler Sprache, der Agent ändert Dateien. Terminal-Befehle kannst du oft kopieren. Trotzdem hilft Neugier, wenn etwas hakt. [Folge 008](/artikel/folge-008-cursor-modi/), [Folge 001](/artikel/folge-001-hautuu-intro/).
+Nein im klassischen Sinn. Du beschreibst Ziele in normaler Sprache, der Agent ändert Dateien. [Terminal](/glossar/terminal/)-Befehle kannst du oft kopieren. Trotzdem hilft Neugier, wenn etwas hakt. [Folge 008](/artikel/folge-008-cursor-modi/), [Folge 001](/artikel/folge-001-hautuu-intro/).
 
 ### Was ist der Unterschied zu WordPress?
 
-hautuu ist **statisch**: keine Datenbank auf dem Server, Inhalte liegen als Dateien in Git. [**Astro**](/glossar/astro/) erzeugt HTML beim [**Build**](/glossar/build/). [Folge 002](/artikel/folge-002-github-issues/).
+hautuu ist **statisch**: keine Datenbank auf dem Server, Inhalte liegen als Dateien in [Git](/glossar/git/). [**Astro**](/glossar/astro/) erzeugt HTML beim [**Build**](/glossar/build/). [Folge 002](/artikel/folge-002-github-issues/).
 
 ### Was heißt „statische Website“?
 
@@ -57,19 +57,19 @@ Fertige HTML-Seiten werden ausgeliefert, nicht bei jedem Klick neu aus einer Dat
 
 ### Was ist der Unterschied zwischen Frontend und Backend?
 
-**Frontend** sehen Besucher (gebautes HTML/CSS). Das [**Backend**](/glossar/backend/) ist bei hautuu vor allem Speicher (GitHub), Redaktion (`/admin/`) und optional der [**Worker**](/glossar/cloudflare-worker/) für OAuth, keine WordPress-Datenbank. [Folge 002](/artikel/folge-002-github-issues/), [Folge 014](/artikel/folge-014-sveltia-worker/).
+**[Frontend](/glossar/frontend/)** sehen Besucher (gebautes HTML/CSS). Das [**Backend**](/glossar/backend/) ist bei hautuu vor allem Speicher (GitHub), Redaktion (`/admin/`) und optional der [**Worker**](/glossar/cloudflare-worker/) für [OAuth](/glossar/oauth/), keine WordPress-Datenbank. [Folge 002](/artikel/folge-002-github-issues/), [Folge 014](/artikel/folge-014-sveltia-worker/).
 
 ### Hat meine Seite überhaupt ein Backend?
 
-Kein klassisches Server-Backend mit Datenbank. Inhalte liegen in Git, die Live-Site ist statisch. Kleine Backend-Bausteine gibt es fürs CMS-Login. [Folge 011](/artikel/folge-011-cloudflare-setup/), [Folge 013](/artikel/folge-013-sveltia-pat/).
+Kein klassisches Server-[Backend](/glossar/backend/) mit Datenbank. Inhalte liegen in Git, die Live-Site ist statisch. Kleine Backend-Bausteine gibt es fürs CMS-Login. [Folge 011](/artikel/folge-011-cloudflare-setup/), [Folge 013](/artikel/folge-013-sveltia-pat/).
 
 ### Wo fange ich sinnvoll an?
 
-Repo anlegen, lokal klonen, Cursor öffnen, grobe Richtung verstehen. Danach Issues, Design, Cloudflare, CMS. [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 002](/artikel/folge-002-github-issues/).
+[Repo](/glossar/repository/) anlegen, lokal klonen, Cursor öffnen, grobe Richtung verstehen. Danach Issues, Design, Cloudflare, CMS. [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 002](/artikel/folge-002-github-issues/).
 
 ### Wo liegt die „Wahrheit“, und wo arbeite ich?
 
-Zentral auf **GitHub**. Lokal ist deine Werkstatt. Nach [**Push**](/glossar/push/) baut Cloudflare die Live-Site. [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 006](/artikel/folge-006-git-push-pull/).
+Zentral auf **GitHub**. Lokal ist deine Werkstatt. Nach [**Push**](/glossar/push/) baut [Cloudflare](/glossar/cloudflare-pages/) die Live-Site. [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 006](/artikel/folge-006-git-push-pull/).
 
 ### Muss ich am Anfang alles verstehen?
 
@@ -81,7 +81,7 @@ Nein. Erst ein Bild im Kopf, Details in den Folgen und im [Glossar](/glossar/). 
 
 ### Was kostet das alles?
 
-Viele Bausteine haben **kostenlose Einstiegstarife** (öffentliches GitHub-Repo, Cloudflare Pages für statische Sites, Astro als Open Source). **Cursor** ist kostenpflichtig je nach Plan und Nutzung. Aktuelle Preise immer auf cursor.com, github.com und cloudflare.com prüfen. [Folge 009](/artikel/folge-009-cursor-abo/).
+Viele Bausteine haben **kostenlose Einstiegstarife** (öffentliches GitHub-Repo, Cloudflare Pages für statische Sites, [Astro](/glossar/astro/) als Open Source). **Cursor** ist kostenpflichtig je nach Plan und Nutzung. Aktuelle Preise immer auf cursor.com, github.com und cloudflare.com prüfen. [Folge 009](/artikel/folge-009-cursor-abo/).
 
 ### Muss ich einen eigenen Server mieten?
 
@@ -89,15 +89,15 @@ Nein. Cloudflare **hostet** die gebaute Site; du pflegst Code und Inhalte in Git
 
 ### Welchen Rechner und welches Betriebssystem brauche ich?
 
-In den Folgen: **Linux** oder **Mac** (ähnliche Pfade für Terminal und SSH). Windows geht mit angepassten Tools, im Projekt liegt der Fokus auf Linux/Mac. [Folge 017](/artikel/folge-017-github-ssh/), [Folge 018](/artikel/folge-018-node-npm/).
+In den Folgen: **Linux** oder **Mac** (ähnliche Pfade für Terminal und [SSH](/glossar/ssh-key/)). Windows geht mit angepassten Tools, im Projekt liegt der Fokus auf Linux/Mac. [Folge 017](/artikel/folge-017-github-ssh/), [Folge 018](/artikel/folge-018-node-npm/).
 
 ### Brauche ich eine virtuelle Maschine?
 
-Optional. Manche nutzen eine VM für Experimente oder Cloud Agents; du kannst aber auch direkt auf deinem Rechner starten. [Folge 009](/artikel/folge-009-cursor-abo/), [Folge 015](/artikel/folge-015-transkript-artikel/).
+Optional. Manche nutzen eine VM für Experimente oder [Cloud Agents](/glossar/cloud-agent/); du kannst aber auch direkt auf deinem Rechner starten. [Folge 009](/artikel/folge-009-cursor-abo/), [Folge 015](/artikel/folge-015-transkript-artikel/).
 
 ### Welche Accounts muss ich anlegen?
 
-Mindestens **GitHub** und **Cursor**; für Live-Hosting **Cloudflare** und Verknüpfung mit dem Repo. [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 011](/artikel/folge-011-cloudflare-setup/).
+Mindestens **GitHub** und **[Cursor](/glossar/cursor/)**; für Live-Hosting **Cloudflare** und Verknüpfung mit dem Repo. [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 011](/artikel/folge-011-cloudflare-setup/).
 
 ### Wie viel Zeit soll ich einplanen?
 
@@ -105,15 +105,15 @@ Das Projekt wächst in vielen Sessions. Plane lieber mehrere Abende ein als „f
 
 ### Reicht mein Internet?
 
-Ja, für Git, Builds in der Cloud und Downloads wie `npm install`. Große Medien lokal sparen Bandbreite. [Folge 018](/artikel/folge-018-node-npm/).
+Ja, für Git, [Build](/glossar/build/)s in der Cloud und Downloads wie `npm install`. Große Medien lokal sparen Bandbreite. [Folge 018](/artikel/folge-018-node-npm/).
 
 ### Brauche ich Chrome für das CMS?
 
-Für Sveltia online wird **Chrome/Chromium** empfohlen; Firefox klappt fürs Backend oft nicht. [Folge 013](/artikel/folge-013-sveltia-pat/).
+Für [Sveltia](/glossar/sveltia/) online wird **Chrome/Chromium** empfohlen; Firefox klappt fürs Backend oft nicht. [Folge 013](/artikel/folge-013-sveltia-pat/).
 
 ### Ist hautuu nur eine Demo oder „echt“ live?
 
-Echte Site unter der Projekt-Domain, öffentliches Repo, echte Deployments. Du kannst mitlesen und denselben Stack lernen. [Über uns](/ueber-uns/).
+Echte Site unter der Projekt-Domain, öffentliches Repo, echte [Deployments](/glossar/deploy/). Du kannst mitlesen und denselben Stack lernen. [Über uns](/ueber-uns/).
 
 ### Muss ich KI extra bezahlen neben Cursor?
 
@@ -165,7 +165,7 @@ Nein. Der [**Cloud Agent**](/glossar/cloud-agent/) läuft in der Cloud; du liest
 
 ### Was ist der Unterschied zwischen Git und GitHub?
 
-[**Git**](/glossar/git/) ist die Versionsverwaltung auf deinem Rechner. [**GitHub**](/glossar/github/) ist der Dienst, wo das Repo liegt und Issues/PRs laufen. [Folge 001](/artikel/folge-001-hautuu-intro/).
+[**Git**](/glossar/git/) ist die Versionsverwaltung auf deinem Rechner. [**GitHub**](/glossar/github/) ist der Dienst, wo das Repo liegt und [Issues](/glossar/issue/)/PRs laufen. [Folge 001](/artikel/folge-001-hautuu-intro/).
 
 ### Was ist ein Repository?
 
@@ -185,11 +185,11 @@ GitHub ist oft neuer als dein Ordner. Erst [**pullen**](/glossar/pull/), Konflik
 
 ### Was ist ein Pull Request?
 
-Vorschlag, einen [**Branch**](/glossar/branch/) in `main` (oder anders) zu mergen, mit Checks. [Glossar Pull Request](/glossar/pull-request/), [Folge 016](/artikel/folge-016-artikel-pull-request/).
+Vorschlag, einen [**Branch**](/glossar/branch/) in `main` (oder anders) zu [merge](/glossar/merge/)n, mit Checks. [Glossar Pull Request](/glossar/pull-request/), [Folge 016](/artikel/folge-016-artikel-pull-request/).
 
 ### Was ist `main`?
 
-Der Hauptzweig, den Cloudflare als Production baut. [Glossar Main](/glossar/main/), [Folge 012](/artikel/folge-012-cloudflare-branches/).
+Der Hauptzweig, den Cloudflare als [Production](/glossar/production/) baut. [Glossar Main](/glossar/main/), [Folge 012](/artikel/folge-012-cloudflare-branches/).
 
 ### Merge oder Rebase?
 
@@ -217,7 +217,7 @@ Der Standardname für dein Remote auf GitHub. [Glossar Origin](/glossar/origin/)
 
 ### Was ist der Unterschied zwischen Ask, Agent und Plan?
 
-**Ask** fragt nur, **Agent** schreibt und nutzt das Terminal, **Plan** plant erst. [Glossar Ask, Agent und Plan](/glossar/cursor-modi/), [Folge 008](/artikel/folge-008-cursor-modi/).
+**[Ask](/glossar/cursor-modi/)** fragt nur, **Agent** schreibt und nutzt das Terminal, **Plan** plant erst. [Glossar Ask, Agent und Plan](/glossar/cursor-modi/), [Folge 008](/artikel/folge-008-cursor-modi/).
 
 ### Warum zwei Chats?
 
@@ -233,7 +233,7 @@ Bei hautuu: **nur auf dein Wort**, sonst ungewolltes Live-Deploy. [Folge 003](/a
 
 ### Kann die KI Fehler machen?
 
-Ja. PRs, Preview und `npm run build` prüfen; du liest den Diff. [Folge 016](/artikel/folge-016-artikel-pull-request/), [Folge 010](/artikel/folge-010-cursor-chats/).
+Ja. [PRs](/glossar/pull-request/), Preview und `npm run build` prüfen; du liest den Diff. [Folge 016](/artikel/folge-016-artikel-pull-request/), [Folge 010](/artikel/folge-010-cursor-chats/).
 
 ### Wie merke ich, dass die KI Mist gebaut hat?
 
@@ -249,11 +249,11 @@ Bei größeren Features (z. B. Burger-Menü): Plan lesen, korrigieren, dann baue
 
 ### Landen Chats im Repo?
 
-Nur wenn du sie committest. Exporte nach `docs/sessions/` und `.gitignore` nutzen. [Folge 008](/artikel/folge-008-cursor-modi/).
+Nur wenn du sie [committest](/glossar/commit/). Exporte nach `docs/sessions/` und `.gitignore` nutzen. [Folge 008](/artikel/folge-008-cursor-modi/).
 
 ### Was ist eine IDE und warum Cursor?
 
-Eine [IDE](/glossar/ide/) bündelt Dateien, Editor, Terminal und Fehlermeldungen. [Cursor](/glossar/cursor/) ist eine IDE auf Basis von VS Code mit KI-Agenten für hautuu. [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 008](/artikel/folge-008-cursor-modi/).
+Eine [IDE](/glossar/ide/) bündelt Dateien, Editor, Terminal und Fehlermeldungen. [Cursor](/glossar/cursor/) ist eine [IDE](/glossar/ide/) auf Basis von VS Code mit KI-Agenten für hautuu. [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 008](/artikel/folge-008-cursor-modi/).
 
 ### Was ist der IDE-Modus?
 
@@ -269,11 +269,11 @@ Ja. Issue beschreibt die Aufgabe dauerhaft auf GitHub. [Folge 002](/artikel/folg
 
 ### Was macht Cloudflare Pages hier?
 
-Baut nach Git-Push (`npm run build`, Output `dist`) und hostet die Site. [Folge 011](/artikel/folge-011-cloudflare-setup/).
+Baut nach Git-[Push](/glossar/push/) (`npm run build`, Output `dist`) und hostet die Site. [Folge 011](/artikel/folge-011-cloudflare-setup/).
 
 ### Was ist eine Preview-URL?
 
-Temporäre Adresse für einen Branch, bevor du mergst. [Glossar Preview-URL](/glossar/preview-url/), [Folge 012](/artikel/folge-012-cloudflare-branches/).
+Temporäre Adresse für einen [Branch](/glossar/branch/), bevor du mergst. [Glossar Preview-URL](/glossar/preview-url/), [Folge 012](/artikel/folge-012-cloudflare-branches/).
 
 ### Kann ich eine alte Version zurückholen?
 
@@ -281,7 +281,7 @@ Temporäre Adresse für einen Branch, bevor du mergst. [Glossar Preview-URL](/gl
 
 ### Was ist der Worker?
 
-[**Edge-Programm**](/glossar/cloudflare-worker/) z. B. für CMS-Login, nicht die Website selbst. [Folge 014](/artikel/folge-014-sveltia-worker/).
+[**Edge-Programm**](/glossar/cloudflare-worker/) z. B. für [CMS](/glossar/cms/)-Login, nicht die Website selbst. [Folge 014](/artikel/folge-014-sveltia-worker/).
 
 ### Push heißt automatisch neu bauen?
 
@@ -305,7 +305,7 @@ Nicht gepusht, falscher Branch, Build noch läuft oder fehlgeschlagen, oder du s
 
 ### Woran erkenne ich, welcher Commit live ist?
 
-Kurze Commit-ID in Cloudflare Pages vergleichen mit GitHub. [Folge 011](/artikel/folge-011-cloudflare-setup/).
+Die ersten Zeichen der [Commit](/glossar/commit/)-ID (Hash) in Cloudflare Pages mit GitHub abgleichen; meist reichen etwa sieben Zeichen. Stimmen sie, ist derselbe Stand live. [Folge 011](/artikel/folge-011-cloudflare-setup/).
 
 ---
 
@@ -325,7 +325,7 @@ Inhaltstypen wie pages, articles, menus, blocks (Bausteine). [Glossar Collection
 
 ### Was ist ein Baustein und wie nutze ich ihn?
 
-Wiederverwendbarer Inhalt ohne eigene URL in der Collection **blocks**. Einbinden mit `{{block id="slug"}}` oder Toolbar **Baustein** in Sveltia. [Glossar Baustein](/glossar/baustein/), [Folge 020](/artikel/folge-020-bausteine-fork/).
+Wiederverwendbarer Inhalt ohne eigene URL in der [Collection](/glossar/collection/) **blocks**. Einbinden mit `{{block id="slug"}}` oder Toolbar **Baustein** in Sveltia. [Glossar Baustein](/glossar/baustein/), [Folge 020](/artikel/folge-020-bausteine-fork/).
 
 ### Was ist Frontmatter?
 
@@ -333,7 +333,7 @@ Metadaten oben in der Datei; darunter [**Markdown**](/glossar/markdown/). [Gloss
 
 ### Speichern heißt sofort live?
 
-Nur wenn auf **main** gepusst und Production baut. Sonst Branch/Preview. [Folge 012](/artikel/folge-012-cloudflare-branches/).
+Nur wenn auf **[main](/glossar/main/)** gepusst und Production baut. Sonst Branch/Preview. [Folge 012](/artikel/folge-012-cloudflare-branches/).
 
 ### Was ist der lokale Modus?
 
@@ -381,7 +381,7 @@ Lädt die Pakete (Abhängigkeiten) aus `package.json` nach `node_modules`. [Glos
 
 ### Wann muss ich `npm install` ausführen?
 
-Nach dem ersten Clone, auf einem neuen Rechner oder wenn `package.json` (oder das Lockfile) sich geändert hat. Nicht vor jedem `npm run dev`. Der Cursor-Agent weist dich meist darauf hin oder erledigt es. Cloudflare beim Build ebenfalls. [Folge 002](/artikel/folge-002-github-issues/), [Folge 018](/artikel/folge-018-node-npm/).
+Nach dem ersten [Clone](/glossar/clone/), auf einem neuen Rechner oder wenn `package.json` (oder das Lockfile) sich geändert hat. Nicht vor jedem `npm run dev`. Der Cursor-Agent weist dich meist darauf hin oder erledigt es. Cloudflare beim Build ebenfalls. [Folge 002](/artikel/folge-002-github-issues/), [Folge 018](/artikel/folge-018-node-npm/).
 
 ### Was ist der Unterschied zwischen `npm run dev` und `npm run build`?
 
@@ -389,7 +389,7 @@ Nach dem ersten Clone, auf einem neuen Rechner oder wenn `package.json` (oder da
 
 ### Was ist nvm?
 
-[**Node Version Manager**](/glossar/nvm/) für mehrere Node-Versionen. [Folge 018](/artikel/folge-018-node-npm/).
+[**Node Version Manager**](/glossar/nvm/) für mehrere [Node](/glossar/nodejs/)-Versionen. [Folge 018](/artikel/folge-018-node-npm/).
 
 ### Was ist `localhost`?
 
@@ -401,7 +401,7 @@ Nein. Nur `package.json` / Lockfile im Repo; installieren kann jeder mit `npm in
 
 ### Was ist `package.json`?
 
-Liste der npm-Abhängigkeiten und Skripte wie `dev` und `build`. [Folge 018](/artikel/folge-018-node-npm/).
+Liste der [npm](/glossar/npm/)-Abhängigkeiten und Skripte wie `dev` und `build`. [Folge 018](/artikel/folge-018-node-npm/).
 
 ### Baut Cloudflare auch mit npm?
 
@@ -413,7 +413,7 @@ Ja, derselbe Build-Befehl wie lokal. [Folge 011](/artikel/folge-011-cloudflare-s
 
 ### Wie schreibe ich einen Artikel ohne Code?
 
-Im [**CMS**](/glossar/cms/) unter `/admin/` oder Markdown in Cursor. [Folge 013](/artikel/folge-013-sveltia-pat/).
+Im [**CMS**](/glossar/cms/) unter `/admin/` oder [Markdown](/glossar/markdown/) in Cursor. [Folge 013](/artikel/folge-013-sveltia-pat/).
 
 ### Wie binde ich ein Video ein?
 
@@ -445,7 +445,7 @@ Transkript + [**Cloud Agent**](/glossar/cloud-agent/) + Pull Request, dann prüf
 
 ### Wie passe ich Design und Abstände an?
 
-Issues an den Agenten, bestehende CSS-Klassen nutzen. [Folge 003](/artikel/folge-003-erstes-design/), [Folge 005](/artikel/folge-005-astro-toolbar/).
+Issues an den Agenten, bestehende [CSS](/glossar/css/)-Klassen nutzen. [Folge 003](/artikel/folge-003-erstes-design/), [Folge 005](/artikel/folge-005-astro-toolbar/).
 
 ### Was sind Breakpoints?
 
@@ -541,7 +541,7 @@ Node installiert? Vorher `npm install`? [Folge 018](/artikel/folge-018-node-npm/
 
 ### /admin geht online nicht?
 
-PAT/OAuth, Chrome, Cloudflare-Build, richtige Domain. [Folge 013](/artikel/folge-013-sveltia-pat/).
+[PAT](/glossar/pat/)/OAuth, Chrome, Cloudflare-Build, richtige Domain. [Folge 013](/artikel/folge-013-sveltia-pat/).
 
 ### Lokal sieht es anders aus als live?
 

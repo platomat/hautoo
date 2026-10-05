@@ -19,9 +19,9 @@ seo:
 
 ## Chat-Oberfläche vs. IDE
 
-Manchmal startet Cursor chat-lastig. Für hautuu willst du den **IDE**-Modus: Dateien, [Terminal](/glossar/terminal/), Agentenleiste. Button **IDE** hilft.
+Manchmal startet [Cursor](/glossar/cursor/) chat-lastig. Für hautuu willst du den **[IDE](/glossar/ide/)**-Modus: Dateien, [Terminal](/glossar/terminal/), Agentenleiste. Button **IDE** hilft.
 
-Du kannst auch einen beliebigen **Ordner ohne Git** öffnen (Fotos, Notizen) und dem Agenten sagen: „Pack das ins Projekt.“
+Du kannst auch einen beliebigen **Ordner ohne [Git](/glossar/git/)** öffnen (Fotos, Notizen) und dem Agenten sagen: „Pack das ins Projekt.“
 
 ## Drei Modi, drei Temperamentstufen
 
@@ -32,8 +32,8 @@ Du kannst auch einen beliebigen **Ordner ohne Git** öffnen (Fotos, Notizen) und
 | Modus | Wofür |
 |--------|--------|
 | [**Ask**](/glossar/cursor-modi/) | Nur fragen. Ideal, wenn nichts am Code geändert werden soll. `Frage:` am Anfang ist ein guter Hinweis. |
-| **Agent** | Alles: lesen, schreiben, Terminal, Commits. Der Vollgas-Modus. |
-| **Plan** | Erst Plan mit To-dos, du liest, korrigierst, **dann** Umsetzung im Agent-Modus. |
+| **Agent** | Alles: lesen, schreiben, [Terminal](/glossar/terminal/), Commits. Der Vollgas-Modus. |
+| **[Plan](/glossar/cursor-modi/)** | Erst Plan mit To-dos, du liest, korrigierst, **dann** Umsetzung im Agent-Modus. |
 
 **Tab** = Autovervollständigung im Code (im Chat klappt das nicht immer).
 
@@ -44,15 +44,15 @@ Tipp aus dem Video: Erstes Projekt ohne Plan war hektisch. Mit Plan-Modus: entsp
 Aufgabe: mobiles Menü, Icon wird zum Kreuz, animiert.
 
 1. **Plan:** „Umsetzungsplan, noch nicht bauen.“
-2. Plan lesen, gut, wenn „kein Push ohne Anweisung“ drinsteht.
+2. Plan lesen, gut, wenn „kein [Push](/glossar/push/) ohne Anweisung“ drinsteht.
 3. Feedback: Trennlinien, Abstände oben/unten.
-4. **Agent** baut → [`npm run dev`](/glossar/npm/) → gucken ([Folge 018](/artikel/folge-018-node-npm/), falls npm noch fehlt).
-5. Commit, wenn du zufrieden bist.
+4. **Agent** baut → [`npm run dev`](/glossar/npm/) → gucken ([Folge 018](/artikel/folge-018-node-npm/), falls [npm](/glossar/npm/) noch fehlt).
+5. [Commit](/glossar/commit/), wenn du zufrieden bist.
 
 Bei **679 Pixel Breite und weniger** zeigt sich die Handy-Ansicht (Burger-Menü statt Desktop-Leiste). Das Menü nutzt dieselben zentralen [CSS-Variablen](/glossar/css-variable/) wie der Rest der Seite: Farben, Abstände und Schriftgrößen aus `global.css`.
 
 ## Transkripte: privat lassen
 
-**Export Transcript** nach `docs/sessions/`, dein Schnack mit der KI. Ordner in **`.gitignore`** (`docs/sessions/`), sonst landet’s im öffentlichen Repo. Commits = nur Website-Zeug.
+**Export Transcript** nach `docs/sessions/`, dein Schnack mit der KI. Ordner in **`.gitignore`** (`docs/sessions/`), sonst landet’s im öffentlichen [Repo](/glossar/repository/). Commits = nur Website-Zeug.
 
 <!-- Quelle: 2026-10-03--23-48-14--obs-screencast - hautoo - cursor - plan, agent, ask.txt -->

@@ -48,11 +48,11 @@ Geteilte Motive für Startseite, FAQ, Glossar-Übersicht: **Medienbibliothek** �
 
 {{repodoc path="docs/sveltia/medien-variante-b.md" title="Medien — Variante B" description="Bilder neben dem Content-Eintrag und Astro image()."}}
 
-Im CMS: Seite öffnen, **Hintergrundbild** wählen oder per **Replace** eine optimierte Datei nachlegen (gleicher Dateiname oder neues Asset). **Overlay** und [**Bildnachweis**](/glossar/bildnachweis/) nicht vergessen, wenn die Lizenz oder die Plattform Credits will (Sammlung auf dem Impressum).
+Im [CMS](/glossar/cms/): Seite öffnen, **Hintergrundbild** wählen oder per **Replace** eine optimierte Datei nachlegen (gleicher Dateiname oder neues Asset). **Overlay** und [**Bildnachweis**](/glossar/bildnachweis/) nicht vergessen, wenn die Lizenz oder die Plattform Credits will (Sammlung auf dem Impressum).
 
 ## Was Astro noch macht
 
-hautuu wandelt Hintergründe beim Build in **WebP** um und liefert mehrere Breiten per `srcset` (640 bis 1920 px), siehe `PageBackground.astro`. Trotzdem lohnt **kleine Quelldateien**: der Build spart Bytes, aber eine 2‑MB-Rohdatei bleibt unnötig schwer in Git.
+hautuu wandelt Hintergründe beim [Build](/glossar/build/) in **WebP** um und liefert mehrere Breiten per `srcset` (640 bis 1920 px), siehe `PageBackground.astro`. Trotzdem lohnt **kleine Quelldateien**: der Build spart Bytes, aber eine 2‑MB-Rohdatei bleibt unnötig schwer in [Git](/glossar/git/).
 
 In **PageSpeed Insights** ([Google](https://pagespeed.web.dev/)) kann unter „Bildübermittlung“ noch Optimierungspotenzial auftauchen (z. B. angezeigte Breite kleiner als ausgelieferte Datei). Dann Quelle schlanker wählen oder prüfen, ob das richtige `sizes`-/`srcset`-Setup greift. Die Site war in der Session schon **grün** mobil; Bilder sind ein Hebel für die letzten Prozent.
 
@@ -63,8 +63,8 @@ In **PageSpeed Insights** ([Google](https://pagespeed.web.dev/)) kann unter „B
 - Lizenz und **bezahlte** Treffer auf Stock-Seiten prüfen.
 - Vor Upload: **schneiden**, **skalieren**, **WebP**, Metadaten optional strippen.
 - **Assets** global oder **neben dem Artikel**; Nachweis im CMS-Feld.
-- Astro optimiert weiter, ersetzt aber kein schlankes Original.
+- [Astro](/glossar/astro/) optimiert weiter, ersetzt aber kein schlankes Original.
 
-Nächster Schritt im Projektalltag: Meilensteine und offene Issues (SEO, Performance) wie gewohnt über GitHub pflegen ([Folge 002](/artikel/folge-002-github-issues/)). PR-Konflikte kann der Agent oft allein lösen, wenn du die Nummer nennst ([Folge 016](/artikel/folge-016-artikel-pull-request/)).
+Nächster Schritt im Projektalltag: Meilensteine und offene [Issues](/glossar/issue/) (SEO, Performance) wie gewohnt über [GitHub](/glossar/github/) pflegen ([Folge 002](/artikel/folge-002-github-issues/)). PR-Konflikte kann der Agent oft allein lösen, wenn du die Nummer nennst ([Folge 016](/artikel/folge-016-artikel-pull-request/)).
 
 <!-- Quelle: transkript-021_6a6c.txt (Screencast hautoo - 021 - bilder suchen, anpassen, verwenden) -->

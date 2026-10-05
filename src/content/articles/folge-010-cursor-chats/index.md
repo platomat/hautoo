@@ -24,7 +24,7 @@ Gleicher Trick wie mit zwei Spezial-Agenten in einer VM, nur in der [IDE](/gloss
 1. **Chat A:** „Deine Rolle: penibel Fehler und Sicherheitslücken suchen.“
 2. **Chat B:** „Deine Rolle: gefundenes sauber und minimal fixen.“
 
-Zwei Köpfe, zwei Aufgaben, statt einem endlosen Monolog. Ask, Agent und Plan im Überblick: [Folge 008](/artikel/folge-008-cursor-modi/).
+Zwei Köpfe, zwei Aufgaben, statt einem endlosen Monolog. [Ask](/glossar/cursor-modi/), Agent und Plan im Überblick: [Folge 008](/artikel/folge-008-cursor-modi/).
 
 ## Chat weggeklickt?
 
@@ -32,4 +32,4 @@ In der Historie (Uhr-Symbol / Archiv) findest du alte Gespräche wieder. Oder **
 
 Ein optionaler **Grok-Bot** in einer VM ist nice-to-have. Zwei Chats mit klaren Rollen reichen völlig.
 
-<!-- Quelle: 2026-10-04--00-14-37--obs-screencast - hautoo - cursor - chats.txt -->
+<!-- Quelle: 2026-10-04--00-14-37--obs-screencast - hautoo - [cursor](/glossar/cursor/) - chats.txt -->

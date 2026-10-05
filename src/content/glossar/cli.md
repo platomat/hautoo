@@ -16,8 +16,8 @@ seo:
   seo_description: Command Line Interface, Bedienung per Textbefehl. git, npm, gh und wrangler sind CLIs, die du im Terminal nutzt. Unterschied zum Terminal erklärt im Glossar.
 ---
 
-**CLI** steht für *Command Line Interface*: du steuerst ein Programm mit **Text** statt mit Buttons. Umgangssprachlich sagst du auch **[Kommandozeile](/glossar/terminal/)nprogramm** oder **Kommandozeilentool**.
+**CLI** steht für *Command Line Interface*: du steuerst ein Programm mit **Text** statt mit Buttons. Umgangssprachlich sagst du auch **[Kommandozeile](/glossar/terminal/)nprogramm** oder **[Kommandozeile](/glossar/terminal/)ntool**.
 
-Das **Terminal** ist das Fenster, in das du tippst. Die **CLI** ist das Werkzeug darin: [Git](/glossar/git/) für Versionen, [npm](/glossar/npm/) für Pakete und Skripte, `gh` für [GitHub](/glossar/github/), `wrangler` für [Cloudflare](/glossar/cloudflare-pages/). Du rufst sie mit einem Namen plus Optionen auf, z. B. `git pull` oder `npm run build`.
+Das **[Terminal](/glossar/terminal/)** ist das Fenster, in das du tippst. Die **CLI** ist das Werkzeug darin: [Git](/glossar/git/) für Versionen, [npm](/glossar/npm/) für Pakete und Skripte, `gh` für [GitHub](/glossar/github/), `wrangler` für [Cloudflare](/glossar/cloudflare-pages/). Du rufst sie mit einem Namen plus Optionen auf, z. B. `git pull` oder `npm run build`.
 
 In [Cursor](/glossar/cursor/) und anderen [IDEs](/glossar/ide/) tippst du CLIs oft im eingebauten [Terminal](/glossar/terminal/). Für hautuu reicht oft: Befehle aus den [Folgen](/artikel/) kopieren, ausführen, Ausgabe lesen. Tiefer: [Folge 006](/artikel/folge-006-git-push-pull/) ([Git](/glossar/git/)), [Folge 018](/artikel/folge-018-node-npm/) ([npm](/glossar/npm/)), [Folge 017](/artikel/folge-017-github-ssh/) ([ssh-key](/glossar/ssh-key/)gen).

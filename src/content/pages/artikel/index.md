@@ -26,6 +26,6 @@ seo:
   max_image_preview: large
 ---
 
-Hier findest du Beiträge und How-tos rund um hautuu: Cursor, GitHub, Cloudflare und den Stack dahinter.
+Hier findest du Beiträge und How-tos rund um hautuu: [Cursor](/glossar/cursor/), [GitHub](/glossar/github/), [Cloudflare](/glossar/cloudflare-pages/) und den Stack dahinter.
 
 {{article-listing count="0" sort="newest" layout="grid" columns="1" gap="3" show="title,intro,date,readingTime,tags"}}
