@@ -31,10 +31,9 @@ Bisher: lokal und GitHub. Jetzt wird’s öffentlich: [**Cloudflare Pages**](/gl
 Cursor → commit → push → GitHub → Cloudflare Build → Live
 ```
 
-Push auf **[`main`](/glossar/main/)** = Production
+Push auf **[`main`](/glossar/main/)** = Production (wenn so eingestellt).
 
 {{repodoc path="docs/cloudflare/README.md" title="Cloudflare — Website online bringen" description="Pages, Deployments und Domain in der Doku."}}
- (wenn so eingestellt).
 
 ## Projekt anlegen
 
@@ -46,10 +45,9 @@ Push auf **[`main`](/glossar/main/)** = Production
 6. **Output:** `dist` (fertiges HTML).
 7. **Save and Deploy**
 
-Erst **Build**, dann [**Deploy**](/glossar/deploy/).
+Erst **Build**, dann [**Deploy**](/glossar/deploy/). Unter **Deployments** jeder Lauf; Erfolg = `*.pages.dev`-URL. `npm run build` lokal braucht Node ([Folge 018](/artikel/folge-018-node-npm/)).
 
 {{repodoc path="docs/sveltia/zugang-cloudflare.md" title="Sveltia auf Cloudflare" description="CMS-Zugang nach dem Livegang einrichten."}}
- Unter **Deployments** jeder Lauf; Erfolg = `*.pages.dev`-URL. `npm run build` lokal braucht Node ([Folge 018](/artikel/folge-018-node-npm/)).
 
 ## Eigene Domain
 
