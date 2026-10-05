@@ -305,7 +305,7 @@ Nicht gepusht, falscher Branch, Build noch läuft oder fehlgeschlagen, oder du s
 
 ### Woran erkenne ich, welcher Commit live ist?
 
-Kurze Commit-ID in Cloudflare Pages vergleichen mit GitHub. [Folge 011](/artikel/folge-011-cloudflare-setup/).
+Die ersten Zeichen der [Commit](/glossar/commit/)-ID (Hash) in Cloudflare Pages mit GitHub abgleichen; meist reichen etwa sieben Zeichen. Stimmen sie, ist derselbe Stand live. [Folge 011](/artikel/folge-011-cloudflare-setup/).
 
 ---
 

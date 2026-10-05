@@ -55,7 +55,9 @@ Erst **Build**, dann [**Deploy**](/glossar/deploy/). Unter **Deployments** jeder
 
 ## Welche Version ist live?
 
-Kurze **Commit-ID** in Pages (z. B. endet auf `9a0`) = dieselbe auf GitHub. Burger-Menü nur lokal? Live zeigt’s noch nicht, bis du pushst. Test-Zweige und [Preview-URLs](/glossar/preview-url/): [Folge 012](/artikel/folge-012-cloudflare-branches/).
+Vergleich die ersten paar Zeichen der [Commit](/glossar/commit/)-ID (des Hashs) in Cloudflare Pages mit denen auf GitHub. Cloudflare, GitHub und die meisten Git-Tools zeigen nur die **kurze** Form, oft die ersten sieben Zeichen (im Video z. B. in Sublime Merge). Stimmen sie überein, ist es derselbe Stand.
+
+Burger-Menü nur lokal? Live zeigt’s noch nicht, bis du pushst. Test-Zweige und [Preview-URLs](/glossar/preview-url/): [Folge 012](/artikel/folge-012-cloudflare-branches/).
 
 GitHub-App checken: Unter Applications nur das hautuu-Repo erlauben.
 
