@@ -15,7 +15,7 @@ seo:
   seo_description: 'Cursor Modi Ask, Agent und Plan: wann die KI nur antwortet und wann sie Dateien ändert. Folge 008 hilft dir, Chats und Repo sauber zu trennen.'
 ---
 
-[**Cursor**](/glossar/cursor/) ist mehr als Chat, eine **IDE** (Entwicklungsumgebung) mit **Agenten**, die Dateien lesen und schreiben.
+[**Cursor**](/glossar/cursor/) ist mehr als Chat, eine [**IDE**](/glossar/ide/) mit **Agenten**, die Dateien lesen und schreiben.
 
 ## Chat-Oberfläche vs. IDE
 
