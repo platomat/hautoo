@@ -37,7 +37,7 @@ Im Dashboard siehst du Tokens pro Anfrage — 40-Millionen-Monster sind möglich
 
 ## VM & Grok (optional)
 
-Wasilij nutzt manchmal eine **virtuelle Maschine**, abgeschottet vom Haupt-PC. Spezial-Agenten (Audit, Bugfix, nochmal Audit) erzeugen [Issues](/glossar/issue/). Geht auch mit **zwei normalen Chats** und klaren Rollen, ohne Extra-Hardware ([Folge 010](/artikel/folge-010-cursor-chats/)).
+Wasilij nutzt manchmal eine **[virtuelle Maschine](/glossar/vm/)**, abgeschottet vom Haupt-PC. Spezial-Agenten (Audit, Bugfix, nochmal Audit) erzeugen [Issues](/glossar/issue/). Geht auch mit **zwei normalen Chats** und klaren Rollen, ohne Extra-Hardware ([Folge 010](/artikel/folge-010-cursor-chats/)).
 
 **Grok** in Cursor kann ab höheren Plänen relevant sein, im Account nachsehen, ob du’s brauchst.
 
