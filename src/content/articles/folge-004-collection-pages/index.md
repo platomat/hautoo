@@ -50,7 +50,7 @@ Praktisch:
 - **index / noindex**: Impressum & Datenschutz oft **noindex**, damit Google nicht den Legal-Text als Hauptinhalt feiert.
 - Tab-Titel und Meta-Beschreibung getrennt vom sichtbaren Seitentitel.
 
-Backlog-Idee aus dem Video: optionales **Inhaltsverzeichnis** oben bei langen Texten.
+Backlog-Idee: optionales **Inhaltsverzeichnis** oben bei langen Texten.
 
 ## Editor heute, CMS morgen
 

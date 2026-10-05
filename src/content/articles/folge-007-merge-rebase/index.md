@@ -17,7 +17,7 @@ Kurzer Nachtrag zum Experiment mit zwei Projektordnern ([Folge 006](/artikel/fol
 
 ## Was dich im Tool verwirrt
 
-Nach einem [**Merge**](/glossar/merge/) kann der Graph so aussehen, als hättest du nur noch ein paar [Commits](/glossar/commit/). Die vielen Schritte davor stecken **im Merge-Commit** drin. Auf [**GitHub**](/glossar/github/) unter „Commits“ siehst du die Einzelteile weiter (im Video z. B. 21 Stück).
+Nach einem [**Merge**](/glossar/merge/) kann der Graph so aussehen, als hättest du nur noch ein paar [Commits](/glossar/commit/). Die vielen Schritte davor stecken **im Merge-Commit** drin. Auf [**GitHub**](/glossar/github/) unter „Commits“ siehst du die Einzelteile weiter, oft ein langer Stapel.
 
 ## Merge (dein Freund fürs Team)
 
