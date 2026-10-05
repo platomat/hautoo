@@ -2,7 +2,7 @@
 title: 'Folge 010: Zwei Chats, zwei Rollen: Erst meckern, dann fixen'
 summary: 'Kein Extra-Bot nötig: ein Chat sucht Fehler, der andere räumt auf. So bleibt der Kopf frei.'
 pubDate: 2026-10-04 00:14:37+00:00
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-06
 status: published
 tags:
 - cursor
@@ -21,8 +21,8 @@ Gleicher Trick wie mit zwei Spezial-Agenten in einer [VM](/glossar/vm/), nur in 
 
 {{repodoc path="docs/cursor/README.md" title="Cursor (KI)" description="Chats, Rollen und saubere Trennung von Aufgaben."}}
 
-1. **Chat A:** „Deine Rolle: penibel Fehler und Sicherheitslücken suchen.“
-2. **Chat B:** „Deine Rolle: gefundenes sauber und minimal fixen.“
+1. **Chat A** (**New Chat** / **+** in der Agentenleiste): „Deine Rolle: penibel Fehler und Sicherheitslücken suchen.“
+2. **Chat B** (zweiter **New Chat**): „Deine Rolle: gefundenes sauber und minimal fixen.“
 
 Zwei Köpfe, zwei Aufgaben, statt einem endlosen Monolog. [Ask](/glossar/cursor-modi/), Agent und Plan im Überblick: [Folge 008](/artikel/folge-008-cursor-modi/).
 

@@ -49,7 +49,7 @@ npm install
 npm run dev
 ```
 
-[`npm install`](/glossar/npm/) lädt alle in `package.json` genannten Pakete ([Astro](/glossar/astro/), [Sveltia](/glossar/sveltia/)-[Build](/glossar/build/)-Tools, …). Das Tool ist eine [CLI](/glossar/cli/). `npm run dev` baut die Site im **Entwicklungsmodus** und zeigt eine lokale URL (oft `localhost:4321`). Link im [Terminal](/glossar/terminal/) anklicken oder URL kopieren.
+[`npm install`](/glossar/npm/) lädt alle in `package.json` genannten Pakete ([Astro](/glossar/astro/), [Sveltia](/glossar/sveltia/)-[Build](/glossar/build/)-Tools, …). Das Tool ist eine [CLI](/glossar/cli/). `npm run dev` baut die Site im **Entwicklungsmodus** und zeigt eine lokale URL (oft `http://localhost:4321`). Link im [Terminal](/glossar/terminal/) anklicken oder URL kopieren; CMS-Vorschau dann unter `/admin/`.
 
 So testest du Änderungen **ohne** jedes Mal auf **[main](/glossar/main/)** zu pushen. Für öffentliche Previews nutzt du weiter [**Branches**](/glossar/branch/) und [Cloudflare](/glossar/cloudflare-pages/)-**Preview**-URLs ([Folge 012](/artikel/folge-012-cloudflare-branches/)).
 

@@ -65,7 +65,7 @@ Früher gab es die Idee experimentell in **Firefox Labs** (eigene Tastenkombinat
 
 Wenn dir **Struktur**, **Bausteine**, **Menüs**, **Artikel** und **Seiten** gefallen, musst du nicht bei null anfangen:
 
-1. Auf [GitHub](/glossar/github/) beim Repo **Fork** wählen. Das ist **deine** Kopie unter deinem Account, kein Schreiben im Original ([**Glossar Fork**](/glossar/fork/), Kurz in [Folge 002](/artikel/folge-002-github-issues/)).
+1. Auf der Repo-Seite (z. B. `github.com/platomat/hautoo`) oben rechts **Fork** → Ziel-Account bestätigen. Das ist **deine** Kopie unter deinem Account, kein Schreiben im Original ([**Glossar Fork**](/glossar/fork/), Kurz in [Folge 002](/artikel/folge-002-github-issues/)).
 2. Deinen Fork **klonen**, in [**Cursor**](/glossar/cursor/) öffnen.
 3. Dem Agenten sagen: Inhalte löschen, Farben und Logo ersetzen, Texte anpassen, [Cloudflare](/glossar/cloudflare-pages/) auf **dein** Repo hängen ([Folge 011](/artikel/folge-011-cloudflare-setup/)).
 

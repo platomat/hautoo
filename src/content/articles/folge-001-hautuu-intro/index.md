@@ -2,7 +2,7 @@
 title: 'Folge 001: Leeres Repo, voller Plan, so startet hautuu'
 summary: Du legst GitHub an, holst das Projekt auf den Rechner und sagst Cursor in normaler Sprache, worum es geht. Kein Zauber, nur der Ablauf, den du danach immer wieder brauchst.
 pubDate: 2026-10-03 01:04:26+00:00
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-06
 status: published
 tags:
 - github
@@ -24,7 +24,7 @@ Die Wahrheit liegt bei [**GitHub**](/glossar/github/) (Server in der Cloud). Bei
 
 ## GitHub: dein Projekt in der Cloud
 
-Du legst ein [**Repository**](/glossar/repository/) an, so heißt der Projektordner bei [GitHub](/glossar/github/).
+Du legst ein [**Repository**](/glossar/repository/) an, so heißt der Projektordner bei [GitHub](/glossar/github/). Auf [github.com](https://github.com) oben rechts **+** → **New repository**, im Feld **Repository name** z. B. `hautuu`, **Public** wählen, dann **Create repository**.
 
 - **Name:** klein, Bindestriche, keine Leerzeichen (z. B. `hautuu`).
 - **Public:** Bei hautuu ist das [Repo](/glossar/repository/) öffentlich, andere dürfen mitlesen und lernen. Alles Geheime bleibt draußen.
@@ -40,7 +40,7 @@ Kurz die Wörter:
 
 1. [Terminal](/glossar/terminal/) öffnen.
 2. Mit `cd` in den Ordner, wo das Projekt liegen soll.
-3. [`git clone`](/glossar/clone/) + URL aus GitHub, fertig, Ordner da.
+3. [`git clone`](/glossar/clone/) + URL aus GitHub (grüner Button **Code** → HTTPS oder SSH kopieren), fertig, Ordner da.
 
 Bei einem **privaten** Repo verweigert GitHub oft den Zugriff, bis [SSH-Keys](/glossar/ssh-key/) eingerichtet sind ([Folge 017](/artikel/folge-017-github-ssh/)).
 
@@ -51,7 +51,7 @@ Der versteckte Ordner `.git` (unter Linux oft mit Strg+H sichtbar) ist das Tageb
 {{repodoc path="docs/cursor/README.md" title="Cursor (KI)" description="IDE, Agenten und typische Workflows im Projekt."}}
 
 
-**Open Folder**, dein geklonter Ordner. In dieser [IDE](/glossar/ide/) startest du typischerweise so:
+**File** → **Open Folder** (macOS auch **Open…**), dein geklonter Ordner. In dieser [IDE](/glossar/ide/) startest du typischerweise so:
 
 - `docs/` für Dokumentation.
 - Dem [**Agenten**](/glossar/cursor-modi/) erzählen, was das Projekt ist ([Ask](/glossar/cursor-modi/), Agent, Plan: [Folge 008](/artikel/folge-008-cursor-modi/)): Lern-Website mit **KI**, **GitHub**, **[Cloudflare](/glossar/cloudflare-pages/)**; statische Astro-Seiten; Artikel mit Bildern und eingebetteten Videos (YouTube/Vimeo); Glossar; später [**CMS**](/glossar/cms/) ([**Sveltia**](/glossar/sveltia/). Redaktion im Browser, speichert trotzdem in [Git](/glossar/git/); Setup in [Folge 013](/artikel/folge-013-sveltia-pat/)).
@@ -61,7 +61,7 @@ Repo umbenannt? URL auf GitHub ändert sich — lokal Remote in `.git/config` an
 
 ## Commit, Push, gitignore
 
-In **Source Control** siehst du Änderungen. **Commit** = Stand lokal festhalten. **[Push](/glossar/push/)** = hoch zu GitHub. Wenn Push blockiert oder zwei Ordner im Spiel sind: [Folge 006](/artikel/folge-006-git-push-pull/).
+Links **Source Control** (Verzweigungs-Symbol): Änderungen, unten Commit-Message, **Commit**, danach **Sync Changes** oder **Push** = hoch zu GitHub. Wenn Push blockiert oder zwei Ordner im Spiel sind: [Folge 006](/artikel/folge-006-git-push-pull/).
 
 Nur für dich: z. B. `.code-workspace` in **`.gitignore`**, dann wandert die Datei nicht mit ins Repo.
 

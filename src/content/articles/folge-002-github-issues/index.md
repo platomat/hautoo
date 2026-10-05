@@ -16,7 +16,7 @@ seo:
   seo_description: GitHub Issues, Meilensteine und das Zusammenspiel von Cursor, GitHub und Cloudflare. So gibst du der KI klare Tickets statt jeden Tag alles neu zu erklären.
 ---
 
-[GitHub](/glossar/github/) ist nicht nur Datei-Ablage, es ist dein **Projektbüro**. [**Issues**](/glossar/issue/) sind Tickets: Bug, Idee, Feature. **Meilensteine** bündeln sie (z. B. „Version 1 (Setup)“). **Labels** helfen beim Sortieren (Documentation, Design, …).
+[GitHub](/glossar/github/) ist nicht nur Datei-Ablage, es ist dein **Projektbüro**. Im Repo Tab **Issues** → **New issue** legst du Tickets an (Bug, Idee, Feature). **Milestones** und **Labels** findest du in der Issue-Übersicht über die Seitenleiste oder unter **Milestones** / **Labels** (englische UI auf github.com).
 
 ## Forks und Pull Requests (kurz)
 

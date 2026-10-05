@@ -43,9 +43,10 @@ Cursor → commit → push → GitHub → Cloudflare Build → Live
 4. **Framework:** [Astro](/glossar/astro/).
 5. **[Build](/glossar/build/) command:** [`npm run build`](/glossar/build/)
 6. **Output:** `dist` (fertiges HTML).
-7. **Save and [Deploy](/glossar/deploy/)**
+7. Unter **Settings** → **Environment variables** (Production und Preview): `NODE_VERSION` = `22` (siehe `package.json`, sonst scheitert der Build oft in der Cloud).
+8. **Save and [Deploy](/glossar/deploy/)**
 
-Erst **Build**, dann [**Deploy**](/glossar/deploy/). Unter **Deployments** jeder Lauf; Erfolg = `*.pages.dev`-URL. `npm run build` lokal braucht [Node](/glossar/nodejs/) ([Folge 018](/artikel/folge-018-node-npm/)).
+Erst **Build**, dann [**Deploy**](/glossar/deploy/). Unter **Deployments** jeder Lauf; Erfolg = `*.pages.dev`-URL im Log und als Link. `npm run build` lokal braucht [Node](/glossar/nodejs/) ([Folge 018](/artikel/folge-018-node-npm/)).
 
 {{repodoc path="docs/sveltia/zugang-cloudflare.md" title="Sveltia auf Cloudflare" description="CMS-Zugang nach dem Livegang einrichten."}}
 

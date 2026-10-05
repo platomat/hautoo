@@ -20,9 +20,9 @@ Der Agent hat über Nacht gearbeitet (Ablauf in [Folge 015](/artikel/folge-015-t
 
 ## Pull Request lesen
 
-Auf [GitHub](/glossar/github/) siehst du den [**Pull Request**](/glossar/pull-request/):
+Auf [GitHub](/glossar/github/) Tab **Pull requests** → deinen PR öffnen:
 
-- **Zusammenfassung** mit Titeln, Slugs und Hinweisen auf unklare Transkript-Stellen.
+- **Beschreibung** (Body) mit Titeln, Slugs und Hinweisen auf unklare Transkript-Stellen.
 - **[Preview-Link](/glossar/preview-url/)** (derselbe wie in der Build-Mail): die Site, wie sie mit dem Branch aussehen würde.
 - **CI**: z. B. [`npm run build`](/glossar/build/) im Workflow. Scheitert der [Build](/glossar/build/), landet nichts Sinnvolles auf main.
 - **Konflikt-Check**, falls parallel auf `main` etwas geändert wurde.
@@ -33,7 +33,7 @@ Zwei [Commits](/glossar/commit/) sind normal: erst Anlegen der Artikel, dann Sti
 
 ## Merge und Live
 
-**Ready for review**, Konflikte prüfen, dann [**Merge**](/glossar/merge/) ([Rebase](/glossar/rebase/) nur, wenn du weißt, warum). **[Cloudflare](/glossar/cloudflare-pages/)** baut **main** neu. Lokal: `git pull`, ggf. **Rebase**, wenn du zwischendurch selbst committet hast, dann pushen.
+Unten **Merge pull request** (grüne Checks abwarten), Konflikte vorher in der PR-Meldung lösen ([**Merge**](/glossar/merge/) per Button, [Rebase](/glossar/rebase/) nur, wenn du weißt, warum). **[Cloudflare](/glossar/cloudflare-pages/)** baut **main** neu. Lokal im Projektordner: `git pull`, ggf. **Rebase**, wenn du zwischendurch selbst committet hast, dann pushen.
 
 Parallel kannst du Layout anpassen (Hero tiefer, Inhaltsbreite wie auf der Startseite). Die **Artikelübersicht** und Tag-Seiten nutzen die neuen Inhalte.
 

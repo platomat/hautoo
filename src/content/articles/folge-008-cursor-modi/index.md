@@ -35,6 +35,8 @@ Du kannst auch einen beliebigen **Ordner ohne [Git](/glossar/git/)** öffnen (Fo
 | **Agent** | Alles: lesen, schreiben, [Terminal](/glossar/terminal/), Commits. Der Vollgas-Modus. |
 | **[Plan](/glossar/cursor-modi/)** | Erst Plan mit To-dos, du liest, korrigierst, **dann** Umsetzung im Agent-Modus. |
 
+Modus im Chat oben im Dropdown wählen (**Ask**, **Agent**, **Plan**).
+
 **Tab** = Autovervollständigung im Code (im Chat klappt das nicht immer).
 
 Praktischer Tipp: Erstes Projekt ohne Plan war hektisch. Mit Plan-Modus: entspannter. Zwei Chats mit Rollen statt ein Mega-Chat: [Folge 010](/artikel/folge-010-cursor-chats/).

@@ -19,7 +19,7 @@ seo:
 
 ## Lokal: `/admin` ohne Login
 
-- `npm run dev`, dann `http://localhost:…/admin/` (Port im [Terminal](/glossar/terminal/)).
+- `npm run dev`, dann im Browser `http://localhost:4321/admin/` (Port steht im [Terminal](/glossar/terminal/), Standard bei Astro oft **4321**).
 - **Chrome/Chromium**: Firefox klappt fürs [**Backend**](/glossar/backend/) oft nicht.
 - Modus **„local“**: Projektordner wählen. **kein Passwort**, die Dateien liegen ja schon bei dir.
 
@@ -35,7 +35,7 @@ Speichern = Datei lokal geändert, noch **nicht** live.
 
 Ein [**PAT**](/glossar/pat/) ist ein persönlicher **Zugangsschlüssel** für [GitHub](/glossar/github/):
 
-1. GitHub → **Settings** → **Developer settings** → **[Personal access tokens](/glossar/pat/)** (fine-grained).
+1. Auf [GitHub](/glossar/github/) dein Profilfoto → **Settings** → links **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**.
 2. Beschreibung z. B. „Sveltia [CMS](/glossar/cms/) hautuu“.
 3. Nur das hautuu-Repo, **Contents: Read and write**.
 4. Ablauf setzen (z. B. 90 Tage). Schlüssel rotieren.

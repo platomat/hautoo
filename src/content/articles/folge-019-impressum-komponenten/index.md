@@ -43,7 +43,7 @@ Beim Build sammelt die Site alle ausgefüllten Werte aus veröffentlichten Seite
 
 ## Separator im CMS
 
-Neue [**Komponente**](/glossar/komponente/) im Seiten-/Artikel-Editor des CMS: **Trennlinie** mit **Höhe** (1 dezent, 10 kräftig) und **Breite** in Prozent (z. B. 50 % zentriert). Optional später: Farbe aus der Design-Palette, Standard ein dezentes Grau. Einfügen, verschieben, löschen wie bei Bildern.
+Neue [**Komponente**](/glossar/komponente/) im Seiten-/Artikel-Editor (`/admin/` → **Seiten** oder **Artikel** → **Inhalt**): in der Toolbar **Trennlinie** mit **Höhe** (1 dezent, 10 kräftig) und **Breite** in Prozent (z. B. 50 % zentriert). Optional später: Farbe aus der Design-Palette, Standard ein dezentes Grau. Einfügen, verschieben, löschen wie bei Bildern.
 
 ## Artikel-Listing gezielt einsetzen
 

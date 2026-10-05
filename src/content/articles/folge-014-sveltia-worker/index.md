@@ -36,11 +36,11 @@ Per [**Issue**](/glossar/issue/) (z. B. Menüs + GitHub-Login) lässt du den A
 
 Parallel [**GitHub OAuth App**](/glossar/oauth/):
 
-- **[OAuth](/glossar/oauth/) Apps** → New.
+- GitHub **Settings** → **Developer settings** → **OAuth Apps** → **New OAuth App**.
 - **Homepage URL:** deine Site (z. B. `https://hautoo.storyofai.net`).
 - **Callback URL:** `https://<worker-url>/callback` (z. B. `https://hautoo-sveltia-cms-auth.platomat.workers.dev/callback`), exakt wie in der Doku.
 
-**Client ID** und **Client Secret** im Worker unter **Settings** → **Variables** — Secret wirklich als **Secret**, nicht als Klartext.
+**Client ID** und **Client Secret** im [Cloudflare Dashboard](https://dash.cloudflare.com) unter **Workers & Pages** → dein Worker → **Settings** → **Variables and Secrets** — Secret wirklich als **Encrypt** / Secret, nicht als Klartext-Variable.
 
 **Allowed domains:** deine CMS-Domain.
 

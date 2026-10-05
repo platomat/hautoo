@@ -2,7 +2,7 @@
 title: 'Folge 021: Bilder finden, schlank machen und auf der Site einbinden'
 summary: Kostenlose Quellen mit Lizenz im Blick, WebP und sinnvolle Breite vor dem Upload, Ablage in Assets oder am Artikel und was Astro beim Build noch optimiert.
 pubDate: 2026-10-05 00:28:15+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - design
@@ -44,11 +44,11 @@ Beispiel aus der Session: 1920 px JPEG ~470 KB → 1280 px **WebP** ~91 
 
 ## In Sveltia einbinden und ersetzen
 
-Geteilte Motive für Startseite, FAQ, Glossar-Übersicht: **Medienbibliothek** → Dateien unter `src/assets/` (Pfad in der UI oft `/assets/…`). Nur für **einen** Artikel: **Variante B**, Bild neben `index.md` ([Folge 004](/artikel/folge-004-collection-pages/)).
+Geteilte Motive für Startseite, FAQ, Glossar-Übersicht: in `/admin/` links **Medien** (Medienbibliothek) → Upload landet unter `src/assets/` (Pfad in der UI oft `/assets/…`). Nur für **einen** Artikel: **Variante B**, Bild neben `index.md` ([Folge 004](/artikel/folge-004-collection-pages/)).
 
 {{repodoc path="docs/sveltia/medien-variante-b.md" title="Medien — Variante B" description="Bilder neben dem Content-Eintrag und Astro image()."}}
 
-Im [CMS](/glossar/cms/): Seite öffnen, **Hintergrundbild** wählen oder per **Replace** eine optimierte Datei nachlegen (gleicher Dateiname oder neues Asset). **Overlay** und [**Bildnachweis**](/glossar/bildnachweis/) nicht vergessen, wenn die Lizenz oder die Plattform Credits will (Sammlung auf dem Impressum).
+Im [CMS](/glossar/cms/): links **Seiten** oder **Artikel** → Eintrag öffnen → **Seitenhintergrund** / Hintergrund-Feld wählen oder **Replace**; daneben **Abdunkelung (%)** und Feld **Bildnachweis** ausfüllen, wenn die Lizenz Credits will (Sammlung auf dem Impressum, [Folge 019](/artikel/folge-019-impressum-komponenten/)).
 
 ## Was Astro noch macht
 

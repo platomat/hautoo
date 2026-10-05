@@ -2,7 +2,7 @@
 title: 'Folge 005: Die Astro-Leiste nervt? Breakpoints retten den Tag'
 summary: Lokal siehst du Werkzeugkram, den Besucher nie sehen. Und du kannst der KI sagen „mehr Luft im Footer“, ohne CSS-Professor zu sein.
 pubDate: 2026-10-03 23:23:55+00:00
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-06
 status: published
 tags:
 - astro
@@ -23,7 +23,7 @@ Mit [`npm run dev`](/glossar/npm/) klebt oft die **[Astro](/glossar/astro/)-Dev-
 
 {{repodoc path="docs/astro/README.md" title="Astro" description="Build, Dev-Server und Projektstruktur in der Doku."}}
 
-Stört sie? Einklappen, oder den Agenten fragen, wie du sie dauerhaft ausblendest. Besucher sehen sie nie.
+Stört sie? Am Rand auf das **Astro**-Logo tippen zum Einklappen, oder den Agenten fragen, wie du sie dauerhaft ausblendest (nur lokal bei `npm run dev`). Besucher sehen sie nie.
 
 ## Breakpoints: einmal festlegen, überall nutzen
 

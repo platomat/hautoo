@@ -2,7 +2,7 @@
 title: 'Folge 004: Seiten sind nur Dateien und trotzdem schlau strukturiert'
 summary: Was in der CMS-Config steckt, warum Unterseiten wie Ordner funktionieren und SEO lieber einmal definiert wird statt zwanzigmal copy-paste.
 pubDate: 2026-10-03 23:00:06+00:00
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-06
 status: published
 tags:
 - astro
@@ -23,7 +23,7 @@ In `public/admin/config.yml` steht in **YAML** (strukturierte Textdatei), was Re
 
 Früher hing das Menü an jeder Seite, bei hautuu gibt’s eine eigene **menus**-[Collection](/glossar/collection/). Für Pages kam hinzu:
 
-- **`parent`**: Verweis auf eine übergeordnete Seite → URL wie `/ueber-uns/preise/` statt flach `/preise/`.
+- **`parent`** (im CMS **Übergeordnete Seite**): Verweis auf eine übergeordnete Seite → URL wie `/ueber-uns/preise/` statt flach `/preise/`.
 
 ## Eine Seite angucken
 
@@ -54,7 +54,7 @@ Backlog-Idee: optionales **Inhaltsverzeichnis** oben bei langen Texten.
 
 ## Editor heute, CMS morgen
 
-Jetzt tippst du Markdown oder lässt [Cursor](/glossar/cursor/) schreiben, später [**Sveltia**](/glossar/sveltia/) unter `/admin/` ([Folge 013](/artikel/folge-013-sveltia-pat/) zeigt [PAT](/glossar/pat/) und ersten Login). Gleiche Felder, gleiche Dateien, gleiche [Git](/glossar/git/)-**History**.
+Jetzt tippst du Markdown oder lässt [Cursor](/glossar/cursor/) schreiben, später [**Sveltia**](/glossar/sveltia/) unter `/admin/` ([Folge 013](/artikel/folge-013-sveltia-pat/) zeigt [PAT](/glossar/pat/) und ersten Login): links **Seiten** (Collection `pages`), Felder wie **Titel**, **Status** (**Veröffentlicht** = live nach Push). Gleiche Felder, gleiche Dateien, gleiche [Git](/glossar/git/)-**History**.
 
 {{repodoc path="docs/sveltia/collections.md" title="Collections (Sveltia)" description="Alle Content-Typen und CMS-Felder im Detail."}}
 

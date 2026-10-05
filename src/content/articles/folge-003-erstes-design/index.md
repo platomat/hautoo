@@ -29,7 +29,7 @@ In der Design-Doku siehst du die Palette: dunkler Hintergrund, heller Text (nich
 
 ## Terminal-Kniffe
 
-- `npm run dev`. Vorschau an. Wenn [Node](/glossar/nodejs/) oder [npm](/glossar/npm/) noch fehlen: [Folge 018](/artikel/folge-018-node-npm/).
+- `npm run dev`. Im [Terminal](/glossar/terminal/) steht die lokale Adresse, bei Astro meist `http://localhost:4321` (Port kann abweichen). Wenn [Node](/glossar/nodejs/) oder [npm](/glossar/npm/) noch fehlen: [Folge 018](/artikel/folge-018-node-npm/).
 - **Strg+C**: stoppen (im [Terminal](/glossar/terminal/) ist Strg+C nicht Kopieren!).
 - Pfeil **hoch**, letzter Befehl nochmal.
 
@@ -37,7 +37,7 @@ Baut der Agent während der Server läuft, kann die Vorschau hüpfen — kurz st
 
 ## Regeln, die du wirklich willst
 
-Schreib sie in Doku und `.cursor/rules`:
+Schreib sie in Doku und `.cursor/rules/` (im Projektordner, in [Cursor](/glossar/cursor/) z. B. über **New Cursor Rule** anlegbar):
 
 1. **Niemals von allein pushen.** Commits lokal sind okay. [**Push**](/glossar/push/) nur auf Anweisung, sonst baut [**Cloudflare**](/glossar/cloudflare-pages/) einen Zwischenstand live (Hosting-Setup: [Folge 011](/artikel/folge-011-cloudflare-setup/)).
 2. **CSS nicht jedes Mal neu erfinden**: bestehende Klassen und [CSS-Variablen](/glossar/css-variable/) nutzen.
