@@ -445,7 +445,7 @@ In **Firefox** (Desktop, Link Previews ab Version 142): Rechtsklick auf den Glos
 
 ### Kann ich Artikel aus Videos erzeugen lassen?
 
-Transkript + [**Cloud Agent**](/glossar/cloud-agent/) + Pull Request, dann prüfen. [Folge 015](/artikel/folge-015-transkript-artikel/).
+Fertige Videos transkribieren lassen, Texte an den [**Cloud Agent**](/glossar/cloud-agent/) in Cursor, Ergebnis als Pull Request prüfen. [Folge 015](/artikel/folge-015-transkript-artikel/).
 
 ### Wie passe ich Design und Abstände an?
 
