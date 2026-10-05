@@ -3,7 +3,7 @@ title: FAQ
 description: Häufige Fragen zu hautuu, Git, Cursor, Cloudflare und dem CMS.
 status: published
 publishDate: 2026-10-04
-modifiedDate: 2026-10-05
+modifiedDate: 2026-10-06
 backgroundImage: /assets/sebastien-goldberg-9R_bNdo4-2I-unsplash.webp
 backgroundOverlay: 88
 backgroundAttribution: Photo by <a href="https://unsplash.com/@sebastiengoldberg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sébastien Goldberg</a> on <a href="https://unsplash.com/photos/a-sea-turtle-swimming-in-the-ocean-9R_bNdo4-2I?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
@@ -357,7 +357,11 @@ Ja für `npm install`, `npm run dev` und `npm run build` lokal. Empfohlen: Versi
 
 ### Was macht `npm install`?
 
-Lädt Abhängigkeiten in `node_modules`. [Glossar npm](/glossar/npm/), [Folge 018](/artikel/folge-018-node-npm/).
+Lädt die Pakete (Abhängigkeiten) aus `package.json` nach `node_modules`. [Glossar npm](/glossar/npm/), [Folge 018](/artikel/folge-018-node-npm/).
+
+### Wann muss ich `npm install` ausführen?
+
+Nach dem ersten Clone, auf einem neuen Rechner oder wenn `package.json` (oder das Lockfile) sich geändert hat. Nicht vor jedem `npm run dev`. Der Cursor-Agent weist dich meist darauf hin oder erledigt es. Cloudflare beim Build ebenfalls. [Folge 002](/artikel/folge-002-github-issues/), [Folge 018](/artikel/folge-018-node-npm/).
 
 ### Was ist der Unterschied zwischen `npm run dev` und `npm run build`?
 
