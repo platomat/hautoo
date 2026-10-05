@@ -37,7 +37,7 @@ Du kannst auch einen beliebigen **Ordner ohne [Git](/glossar/git/)** öffnen (Fo
 
 **Tab** = Autovervollständigung im Code (im Chat klappt das nicht immer).
 
-Tipp aus dem Video: Erstes Projekt ohne Plan war hektisch. Mit Plan-Modus: entspannter. Zwei Chats mit Rollen statt ein Mega-Chat: [Folge 010](/artikel/folge-010-cursor-chats/).
+Praktischer Tipp: Erstes Projekt ohne Plan war hektisch. Mit Plan-Modus: entspannter. Zwei Chats mit Rollen statt ein Mega-Chat: [Folge 010](/artikel/folge-010-cursor-chats/).
 
 ## Burger-Menü: Plan zuerst, Bau zweites
 

@@ -17,7 +17,7 @@ KI frisst Rechenzeit. Bei **[Cursor](/glossar/cursor/)** siehst du das unter Acc
 
 ## Die Balken verstehen
 
-- Verschiedene Pläne (im Video z. B. 20 $/60 $, check aktuelle Preise auf cursor.com).
+- Verschiedene Pläne (z. B. Stufen um 20 $/60 $; aktuelle Preise auf cursor.com prüfen).
 - **Composer / Auto:** Alltag, frisst ein Kontingent pro Periode.
 - **Stärkere Modelle** („Thinking“, großes **Kontextfenster**): extra Budget, wenn Auto zu lasch ist.
 - **Kontextfenster** = wie viel Text/Code das Modell auf einmal „im Kopf“ hat. Größer = mehr **Tokens** = teurer.
@@ -31,7 +31,7 @@ KI frisst Rechenzeit. Bei **[Cursor](/glossar/cursor/)** siehst du das unter Acc
 {{repodoc path="docs/cursor/README.md" title="Cursor (KI)" description="Abo, Usage und Kosten im Überblick."}}
 
 
-Paket leer? **On-Demand** nachkaufen geht, im Video: drei Mini-Aufgaben, schon übler Preis. Besser: kurz **upgraden** oder bis zur neuen Periode warten.
+Paket leer? **On-Demand** nachkaufen geht, aber schon wenige kleine Aufgaben können teuer werden. Besser: kurz **upgraden** oder bis zur neuen Periode warten.
 
 Im Dashboard siehst du Tokens pro Anfrage — 40-Millionen-Monster sind möglich, wenn du halb das [Repo](/glossar/repository/) reinwirfst.
 

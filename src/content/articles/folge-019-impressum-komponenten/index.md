@@ -60,6 +60,6 @@ Glossar-Begriffe können vom Agenten vorbefüllt werden; **Glossar-Listing** auf
 
 ## Text-Stil nachziehen
 
-Nach dem großen Artikel-Import ([Folge 016](/artikel/folge-016-artikel-pull-request/)): [Issue](/glossar/issue/) an den Agenten, **Gedankenstriche** in der Prosa zu reduzieren (grob von sehr vielen auf wenige siteweit). Rechtstexte: unnötige Standard-Abschnitte raus, wenn sie nicht zum Setup passen.
+Nach dem großen Artikel-Import ([Folge 016](/artikel/folge-016-artikel-pull-request/)): [Issue](/glossar/issue/) an den Agenten, **Gedankenstriche** in der Prosa zu reduzieren, Ziel grob von sehr vielen auf wenige siteweit. Rechtstexte: unnötige Standard-Abschnitte raus, wenn sie nicht zum Setup passen.
 
 <!-- Quelle: 2026-10-04--20-57-40--obs-screencast - hautoo - 019 - inhalt, impressum, datenschutz, [komponenten](/glossar/komponente/).txt -->
