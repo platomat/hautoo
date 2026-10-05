@@ -41,7 +41,7 @@ Parallel kannst du Layout anpassen (Hero tiefer, Inhaltsbreite wie auf der Start
 
 Auf der **Startseite** steckt ein **Artikel-Listing**: z. B. die letzten drei, neueste zuerst, **Grid** mit drei Spalten.
 
-Auf der Route **Artikel** war der Wunsch anders: nicht „erst fester Seitentext, dann automatisch alle Artikel darunter“, sondern **redaktionell** entscheiden, **wo** eine Liste hinkommt und mit welcher Sortierung/Anzahl, wie auf der Startseite. Das ist ein separates [Issue](/glossar/issue/) an den Agenten (Umsetzung u. a. in [Folge 019](/artikel/folge-019-impressum-komponenten/)).
+Auf der [Route](/glossar/route/) **Artikel** war der Wunsch anders: nicht „erst fester Seitentext, dann automatisch alle Artikel darunter“, sondern **redaktionell** entscheiden, **wo** eine Liste hinkommt und mit welcher Sortierung/Anzahl, wie auf der Startseite. Das ist ein separates [Issue](/glossar/issue/) an den Agenten (Umsetzung u. a. in [Folge 019](/artikel/folge-019-impressum-komponenten/)).
 
 ## KI-Ticks im Text
 
