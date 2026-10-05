@@ -18,6 +18,8 @@ seo:
 
 Zwischen den Sessions ist hautuu richtig gewachsen: **20 Folgen** als Artikel, ein ausgebautes [**Glossar**](/glossar/), eine lange [**FAQ**](/faq/) mit Querverweisen und eine Navigation, die sich anfühlt wie eine kleine Site statt wie ein Ordner voller Dateien. In dieser Folge geht es um **Bausteine** (wiederverwendbare Inhalte), den Überblick und die Einladung: **[fork](/glossar/fork/)e** das Repo, wenn du Struktur und Features für dein eigenes Projekt nutzen willst.
 
+Direkt loslegen: [hautoo auf GitHub forken](https://github.com/platomat/hautoo/fork). Du brauchst dafür ein GitHub-Konto.
+
 ## Bausteine statt zehnmal das gleiche Bild
 
 Die Stack-Grafik kennst du von der Startseite. Die willst du an mehreren Stellen zeigen, ohne in jedem Artikel Überschrift und Bild zu pflegen. Dafür gibt es die [Collection](/glossar/collection/) **Bausteine** (`blocks`): [Markdown](/glossar/markdown/) ohne eigene URL, einmal pflegen, überall gleich.
