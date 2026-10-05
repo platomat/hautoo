@@ -32,7 +32,7 @@ Beliebte **Stock**-Seiten mit gratis Downloads (Stand der Plattform-Regeln, imme
 
 ## Größe und Format vor dem Upload
 
-Aus dem Video: Startseiten-Hintergrund zuerst **1920 px** breit als JPEG (~470 KB), für ein dekoratives Vollbild ohne Details reicht oft weniger.
+Startseiten-Hintergrund zuerst **1920 px** breit als JPEG (~470 KB), für ein dekoratives Vollbild ohne Details reicht oft weniger.
 
 **Faustregeln:**
 

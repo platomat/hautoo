@@ -33,7 +33,7 @@ Praktisch, wenn du einen frischen Stand willst, während du in einem anderen Ord
 
 
 
-Aus dem Video:
+Kurz als Beispiel:
 
 1. **Ordner A:** Du arbeitest, [pushst](/glossar/push/) nicht.
 2. **Ordner B:** Frischer [Clone](/glossar/clone/) vom Server.
