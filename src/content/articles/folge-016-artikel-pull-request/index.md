@@ -29,7 +29,7 @@ Auf [GitHub](/glossar/github/) siehst du den [**Pull Request**](/glossar/pull-re
 
 {{repodoc path="docs/entwicklung/README.md" title="Lokale Entwicklung" description="Build, Tests und typischer PR-Ablauf lokal."}}
 
-Zwei [Commits](/glossar/commit/) sind normal: erst Anlegen der Artikel, dann Stil/Ton. Issue-Nummern und PR-Nummern laufen getrennt; eine „fehlende“ Issue-Nummer ist kein Drama.
+Zwei [Commits](/glossar/commit/) sind normal: erst Anlegen der Artikel, dann Stil/Ton. Issues und Pull Requests teilen sich bei GitHub einen Nummernkreis. Fehlt dir eine Issue-Nummer, ist dazwischen einfach ein PR entstanden, kein Drama.
 
 ## Merge und Live
 
