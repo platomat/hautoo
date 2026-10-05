@@ -93,7 +93,7 @@ In den Folgen: **Linux** oder **Mac** (ähnliche Pfade für Terminal und [SSH](/
 
 ### Brauche ich eine virtuelle Maschine?
 
-Optional. Manche nutzen eine VM für Experimente oder [Cloud Agents](/glossar/cloud-agent/); du kannst aber auch direkt auf deinem Rechner starten. [Folge 009](/artikel/folge-009-cursor-abo/), [Folge 015](/artikel/folge-015-transkript-artikel/).
+Optional. Manche nutzen eine VM für Experimente oder [Cloud Agents](/glossar/cloud-agent/); du kannst aber auch direkt auf deinem Rechner starten. [Folge 009](/artikel/folge-009-cursor-abo/).
 
 ### Welche Accounts muss ich anlegen?
 
@@ -441,7 +441,7 @@ In **Firefox** (Desktop, Link Previews ab Version 142): Rechtsklick auf den Glos
 
 ### Kann ich Artikel aus Videos erzeugen lassen?
 
-Transkript + [**Cloud Agent**](/glossar/cloud-agent/) + Pull Request, dann prüfen. [Folge 015](/artikel/folge-015-transkript-artikel/).
+Fertige Videos transkribieren lassen, Texte an den [**Cloud Agent**](/glossar/cloud-agent/) in Cursor, Ergebnis als Pull Request prüfen. [Folge 015](/artikel/folge-015-transkript-artikel/).
 
 ### Wie passe ich Design und Abstände an?
 

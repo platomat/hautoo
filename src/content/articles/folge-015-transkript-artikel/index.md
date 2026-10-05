@@ -1,8 +1,8 @@
 ---
 title: 'Folge 015: Transkript rein, Artikel raus: Screencast und Cloud Agent'
-summary: Speech-to-Text aus OBS, Texte auf der VM sammeln und den Cloud Agenten nachts die Artikel als Pull Request schreiben lassen.
+summary: Screencasts aufnehmen, fertige Videos in Transkripte wandeln und den Cloud Agenten die Artikel als Pull Request schreiben lassen.
 pubDate: 2026-10-04 04:29:47+00:00
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-06
 status: published
 tags:
 - cursor
@@ -12,10 +12,10 @@ seo:
   index_visibility: index
   follow_visibility: follow
   seo_title: 'Folge 015: Transkript rein, Artikel raus: Screencast und Cloud Agent'
-  seo_description: 'OBS Transkript und Cloud Agent: über Nacht Artikel aus Screencasts als Pull Request. Folge 015 beschreibt den Ablauf von Rohtext bis Review auf hautuu.'
+  seo_description: 'Videos transkribieren, Texte an den Cloud Agent in Cursor und Artikel als Pull Request. Folge 015 beschreibt den Ablauf von Rohtext bis Review auf hautuu.'
 ---
 
-Du nimmst den Screencast auf, die **Speech-to-Text**-Software hört mit und liefert Rohtext. Den packst du zusammen mit der Aufnahme in einen Ordner auf deiner **virtuellen Maschine** und gibst dem [**Cloud Agent**](/glossar/cloud-agent/) in [Cursor](/glossar/cursor/) eine klare Aufgabe: aus jedem Video **einen Artikel**, Beispielinhalt weg, Platzhalter fürs spätere Video, alles als [**Pull Request**](/glossar/pull-request/), damit du vor dem Live-Gang drüber schauen kannst.
+Du nimmst den Screencast auf. Eine **Speech-to-Text**-Software kann zwar live mithören, hier reichen die **fertigen Video-Dateien**: Du gibst ihr die Aufnahmen, sie erzeugt Rohtext. Die Transkripte landen beim [**Cloud Agent**](/glossar/cloud-agent/) in [Cursor](/glossar/cursor/), der daraus die Artikel schreibt. Deine Aufgabe an ihn: aus jedem Video **einen Artikel**, Beispielinhalt weg, Platzhalter fürs spätere Video, alles als [**Pull Request**](/glossar/pull-request/), damit du vor dem Live-Gang drüber schauen kannst.
 
 ## Was die Site schon kann
 
