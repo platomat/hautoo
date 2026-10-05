@@ -36,10 +36,9 @@ ssh-keygen -t ed25519 -C "deine@email.de"
 
 Dateiname z. B. nach GitHub-Benutzer, damit mehrere Keys unterscheidbar sind. **Passphrase** optional (leer = weniger Tipparbeit, aber der private Key ist dann wie ein offenes Passwort auf der Platte).
 
-Ergebnis: **privater** Key (niemals teilen, nicht committen) und **öffentlicher** Key (`.pub`). Der Public Key verschlüsselt nur für dich
+Ergebnis: **privater** Key (niemals teilen, nicht committen) und **öffentlicher** Key (`.pub`). Der Public Key verschlüsselt nur für dich; entschlüsseln kann nur der Private Key.
 
 {{repodoc path="docs/github/README.md" title="GitHub" description="SSH, Clone und Zugriff auf private Repos."}}
-; entschlüsseln kann nur der Private Key.
 
 ## `config` für github.com
 

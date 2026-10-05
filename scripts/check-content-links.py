@@ -50,6 +50,8 @@ def scan_file(path: Path) -> list[str]:
 
 
 def main() -> int:
+    import subprocess
+
     all_issues: list[str] = []
     for sub in SCAN_DIRS:
         base = CONTENT / sub
@@ -65,7 +67,8 @@ def main() -> int:
         return 1
 
     print("Content link check OK.")
-    return 0
+    embed_script = ROOT / "scripts" / "check-content-embeds.py"
+    return subprocess.run([sys.executable, str(embed_script)], check=False).returncode
 
 
 if __name__ == "__main__":

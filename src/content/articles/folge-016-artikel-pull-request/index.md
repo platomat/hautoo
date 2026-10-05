@@ -24,10 +24,10 @@ Auf GitHub siehst du den [**Pull Request**](/glossar/pull-request/):
 
 - **Zusammenfassung** mit Titeln, Slugs und Hinweisen auf unklare Transkript-Stellen.
 - **Preview-Link** (derselbe wie in der Build-Mail): die Site, wie sie mit dem Branch aussehen würde.
-- **CI**: z. B. [`npm run build`](/glossar/build/)
+- **CI**: z. B. [`npm run build`](/glossar/build/) im Workflow. Scheitert der Build, landet nichts Sinnvolles auf main.
 
 {{repodoc path="docs/entwicklung/README.md" title="Lokale Entwicklung" description="Build, Tests und typischer PR-Ablauf lokal."}}
- im Workflow. Scheitert der Build, landet nichts Sinnvolles auf main.
+
 - **Konflikt-Check**, falls parallel auf main etwas geändert wurde.
 
 Zwei Commits sind normal: erst Anlegen der Artikel, dann Stil/Ton. Issue-Nummern und PR-Nummern laufen getrennt; eine „fehlende“ Issue-Nummer ist kein Drama.

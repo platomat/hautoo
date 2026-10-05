@@ -44,6 +44,7 @@ Schreib sie in Doku und `.cursor/rules`:
 3. **Page Speed:** Wichtiges [**CSS**](/glossar/css/) früh (critical: Menü, Kopf der Seite); Rest später (non-critical), sonst springt das Layout und Google schmunzelt nicht.
 
 ## Seiten, Menü, Footer
+
 {{repodoc path="docs/design/README.md" title="Design & Erscheinungsbild" description="Tokens, Breakpoints und Layout-Regeln im Repo."}}
 
 

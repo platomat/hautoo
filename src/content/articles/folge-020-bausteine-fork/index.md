@@ -26,10 +26,9 @@ Die Stack-Grafik kennst du von der Startseite. Die willst du an mehreren Stellen
 
 Technisch eine Zeile im Body, z. B. `{{block id="stack-uebersicht"}}`. In Sveltia findest du in der Toolbar **Baustein** (oder du legst den Eintrag unter **Bausteine** an). Änderst du den Baustein, aktualisieren sich alle Stellen beim nächsten Build. Das ist bewusst **WordPress-ähnlich**, nur dass alles in Git landet. Details: [Glossar Baustein](/glossar/baustein/), [Folge 004](/artikel/folge-004-collection-pages/).
 
-Weitere Bausteine sind z. B.
+Weitere Bausteine sind z. B. **Kontakt-E-Mail** (`{{contact-email}}`) für Impressum und Datenschutz ohne Klartext im Repo ([Folge 019](/artikel/folge-019-impressum-komponenten/)) oder ein **Separator** für optische Trennlinien.
 
 {{repodoc path="docs/sveltia/collections.md" title="Collections (Sveltia)" description="Bausteine, Pages und alle CMS-Collections."}}
- **Kontakt-E-Mail** (`{{contact-email}}`) für Impressum und Datenschutz ohne Klartext im Repo ([Folge 019](/artikel/folge-019-impressum-komponenten/)) oder ein **Separator** für optische Trennlinien.
 
 ## Seiten feintunen
 
@@ -57,6 +56,7 @@ Die Funktion heißt offiziell **Link Previews** und wird **schrittweise** ausger
 Früher gab es die Idee experimentell in **Firefox Labs** (eigene Tastenkombination beim Überfahren eines Links). Die heutige Variante ist die Link-Vorschau über Kontextmenü bzw. langes Drücken.
 
 ## Fork statt nur klonen
+
 {{repodoc path="docs/inhalte/README.md" title="Inhalte der Website" description="Struktur der Collections und Medienablage."}}
 
 
