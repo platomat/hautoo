@@ -10,4 +10,4 @@ seo:
   seo_description: Schlüsselpaar für passwortlosen, sicheren Zugriff auf GitHub per SSH. Den öffentlichen Key trägst du bei GitHub ein; den privaten Key bleibt nur auf deinem
 ---
 
-Du erzeugst das Paar mit `ssh-keygen` im [Terminal](/glossar/terminal/) (eine [CLI](/glossar/cli/)). Den öffentlichen Key trägst du bei [GitHub](/glossar/github/) ein; den privaten Key bleibt nur auf deinem Rechner. Niemals [committen](/glossar/commit/) oder teilen.
+Du erzeugst das Paar mit `ssh-keygen` im [Terminal](/glossar/terminal/) (eine [CLI](/glossar/cli/)). Den öffentlichen Key trägst du bei [GitHub](/glossar/github/) ein; den privaten Key bleibt nur auf deinem Rechner. Niemals [committen](/glossar/commit/) oder teilen. **SFTP** (sicheres Hochladen per SSH) nutzt ein ähnliches Schlüsselpaar; klassisches [FTP](/glossar/ftp/) ist damit nicht dasselbe und bei hautuu ohnehin nicht nötig.

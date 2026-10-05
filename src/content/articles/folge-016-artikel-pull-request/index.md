@@ -16,7 +16,7 @@ seo:
   seo_description: 'Großer PR mit Cloudflare Preview, grünen Checks und Merge auf main. Folge 016: Artikel Listing redaktionell steuern statt alles automatisch listen.'
 ---
 
-Der Agent hat über Nacht gearbeitet (Ablauf ab [Folge 015](/artikel/folge-015-transkript-artikel/)): Mail von [**Cloudflare**](/glossar/cloudflare-pages/), dass ein **Zweig** gebaut wurde (z. B. ein [Branch](/glossar/branch/) wie `PerseScreencastArticles-e016`, Name variiert). Nicht auf **main** gepusht, sondern eigener [**Branch**](/glossar/branch/) mit vielen neuen Artikeln, nachgeschärftem Ton und automatischen **Checks**.
+Der Agent hat über Nacht gearbeitet (Ablauf ab [Folge 015](/artikel/folge-015-transkript-artikel/)): Mail von [**Cloudflare**](/glossar/cloudflare-pages/), dass ein **Zweig** gebaut wurde (z. B. ein [Branch](/glossar/branch/) wie `PerseScreencastArticles-e016`, Name variiert). Nicht auf **[main](/glossar/main/)** gepusht, sondern eigener [**Branch**](/glossar/branch/) mit vielen neuen Artikeln, nachgeschärftem Ton und automatischen **Checks**.
 
 ## Pull Request lesen
 
@@ -28,13 +28,13 @@ Auf [GitHub](/glossar/github/) siehst du den [**Pull Request**](/glossar/pull-re
 
 {{repodoc path="docs/entwicklung/README.md" title="Lokale Entwicklung" description="Build, Tests und typischer PR-Ablauf lokal."}}
 
-- **Konflikt-Check**, falls parallel auf [main](/glossar/main/) etwas geändert wurde.
+- **Konflikt-Check**, falls parallel auf `main` etwas geändert wurde.
 
 Zwei [Commits](/glossar/commit/) sind normal: erst Anlegen der Artikel, dann Stil/Ton. Issue-Nummern und PR-Nummern laufen getrennt; eine „fehlende“ Issue-Nummer ist kein Drama.
 
 ## Merge und Live
 
-**Ready for review**, Konflikte prüfen, dann [**Merge**](/glossar/merge/) ([Rebase](/glossar/rebase/) nur, wenn du weißt, warum). **[Cloudflare](/glossar/cloudflare-pages/)** baut [**main**](/glossar/main/) neu. Lokal: `git pull`, ggf. **Rebase**, wenn du zwischendurch selbst committet hast, dann pushen.
+**Ready for review**, Konflikte prüfen, dann [**Merge**](/glossar/merge/) ([Rebase](/glossar/rebase/) nur, wenn du weißt, warum). **[Cloudflare](/glossar/cloudflare-pages/)** baut **main** neu. Lokal: `git pull`, ggf. **Rebase**, wenn du zwischendurch selbst committet hast, dann pushen.
 
 Parallel kannst du Layout anpassen (Hero tiefer, Inhaltsbreite wie auf der Startseite). Die **Artikelübersicht** und Tag-Seiten nutzen die neuen Inhalte.
 

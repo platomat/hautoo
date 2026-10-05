@@ -41,7 +41,7 @@ Ein [**PAT**](/glossar/pat/) ist ein persönlicher **Zugangsschlüssel** für [G
 4. Ablauf setzen (z. B. 90 Tage). Schlüssel rotieren.
 5. Token **einmal** kopieren — danach unsichtbar. Weg = neuen erstellen.
 
-In Sveltia: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar/commit/) auf GitHub → [Cloudflare](/glossar/cloudflare-pages/) baut (`main`).
+In Sveltia: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar/commit/) auf GitHub → [Cloudflare](/glossar/cloudflare-pages/) baut [`main`](/glossar/main/).
 
 **Token = Passwort.** Nicht ins Repo, nicht im Video zeigen.
 
