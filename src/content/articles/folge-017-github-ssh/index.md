@@ -2,7 +2,7 @@
 title: 'Folge 017: Private Repos klonen: SSH-Schlüssel und GitHub'
 summary: Permission denied beim Clone? Schlüsselpaar erzeugen, config anlegen, Public Key bei GitHub hinterlegen, dann klappt git clone.
 pubDate: 2026-10-04 20:01:04+00:00
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-06
 status: published
 tags:
 - github
@@ -15,11 +15,11 @@ seo:
   seo_description: Permission denied beim Clone? SSH Key erzeugen, in GitHub hinterlegen und private Repos sicher klonen. Folge 017 Schritt für Schritt für hautuu.
 ---
 
-Öffentliche How-To-[Repos](/glossar/repository/) siehst du ohne Login. **Private** Projekte wie dein echtes hautuu-Repo verweigern [`git clone`](/glossar/clone/) mit **Permission denied**, bis GitHub deinen Rechner kennt. Grundlagen zu [Clone](/glossar/clone/) und [Push](/glossar/push/)/[Pull](/glossar/pull/): [Folge 001](/artikel/folge-001-hautuu-intro/) und [Folge 006](/artikel/folge-006-git-push-pull/). Dafür nutzt du einen [**SSH-Key**](/glossar/ssh-key/) statt Passwort in der URL.
+Öffentliche [Repos](/glossar/repository/) siehst du ohne Login. **Private** Projekte wie dein echtes hautuu-Repo verweigern [`git clone`](/glossar/clone/) mit **Permission denied**, bis GitHub deinen Rechner kennt. Grundlagen zu [Clone](/glossar/clone/) und [Push](/glossar/push/)/[Pull](/glossar/pull/): [Folge 001](/artikel/folge-001-hautuu-intro/) und [Folge 006](/artikel/folge-006-git-push-pull/). Dafür nutzt du einen [**SSH-Key**](/glossar/ssh-key/) statt Passwort in der URL.
 
 ## Ordner `.ssh`
 
-Im **Home-Verzeichnis** liegt (oft versteckt) `.ssh`. Im Dateimanager: versteckte Dateien anzeigen (z. B. Strg+H). Im [Terminal](/glossar/terminal/):
+Im **Home-Verzeichnis deines Rechners** liegt (oft versteckt) `.ssh`. Im Dateimanager: versteckte Dateien anzeigen (z. B. Strg+H). Im [Terminal](/glossar/terminal/):
 
 ```bash
 cd ~/.ssh
@@ -65,11 +65,13 @@ Test:
 ssh -T git@github.com
 ```
 
-Erfolgsmeldung mit deinem Benutzernamen, dann:
+Erfolgsmeldung mit deinem Benutzernamen und Repository, dann:
 
 ```bash
-git clone git@github.com:ORG/REPO.git
+git clone git@github.com:platomat/hautoo.git
 ```
+
+`platomat` ist der Benutzer- oder Organisationsname auf GitHub, `hautoo` der Name des Repositories. Ersetze beides durch deine eigenen Werte.
 
 **Wichtig:** Private Keys nie in Videos, Screenshots oder öffentliche Repos. Test-Keys nach Demos löschen oder rotieren.
 
