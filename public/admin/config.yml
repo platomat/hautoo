@@ -44,7 +44,7 @@ output:
 
 collections:
 
-  # Global settings (YAML only, no Markdown body). First feature: sticky header (#44).
+  # Global settings (YAML only, no Markdown). Groups: Design (#44), Content (#51).
   - name: config
     label: Konfiguration
     label_singular: Konfiguration
@@ -54,45 +54,103 @@ collections:
         file: src/content/config/site.yaml
         format: yaml
         fields:
-          - name: header
-            label: Header
+          - name: design
+            label: Design
             widget: object
             collapsed: false
-            hint: "Sticky und Leistenhöhe pro Breakpoint (Desktop ≥1024px, Tablet 680–1023px, Mobile <680px)."
             fields:
-              - name: stickyDesktop
-                label: Sticky auf Desktop
-                widget: boolean
-                default: true
-              - name: stickyTablet
-                label: Sticky auf Tablet
-                widget: boolean
-                default: true
-              - name: stickyMobile
-                label: Sticky auf Mobile
-                widget: boolean
-                default: true
-              - name: heightDesktop
-                label: Höhe Desktop (px)
-                widget: number
-                value_type: int
-                default: 64
-                min: 40
-                max: 160
-              - name: heightTablet
-                label: Höhe Tablet (px)
-                widget: number
-                value_type: int
-                default: 64
-                min: 40
-                max: 160
-              - name: heightMobile
-                label: Höhe Mobile (px)
-                widget: number
-                value_type: int
-                default: 56
-                min: 40
-                max: 160
+              - name: header
+                label: Header
+                widget: object
+                collapsed: false
+                hint: "Sticky und Leistenhöhe pro Breakpoint (Desktop ≥1024px, Tablet 680–1023px, Mobile <680px)."
+                fields:
+                  - name: stickyDesktop
+                    label: Sticky auf Desktop
+                    widget: boolean
+                    default: true
+                  - name: stickyTablet
+                    label: Sticky auf Tablet
+                    widget: boolean
+                    default: true
+                  - name: stickyMobile
+                    label: Sticky auf Mobile
+                    widget: boolean
+                    default: true
+                  - name: heightDesktop
+                    label: Höhe Desktop (px)
+                    widget: number
+                    value_type: int
+                    default: 64
+                    min: 40
+                    max: 160
+                  - name: heightTablet
+                    label: Höhe Tablet (px)
+                    widget: number
+                    value_type: int
+                    default: 64
+                    min: 40
+                    max: 160
+                  - name: heightMobile
+                    label: Höhe Mobile (px)
+                    widget: number
+                    value_type: int
+                    default: 56
+                    min: 40
+                    max: 160
+          - name: content
+            label: Content
+            widget: object
+            collapsed: false
+            fields:
+              - name: toc
+                label: Inhaltsverzeichnis (TOC)
+                widget: object
+                collapsed: false
+                hint: "Globale TOC-Defaults. Einzelne Seiten/Artikel überschreiben mit ihren TOC-Feldern."
+                fields:
+                  - name: pages
+                    label: Seiten
+                    widget: object
+                    fields:
+                      - name: enabled
+                        label: Standardmäßig anzeigen
+                        widget: boolean
+                        default: false
+                      - name: levels
+                        label: Ebenen
+                        widget: select
+                        multiple: true
+                        options:
+                          - { label: h2, value: h2 }
+                          - { label: h3, value: h3 }
+                          - { label: h4, value: h4 }
+                        default: [h2]
+                      - name: title
+                        label: TOC-Titel
+                        widget: string
+                        default: Inhalt
+                  - name: articles
+                    label: Artikel
+                    widget: object
+                    fields:
+                      - name: enabled
+                        label: Standardmäßig anzeigen
+                        widget: boolean
+                        default: false
+                      - name: levels
+                        label: Ebenen
+                        widget: select
+                        multiple: true
+                        options:
+                          - { label: h2, value: h2 }
+                          - { label: h3, value: h3 }
+                          - { label: h4, value: h4 }
+                        default: [h2]
+                      - name: title
+                        label: TOC-Titel
+                        widget: string
+                        default: Inhalt
 
   - name: pages
     label: Seiten
@@ -171,16 +229,14 @@ collections:
         name: showToc
         label: Inhaltsverzeichnis
         widget: boolean
-        default: false
         required: false
-        hint: "Wenn aktiv: nach dem Hero ein Inhaltsverzeichnis anzeigen."
+        hint: "Leer lassen = globale Config (Content → TOC). An/Aus überschreibt die globale Vorgabe für diesen Eintrag."
       - &field_toc_title
         name: tocTitle
         label: TOC-Titel
         widget: string
-        default: Inhalt
         required: false
-        hint: "Überschrift über dem Verzeichnis. Leer = „Inhalt“."
+        hint: "Leer = Titel aus der globalen Config. Sonst lokale Überschrift über dem Verzeichnis."
       - &field_toc_levels
         name: tocLevels
         label: TOC-Ebenen
@@ -190,9 +246,8 @@ collections:
           - { label: h2, value: h2 }
           - { label: h3, value: h3 }
           - { label: h4, value: h4 }
-        default: [h2]
         required: false
-        hint: "Welche Überschriften ins Verzeichnis. Standard: nur h2."
+        hint: "Leer = Ebenen aus der globalen Config. Sonst lokale Auswahl."
       - name: body
         label: Inhalt
         widget: markdown

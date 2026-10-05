@@ -23,18 +23,30 @@ Globale Site-Einstellungen als **YAML-Datei**, kein Markdown-Body. Erweiterbar u
 | Datei | `src/content/config/site.yaml` |
 | Schema | `src/cms/fields/site-config.ts` → Collection `config` in `src/content.config.ts` |
 | Sveltia | File-Collection `config` → Eintrag „Site“ |
-| Lesen | `src/lib/site-config.ts` (`getSiteConfig` / `getSiteHeaderConfig`) |
+| Lesen | `src/lib/site-config.ts` (`getSiteConfig` / `getSiteHeaderConfig` / `resolveTocForCollection`) |
 
-### Site → Header (#44)
+YAML-Gruppen im CMS: **Design** und **Content**.
+
+### Site → Design → Header (#44)
 
 | Feld | Bedeutung |
 | --- | --- |
-| `header.stickyDesktop` | Sticky ab Desktop (≥ 1024px) |
-| `header.stickyTablet` | Sticky auf Tablet (680–1023px) |
-| `header.stickyMobile` | Sticky auf Mobile (< 680px) |
-| `header.heightDesktop` / `Tablet` / `Mobile` | Min. Leistenhöhe in px (40–160) |
+| `design.header.stickyDesktop` | Sticky ab Desktop (≥ 1024px) |
+| `design.header.stickyTablet` | Sticky auf Tablet (680–1023px) |
+| `design.header.stickyMobile` | Sticky auf Mobile (< 680px) |
+| `design.header.heightDesktop` / `Tablet` / `Mobile` | Min. Leistenhöhe in px (40–160) |
 
 Umsetzung in `SiteHeader.astro` (CSS-Klassen + Custom Properties).
+
+### Site → Content → TOC (#51)
+
+| Feld | Bedeutung |
+| --- | --- |
+| `content.toc.pages.enabled` | TOC standardmäßig auf Seiten |
+| `content.toc.pages.levels` / `title` | Default-Ebenen und Titel |
+| `content.toc.articles.*` | dasselbe für Artikel |
+
+Eintrag ohne `showToc` nutzt den globalen Default. Lokales `showToc: true` / `false` überschreibt. Fehlende `tocLevels` / `tocTitle` fallen auf die globalen Werte zurück (`resolveTocForCollection` in `site-config.ts`).
 
 ## Collection `menus` (umgesetzt)
 
@@ -97,9 +109,9 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | `modifiedDate` | nein | Letzte Änderung → SEO-Meta im `<head>` |
 | `backgroundAttribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |
 | `seo` | ja (CMS) | SEO-Objekt (Titel, Description, Robots) — Partial `&field_seo` |
-| `showToc` | nein | Inhaltsverzeichnis nach Hero (Default aus) |
-| `tocLevels` | nein | `h2` / `h3` / `h4` (Default nur `h2`) |
-| `tocTitle` | nein | Überschrift über dem TOC (Default „Inhalt“) |
+| `showToc` | nein | TOC an/aus; leer = globaler Default (`content.toc.pages`) |
+| `tocLevels` | nein | `h2` / `h3` / `h4`; leer = global |
+| `tocTitle` | nein | TOC-Überschrift; leer = global |
 | `headCode` | nein | Roh-HTML vor `</head>` (`<style>` / `<script>`) |
 | `footerCode` | nein | Roh-HTML vor `</body>` |
 | Body | ja | Markdown-Inhalt |
@@ -174,9 +186,9 @@ Beispiel: Baustein `stack-uebersicht` → auf der Startseite `{{block id="stack-
 | `tags` | nein | Relation zu `tags` (mehrere) |
 | `videoProvider` | nein | `youtube` / `vimeo` (Hero-Video; Facade mit Consent) |
 | `videoId` | nein | ID oder URL; alternativ Body-Embed `{{video …}}` |
-| `showToc` | nein | Inhaltsverzeichnis nach Hero (Default aus) |
-| `tocLevels` | nein | `h2` / `h3` / `h4` (Default nur `h2`) |
-| `tocTitle` | nein | Überschrift über dem TOC (Default „Inhalt“) |
+| `showToc` | nein | TOC an/aus; leer = globaler Default (`content.toc.articles`) |
+| `tocLevels` | nein | `h2` / `h3` / `h4`; leer = global |
+| `tocTitle` | nein | TOC-Überschrift; leer = global |
 | `seo` | ja (CMS) | SEO-Partial |
 | Body | ja | Markdown |
 

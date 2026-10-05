@@ -21,6 +21,7 @@ import {
 	estimateReadingTimeMinutes,
 	formatReadingTime,
 } from "../../lib/reading-time";
+import { resolveTocForCollection } from "../../lib/site-config";
 import { formatTagHashtag, getTagHref } from "../../lib/tags";
 
 export async function getStaticPaths() {
@@ -45,9 +46,9 @@ const backgroundImage = resolveCmsImage(
 	article.data.backgroundImage,
 	`content/articles/${article.id}/`,
 );
-const showToc = article.data.showToc === true;
+const toc = await resolveTocForCollection("articles", article.data);
 /** Dynamic import: avoid shipping TOC CSS on pages that do not show a TOC. */
-const TableOfContents = showToc
+const TableOfContents = toc.show
 	? (await import("../../components/TableOfContents.astro")).default
 	: null;
 const readingTimeMinutes = estimateReadingTimeMinutes(article.body);
@@ -79,8 +80,8 @@ const readingTimeLabel = formatReadingTime(readingTimeMinutes);
 			{TableOfContents && (
 				<TableOfContents
 					body={article.body}
-					levels={article.data.tocLevels}
-					title={article.data.tocTitle}
+					levels={toc.levels}
+					title={toc.title}
 				/>
 			)}
 			{

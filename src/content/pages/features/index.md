@@ -38,7 +38,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches Repo a
 - **Collections** für Pages, Articles, Tags, Glossar, Menüs und **Bausteine** (`blocks`) ohne eigene URL.
 - **Menüs** als eigene Collection (`main`, `footer-legal`) statt Flags an einzelnen Seiten.
 - **Entwurfsstatus** (`draft`, `published`, `future`, `trash`) für Pages, Artikel und Glossar.
-- **Optionales Inhaltsverzeichnis** pro Seite oder Artikel (`showToc`, Ebenen wählbar).
+- **Inhaltsverzeichnis** global in der Config und optional pro Seite/Artikel überschreibbar.
 - **Seiten-Header und Footer-Code** für kleine HTML- oder CSS-Snippets nur auf einer Seite.
 - **Zugang über Cloudflare Worker** mit [OAuth](/glossar/oauth/) statt nur PAT ([Folge 014](/artikel/folge-014-sveltia-worker/)).
 

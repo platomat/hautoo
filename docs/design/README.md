@@ -133,7 +133,11 @@ Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-
 
 ### Sticky Header
 
-Über CMS **Konfiguration → Site → Header** (`src/content/config/site.yaml`): Sticky ein/aus pro Breakpoint und Min-Höhe der Leiste in px. Defaults: sticky auf allen Geräten, 64 / 64 / 56 px (Desktop / Tablet / Mobile).
+Über CMS **Konfiguration → Site → Design → Header** (`src/content/config/site.yaml`): Sticky ein/aus pro Breakpoint und Min-Höhe der Leiste in px. Defaults: sticky auf allen Geräten, 64 / 64 / 56 px (Desktop / Tablet / Mobile).
+
+### Inhaltsverzeichnis (TOC)
+
+Globale Defaults unter **Konfiguration → Site → Content → TOC** (Seiten / Artikel: an/aus, Ebenen, Titel). Einzelne Einträge überschreiben mit `showToc` / `tocLevels` / `tocTitle` (Feld leer = global).
 
 ### Mobile-Navigation (Burger)
 

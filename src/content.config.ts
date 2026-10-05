@@ -37,12 +37,15 @@ const pages = defineCollection({
 		backgroundAttribution: backgroundAttributionSchema,
 		/** Shared SEO object (same shape as Sveltia `&field_seo`). */
 		seo: seoSchema.optional(),
-		/** Show heading TOC after the page hero (default off). */
-		showToc: z.boolean().default(false),
-		/** Which heading levels appear in the TOC (default h2 only). */
-		tocLevels: z.array(z.enum(["h2", "h3", "h4"])).default(["h2"]),
-		/** TOC heading label (default „Inhalt”). */
-		tocTitle: z.string().default("Inhalt"),
+		/**
+		 * TOC after hero. Omit = use global Config → Content → TOC → Seiten.
+		 * `true` / `false` override the global default for this page.
+		 */
+		showToc: z.boolean().optional(),
+		/** Omit = global levels for pages. */
+		tocLevels: z.array(z.enum(["h2", "h3", "h4"])).optional(),
+		/** Omit / empty = global TOC title for pages. */
+		tocTitle: z.string().optional(),
 		/** Raw HTML/JS/CSS injected before `</head>` (trusted CMS editors). */
 		headCode: z.string().optional(),
 		/** Raw HTML/JS/CSS injected before `</body>` (trusted CMS editors). */
@@ -84,12 +87,15 @@ const articles = defineCollection({
 			videoProvider: z.enum(["youtube", "vimeo"]).optional(),
 			videoId: z.string().optional(),
 			seo: seoSchema.optional(),
-			/** Show heading TOC after the page hero (default off). */
-			showToc: z.boolean().default(false),
-			/** Which heading levels appear in the TOC (default h2 only). */
-			tocLevels: z.array(z.enum(["h2", "h3", "h4"])).default(["h2"]),
-			/** TOC heading label (default „Inhalt”). */
-			tocTitle: z.string().default("Inhalt"),
+			/**
+			 * TOC after hero. Omit = use global Config → Content → TOC → Artikel.
+			 * `true` / `false` override the global default for this article.
+			 */
+			showToc: z.boolean().optional(),
+			/** Omit = global levels for articles. */
+			tocLevels: z.array(z.enum(["h2", "h3", "h4"])).optional(),
+			/** Omit / empty = global TOC title for articles. */
+			tocTitle: z.string().optional(),
 		}),
 });
 

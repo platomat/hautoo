@@ -9,6 +9,7 @@ import {
 } from "../lib/content-embeds";
 import { resolveCmsImage } from "../lib/cms-image";
 import { isPagePublic } from "../lib/pages";
+import { resolveTocForCollection } from "../lib/site-config";
 
 const page = await getEntry("pages", "index");
 if (!page) {
@@ -24,9 +25,9 @@ const backgroundImage = resolveCmsImage(
 	`content/pages/${page.id}/`,
 );
 const wide = await contentNeedsWideLayout(page.body);
-const showToc = page.data.showToc === true;
+const toc = await resolveTocForCollection("pages", page.data);
 /** Dynamic import: avoid shipping TOC CSS on pages that do not show a TOC. */
-const TableOfContents = showToc
+const TableOfContents = toc.show
 	? (await import("../components/TableOfContents.astro")).default
 	: null;
 ---
@@ -47,8 +48,8 @@ const TableOfContents = showToc
 			{TableOfContents && (
 				<TableOfContents
 					body={page.body}
-					levels={page.data.tocLevels}
-					title={page.data.tocTitle}
+					levels={toc.levels}
+					title={toc.title}
 				/>
 			)}
 			{useEmbeds ? <CmsContent body={page.body} /> : <Content />}

@@ -6,10 +6,6 @@ modifiedDate: 2026-10-05
 backgroundImage: /assets/599-1920x1280.webp
 backgroundOverlay: 84
 backgroundAttribution: https://picsum.photos/id/599/1920/1280
-showToc: false
-tocTitle: Inhalt
-tocLevels:
-- h2
 seo:
   index_visibility: index
   follow_visibility: follow

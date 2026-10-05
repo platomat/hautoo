@@ -11,6 +11,7 @@ import {
 } from "../lib/content-embeds";
 import { resolveCmsImage } from "../lib/cms-image";
 import { getPageHref, getPublicPages, indexPagesById } from "../lib/pages";
+import { resolveTocForCollection } from "../lib/site-config";
 
 export async function getStaticPaths() {
 	const pages = await getPublicPages();
@@ -41,9 +42,9 @@ const showBackgroundAttributions = page.id === "impressum";
 const showArticleSidebar = page.id === "artikel";
 const wide =
 	showArticleSidebar || (await contentNeedsWideLayout(page.body));
-const showToc = page.data.showToc === true;
+const toc = await resolveTocForCollection("pages", page.data);
 /** Dynamic import: avoid shipping TOC CSS on pages that do not show a TOC. */
-const TableOfContents = showToc
+const TableOfContents = toc.show
 	? (await import("../components/TableOfContents.astro")).default
 	: null;
 ---
@@ -76,8 +77,8 @@ const TableOfContents = showToc
 							{TableOfContents && (
 								<TableOfContents
 									body={page.body}
-									levels={page.data.tocLevels}
-									title={page.data.tocTitle}
+									levels={toc.levels}
+									title={toc.title}
 								/>
 							)}
 							{useEmbeds ? <CmsContent body={page.body} /> : <Content />}
@@ -94,8 +95,8 @@ const TableOfContents = showToc
 					{TableOfContents && (
 						<TableOfContents
 							body={page.body}
-							levels={page.data.tocLevels}
-							title={page.data.tocTitle}
+							levels={toc.levels}
+							title={toc.title}
 						/>
 					)}
 					{useEmbeds ? <CmsContent body={page.body} /> : <Content />}
