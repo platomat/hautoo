@@ -1,6 +1,6 @@
 ---
 title: 'Folge 019: Impressum, Datenschutz, ENV und CMS-Komponenten'
-summary: Rechtstexte per Agent, Kontakt-E-Mail als Secret, Separator und Artikel-Listing redaktionell, Glossar-Seite im Aufbau.
+summary: Rechtstexte per Agent, Kontakt-E-Mail als Secret, Bildnachweise auf dem Impressum, Separator und Artikel-Listing redaktionell.
 pubDate: 2026-10-04 20:57:40+00:00
 modifiedDate: 2026-10-06
 status: published
@@ -13,7 +13,7 @@ seo:
   index_visibility: index
   follow_visibility: follow
   seo_title: 'Folge 019: Impressum, Datenschutz, ENV und CMS-Komponenten'
-  seo_description: Rechtstexte mit dem Agenten, Kontakt E Mail als Secret, Separator und Artikel Listing im CMS. Folge 019 zu Legal Seiten und Komponenten auf hautuu.
+  seo_description: Rechtstexte mit dem Agenten, Kontakt per Secret, Bildnachweise für Hintergründe auf dem Impressum, Separator und Listing im CMS. Folge 019 zu Legal und Komponenten.
 ---
 
 Impressum und Datenschutz für einen in **Deutschland** betriebenen Auftritt, gehostet auf [**Cloudflare**](/glossar/cloudflare-pages/), mit den Tools aus dem Projekt: das kann der Agent ausformulieren, du prüfst Inhalt und Ton. Footer-Platzierung und erste Seiten: [Folge 003](/artikel/folge-003-erstes-design/). **Kontakt-E-Mail** gehört nicht als Klartext ins öffentliche [Repo](/glossar/repository/) (Baustein `{{contact-email}}`, siehe [Folge 020](/artikel/folge-020-bausteine-fork/)).
@@ -33,9 +33,17 @@ Impressum und Datenschutz für einen in **Deutschland** betriebenen Auftritt, ge
 
 Kurz: ENV = [Umgebungsvariablen](/glossar/env/), getrennt für lokal und [Production](/glossar/production/).
 
+## Bildnachweise im Impressum
+
+Nutzt du für **Seiten** oder **Artikel** ein **Hintergrundbild**, brauchst du oft einen [**Bildnachweis**](/glossar/bildnachweis/) (Urheber, Quelle, Lizenztext). Im [**CMS**](/glossar/cms/) ([Sveltia](/glossar/sveltia/)) liegt dazu das Feld **Bildnachweis** (`backgroundAttribution`) neben **Seitenhintergrund** und **Abdunkelung** bei **Seiten** und **Artikel**.
+
+Du trägst reinen Text ein, eine alleinstehende `https://…`-URL (die Site verlinkt sie) oder HTML von Stock-Plattformen (z. B. Unsplash „Copy attribution“). Erlaubt sind nur sichere Links im HTML.
+
+Beim Build sammelt die Site alle ausgefüllten Werte aus veröffentlichten Seiten und Artikeln. Auf [**Impressum**](/impressum/) erscheint am **Ende** der Seite der Block **Bildnachweise**: pro Hintergrund der **Titel** der Seite oder des Artikels (verlinkt) und darunter der Nachweis. Leere Felder tauchen nicht auf. Die Mediathek speichert am Bild selbst keinen Credit, du pflegst ihn am Eintrag mit dem Hintergrund. Motive und Upload: [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/).
+
 ## Separator im CMS
 
-Neue [**Komponente**](/glossar/komponente/) im Seiten-/Artikel-Editor des [**CMS**](/glossar/cms/): **Trennlinie** mit **Höhe** (1 dezent, 10 kräftig) und **Breite** in Prozent (z. B. 50 % zentriert). Optional später: Farbe aus der Design-Palette, Standard ein dezentes Grau. Einfügen, verschieben, löschen wie bei Bildern.
+Neue [**Komponente**](/glossar/komponente/) im Seiten-/Artikel-Editor des CMS: **Trennlinie** mit **Höhe** (1 dezent, 10 kräftig) und **Breite** in Prozent (z. B. 50 % zentriert). Optional später: Farbe aus der Design-Palette, Standard ein dezentes Grau. Einfügen, verschieben, löschen wie bei Bildern.
 
 ## Artikel-Listing gezielt einsetzen
 
