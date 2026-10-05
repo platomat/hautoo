@@ -10,4 +10,4 @@ seo:
   seo_description: 'Stellt eine frühere Deployment-Version wieder live, ohne Git-Historie zu löschen. In Cloudflare Pages: „Rollback to this deployment“. Mehr im Glossar auf'
 ---
 
-In [Cloudflare Pages](/glossar/cloudflare-pages/): „Rollback to this [deployment](/glossar/deploy/)“. Danach kannst du wieder vorwärts deployen.
+In [Cloudflare Pages](/glossar/cloudflare-pages/): „Rollback to this [deployment](/glossar/deploy/)“. Danach kannst du wieder vorwärts [deploy](/glossar/deploy/)en.

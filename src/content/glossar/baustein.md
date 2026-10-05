@@ -10,4 +10,4 @@ seo:
   seo_description: Wiederverwendbarer CMS-Inhalt ohne eigene URL, eingebunden per {{block id="slug"}} in Seiten, Artikeln oder anderen Bausteinen. Bausteine liegen unter
 ---
 
-Bausteine liegen unter `src/content/blocks/` und heißen in Sveltia **Bausteine**. Ein Eintrag kann Markdown, Bilder und weitere Embeds enthalten. Änderst du den Baustein einmal, gilt das überall, wo `{{block id="…"}}` steht. Beispiele: [Stack-Übersicht](/assets/stack-uebersicht-invert.webp) als `stack-uebersicht`, Kontakt über `{{contact-email}}` auf Impressum und Datenschutz. Einführung: [Folge 020](/artikel/folge-020-bausteine-fork/).
+Bausteine liegen unter `src/content/blocks/` und heißen in [Sveltia](/glossar/sveltia/) **Bausteine**. Ein Eintrag kann [Markdown](/glossar/markdown/), Bilder und weitere Embeds enthalten. Änderst du den Baustein einmal, gilt das überall, wo `{{block id="…"}}` steht. Beispiele: [Stack-Übersicht](/assets/stack-uebersicht-invert.webp) als `stack-uebersicht`, Kontakt über `{{contact-email}}` auf Impressum und Datenschutz. Einführung: [Folge 020](/artikel/folge-020-bausteine-fork/).
