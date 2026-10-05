@@ -28,7 +28,7 @@ Mit **Screencast-Transkript** oder ohne:
 | **summary** | Teaser mit **Leser-Nutzen**, Du-Form, **kein** Gedankenstrich |
 | **tags** | Vorhandene Tags aus `src/content/tags/` **bevorzugen**, **wenige** (typisch 3–5), thematisch passend |
 | **seo** | `seo_title`, `seo_description`, `index_visibility`, `follow_visibility`, … (siehe Abschnitt SEO-Felder) |
-| **Video** | `videoProvider` / `videoId` **leer lassen**, bis ein echtes Video eingepflegt ist |
+| **Video** | Frontmatter `videoProvider` / `videoId` **oder** Body-Embed `{{video provider="youtube" id="…" }}`. Leer lassen, bis ein echtes Video da ist. Player erst nach Consent (Facade); optionales lokales `poster` unter `/assets/…` |
 | **Quelle** | Am Ende des Body ein HTML-Kommentar mit Original-Transkriptdateiname, z. B. `<!-- Quelle: 2026-10-04--23-47-38--obs-screencast - … -->` |
 | **modifiedDate** | Bei inhaltlicher Änderung setzen |
 

@@ -6,6 +6,8 @@ import Separator from "./Separator.astro";
 import TagCloud from "./TagCloud.astro";
 import TagListing from "./TagListing.astro";
 import RepoDocLink from "./RepoDocLink.astro";
+import VideoConsentReset from "./VideoConsentReset.astro";
+import VideoEmbed from "./VideoEmbed.astro";
 import { buildContentSegments } from "../lib/content-embeds";
 
 interface Props {
@@ -71,6 +73,19 @@ const segments = await buildContentSegments(body);
 		}
 		if (segment.type === "repodoc") {
 			return <RepoDocLink {...segment.props} />;
+		}
+		if (segment.type === "video") {
+			return (
+				<VideoEmbed
+					provider={segment.props.provider}
+					id={segment.props.id}
+					title={segment.props.title}
+					poster={segment.props.poster}
+				/>
+			);
+		}
+		if (segment.type === "video-consent-reset") {
+			return <VideoConsentReset />;
 		}
 		return null;
 	})

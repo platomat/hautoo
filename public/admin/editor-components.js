@@ -400,6 +400,74 @@
 	});
 
 	CMS.registerEditorComponent({
+		id: "video",
+		label: "Video (YT/Vimeo)",
+		icon: "videocam",
+		fields: [
+			{
+				name: "provider",
+				label: "Anbieter",
+				widget: "select",
+				options: [
+					{ label: "YouTube", value: "youtube" },
+					{ label: "Vimeo", value: "vimeo" },
+				],
+				default: "youtube",
+			},
+			{
+				name: "id",
+				label: "Video-ID oder URL",
+				widget: "string",
+				hint: "YouTube-ID / youtu.be-URL oder Vimeo-ID / Video-URL.",
+			},
+			{
+				name: "title",
+				label: "Titel (Barrierefreiheit)",
+				widget: "string",
+				required: false,
+				default: "Video",
+			},
+			{
+				name: "poster",
+				label: "Poster (lokal)",
+				widget: "string",
+				required: false,
+				hint: "Optional: Pfad unter /assets/… (kein YouTube-Thumbnail vor Consent).",
+			},
+		],
+		pattern: /^\{\{video(?<attrs>[^}]*)\}\}\s*$/m,
+		fromBlock: (match) => {
+			const attrs = parseAttrs(match?.groups?.attrs || "");
+			return {
+				provider: attrs.provider || "youtube",
+				id: attrs.id || attrs.url || "",
+				title: attrs.title || "Video",
+				poster: attrs.poster || "",
+			};
+		},
+		toBlock: ({ provider = "youtube", id = "", title = "Video", poster = "" }) => {
+			const parts = [`provider="${provider}"`, `id="${id}"`];
+			if (title && title !== "Video") parts.push(`title="${title}"`);
+			if (poster) parts.push(`poster="${poster}"`);
+			return `{{video ${parts.join(" ")}}}`;
+		},
+		toPreview: ({ provider = "youtube", id = "", title = "Video" }) =>
+			`<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem"><strong style="color:#e8eeea">Video</strong> (${provider}) · ${title || id || "?"}<br><span style="font-size:0.8rem">Facade mit Consent, kein Player vor Klick</span></div>`,
+	});
+
+	CMS.registerEditorComponent({
+		id: "video-consent-reset",
+		label: "Video-Consent zurücksetzen",
+		icon: "cookie",
+		fields: [],
+		pattern: /^\{\{video-consent-reset\}\}\s*$/m,
+		fromBlock: () => ({}),
+		toBlock: () => "{{video-consent-reset}}",
+		toPreview: () =>
+			'<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Button: Video-Freischaltung widerrufen</div>',
+	});
+
+	CMS.registerEditorComponent({
 		id: "separator",
 		label: "Trennlinie",
 		icon: "horizontal_rule",

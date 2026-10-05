@@ -114,7 +114,9 @@ Im CMS über die Markdown-Toolbar einfügen (wie Bilder):
 | **Trennlinie** | `{{separator height="1" width="100"}}` | Höhe in px (Default 1), Breite in % (Default 100), zentriert, Abstand oben/unten |
 | **Kontakt-E-Mail** | `{{contact-email}}` | Adresse aus Build-Variable `CONTACT_EMAIL` (nicht im Markdown speichern) |
 | **Repo-Dokument** | `{{repodoc path="docs/github/README.md" title="GitHub" description="Kurzer Satz"}}` | `path` = existierende Datei unter `docs/`; Link zu GitHub `main`; optional `title` / `description` |
+| **Video** | `{{video provider="youtube" id="…" title="Video" poster="/assets/…"}}` | YouTube/Vimeo; Facade ohne Drittanbieter-Kontakt bis Klick; Consent in `localStorage` (`hautuu-video-consent`); optionales lokales Poster |
+| **Video-Consent zurücksetzen** | `{{video-consent-reset}}` | Button zum Widerruf (Datenschutz) |
 
-Registrierung: `public/admin/editor-components.js`. Rendering: `ArticleListing.astro` / `GlossarListing.astro` / `TagListing.astro` / `Separator.astro` / `ContactEmail.astro` / `RepoDocLink.astro`; Bausteine werden in `content-embeds.ts` expandiert.
+Registrierung: `public/admin/editor-components.js`. Rendering: `ArticleListing.astro` / `GlossarListing.astro` / `TagListing.astro` / `Separator.astro` / `ContactEmail.astro` / `RepoDocLink.astro` / `VideoEmbed.astro` / `VideoConsentReset.astro`; Bausteine werden in `content-embeds.ts` expandiert.
 
 **Externe Links** im Markdown-Inhalt (Seiten, Artikel, Glossar, Embed-Markdown) öffnen in einem neuen Tab (`target="_blank"` + `rel="noopener noreferrer"`). Intern (`/…`, Anker, gleiche Domain) bleiben im selben Tab. Plugin: `src/lib/hast-external-links.ts`.

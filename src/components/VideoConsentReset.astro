@@ -1,0 +1,43 @@
+---
+/** Privacy-page control to clear localStorage video consent. */
+---
+
+<div class="video-consent-reset">
+	<button type="button" class="video-consent-reset__btn" data-video-revoke>
+		Video-Freischaltung in diesem Browser widerrufen
+	</button>
+</div>
+
+<script>
+	import { initVideoEmbeds } from "../scripts/videoEmbed";
+	initVideoEmbeds();
+</script>
+
+<style>
+	.video-consent-reset {
+		margin: 1rem 0 1.5rem;
+	}
+
+	.video-consent-reset__btn {
+		appearance: none;
+		margin: 0;
+		padding: 0.5rem 0.85rem;
+		border: 1px solid var(--color-border);
+		border-radius: 4px;
+		background: var(--color-surface);
+		color: var(--color-text);
+		font: inherit;
+		cursor: pointer;
+	}
+
+	.video-consent-reset__btn:hover,
+	.video-consent-reset__btn:focus-visible {
+		border-color: var(--color-action);
+		color: var(--color-action);
+	}
+
+	.video-consent-reset__btn:focus-visible {
+		outline: 2px solid var(--color-action);
+		outline-offset: 2px;
+	}
+</style>

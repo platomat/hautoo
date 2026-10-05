@@ -149,8 +149,8 @@ Beispiel: Baustein `stack-uebersicht` → auf der Startseite `{{block id="stack-
 | `backgroundOverlay` | nein | Abdunkelung 0–100 % |
 | `backgroundAttribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |
 | `tags` | nein | Relation zu `tags` (mehrere) |
-| `videoProvider` | nein | `youtube` / `vimeo` |
-| `videoId` | nein | ID oder URL |
+| `videoProvider` | nein | `youtube` / `vimeo` (Hero-Video; Facade mit Consent) |
+| `videoId` | nein | ID oder URL; alternativ Body-Embed `{{video …}}` |
 | `showToc` | nein | Inhaltsverzeichnis nach Hero (Default aus) |
 | `tocLevels` | nein | `h2` / `h3` / `h4` (Default nur `h2`) |
 | `tocTitle` | nein | Überschrift über dem TOC (Default „Inhalt“) |

@@ -1,32 +1,84 @@
 ---
-import { videoEmbedSrc, type VideoProvider } from "../lib/video";
+import {
+	normalizeVideoId,
+	videoEmbedSrc,
+	type VideoProvider,
+} from "../lib/video";
+import { resolveCmsImage } from "../lib/cms-image";
 
 interface Props {
 	provider?: string;
 	id?: string;
 	title?: string;
+	/** Optional local CMS image path (no third-party thumbnail before consent). */
+	poster?: string;
 }
 
-const { provider, id, title = "Video" } = Astro.props;
-const src =
+const { provider, id, title = "Video", poster } = Astro.props;
+
+const validProvider =
 	provider === "youtube" || provider === "vimeo"
-		? videoEmbedSrc(provider as VideoProvider, id ?? "")
+		? (provider as VideoProvider)
 		: undefined;
+const normalizedId = validProvider
+	? normalizeVideoId(validProvider, id ?? "")
+	: undefined;
+const src =
+	validProvider && normalizedId
+		? videoEmbedSrc(validProvider, normalizedId)
+		: undefined;
+
+const providerLabel =
+	validProvider === "youtube"
+		? "YouTube"
+		: validProvider === "vimeo"
+			? "Vimeo"
+			: "";
+
+const posterMeta = poster ? resolveCmsImage(poster) : undefined;
 ---
 
 {
 	src && (
-		<div class="video-embed">
-			<iframe
-				src={src}
-				title={title}
-				loading="lazy"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-				allowfullscreen
-			/>
+		<div
+			class="video-embed"
+			data-video-embed
+			data-video-src={src}
+			data-video-title={title}
+			data-video-provider={validProvider}
+		>
+			<div class="video-embed__facade" data-video-facade>
+				{posterMeta && (
+					<img
+						class="video-embed__poster"
+						src={posterMeta.src}
+						alt=""
+						width={posterMeta.width}
+						height={posterMeta.height}
+						loading="lazy"
+						decoding="async"
+					/>
+				)}
+				<div class="video-embed__panel">
+					<p class="video-embed__notice text-sm">
+						Zum Abspielen wird der Player von <strong>{providerLabel}</strong>{" "}
+						geladen. Dabei verbindet sich dein Browser mit deren Servern; es
+						können Cookies und ähnliche Techniken gesetzt werden. Details:{" "}
+						<a href="/datenschutz/#eingebettete-videos">Datenschutz</a>.
+					</p>
+					<button type="button" class="video-embed__load" data-video-load>
+						Video von {providerLabel} laden
+					</button>
+				</div>
+			</div>
 		</div>
 	)
 }
+
+<script>
+	import { initVideoEmbeds } from "../scripts/videoEmbed";
+	initVideoEmbeds();
+</script>
 
 <style>
 	.video-embed {
@@ -35,6 +87,7 @@ const src =
 		aspect-ratio: 16 / 9;
 		margin: 1.5rem 0;
 		background: var(--color-surface);
+		border: 1px solid var(--color-border);
 		overflow: hidden;
 	}
 
@@ -44,5 +97,65 @@ const src =
 		width: 100%;
 		height: 100%;
 		border: 0;
+	}
+
+	.video-embed__facade {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		background: var(--color-surface-raised);
+	}
+
+	.video-embed__poster {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		opacity: 0.45;
+	}
+
+	.video-embed__panel {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.75rem;
+		width: 100%;
+		padding: 1rem 1.1rem;
+		background: var(--color-surface-glass);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.video-embed__notice {
+		margin: 0;
+		max-width: 40rem;
+	}
+
+	.video-embed__load {
+		appearance: none;
+		margin: 0;
+		padding: 0.55rem 0.9rem;
+		border: 1px solid var(--color-action);
+		border-radius: 4px;
+		background: var(--color-action-muted);
+		color: var(--color-text);
+		font: inherit;
+		font-weight: var(--font-weight-heading);
+		cursor: pointer;
+	}
+
+	.video-embed__load:hover,
+	.video-embed__load:focus-visible {
+		background: var(--color-action);
+		color: var(--color-bg);
+	}
+
+	.video-embed__load:focus-visible {
+		outline: 2px solid var(--color-action);
+		outline-offset: 2px;
 	}
 </style>
