@@ -1,3 +1,5 @@
+<a href="https://hautoo.storyofai.net"><img src="public/img/logo-mark.svg" alt="hautuu Logo" width="120" /></a>
+
 # hautuu
 
 Dokumentation und (geplante) Website-Grundlage, um mit **Cursor**, **GitHub** und **Cloudflare** eine thematische Astro-Website zu erstellen und zu pflegen.
@@ -29,6 +31,8 @@ Kurzliste dessen, was auf `main` schon umgesetzt ist (Details und Erläuterungen
 | **Design** | Dark Theme mit CSS-Variablen, Breakpoints, Vollbild-Hintergrund, **Bildnachweise** gesammelt auf dem Impressum |
 | **Deploy** | Astro-Build, Cloudflare Pages aus GitHub, Preview/Rollback, Cache-Header und Build-ID |
 | **Qualität & Doku** | `check-content-links.py` (inkl. Embeds), `docs/`, Cursor-Regeln, Glossar-/SEO-Hilfsskripte |
+
+Die genaue Liste aller Features findest du auf der Website: [Features](https://hautoo.storyofai.net/features/).
 
 ## Dokumentation
 
