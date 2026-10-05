@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail when {{repodoc}} or {{block}} splits a sentence or lacks paragraph spacing."""
+"""Fail when {{repodoc}} or {{block}} splits a sentence, a list, or lacks paragraph spacing."""
 
 from __future__ import annotations
 
@@ -19,6 +19,11 @@ EMBED_LINE = re.compile(
 EMBED_INLINE = re.compile(r"\{\{(?:repodoc|block)\b")
 
 HEADING = re.compile(r"^#{1,6}\s")
+LIST_ITEM = re.compile(r"^\s*([-*+]|\d+\.)\s")
+
+
+def is_list_item(line: str) -> bool:
+    return bool(LIST_ITEM.match(line))
 
 
 def body_from_md(text: str) -> str:
@@ -74,6 +79,15 @@ def scan_body(rel: Path, body: str) -> list[str]:
                 issues.append(
                     f"{rel}: line {i + 1}: embed splits sentence (continues with "
                     f"`{nxt[:50]}`)"
+                )
+
+        if prev_idx >= 0 and next_idx < len(lines):
+            prev_line = lines[prev_idx]
+            next_line = lines[next_idx]
+            if is_list_item(prev_line) and is_list_item(next_line):
+                issues.append(
+                    f"{rel}: line {i + 1}: embed between list items "
+                    f"(move after the list)"
                 )
 
     return issues

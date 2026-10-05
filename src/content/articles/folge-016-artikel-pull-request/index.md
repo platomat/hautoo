@@ -2,7 +2,7 @@
 title: 'Folge 016: Vierzehn Artikel im PR: Preview, Merge und Listing-Kontrolle'
 summary: Branch statt main, Cloudflare-Preview in der Mail, grüne Checks und Merge. Warum die Artikel-Seite lieber ein CMS-Listing will.
 pubDate: 2026-10-04 19:11:35+00:00
-modifiedDate: 2026-10-05
+modifiedDate: 2026-10-06
 status: published
 tags:
 - cursor
@@ -25,10 +25,9 @@ Auf [GitHub](/glossar/github/) siehst du den [**Pull Request**](/glossar/pull-re
 - **Zusammenfassung** mit Titeln, Slugs und Hinweisen auf unklare Transkript-Stellen.
 - **[Preview-Link](/glossar/preview-url/)** (derselbe wie in der Build-Mail): die Site, wie sie mit dem Branch aussehen würde.
 - **CI**: z. B. [`npm run build`](/glossar/build/) im Workflow. Scheitert der [Build](/glossar/build/), landet nichts Sinnvolles auf main.
+- **Konflikt-Check**, falls parallel auf `main` etwas geändert wurde.
 
 {{repodoc path="docs/entwicklung/README.md" title="Lokale Entwicklung" description="Build, Tests und typischer PR-Ablauf lokal."}}
-
-- **Konflikt-Check**, falls parallel auf `main` etwas geändert wurde.
 
 Zwei [Commits](/glossar/commit/) sind normal: erst Anlegen der Artikel, dann Stil/Ton. Issue-Nummern und PR-Nummern laufen getrennt; eine „fehlende“ Issue-Nummer ist kein Drama.
 
