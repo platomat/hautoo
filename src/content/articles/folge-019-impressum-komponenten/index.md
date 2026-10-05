@@ -29,7 +29,7 @@ Impressum und Datenschutz für einen in **Deutschland** betriebenen Auftritt, ge
 
 - [Cloudflare Pages](/glossar/cloudflare-pages/) → dein Projekt → **Settings** → **Variables and Secrets**: z. B. `CONTACT_EMAIL` als Secret.
 - **Lokal** dieselbe Variable in [`.env`](/glossar/env/) (liegt in `.gitignore`), z. B. `CONTACT_EMAIL=du@example.de`.
-- [Build](/glossar/build/) (`npm run build`; [Node](/glossar/nodejs/)/[npm](/glossar/npm/): [Folge 018](/artikel/folge-018-node-npm/)) und Dev-Server lesen die Variable; lokal testest du mit dem gleichen Befehl wie in Production. die Impressums-Komponente rendert einen `mailto:`-Link ohne die Adresse im [Markdown](/glossar/markdown/) zu [committen](/glossar/commit/).
+- [Build](/glossar/build/) (`npm run build`; [Node](/glossar/nodejs/)/[npm](/glossar/npm/): [Folge 018](/artikel/folge-018-node-npm/)) und Dev-Server lesen die Variable; lokal testest du mit dem gleichen Befehl wie in [Production](/glossar/production/). die Impressums-[Komponente](/glossar/komponente/) rendert einen `mailto:`-Link ohne die Adresse im [Markdown](/glossar/markdown/) zu [committen](/glossar/commit/).
 
 Kurz: ENV = [Umgebungsvariablen](/glossar/env/), getrennt für lokal und [Production](/glossar/production/).
 
@@ -48,7 +48,7 @@ Im [CMS](/glossar/cms/) explizit sagen, in welcher [**Collection**](/glossar/col
 
 ## Glossar und Bilder
 
-Glossar-Begriffe können vom Agenten vorbefüllt werden; **Glossar-Listing** auf einer eigenen Seite (Menüpunkt „Glossar“) war noch To-do. Hintergrundbilder lieber **lokal** im Repo statt Hotlink (z. B. Platzhalter-Dienste): weniger Ladezeit, weniger Drittanfragen, **datenschutzfreundlicher**.
+Glossar-Begriffe können vom Agenten vorbefüllt werden; **Glossar-Listing** auf einer eigenen Seite (Menüpunkt „Glossar“) war noch To-do. Hintergrundbilder lieber **lokal** im [Repo](/glossar/repository/) statt Hotlink (z. B. Platzhalter-Dienste): weniger Ladezeit, weniger Drittanfragen, **datenschutzfreundlicher**.
 
 ## Text-Stil nachziehen
 

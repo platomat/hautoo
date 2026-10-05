@@ -18,7 +18,7 @@ seo:
 
 ## Nochmal klonen
 
-Der Ordnername auf der Festplatte ist Git egal, zählt nur `.git` drin.
+Der Ordnername auf der Festplatte ist [Git](/glossar/git/) egal, zählt nur `.git` drin.
 
 Die `git …`-Beispiele unten tippst du im [Terminal](/glossar/terminal/). [**Git**](/glossar/git/) ist die [CLI](/glossar/cli/) dafür.
 
@@ -46,13 +46,13 @@ In [Cursor](/glossar/cursor/) kannst du Änderungen verwerfen oder Dateien **rev
 
 ## Merge vs. Rebase (Teaser)
 
-- **[Merge](/glossar/merge/):** sichtbarer Merge-[Commit](/glossar/commit/), ehrliche Verzweigung.
+- **[Merge](/glossar/merge/):** sichtbarer [Merge](/glossar/merge/)-[Commit](/glossar/commit/), ehrliche Verzweigung.
 - **[Rebase](/glossar/rebase/):** lineare Historie, etwas fummeliger.
 
 Für den Start: **Merge** reicht. [**Rebase**](/glossar/rebase/) macht die Historie linear, ist aber kniffeliger, nur anfassen, wenn du weißt, warum. Vertiefung mit Grafiken: [Folge 007](/artikel/folge-007-merge-rebase/).
 
 ## Keine Geheimnisse in Git
 
-Gelöschte Dateien? Bleiben in der [**History**](/glossar/git-history/). Öffentliches Repo? Jeder kann lesen. Also: keine Passwörter, keine Keys.
+Gelöschte Dateien? Bleiben in der [**History**](/glossar/git-history/). Öffentliches [Repo](/glossar/repository/)? Jeder kann lesen. Also: keine Passwörter, keine Keys.
 
 <!-- Quelle: 2026-10-03--23-28-46--obs-screencast - hautoo - github - repository, pushes, pulls.txt -->

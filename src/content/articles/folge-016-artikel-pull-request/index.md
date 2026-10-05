@@ -16,25 +16,25 @@ seo:
   seo_description: 'Großer PR mit Cloudflare Preview, grünen Checks und Merge auf main. Folge 016: Artikel Listing redaktionell steuern statt alles automatisch listen.'
 ---
 
-Der Agent hat über Nacht gearbeitet (Ablauf ab [Folge 015](/artikel/folge-015-transkript-artikel/)): Mail von [**Cloudflare**](/glossar/cloudflare-pages/), dass ein **Zweig** gebaut wurde (z. B. ein [Branch](/glossar/branch/) wie `PerseScreencastArticles-e016`, Name variiert). Nicht auf **main** gepusht, sondern eigener [**Branch**](/glossar/branch/) mit vielen neuen Artikeln, nachgeschärftem Ton und automatischen **Checks**.
+Der Agent hat über Nacht gearbeitet (Ablauf ab [Folge 015](/artikel/folge-015-transkript-artikel/)): Mail von [**Cloudflare**](/glossar/cloudflare-pages/), dass ein **Zweig** gebaut wurde (z. B. ein [Branch](/glossar/branch/) wie `PerseScreencastArticles-e016`, Name variiert). Nicht auf **[main](/glossar/main/)** gepusht, sondern eigener [**Branch**](/glossar/branch/) mit vielen neuen Artikeln, nachgeschärftem Ton und automatischen **Checks**.
 
 ## Pull Request lesen
 
 Auf [GitHub](/glossar/github/) siehst du den [**Pull Request**](/glossar/pull-request/):
 
 - **Zusammenfassung** mit Titeln, Slugs und Hinweisen auf unklare Transkript-Stellen.
-- **[Preview-Link](/glossar/preview-url/)** (derselbe wie in der Build-Mail): die Site, wie sie mit dem Branch aussehen würde.
+- **[Preview-Link](/glossar/preview-url/)** (derselbe wie in der [Build](/glossar/build/)-Mail): die Site, wie sie mit dem Branch aussehen würde.
 - **CI**: z. B. [`npm run build`](/glossar/build/) im Workflow. Scheitert der [Build](/glossar/build/), landet nichts Sinnvolles auf main.
 
 {{repodoc path="docs/entwicklung/README.md" title="Lokale Entwicklung" description="Build, Tests und typischer PR-Ablauf lokal."}}
 
 - **Konflikt-Check**, falls parallel auf [main](/glossar/main/) etwas geändert wurde.
 
-Zwei [Commits](/glossar/commit/) sind normal: erst Anlegen der Artikel, dann Stil/Ton. Issue-Nummern und PR-Nummern laufen getrennt; eine „fehlende“ Issue-Nummer ist kein Drama.
+Zwei [Commits](/glossar/commit/) sind normal: erst Anlegen der Artikel, dann Stil/Ton. [Issue](/glossar/issue/)-Nummern und PR-Nummern laufen getrennt; eine „fehlende“ Issue-Nummer ist kein Drama.
 
 ## Merge und Live
 
-**Ready for review**, Konflikte prüfen, dann [**Merge**](/glossar/merge/) ([Rebase](/glossar/rebase/) nur, wenn du weißt, warum). **[Cloudflare](/glossar/cloudflare-pages/)** baut [**main**](/glossar/main/) neu. Lokal: `git pull`, ggf. **Rebase**, wenn du zwischendurch selbst committet hast, dann pushen.
+**Ready for review**, Konflikte prüfen, dann [**Merge**](/glossar/merge/) ([Rebase](/glossar/rebase/) nur, wenn du weißt, warum). **[Cloudflare](/glossar/cloudflare-pages/)** baut [**main**](/glossar/main/) neu. Lokal: `git pull`, ggf. **[Rebase](/glossar/rebase/)**, wenn du zwischendurch selbst committet hast, dann pushen.
 
 Parallel kannst du Layout anpassen (Hero tiefer, Inhaltsbreite wie auf der Startseite). Die **Artikelübersicht** und Tag-Seiten nutzen die neuen Inhalte.
 
@@ -46,6 +46,6 @@ Auf der Route **Artikel** war der Wunsch anders: nicht „erst fester Seitentext
 
 ## KI-Ticks im Text
 
-Viele lange **Gedankenstriche** im ersten Entwurf sind typisch generierter Stil. Gezielt Issue: „über alle Artikel, Striche reduzieren, normaler deutscher Fließtext“. Videos und Doku-Links kannst du später pro Artikel ergänzen. Preview-Zweige vor dem [Merge](/glossar/merge/): [Folge 012](/artikel/folge-012-cloudflare-branches/).
+Viele lange **Gedankenstriche** im ersten Entwurf sind typisch generierter Stil. Gezielt Issue: „über alle Artikel, Striche reduzieren, normaler deutscher Fließtext“. Videos und Doku-Links kannst du später pro Artikel ergänzen. Preview-[Zweige](/glossar/branch/) vor dem [Merge](/glossar/merge/): [Folge 012](/artikel/folge-012-cloudflare-branches/).
 
 <!-- Quelle: 2026-10-04--19-11-35--obs-screencast - hautoo - 016 - transkript - artikel - resultat.txt -->

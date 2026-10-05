@@ -29,21 +29,21 @@ Der Agent kann den [Branch](/glossar/branch/) auch anlegen und z. B. die Start
 
 ## Push = Preview, nicht Production
 
-[Push](/glossar/push/) vom **Test-Branch** → Cloudflare baut eine [**Preview**](/glossar/preview-url/) unter **All deployments**, eigene `pages.dev`-URL, die niemand errät.
+[Push](/glossar/push/) vom **Test-[Branch](/glossar/branch/)** → [Cloudflare](/glossar/cloudflare-pages/) baut eine [**Preview**](/glossar/preview-url/) unter **All deployments**, eigene `pages.dev`-URL, die niemand errät.
 
 Link an jemanden: „Gefällt dir das?“. Live bleibt unangetastet.
 
 ## Wenn’s gut ist: Merge
 
-In der [Git](/glossar/git/)-UI: **test** → [**Merge**](/glossar/merge/) into main, dann [**push**](/glossar/push/) `main`. Cloudflare baut **[Production](/glossar/production/)**, jetzt ist’s öffentlich.
+In der [Git](/glossar/git/)-UI: **test** → [**Merge**](/glossar/merge/) into [main](/glossar/main/), dann [**push**](/glossar/push/) `main`. Cloudflare baut **[Production](/glossar/production/)**, jetzt ist’s öffentlich.
 
 Parallel kann auf `main` ein Bugfix laufen, während du auf `test` wochenlang Features stapelst. Klassisches Team-Spiel, auch solo sinnvoll.
 
 ## Rollback
 
-[**Rollback**](/glossar/rollback/) to this [deployment](/glossar/deploy/) — in Sekunden wieder alter Stand (im Video eine Startseiten-Variante, erkennbar an den ersten Zeichen der [Commit](/glossar/commit/)-ID, z. B. `7.8…`). Danach wieder vorwärts deployen, wenn du die neue Version zurückwillst.
+[**Rollback**](/glossar/rollback/) to this [deployment](/glossar/deploy/) — in Sekunden wieder alter Stand (im Video eine Startseiten-Variante, erkennbar an den ersten Zeichen der [Commit](/glossar/commit/)-ID, z. B. `7.8…`). Danach wieder vorwärts [deploy](/glossar/deploy/)en, wenn du die neue Version zurückwillst.
 
-Kein FTP. [**CI/CD**](/glossar/ci-cd/) heißt: Push, [Build](/glossar/build/), Preview, [Merge](/glossar/merge/), Live, und rückwärts geht auch. Merge vs. [Rebase](/glossar/rebase/) in der Historie: [Folge 007](/artikel/folge-007-merge-rebase/).
+Kein [FTP](/glossar/ftp/). [**CI/CD**](/glossar/ci-cd/) heißt: [Push](/glossar/push/), [Build](/glossar/build/), Preview, [Merge](/glossar/merge/), Live, und rückwärts geht auch. [Merge](/glossar/merge/) vs. [Rebase](/glossar/rebase/) in der Historie: [Folge 007](/artikel/folge-007-merge-rebase/).
 
 {{repodoc path="docs/cloudflare/README.md" title="Cloudflare — Website online bringen" description="Preview-Deployments und Production im Repo nachlesen."}}
 

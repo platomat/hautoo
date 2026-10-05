@@ -17,7 +17,7 @@ Kurzer Nachtrag zum Experiment mit zwei Projektordnern ([Folge 006](/artikel/fol
 
 ## Was dich im Tool verwirrt
 
-Nach einem [**Merge**](/glossar/merge/) kann der Graph so aussehen, als hättest du nur noch ein paar [Commits](/glossar/commit/). Die vielen Schritte davor stecken **im Merge-Commit** drin. Auf [**GitHub**](/glossar/github/) unter „Commits“ siehst du die Einzelteile weiter (im Video z. B. 21 Stück).
+Nach einem [**Merge**](/glossar/merge/) kann der Graph so aussehen, als hättest du nur noch ein paar [Commits](/glossar/commit/). Die vielen Schritte davor stecken **im [Merge-Commit](/glossar/merge/)** drin. Auf [**GitHub**](/glossar/github/) unter „Commits“ siehst du die Einzelteile weiter (im Video z. B. 21 Stück).
 
 ## Merge (dein Freund fürs Team)
 
@@ -31,11 +31,11 @@ feature:        C - D - E
 
 ## Rebase (die lineare Alternative)
 
-[**Rebase**](/glossar/rebase/): Commits `C D E` würden **hinten an** `main` hängen, als wäre alles nacheinander passiert. Hübsch, aber: nicht [rebase](/glossar/rebase/)n, was andere schon gezogen haben.
+[**Rebase**](/glossar/rebase/): [Commits](/glossar/commit/) `C D E` würden **hinten an** `main` hängen, als wäre alles nacheinander passiert. Hübsch, aber: nicht [rebase](/glossar/rebase/)n, was andere schon gezogen haben.
 
 ## Was du wirklich brauchst
 
-Stand ist gespeichert. Du kannst alte Dateiversionen ansehen („Copyright früher vs. jetzt“). Ob [Merge](/glossar/merge/) oder Rebase. Geschmackssache. Mit KI-Agent reicht Merge + [**Pull**](/glossar/pull/) vor [**Push**](/glossar/push/). [Branches](/glossar/branch/) und Preview vor dem Merge auf [main](/glossar/main/): [Folge 012](/artikel/folge-012-cloudflare-branches/).
+Stand ist gespeichert. Du kannst alte Dateiversionen ansehen („Copyright früher vs. jetzt“). Ob [Merge](/glossar/merge/) oder [Rebase](/glossar/rebase/). Geschmackssache. Mit KI-Agent reicht Merge + [**Pull**](/glossar/pull/) vor [**Push**](/glossar/push/). [Branches](/glossar/branch/) und Preview vor dem Merge auf [main](/glossar/main/): [Folge 012](/artikel/folge-012-cloudflare-branches/).
 
 {{repodoc path="docs/github/README.md" title="GitHub" description="Merge, Historie und Zusammenarbeit auf GitHub."}}
 

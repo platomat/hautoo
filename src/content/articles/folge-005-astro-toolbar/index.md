@@ -50,4 +50,4 @@ Wenn du’s genau willst:
 
 Der Agent soll bestehende Klassen im Projekt nutzen, nicht bei jedem Prompt neues Inline-[CSS](/glossar/css/) erfinden. Deine **Page Speed** dankt’s dir. Fonts, [CSS-Variablen](/glossar/css-variable/) und erster Look: [Folge 003](/artikel/folge-003-erstes-design/).
 
-<!-- Quelle: 2026-10-03--23-23-55--obs-screencast - hautoo - astro bar, [breakpoints](/glossar/breakpoint/), css fachchinesisch.txt -->
+<!-- Quelle: 2026-10-03--23-23-55--obs-screencast - hautoo - [astro](/glossar/astro/) bar, [breakpoints](/glossar/breakpoint/), [css](/glossar/css/) fachchinesisch.txt -->

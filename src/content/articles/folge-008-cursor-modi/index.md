@@ -19,7 +19,7 @@ seo:
 
 ## Chat-Oberfläche vs. IDE
 
-Manchmal startet [Cursor](/glossar/cursor/) chat-lastig. Für hautuu willst du den **[IDE](/glossar/ide/)**-Modus: Dateien, [Terminal](/glossar/terminal/), Agentenleiste. Button **IDE** hilft.
+Manchmal startet [Cursor](/glossar/cursor/) chat-lastig. Für hautuu willst du den **[IDE](/glossar/ide/)**-Modus: Dateien, [Terminal](/glossar/terminal/), Agentenleiste. Button **[IDE](/glossar/ide/)** hilft.
 
 Du kannst auch einen beliebigen **Ordner ohne [Git](/glossar/git/)** öffnen (Fotos, Notizen) und dem Agenten sagen: „Pack das ins Projekt.“
 
@@ -32,8 +32,8 @@ Du kannst auch einen beliebigen **Ordner ohne [Git](/glossar/git/)** öffnen (Fo
 | Modus | Wofür |
 |--------|--------|
 | [**Ask**](/glossar/cursor-modi/) | Nur fragen. Ideal, wenn nichts am Code geändert werden soll. `Frage:` am Anfang ist ein guter Hinweis. |
-| **Agent** | Alles: lesen, schreiben, [Terminal](/glossar/terminal/), Commits. Der Vollgas-Modus. |
-| **[Plan](/glossar/cursor-modi/)** | Erst Plan mit To-dos, du liest, korrigierst, **dann** Umsetzung im Agent-Modus. |
+| **Agent** | Alles: lesen, schreiben, [Terminal](/glossar/terminal/), [Commits](/glossar/commit/). Der Vollgas-Modus. |
+| **[Plan](/glossar/cursor-modi/)** | Erst [Plan](/glossar/cursor-modi/) mit To-dos, du liest, korrigierst, **dann** Umsetzung im Agent-Modus. |
 
 **Tab** = Autovervollständigung im Code (im Chat klappt das nicht immer).
 
@@ -55,4 +55,4 @@ Bei **679 Pixel Breite und weniger** zeigt sich die Handy-Ansicht (Burger-Menü 
 
 **Export Transcript** nach `docs/sessions/`, dein Schnack mit der KI. Ordner in **`.gitignore`** (`docs/sessions/`), sonst landet’s im öffentlichen [Repo](/glossar/repository/). Commits = nur Website-Zeug.
 
-<!-- Quelle: 2026-10-03--23-48-14--obs-screencast - hautoo - cursor - plan, agent, ask.txt -->
+<!-- Quelle: 2026-10-03--23-48-14--obs-screencast - hautoo - [cursor](/glossar/cursor/) - plan, agent, ask.txt -->

@@ -16,7 +16,7 @@ seo:
   seo_description: CMS Bausteine statt Copy Paste, Glossar und FAQ im Überblick und hautuu per GitHub Fork als Vorlage. Folge 020 für Wiederverwendung und eigenes Projekt.
 ---
 
-Zwischen den Sessions ist hautuu richtig gewachsen: **20 Folgen** als Artikel, ein ausgebautes [**Glossar**](/glossar/), eine lange [**FAQ**](/faq/) mit Querverweisen und eine Navigation, die sich anfühlt wie eine kleine Site statt wie ein Ordner voller Dateien. In dieser Folge geht es um **Bausteine** (wiederverwendbare Inhalte), den Überblick und die Einladung: **[fork](/glossar/fork/)e** das Repo, wenn du Struktur und Features für dein eigenes Projekt nutzen willst.
+Zwischen den Sessions ist hautuu richtig gewachsen: **20 Folgen** als Artikel, ein ausgebautes [**Glossar**](/glossar/), eine lange [**FAQ**](/faq/) mit Querverweisen und eine Navigation, die sich anfühlt wie eine kleine Site statt wie ein Ordner voller Dateien. In dieser Folge geht es um **Bausteine** (wiederverwendbare Inhalte), den Überblick und die Einladung: **[fork](/glossar/fork/)e** das [Repo](/glossar/repository/), wenn du Struktur und Features für dein eigenes Projekt nutzen willst.
 
 ## Bausteine statt zehnmal das gleiche Bild
 
@@ -63,11 +63,11 @@ Früher gab es die Idee experimentell in **Firefox Labs** (eigene Tastenkombinat
 
 Wenn dir **Struktur**, **Bausteine**, **Menüs**, **Artikel** und **Seiten** gefallen, musst du nicht bei null anfangen:
 
-1. Auf [GitHub](/glossar/github/) beim Repo **Fork** wählen. Das ist **deine** Kopie unter deinem Account, kein Schreiben im Original ([**Glossar Fork**](/glossar/fork/), Kurz in [Folge 002](/artikel/folge-002-github-issues/)).
+1. Auf [GitHub](/glossar/github/) beim Repo **[Fork](/glossar/fork/)** wählen. Das ist **deine** Kopie unter deinem Account, kein Schreiben im Original ([**Glossar Fork**](/glossar/fork/), Kurz in [Folge 002](/artikel/folge-002-github-issues/)).
 2. Deinen Fork **klonen**, in [**Cursor**](/glossar/cursor/) öffnen.
 3. Dem Agenten sagen: Inhalte löschen, Farben und Logo ersetzen, Texte anpassen, [Cloudflare](/glossar/cloudflare-pages/) auf **dein** Repo hängen ([Folge 011](/artikel/folge-011-cloudflare-setup/)).
 
-**Klonen** holt ein Repo auf die Platte. **Forken** legt zuerst deine GitHub-Kopie an. Für „eigene Site auf Basis von hautuu“ ist der Fork der richtige Start.
+**Klonen** holt ein Repo auf die Platte. **Forken** legt zuerst deine [GitHub](/glossar/github/)-Kopie an. Für „eigene Site auf Basis von hautuu“ ist der Fork der richtige Start.
 
 Hast du ein gutes Feature gebaut, schick einen [**Pull Request**](/glossar/pull-request/) zurück ans Original. Umgekehrt kannst du von hier Updates übernehmen, wenn du magst. Ein **Stern** auf GitHub beim Original ist ein kleines Danke, wenn dir das Projekt hilft.
 
