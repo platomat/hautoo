@@ -15,7 +15,7 @@ seo:
   seo_description: Pages als Markdown, Collections in Astro und SEO Felder einmal zentral pflegen. Folge 004 erklärt die CMS Struktur von hautuu für Einsteiger.
 ---
 
-Keine Datenbank, kein WordPress-Monster: **Pages** sind normale [Markdown](/glossar/markdown/)-Dateien unter `src/content/pages/`. [**Collections**](/glossar/collection/) sind die Typen: Pages, Articles, Menüs, Tags, Glossar, **Bausteine** (`blocks`). Warum [Issues](/glossar/issue/) dafür sinnvoll sind: [Folge 002](/artikel/folge-002-github-issues/). Bausteine im Alltag: [Folge 020](/artikel/folge-020-bausteine-fork/).
+Keine [Datenbank](/glossar/datenbank/), kein [WordPress](/glossar/wordpress/)-Monster: **Pages** sind normale [Markdown](/glossar/markdown/)-Dateien unter `src/content/pages/`. [**Collections**](/glossar/collection/) sind die Typen: Pages, Articles, Menüs, Tags, Glossar, **Bausteine** (`blocks`). Warum [Issues](/glossar/issue/) dafür sinnvoll sind: [Folge 002](/artikel/folge-002-github-issues/). Bausteine im Alltag: [Folge 020](/artikel/folge-020-bausteine-fork/).
 
 ## Was `config.yml` macht
 

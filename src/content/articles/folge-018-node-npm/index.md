@@ -30,7 +30,7 @@ sudo apt update
 sudo apt install curl
 ```
 
-Kaputte Paketlisten auf einer frischen VM fixst du ggf. mit `sudo apt-get update` und den Hinweisen aus `apt` (broken packages, fix-missing). Danach das [Node](/glossar/nodejs/)-Skript erneut ausführen. Das Setup legt oft [**nvm**](/glossar/nvm/) mit, sodass mehrere Node-Versionen parallel möglich sind.
+Kaputte Paketlisten auf einer frischen [VM](/glossar/vm/) fixst du ggf. mit `sudo apt-get update` und den Hinweisen aus `apt` (broken packages, fix-missing). Danach das [Node](/glossar/nodejs/)-Skript erneut ausführen. Das Setup legt oft [**nvm**](/glossar/nvm/) mit, sodass mehrere Node-Versionen parallel möglich sind.
 
 Prüfen:
 

@@ -15,7 +15,7 @@ seo:
   seo_description: 'OBS Transkript und Cloud Agent: über Nacht Artikel aus Screencasts als Pull Request. Folge 015 beschreibt den Ablauf von Rohtext bis Review auf hautuu.'
 ---
 
-Du nimmst den Screencast auf, die **Speech-to-Text**-Software hört mit und liefert Rohtext. Den packst du zusammen mit der Aufnahme in einen Ordner auf deiner **virtuellen Maschine** und gibst dem [**Cloud Agent**](/glossar/cloud-agent/) in [Cursor](/glossar/cursor/) eine klare Aufgabe: aus jedem Video **einen Artikel**, Beispielinhalt weg, Platzhalter fürs spätere Video, alles als [**Pull Request**](/glossar/pull-request/), damit du vor dem Live-Gang drüber schauen kannst.
+Du nimmst den Screencast auf, die **Speech-to-Text**-Software hört mit und liefert Rohtext. Den packst du zusammen mit der Aufnahme in einen Ordner auf deiner **[virtuellen Maschine](/glossar/vm/)** und gibst dem [**Cloud Agent**](/glossar/cloud-agent/) in [Cursor](/glossar/cursor/) eine klare Aufgabe: aus jedem Video **einen Artikel**, Beispielinhalt weg, Platzhalter fürs spätere Video, alles als [**Pull Request**](/glossar/pull-request/), damit du vor dem Live-Gang drüber schauen kannst.
 
 ## Was die Site schon kann
 
