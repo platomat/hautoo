@@ -75,6 +75,8 @@ TERM_PATTERNS: list[tuple[str, str]] = [
     ("env", r"`\.env`"),
     ("env", r"\.env\b"),
     ("css", r"\bCSS\b"),
+    ("css-variable", r"CSS-Variablen?"),
+    ("css-variable", r"custom properties"),
     ("cms", r"\bCMS\b"),
     ("ssh-key", r"\bSSH\b"),
     ("ide", r"\bIDE\b"),

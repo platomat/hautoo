@@ -41,6 +41,15 @@ Mit **Screencast-Transkript** oder ohne:
 - **Gedankenstriche** (`—`, `–`) **sparsam**: in **Titeln, Teasern und FAQ-Fragen keine**; im Fließtext nur vereinzelt. Stattdessen Punkt, Komma, Doppelpunkt, Klammern oder Umformulierung (siehe auch [.cursor/rules/deutsche-prosa.mdc](../../.cursor/rules/deutsche-prosa.mdc)).
 - Prosa auf **Deutsch**; Code, Slugs, Pfade auf **Englisch** wie im Rest des Projekts.
 
+### Begriffe (Laien vs. Entwickler-Doku)
+
+| Öffentliche Inhalte (`src/content/`) | Regel |
+| --- | --- |
+| Farben/Abstände zentral im CSS | **CSS-Variablen** (nicht „Design-Tokens“, „Tokens“ im CSS-Sinn) |
+| Erstes Vorkommen | Kurz erklären oder Glossar verlinken (z. B. [/glossar/css-variable/](/glossar/css-variable/)) |
+| **Token** im KI-/API-Sinn | Nur bei Cursor-Abo, PAT, OAuth usw. (Zugangsschlüssel, Modell-Verbrauch) |
+| `docs/` für Entwickler | Fachbegriffe (`custom properties`, `design tokens`) dürfen stehen, beim **ersten** Vorkommen mit **CSS-Variablen** erklären |
+
 ---
 
 ## Glossar (`glossar`)

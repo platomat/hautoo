@@ -2,7 +2,7 @@
 title: 'Folge 003: Erstes Outfit: Ubuntu, Dark Mode und ein Footer, der nicht nervt'
 summary: 'Schrift rein, Farben festlegen, Breakpoints setzen. Plus die goldene Regel: committen ja, pushen nur, wenn du es wirklich willst.'
 pubDate: 2026-10-03 02:16:51+00:00
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-06
 status: published
 tags:
 - design
@@ -40,14 +40,12 @@ Baut der Agent während der Server läuft, kann die Vorschau hüpfen — kurz st
 Schreib sie in Doku und `.cursor/rules`:
 
 1. **Niemals von allein pushen.** Commits lokal sind okay. [**Push**](/glossar/push/) nur auf Anweisung, sonst baut [**Cloudflare**](/glossar/cloudflare-pages/) einen Zwischenstand live (Hosting-Setup: [Folge 011](/artikel/folge-011-cloudflare-setup/)).
-2. **CSS nicht jedes Mal neu erfinden**: bestehende Klassen und Tokens nutzen.
+2. **CSS nicht jedes Mal neu erfinden**: bestehende Klassen und [CSS-Variablen](/glossar/css-variable/) nutzen.
 3. **Page Speed:** Wichtiges [**CSS**](/glossar/css/) früh (critical: Menü, Kopf der Seite); Rest später (non-critical), sonst springt das Layout und Google schmunzelt nicht.
 
 ## Seiten, Menü, Footer
 
-{{repodoc path="docs/design/README.md" title="Design & Erscheinungsbild" description="Tokens, Breakpoints und Layout-Regeln im Repo."}}
-
-
+{{repodoc path="docs/design/README.md" title="Design & Erscheinungsbild" description="CSS-Variablen, Breakpoints und Layout-Regeln im Repo."}}
 
 Per Issue kamen **Pages** (Start, Über uns, Impressum …; Collections: [Folge 004](/artikel/folge-004-collection-pages/)). Der **Footer** kriegt Copyright mit dynamischem Jahr (`2026` oder `2026 bis 2027`), Domain, Signatur.
 

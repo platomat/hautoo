@@ -2,7 +2,7 @@
 title: 'Folge 008: Ask, Agent, Plan: Wann die KI nur reden darf'
 summary: Unterschied zwischen „bitte nichts anfassen“ und „bau mir das Burger-Menü“. Plus wo dein Chat-Schnack nicht im Repo landen soll.
 pubDate: 2026-10-03 23:48:14+00:00
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-06
 status: published
 tags:
 - cursor
@@ -49,7 +49,7 @@ Aufgabe: mobiles Menü, Icon wird zum Kreuz, animiert.
 4. **Agent** baut → [`npm run dev`](/glossar/npm/) → gucken ([Folge 018](/artikel/folge-018-node-npm/), falls npm noch fehlt).
 5. Commit, wenn du zufrieden bist.
 
-Mobil greift ab 679 px — Menü nutzt die globalen Design-Tokens.
+Bei **679 Pixel Breite und weniger** zeigt sich die Handy-Ansicht (Burger-Menü statt Desktop-Leiste). Das Menü nutzt dieselben zentralen [CSS-Variablen](/glossar/css-variable/) wie der Rest der Seite: Farben, Abstände und Schriftgrößen aus `global.css`.
 
 ## Transkripte: privat lassen
 
