@@ -51,7 +51,7 @@ Erst **Build**, dann [**Deploy**](/glossar/deploy/). Unter **Deployments** jeder
 
 ## Eigene Domain
 
-**Custom domains** → z. B. `hautuu.storyofai.net`. [Cloudflare](/glossar/cloudflare-pages/) legt oft **CNAME** und **TLS** automatisch an, wenn die Zone schon dort liegt.
+**Custom domains** → z. B. `hautoo.storyofai.net`. [Cloudflare](/glossar/cloudflare-pages/) legt oft **CNAME** und **TLS** automatisch an, wenn die Zone schon dort liegt.
 
 ## Welche Version ist live?
 

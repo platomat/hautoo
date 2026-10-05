@@ -10,4 +10,4 @@ seo:
   seo_description: Automatisches Bauen und Ausliefern nach jedem Push, inklusive Checks im Pull Request. Continuous Integration testet den Build; Continuous Deployment bringt main
 ---
 
-Continuous Integration testet den [Build](/glossar/build/); Continuous [Deployment](/glossar/deploy/) bringt `main` live (und [Branches](/glossar/branch/) als Preview).
+Continuous Integration testet den [Build](/glossar/build/); Continuous [Deployment](/glossar/deploy/) bringt `main` live (und [Branches](/glossar/branch/) als Preview). Das ersetzt manuelles Hochladen per [FTP](/glossar/ftp/) auf vielen Hostern.

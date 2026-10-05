@@ -185,7 +185,7 @@ GitHub ist oft neuer als dein Ordner. Erst [**pullen**](/glossar/pull/), Konflik
 
 ### Was ist ein Pull Request?
 
-Vorschlag, einen [**Branch**](/glossar/branch/) in `main` (oder anders) zu [merge](/glossar/merge/)n, mit Checks. [Glossar Pull Request](/glossar/pull-request/), [Folge 016](/artikel/folge-016-artikel-pull-request/).
+Vorschlag, einen [**Branch**](/glossar/branch/) in [`main`](/glossar/main/) (oder anders) zu [merge](/glossar/merge/)n, mit Checks. [Glossar Pull Request](/glossar/pull-request/), [Folge 016](/artikel/folge-016-artikel-pull-request/).
 
 ### Was ist `main`?
 
@@ -270,6 +270,10 @@ Ja. Issue beschreibt die Aufgabe dauerhaft auf GitHub. [Folge 002](/artikel/folg
 ### Was macht Cloudflare Pages hier?
 
 Baut nach Git-[Push](/glossar/push/) (`npm run build`, Output `dist`) und hostet die Site. [Folge 011](/artikel/folge-011-cloudflare-setup/).
+
+### Brauche ich FTP für hautuu?
+
+Nein. Du brauchst keinen [FTP](/glossar/ftp/)-Zugang zum Hochladen von Dateien. Du committest und pushst zu GitHub; [Cloudflare Pages](/glossar/cloudflare-pages/) holt den Stand und baut. Details im Glossar-Eintrag „FTP“, Kontext [Folge 012](/artikel/folge-012-cloudflare-branches/).
 
 ### Was ist eine Preview-URL?
 
