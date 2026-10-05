@@ -24,7 +24,7 @@ Gleicher Trick wie mit zwei Spezial-Agenten in einer VM, nur in der [IDE](/gloss
 1. **Chat A:** „Deine Rolle: penibel Fehler und Sicherheitslücken suchen.“
 2. **Chat B:** „Deine Rolle: gefundenes sauber und minimal fixen.“
 
-Zwei Köpfe, zwei Aufgaben, statt einem endlosen Monolog. [Ask](/glossar/cursor-modi/), Agent und [Plan](/glossar/cursor-modi/) im Überblick: [Folge 008](/artikel/folge-008-cursor-modi/).
+Zwei Köpfe, zwei Aufgaben, statt einem endlosen Monolog. [Ask](/glossar/cursor-modi/), Agent und Plan im Überblick: [Folge 008](/artikel/folge-008-cursor-modi/).
 
 ## Chat weggeklickt?
 

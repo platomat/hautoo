@@ -43,7 +43,7 @@ Du speicherst → Datei ändert sich → beim [Build](/glossar/build/) wird HTML
 {{repodoc path="docs/cms-fields/README.md" title="CMS field partials (DRY)" description="SEO-Objekt, Hintergrund und Embeds in der Config."}}
 
 
-Statt überall lose Felder zu kopieren: ein **SEO-Objekt** für mehrere [Collections](/glossar/collection/) (**DRY** = don’t repeat yourself).
+Statt überall lose Felder zu kopieren: ein **SEO-Objekt** für mehrere Collections (**DRY** = don’t repeat yourself).
 
 Praktisch:
 
@@ -54,7 +54,7 @@ Backlog-Idee aus dem Video: optionales **Inhaltsverzeichnis** oben bei langen Te
 
 ## Editor heute, CMS morgen
 
-Jetzt tippst du [Markdown](/glossar/markdown/) oder lässt [Cursor](/glossar/cursor/) schreiben, später [**Sveltia**](/glossar/sveltia/) unter `/admin/` ([Folge 013](/artikel/folge-013-sveltia-pat/) zeigt [PAT](/glossar/pat/) und ersten Login). Gleiche Felder, gleiche Dateien, gleiche [Git](/glossar/git/)-**History**.
+Jetzt tippst du Markdown oder lässt [Cursor](/glossar/cursor/) schreiben, später [**Sveltia**](/glossar/sveltia/) unter `/admin/` ([Folge 013](/artikel/folge-013-sveltia-pat/) zeigt [PAT](/glossar/pat/) und ersten Login). Gleiche Felder, gleiche Dateien, gleiche [Git](/glossar/git/)-**History**.
 
 {{repodoc path="docs/sveltia/collections.md" title="Collections (Sveltia)" description="Alle Content-Typen und CMS-Felder im Detail."}}
 

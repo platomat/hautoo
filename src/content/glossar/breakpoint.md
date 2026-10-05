@@ -13,4 +13,4 @@ seo:
 
 Ein **Breakpoint** ist die Schwelle, an der sich das Layout ändert, z. B. vom breiten Desktop-Menü zum Burger-Menü.
 
-Bei hautuu gilt für Mobil: **679 Pixel Breite und weniger** (`max-width: 679px` im [CSS](/glossar/css/)). Der Kommentar zur [CSS-Variable](/glossar/css-variable/) `--bp-mobile: 680px` bedeutet: Viewport **schmaler als 680 px** → Handy-Regeln. Für Tablet: schmaler als 1024 px (`--bp-tablet`, Media Query `max-width: 1023px`). [CSS](/glossar/css/) Media Queries reagieren auf diese Grenzen.
+Bei hautuu gilt für Mobil: **679 Pixel Breite und weniger** (`max-width: 679px` im CSS). Der Kommentar zur [CSS-Variable](/glossar/css-variable/) `--bp-mobile: 680px` bedeutet: Viewport **schmaler als 680 px** → Handy-Regeln. Für Tablet: schmaler als 1024 px (`--bp-tablet`, Media Query `max-width: 1023px`). [CSS](/glossar/css/) Media Queries reagieren auf diese Grenzen.

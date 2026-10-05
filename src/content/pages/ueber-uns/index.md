@@ -41,7 +41,7 @@ Dort findest du auch [Issues](/glossar/issue/), den [Build](/glossar/build/)-Ver
 - [**Artikel**](/artikel/)  
   Beiträge und How-tos Schritt für Schritt.
 - [**Tags**](/tags/)  
-  Themen-Stichworte zu den Artikeln (z. B. [Cursor](/glossar/cursor/), [GitHub](/glossar/github/), [Cloudflare](/glossar/cloudflare-pages/)).
+  Themen-Stichworte zu den Artikeln (z. B. [Cursor](/glossar/cursor/), GitHub, [Cloudflare](/glossar/cloudflare-pages/)).
 - [**Glossar**](/glossar/)  
   Kurze Begriffserklärungen zum Stack.
 

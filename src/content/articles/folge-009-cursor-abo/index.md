@@ -17,7 +17,7 @@ KI frisst Rechenzeit. Bei **[Cursor](/glossar/cursor/)** siehst du das unter Acc
 
 ## Die Balken verstehen
 
-- Verschiedene Pläne (im Video z. B. 20 $/60 $, check aktuelle Preise auf [cursor](/glossar/cursor/).com).
+- Verschiedene Pläne (im Video z. B. 20 $/60 $, check aktuelle Preise auf cursor.com).
 - **Composer / Auto:** Alltag, frisst ein Kontingent pro Periode.
 - **Stärkere Modelle** („Thinking“, großes **Kontextfenster**): extra Budget, wenn Auto zu lasch ist.
 - **Kontextfenster** = wie viel Text/Code das Modell auf einmal „im Kopf“ hat. Größer = mehr **Tokens** = teurer.

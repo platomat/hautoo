@@ -15,4 +15,4 @@ seo:
 
 **Production** (Produktion) ist die **Live**-Version deiner Site: die Adresse, die normale Besucher öffnen, nicht eine temporäre Test-URL.
 
-Bei hautuu ist Production in [Cloudflare Pages](/glossar/cloudflare-pages/) oft an den [Branch](/glossar/branch/) **`main`** gekoppelt (**Production branch** in den Pages-Einstellungen). Ein [Push](/glossar/push/) dorthin startet [Build](/glossar/build/) und [Deploy](/glossar/deploy/) auf die Production-Umgebung. Experimente laufen besser auf anderen [Zweigen](/glossar/branch/) mit [Preview-URL](/glossar/preview-url/), bevor du auf `main` [mergst](/glossar/merge/).
+Bei hautuu ist Production in [Cloudflare Pages](/glossar/cloudflare-pages/) oft an den [Branch](/glossar/branch/) **[`main`](/glossar/main/)** gekoppelt (**Production branch** in den Pages-Einstellungen). Ein [Push](/glossar/push/) dorthin startet [Build](/glossar/build/) und [Deploy](/glossar/deploy/) auf die Production-Umgebung. Experimente laufen besser auf anderen Zweigen mit [Preview-URL](/glossar/preview-url/), bevor du auf `main` [mergst](/glossar/merge/).

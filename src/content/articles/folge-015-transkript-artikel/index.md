@@ -27,11 +27,11 @@ Zwischen den Sessions ist viel passiert: **Menüs** als [Collection](/glossar/co
 
 ## Agent starten
 
-Zuerst prüfen, ob [**Cursor**](/glossar/cursor/) Zugriff auf das [**Repository**](/glossar/repository/) hat. Fehlt der, in den [Cursor](/glossar/cursor/)-Einstellungen nach dem How-To für [GitHub](/glossar/github/)/[OAuth](/glossar/oauth/) schauen. Private [Repos](/glossar/repository/) und [SSH-Keys](/glossar/ssh-key/): [Folge 017](/artikel/folge-017-github-ssh/).
+Zuerst prüfen, ob [**Cursor**](/glossar/cursor/) Zugriff auf das [**Repository**](/glossar/repository/) hat. Fehlt der, in den Cursor-Einstellungen nach dem How-To für [GitHub](/glossar/github/)/[OAuth](/glossar/oauth/) schauen. Private Repos und [SSH-Keys](/glossar/ssh-key/): [Folge 017](/artikel/folge-017-github-ssh/).
 
 Dann die Anweisung: Ordner mit Transkripten anhängen oder benennen, **pro Video ein Artikel**, Beispielartikel löschen, **Video-Platzhalter** im [Frontmatter](/glossar/frontmatter/) oder Body vorsehen, **kein direkter [Push](/glossar/push/) auf [main](/glossar/main/)**, sondern [Branch](/glossar/branch/) und PR.
 
-Der **[Cloud Agent](/glossar/cloud-agent/)** läuft auf Cursors Infrastruktur. Du kannst den Rechner zuklappen, später Nachrichten nachschieben („mach noch …“) und morgens den Stand in [GitHub](/glossar/github/) lesen.
+Der **[Cloud Agent](/glossar/cloud-agent/)** läuft auf Cursors Infrastruktur. Du kannst den Rechner zuklappen, später Nachrichten nachschieben („mach noch …“) und morgens den Stand in GitHub lesen.
 
 ## Typische Stolpersteine
 

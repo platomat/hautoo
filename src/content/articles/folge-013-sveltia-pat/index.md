@@ -29,19 +29,19 @@ Speichern = Datei lokal geändert, noch **nicht** live.
 
 ## Online: Warum ein Schlüssel?
 
-Öffentliches [Repo](/glossar/repository/) = alle dürfen **lesen**, niemand **schreiben**. Für `/admin` auf der echten Domain brauchst du Zugang. [Cloudflare](/glossar/cloudflare-pages/) muss die Site schon bauen ([Folge 011](/artikel/folge-011-cloudflare-setup/)).
+Öffentliches [Repo](/glossar/repository/) = alle dürfen **lesen**, niemand **schreiben**. Für `/admin` auf der echten Domain brauchst du Zugang. Cloudflare muss die Site schon bauen ([Folge 011](/artikel/folge-011-cloudflare-setup/)).
 
 ### Variante A: Personal Access Token (PAT)
 
 Ein [**PAT**](/glossar/pat/) ist ein persönlicher **Zugangsschlüssel** für [GitHub](/glossar/github/):
 
-1. [GitHub](/glossar/github/) → **Settings** → **Developer settings** → **[Personal access tokens](/glossar/pat/)** (fine-grained).
-2. Beschreibung z. B. „[Sveltia](/glossar/sveltia/) [CMS](/glossar/cms/) hautuu“.
-3. Nur das hautuu-[Repo](/glossar/repository/), **Contents: Read and write**.
+1. GitHub → **Settings** → **Developer settings** → **[Personal access tokens](/glossar/pat/)** (fine-grained).
+2. Beschreibung z. B. „Sveltia [CMS](/glossar/cms/) hautuu“.
+3. Nur das hautuu-Repo, **Contents: Read and write**.
 4. Ablauf setzen (z. B. 90 Tage). Schlüssel rotieren.
 5. Token **einmal** kopieren — danach unsichtbar. Weg = neuen erstellen.
 
-In Sveltia: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar/commit/) auf GitHub → [Cloudflare](/glossar/cloudflare-pages/) baut (`main`).
+In Sveltia: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar/commit/) auf GitHub → [Cloudflare](/glossar/cloudflare-pages/) baut [`main`](/glossar/main/).
 
 **Token = Passwort.** Nicht ins Repo, nicht im Video zeigen.
 
@@ -59,6 +59,6 @@ Beispiel: Beispiel-Unterseite im Menü sichtbar → [Commit](/glossar/commit/) �
 
 ## Variante B
 
-**Sign in with GitHub** ohne [PAT](/glossar/pat/), braucht einen [**Cloudflare Worker**](/glossar/cloudflare-worker/) als Brücke ([Folge 014](/artikel/folge-014-sveltia-worker/)). Eigenes Thema, gleiche Idee: weniger Copy-Paste mit Tokens.
+**Sign in with GitHub** ohne PAT, braucht einen [**Cloudflare Worker**](/glossar/cloudflare-worker/) als Brücke ([Folge 014](/artikel/folge-014-sveltia-worker/)). Eigenes Thema, gleiche Idee: weniger Copy-Paste mit Tokens.
 
 <!-- Quelle: 2026-10-04--01-09-23--obs-screencast - hautoo - sveltia - variante PAT.txt -->

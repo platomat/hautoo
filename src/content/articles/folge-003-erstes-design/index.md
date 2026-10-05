@@ -39,8 +39,8 @@ Baut der Agent während der Server läuft, kann die Vorschau hüpfen — kurz st
 
 Schreib sie in Doku und `.cursor/rules`:
 
-1. **Niemals von allein pushen.** [Commits](/glossar/commit/) lokal sind okay. [**Push**](/glossar/push/) nur auf Anweisung, sonst baut [**Cloudflare**](/glossar/cloudflare-pages/) einen Zwischenstand live (Hosting-Setup: [Folge 011](/artikel/folge-011-cloudflare-setup/)).
-2. **[CSS](/glossar/css/) nicht jedes Mal neu erfinden**: bestehende Klassen und [CSS-Variablen](/glossar/css-variable/) nutzen.
+1. **Niemals von allein pushen.** Commits lokal sind okay. [**Push**](/glossar/push/) nur auf Anweisung, sonst baut [**Cloudflare**](/glossar/cloudflare-pages/) einen Zwischenstand live (Hosting-Setup: [Folge 011](/artikel/folge-011-cloudflare-setup/)).
+2. **CSS nicht jedes Mal neu erfinden**: bestehende Klassen und [CSS-Variablen](/glossar/css-variable/) nutzen.
 3. **Page Speed:** Wichtiges [**CSS**](/glossar/css/) früh (critical: Menü, Kopf der Seite); Rest später (non-critical), sonst springt das Layout und Google schmunzelt nicht.
 
 ## Seiten, Menü, Footer
@@ -53,7 +53,7 @@ Per [Issue](/glossar/issue/) kamen **Pages** (Start, Über uns, Impressum …; [
 
 ## Issues = dein Projekt-Trello
 
-Logo-[Issue](/glossar/issue/) mit Label **Design**, Favicon **blocked by** Logo, [GitHub](/glossar/github/)-**Views** nur für Design-Tickets. Projektmanagement ohne Extra-Tool.
+Logo-Issue mit Label **Design**, Favicon **blocked by** Logo, [GitHub](/glossar/github/)-**Views** nur für Design-Tickets. Projektmanagement ohne Extra-Tool.
 
 ## Breakpoints (global merken)
 

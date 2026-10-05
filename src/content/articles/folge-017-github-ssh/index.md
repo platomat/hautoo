@@ -15,7 +15,7 @@ seo:
   seo_description: Permission denied beim Clone? SSH Key erzeugen, in GitHub hinterlegen und private Repos sicher klonen. Folge 017 Schritt für Schritt für hautuu.
 ---
 
-Öffentliche How-To-[Repos](/glossar/repository/) siehst du ohne Login. **Private** Projekte wie dein echtes hautuu-[Repo](/glossar/repository/) verweigern [`git clone`](/glossar/clone/) mit **Permission denied**, bis [GitHub](/glossar/github/) deinen Rechner kennt. Grundlagen zu [Clone](/glossar/clone/) und [Push](/glossar/push/)/[Pull](/glossar/pull/): [Folge 001](/artikel/folge-001-hautuu-intro/) und [Folge 006](/artikel/folge-006-git-push-pull/). Dafür nutzt du einen [**SSH-Key**](/glossar/ssh-key/) statt Passwort in der URL.
+Öffentliche How-To-[Repos](/glossar/repository/) siehst du ohne Login. **Private** Projekte wie dein echtes hautuu-Repo verweigern [`git clone`](/glossar/clone/) mit **Permission denied**, bis GitHub deinen Rechner kennt. Grundlagen zu [Clone](/glossar/clone/) und [Push](/glossar/push/)/[Pull](/glossar/pull/): [Folge 001](/artikel/folge-001-hautuu-intro/) und [Folge 006](/artikel/folge-006-git-push-pull/). Dafür nutzt du einen [**SSH-Key**](/glossar/ssh-key/) statt Passwort in der URL.
 
 ## Ordner `.ssh`
 
@@ -57,7 +57,7 @@ Host github.com
 
 ## Key bei GitHub
 
-**Settings** auf [**GitHub**](/glossar/github/) → **[SSH](/glossar/ssh-key/) and GPG keys** → **New [SSH](/glossar/ssh-key/) key**. Titel (z. B. „Lab-Test“), Inhalt = komplette `.pub`-Datei (beginnt oft mit `ssh-ed25519` oder `ssh-rsa`). **Private** Keys beginnen mit `BEGIN OPENSSH PRIVATE KEY`, die gehören nicht nach GitHub.
+**Settings** auf [**GitHub**](/glossar/github/) → **[SSH](/glossar/ssh-key/) and GPG keys** → **New SSH key**. Titel (z. B. „Lab-Test“), Inhalt = komplette `.pub`-Datei (beginnt oft mit `ssh-ed25519` oder `ssh-rsa`). **Private** Keys beginnen mit `BEGIN OPENSSH PRIVATE KEY`, die gehören nicht nach GitHub.
 
 Test:
 
@@ -75,6 +75,6 @@ git clone git@github.com:ORG/REPO.git
 
 ## ssh-agent
 
-Manchmal meldet [Cursor](/glossar/cursor/), dass der Key noch nicht geladen ist. Dann Key zum **ssh-agent** hinzufügen (je nach System `ssh-add ~/.ssh/DEIN_KEYNAME`). Danach sollte [Clone](/glossar/clone/) und [Cursor](/glossar/cursor/)-Zugriff konsistent sein.
+Manchmal meldet [Cursor](/glossar/cursor/), dass der Key noch nicht geladen ist. Dann Key zum **ssh-agent** hinzufügen (je nach System `ssh-add ~/.ssh/DEIN_KEYNAME`). Danach sollte Clone und Cursor-Zugriff konsistent sein.
 
 <!-- Quelle: 2026-10-04--20-01-04--obs-screencast - hautoo - 017 - github - ssh keys.txt -->

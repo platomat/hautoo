@@ -21,7 +21,7 @@ Bisher: lokal und [GitHub](/glossar/github/). Jetzt wird’s öffentlich: [**Clo
 
 - **Workers & Pages** unter „Compute“. **Pages** = statische Sites aus [Git](/glossar/git/) (dein [**Frontend**](/glossar/frontend/)), passt zu [**Astro**](/glossar/astro/). [**Workers**](/glossar/cloudflare-worker/) = Extra-Logik am Edge (später z. B. [CMS](/glossar/cms/)-Login; [OAuth](/glossar/oauth/)-Brücke: [Folge 014](/artikel/folge-014-sveltia-worker/)).
 - **R2 / Databases**: für hautuu erst mal egal, aber gut zu wissen.
-- **Ask AI** in [Cloudflare](/glossar/cloudflare-pages/). Deutsch geht, hilft bei DNS und Regeln.
+- **Ask AI** in Cloudflare. Deutsch geht, hilft bei DNS und Regeln.
 
 {{block id="stack-uebersicht"}}
 
@@ -37,15 +37,15 @@ Cursor → commit → push → GitHub → Cloudflare Build → Live
 
 ## Projekt anlegen
 
-1. **Workers & Pages** → Create → **Pages** → **[GitHub](/glossar/github/)** verbinden. Nur das **eine** [Repo](/glossar/repository/) freigeben, nicht „all repositories“.
-2. [Repo](/glossar/repository/) wählen (z. B. hautuu).
-3. **[Production](/glossar/production/) branch:** `main` (siehe [Production](/glossar/production/) und [Branch](/glossar/branch/)).
+1. **Workers & Pages** → Create → **Pages** → **GitHub** verbinden. Nur das **eine** [Repo](/glossar/repository/) freigeben, nicht „all repositories“.
+2. Repo wählen (z. B. hautuu).
+3. **Production branch:** `main` (siehe [Production](/glossar/production/) und [Branch](/glossar/branch/)).
 4. **Framework:** [Astro](/glossar/astro/).
 5. **[Build](/glossar/build/) command:** [`npm run build`](/glossar/build/)
 6. **Output:** `dist` (fertiges HTML).
 7. **Save and [Deploy](/glossar/deploy/)**
 
-Erst **[Build](/glossar/build/)**, dann [**Deploy**](/glossar/deploy/). Unter **[Deployments](/glossar/deploy/)** jeder Lauf; Erfolg = `*.pages.dev`-URL. `npm run build` lokal braucht [Node](/glossar/nodejs/) ([Folge 018](/artikel/folge-018-node-npm/)).
+Erst **Build**, dann [**Deploy**](/glossar/deploy/). Unter **Deployments** jeder Lauf; Erfolg = `*.pages.dev`-URL. `npm run build` lokal braucht [Node](/glossar/nodejs/) ([Folge 018](/artikel/folge-018-node-npm/)).
 
 {{repodoc path="docs/sveltia/zugang-cloudflare.md" title="Sveltia auf Cloudflare" description="CMS-Zugang nach dem Livegang einrichten."}}
 
@@ -55,9 +55,9 @@ Erst **[Build](/glossar/build/)**, dann [**Deploy**](/glossar/deploy/). Unter **
 
 ## Welche Version ist live?
 
-Vergleich die ersten paar Zeichen der [Commit](/glossar/commit/)-ID (des Hashs) in Cloudflare Pages mit denen auf GitHub. Cloudflare, GitHub und die meisten [Git](/glossar/git/)-Tools zeigen nur die **kurze** Form, oft die ersten sieben Zeichen (im Video z. B. in Sublime [Merge](/glossar/merge/)). Stimmen sie überein, ist es derselbe Stand.
+Vergleich die ersten paar Zeichen der [Commit](/glossar/commit/)-ID (des Hashs) in Cloudflare Pages mit denen auf GitHub. Cloudflare, GitHub und die meisten Git-Tools zeigen nur die **kurze** Form, oft die ersten sieben Zeichen (im Video z. B. in Sublime Merge). Stimmen sie überein, ist es derselbe Stand.
 
-Burger-Menü nur lokal? Live zeigt’s noch nicht, bis du [pushst](/glossar/push/). Test-[Zweige](/glossar/branch/) und [Preview-URLs](/glossar/preview-url/): [Folge 012](/artikel/folge-012-cloudflare-branches/).
+Burger-Menü nur lokal? Live zeigt’s noch nicht, bis du pushst. Test-Zweige und [Preview-URLs](/glossar/preview-url/): [Folge 012](/artikel/folge-012-cloudflare-branches/).
 
 GitHub-App checken: Unter Applications nur das hautuu-Repo erlauben.
 

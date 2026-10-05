@@ -44,7 +44,7 @@ Die Website wird über **[Cloudflare Pages](/glossar/cloudflare-pages/)** ausgel
 
 Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an sicherer, stabiler Bereitstellung der Website).
 
-Anbieter: [Cloudflare](/glossar/cloudflare-pages/), Inc., 101 Townsend St, San Francisco, CA 94107, USA — mit Niederlassungen in der EU. Cloudflare kann Daten in Drittländern verarbeiten; Cloudflare stellt dafür geeignete Garantien bereit (u. a. Standardvertragsklauseln). Details: [Cloudflare Privacy Policy](https://www.cloudflare.com/privacypolicy/).
+Anbieter: Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA — mit Niederlassungen in der EU. Cloudflare kann Daten in Drittländern verarbeiten; Cloudflare stellt dafür geeignete Garantien bereit (u. a. Standardvertragsklauseln). Details: [Cloudflare Privacy Policy](https://www.cloudflare.com/privacypolicy/).
 
 ## Schriften und Assets
 

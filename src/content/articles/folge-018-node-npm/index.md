@@ -15,7 +15,7 @@ seo:
   seo_description: Nach dem Clone Node 22 installieren, npm install und npm run dev für Astro lokal. Folge 018 bringt deine Entwicklungsumgebung zum Laufen.
 ---
 
-Das [Repo](/glossar/repository/) enthält Quellcode und `package.json`, aber nicht den ganzen **`node_modules`**-Berg. In deiner lokalen [IDE](/glossar/ide/) ([Entwicklungsumgebung](/glossar/ide/)) brauchst du [**Node.js**](/glossar/nodejs/) (für hautuu empfohlen: **Version 22**) und **[npm](/glossar/npm/)**, damit `npm run dev` und `npm run build` laufen.
+Das [Repo](/glossar/repository/) enthält Quellcode und `package.json`, aber nicht den ganzen **`node_modules`**-Berg. In deiner lokalen [IDE](/glossar/ide/) ([Entwicklungsumgebung](/glossar/ide/)) brauchst du [**Node.js**](/glossar/nodejs/) (für hautuu empfohlen: **Version 22**) und **npm**, damit `npm run dev` und `npm run build` laufen.
 
 {{repodoc path="docs/astro/README.md" title="Astro" description="Framework, Build-Befehle und Ausgabeordner."}}
 
@@ -30,7 +30,7 @@ sudo apt update
 sudo apt install curl
 ```
 
-Kaputte Paketlisten auf einer frischen VM fixst du ggf. mit `sudo apt-get update` und den Hinweisen aus `apt` (broken packages, fix-missing). Danach das [Node](/glossar/nodejs/)-Skript erneut ausführen. Das Setup legt oft [**nvm**](/glossar/nvm/) mit, sodass mehrere [Node](/glossar/nodejs/)-Versionen parallel möglich sind.
+Kaputte Paketlisten auf einer frischen VM fixst du ggf. mit `sudo apt-get update` und den Hinweisen aus `apt` (broken packages, fix-missing). Danach das [Node](/glossar/nodejs/)-Skript erneut ausführen. Das Setup legt oft [**nvm**](/glossar/nvm/) mit, sodass mehrere Node-Versionen parallel möglich sind.
 
 Prüfen:
 
@@ -55,6 +55,6 @@ So testest du Änderungen **ohne** jedes Mal auf **[main](/glossar/main/)** zu p
 
 ## Was npm hier nicht ist
 
-Du hostest die fertige Site nicht mit `npm run dev`. [Production](/glossar/production/) läuft über [**Cloudflare Pages**](/glossar/cloudflare-pages/) nach [Push](/glossar/push/) ([Folge 011](/artikel/folge-011-cloudflare-setup/)). Lokal ist npm nur Werkzeugkiste: installieren, entwickeln, `npm run build` vor dem [Commit](/glossar/commit/) wenn du den Produktions[build](/glossar/build/) prüfen willst.
+Du hostest die fertige Site nicht mit `npm run dev`. [Production](/glossar/production/) läuft über [**Cloudflare Pages**](/glossar/cloudflare-pages/) nach [Push](/glossar/push/) ([Folge 011](/artikel/folge-011-cloudflare-setup/)). Lokal ist npm nur Werkzeugkiste: installieren, entwickeln, `npm run build` vor dem [Commit](/glossar/commit/) wenn du den Produktionsbuild prüfen willst.
 
 <!-- Quelle: 2026-10-04--20-22-22--obs-screencast - hautoo - 018 - [nvm](/glossar/nvm/), [npm](/glossar/npm/), node.txt -->
