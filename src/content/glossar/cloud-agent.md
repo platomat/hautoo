@@ -10,4 +10,4 @@ seo:
   seo_description: Cursor-Agent, der in der Cloud läuft, während dein Rechner aus sein kann. Du gibst Aufgaben und Dateien vor; am Ende oft ein Branch mit Pull Request.
 ---
 
-Du gibst Aufgaben und Dateien vor; am Ende oft ein [Branch](/glossar/branch/) mit [Pull Request](/glossar/pull-request/). Kostet mehr Tokens als kurzes Lokalarbeiten, spart aber Zeit bei großen Paketen.
+Du gibst Aufgaben und Dateien vor; am Ende oft ein [Branch](/glossar/branch/) mit [Pull Request](/glossar/pull-request/). Kostet mehr Tokens als kurzes Lokalarbeiten, spart aber Zeit bei großen Paketen, z. B. Artikel aus Screencast-Transkripten ([OBS](/glossar/obs/), [Folge 015](/artikel/folge-015-transkript-artikel/)).

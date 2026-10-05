@@ -49,6 +49,8 @@ TERM_PATTERNS: list[tuple[str, str]] = [
     ("deploy", r"Deploy(?:s|ment)?"),
     ("frontend", r"Frontend"),
     ("backend", r"Backend"),
+    ("obs", r"OBS\s+Studio"),
+    ("obs", r"\bOBS\b"),
     ("oauth", r"OAuth"),
     ("commit", r"Commits?"),
     ("commit", r"committ(?:en|est)"),

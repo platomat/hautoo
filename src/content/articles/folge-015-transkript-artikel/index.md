@@ -15,7 +15,7 @@ seo:
   seo_description: 'Videos transkribieren, Texte an den Cloud Agent in Cursor und Artikel als Pull Request. Folge 015 beschreibt den Ablauf von Rohtext bis Review auf hautuu.'
 ---
 
-Du nimmst den Screencast auf. Eine **Speech-to-Text**-Software kann zwar live mithören, hier reichen die **fertigen Video-Dateien**: Du gibst ihr die Aufnahmen, sie erzeugt Rohtext. Die Transkripte landen beim [**Cloud Agent**](/glossar/cloud-agent/) in [Cursor](/glossar/cursor/), der daraus die Artikel schreibt. Deine Aufgabe an ihn: aus jedem Video **einen Artikel**, Beispielinhalt weg, Platzhalter fürs spätere Video, alles als [**Pull Request**](/glossar/pull-request/), damit du vor dem Live-Gang drüber schauen kannst.
+Du nimmst den Screencast auf, z. B. mit [OBS Studio](/glossar/obs/). Eine **Speech-to-Text**-Software kann zwar live mithören, hier reichen die **fertigen Video-Dateien**: Du gibst ihr die Aufnahmen, sie erzeugt Rohtext. Die Transkripte landen beim [**Cloud Agent**](/glossar/cloud-agent/) in [Cursor](/glossar/cursor/), der daraus die Artikel schreibt. Deine Aufgabe an ihn: aus jedem Video **einen Artikel**, Beispielinhalt weg, Platzhalter fürs spätere Video, alles als [**Pull Request**](/glossar/pull-request/), damit du vor dem Live-Gang drüber schauen kannst.
 
 ## Was die Site schon kann
 
