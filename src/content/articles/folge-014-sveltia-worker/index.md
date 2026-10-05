@@ -2,7 +2,7 @@
 title: 'Folge 014: Lieber mit GitHub einloggen: Der Worker als Türsteher fürs CMS'
 summary: 'Schluss mit Token-Zettel am Monitor: OAuth, Secrets in Cloudflare und Menüs, die du selbst zusammenklickst.'
 pubDate: 2026-10-04 01:38:06+00:00
-modifiedDate: 2026-10-05
+modifiedDate: 2026-10-06
 status: published
 tags:
 - sveltia
@@ -37,8 +37,8 @@ Per [**Issue**](/glossar/issue/) (z. B. Menüs + GitHub-Login) lässt du den A
 Parallel [**GitHub OAuth App**](/glossar/oauth/):
 
 - **[OAuth](/glossar/oauth/) Apps** → New.
-- **Homepage URL:** deine Site (z. B. `https://hautuu.storyofai.net`).
-- **Callback URL:** `https://<worker-url>/callback`, exakt wie in der Doku.
+- **Homepage URL:** deine Site (z. B. `https://hautoo.storyofai.net`).
+- **Callback URL:** `https://<worker-url>/callback` (z. B. `https://hautoo-sveltia-cms-auth.platomat.workers.dev/callback`), exakt wie in der Doku.
 
 **Client ID** und **Client Secret** im Worker unter **Settings** → **Variables** — Secret wirklich als **Secret**, nicht als Klartext.
 
