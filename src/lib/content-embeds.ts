@@ -6,6 +6,8 @@ import { hastCmsAssets } from "./hast-cms-assets";
 import { hastExternalLinks } from "./hast-external-links";
 import type { TagSort } from "./tags";
 import { parseRepoDocProps, type RepoDocEmbedProps } from "./repodoc";
+import type { VideoProvider } from "./video";
+import { normalizeVideoId } from "./video";
 
 /** Fields shown on article listing cards (CMS `show="…"`). */
 export type ArticleCardField =
@@ -57,6 +59,13 @@ export type SeparatorEmbedProps = {
 	width: number;
 };
 
+export type VideoEmbedProps = {
+	provider: VideoProvider;
+	id: string;
+	title: string;
+	poster?: string;
+};
+
 export type ContentSegment =
 	| { type: "html"; html: string }
 	| { type: "article-listing"; props: ArticleListingEmbedProps }
@@ -65,7 +74,9 @@ export type ContentSegment =
 	| { type: "tag-cloud" }
 	| { type: "separator"; props: SeparatorEmbedProps }
 	| { type: "contact-email" }
-	| { type: "repodoc"; props: RepoDocEmbedProps };
+	| { type: "repodoc"; props: RepoDocEmbedProps }
+	| { type: "video"; props: VideoEmbedProps }
+	| { type: "video-consent-reset" };
 
 const DEFAULT_SHOW: ArticleCardField[] = [
 	"title",
@@ -122,7 +133,7 @@ const DEFAULT_SEPARATOR: SeparatorEmbedProps = {
 
 /** Line must be only the embed (optional attrs). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|tag-cloud|separator|contact-email|repodoc|block)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|tag-cloud|separator|contact-email|repodoc|block|video|video-consent-reset)(?<attrs>[^}]*)\}\}\s*$/gm;
 
 const ARTICLE_SORTS = new Set<ArticleSort>([
 	"newest",
@@ -323,6 +334,26 @@ export function parseSeparatorProps(
 	};
 }
 
+export function parseVideoEmbedProps(
+	attrsRaw: string | undefined,
+): VideoEmbedProps | undefined {
+	const attrs = parseAttrs(attrsRaw ?? "");
+	const provider =
+		attrs.provider === "youtube" || attrs.provider === "vimeo"
+			? attrs.provider
+			: undefined;
+	if (!provider) {
+		return undefined;
+	}
+	const id = normalizeVideoId(provider, attrs.id ?? attrs.url ?? "");
+	if (!id) {
+		return undefined;
+	}
+	const title = (attrs.title ?? "Video").trim() || "Video";
+	const poster = (attrs.poster ?? "").trim() || undefined;
+	return { provider, id, title, poster };
+}
+
 function parseBlockId(attrsRaw: string | undefined): string {
 	const attrs = parseAttrs(attrsRaw ?? "");
 	return (attrs.id ?? attrs.slug ?? "").trim();
@@ -373,6 +404,13 @@ export async function buildContentSegments(
 			if (props) {
 				segments.push({ type: "repodoc", props });
 			}
+		} else if (name === "video") {
+			const props = parseVideoEmbedProps(attrs);
+			if (props) {
+				segments.push({ type: "video", props });
+			}
+		} else if (name === "video-consent-reset") {
+			segments.push({ type: "video-consent-reset" });
 		} else if (name === "separator") {
 			segments.push({
 				type: "separator",

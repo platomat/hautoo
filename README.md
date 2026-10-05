@@ -20,15 +20,15 @@ Kurzliste dessen, was auf `main` schon umgesetzt ist (Details und Erläuterungen
 
 | Bereich | Punkte |
 | --- | --- |
-| **Inhalte** | 20 Screencast-Folgen als Artikel, statische Pages, Redaktionsregeln in `docs/redaktion/` |
-| **CMS** | Sveltia `/admin/`, Collections, Menüs, Entwurfsstatus, optionales TOC, Head/Footer-Code pro Seite |
-| **Glossar & FAQ** | Glossar mit Related Tags/Artikeln, FAQ mit Themengruppen, Tag-Seiten mit Artikel-Grid |
-| **Embeds** | Bausteine, Listings, Tagwolke, Trennlinie, Kontakt-E-Mail aus ENV, Repo-Docs-Box (`{{repodoc}}`) zu `docs/` |
-| **SEO** | `seo`-Felder, Open Graph/Twitter inkl. OG-Bild aus Hintergrund (1200×630), Canonical, Sitemap, Lesezeit, noindex Legal |
-| **Suche & UI** | MiniSearch im Header, Artikel-Übersicht mit wählbaren Kartenfeldern (inkl. Lesezeit) |
-| **Design** | Dark Theme, Breakpoints, Page-Hero, Vollbild-Hintergrund mit Nachweis, responsive Navigation |
+| **Inhalte** | 21 Screencast-Folgen als Artikel, statische Pages, Features-Seite, Redaktionsregeln in `docs/redaktion/` |
+| **CMS** | Sveltia `/admin/`, Collections inkl. Bausteine (`blocks`), Menüs, Entwurfsstatus, TOC, Head/Footer-Code, Worker-OAuth-Zugang |
+| **Glossar & FAQ** | Glossar mit verwandten Artikeln/Tags, Querverlink-Skript und Erstlink-Check, FAQ offen (kein Accordion), Tag-Seiten |
+| **Embeds** | Bausteine, Artikel-/Glossar-/Tag-Listings, Tagwolke, Trennlinie, Kontakt-E-Mail aus ENV, Repo-Docs-Box; Embed-Check (auch Listen-Regel) |
+| **SEO** | `seo`-Felder, Open Graph/Twitter inkl. OG-Bild (1200×630), Canonical, Sitemap, Lesezeit, noindex für Impressum/Datenschutz |
+| **Suche & UI** | MiniSearch im Header, Artikel-Übersicht mit Listing-Embed und Kartenfeldern |
+| **Design** | Dark Theme mit CSS-Variablen, Breakpoints, Vollbild-Hintergrund, **Bildnachweise** gesammelt auf dem Impressum |
 | **Deploy** | Astro-Build, Cloudflare Pages aus GitHub, Preview/Rollback, Cache-Header und Build-ID |
-| **Doku & Agenten** | `docs/`-Handbuch, Cursor-Regeln, Hilfsskripte für Glossar und SEO |
+| **Qualität & Doku** | `check-content-links.py` (inkl. Embeds), `docs/`, Cursor-Regeln, Glossar-/SEO-Hilfsskripte |
 
 ## Dokumentation
 
@@ -74,4 +74,4 @@ Details: [docs/entwicklung](./docs/entwicklung/README.md)
 
 ## Status
 
-Astro-Site mit Sveltia-CMS, Glossar, FAQ, 20 Folgen-Artikeln und Cloudflare-Deploy ist live unter [hautoo.storyofai.net](https://hautoo.storyofai.net). Details: [Features](https://hautoo.storyofai.net/features/).
+Astro-Site mit Sveltia-CMS, Glossar, FAQ, 21 Folgen-Artikeln und Cloudflare-Deploy ist live unter [hautoo.storyofai.net](https://hautoo.storyofai.net). Details: [Features](https://hautoo.storyofai.net/features/).

@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,7 +24,7 @@ INSERTS: dict[str, list[tuple[str, str]]] = {
     ],
     "folge-002-github-issues": [
         (
-            "Cloudflare richtest du Schritt für Schritt in [Folge 011]",
+            "Sveltia und PAT/Login: [Folge 013](/artikel/folge-013-sveltia-pat/).",
             '\n\n{{repodoc path="docs/konzept/README.md" title="Konzept" description="Ziele, Stack und wie die Teile zusammenspielen."}}\n',
         ),
         (
@@ -43,7 +44,7 @@ INSERTS: dict[str, list[tuple[str, str]]] = {
             '\n\n{{repodoc path="docs/cms-fields/README.md" title="CMS field partials (DRY)" description="SEO-Objekt, Hintergrund und Embeds in der Config."}}\n',
         ),
         (
-            "Gleiche Felder, gleiche Dateien",
+            "gleiche Git-**History**.",
             '\n\n{{repodoc path="docs/sveltia/collections.md" title="Collections (Sveltia)" description="Alle Content-Typen und CMS-Felder im Detail."}}\n',
         ),
     ],
@@ -143,12 +144,8 @@ INSERTS: dict[str, list[tuple[str, str]]] = {
     ],
     "folge-018-node-npm": [
         (
-            "`npm run dev`",
-            '\n\n{{repodoc path="docs/entwicklung/README.md" title="Lokale Entwicklung" description="Node, npm und Dev-Server im Projekt."}}\n',
-        ),
-        (
-            "für hautuu empfohlen: **Version 22**",
-            '\n\n{{repodoc path="docs/astro/README.md" title="Astro" description="Framework, Build-Befehle und Ausgabeordner."}}\n',
+            "damit `npm run dev` und `npm run build` laufen.",
+            '\n\n{{repodoc path="docs/astro/README.md" title="Astro" description="Framework, Build-Befehle und Ausgabeordner."}}\n\n{{repodoc path="docs/entwicklung/README.md" title="Lokale Entwicklung" description="Node, npm und Dev-Server im Projekt."}}\n',
         ),
     ],
     "folge-019-impressum-komponenten": [
@@ -174,6 +171,22 @@ INSERTS: dict[str, list[tuple[str, str]]] = {
 }
 
 
+def is_unsafe_insert_point(body: str, end: int) -> str | None:
+    """Return error message if inserting at `end` would split Markdown or prose."""
+    after = body[end:]
+    if re.match(r"\s*\]\(", after):
+        return "insert point is before ](url) of a Markdown link"
+    line_start = body.rfind("\n", 0, end) + 1
+    line_prefix = body[line_start:end]
+    if re.search(r"\[[^\]]*$", line_prefix):
+        return "insert point is inside Markdown link text ([ without ])"
+    if re.match(r"\s*[\)\w]", after) and re.search(
+        r"\([^)\n]*$", body[max(0, end - 120) : end]
+    ):
+        return "insert point may split parenthetical link or sentence"
+    return None
+
+
 def insert_after(body: str, anchor: str, snippet: str) -> str:
     if snippet.strip() in body:
         return body
@@ -181,6 +194,9 @@ def insert_after(body: str, anchor: str, snippet: str) -> str:
     if idx < 0:
         raise ValueError(f"Anchor not found: {anchor[:60]}…")
     end = idx + len(anchor)
+    unsafe = is_unsafe_insert_point(body, end)
+    if unsafe:
+        raise ValueError(f"Unsafe anchor «{anchor[:50]}…»: {unsafe}")
     return body[:end] + snippet + body[end:]
 
 

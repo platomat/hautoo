@@ -1,0 +1,6 @@
+# https://hautoo.storyofai.net/robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://hautoo.storyofai.net/sitemap-index.xml

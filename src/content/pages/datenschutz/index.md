@@ -1,7 +1,7 @@
 ---
 title: Datenschutz
 status: published
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-05
 description: Informationen zur Verarbeitung personenbezogener Daten auf hautuu.
 seo:
   index_visibility: noindex
@@ -13,7 +13,7 @@ seo:
   max_video_preview_enabled: false
   max_image_preview_enabled: false
   seo_title: Datenschutz
-  seo_description: Informationen zur Verarbeitung personenbezogener Daten auf hautuu. Hosting, Kontakt und deine Rechte kompakt erklärt. Seite mit Noindex für Suchmaschinen.
+  seo_description: Informationen zur Verarbeitung personenbezogener Daten auf hautuu. Hosting, Videos erst nach Consent, Kontakt und deine Rechte. Seite mit Noindex.
 ---
 
 ## Verantwortlicher
@@ -29,13 +29,13 @@ E-Mail:
 
 ## Überblick
 
-Diese Website ist eine **statische** Website (HTML/CSS/Assets). Es gibt kein eigenes Nutzerkonto für Besucher und derzeit **kein** eigenes Analyse- oder Tracking-Tool (kein Google Analytics o. Ä.) und **keinen** Cookie-Banner für optionale Marketing-Cookies.
+Diese Website ist eine **statische** Website (HTML/[CSS](/glossar/css/)/Assets). Es gibt kein eigenes Nutzerkonto für Besucher und derzeit **kein** eigenes Analyse- oder Tracking-Tool (kein Google Analytics o. Ä.) und **keinen** Cookie-Banner für optionale Marketing-Cookies.
 
 Personenbezogene Daten fallen vor allem dort an, wo Technik Dritter unvermeidbar ist (Hosting, bei eingebetteten Videos) oder wenn du uns selbst kontaktierst.
 
 ## Hosting (Cloudflare)
 
-Die Website wird über **Cloudflare Pages** ausgeliefert. Dabei können technisch erforderliche Verbindungsdaten verarbeitet werden, insbesondere:
+Die Website wird über **[Cloudflare Pages](/glossar/cloudflare-pages/)** ausgeliefert. Dabei können technisch erforderliche Verbindungsdaten verarbeitet werden, insbesondere:
 
 - IP-Adresse
 - Datum und Uhrzeit der Anfrage
@@ -50,20 +50,26 @@ Anbieter: Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA — mi
 
 Schriftarten werden **lokal** von dieser Website ausgeliefert (kein Google-Fonts-Aufruf im Browser). Dadurch entsteht kein zusätzlicher Drittanbieter-Kontakt allein durch die Typografie.
 
-## Eingebettete Videos (YouTube / Vimeo)
+## Eingebettete Videos
 
-Einzelne Artikel können Videos von **YouTube** (privacy-enhanced / youtube-nocookie) oder **Vimeo** einbinden. Beim Abspielen bzw. Laden des Players stellt dein Browser eine Verbindung zu den Servern des Anbieters her. Dabei können personenbezogene Daten (z. B. IP-Adresse, Cookie-IDs) an den jeweiligen Anbieter übermittelt werden — auch in die USA.
+Einzelne Seiten und Artikel können Videos von **YouTube** (privacy-enhanced / youtube-nocookie) oder **Vimeo** einbinden. **Vor** deiner aktiven Zustimmung wird kein Player geladen und dein Browser stellt **keine** Verbindung zu YouTube oder Vimeo her (Consent-Facade mit lokalem Platzhalter).
 
-Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO bzw., soweit eine Einwilligung erforderlich ist, Art. 6 Abs. 1 lit. a DSGVO. Wir binden Videos nur ein, wenn sie zum Inhalt gehören; du kannst das Laden vermeiden, indem du die betreffende Seite nicht öffnest bzw. den Player nicht startest.
+Erst wenn du auf „Video laden“ klickst, wird der Player nachgeladen. Dann verbindet sich dein Browser mit den Servern des Anbieters. Dabei können personenbezogene Daten (z. B. IP-Adresse, Cookie-IDs) übermittelt werden, auch in die USA. Die Anbieter können eigene Cookies oder ähnliche Techniken setzen.
+
+Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Du kannst die Einwilligung jederzeit widerrufen (Button unten oder indem du die Website-Daten für diese Domain in deinem Browser löschst). Bis zur erneuten Zustimmung werden die Player wieder nicht geladen.
+
+{{video-consent-reset}}
+
+Die Entscheidung speichern wir in deinem Browser unter dem Schlüssel `hautuu-video-consent` in der **localStorage** (kein First-Party-Cookie nur für diesen Schalter).
 
 Anbieter:
 
-- Google Ireland Limited / YouTube — [Google Privacy](https://policies.google.com/privacy)
-- Vimeo.com, Inc. — [Vimeo Privacy](https://vimeo.com/privacy)
+- Google Ireland Limited / YouTube: [Google Privacy](https://policies.google.com/privacy)
+- Vimeo.com, Inc.: [Vimeo Privacy](https://vimeo.com/privacy)
 
 ## Externe Links
 
-Links zu anderen Websites (z. B. GitHub, Unsplash) führen zu Angeboten Dritter. Für deren Datenschutz gelten die jeweiligen Erklärungen der Anbieter. Beim Folgen eines Links verlassen Sie unsere Website.
+Links zu anderen Websites (z. B. [GitHub](/glossar/github/), Unsplash) führen zu Angeboten Dritter. Für deren Datenschutz gelten die jeweiligen Erklärungen der Anbieter. Beim Folgen eines Links verlassen Sie unsere Website.
 
 ## Kontakt per E-Mail
 
@@ -73,7 +79,11 @@ Die Daten werden gelöscht, wenn die Konversation erledigt ist und keine gesetzl
 
 ## Cookies und lokale Speicherung
 
-Für den öffentlichen Teil der Website setzen wir **keine** eigenen Cookies zu Analyse- oder Werbezwecken. Der Hoster bzw. eingebundene Drittanbieter (z. B. Video-Player) können eigene Cookies oder ähnliche Techniken verwenden — siehe deren Hinweise.
+Für den öffentlichen Teil der Website setzen wir **keine** eigenen Cookies zu Analyse- oder Werbezwecken.
+
+Für die Video-Freischaltung nutzen wir **localStorage** (`hautuu-video-consent`), damit du nicht auf jeder Seite erneut zustimmen musst. Das ist kein Cookie; du kannst den Eintrag über den Button unter „Eingebettete Videos“ oder über die Browser-Einstellungen für diese Website löschen.
+
+Hoster und, **nach** deiner Video-Zustimmung, die Anbieter YouTube bzw. Vimeo können eigene Cookies oder ähnliche Techniken verwenden. Siehe deren Hinweise und den Abschnitt zu eingebetteten Videos.
 
 ## Speicherdauer
 

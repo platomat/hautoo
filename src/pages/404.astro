@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { resolveSeo } from "../cms/fields/seo";
+
+const seo = resolveSeo({
+	index_visibility: "noindex",
+	follow_visibility: "nofollow",
+	noarchive: true,
+});
+---
+
+<BaseLayout
+	title="Seite nicht gefunden"
+	description="Die angeforderte Seite gibt es nicht."
+	seo={seo}
+>
+	<main class="page">
+		<article>
+			<header class="hero page-hero">
+				<h1>Seite nicht gefunden</h1>
+				<p class="hero__lead page-hero__lead text-muted">
+					Unter dieser Adresse gibt es keinen Inhalt.
+				</p>
+			</header>
+			<p><a href="/">Zur Startseite</a></p>
+		</article>
+	</main>
+</BaseLayout>

@@ -28,7 +28,7 @@ Mit **Screencast-Transkript** oder ohne:
 | **summary** | Teaser mit **Leser-Nutzen**, Du-Form, **kein** Gedankenstrich |
 | **tags** | Vorhandene Tags aus `src/content/tags/` **bevorzugen**, **wenige** (typisch 3–5), thematisch passend |
 | **seo** | `seo_title`, `seo_description`, `index_visibility`, `follow_visibility`, … (siehe Abschnitt SEO-Felder) |
-| **Video** | `videoProvider` / `videoId` **leer lassen**, bis ein echtes Video eingepflegt ist |
+| **Video** | Frontmatter `videoProvider` / `videoId` **oder** Body-Embed `{{video provider="youtube" id="…" }}`. Leer lassen, bis ein echtes Video da ist. Player erst nach Consent (Facade); optionales lokales `poster` unter `/assets/…` |
 | **Quelle** | Am Ende des Body ein HTML-Kommentar mit Original-Transkriptdateiname, z. B. `<!-- Quelle: 2026-10-04--23-47-38--obs-screencast - … -->` |
 | **modifiedDate** | Bei inhaltlicher Änderung setzen |
 
@@ -41,13 +41,22 @@ Mit **Screencast-Transkript** oder ohne:
 - **Gedankenstriche** (`—`, `–`) **sparsam**: in **Titeln, Teasern und FAQ-Fragen keine**; im Fließtext nur vereinzelt. Stattdessen Punkt, Komma, Doppelpunkt, Klammern oder Umformulierung (siehe auch [.cursor/rules/deutsche-prosa.mdc](../../.cursor/rules/deutsche-prosa.mdc)).
 - Prosa auf **Deutsch**; Code, Slugs, Pfade auf **Englisch** wie im Rest des Projekts.
 
+### Begriffe (Laien vs. Entwickler-Doku)
+
+| Öffentliche Inhalte (`src/content/`) | Regel |
+| --- | --- |
+| Farben/Abstände zentral im CSS | **CSS-Variablen** (nicht „Design-Tokens“, „Tokens“ im CSS-Sinn) |
+| Erstes Vorkommen | Kurz erklären oder Glossar verlinken (z. B. [/glossar/css-variable/](/glossar/css-variable/)) |
+| **Token** im KI-/API-Sinn | Nur bei Cursor-Abo, PAT, OAuth usw. (Zugangsschlüssel, Modell-Verbrauch) |
+| `docs/` für Entwickler | Fachbegriffe (`custom properties`, `design tokens`) dürfen stehen, beim **ersten** Vorkommen mit **CSS-Variablen** erklären |
+
 ---
 
 ## Glossar (`glossar`)
 
 - Fehlende Begriffe **anlegen**: kurz, laienverständlich, **projektbezogen**.
 - **`relatedTags`** pflegen, wenn ein Tag thematisch passt (siehe Schema in [Collections — glossar](../sveltia/collections.md)).
-- Glossar-Texte **untereinander verlinken** (erstes sinnvolles Vorkommen pro Ziel-Eintrag, nicht auf sich selbst, nicht in Überschriften). Hilfsskript: `scripts/link-glossar-crosslinks.py` (falls im Repo; danach manuell prüfen).
+- Glossar-Texte **untereinander verlinken** (erstes sinnvolles Vorkommen pro Ziel-Eintrag, nicht auf sich selbst, nicht in Überschriften). Hilfsskript: `scripts/link-glossar-crosslinks.py` durchläuft **Glossar, alle Folgen, FAQ/CMS-Seiten und Tags**; danach manuell prüfen (keine Links in Überschriften, Codeblöcken, bestehenden Markdown-Links; keine falschen Treffer wie „Ask AI“ → Ask-Modus). Optional: `scripts/check-glossar-first-links.py` (Warnung, kein Build-Abbruch).
 - Optional **`relatedArticles`** auf die Folge mit der ausführlichen Anleitung.
 - **`seo`:** `seo_title` (z. B. `Begriff · Glossar`), `seo_description` für Meta; sichtbare Kurzdefinition bleibt `definition`.
 
@@ -93,7 +102,8 @@ Mit **Screencast-Transkript** oder ohne:
 
 - Vertiefung aus dem Repository in **Artikeln** (und ggf. CMS-Seiten) per Embed: `{{repodoc path="docs/github/README.md" title="GitHub" description="Optionaler Satz"}}` (Toolbar **Repo-Dokument** in Sveltia).
 - **Nur** existierende Pfade unter `docs/` (`.md`), Linkziel: [GitHub `main`](https://github.com/platomat/hautoo/tree/main/docs). Technik: `src/lib/repodoc.ts`, `RepoDocLink.astro`, [CMS Fields — Inhalts-Blöcke](../cms-fields/README.md#inhalts-blöcke-seiten-artikel-body).
-- **Sparingly:** Richtwert **0–3** Boxen pro Artikel, nur wo die Doku wirklich vertieft; nicht zwei Boxen direkt hintereinander; keine leere/doppelte H2 nur für die Box.
+- **Sparingly:** Richtwert **0–3** Boxen pro Artikel, nur wo die Doku wirklich vertieft; keine leere/doppelte H2 nur für die Box.
+- **Platzierung:** `{{repodoc …}}` und `{{block …}}` stehen **allein in einer Zeile**, mit **Leerzeile davor und danach**; der Satz davor endet mit `.`, `?` oder `!` — **nicht** mitten im Satz (z. B. nicht „… gleiche Dateien [BOX] , gleiche History“) und **nicht zwischen Listenpunkten** (`-` / `1.` usw.): Boxen nur **zwischen Absätzen** oder **nach dem Ende einer Liste**, nie mitten in `ul`/`ol`. Mehrere Boxen direkt untereinander sind ok. Prüfung: `python3 scripts/check-content-embeds.py` (läuft auch im Build über `check-content-links.py`).
 - **Neue oder geänderte `docs/`:** prüfen, welche **Artikel** die Box brauchen oder ob in der Doku eine **Screencast-Folgen**-Liste (Links zur Live-Site) ergänzt wird.
 
 ---

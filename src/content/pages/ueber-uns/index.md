@@ -30,18 +30,18 @@ seo:
 
 ## Repository
 
-Quellcode, Inhalte und Dokumentation liegen öffentlich auf GitHub:
+Quellcode, Inhalte und Dokumentation liegen öffentlich auf [GitHub](/glossar/github/):
 
 [github.com/platomat/hautoo](https://github.com/platomat/hautoo/)
 
-Dort findest du auch Issues, den Build-Verlauf und die technische Doku unter [`docs/`](https://github.com/platomat/hautoo/tree/main/docs).
+Dort findest du auch [Issues](/glossar/issue/), den [Build](/glossar/build/)-Verlauf und die technische Doku unter [`docs/`](https://github.com/platomat/hautoo/tree/main/docs).
 
 ## Infos auf der Website
 
 - [**Artikel**](/artikel/)  
   Beiträge und How-tos Schritt für Schritt.
 - [**Tags**](/tags/)  
-  Themen-Stichworte zu den Artikeln (z. B. Cursor, GitHub, Cloudflare).
+  Themen-Stichworte zu den Artikeln (z. B. [Cursor](/glossar/cursor/), GitHub, [Cloudflare](/glossar/cloudflare-pages/)).
 - [**Glossar**](/glossar/)  
   Kurze Begriffserklärungen zum Stack.
 

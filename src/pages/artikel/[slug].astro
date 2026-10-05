@@ -5,7 +5,6 @@ import ArticleNav from "../../components/ArticleNav.astro";
 import CmsContent from "../../components/CmsContent.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
-import TableOfContents from "../../components/TableOfContents.astro";
 import VideoEmbed from "../../components/VideoEmbed.astro";
 import {
 	formatArticleDate,
@@ -47,6 +46,10 @@ const backgroundImage = resolveCmsImage(
 	`content/articles/${article.id}/`,
 );
 const showToc = article.data.showToc === true;
+/** Dynamic import: avoid shipping TOC CSS on pages that do not show a TOC. */
+const TableOfContents = showToc
+	? (await import("../../components/TableOfContents.astro")).default
+	: null;
 const readingTimeMinutes = estimateReadingTimeMinutes(article.body);
 const readingTimeLabel = formatReadingTime(readingTimeMinutes);
 ---
@@ -73,7 +76,7 @@ const readingTimeLabel = formatReadingTime(readingTimeMinutes);
 				<span>{readingTimeLabel}</span>
 			</p>
 			<PageHero title={article.data.title} description={article.data.summary} />
-			{showToc && (
+			{TableOfContents && (
 				<TableOfContents
 					body={article.body}
 					levels={article.data.tocLevels}

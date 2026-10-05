@@ -10,4 +10,4 @@ seo:
   seo_description: Paralleler Zweig im Repository, z. B. zum Testen ohne die Live-Linie zu berühren. Du arbeitest auf einem Branch, commitest dort und mergst später in main, wenn
 ---
 
-Du arbeitest auf einem Branch, [commit](/glossar/commit/)est dort und [mergst](/glossar/merge/) später in `main`, wenn alles passt. [Preview-Deployments](/glossar/preview-url/) nutzen oft solche Zweige.
+Du arbeitest auf einem Branch, [commit](/glossar/commit/)est dort und [mergst](/glossar/merge/) später in [`main`](/glossar/main/), wenn alles passt. [Preview-Deployments](/glossar/preview-url/) nutzen oft solche Zweige; `main` ist meist [Production](/glossar/production/).

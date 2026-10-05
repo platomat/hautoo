@@ -21,7 +21,7 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 | Rolle | Schrift | Schnitt | Stärke (`font-weight`) |
 | --- | --- | --- | --- |
 | Fließtext | **Ubuntu** | Light | **300** |
-| Überschriften (`h1`–`h6`) | **Ubuntu** | Bold | **700** |
+| Überschriften (`h1`–`h6`) | **Ubuntu** | Medium | **500** |
 
 - `font-family`: `'Ubuntu', system-ui, sans-serif`
 - Keine zweite Display-Schrift — eine Familie für alles
@@ -34,10 +34,12 @@ Schriften werden **lokal** unter `public/fonts/ubuntu/` gehostet (kein CDN):
 
 | Datei | Schnitt |
 | --- | --- |
-| `Ubuntu-Light.woff2` / `.woff` | Light (300) |
-| `Ubuntu-Medium.woff2` / `.woff` | Medium (500) |
+| `Ubuntu-Light.woff2` / `.woff` | Light (300), Latin + Latin-Extended Subset |
+| `Ubuntu-Medium.woff2` / `.woff` | Medium (500), Latin + Latin-Extended Subset |
 
-`@font-face` und Design-Tokens liegen in `src/styles/global.css`, eingebunden über `src/layouts/BaseLayout.astro`.
+Subset mit `pyftsubset` (DE inkl. Umlaute). Preload beider WOFF2 in `BaseLayout`. Stylesheets werden im Build inline (`build.inlineStylesheets: 'always'`), damit kein render-blocking CSS-Request die FCP verzögert.
+
+`@font-face` und zentrale **CSS-Variablen** (im Englischen oft *design tokens* oder *custom properties*) liegen in `src/styles/global.css`, eingebunden über `src/layouts/BaseLayout.astro`.
 
 ## Links
 
@@ -50,9 +52,9 @@ Schriften werden **lokal** unter `public/fonts/ubuntu/` gehostet (kein CDN):
 
 Grün ist die **primäre Aktionsfarbe**. Die übrigen Töne sind kühl-neutral mit leicht grünem Stich, damit alles zusammenpasst — nicht lila, nicht grell.
 
-### Tokens (CSS-Variablen, Englisch)
+### CSS-Variablen (`:root`)
 
-| Token | Hex / Wert | Rolle |
+| Variable | Hex / Wert | Rolle |
 | --- | --- | --- |
 | `--color-bg` | `#0F1412` | Seitenhintergrund |
 | `--color-surface` | `#1A211E` | Flächen (Header, Footer, abgesetzte Bereiche) |
@@ -123,7 +125,7 @@ Gefahr          #E57373  ████
 | Tablet | `< 1024px` | Tablet (und kleiner, bis Mobile greift) |
 | Mobile | `< 680px` | Smartphone |
 
-CSS-Tokens in `:root` (`src/styles/global.css`): `--bp-tablet: 1024px`, `--bp-mobile: 680px`. In `@media` dieselben Pixelwerte nutzen (`max-width: 1023px` / `max-width: 679px`), weil Media Queries CSS-Variablen nicht zuverlässig auswerten.
+Breakpoint-**CSS-Variablen** in `:root` (`src/styles/global.css`): `--bp-tablet: 1024px`, `--bp-mobile: 680px`. In `@media` dieselben Pixelwerte nutzen (`max-width: 1023px` / `max-width: 679px`), weil Media Queries CSS-Variablen nicht zuverlässig auswerten.
 
 Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-on-mobile` + `center-on-mobile`).
 
@@ -172,7 +174,7 @@ Die Website soll **schnell und schlank** bleiben (Page Speed mitdenken).
 
 ### Styles wiederverwenden
 
-- Vorhandene Tokens und Klassen in `src/styles/` nutzen — nicht bei jeder Komponente CSS neu erfinden
+- Vorhandene CSS-Variablen und Klassen in `src/styles/` nutzen — nicht bei jeder Komponente CSS neu erfinden
 - Häufige Muster als **gemeinsame Gruppen-/Utility-Klassen** pflegen (z. B. Inhaltsbreite, vertikaler Abstand)
 - Scoped Astro-`<style>` nur für wirklich komponentenspezifisches Markup
 
@@ -180,7 +182,7 @@ Die Website soll **schnell und schlank** bleiben (Page Speed mitdenken).
 
 | Art | Inhalt | Regel |
 | --- | --- | --- |
-| **Critical** | Above-the-fold: Tokens, Basis, Typo, Header/Nav, erste Inhaltsfläche | Klein halten, früh laden |
+| **Critical** | Above-the-fold: CSS-Variablen, Basis, Typo, Header/Nav, erste Inhaltsfläche | Klein halten, früh laden |
 | **Non-critical** | Seltene Komponenten, Artikel-Extras | Separat; nicht in den First-Paint-Pfad mischen |
 
 Stand der Dateien: Critical-Basis in `src/styles/global.css` (weiter aufteilen, sobald die Site wächst). Agenten-Regeln: `.cursor/rules/leistung-und-css.mdc`.

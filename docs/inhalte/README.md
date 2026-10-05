@@ -52,6 +52,7 @@ Entscheidung: **Variante B — neben dem Content** (nicht `public/media`).
 - Astro kann die Dateien beim Build optimieren (`image()` im Schema)
 - Geteilte Assets optional unter `src/assets/`
 - **Schritte zum Einrichten in Sveltia/Astro:** [Medien — Variante B](../sveltia/medien-variante-b.md)
+- **Stock, WebP, Größe:** [Folge 021](https://hautoo.storyofai.net/artikel/folge-021-bilder-suchen-nutzen/) (Artikel im Repo unter `src/content/articles/folge-021-bilder-suchen-nutzen/`)
 
 ## Glossar (`glossar`)
 

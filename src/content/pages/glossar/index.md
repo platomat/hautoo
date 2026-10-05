@@ -22,6 +22,6 @@ seo:
   seo_description: Kurze Erklärungen zu Git, GitHub, Astro, Cloudflare, Cursor und CMS Begriffen. Das hautuu Glossar hilft dir beim Lesen der Artikel und FAQ.
 ---
 
-Kurze Erklärungen zu Begriffen rund um hautuu: Astro, GitHub, Cloudflare und Co.
+Kurze Erklärungen zu Begriffen rund um hautuu: [Astro](/glossar/astro/), [GitHub](/glossar/github/), [Cloudflare](/glossar/cloudflare-pages/) und Co.
 
 {{glossar-listing count="0" sort="title-asc" layout="grid" columns="3" gap="1.5"}}

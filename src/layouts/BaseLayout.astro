@@ -141,6 +141,20 @@ const readingMinutes =
 			)
 		}
 		<title>{pageTitle}</title>
+		<link
+			rel="preload"
+			href="/fonts/ubuntu/Ubuntu-Light.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="/fonts/ubuntu/Ubuntu-Medium.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
 		{headCodeHtml && <Fragment set:html={headCodeHtml} />}
 	</head>
 	<body class:list={{ "has-page-bg": hasPageBackground }}>

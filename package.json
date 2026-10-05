@@ -11,7 +11,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "predev": "node scripts/build-search-index.mjs",
-    "prebuild": "node scripts/build-search-index.mjs",
+    "prebuild": "node scripts/build-search-index.mjs && python3 scripts/check-content-links.py",
+    "check:content-links": "python3 scripts/check-content-links.py",
     "build:search": "node scripts/build-search-index.mjs"
   },
   "dependencies": {

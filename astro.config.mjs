@@ -16,6 +16,10 @@ const buildId =
 // https://astro.build/config
 export default defineConfig({
   site: 'https://hautoo.storyofai.net',
+  build: {
+    // Avoid a render-blocking CSS round-trip (Lighthouse FCP/LCP).
+    inlineStylesheets: 'always',
+  },
   integrations: [
     mdx(),
     sitemap({
