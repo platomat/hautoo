@@ -35,9 +35,8 @@ feature:        C - D - E
 
 ## Was du wirklich brauchst
 
-Stand ist gespeichert. Du kannst alte Dateiversionen ansehen („Copyright früher vs. jetzt“). Ob Merge oder Rebase. Geschmackssache. Mit KI-Agent reicht Merge
+Stand ist gespeichert. Du kannst alte Dateiversionen ansehen („Copyright früher vs. jetzt“). Ob Merge oder Rebase. Geschmackssache. Mit KI-Agent reicht Merge + [**Pull**](/glossar/pull/) vor [**Push**](/glossar/push/). Branches und Preview vor dem Merge auf main: [Folge 012](/artikel/folge-012-cloudflare-branches/).
 
 {{repodoc path="docs/github/README.md" title="GitHub" description="Merge, Historie und Zusammenarbeit auf GitHub."}}
- + [**Pull**](/glossar/pull/) vor [**Push**](/glossar/push/). Branches und Preview vor dem Merge auf main: [Folge 012](/artikel/folge-012-cloudflare-branches/).
 
 <!-- Quelle: 2026-10-03--23-44-04--obs-screencast - hautoo - github - merge, rebase.txt -->

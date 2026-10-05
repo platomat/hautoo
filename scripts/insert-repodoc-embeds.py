@@ -44,7 +44,7 @@ INSERTS: dict[str, list[tuple[str, str]]] = {
             '\n\n{{repodoc path="docs/cms-fields/README.md" title="CMS field partials (DRY)" description="SEO-Objekt, Hintergrund und Embeds in der Config."}}\n',
         ),
         (
-            "Gleiche Felder, gleiche Dateien",
+            "gleiche Git-**History**.",
             '\n\n{{repodoc path="docs/sveltia/collections.md" title="Collections (Sveltia)" description="Alle Content-Typen und CMS-Felder im Detail."}}\n',
         ),
     ],

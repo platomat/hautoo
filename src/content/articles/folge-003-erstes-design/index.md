@@ -44,9 +44,8 @@ Schreib sie in Doku und `.cursor/rules`:
 3. **Page Speed:** Wichtiges [**CSS**](/glossar/css/) früh (critical: Menü, Kopf der Seite); Rest später (non-critical), sonst springt das Layout und Google schmunzelt nicht.
 
 ## Seiten, Menü, Footer
+
 {{repodoc path="docs/design/README.md" title="Design & Erscheinungsbild" description="CSS-Variablen, Breakpoints und Layout-Regeln im Repo."}}
-
-
 
 Per Issue kamen **Pages** (Start, Über uns, Impressum …; Collections: [Folge 004](/artikel/folge-004-collection-pages/)). Der **Footer** kriegt Copyright mit dynamischem Jahr (`2026` oder `2026 bis 2027`), Domain, Signatur.
 

@@ -45,6 +45,7 @@ Cloudflare richtest du Schritt für Schritt in [Folge 011](/artikel/folge-011-cl
 {{repodoc path="docs/konzept/README.md" title="Konzept" description="Ziele, Stack und wie die Teile zusammenspielen."}}
 
 ## Issues klein schneiden
+
 {{repodoc path="docs/github/README.md" title="GitHub" description="Issues, Meilensteine und Pull Requests in der Projekt-Doku."}}
 
 

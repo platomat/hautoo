@@ -28,6 +28,7 @@ Die `git …`-Beispiele unten tippst du im [Terminal](/glossar/terminal/). [**Gi
 Praktisch, wenn du einen frischen Stand willst, während du in einem anderen Ordner experimentiert hast.
 
 ## Zwei Ordner, eine Wahrheit
+
 {{repodoc path="docs/github/README.md" title="GitHub" description="Push, Pull und Branch-Logik im Projekt."}}
 
 

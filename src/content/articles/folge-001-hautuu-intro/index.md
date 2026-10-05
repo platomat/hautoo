@@ -33,7 +33,8 @@ Du legst ein [**Repository**](/glossar/repository/) an, so heißt der Projektord
 Kurz die Wörter:
 
 {{repodoc path="docs/github/README.md" title="GitHub" description="Repository, Remote und Zusammenarbeit im Überblick der Doku."}}
- [**Git**](/glossar/git/) versioniert Dateien. Ein [**Commit**](/glossar/commit/) ist ein gespeicherter Stand. [**Push**](/glossar/push/) schiebt deine Commits zu GitHub. [**Origin**](/glossar/origin/) heißt das Remote-Repo, [**main**](/glossar/main/) ist der Hauptzweig (deine „Live-Linie“ im Code).
+
+[**Git**](/glossar/git/) versioniert Dateien. Ein [**Commit**](/glossar/commit/) ist ein gespeicherter Stand. [**Push**](/glossar/push/) schiebt deine Commits zu GitHub. [**Origin**](/glossar/origin/) heißt das Remote-Repo, [**main**](/glossar/main/) ist der Hauptzweig (deine „Live-Linie“ im Code).
 
 ## Lokal holen
 
