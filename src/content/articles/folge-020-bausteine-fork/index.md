@@ -26,7 +26,7 @@ Die Stack-Grafik kennst du von der Startseite. Die willst du an mehreren Stellen
 
 {{block id="stack-uebersicht"}}
 
-Technisch eine Zeile im Body, z. B. `{{block id="stack-uebersicht"}}`. In [Sveltia](/glossar/sveltia/) findest du in der Toolbar **Baustein** (oder du legst den Eintrag unter **Bausteine** an). Änderst du den Baustein, aktualisieren sich alle Stellen beim nächsten [Build](/glossar/build/). Das ist bewusst **[WordPress](/glossar/wordpress/)-ähnlich**, nur dass alles in [Git](/glossar/git/) landet. Details: [Glossar Baustein](/glossar/baustein/), [Folge 004](/artikel/folge-004-collection-pages/).
+Technisch eine Zeile im Body, z. B. `{{block id="stack-uebersicht"}}`. In [Sveltia](/glossar/sveltia/) auf der **Startseite** im Inhalt **Baustein einfügen** und den passenden Block wählen (oder unter Collection **Bausteine** pflegen). Änderst du den Baustein, aktualisieren sich alle Stellen beim nächsten [Build](/glossar/build/). Details: [Glossar Baustein](/glossar/baustein/), [Folge 004](/artikel/folge-004-collection-pages/).
 
 Weitere Bausteine sind z. B. **Kontakt-E-Mail** (`{{contact-email}}`) für Impressum und Datenschutz ohne Klartext im [Repo](/glossar/repository/) ([Folge 019](/artikel/folge-019-impressum-komponenten/#e-mail-schützen)) oder ein **Separator** für optische Trennlinien. **Bildnachweise** zu Seitenhintergründen sammelt die Site automatisch auf dem Impressum ([Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum)).
 
@@ -65,7 +65,7 @@ Früher gab es die Idee experimentell in **Firefox Labs** (eigene Tastenkombinat
 
 Wenn dir **Struktur**, **Bausteine**, **Menüs**, **Artikel** und **Seiten** gefallen, musst du nicht bei null anfangen:
 
-1. Auf der Repo-Seite (z. B. `github.com/platomat/hautoo`) oben rechts **Fork** → Ziel-Account bestätigen. Das ist **deine** Kopie unter deinem Account, kein Schreiben im Original ([**Glossar Fork**](/glossar/fork/), Kurz in [Folge 002](/artikel/folge-002-github-issues/)).
+1. Auf der Repo-Seite [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) wählen → **Create fork** (eigene Kopie unter deinem Account, nicht im Original schreiben — [**Glossar Fork**](/glossar/fork/), Kurz in [Folge 002](/artikel/folge-002-github-issues/)).
 2. Deinen Fork **klonen**, in [**Cursor**](/glossar/cursor/) öffnen.
 3. Dem Agenten sagen: Inhalte löschen, Farben und Logo ersetzen, Texte anpassen, [Cloudflare](/glossar/cloudflare-pages/) auf **dein** Repo hängen ([Folge 011](/artikel/folge-011-cloudflare-setup/)).
 

@@ -2,7 +2,7 @@
 title: 'Folge 001: Leeres Repo, voller Plan, so startet hautuu'
 summary: Du legst GitHub an, holst das Projekt auf den Rechner und sagst Cursor in normaler Sprache, worum es geht. Kein Zauber, nur der Ablauf, den du danach immer wieder brauchst.
 pubDate: 2026-10-03 01:04:26+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - github
@@ -24,7 +24,7 @@ Die Wahrheit liegt bei [**GitHub**](/glossar/github/) (Server in der Cloud). Bei
 
 ## GitHub: dein Projekt in der Cloud
 
-Du legst ein [**Repository**](/glossar/repository/) an, so heißt der Projektordner bei [GitHub](/glossar/github/). Auf [github.com](https://github.com) oben rechts **+** → **New repository**, im Feld **Repository name** z. B. `hautuu`, **Public** wählen, dann **Create repository**.
+Du legst ein [**Repository**](/glossar/repository/) an, so heißt der Projektordner bei [GitHub](/glossar/github/). Anleitung: [Creating a new repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository) (engl. UI, z. B. **Public** für hautuu).
 
 - **Name:** klein, Bindestriche, keine Leerzeichen (z. B. `hautuu`).
 - **Public:** Bei hautuu ist das [Repo](/glossar/repository/) öffentlich, andere dürfen mitlesen und lernen. Alles Geheime bleibt draußen.
@@ -44,7 +44,7 @@ Kurz die Wörter:
 
 Bei einem **privaten** Repo verweigert GitHub oft den Zugriff, bis [SSH-Keys](/glossar/ssh-key/) eingerichtet sind ([Folge 017](/artikel/folge-017-github-ssh/)).
 
-Der versteckte Ordner `.git` (unter Linux oft mit Strg+H sichtbar) ist das Tagebuch des Projekts, inklusive Adresse von **[origin](/glossar/origin/)**.
+Der versteckte Ordner `.git` (unter Linux z. B. **Strg+H** für versteckte Dateien, im Screencast „Steuerung H“) ist das Tagebuch des Projekts, inklusive Adresse von **[origin](/glossar/origin/)**.
 
 ## Cursor: Ordner auf, Agent an
 
@@ -61,7 +61,7 @@ Repo umbenannt? URL auf GitHub ändert sich — lokal Remote in `.git/config` an
 
 ## Commit, Push, gitignore
 
-Links **Source Control** (Verzweigungs-Symbol): Änderungen, unten Commit-Message, **Commit**, danach **Sync Changes** oder **Push** = hoch zu GitHub. Wenn Push blockiert oder zwei Ordner im Spiel sind: [Folge 006](/artikel/folge-006-git-push-pull/).
+Änderungen festhalten: dem [**Agenten**](/glossar/cursor-modi/) **commit** sagen (er macht Message und Commit), oder in der IDE unter **Source Control** committen. [**Push**](/glossar/push/) erst auf dein Wort — sonst baut Cloudflare. Wenn Push blockiert oder zwei Ordner im Spiel sind: [Folge 006](/artikel/folge-006-git-push-pull/).
 
 Nur für dich: z. B. `.code-workspace` in **`.gitignore`**, dann wandert die Datei nicht mit ins Repo.
 

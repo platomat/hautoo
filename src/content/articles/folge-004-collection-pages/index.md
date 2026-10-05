@@ -29,8 +29,8 @@ Früher hing das Menü an jeder Seite, bei hautuu gibt’s eine eigene **menus**
 
 `src/content/pages/index/index.md` = Startseite.
 
-- Oben [**Frontmatter**](/glossar/frontmatter/) = ausgefüllte Felder.
-- Darunter **Body** = [**Markdown**](/glossar/markdown/).
+- Oben [**Frontmatter**](/glossar/frontmatter/) = ausgefüllte Felder (im CMS links: **Titel**, **Description**, **Übergeordnete Seite**, SEO usw.).
+- Darunter **Body** = [**Markdown**](/glossar/markdown/) (rechts im CMS eine einfache Preview).
 
 Du speicherst → Datei ändert sich → beim [Build](/glossar/build/) wird HTML. In der [IDE](/glossar/ide/)-**Preview** siehst du ungefähr, was [GitHub](/glossar/github/) auch rendert.
 

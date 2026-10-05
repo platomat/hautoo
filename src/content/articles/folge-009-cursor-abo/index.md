@@ -2,7 +2,7 @@
 title: 'Folge 009: Cursor-Abo: Balken, Tokens und warum On-Demand bösartig teuer ist'
 summary: Du siehst, was die KI frisst. Und wann Auto reicht oder du lieber kurz upgradest, statt die Kreditkarte heiß laufen zu lassen.
 pubDate: 2026-10-04 00:05:52+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - cursor
@@ -13,7 +13,7 @@ seo:
   seo_description: 'Cursor Usage verstehen: Token Verbrauch, Auto Modus und wann ein Upgrade sinnvoller ist als On Demand. Folge 009 zu Kosten und Kontrolle beim KI Coding.'
 ---
 
-KI frisst Rechenzeit. Bei **[Cursor](/glossar/cursor/)** **Settings** (Zahnrad) → **Cursor Settings** → **Usage** (engl. **Usage & Billing**), oder eingeloggt auf [cursor.com](https://cursor.com) im Dashboard.
+KI frisst Rechenzeit. In **[Cursor](/glossar/cursor/)** im **Account** siehst du die Verbrauchs-Balken (im Screencast unter **Spending**): **Composer** / **Auto** frisst das Hauptkontingent, stärkere Modelle den zweiten Balken.
 
 ## Die Balken verstehen
 
@@ -24,7 +24,7 @@ KI frisst Rechenzeit. Bei **[Cursor](/glossar/cursor/)** **Settings** (Zahnrad) 
 
 ## Cloud Agents vs. lokal
 
-[**Cloud Agents**](/glossar/cloud-agent/) laufen nicht auf deiner CPU. Du startest eine Aufgabe, am Ende oft ein [**Pull Request**](/glossar/pull-request/) auf [GitHub](/glossar/github/). Workflow mit Transkripten und PR: [Folge 015](/artikel/folge-015-transkript-artikel/) und [Folge 016](/artikel/folge-016-artikel-pull-request/). Praktisch, aber **deutlich mehr Tokens** als lokal ein kleines Skript laufen lassen.
+[**Cloud Agents**](/glossar/cloud-agent/) laufen nicht auf deiner CPU: **New Agent** → **Start Agent**, Aufgabe stellen, am Ende oft ein [**Pull Request**](/glossar/pull-request/) auf [GitHub](/glossar/github/). Workflow mit Transkripten: [Folge 015](/artikel/folge-015-transkript-artikel/) und [Folge 016](/artikel/folge-016-artikel-pull-request/). Praktisch, aber **deutlich mehr Tokens** als lokal ein kleines Skript laufen lassen.
 
 ## On-Demand: Finger weg, wenn’s geht
 

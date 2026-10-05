@@ -20,7 +20,7 @@ Der Agent hat über Nacht gearbeitet (Ablauf in [Folge 015](/artikel/folge-015-t
 
 ## Pull Request lesen
 
-Auf [GitHub](/glossar/github/) Tab **Pull requests** → deinen PR öffnen:
+Auf [GitHub](/glossar/github/) deinen [**Pull Request**](/glossar/pull-request/) öffnen (Branch des Agents, z. B. `cursor/screencast-articles-…`):
 
 - **Beschreibung** (Body) mit Titeln, Slugs und Hinweisen auf unklare Transkript-Stellen.
 - **[Preview-Link](/glossar/preview-url/)** (derselbe wie in der Build-Mail): die Site, wie sie mit dem Branch aussehen würde.
@@ -33,7 +33,7 @@ Zwei [Commits](/glossar/commit/) sind normal: erst Anlegen der Artikel, dann Sti
 
 ## Merge und Live
 
-Unten **Merge pull request** (grüne Checks abwarten), Konflikte vorher in der PR-Meldung lösen ([**Merge**](/glossar/merge/) per Button, [Rebase](/glossar/rebase/) nur, wenn du weißt, warum). **[Cloudflare](/glossar/cloudflare-pages/)** baut **main** neu. Lokal im Projektordner: `git pull`, ggf. **Rebase**, wenn du zwischendurch selbst committet hast, dann pushen.
+Grüne Checks abwarten, dann [**Merge**](/glossar/merge/) und **Confirm** (im Screencast der normale Merge-Button, kein [Rebase](/glossar/rebase/) nötig). Bei Konflikten dem Agenten die PR-Nummer nennen (z. B. „PR #24 hat Konflikte“). **[Cloudflare](/glossar/cloudflare-pages/)** baut **main** neu. Lokal: `git pull`, ggf. **Rebase**, wenn du zwischendurch selbst committet hast.
 
 Parallel kannst du Layout anpassen (Hero tiefer, Inhaltsbreite wie auf der Startseite). Die **Artikelübersicht** und Tag-Seiten nutzen die neuen Inhalte.
 

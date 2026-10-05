@@ -37,7 +37,7 @@ Baut der Agent während der Server läuft, kann die Vorschau hüpfen — kurz st
 
 ## Regeln, die du wirklich willst
 
-Schreib sie in Doku und `.cursor/rules/` (im Projektordner, in [Cursor](/glossar/cursor/) z. B. über **New Cursor Rule** anlegbar):
+Schreib sie in Doku und `.cursor/rules/` (siehe `docs/cursor/README.md`):
 
 1. **Niemals von allein pushen.** Commits lokal sind okay. [**Push**](/glossar/push/) nur auf Anweisung, sonst baut [**Cloudflare**](/glossar/cloudflare-pages/) einen Zwischenstand live (Hosting-Setup: [Folge 011](/artikel/folge-011-cloudflare-setup/)).
 2. **CSS nicht jedes Mal neu erfinden**: bestehende Klassen und [CSS-Variablen](/glossar/css-variable/) nutzen.

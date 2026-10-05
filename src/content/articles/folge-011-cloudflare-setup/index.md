@@ -37,16 +37,15 @@ Cursor → commit → push → GitHub → Cloudflare Build → Live
 
 ## Projekt anlegen
 
-1. **Workers & Pages** → Create → **Pages** → **GitHub** verbinden. Nur das **eine** [Repo](/glossar/repository/) freigeben, nicht „all repositories“.
-2. Repo wählen (z. B. hautuu).
-3. **Production branch:** `main` (siehe [Production](/glossar/production/) und [Branch](/glossar/branch/)).
-4. **Framework:** [Astro](/glossar/astro/).
-5. **[Build](/glossar/build/) command:** [`npm run build`](/glossar/build/)
-6. **Output:** `dist` (fertiges HTML).
-7. Unter **Settings** → **Environment variables** (Production und Preview): `NODE_VERSION` = `22` (siehe `package.json`, sonst scheitert der Build oft in der Cloud).
-8. **Save and [Deploy](/glossar/deploy/)**
+1. [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** (oft unter **Compute**) → **Create** → **Pages** → mit **GitHub** verbinden (**Continue with Pages** / Import Git).
+2. Repo wählen (z. B. hautuu) → **Begin setup**.
+3. **Production branch:** `main`. **Framework preset:** [Astro](/glossar/astro/) (falls angeboten).
+4. **[Build](/glossar/build/) command:** [`npm run build`](/glossar/build/). **Build output directory:** `dist`.
+5. **Save and [Deploy](/glossar/deploy/)** — erst Build, dann Live auf `*.pages.dev`.
 
-Erst **Build**, dann [**Deploy**](/glossar/deploy/). Unter **Deployments** jeder Lauf; Erfolg = `*.pages.dev`-URL im Log und als Link. `npm run build` lokal braucht [Node](/glossar/nodejs/) ([Folge 018](/artikel/folge-018-node-npm/)).
+Im Setup-Assistenten fehlt oft die Node-Version: danach im Projekt **Settings** → **Environment variables** (Production und Preview) `NODE_VERSION` = `22` setzen ([Cloudflare Build configuration](https://developers.cloudflare.com/pages/configuration/build-configuration/#environment-variables), `package.json` verlangt Node ≥ 22.12).
+
+Erfolg prüfen unter **Deployments** (Link im Log). `npm run build` lokal braucht [Node](/glossar/nodejs/) ([Folge 018](/artikel/folge-018-node-npm/)).
 
 {{repodoc path="docs/sveltia/zugang-cloudflare.md" title="Sveltia auf Cloudflare" description="CMS-Zugang nach dem Livegang einrichten."}}
 
@@ -60,6 +59,6 @@ Vergleich die ersten paar Zeichen der [Commit](/glossar/commit/)-ID (des Hashs) 
 
 Burger-Menü nur lokal? Live zeigt’s noch nicht, bis du pushst. Test-Zweige und [Preview-URLs](/glossar/preview-url/): [Folge 012](/artikel/folge-012-cloudflare-branches/).
 
-GitHub-App checken: Unter Applications nur das hautuu-Repo erlauben.
+GitHub-App: bei der Cloudflare-Installation **only select repositories** und nur das hautuu-[Repo](/glossar/repository/) freigeben (nicht „all repositories“).
 
 <!-- Quelle: 2026-10-04--00-22-44--obs-screencast - hautoo - cloudflare - setup.txt -->

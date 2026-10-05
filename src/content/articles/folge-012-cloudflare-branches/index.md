@@ -35,7 +35,7 @@ Link an jemanden: „Gefällt dir das?“. Live bleibt unangetastet.
 
 ## Wenn’s gut ist: Merge
 
-Auf [GitHub](/glossar/github/): **Pull requests** → **New pull request** (Basis `main`, Compare `test`) oder in der Desktop-[Git](/glossar/git/)-UI **test** → [**Merge**](/glossar/merge/) into `main`, dann [**push**](/glossar/push/) `main`. Cloudflare baut **[Production](/glossar/production/)**, jetzt ist’s öffentlich.
+Auf [GitHub](/glossar/github/) den [**Pull Request**](/glossar/pull-request/) vom Branch `test` öffnen und [**Merge**](/glossar/merge/) bestätigen (**Confirm**), oder lokal `test` in `main` mergen und [**push**](/glossar/push/) `main`. Cloudflare baut **[Production](/glossar/production/)**, jetzt ist’s öffentlich.
 
 Parallel kann auf `main` ein Bugfix laufen, während du auf `test` wochenlang Features stapelst. Klassisches Team-Spiel, auch solo sinnvoll.
 

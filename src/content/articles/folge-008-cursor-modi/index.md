@@ -19,9 +19,9 @@ seo:
 
 ## Chat-Oberfläche vs. IDE
 
-Manchmal startet [Cursor](/glossar/cursor/) chat-lastig. Für hautuu willst du den **[IDE](/glossar/ide/)**-Modus: Dateien, [Terminal](/glossar/terminal/), Agentenleiste. Button **IDE** hilft.
+Manchmal startet [Cursor](/glossar/cursor/) chat-lastig. Für hautuu willst du den **[IDE](/glossar/ide/)**-Modus: Dateien, [Terminal](/glossar/terminal/), Agentenleiste. Button **IDE** schaltet um.
 
-Du kannst auch einen beliebigen **Ordner ohne [Git](/glossar/git/)** öffnen (Fotos, Notizen) und dem Agenten sagen: „Pack das ins Projekt.“
+**File** → **Open Folder** geht auch für Ordner **ohne** [Git](/glossar/git/) (Fotos, Notizen) — Kontext fürs Projekt, später wieder entfernen.
 
 ## Drei Modi, drei Temperamentstufen
 
@@ -35,7 +35,7 @@ Du kannst auch einen beliebigen **Ordner ohne [Git](/glossar/git/)** öffnen (Fo
 | **Agent** | Alles: lesen, schreiben, [Terminal](/glossar/terminal/), Commits. Der Vollgas-Modus. |
 | **[Plan](/glossar/cursor-modi/)** | Erst Plan mit To-dos, du liest, korrigierst, **dann** Umsetzung im Agent-Modus. |
 
-Modus im Chat oben im Dropdown wählen (**Ask**, **Agent**, **Plan**).
+Im Chat unten Modus wählen: **Ask** (nur fragen), **Agent** (umsetzen), **Plan** (erst Plan, dann Agent). Oft steht der Modus standardmäßig auf **Auto**.
 
 **Tab** = Autovervollständigung im Code (im Chat klappt das nicht immer).
 

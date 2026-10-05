@@ -40,7 +40,7 @@ Parallel [**GitHub OAuth App**](/glossar/oauth/):
 - **Homepage URL:** deine Site (z. B. `https://hautoo.storyofai.net`).
 - **Callback URL:** `https://<worker-url>/callback` (z. B. `https://hautoo-sveltia-cms-auth.platomat.workers.dev/callback`), exakt wie in der Doku.
 
-**Client ID** und **Client Secret** im [Cloudflare Dashboard](https://dash.cloudflare.com) unter **Workers & Pages** → dein Worker → **Settings** → **Variables and Secrets** — Secret wirklich als **Encrypt** / Secret, nicht als Klartext-Variable.
+**Client ID** und **Client Secret** im Worker unter **Settings** → **Variables** (Runtime Variables, siehe `docs/sveltia/zugang-worker.md`) — **Client Secret** nur als Secret, nicht als Klartext.
 
 **Allowed domains:** deine CMS-Domain.
 

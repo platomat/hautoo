@@ -21,8 +21,8 @@ Gleicher Trick wie mit zwei Spezial-Agenten in einer [VM](/glossar/vm/), nur in 
 
 {{repodoc path="docs/cursor/README.md" title="Cursor (KI)" description="Chats, Rollen und saubere Trennung von Aufgaben."}}
 
-1. **Chat A** (**New Chat** / **+** in der Agentenleiste): „Deine Rolle: penibel Fehler und Sicherheitslücken suchen.“
-2. **Chat B** (zweiter **New Chat**): „Deine Rolle: gefundenes sauber und minimal fixen.“
+1. **Chat A** (neuer Chat in der Agentenleiste): „Deine Rolle: penibel Fehler und Sicherheitslücken suchen.“
+2. **Chat B** (zweiter Chat): „Deine Rolle: gefundenes sauber und minimal fixen.“
 
 Zwei Köpfe, zwei Aufgaben, statt einem endlosen Monolog. [Ask](/glossar/cursor-modi/), Agent und Plan im Überblick: [Folge 008](/artikel/folge-008-cursor-modi/).
 

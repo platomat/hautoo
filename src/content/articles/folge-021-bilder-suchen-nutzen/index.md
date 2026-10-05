@@ -37,18 +37,18 @@ Startseiten-Hintergrund zuerst **1920 px** breit als JPEG (~470 KB), für ein 
 **Faustregeln:**
 
 - **Breite:** Für Hintergründe und Hero oft **1280 px** (manchmal 1024 px), nicht immer volle 4K-Datei hochladen.
-- **Format:** [**WebP**](/glossar/webp/) statt JPEG/PNG für Fotos im Web (kleinere Datei bei ähnlicher Optik). In **gThumb** (GNOME Bildbetrachter) oder **GIMP**: exportieren, Qualität oft **80 %** reicht; in GIMP zusätzlich Metadaten weglassen, wenn das Export-Dialog anbietet.
+- **Format:** [**WebP**](/glossar/webp/) statt JPEG/PNG für Fotos im Web (kleinere Datei bei ähnlicher Optik). In **gThumb**: **Resize** (z. B. 1280 px), dann **Speichern unter** (**Strg+Shift+S**), Format WebP, Qualität oft **80 %**. In **GIMP**: **Image** → **Scale Image**, Export **Strg+Shift+E**, Metadaten im Dialog weglassen wenn möglich.
 - **Ziel:** Unter **~100 KB** pro dekoratives Hintergrundbild anpeilen, wenn es geht (Motiv und Qualität entscheiden mit).
 
 Beispiel aus der Session: 1920 px JPEG ~470 KB → 1280 px **WebP** ~91 KB. Weitere Motive ähnlich geschnitten. Tools wie [**MAT2**](https://0xacab.org/jvoisin/mat2) (Metadata Anonymisation Toolkit) können **Metadaten** entfernen; die Dateigröße ändert sich manchmal nur wenig, trotzdem sinnvoll vor Veröffentlichung.
 
 ## In Sveltia einbinden und ersetzen
 
-Geteilte Motive für Startseite, FAQ, Glossar-Übersicht: in `/admin/` links **Medien** (Medienbibliothek) → Upload landet unter `src/assets/` (Pfad in der UI oft `/assets/…`). Nur für **einen** Artikel: **Variante B**, Bild neben `index.md` ([Folge 004](/artikel/folge-004-collection-pages/)).
+Geteilte Motive (Startseite, FAQ, Glossar): in `/admin/` die **Library** → Upload landet unter `src/assets/` (Global Assets). Nur für **einen** Artikel: **Variante B**, Bild neben `index.md` ([Folge 004](/artikel/folge-004-collection-pages/)).
 
 {{repodoc path="docs/sveltia/medien-variante-b.md" title="Medien — Variante B" description="Bilder neben dem Content-Eintrag und Astro image()."}}
 
-Im [CMS](/glossar/cms/): links **Seiten** oder **Artikel** → Eintrag öffnen → **Seitenhintergrund** / Hintergrund-Feld wählen oder **Replace**; daneben **Abdunkelung (%)** und Feld **Bildnachweis** ausfüllen, wenn die Lizenz Credits will (Sammlung auf dem Impressum, [Folge 019](/artikel/folge-019-impressum-komponenten/)).
+Im [CMS](/glossar/cms/): **Seiten** oder **Artikel** → Hintergrundbild in der **Library** wählen; optimierte Datei per **Replace** nachlegen (Screencast: Bild in der Library öffnen, **Replace**, Datei reinziehen). **Abdunkelung (%)** und **Bildnachweis** nicht vergessen ([Folge 019](/artikel/folge-019-impressum-komponenten/)).
 
 ## Was Astro noch macht
 

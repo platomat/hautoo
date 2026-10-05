@@ -23,7 +23,7 @@ Mit [`npm run dev`](/glossar/npm/) klebt oft die **[Astro](/glossar/astro/)-Dev-
 
 {{repodoc path="docs/astro/README.md" title="Astro" description="Build, Dev-Server und Projektstruktur in der Doku."}}
 
-Stört sie? Am Rand auf das **Astro**-Logo tippen zum Einklappen, oder den Agenten fragen, wie du sie dauerhaft ausblendest (nur lokal bei `npm run dev`). Besucher sehen sie nie.
+Stört sie? Am Rand **nach links einklappen** lassen, oder den Agenten fragen, wie du sie dauerhaft ausblendest (nur lokal bei `npm run dev`). Besucher sehen sie nie.
 
 ## Breakpoints: einmal festlegen, überall nutzen
 

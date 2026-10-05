@@ -2,7 +2,7 @@
 title: 'Folge 013: /admin aufmachen: lokal ohne Passwort, online mit GitHub-Schlüssel'
 summary: Sveltia fühlt sich wie ein Mini-CMS an, speichert aber nur Dateien. So loggst du dich ein, ohne dass jeder Hans deine Startseite umschreibt.
 pubDate: 2026-10-04 01:09:23+00:00
-modifiedDate: 2026-10-05
+modifiedDate: 2026-10-07
 status: published
 tags:
 - sveltia
@@ -21,7 +21,7 @@ seo:
 
 - `npm run dev`, dann im Browser `http://localhost:4321/admin/` (Port steht im [Terminal](/glossar/terminal/), Standard bei Astro oft **4321**).
 - **Chrome/Chromium**: Firefox klappt fürs [**Backend**](/glossar/backend/) oft nicht.
-- Modus **„local“**: Projektordner wählen. **kein Passwort**, die Dateien liegen ja schon bei dir.
+- Modus **local** wählen, dann den **Projektordner** auf der Platte erlauben — **kein Passwort**, die Dateien liegen ja schon bei dir.
 
 Links die Felder aus der Config, rechts eine simple Preview. [Markdown](/glossar/markdown/), Bilder (z. B. Platzhalter), **SEO**: was im **Browser-Tab** steht vs. Überschrift auf der Seite, **Meta Description** für Link-Vorschau in Telegram & Co.
 
@@ -35,13 +35,11 @@ Speichern = Datei lokal geändert, noch **nicht** live.
 
 Ein [**PAT**](/glossar/pat/) ist ein persönlicher **Zugangsschlüssel** für [GitHub](/glossar/github/):
 
-1. Auf [GitHub](/glossar/github/) dein Profilfoto → **Settings** → links **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**.
-2. Beschreibung z. B. „Sveltia [CMS](/glossar/cms/) hautuu“.
-3. Nur das hautuu-Repo, **Contents: Read and write**.
-4. Ablauf setzen (z. B. 90 Tage). Schlüssel rotieren.
-5. Token **einmal** kopieren — danach unsichtbar. Weg = neuen erstellen.
+1. [GitHub](/glossar/github/) **Settings** → **Developer settings** → **Personal access tokens** → neuen Token erzeugen (im Screencast: Beschreibung z. B. „Sveltia CMS“, Ablauf z. B. 90 Tage).
+2. Nur das hautuu-[Repo](/glossar/repository/) (**only select repositories**), Berechtigung **Contents: Read and write**.
+3. Token **einmal** kopieren — nach Reload unsichtbar. Weg = neuen erstellen.
 
-In Sveltia: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar/commit/) auf GitHub → [Cloudflare](/glossar/cloudflare-pages/) baut [`main`](/glossar/main/).
+In Sveltia online: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar/commit/) auf GitHub → [Cloudflare](/glossar/cloudflare-pages/) baut [`main`](/glossar/main/).
 
 **Token = Passwort.** Nicht ins Repo, nicht im Video zeigen.
 

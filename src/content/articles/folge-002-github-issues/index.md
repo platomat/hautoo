@@ -2,7 +2,7 @@
 title: 'Folge 002: Issues statt Chaos: So behältst du die KI auf Kurs'
 summary: Tickets, Meilensteine und ein Bild, wie Cursor, GitHub und Cloudflare zusammenspielen. Damit du nicht jeden Tag alles neu erklären musst.
 pubDate: 2026-10-03 01:35:20+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - github
@@ -16,7 +16,7 @@ seo:
   seo_description: GitHub Issues, Meilensteine und das Zusammenspiel von Cursor, GitHub und Cloudflare. So gibst du der KI klare Tickets statt jeden Tag alles neu zu erklären.
 ---
 
-[GitHub](/glossar/github/) ist nicht nur Datei-Ablage, es ist dein **Projektbüro**. Im Repo Tab **Issues** → **New issue** legst du Tickets an (Bug, Idee, Feature). **Milestones** und **Labels** findest du in der Issue-Übersicht über die Seitenleiste oder unter **Milestones** / **Labels** (englische UI auf github.com).
+[GitHub](/glossar/github/) ist nicht nur Datei-Ablage, es ist dein **Projektbüro**. Im Repo legst du ein neues [**Issue**](/glossar/issue/) an (Bug, Idee, Feature), wählst optional **Milestone** und **Label** (z. B. Documentation) und speicherst — dann ist es dein Ticket.
 
 ## Forks und Pull Requests (kurz)
 
