@@ -1,6 +1,6 @@
 ---
 title: Hauptmenü
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-06
 items:
   - label: Artikel
     linkType: page
@@ -14,6 +14,9 @@ items:
   - label: FAQ
     linkType: page
     page: faq
+  - label: Features
+    linkType: page
+    page: features
   - label: Über uns
     linkType: page
     page: ueber-uns

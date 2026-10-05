@@ -1,0 +1,97 @@
+---
+title: Features
+description: Überblick über die umgesetzten Funktionen von hautuu auf der Website und im Repo.
+status: published
+modifiedDate: 2026-10-06
+showToc: true
+tocTitle: Inhalt
+tocLevels:
+  - h2
+seo:
+  index_visibility: index
+  follow_visibility: follow
+  noarchive: false
+  noimageindex: false
+  nosnippet: false
+  max_snippet_enabled: true
+  max_snippet: -1
+  max_video_preview_enabled: true
+  max_video_preview: -1
+  max_image_preview_enabled: true
+  max_image_preview: large
+  seo_title: Features von hautuu
+  seo_description: "Was auf hautoo.storyofai.net steht: 21 Folgen, Sveltia CMS, Glossar mit Querverweisen, Embeds, SEO, Bildnachweise und Cloudflare Deploy."
+---
+
+Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches Repo auf `main`). Details zu Begriffen im [**Glossar**](/glossar/), Antworten in der [**FAQ**](/faq/), Schritt für Schritt in den [**Artikeln**](/artikel/).
+
+## Inhalte und Redaktion
+
+- **Screencast-Folgen als Artikel** (001 bis 021): How-tos zu [GitHub](/glossar/github/), [Cursor](/glossar/cursor/), [Cloudflare](/glossar/cloudflare-pages/), [Sveltia](/glossar/sveltia/) und Redaktion, mit Teaser, Tags und Querverweisen.
+- **Statische Seiten** ([Collection](/glossar/collection/) `pages`): Startseite, Artikelübersicht, Tags, Glossar, FAQ, Über uns, Impressum, Datenschutz und diese Features-Seite.
+- **Redaktionsregeln** im Repo (`docs/redaktion/`) und als Cursor-Regel: Schema, Stil, SEO-Felder, [Bausteine](/glossar/baustein/), Querverlinkung, PR-Checkliste.
+- **Transkript-basierte Folgen**: Speech-to-Text korrigieren, nichts erfinden, Quellkommentar im Artikel ([Folge 015](/artikel/folge-015-transkript-artikel/)).
+
+## CMS und Collections
+
+- **Sveltia CMS** unter `/admin/`: Inhalte im Browser bearbeiten, Speichern landet als Dateien in [Git](/glossar/git/) ([Glossar CMS](/glossar/cms/), [Folge 013](/artikel/folge-013-sveltia-pat/)).
+- **Collections** für Pages, Articles, Tags, Glossar, Menüs und **Bausteine** (`blocks`) ohne eigene URL.
+- **Menüs** als eigene Collection (`main`, `footer-legal`) statt Flags an einzelnen Seiten.
+- **Entwurfsstatus** (`draft`, `published`, `future`, `trash`) für Pages, Artikel und Glossar.
+- **Optionales Inhaltsverzeichnis** pro Seite oder Artikel (`showToc`, Ebenen wählbar).
+- **Seiten-Header und Footer-Code** für kleine HTML- oder CSS-Snippets nur auf einer Seite.
+- **Zugang über Cloudflare Worker** mit [OAuth](/glossar/oauth/) statt nur PAT ([Folge 014](/artikel/folge-014-sveltia-worker/)).
+
+## Glossar, FAQ und Tags
+
+- **Glossar** mit Kurzdefinition, längerer Erklärung, **verwandte Artikel** (`relatedArticles`) und **verwandte Tags** (`relatedTags`).
+- **Viele Begriffe** (Git, Deploy, [CI/CD](/glossar/ci-cd/), [Route](/glossar/route/), [Bildnachweis](/glossar/bildnachweis/) und mehr), jeweils eigene URL unter `/glossar/<slug>/`.
+- **Erstes sinnvolles Glossar-Vorkommen** pro Seite verlinkt; Hilfsskript `link-glossar-crosslinks.py` und **Erstlink-Warnung** im Build (`check-glossar-first-links.py`, nicht blockierend).
+- **FAQ** als eine lange Seite mit Themengruppen (H2), alles offen sichtbar, durchsuchbar per Strg+F (kein Accordion).
+- **Tag-Seiten** mit Artikel-Grid und Link zum passenden Glossar-Eintrag, wenn der Slug passt.
+- **Tag-Wolke** und **Listing-Embeds** für Glossar und Tags im Seiten- oder Artikeltext.
+
+## Bausteine und Embeds
+
+- **Wiederverwendbare Bausteine** (`{{block id="…"}}`): z. B. Stack-Grafik (`stack-uebersicht`) auf Startseite und in passenden Folgen ([Folge 020](/artikel/folge-020-bausteine-fork/)).
+- **Artikel-Listing** im Content: Anzahl, Sortierung, Grid oder Liste, wählbare Kartenfelder inkl. Lesezeit ([Folge 019](/artikel/folge-019-impressum-komponenten/)).
+- **Trennlinie** und **Kontakt-E-Mail** als Embed (`{{contact-email}}` aus Build-Variable, nicht im Klartext).
+- **Markdown-Embeds** über die Sveltia-Toolbar; Rendering zentral in `CmsContent.astro`.
+- **Repo-Docs-Box** (`{{repodoc path="docs/…"}}`): Verlinkung zu Handbuch-Dateien auf GitHub, Toolbar **Repo-Dokument** ([Folge 001](/artikel/folge-001-hautuu-intro/) als Beispiel).
+- **Embed-Check** vor dem Build: `{{repodoc}}` und `{{block}}` nur allein in einer Zeile, nicht mitten im Satz und **nicht zwischen Listenpunkten** (`check-content-embeds.py`).
+
+## SEO und Auffindbarkeit
+
+- **SEO-Objekt** pro Page und Artikel: eigener Tab-Titel, Meta-Description, Robots-Optionen ([Folge 004](/artikel/folge-004-collection-pages/)).
+- **Glossar-SEO** und Tag-Beschreibungen für Suchvorschauen.
+- **Open Graph und Twitter Cards**: Titel, Beschreibung, Canonical, optional OG-Bild aus dem Seitenhintergrund (1200×630).
+- **Lesezeit** in Artikel-Meta und auf der Karte im Listing.
+- **Sitemap** ohne Impressum, Datenschutz und `/admin`; Legal-Seiten mit **noindex**.
+- **Artikel-Übersicht** (`/artikel/`): Listing-Embed mit SEO-Feldern und konfigurierbaren Kartenfeldern (Titel, Teaser, Datum, Tags, Lesezeit).
+
+## Design und Nutzung
+
+- **Suche im Header** (MiniSearch): statischer Suchindex beim Build, Treffer zu Artikeln, Glossar und Seiten.
+- **Dark Theme** mit [CSS-Variablen](/glossar/css-variable/), Ubuntu-Schrift, responsive Header mit Mobile-Menü.
+- **Breakpoints** und gemeinsame Layout-Hilfsklassen ([docs/design](https://github.com/platomat/hautoo/blob/main/docs/design/README.md)).
+- **Vollbild-Hintergrund** optional pro Seite oder Artikel, mit Overlay und **Bildnachweis**-Feld (`backgroundAttribution`).
+- **Bildnachweise gesammelt** am Ende des **Impressums** (automatisch aus Pages und Artikeln, [Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum)).
+- **Bilder neben dem Content** (Variante B), Astro-Optimierung inklusive CMS-Pfade unter `/assets/` ([Folge 021](/artikel/folge-021-bilder-suchen-nutzen/)).
+- **Externe Links** öffnen in neuem Tab; interne bleiben in der Site.
+- **Artikel-Navigation** (älter/neuer) und breitere Spalte bei Listing-Embeds.
+
+## Deployment und Workflow
+
+- **Statische Site** mit [Astro](/glossar/astro/), Auslieferung über **Cloudflare Pages** aus GitHub `main` ([Folge 011](/artikel/folge-011-cloudflare-setup/)).
+- **Preview-Branches** und Rollback über Cloudflare ([Folge 012](/artikel/folge-012-cloudflare-branches/)).
+- **Build-ID** für Favicons und Cache-Busting; `_headers` für langes Caching von Assets.
+- **Öffentliches Repo** `platomat/hautoo`, Issues und Pull Requests auf Deutsch.
+
+## Dokumentation, Qualität und Agenten
+
+- **Projekt-Doku** unter `docs/` (GitHub, Cloudflare, Sveltia, Astro, Redaktion, Sicherheit).
+- **Cursor-Regeln** in `.cursor/rules/` (Konventionen, Redaktion, CSS, Deutsch).
+- **Link-Check** im `prebuild`: kaputte Markdown-Links in `src/content` (`check-content-links.py`, ruft Embed-Check mit auf).
+- **Hilfsskripte** z. B. Glossar-Querverweise (`link-glossar-crosslinks.py`) und SEO-Bulk-Pflege (`fill-seo-fields.py`, manuell).
+
+Neue Funktionen bitte hier und in der [README auf GitHub](https://github.com/platomat/hautoo#features) nachpflegen (siehe Redaktions-Doku).
