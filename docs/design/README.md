@@ -131,6 +131,10 @@ Breakpoint-**CSS-Variablen** in `:root` (`src/styles/global.css`): `--bp-tablet:
 
 Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-on-mobile` + `center-on-mobile`).
 
+### Sticky Header
+
+Über CMS **Konfiguration → Site → Header** (`src/content/config/site.yaml`): Sticky ein/aus pro Breakpoint und Min-Höhe der Leiste in px. Defaults: sticky auf allen Geräten, 64 / 64 / 56 px (Desktop / Tablet / Mobile).
+
 ### Mobile-Navigation (Burger)
 
 Unter **680px** (`max-width: 679px`):

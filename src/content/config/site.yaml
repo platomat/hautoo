@@ -1,0 +1,8 @@
+# Global site settings (Sveltia collection `config`, file `site`). No Markdown.
+header:
+  stickyDesktop: true
+  stickyTablet: true
+  stickyMobile: true
+  heightDesktop: 64
+  heightTablet: 64
+  heightMobile: 56

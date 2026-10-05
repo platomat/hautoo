@@ -44,6 +44,56 @@ output:
 
 collections:
 
+  # Global settings (YAML only, no Markdown body). First feature: sticky header (#44).
+  - name: config
+    label: Konfiguration
+    label_singular: Konfiguration
+    files:
+      - name: site
+        label: Site
+        file: src/content/config/site.yaml
+        format: yaml
+        fields:
+          - name: header
+            label: Header
+            widget: object
+            collapsed: false
+            hint: "Sticky und Leistenhöhe pro Breakpoint (Desktop ≥1024px, Tablet 680–1023px, Mobile <680px)."
+            fields:
+              - name: stickyDesktop
+                label: Sticky auf Desktop
+                widget: boolean
+                default: true
+              - name: stickyTablet
+                label: Sticky auf Tablet
+                widget: boolean
+                default: true
+              - name: stickyMobile
+                label: Sticky auf Mobile
+                widget: boolean
+                default: true
+              - name: heightDesktop
+                label: Höhe Desktop (px)
+                widget: number
+                value_type: int
+                default: 64
+                min: 40
+                max: 160
+              - name: heightTablet
+                label: Höhe Tablet (px)
+                widget: number
+                value_type: int
+                default: 64
+                min: 40
+                max: 160
+              - name: heightMobile
+                label: Höhe Mobile (px)
+                widget: number
+                value_type: int
+                default: 56
+                min: 40
+                max: 160
+
   - name: pages
     label: Seiten
     label_singular: Seite

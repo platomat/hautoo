@@ -6,12 +6,35 @@ Zurück zur [Sveltia-Übersicht](./README.md). Shared Field-Partials: [CMS Field
 
 | Collection | Schlüssel | Status |
 | --- | --- | --- |
+| Konfiguration | `config` | umgesetzt (#45), YAML ohne Markdown |
 | Seiten | `pages` | umgesetzt (#3) |
 | Artikel | `articles` | umgesetzt (#4) |
 | Tags | `tags` | umgesetzt (#5) |
 | Glossar | `glossar` | umgesetzt (#6) |
 | Bausteine | `blocks` | umgesetzt |
 | Menüs | `menus` | umgesetzt (#13) |
+
+## Collection `config` (umgesetzt)
+
+Globale Site-Einstellungen als **YAML-Datei**, kein Markdown-Body. Erweiterbar um weitere Dateien unter `files:`.
+
+| | |
+| --- | --- |
+| Datei | `src/content/config/site.yaml` |
+| Schema | `src/cms/fields/site-config.ts` → Collection `config` in `src/content.config.ts` |
+| Sveltia | File-Collection `config` → Eintrag „Site“ |
+| Lesen | `src/lib/site-config.ts` (`getSiteConfig` / `getSiteHeaderConfig`) |
+
+### Site → Header (#44)
+
+| Feld | Bedeutung |
+| --- | --- |
+| `header.stickyDesktop` | Sticky ab Desktop (≥ 1024px) |
+| `header.stickyTablet` | Sticky auf Tablet (680–1023px) |
+| `header.stickyMobile` | Sticky auf Mobile (< 680px) |
+| `header.heightDesktop` / `Tablet` / `Mobile` | Min. Leistenhöhe in px (40–160) |
+
+Umsetzung in `SiteHeader.astro` (CSS-Klassen + Custom Properties).
 
 ## Collection `menus` (umgesetzt)
 

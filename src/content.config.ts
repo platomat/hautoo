@@ -8,6 +8,7 @@ import {
 	backgroundOverlaySchema,
 } from "./cms/fields/page-background";
 import { seoSchema } from "./cms/fields/seo";
+import { siteConfigSchema } from "./cms/fields/site-config";
 import { entryStatusSchema } from "./cms/fields/status";
 
 const publishDateSchema = z.coerce.date().optional();
@@ -118,4 +119,18 @@ const blocks = defineCollection({
 	}),
 });
 
-export const collections = { pages, menus, tags, articles, glossar, blocks };
+/** Global YAML settings (no Markdown body). Entry id = filename without extension. */
+const config = defineCollection({
+	loader: glob({ pattern: "*.yaml", base: "./src/content/config" }),
+	schema: siteConfigSchema,
+});
+
+export const collections = {
+	pages,
+	menus,
+	tags,
+	articles,
+	glossar,
+	blocks,
+	config,
+};

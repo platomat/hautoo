@@ -3,18 +3,35 @@ import LogoMark from "./LogoMark.astro";
 import SiteSearch from "./SiteSearch.astro";
 import { getResolvedMenu, MENU_MAIN } from "../lib/menus";
 import { getPublicPages } from "../lib/pages";
+import { getSiteHeaderConfig } from "../lib/site-config";
 
 const pages = await getPublicPages();
 const menuItems = await getResolvedMenu(MENU_MAIN, pages);
+const headerConfig = await getSiteHeaderConfig();
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 function isCurrent(href: string): boolean {
 	const key = href.replace(/\/$/, "") || "/";
 	return pathname === key;
 }
+
+const headerStyle = [
+	`--header-h-desktop: ${headerConfig.heightDesktop}px`,
+	`--header-h-tablet: ${headerConfig.heightTablet}px`,
+	`--header-h-mobile: ${headerConfig.heightMobile}px`,
+].join("; ");
 ---
 
-<header class="site-header" data-site-header>
+<header
+	class:list={[
+		"site-header",
+		headerConfig.stickyDesktop && "site-header--sticky-desktop",
+		headerConfig.stickyTablet && "site-header--sticky-tablet",
+		headerConfig.stickyMobile && "site-header--sticky-mobile",
+	]}
+	style={headerStyle}
+	data-site-header
+>
 	<div class="site-header__inner shell-inner">
 		<a class="site-header__brand" href="/" aria-label="hautuu Startseite">
 			<LogoMark class="site-header__logo-mark" />
@@ -118,6 +135,7 @@ function isCurrent(href: string): boolean {
 
 <style>
 	.site-header {
+		--header-bar-height: var(--header-h-desktop, 64px);
 		position: relative;
 		z-index: 20;
 		background: var(--color-chrome);
@@ -129,7 +147,43 @@ function isCurrent(href: string): boolean {
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 1rem 1.5rem;
-		padding-block: 1rem;
+		min-height: var(--header-bar-height);
+		padding-block: 0.65rem;
+		box-sizing: border-box;
+	}
+
+	/* Breakpoints: same px as --bp-tablet / --bp-mobile (docs/design). */
+	@media (max-width: 1023px) {
+		.site-header {
+			--header-bar-height: var(--header-h-tablet, 64px);
+		}
+	}
+
+	@media (max-width: 679px) {
+		.site-header {
+			--header-bar-height: var(--header-h-mobile, 56px);
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.site-header--sticky-desktop {
+			position: sticky;
+			top: 0;
+		}
+	}
+
+	@media (max-width: 1023px) and (min-width: 680px) {
+		.site-header--sticky-tablet {
+			position: sticky;
+			top: 0;
+		}
+	}
+
+	@media (max-width: 679px) {
+		.site-header--sticky-mobile {
+			position: sticky;
+			top: 0;
+		}
 	}
 
 	.site-header__brand {
