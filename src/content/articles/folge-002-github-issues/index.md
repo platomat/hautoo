@@ -2,7 +2,7 @@
 title: 'Folge 002: Issues statt Chaos: So behältst du die KI auf Kurs'
 summary: Tickets, Meilensteine und ein Bild, wie Cursor, GitHub und Cloudflare zusammenspielen. Damit du nicht jeden Tag alles neu erklären musst.
 pubDate: 2026-10-03 01:35:20+00:00
-modifiedDate: 2026-10-05
+modifiedDate: 2026-10-06
 status: published
 tags:
 - github
@@ -40,10 +40,9 @@ In Commit-Messages kannst du Issues erwähnen (`Fixes #1`, `Closes #1`). GitHub 
 4. [**Sveltia**](/glossar/sveltia/): später: Tippfehler im Browser fixen, landet wieder in Git.
 5. [**Astro**](/glossar/astro/): macht schnelle statische Seiten ([**Frontend**](/glossar/frontend/)), kein WordPress, keine Datenbank auf dem Server.
 
-Cloudflare richtest du Schritt für Schritt in [Folge 011]
+Cloudflare richtest du Schritt für Schritt in [Folge 011](/artikel/folge-011-cloudflare-setup/) ein. Sveltia und PAT/Login: [Folge 013](/artikel/folge-013-sveltia-pat/).
 
 {{repodoc path="docs/konzept/README.md" title="Konzept" description="Ziele, Stack und wie die Teile zusammenspielen."}}
-(/artikel/folge-011-cloudflare-setup/) ein. Sveltia und PAT/Login: [Folge 013](/artikel/folge-013-sveltia-pat/).
 
 ## Issues klein schneiden
 {{repodoc path="docs/github/README.md" title="GitHub" description="Issues, Meilensteine und Pull Requests in der Projekt-Doku."}}
@@ -60,8 +59,8 @@ Vor dem Bauen fragt der Agent oft nach:
 
 ## Erst lokal gucken
 
-- [`npm install`](/glossar/npm/), holt Pakete (macht Cloudflare beim Build auch).
-- `npm run dev`. Vorschau auf deinem Rechner. Node, npm und die Installation lokal: [Folge 018](/artikel/folge-018-node-npm/).
+- **[`npm install`](/glossar/npm/)** lädt die **Pakete** (Abhängigkeiten), die das Projekt braucht. Stehen in `package.json`, landen lokal in `node_modules`. Du machst das beim ersten Aufsetzen nach dem Clone, auf einem anderen Rechner oder wenn neue Abhängigkeiten dazukamen. Nicht bei jedem Öffnen des Projekts. Der KI-Agent in Cursor sagt dir das in der Regel oder führt es selbst aus. Schritt für Schritt: [Folge 018](/artikel/folge-018-node-npm/). Online macht Cloudflare beim Build dasselbe automatisch.
+- **`npm run dev`**: kurze Vorschau auf deinem Rechner, solange der Server läuft (Strg+C stoppt ihn, siehe [Folge 003](/artikel/folge-003-erstes-design/)).
 
 Ist Cloudflare schon dran? [**Push**](/glossar/push/) = Build. Darum pusht der Agent bei hautuu nur **auf dein Wort**. Pull, Merge und typische Stolpersteine: [Folge 006](/artikel/folge-006-git-push-pull/).
 
