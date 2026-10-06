@@ -26,7 +26,7 @@ Beliebte **Stock**-Seiten mit gratis Downloads (Stand der Plattform-Regeln, imme
 | [Pixabay](https://pixabay.com/service/license/) | Kostenlose Nutzung laut [Pixabay License](https://pixabay.com/service/license/); **gesponserte** Treffer oben/unten sind oft **kostenpflichtig** (Filter nutzen, nicht blind klicken). |
 | [Unsplash](https://unsplash.com/license) | [Unsplash License](https://unsplash.com/license): frei für viele private und kommerzielle Nutzungen; **Unsplash+** (Schloss-Symbol) ist **nicht** der gratis Download. Namensnennung ist **erwünscht**, aber laut [Hilfe](https://help.unsplash.com/en/articles/2612337-do-i-have-to-give-credit-to-a-contributor-when-i-use-their-image) nicht zwingend. |
 | [Pexels](https://www.pexels.com/license/) | [Pexels License](https://www.pexels.com/license/): ähnlich Stock-Nutzung ohne Account-Pflicht für viele Motive. |
-| [Freepik](https://www.freepik.com/legal/terms-of-use) | Viele Motive nur mit **Attribution** oder im **Premium**-Abo; Filter **Free** / **License** und **AI generated** bewusst setzen. |
+| [Freepik](https://www.freepik.com/legal/terms-of-use) | Viele Motive nur mit „Attribution“ (Namensnennung) oder im „Premium“-Abo; Filter „Free“ (Kostenlos) / „License“ (Lizenz) und „AI generated“ (KI-generiert) bewusst setzen. |
 
 **Praxis:** Motiv gefällt dem Kunden, du merkst erst beim Download: kostet. Deshalb vorher Lizenz und Preislabel checken. KI-generierte Bilder kannst du oft per Filter ausblenden, wenn du echte Fotos willst.
 
@@ -37,24 +37,24 @@ Startseiten-Hintergrund zuerst **1920 px** breit als JPEG (~470 KB), für ein 
 **Faustregeln:**
 
 - **Breite:** Für Hintergründe und Hero oft **1280 px** (manchmal 1024 px), nicht immer volle 4K-Datei hochladen.
-- **Format:** [**WebP**](/glossar/webp/) statt JPEG/PNG für Fotos im Web (kleinere Datei bei ähnlicher Optik). In **gThumb**: **Resize** (z. B. 1280 px), dann **Speichern unter** (**Strg+Shift+S**), Format WebP, Qualität oft **80 %**. In **GIMP**: **Image** → **Scale Image**, Export **Strg+Shift+E**, Metadaten im Dialog weglassen wenn möglich.
+- **Format:** [**WebP**](/glossar/webp/) statt JPEG/PNG für Fotos im Web (kleinere Datei bei ähnlicher Optik). In **gThumb**: „Resize“ (Größe ändern, z. B. 1280 px), dann **Speichern unter** (**Strg+Shift+S**), Format WebP, Qualität oft **80 %**. In **GIMP**: „Image“ (Bild) → „Scale Image“ (Bild skalieren), Export **Strg+Shift+E**, Metadaten im Dialog weglassen wenn möglich.
 - **Ziel:** Unter **~100 KB** pro dekoratives Hintergrundbild anpeilen, wenn es geht (Motiv und Qualität entscheiden mit).
 
 Beispiel aus der Session: 1920 px JPEG ~470 KB → 1280 px **WebP** ~91 KB. Weitere Motive ähnlich geschnitten. Tools wie [**MAT2**](https://0xacab.org/jvoisin/mat2) (Metadata Anonymisation Toolkit) können **Metadaten** entfernen; die Dateigröße ändert sich manchmal nur wenig, trotzdem sinnvoll vor Veröffentlichung.
 
 ## In Sveltia einbinden und ersetzen
 
-Geteilte Motive (Startseite, FAQ, Glossar): in `/admin/` die **Library** → Upload landet unter `src/assets/` (Global Assets). Nur für **einen** Artikel: **Variante B**, Bild neben `index.md` ([Folge 004](/artikel/folge-004-collection-pages/)).
+Geteilte Motive (Startseite, FAQ, Glossar): in `/admin/` die Medienbibliothek („Media“ / „Library“) → Upload landet unter `src/assets/`. Nur für **einen** Artikel: **Variante B**, Bild neben `index.md` ([Folge 004](/artikel/folge-004-collection-pages/)).
 
 {{repodoc path="docs/sveltia/medien-variante-b.md" title="Medien — Variante B" description="Bilder neben dem Content-Eintrag und Astro image()."}}
 
-Im [CMS](/glossar/cms/): **Seiten** oder **Artikel** → Hintergrundbild in der **Library** wählen; optimierte Datei per **Replace** nachlegen (Bild in der Library öffnen, **Replace**, Datei reinziehen). **Abdunkelung (%)** und **Bildnachweis** nicht vergessen ([Folge 019](/artikel/folge-019-impressum-komponenten/)).
+Im [CMS](/glossar/cms/): **Seiten** oder **Artikel** → Hintergrundbild in der Medienbibliothek wählen; optimierte Datei per „Replace“ (Ersetzen) nachlegen (Bild öffnen, „Replace“, Datei reinziehen). **Abdunkelung (%)** und **Bildnachweis** nicht vergessen ([Folge 019](/artikel/folge-019-impressum-komponenten/)).
 
 ## Was Astro noch macht
 
 hautuu wandelt Hintergründe beim [Build](/glossar/build/) in **WebP** um und liefert mehrere Breiten per `srcset` (640 bis 1920 px), siehe `PageBackground.astro`. Trotzdem lohnt **kleine Quelldateien**: der Build spart Bytes, aber eine 2‑MB-Rohdatei bleibt unnötig schwer in [Git](/glossar/git/).
 
-In **PageSpeed Insights** ([Google](https://pagespeed.web.dev/)) kann unter „Bildübermittlung“ noch Optimierungspotenzial auftauchen (z. B. angezeigte Breite kleiner als ausgelieferte Datei). Dann Quelle schlanker wählen oder prüfen, ob das richtige `sizes`-/`srcset`-Setup greift. Die Site war in der Session schon **grün** mobil; Bilder sind ein Hebel für die letzten Prozent.
+In PageSpeed Insights ([Google](https://pagespeed.web.dev/)) kann unter „Bildübermittlung“ noch Optimierungspotenzial auftauchen (z. B. angezeigte Breite kleiner als ausgelieferte Datei). Dann Quelle schlanker wählen oder prüfen, ob das richtige `sizes`-/`srcset`-Setup greift. Die Site war in der Session schon **grün** mobil; Bilder sind ein Hebel für die letzten Prozent.
 
 **Alt-Text:** Dekorative Vollbild-Hintergründe nutzen bei uns `alt=""` (rein visuell). Informatives Bild im Artikeltext braucht einen [**Alt-Text**](/glossar/alt-text/), wenn es Inhalt transportiert.
 

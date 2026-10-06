@@ -2,7 +2,7 @@
 title: 'Folge 018: Node 22, npm install und npm run dev lokal'
 summary: 'Nach dem Clone: Node über das offizielle Install-Skript, Abhängigkeiten mit npm install, Entwicklungsserver mit npm run dev.'
 pubDate: 2026-10-04 20:22:22+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - node
@@ -15,7 +15,7 @@ seo:
   seo_description: Nach dem Clone Node 22 installieren, npm install und npm run dev für Astro lokal. Folge 018 bringt deine Entwicklungsumgebung zum Laufen.
 ---
 
-Das [Repo](/glossar/repository/) enthält Quellcode und `package.json`, aber nicht den ganzen **`node_modules`**-Berg. In deiner lokalen [IDE](/glossar/ide/) ([Entwicklungsumgebung](/glossar/ide/)) brauchst du [**Node.js**](/glossar/nodejs/) (für hautuu empfohlen: **Version 22**) und **npm**, damit `npm run dev` und `npm run build` laufen.
+Das [Repo](/glossar/repository/) enthält Quellcode und `package.json`, aber nicht den ganzen **`node_modules`**-Berg. In deiner lokalen [IDE](/glossar/ide/) ([Entwicklungsumgebung](/glossar/ide/)) brauchst du [**Node.js**](/glossar/nodejs/) (für hautuu empfohlen: **Version 22**) und npm, damit `npm run dev` und `npm run build` laufen.
 
 {{repodoc path="docs/astro/README.md" title="Astro" description="Framework, Build-Befehle und Ausgabeordner."}}
 
@@ -51,7 +51,7 @@ npm run dev
 
 [`npm install`](/glossar/npm/) lädt alle in `package.json` genannten Pakete ([Astro](/glossar/astro/), [Sveltia](/glossar/sveltia/)-[Build](/glossar/build/)-Tools, …). Das Tool ist eine [CLI](/glossar/cli/). `npm run dev` baut die Site im **Entwicklungsmodus** und zeigt eine lokale URL (oft `http://localhost:4321`). Link im [Terminal](/glossar/terminal/) anklicken oder URL kopieren; CMS-Vorschau dann unter `/admin/`.
 
-So testest du Änderungen **ohne** jedes Mal auf **[main](/glossar/main/)** zu pushen. Für öffentliche Previews nutzt du weiter [**Branches**](/glossar/branch/) und [Cloudflare](/glossar/cloudflare-pages/)-**Preview**-URLs ([Folge 012](/artikel/folge-012-cloudflare-branches/)).
+So testest du Änderungen **ohne** jedes Mal auf **[main](/glossar/main/)** zu pushen. Für öffentliche Previews nutzt du weiter [**Branches**](/glossar/branch/) und [Cloudflare](/glossar/cloudflare-pages/)-URLs mit „Preview“ (Vorschau) ([Folge 012](/artikel/folge-012-cloudflare-branches/)).
 
 ## Was npm hier nicht ist
 

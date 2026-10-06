@@ -1,2 +1,8 @@
 src/content/articles/folge-011-cloudflare-setup/index.md:23 — **R2 / Databases**: exakter Cloudflare-Navigationslabel im Dashboard nicht in der Verifizierungsliste geprüft
 src/content/articles/folge-011-cloudflare-setup/index.md:24 — **Ask AI**: exakter Cloudflare-UI-Name für den KI-Assistenten nicht in der Verifizierungsliste geprüft
+src/content/articles/folge-016-artikel-pull-request/index.md:25 — „Description“: GitHub-PR-Oberfläche je nach Locale; englisches Label laut [GitHub Docs](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+src/content/articles/folge-017-github-ssh/index.md:60 — „SSH and GPG keys“: exakter Menütext laut [GitHub Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account), deutsche Oberfläche kann abweichen
+src/content/articles/folge-021-bilder-suchen-nutzen/index.md:47 — „Media“ / „Library“ in Medienbibliothek: Sveltia-/Decap-Medien-UI nicht gegen Live-/admin geprüft
+src/content/articles/folge-021-bilder-suchen-nutzen/index.md:51 — „Replace“: Button-Label in Sveltia-Medieneditor nicht gegen Live-/admin geprüft
+src/content/articles/folge-021-bilder-suchen-nutzen/index.md:40 — gThumb „Resize“: Menütext abhängig von GNOME/gThumb-Locale (DE oft „Größe ändern“)
+src/content/articles/folge-021-bilder-suchen-nutzen/index.md:29 — Freepik-Filter „Free“ / „License“ / „AI generated“: UI-Labels können sich je nach Sprache der Website ändern

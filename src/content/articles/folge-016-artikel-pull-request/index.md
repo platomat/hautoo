@@ -2,7 +2,7 @@
 title: 'Folge 016: Vierzehn Artikel im PR: Preview, Merge und Listing-Kontrolle'
 summary: Branch statt main, Cloudflare-Preview in der Mail, grüne Checks und Merge. Warum die Artikel-Seite lieber ein CMS-Listing will.
 pubDate: 2026-10-04 19:11:35+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - cursor
@@ -16,15 +16,15 @@ seo:
   seo_description: 'Großer PR mit Cloudflare Preview, grünen Checks und Merge auf main. Folge 016: Artikel Listing redaktionell steuern statt alles automatisch listen.'
 ---
 
-Der Agent hat über Nacht gearbeitet (Ablauf in [Folge 015](/artikel/folge-015-transkript-artikel/)): Mail von [**Cloudflare**](/glossar/cloudflare-pages/), dass ein **Zweig** gebaut wurde (z. B. ein [Branch](/glossar/branch/) wie `cursor/screencast-articles-e016`, Name variiert). Nicht auf **[main](/glossar/main/)** gepusht, sondern eigener [**Branch**](/glossar/branch/) mit vielen neuen Artikeln, nachgeschärftem Ton und automatischen **Checks**.
+Der Agent hat über Nacht gearbeitet (Ablauf in [Folge 015](/artikel/folge-015-transkript-artikel/)): Mail von [**Cloudflare**](/glossar/cloudflare-pages/), dass ein **Zweig** gebaut wurde (z. B. ein [Branch](/glossar/branch/) wie `cursor/screencast-articles-e016`, Name variiert). Nicht auf **[main](/glossar/main/)** gepusht, sondern eigener [**Branch**](/glossar/branch/) mit vielen neuen Artikeln, nachgeschärftem Ton und automatischen „Checks“ (Prüfungen).
 
 ## Pull Request lesen
 
 Auf [GitHub](/glossar/github/) deinen [**Pull Request**](/glossar/pull-request/) öffnen (Branch des Agents, z. B. `cursor/screencast-articles-…`):
 
-- **Beschreibung** (Body) mit Titeln, Slugs und Hinweisen auf unklare Transkript-Stellen.
+- „Description“ (Beschreibung im Pull Request) mit Titeln, Slugs und Hinweisen auf unklare Transkript-Stellen.
 - **[Preview-Link](/glossar/preview-url/)** (derselbe wie in der Build-Mail): die Site, wie sie mit dem Branch aussehen würde.
-- **CI**: z. B. [`npm run build`](/glossar/build/) im Workflow. Scheitert der [Build](/glossar/build/), landet nichts Sinnvolles auf main.
+- „CI“ (automatisierte Integrationstests): z. B. [`npm run build`](/glossar/build/) im Workflow. Scheitert der [Build](/glossar/build/), landet nichts Sinnvolles auf main.
 - **Konflikt-Check**, falls parallel auf `main` etwas geändert wurde.
 
 {{repodoc path="docs/entwicklung/README.md" title="Lokale Entwicklung" description="Build, Tests und typischer PR-Ablauf lokal."}}
@@ -33,13 +33,13 @@ Zwei [Commits](/glossar/commit/) sind normal: erst Anlegen der Artikel, dann Sti
 
 ## Merge und Live
 
-Grüne Checks abwarten, dann [**Merge**](/glossar/merge/) und **Confirm** (der normale Merge-Button, kein [Rebase](/glossar/rebase/) nötig). Bei Konflikten dem Agenten die PR-Nummer nennen (z. B. „PR #24 hat Konflikte“). **[Cloudflare](/glossar/cloudflare-pages/)** baut **main** neu. Lokal: `git pull`, ggf. **Rebase**, wenn du zwischendurch selbst committet hast.
+Grüne Checks abwarten, dann [**Merge**](/glossar/merge/) und „Confirm merge“ (Merge bestätigen; der normale Merge-Button, kein [Rebase](/glossar/rebase/) nötig). Bei Konflikten dem Agenten die PR-Nummer nennen (z. B. „PR #24 hat Konflikte“). **[Cloudflare](/glossar/cloudflare-pages/)** baut `main` neu. Lokal: `git pull`, ggf. [Rebase](/glossar/rebase/), wenn du zwischendurch selbst committet hast.
 
 Parallel kannst du Layout anpassen (Hero tiefer, Inhaltsbreite wie auf der Startseite). Die **Artikelübersicht** und Tag-Seiten nutzen die neuen Inhalte.
 
 ## Artikel-Listing: wo du es willst
 
-Auf der **Startseite** steckt ein **Artikel-Listing**: z. B. die letzten drei, neueste zuerst, **Grid** mit drei Spalten.
+Auf der **Startseite** steckt ein **Artikel-Listing**: z. B. die letzten drei, neueste zuerst, „Grid“ (Kartenlayout) mit drei Spalten.
 
 Auf der [Route](/glossar/route/) **Artikel** war der Wunsch anders: nicht „erst fester Seitentext, dann automatisch alle Artikel darunter“, sondern **redaktionell** entscheiden, **wo** eine Liste hinkommt und mit welcher Sortierung/Anzahl, wie auf der Startseite. Das ist ein separates [Issue](/glossar/issue/) an den Agenten (Umsetzung u. a. in [Folge 019](/artikel/folge-019-impressum-komponenten/)).
 
