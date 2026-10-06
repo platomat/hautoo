@@ -1,0 +1,9 @@
+# UI strings not fully verified against live UI (2026-10-07)
+# Add file:line when found in content.
+
+Collections | Sveltia CMS generic sidebar label | hautuu overrides collection labels in config.yml; upstream Sveltia UI not checked in this run
+Preview Link | Firefox EN locale only | DE UI verified as Link-Vorschau; EN menu string not re-fetched from Mozilla in agent run
+Retry (DE wording) | Cloudflare Pages deployment actions | used in Folge 014; exact German Cloudflare dashboard label not opened live
+Start Recording / Stop Recording | OBS Studio control dock | standard OBS strings; locale/version may differ (logged in glossar/obs.md)
+Production | Cloudflare Pages vs Preview | used in FAQ prose; dashboard capitalization not verified live
+Sign in | Sveltia CMS online login | mentioned in Folge 013, not part of this edit batch

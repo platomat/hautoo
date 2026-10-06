@@ -27,7 +27,7 @@ Zwischen den Sessions ist viel passiert: **Menüs** als [Collection](/glossar/co
 
 ## Agent starten
 
-Starte den [**Cloud Agent**](/glossar/cloud-agent/) in [Cursor](/glossar/cursor/) (siehe **New Agent** in [Folge 009](/artikel/folge-009-cursor-abo/)) und prüfe, ob er das [**Repository**](/glossar/repository/) auf [GitHub](/glossar/github/) sehen und beschreiben darf — sonst GitHub-Zugriff in den Cursor-Account-Einstellungen nachziehen. Private Repos und [SSH-Keys](/glossar/ssh-key/): [Folge 017](/artikel/folge-017-github-ssh/).
+Starte den [**Cloud Agent**](/glossar/cloud-agent/) in [Cursor](/glossar/cursor/) (siehe „New Agent“ (Neuer Agent) in [Folge 009](/artikel/folge-009-cursor-abo/)) und prüfe, ob er das [**Repository**](/glossar/repository/) auf [GitHub](/glossar/github/) sehen und beschreiben darf — sonst GitHub-Zugriff in den Cursor-Account-Einstellungen nachziehen. Private Repos und [SSH-Keys](/glossar/ssh-key/): [Folge 017](/artikel/folge-017-github-ssh/).
 
 Dann die Anweisung: Ordner mit Transkripten anhängen oder benennen, **pro Video ein Artikel**, Beispielartikel löschen, **Video-Platzhalter** im [Frontmatter](/glossar/frontmatter/) oder Body vorsehen, **kein direkter [Push](/glossar/push/) auf [main](/glossar/main/)**, sondern [Branch](/glossar/branch/) und PR.
 

@@ -2,7 +2,7 @@
 title: 'Folge 011: Von GitHub ins Netz: Cloudflare Pages in echten Schritten'
 summary: Repo verbinden, Astro bauen lassen, eigene Subdomain drauf. An der Commit-ID erkennst du, was wirklich live ist.
 pubDate: 2026-10-04 00:22:44+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - cloudflare
@@ -19,7 +19,7 @@ Bisher: lokal und [GitHub](/glossar/github/). Jetzt wird’s öffentlich: [**Clo
 
 ## Begriffe ohne Panik
 
-- **Workers & Pages** unter „Compute“. **Pages** = statische Sites aus [Git](/glossar/git/) (dein [**Frontend**](/glossar/frontend/)), passt zu [**Astro**](/glossar/astro/). [**Workers**](/glossar/cloudflare-worker/) = Extra-Logik am Edge (später z. B. [CMS](/glossar/cms/)-Login; [OAuth](/glossar/oauth/)-Brücke: [Folge 014](/artikel/folge-014-sveltia-worker/)).
+- „Workers & Pages“ (Workers und Pages) unter „Compute“. „Pages“ (statische Websites) = statische Sites aus [Git](/glossar/git/) (dein [**Frontend**](/glossar/frontend/)), passt zu [**Astro**](/glossar/astro/). [**Workers**](/glossar/cloudflare-worker/) = Extra-Logik am Edge (später z. B. [CMS](/glossar/cms/)-Login; [OAuth](/glossar/oauth/)-Brücke: [Folge 014](/artikel/folge-014-sveltia-worker/)).
 - **R2 / Databases**: für hautuu erst mal egal, aber gut zu wissen.
 - **Ask AI** in Cloudflare. Deutsch geht, hilft bei DNS und Regeln.
 
@@ -37,21 +37,21 @@ Cursor → commit → push → GitHub → Cloudflare Build → Live
 
 ## Projekt anlegen
 
-1. [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** (oft unter **Compute**) → **Create** → **Pages** → mit **GitHub** verbinden (**Continue with Pages** / Import Git).
-2. Repo wählen (z. B. hautuu) → **Begin setup**.
-3. **Production branch:** `main`. **Framework preset:** [Astro](/glossar/astro/) (falls angeboten).
-4. **[Build](/glossar/build/) command:** [`npm run build`](/glossar/build/). **Build output directory:** `dist`.
-5. **Save and [Deploy](/glossar/deploy/)** — erst Build, dann Live auf `*.pages.dev`.
+1. [Cloudflare Dashboard](https://dash.cloudflare.com) → „Workers & Pages“ → „Compute“ (Compute) → „Create“ (Erstellen) → „Pages“ → mit **GitHub** verbinden („Continue with Pages“ (Mit Pages fortfahren) / Import Git).
+2. Repo wählen (z. B. hautuu) → „Begin setup“ (Einrichtung starten).
+3. „Production branch:“ (Produktions-Branch) `main`. „Framework preset:“ (Framework-Voreinstellung) [Astro](/glossar/astro/) (falls angeboten).
+4. „[Build](/glossar/build/) command:“ (Build-Befehl) [`npm run build`](/glossar/build/). „Build output directory:“ (Build-Ausgabeordner) `dist`.
+5. „Save and [Deploy](/glossar/deploy/)“ (Speichern und bereitstellen) — erst Build, dann Live auf `*.pages.dev`.
 
-Im Setup-Assistenten fehlt oft die Node-Version: danach im Projekt **Settings** → **Environment variables** (Production und Preview) `NODE_VERSION` = `22` setzen ([Cloudflare Build configuration](https://developers.cloudflare.com/pages/configuration/build-configuration/#environment-variables), `package.json` verlangt Node ≥ 22.12).
+Im Setup-Assistenten fehlt oft die Node-Version: danach im Projekt „Settings“ (Einstellungen) → „Environment variables“ (Umgebungsvariablen) (Production und Preview) `NODE_VERSION` = `22` setzen ([Cloudflare Build configuration](https://developers.cloudflare.com/pages/configuration/build-configuration/#environment-variables), `package.json` verlangt Node ≥ 22.12).
 
-Erfolg prüfen unter **Deployments** (Link im Log). `npm run build` lokal braucht [Node](/glossar/nodejs/) ([Folge 018](/artikel/folge-018-node-npm/)).
+Erfolg prüfen unter „Deployments“ (Bereitstellungen) (Link im Log). `npm run build` lokal braucht [Node](/glossar/nodejs/) ([Folge 018](/artikel/folge-018-node-npm/)).
 
 {{repodoc path="docs/sveltia/zugang-cloudflare.md" title="Sveltia auf Cloudflare" description="CMS-Zugang nach dem Livegang einrichten."}}
 
 ## Eigene Domain
 
-**Custom domains** → z. B. `hautoo.storyofai.net`. [Cloudflare](/glossar/cloudflare-pages/) legt oft **CNAME** und **TLS** automatisch an, wenn die Zone schon dort liegt.
+„Custom domains“ (Eigene Domains) → z. B. `hautoo.storyofai.net`. [Cloudflare](/glossar/cloudflare-pages/) legt oft **CNAME** und **TLS** automatisch an, wenn die Zone schon dort liegt.
 
 ## Welche Version ist live?
 

@@ -13,25 +13,25 @@ seo:
   seo_description: 'Cursor Usage verstehen: Token Verbrauch, Auto Modus und wann ein Upgrade sinnvoller ist als On Demand. Folge 009 zu Kosten und Kontrolle beim KI Coding.'
 ---
 
-KI frisst Rechenzeit. In **[Cursor](/glossar/cursor/)** im **Account** siehst du die Verbrauchs-Balken (unter **Spending**): **Composer** / **Auto** frisst das Hauptkontingent, stärkere Modelle den zweiten Balken.
+KI frisst Rechenzeit. In **[Cursor](/glossar/cursor/)** im „Account“ (Konto) siehst du die Verbrauchs-Balken (unter „Spending“ (Ausgaben)): „Composer“ (Composer-Modus) / „Auto“ (Automatik) frisst das Hauptkontingent, stärkere Modelle den zweiten Balken.
 
 ## Die Balken verstehen
 
 - Verschiedene Pläne (z. B. Stufen um 20 $/60 $; aktuelle Preise auf cursor.com prüfen).
-- **Composer / Auto:** Alltag, frisst ein Kontingent pro Periode.
+- „Composer“ / „Auto“: Alltag, frisst ein Kontingent pro Periode.
 - **Stärkere Modelle** („Thinking“, großes **Kontextfenster**): extra Budget, wenn Auto zu lasch ist.
 - **Kontextfenster** = wie viel Text/Code das Modell auf einmal „im Kopf“ hat. Größer = mehr **Tokens** = teurer.
 
 ## Cloud Agents vs. lokal
 
-[**Cloud Agents**](/glossar/cloud-agent/) laufen nicht auf deiner CPU: **New Agent** → **Start Agent**, Aufgabe stellen, am Ende oft ein [**Pull Request**](/glossar/pull-request/) auf [GitHub](/glossar/github/). Workflow mit Transkripten: [Folge 015](/artikel/folge-015-transkript-artikel/) und [Folge 016](/artikel/folge-016-artikel-pull-request/). Praktisch, aber **deutlich mehr Tokens** als lokal ein kleines Skript laufen lassen.
+[**Cloud Agents**](/glossar/cloud-agent/) laufen nicht auf deiner CPU: „New Agent“ (Neuer Agent) → „Start Agent“ (Agent starten), Aufgabe stellen, am Ende oft ein [**Pull Request**](/glossar/pull-request/) auf [GitHub](/glossar/github/). Workflow mit Transkripten: [Folge 015](/artikel/folge-015-transkript-artikel/) und [Folge 016](/artikel/folge-016-artikel-pull-request/). Praktisch, aber **deutlich mehr Tokens** als lokal ein kleines Skript laufen lassen.
 
 ## On-Demand: Finger weg, wenn’s geht
 
 {{repodoc path="docs/cursor/README.md" title="Cursor (KI)" description="Abo, Usage und Kosten im Überblick."}}
 
 
-Paket leer? **On-Demand** nachkaufen geht, aber schon wenige kleine Aufgaben können teuer werden. Besser: kurz **upgraden** oder bis zur neuen Periode warten.
+Paket leer? „On-Demand“ (Bedarfstarif) nachkaufen geht, aber schon wenige kleine Aufgaben können teuer werden. Besser: kurz **upgraden** oder bis zur neuen Periode warten.
 
 Im Dashboard siehst du Tokens pro Anfrage — 40-Millionen-Monster sind möglich, wenn du halb das [Repo](/glossar/repository/) reinwirfst.
 

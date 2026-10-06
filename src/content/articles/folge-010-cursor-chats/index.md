@@ -2,7 +2,7 @@
 title: 'Folge 010: Zwei Chats, zwei Rollen: Erst meckern, dann fixen'
 summary: 'Kein Extra-Bot nötig: ein Chat sucht Fehler, der andere räumt auf. So bleibt der Kopf frei.'
 pubDate: 2026-10-04 00:14:37+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - cursor
@@ -28,7 +28,7 @@ Zwei Köpfe, zwei Aufgaben, statt einem endlosen Monolog. [Ask](/glossar/cursor-
 
 ## Chat weggeklickt?
 
-In der Historie (Uhr-Symbol / Archiv) findest du alte Gespräche wieder. Oder **Export Transcript** nach `docs/sessions/`, und den Ordner in `.gitignore`.
+In der Historie (Uhr-Symbol / Archiv) findest du alte Gespräche wieder. Oder „Export Transcript“ (Transkript exportieren) nach `docs/sessions/`, und den Ordner in `.gitignore`.
 
 Ein optionaler **Grok-Bot** in einer VM ist nice-to-have. Zwei Chats mit klaren Rollen reichen völlig.
 
