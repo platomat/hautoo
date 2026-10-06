@@ -15,7 +15,7 @@ seo:
   seo_description: Nach dem Clone Node 22 installieren, npm install und npm run dev für Astro lokal. Folge 018 bringt deine Entwicklungsumgebung zum Laufen.
 ---
 
-Das [Repo](/glossar/repository/) enthält Quellcode und `package.json`, aber nicht den ganzen **`node_modules`**-Berg. In deiner lokalen [IDE](/glossar/ide/) ([Entwicklungsumgebung](/glossar/ide/)) brauchst du [**Node.js**](/glossar/nodejs/) (für hautuu empfohlen: **Version 22**) und npm, damit `npm run dev` und `npm run build` laufen.
+Das [Repo](/glossar/repository/) enthält Quellcode und `package.json`, aber nicht den ganzen **`node_modules`**-Berg. In deiner lokalen [IDE](/glossar/ide/) ([Entwicklungsumgebung](/glossar/ide/)) brauchst du [**Node.js**](/glossar/nodejs/) (für hautuu empfohlen: **Version 22**) und [npm](/glossar/npm/), damit `npm run dev` und `npm run build` laufen.
 
 {{repodoc path="docs/astro/README.md" title="Astro" description="Framework, Build-Befehle und Ausgabeordner."}}
 
@@ -30,7 +30,7 @@ sudo apt update
 sudo apt install curl
 ```
 
-Kaputte Paketlisten auf einem frisch eingerichteten Rechner fixst du ggf. mit `sudo apt-get update` und den Hinweisen aus `apt` (broken packages, fix-missing). Danach das [Node](/glossar/nodejs/)-Skript erneut ausführen. Das Setup legt oft [**nvm**](/glossar/nvm/) mit, sodass mehrere Node-Versionen parallel möglich sind.
+Kaputte Paketlisten auf einem frisch eingerichteten Rechner fixst du ggf. mit `sudo apt-get update` und den Hinweisen aus `apt` (broken packages, fix-missing). Danach das [Node](/glossar/nodejs/)-Skript erneut ausführen. Das Setup legt oft [**nvm**](/glossar/nvm/) mit, sodass mehrere [Node](/glossar/nodejs/)-Versionen parallel möglich sind.
 
 Prüfen:
 
@@ -49,12 +49,12 @@ npm install
 npm run dev
 ```
 
-[`npm install`](/glossar/npm/) lädt alle in `package.json` genannten Pakete ([Astro](/glossar/astro/), [Sveltia](/glossar/sveltia/)-[Build](/glossar/build/)-Tools, …). Das Tool ist eine [CLI](/glossar/cli/). `npm run dev` baut die Site im **Entwicklungsmodus** und zeigt eine lokale URL (oft `http://localhost:4321`). Link im [Terminal](/glossar/terminal/) anklicken oder URL kopieren; CMS-Vorschau dann unter `/admin/`.
+[`npm install`](/glossar/npm/) lädt alle in `package.json` genannten Pakete ([Astro](/glossar/astro/), [Sveltia](/glossar/sveltia/)-[Build](/glossar/build/)-Tools, …). Das Tool ist eine [CLI](/glossar/cli/). `npm run dev` baut die Site im **Entwicklungsmodus** und zeigt eine lokale URL (oft `http://localhost:4321`). Link im [Terminal](/glossar/terminal/) anklicken oder URL kopieren; [CMS](/glossar/cms/)-Vorschau dann unter `/admin/`.
 
 So testest du Änderungen **ohne** jedes Mal auf **[main](/glossar/main/)** zu pushen. Für öffentliche Previews nutzt du weiter [**Branches**](/glossar/branch/) und [Cloudflare](/glossar/cloudflare-pages/)-URLs mit „Preview“ (Vorschau) ([Folge 012](/artikel/folge-012-cloudflare-branches/)).
 
 ## Was npm hier nicht ist
 
-Du hostest die fertige Site nicht mit `npm run dev`. [Production](/glossar/production/) läuft über [**Cloudflare Pages**](/glossar/cloudflare-pages/) nach [Push](/glossar/push/) ([Folge 011](/artikel/folge-011-cloudflare-setup/)). Lokal ist npm nur Werkzeugkiste: installieren, entwickeln, `npm run build` vor dem [Commit](/glossar/commit/) wenn du den Produktionsbuild prüfen willst.
+Du hostest die fertige Site nicht mit `npm run dev`. [Production](/glossar/production/) läuft über [**Cloudflare Pages**](/glossar/cloudflare-pages/) nach [Push](/glossar/push/) ([Folge 011](/artikel/folge-011-cloudflare-setup/)). Lokal ist npm nur Werkzeugkiste: installieren, entwickeln, `npm run build` vor dem [Commit](/glossar/commit/) wenn du den Produktions[build](/glossar/build/) prüfen willst.
 
-<!-- Quelle: 2026-10-04--20-22-22--obs-screencast - hautoo - 018 - [nvm](/glossar/nvm/), [npm](/glossar/npm/), node.txt -->
+<!-- Quelle: 2026-10-04--20-22-22--obs-screencast - hautoo - 018 - nvm, npm, node.txt -->
