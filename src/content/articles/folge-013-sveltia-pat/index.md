@@ -36,7 +36,7 @@ Speichern = Datei lokal geändert, noch **nicht** live.
 Ein [**PAT**](/glossar/pat/) ist ein persönlicher **Zugangsschlüssel** für [GitHub](/glossar/github/):
 
 1. [GitHub](/glossar/github/) **Settings** → **Developer settings** → **Personal access tokens** → neuen Token erzeugen (z. B. Beschreibung „Sveltia CMS“, Ablauf 90 Tage).
-2. Nur das hautuu-[Repo](/glossar/repository/) (**only select repositories**), Berechtigung **Contents: Read and write**.
+2. Unter „Repository access“ „Only select repositories“ und nur das hautuu-[Repo](/glossar/repository/) auswählen; Berechtigung „Contents: Read and write“.
 3. Token **einmal** kopieren — nach Reload unsichtbar. Weg = neuen erstellen.
 
 In Sveltia online: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar/commit/) auf GitHub → [Cloudflare](/glossar/cloudflare-pages/) baut [`main`](/glossar/main/).

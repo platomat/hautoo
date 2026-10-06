@@ -59,6 +59,6 @@ Vergleich die ersten paar Zeichen der [Commit](/glossar/commit/)-ID (des Hashs) 
 
 Burger-Menü nur lokal? Live zeigt’s noch nicht, bis du pushst. Test-Zweige und [Preview-URLs](/glossar/preview-url/): [Folge 012](/artikel/folge-012-cloudflare-branches/).
 
-GitHub-App: bei der Cloudflare-Installation **only select repositories** und nur das hautuu-[Repo](/glossar/repository/) freigeben (nicht „all repositories“).
+Bei der Installation der GitHub-App für Cloudflare wählst du „Only select repositories“ (nur ausgewählte Repositories) und gibst nur das hautuu-[Repo](/glossar/repository/) frei, nicht „All repositories“.
 
 <!-- Quelle: 2026-10-04--00-22-44--obs-screencast - hautoo - cloudflare - setup.txt -->
