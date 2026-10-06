@@ -40,6 +40,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches Repo a
 - **Menüs** als eigene Collection (`main`, `footer-legal`) statt Flags an einzelnen Seiten.
 - **Entwurfsstatus** (`draft`, `published`, `future`, `trash`) für Pages, Artikel und Glossar.
 - **Inhaltsverzeichnis** global unter **Konfiguration** → „Content“ → **Inhaltsverzeichnis (TOC)** (Seiten/Artikel: an/aus, Ebenen, Titel) und optional pro Eintrag überschreibbar.
+- **Inhaltsbreite** in drei Stufen (Standard, breit, vollbreit): global unter Content → Breite und pro Seite/Artikel per `contentWidth`.
 - **Seiten-Header und Footer-Code** für kleine HTML- oder CSS-Snippets nur auf einer Seite.
 - **Zugang über Cloudflare Worker** mit [OAuth](/glossar/oauth/) statt nur PAT ([Folge 014](/artikel/folge-014-sveltia-worker/)).
 
@@ -80,7 +81,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches Repo a
 - **Bildnachweise gesammelt** am Ende des **Impressums** (automatisch aus Pages und Artikeln, [Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum)).
 - **Bilder neben dem Content** (Variante B), Astro-Optimierung inklusive CMS-Pfade unter `/assets/` ([Folge 021](/artikel/folge-021-bilder-suchen-nutzen/)).
 - **Externe Links** öffnen in neuem Tab; interne bleiben in der Site.
-- **Artikel-Navigation** (älter/neuer) und breitere Spalte bei Listing-Embeds.
+- **Artikel-Navigation** (älter/neuer); Listing-Seiten nutzen die Breite **breit** (oder vollbreit), wählbar im CMS.
 
 ## Deployment und Workflow
 

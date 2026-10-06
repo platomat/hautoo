@@ -23,12 +23,12 @@ Kurzliste dessen, was auf `main` schon umgesetzt ist (Details und Erläuterungen
 | Bereich | Punkte |
 | --- | --- |
 | **Inhalte** | 21 Screencast-Folgen als Artikel, statische Pages, Features-Seite, Redaktionsregeln in `docs/redaktion/` |
-| **CMS** | Sveltia `/admin/`, Collections inkl. Bausteine (`blocks`), Menüs, **Config** (`site.yaml`: Design/Content), Entwurfsstatus, globales TOC mit lokaler Überschreibung, Head/Footer-Code, Worker-OAuth-Zugang |
+| **CMS** | Sveltia `/admin/`, Collections inkl. Bausteine (`blocks`), Menüs, **Config** (`site.yaml`: Design/Content), Entwurfsstatus, globales TOC und **Inhaltsbreite** (3 Stufen) mit lokaler Überschreibung, Head/Footer-Code, Worker-OAuth-Zugang |
 | **Glossar & FAQ** | Glossar mit verwandten Artikeln/Tags, Querverlink-Skript und Erstlink-Check, FAQ offen (kein Accordion), Tag-Seiten |
 | **Embeds** | Bausteine, Artikel-/Glossar-/Tag-Listings, Tagwolke, Trennlinie, Kontakt-E-Mail aus ENV, Repo-Docs-Box; Embed-Check (auch Listen-Regel) |
 | **SEO** | `seo`-Felder, Open Graph/Twitter inkl. OG-Bild (1200×630), Canonical, Sitemap, Lesezeit, noindex für Impressum/Datenschutz |
 | **Suche & UI** | MiniSearch im Header, Artikel-Übersicht mit Listing-Embed und Kartenfeldern |
-| **Design** | Dark Theme mit CSS-Variablen, Breakpoints, **Sticky Header** (pro Gerät, Höhen aus Config), Vollbild-Hintergrund, **Bildnachweise** gesammelt auf dem Impressum |
+| **Design** | Dark Theme mit CSS-Variablen, Breakpoints, **Sticky Header** (pro Gerät, Höhen aus Config), Inhaltsbreite Standard/breit/vollbreit, Vollbild-Hintergrund, **Bildnachweise** gesammelt auf dem Impressum |
 | **Deploy** | Astro-Build, Cloudflare Pages aus GitHub, Preview/Rollback, Cache-Header und Build-ID |
 | **Qualität & Doku** | `check-content-links.py` (inkl. Embeds), `docs/`, Cursor-Regeln, Glossar-/SEO-Hilfsskripte |
 

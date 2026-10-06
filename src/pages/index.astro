@@ -3,10 +3,9 @@ import { getEntry, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CmsContent from "../components/CmsContent.astro";
 import PageHero from "../components/PageHero.astro";
-import {
-	contentNeedsWideLayout,
-	hasContentEmbeds,
-} from "../lib/content-embeds";
+import { contentWidthClass } from "../cms/fields/content-width";
+import { hasContentEmbeds } from "../lib/content-embeds";
+import { resolveContentWidth } from "../lib/content-width";
 import { resolveCmsImage } from "../lib/cms-image";
 import { isPagePublic } from "../lib/pages";
 import { resolveTocForCollection } from "../lib/site-config";
@@ -24,7 +23,8 @@ const backgroundImage = resolveCmsImage(
 	page.data.backgroundImage,
 	`content/pages/${page.id}/`,
 );
-const wide = await contentNeedsWideLayout(page.body);
+const contentWidth = await resolveContentWidth("pages", page.data, page.body);
+const widthClass = contentWidthClass(contentWidth);
 const toc = await resolveTocForCollection("pages", page.data);
 /** Dynamic import: avoid shipping TOC CSS on pages that do not show a TOC. */
 const TableOfContents = toc.show
@@ -42,7 +42,7 @@ const TableOfContents = toc.show
 	headCode={page.data.headCode}
 	footerCode={page.data.footerCode}
 >
-	<main class:list={["page", { "page--wide": wide }]}>
+	<main class:list={["page", widthClass]}>
 		<article>
 			<PageHero title={page.data.title} description={page.data.description} />
 			{TableOfContents && (

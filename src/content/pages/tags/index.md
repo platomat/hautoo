@@ -7,6 +7,7 @@ modifiedDate: 2026-10-04
 backgroundImage: /assets/casey-horner-mLPjQs-YK5g-unsplash.webp
 backgroundOverlay: 77
 backgroundAttribution: Photo by <a href="https://unsplash.com/@mischievous_penguins?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Casey Horner</a> on <a href="https://unsplash.com/photos/brown-house-overseeing-stars-mLPjQs-YK5g?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+contentWidth: wide
 seo:
   index_visibility: index
   follow_visibility: follow

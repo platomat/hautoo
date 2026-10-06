@@ -151,6 +151,28 @@ collections:
                         label: TOC-Titel
                         widget: string
                         default: Inhalt
+              - name: width
+                label: Inhaltsbreite
+                widget: object
+                collapsed: false
+                hint: "Default-Breite, wenn Seite/Artikel kein eigenes Feld setzt und kein Listing-Embed die Breite auf „breit“ hebt."
+                fields:
+                  - name: pages
+                    label: Seiten (Standard)
+                    widget: select
+                    options:
+                      - { label: Standard (Lesespalte), value: default }
+                      - { label: Breit, value: wide }
+                      - { label: Vollbreit, value: full }
+                    default: default
+                  - name: articles
+                    label: Artikel (Standard)
+                    widget: select
+                    options:
+                      - { label: Standard (Lesespalte), value: default }
+                      - { label: Breit, value: wide }
+                      - { label: Vollbreit, value: full }
+                    default: default
 
   - name: pages
     label: Seiten
@@ -248,6 +270,16 @@ collections:
           - { label: h4, value: h4 }
         required: false
         hint: "Leer = Ebenen aus der globalen Config. Sonst lokale Auswahl."
+      - &field_content_width
+        name: contentWidth
+        label: Inhaltsbreite
+        widget: select
+        required: false
+        options:
+          - { label: Standard (Lesespalte), value: default }
+          - { label: Breit, value: wide }
+          - { label: Vollbreit, value: full }
+        hint: "Leer = globale Config (Content → Breite). Listing-Embeds wählen ohne gesetztes Feld automatisch „Breit“."
       - name: body
         label: Inhalt
         widget: markdown
@@ -453,6 +485,7 @@ collections:
       - *field_show_toc
       - *field_toc_title
       - *field_toc_levels
+      - *field_content_width
       - name: body
         label: Inhalt
         widget: markdown

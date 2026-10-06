@@ -45,6 +45,7 @@
 	--font-weight-heading: 500;
 	--content-max-width: 42rem;
 	--content-wide-max-width: 64rem;
+	--content-full-max-width: 80rem;
 	--shell-padding-inline: 1.25rem;
 
 	/* Breakpoints (reference tokens; use same px in @media) */
@@ -206,10 +207,19 @@ body.is-nav-locked {
 	padding: 2.5rem var(--shell-padding-inline) 4rem;
 }
 
-/* Wider content (article index, homepage cards, …) */
+/* Editorial widths (`contentWidth`: default | wide | full). */
+.page--width-wide,
 .page--wide,
 .page--with-sidebar {
 	max-width: var(--content-wide-max-width);
+}
+
+.page--width-full {
+	max-width: var(--content-full-max-width);
+}
+
+.page--with-sidebar.page--width-full {
+	max-width: var(--content-full-max-width);
 }
 
 .page-layout {

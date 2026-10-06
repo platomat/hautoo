@@ -5,10 +5,9 @@ import CmsContent from "../components/CmsContent.astro";
 import PageHero from "../components/PageHero.astro";
 import TagSidebar from "../components/TagSidebar.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import {
-	contentNeedsWideLayout,
-	hasContentEmbeds,
-} from "../lib/content-embeds";
+import { contentWidthClass } from "../cms/fields/content-width";
+import { hasContentEmbeds } from "../lib/content-embeds";
+import { resolveContentWidth } from "../lib/content-width";
 import { resolveCmsImage } from "../lib/cms-image";
 import { getPageHref, getPublicPages, indexPagesById } from "../lib/pages";
 import { resolveTocForCollection } from "../lib/site-config";
@@ -40,8 +39,8 @@ const backgroundImage = resolveCmsImage(
 const showBackgroundAttributions = page.id === "impressum";
 /** Artikel overview keeps Tag-Sidebar; listing comes from CMS embed. */
 const showArticleSidebar = page.id === "artikel";
-const wide =
-	showArticleSidebar || (await contentNeedsWideLayout(page.body));
+const contentWidth = await resolveContentWidth("pages", page.data, page.body);
+const widthClass = contentWidthClass(contentWidth);
 const toc = await resolveTocForCollection("pages", page.data);
 /** Dynamic import: avoid shipping TOC CSS on pages that do not show a TOC. */
 const TableOfContents = toc.show
@@ -62,7 +61,8 @@ const TableOfContents = toc.show
 	<main
 		class:list={[
 			"page",
-			{ "page--with-sidebar": showArticleSidebar, "page--wide": wide && !showArticleSidebar },
+			widthClass,
+			{ "page--with-sidebar": showArticleSidebar },
 		]}
 	>
 		{
