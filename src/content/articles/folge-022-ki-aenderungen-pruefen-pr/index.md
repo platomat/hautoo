@@ -32,7 +32,7 @@ Ein zweiter Agent liefert oft einen eigenen [**Branch**](/glossar/branch/) und e
 - Unter `.cursor/rules/` liegen Anweisungen **nur für Agenten**, nicht für Besucher der Website.
 - Unter `docs/` steckt **Redaktions- und Entwickler-Doku** (Meta, nicht der öffentliche Seitentext).
 - Unter `scripts/` hängen **deterministische Checks**, z. B. `check-content-links.py` (Links und Embeds) und `check-content-no-video-hints.py` (Artikel ohne Screencast-Meta-Hinweise). Im PR siehst du „All checks have passed“, wenn [CI](/glossar/ci/) grün ist.
-- Unter `src/content/articles/` tauchen dann die korrigierten **Folgen** auf, plus Seiten wie `/features/`.
+- Die korrigierten **Folgen** liegen unter `src/content/articles/` (je Folge ein Ordner mit `index.md`). Die **Features-Seite** unter `/features/` liegt nicht dort, sondern in `src/content/pages/features/index.md` (Collection **pages**, siehe [Folge 004](/artikel/folge-004-collection-pages/)).
 
 Du musst nicht alle 21+ Artikel komplett neu lesen: konzentrier dich auf **geänderte Dateien** und den Diff. Willst du den Ton einer Zeile ändern, nutze auf [GitHub](/glossar/github/) **„Suggest changes“** (Änderung vorschlagen) an der Zeile, sammle mehrere Vorschläge, dann „Start review“ (Review starten) und am Ende „Submit review“ (Review absenden). So landet z. B. eine präzisere Rollback-Formulierung in [Folge 012](/artikel/folge-012-cloudflare-branches/) **im Branch des PR**, bevor du [mergst](/glossar/merge/).
 
@@ -54,8 +54,8 @@ Wenn du den PR **akzeptierst** ([**Merge**](/glossar/merge/), siehe [Folge 016](
 
 Damit du (oder [Fork](/glossar/fork/)-Nutzer) sehen, **was die Site schon kann**: [Features auf hautoo](https://hautoo.storyofai.net/features/) und die Kurzliste im [README](https://github.com/platomat/hautoo/blob/main/README.md). Neu dazu gekommen u. a.:
 
-- **Konfiguration** im [CMS](/glossar/cms/) (`config` / `site.yaml`): **Design** (z. B. **Sticky Header**, Höhen pro Mobil/Tablet/Desktop) und **Content** (globales **Inhaltsverzeichnis**, pro Seite/Artikel überschreibbar).
-- **Features-Seite** als eigene Page unter `/features/`.
+- **Konfiguration** im [CMS](/glossar/cms/) (Collection `config`, Datei `src/content/config/site.yaml`): **Design** (z. B. **Sticky Header**, Höhen pro Mobil/Tablet/Desktop) und **Content** (globales **Inhaltsverzeichnis**, pro Seite/Artikel überschreibbar).
+- **Features-Seite** live unter `/features/`, Quelle im Repo: `src/content/pages/features/index.md`.
 - **Suche** im Header (Glossar und Inhalte finden, z. B. „Was ist [CSS](/glossar/css/)?“).
 - Angepasstes **Logo** mit Pfad-Animation und Transparenz-Effekt (Tablet/Mobil mitgedacht).
 
