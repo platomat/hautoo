@@ -80,7 +80,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches Repo a
 - **Vollbild-Hintergrund** optional pro Seite oder Artikel, mit Overlay und **Bildnachweis**-Feld (`backgroundAttribution`).
 - **Bildnachweise gesammelt** am Ende des **Impressums** (automatisch aus Pages und Artikeln, [Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum)).
 - **Bilder neben dem Content** (Variante B), Astro-Optimierung inklusive CMS-Pfade unter `/assets/` ([Folge 021](/artikel/folge-021-bilder-suchen-nutzen/)).
-- **Externe Links** öffnen in neuem Tab; interne bleiben in der Site.
+- **Externe Links** öffnen in neuem Tab und zeigen im Inhalt einen kleinen Pfeil (`↗`); im Header und Footer ohne Indikator.
 - **Artikel-Navigation** (älter/neuer); Listing-Seiten nutzen die Breite **breit** (oder vollbreit), wählbar im CMS.
 
 ## Deployment und Workflow

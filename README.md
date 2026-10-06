@@ -28,7 +28,7 @@ Kurzliste dessen, was auf `main` schon umgesetzt ist (Details und Erläuterungen
 | **Embeds** | Bausteine, Artikel-/Glossar-/Tag-Listings, Tagwolke, Trennlinie, Kontakt-E-Mail aus ENV, Repo-Docs-Box; Embed-Check (auch Listen-Regel) |
 | **SEO** | `seo`-Felder, Open Graph/Twitter inkl. OG-Bild (1200×630), Canonical, Sitemap, Lesezeit, noindex für Impressum/Datenschutz |
 | **Suche & UI** | MiniSearch im Header, Artikel-Übersicht mit Listing-Embed und Kartenfeldern |
-| **Design** | Dark Theme mit CSS-Variablen, Breakpoints, **Sticky Header** (pro Gerät, Höhen aus Config), Inhaltsbreite Standard/breit/vollbreit, Vollbild-Hintergrund, **Bildnachweise** gesammelt auf dem Impressum |
+| **Design** | Dark Theme mit CSS-Variablen, Breakpoints, **Sticky Header**, Inhaltsbreite 3 Stufen, externe Links mit Pfeil-Indikator (nicht Header/Footer), Vollbild-Hintergrund, **Bildnachweise** auf dem Impressum |
 | **Deploy** | Astro-Build, Cloudflare Pages aus GitHub, Preview/Rollback, Cache-Header und Build-ID |
 | **Qualität & Doku** | `check-content-links.py` (inkl. Embeds), `docs/`, Cursor-Regeln, Glossar-/SEO-Hilfsskripte |
 

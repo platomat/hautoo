@@ -383,6 +383,24 @@ a:focus-visible {
 	outline-offset: 3px;
 }
 
+/*
+ * External link marker (::after arrow). Scoped to main content so header/footer
+ * stay clean (#54). Markdown externals get target=_blank via hast-external-links.
+ */
+.site-main a[target="_blank"]::after {
+	content: "↗";
+	display: inline;
+	margin-inline-start: 0.2em;
+	font-size: 0.85em;
+	line-height: 1;
+	opacity: 0.85;
+	speak: never;
+}
+
+.site-main a[target="_blank"]:has(> img:only-child)::after {
+	content: none;
+}
+
 code {
 	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 	padding: 0.15em 0.4em;

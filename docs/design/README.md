@@ -48,6 +48,7 @@ Subset mit `pyftsubset` (DE inkl. Umlaute). Preload beider WOFF2 in `BaseLayout`
 - **Keine Unterstreichung** (`text-decoration: none`)
 - Farbe = **Aktionsfarbe** (`--color-action`)
 - Hover: etwas heller (`--color-action-hover`), optional leichte Opacity — weiterhin ohne Unterstreichung
+- **Externe Links** im Inhalt (`target="_blank"`, nicht Header/Footer): kleiner Pfeil `↗` per `::after` (`.site-main a[target="_blank"]::after`)
 - Fokus: sichtbarer Fokusring in Aktionsfarbe (Tastaturbedienbarkeit)
 
 ## Farbpalette
