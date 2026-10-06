@@ -2,7 +2,7 @@
 title: 'Folge 017: Private Repos klonen: SSH-Schlüssel und GitHub'
 summary: Permission denied beim Clone? Schlüsselpaar erzeugen, config anlegen, Public Key bei GitHub hinterlegen, dann klappt git clone.
 pubDate: 2026-10-04 20:01:04+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - github
@@ -15,7 +15,7 @@ seo:
   seo_description: Permission denied beim Clone? SSH Key erzeugen, in GitHub hinterlegen und private Repos sicher klonen. Folge 017 Schritt für Schritt für hautuu.
 ---
 
-Öffentliche [Repos](/glossar/repository/) siehst du ohne Login. **Private** Projekte wie dein echtes hautuu-Repo verweigern [`git clone`](/glossar/clone/) mit **Permission denied**, bis GitHub deinen Rechner kennt. Grundlagen zu [Clone](/glossar/clone/) und [Push](/glossar/push/)/[Pull](/glossar/pull/): [Folge 001](/artikel/folge-001-hautuu-intro/) und [Folge 006](/artikel/folge-006-git-push-pull/). Dafür nutzt du einen [**SSH-Key**](/glossar/ssh-key/) statt Passwort in der URL.
+Öffentliche [Repos](/glossar/repository/) siehst du ohne Login. „Private“ (private Repositories) Projekte wie dein echtes hautuu-Repo verweigern [`git clone`](/glossar/clone/) mit „Permission denied“ (Zugriff verweigert), bis GitHub deinen Rechner kennt. Grundlagen zu [Clone](/glossar/clone/) und [Push](/glossar/push/)/[Pull](/glossar/pull/): [Folge 001](/artikel/folge-001-hautuu-intro/) und [Folge 006](/artikel/folge-006-git-push-pull/). Dafür nutzt du einen [**SSH-Key**](/glossar/ssh-key/) statt Passwort in der URL.
 
 ## Ordner `.ssh`
 
@@ -36,7 +36,7 @@ Mit der [CLI](/glossar/cli/) `ssh-keygen` erzeugst du ein Schlüsselpaar:
 ssh-keygen -t ed25519 -C "deine@email.de"
 ```
 
-Dateiname z. B. nach [GitHub](/glossar/github/)-Benutzer, damit mehrere Keys unterscheidbar sind. **Passphrase** optional (leer = weniger Tipparbeit, aber der private Key ist dann wie ein offenes Passwort auf der Platte).
+Dateiname z. B. nach [GitHub](/glossar/github/)-Benutzer, damit mehrere Keys unterscheidbar sind. „Passphrase“ (Passwort für den Schlüssel) optional (leer = weniger Tipparbeit, aber der private Key ist dann wie ein offenes Passwort auf der Platte).
 
 Ergebnis: **privater** Key (niemals teilen, nicht [committen](/glossar/commit/)) und **öffentlicher** Key (`.pub`). Der Public Key verschlüsselt nur für dich; entschlüsseln kann nur der Private Key.
 
@@ -57,7 +57,7 @@ Host github.com
 
 ## Key bei GitHub
 
-**Settings** auf [**GitHub**](/glossar/github/) → **[SSH](/glossar/ssh/) and GPG keys** → **New SSH key**. Titel (z. B. „Lab-Test“), Inhalt = komplette `.pub`-Datei (beginnt oft mit `ssh-ed25519` oder `ssh-rsa`). **Private** Keys beginnen mit `BEGIN OPENSSH PRIVATE KEY`, die gehören nicht nach GitHub.
+Profilfoto → „Settings“ (Einstellungen) auf [**GitHub**](/glossar/github/) → links „SSH and GPG keys“ ([SSH](/glossar/ssh/)- und GPG-Schlüssel) → „New SSH key“ (neuer SSH-Schlüssel). „Title“ (Titel) z. B. „Lab-Test“, „Key“ (Schlüsselfeld) = kompletter Inhalt der `.pub`-Datei (beginnt oft mit `ssh-ed25519`). Private Keys beginnen mit `BEGIN OPENSSH PRIVATE KEY`, die gehören nicht nach GitHub.
 
 Test:
 

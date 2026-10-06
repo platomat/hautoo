@@ -3,7 +3,7 @@ title: FAQ
 description: Häufige Fragen zu hautuu, Git, Cursor, Cloudflare und dem CMS.
 status: published
 publishDate: 2026-10-04
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 backgroundImage: /assets/sebastien-goldberg-9R_bNdo4-2I-unsplash.webp
 backgroundOverlay: 88
 backgroundAttribution: Photo by <a href="https://unsplash.com/@sebastiengoldberg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sébastien Goldberg</a> on <a href="https://unsplash.com/photos/a-sea-turtle-swimming-in-the-ocean-9R_bNdo4-2I?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
@@ -217,7 +217,7 @@ Der Standardname für dein Remote auf GitHub. [Glossar Origin](/glossar/origin/)
 
 ### Was ist der Unterschied zwischen Ask, Agent und Plan?
 
-**[Ask](/glossar/cursor-modi/)** fragt nur, **Agent** schreibt und nutzt das Terminal, **Plan** plant erst. [Glossar Ask, Agent und Plan](/glossar/cursor-modi/), [Folge 008](/artikel/folge-008-cursor-modi/).
+**[Ask](/glossar/cursor-modi/)** fragt nur, „Agent“ (Agent) schreibt und nutzt das Terminal, „Plan“ (Plan) plant erst. [Glossar Ask, Agent und Plan](/glossar/cursor-modi/), [Folge 008](/artikel/folge-008-cursor-modi/).
 
 ### Warum zwei Chats?
 
@@ -293,7 +293,7 @@ Ja, wenn Pages mit dem Repo verbunden ist. [Folge 011](/artikel/folge-011-cloudf
 
 ### Wie bekomme ich eine eigene Domain?
 
-Unter **Custom domains** in Pages, oft CNAME/TLS über Cloudflare. [Folge 011](/artikel/folge-011-cloudflare-setup/).
+Unter „Custom domains“ (Eigene Domains) in Pages, oft CNAME/TLS über Cloudflare. [Folge 011](/artikel/folge-011-cloudflare-setup/).
 
 ### Was ist die `pages.dev`-URL?
 
@@ -433,7 +433,7 @@ Stichworte zu Artikeln, keine tiefe Kategorie-Hierarchie. [Folge 004](/artikel/f
 
 ### Was ist die Trennlinien-Komponente?
 
-**Separator** im CMS mit Höhe und Breite. [Folge 019](/artikel/folge-019-impressum-komponenten/).
+**Trennlinie** im CMS mit Höhe und Breite. [Folge 019](/artikel/folge-019-impressum-komponenten/).
 
 ### Wie pflege ich das Glossar?
 
@@ -441,7 +441,7 @@ Eigene Collection `glossar`, Übersicht unter `/glossar/`. [Glossar](/glossar/),
 
 ### Kann ich Glossarbegriffe nachschlagen, ohne den Artikel zu verlassen?
 
-In **Firefox** (Desktop, Link Previews ab Version 142): Rechtsklick auf den Glossar-Link → **Link-Vorschau**, oder Link lange gedrückt halten. Die Vorschau öffnet sich in Firefox, der Artikel bleibt im Hintergrund. Lokal mit `localhost` funktioniert das oft nicht; auf der Live-Site schon. [Folge 020](/artikel/folge-020-bausteine-fork/), [Mozilla-Hilfe](https://support.mozilla.org/kb/use-link-previews-firefox).
+In **Firefox** (Desktop, Link Previews ab Version 142): Rechtsklick auf den Glossar-Link → **Link-Vorschau** (englische Oberfläche: „Preview Link“), oder Link lange gedrückt halten. Die Vorschau öffnet sich in Firefox, der Artikel bleibt im Hintergrund. Lokal mit `localhost` funktioniert das oft nicht; auf der Live-Site schon. [Folge 020](/artikel/folge-020-bausteine-fork/), [Mozilla-Hilfe](https://support.mozilla.org/kb/use-link-previews-firefox).
 
 ### Kann ich Artikel aus Videos erzeugen lassen?
 
@@ -557,7 +557,7 @@ Noch nicht auf **main** gemergt und deployed. [Folge 012](/artikel/folge-012-clo
 
 ### Deployment fehlgeschlagen, Retry?
 
-**Retry** baut denselben Commit nochmal, ersetzt keinen fehlenden Build. [Folge 014](/artikel/folge-014-sveltia-worker/).
+„Retry“ (Erneut versuchen) baut denselben Commit nochmal, ersetzt keinen fehlenden Build. [Folge 014](/artikel/folge-014-sveltia-worker/).
 
 ### Der Agent hat 120 Gedankenstriche eingebaut?
 

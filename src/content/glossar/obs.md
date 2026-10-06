@@ -1,7 +1,7 @@
 ---
 title: OBS
 status: published
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 relatedTags:
 - cursor
 definition: OBS Studio, kostenlose Open-Source-Software zum Aufnehmen und Streamen von Bildschirm und Kamera.
@@ -13,5 +13,7 @@ seo:
 ---
 
 **OBS** meist **OBS Studio** ist **kostenlose Open-Source-Software** zum **Aufnehmen** und **Streamen**: Bildschirm, Fenster, Kamera und Mikro in eine Videodatei oder einen Live-Sendekanal. Offizielle Infos und Downloads: [obsproject.com](https://obsproject.com/).
+
+In der Oberfläche startest und stoppst du eine Datei-Aufnahme typischerweise mit „Start Recording“ (Aufnahme starten) und „Stop Recording“ (Aufnahme stoppen) in der Steuerleiste. Die genaue Beschriftung kann je nach OBS-Version und Sprache leicht abweichen.
 
 Bei **hautuu** nimmst du damit oft **Screencasts** für die Folgen auf. Die fertigen Dateien kannst du an **Speech-to-Text**-Tools geben (Rohtext) und den Text an den [**Cloud Agent**](/glossar/cloud-agent/) in [Cursor](/glossar/cursor/) weiterreichen ([Folge 015](/artikel/folge-015-transkript-artikel/)). Produktnamen und Fachwörter in Transkripten sind oft holprig, im [Pull Request](/glossar/pull-request/) nachbearbeiten.

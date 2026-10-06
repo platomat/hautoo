@@ -2,7 +2,7 @@
 title: 'Folge 020: Bausteine, FAQ und hautoo forken'
 summary: Wiederverwendbare CMS Bausteine statt Copy Paste, Überblick über Glossar und FAQ und dein eigenes Projekt per GitHub Fork starten.
 pubDate: 2026-10-04 23:47:38+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - github
@@ -26,9 +26,9 @@ Die Stack-Grafik kennst du von der Startseite. Die willst du an mehreren Stellen
 
 {{block id="stack-uebersicht"}}
 
-Technisch eine Zeile im Body, z. B. `{{block id="stack-uebersicht"}}`. In [Sveltia](/glossar/sveltia/) findest du in der Toolbar **Baustein** (oder du legst den Eintrag unter **Bausteine** an). Änderst du den Baustein, aktualisieren sich alle Stellen beim nächsten [Build](/glossar/build/). Das ist bewusst **[WordPress](/glossar/wordpress/)-ähnlich**, nur dass alles in [Git](/glossar/git/) landet. Details: [Glossar Baustein](/glossar/baustein/), [Folge 004](/artikel/folge-004-collection-pages/).
+Technisch eine Zeile im Body, z. B. `{{block id="stack-uebersicht"}}`. In [Sveltia](/glossar/sveltia/) auf der **Startseite** im Inhalt über die Toolbar **Baustein** und den passenden Block wählen (oder unter Collection **Bausteine** pflegen). Änderst du den Baustein, aktualisieren sich alle Stellen beim nächsten [Build](/glossar/build/). Details: [Glossar Baustein](/glossar/baustein/), [Folge 004](/artikel/folge-004-collection-pages/).
 
-Weitere Bausteine sind z. B. **Kontakt-E-Mail** (`{{contact-email}}`) für Impressum und Datenschutz ohne Klartext im [Repo](/glossar/repository/) ([Folge 019](/artikel/folge-019-impressum-komponenten/#e-mail-schützen)) oder ein **Separator** für optische Trennlinien. **Bildnachweise** zu Seitenhintergründen sammelt die Site automatisch auf dem Impressum ([Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum)).
+Weitere Bausteine sind z. B. **Kontakt-E-Mail** (`{{contact-email}}`) für Impressum und Datenschutz ohne Klartext im [Repo](/glossar/repository/) ([Folge 019](/artikel/folge-019-impressum-komponenten/#e-mail-schützen)) oder eine **Trennlinie** für optische Trennung. **Bildnachweise** zu Seitenhintergründen sammelt die Site automatisch auf dem Impressum ([Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum)).
 
 {{repodoc path="docs/sveltia/collections.md" title="Collections (Sveltia)" description="Bausteine, Pages und alle CMS-Collections."}}
 
@@ -51,7 +51,7 @@ So geht’s laut Mozilla (Stand **Firefox 142**, Desktop):
 - **Rechtsklick** auf den Link → Eintrag **Link-Vorschau** (englische Oberfläche: *Preview Link*).
 - Alternativ den Link **lange gedrückt halten** (Desktop, wie in den [Firefox-142-Release-Notes](https://www.firefox.com/firefox/142.0/releasenotes/) beschrieben).
 
-Die Funktion heißt offiziell **Link Previews** und wird **schrittweise** ausgerollt (z. B. zunächst für einige englische Firefox-Locales und Rechner mit genug freiem RAM). Wenn du den Menüpunkt nicht siehst: Firefox aktualisieren, einmal neu starten und unter **Einstellungen → Allgemein → Surfen** nach einer Option für Link-Vorschau schauen. In Einzelfällen hilft laut Community-Hinweisen `browser.ml.linkPreview.enabled` in `about:config` (nur wenn du weißt, was du tust). Details und Schalter können sich je nach Version ändern, die [Mozilla-Hilfe zu Link Previews](https://support.mozilla.org/kb/use-link-previews-firefox) ist die Referenz.
+Die Funktion heißt offiziell „Link Previews“ (Link-Vorschau) und wird **schrittweise** ausgerollt (z. B. zunächst für einige englische Firefox-Locales und Rechner mit genug freiem RAM). Wenn du den Menüpunkt nicht siehst: Firefox aktualisieren, einmal neu starten und unter **Einstellungen → Allgemein → Surfen** nach einer Option für Link-Vorschau schauen. In Einzelfällen hilft laut Community-Hinweisen `browser.ml.linkPreview.enabled` in `about:config` (nur wenn du weißt, was du tust). Details und Schalter können sich je nach Version ändern, die [Mozilla-Hilfe zu Link Previews](https://support.mozilla.org/kb/use-link-previews-firefox) ist die Referenz.
 
 **Lokal** (`npm run dev`, `localhost`) klappt die Vorschau oft **nicht** (Firefox meldet dann, dass keine Vorschau möglich ist). Auf der **öffentlichen Site** mit SEO-Beschreibung im Glossar ist das Nachschlagen angenehmer. Optional können KI-Stichpunkte in der Vorschau angeboten werden; für Glossar reicht meist die normale Vorschau aus Seiten-Metadaten.
 
@@ -65,13 +65,13 @@ Früher gab es die Idee experimentell in **Firefox Labs** (eigene Tastenkombinat
 
 Wenn dir **Struktur**, **Bausteine**, **Menüs**, **Artikel** und **Seiten** gefallen, musst du nicht bei null anfangen:
 
-1. Auf [GitHub](/glossar/github/) beim Repo **Fork** wählen. Das ist **deine** Kopie unter deinem Account, kein Schreiben im Original ([**Glossar Fork**](/glossar/fork/), Kurz in [Folge 002](/artikel/folge-002-github-issues/)).
+1. Auf der Repo-Seite [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) wählen → „Create fork“ (Fork erstellen; eigene Kopie unter deinem Account, nicht im Original schreiben — [**Glossar Fork**](/glossar/fork/), Kurz in [Folge 002](/artikel/folge-002-github-issues/)).
 2. Deinen Fork **klonen**, in [**Cursor**](/glossar/cursor/) öffnen.
 3. Dem Agenten sagen: Inhalte löschen, Farben und Logo ersetzen, Texte anpassen, [Cloudflare](/glossar/cloudflare-pages/) auf **dein** Repo hängen ([Folge 011](/artikel/folge-011-cloudflare-setup/)).
 
 **Klonen** holt ein Repo auf die Platte. **Forken** legt zuerst deine GitHub-Kopie an. Für „eigene Site auf Basis von hautuu“ ist der Fork der richtige Start.
 
-Hast du ein gutes Feature gebaut, schick einen [**Pull Request**](/glossar/pull-request/) zurück ans Original. Umgekehrt kannst du von hier Updates übernehmen, wenn du magst. Ein **Stern** auf GitHub beim Original ist ein kleines Danke, wenn dir das Projekt hilft.
+Hast du ein gutes Feature gebaut, schick einen [**Pull Request**](/glossar/pull-request/) zurück ans Original. Umgekehrt kannst du von hier Updates übernehmen, wenn du magst. Ein „Star“ (Stern auf GitHub) beim Original ist ein kleines Danke, wenn dir das Projekt hilft.
 
 ## Was du mitnehmen kannst
 

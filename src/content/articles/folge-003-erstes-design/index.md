@@ -2,7 +2,7 @@
 title: 'Folge 003: Erstes Outfit: Ubuntu, Dark Mode und ein Footer, der nicht nervt'
 summary: 'Schrift rein, Farben festlegen, Breakpoints setzen. Plus die goldene Regel: committen ja, pushen nur, wenn du es wirklich willst.'
 pubDate: 2026-10-03 02:16:51+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - design
@@ -29,7 +29,7 @@ In der Design-Doku siehst du die Palette: dunkler Hintergrund, heller Text (nich
 
 ## Terminal-Kniffe
 
-- `npm run dev`. Vorschau an. Wenn [Node](/glossar/nodejs/) oder [npm](/glossar/npm/) noch fehlen: [Folge 018](/artikel/folge-018-node-npm/).
+- `npm run dev`. Im [Terminal](/glossar/terminal/) steht die lokale Adresse, bei Astro meist `http://localhost:4321` (Port kann abweichen). Wenn [Node](/glossar/nodejs/) oder [npm](/glossar/npm/) noch fehlen: [Folge 018](/artikel/folge-018-node-npm/).
 - **Strg+C**: stoppen (im [Terminal](/glossar/terminal/) ist Strg+C nicht Kopieren!).
 - Pfeil **hoch**, letzter Befehl nochmal.
 
@@ -37,7 +37,7 @@ Baut der Agent während der Server läuft, kann die Vorschau hüpfen — kurz st
 
 ## Regeln, die du wirklich willst
 
-Schreib sie in Doku und `.cursor/rules`:
+Schreib sie in Doku und `.cursor/rules/` (siehe `docs/cursor/README.md`):
 
 1. **Niemals von allein pushen.** Commits lokal sind okay. [**Push**](/glossar/push/) nur auf Anweisung, sonst baut [**Cloudflare**](/glossar/cloudflare-pages/) einen Zwischenstand live (Hosting-Setup: [Folge 011](/artikel/folge-011-cloudflare-setup/)).
 2. **CSS nicht jedes Mal neu erfinden**: bestehende Klassen und [CSS-Variablen](/glossar/css-variable/) nutzen.
@@ -53,7 +53,7 @@ Per [Issue](/glossar/issue/) kamen **Pages** (Start, Über uns, Impressum …; [
 
 ## Issues = dein Projekt-Trello
 
-Logo-Issue mit Label **Design**, Favicon **blocked by** Logo, [GitHub](/glossar/github/)-**Views** nur für Design-Tickets. Projektmanagement ohne Extra-Tool.
+Logo-Issue mit Label „Design“, Favicon „blocked by“ (blockiert durch) Logo, [GitHub](/glossar/github/)-„Views“ (gespeicherte Ansichten) nur für Design-Tickets. Projektmanagement ohne Extra-Tool.
 
 ## Breakpoints (global merken)
 

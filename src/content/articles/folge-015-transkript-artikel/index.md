@@ -2,7 +2,7 @@
 title: 'Folge 015: Transkript rein, Artikel raus: Screencast und Cloud Agent'
 summary: Screencasts aufnehmen, fertige Videos in Transkripte wandeln und den Cloud Agenten die Artikel als Pull Request schreiben lassen.
 pubDate: 2026-10-04 04:29:47+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - cursor
@@ -27,7 +27,7 @@ Zwischen den Sessions ist viel passiert: **Menüs** als [Collection](/glossar/co
 
 ## Agent starten
 
-Zuerst prüfen, ob [**Cursor**](/glossar/cursor/) Zugriff auf das [**Repository**](/glossar/repository/) hat. Fehlt der, in den Cursor-Einstellungen nach dem How-To für [GitHub](/glossar/github/)/[OAuth](/glossar/oauth/) schauen. Private Repos und [SSH-Keys](/glossar/ssh-key/): [Folge 017](/artikel/folge-017-github-ssh/).
+Starte den [**Cloud Agent**](/glossar/cloud-agent/) in [Cursor](/glossar/cursor/) (siehe „New Agent“ (Neuer Agent) in [Folge 009](/artikel/folge-009-cursor-abo/)) und prüfe, ob er das [**Repository**](/glossar/repository/) auf [GitHub](/glossar/github/) sehen und beschreiben darf — sonst GitHub-Zugriff in den Cursor-Account-Einstellungen nachziehen. Private Repos und [SSH-Keys](/glossar/ssh-key/): [Folge 017](/artikel/folge-017-github-ssh/).
 
 Dann die Anweisung: Ordner mit Transkripten anhängen oder benennen, **pro Video ein Artikel**, Beispielartikel löschen, **Video-Platzhalter** im [Frontmatter](/glossar/frontmatter/) oder Body vorsehen, **kein direkter [Push](/glossar/push/) auf [main](/glossar/main/)**, sondern [Branch](/glossar/branch/) und PR.
 

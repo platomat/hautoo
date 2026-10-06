@@ -2,7 +2,7 @@
 title: 'Folge 013: /admin aufmachen: lokal ohne Passwort, online mit GitHub-Schlüssel'
 summary: Sveltia fühlt sich wie ein Mini-CMS an, speichert aber nur Dateien. So loggst du dich ein, ohne dass jeder Hans deine Startseite umschreibt.
 pubDate: 2026-10-04 01:09:23+00:00
-modifiedDate: 2026-10-05
+modifiedDate: 2026-10-07
 status: published
 tags:
 - sveltia
@@ -19,11 +19,11 @@ seo:
 
 ## Lokal: `/admin` ohne Login
 
-- `npm run dev`, dann `http://localhost:…/admin/` (Port im [Terminal](/glossar/terminal/)).
+- `npm run dev`, dann im Browser `http://localhost:4321/admin/` (Port steht im [Terminal](/glossar/terminal/), Standard bei Astro oft **4321**).
 - **Chrome/Chromium**: Firefox klappt fürs [**Backend**](/glossar/backend/) oft nicht.
-- Modus **„local“**: Projektordner wählen. **kein Passwort**, die Dateien liegen ja schon bei dir.
+- Modus „local“ (Lokalmodus) wählen, dann den **Projektordner** auf der Platte erlauben — **kein Passwort**, die Dateien liegen ja schon bei dir.
 
-Links die Felder aus der Config, rechts eine simple Preview. [Markdown](/glossar/markdown/), Bilder (z. B. Platzhalter), **SEO**: was im **Browser-Tab** steht vs. Überschrift auf der Seite, **Meta Description** für Link-Vorschau in Telegram & Co.
+Links die Felder aus der Config, rechts eine simple Preview. [Markdown](/glossar/markdown/), Bilder (z. B. Platzhalter), **SEO**: was im **Browser-Tab** steht vs. Überschrift auf der Seite, „Meta Description“ (Meta-Beschreibung) für Link-Vorschau in Telegram & Co.
 
 Speichern = Datei lokal geändert, noch **nicht** live.
 
@@ -35,13 +35,11 @@ Speichern = Datei lokal geändert, noch **nicht** live.
 
 Ein [**PAT**](/glossar/pat/) ist ein persönlicher **Zugangsschlüssel** für [GitHub](/glossar/github/):
 
-1. GitHub → **Settings** → **Developer settings** → **[Personal access tokens](/glossar/pat/)** (fine-grained).
-2. Beschreibung z. B. „Sveltia [CMS](/glossar/cms/) hautuu“.
-3. Nur das hautuu-Repo, **Contents: Read and write**.
-4. Ablauf setzen (z. B. 90 Tage). Schlüssel rotieren.
-5. Token **einmal** kopieren — danach unsichtbar. Weg = neuen erstellen.
+1. [GitHub](/glossar/github/) „Settings“ (Einstellungen) → „Developer settings“ (Entwicklereinstellungen) → „Personal access tokens“ (Persönliche Zugriffstokens) → neuen Token erzeugen (z. B. Beschreibung „Sveltia CMS“, Ablauf 90 Tage).
+2. Unter „Repository access“ „Only select repositories“ und nur das hautuu-[Repo](/glossar/repository/) auswählen; Berechtigung „Contents: Read and write“.
+3. Token **einmal** kopieren — nach Reload unsichtbar. Weg = neuen erstellen.
 
-In Sveltia: Token einfügen → **Sign in**. Speichern → [**Commit**](/glossar/commit/) auf GitHub → [Cloudflare](/glossar/cloudflare-pages/) baut [`main`](/glossar/main/).
+In Sveltia online: Token einfügen → „Sign in“ (Anmelden). Speichern → [**Commit**](/glossar/commit/) auf GitHub → [Cloudflare](/glossar/cloudflare-pages/) baut [`main`](/glossar/main/).
 
 **Token = Passwort.** Nicht ins Repo, nicht im Video zeigen.
 
@@ -59,6 +57,6 @@ Beispiel: Beispiel-Unterseite im Menü sichtbar → [Commit](/glossar/commit/) �
 
 ## Variante B
 
-**Sign in with GitHub** ohne PAT, braucht einen [**Cloudflare Worker**](/glossar/cloudflare-worker/) als Brücke ([Folge 014](/artikel/folge-014-sveltia-worker/)). Eigenes Thema, gleiche Idee: weniger Copy-Paste mit Tokens.
+„Sign in with GitHub“ (Mit GitHub anmelden) ohne PAT, braucht einen [**Cloudflare Worker**](/glossar/cloudflare-worker/) als Brücke ([Folge 014](/artikel/folge-014-sveltia-worker/)). Eigenes Thema, gleiche Idee: weniger Copy-Paste mit Tokens.
 
 <!-- Quelle: 2026-10-04--01-09-23--obs-screencast - hautoo - sveltia - variante PAT.txt -->

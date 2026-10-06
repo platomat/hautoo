@@ -2,7 +2,7 @@
 title: 'Folge 001: Leeres Repo, voller Plan, so startet hautuu'
 summary: Du legst GitHub an, holst das Projekt auf den Rechner und sagst Cursor in normaler Sprache, worum es geht. Kein Zauber, nur der Ablauf, den du danach immer wieder brauchst.
 pubDate: 2026-10-03 01:04:26+00:00
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-07
 status: published
 tags:
 - github
@@ -24,7 +24,7 @@ Die Wahrheit liegt bei [**GitHub**](/glossar/github/) (Server in der Cloud). Bei
 
 ## GitHub: dein Projekt in der Cloud
 
-Du legst ein [**Repository**](/glossar/repository/) an, so heißt der Projektordner bei [GitHub](/glossar/github/).
+Du legst ein [**Repository**](/glossar/repository/) an, so heißt der Projektordner bei [GitHub](/glossar/github/). Anleitung: [Creating a new repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository) (engl. UI, z. B. „Public“ (öffentlich) für hautuu).
 
 - **Name:** klein, Bindestriche, keine Leerzeichen (z. B. `hautuu`).
 - **Public:** Bei hautuu ist das [Repo](/glossar/repository/) öffentlich, andere dürfen mitlesen und lernen. Alles Geheime bleibt draußen.
@@ -40,28 +40,28 @@ Kurz die Wörter:
 
 1. [Terminal](/glossar/terminal/) öffnen.
 2. Mit `cd` in den Ordner, wo das Projekt liegen soll.
-3. [`git clone`](/glossar/clone/) + URL aus GitHub, fertig, Ordner da.
+3. [`git clone`](/glossar/clone/) + URL aus GitHub (grüner Button „Code“ (Code kopieren) → HTTPS oder SSH kopieren), fertig, Ordner da.
 
 Bei einem **privaten** Repo verweigert GitHub oft den Zugriff, bis [SSH-Keys](/glossar/ssh-key/) eingerichtet sind ([Folge 017](/artikel/folge-017-github-ssh/)).
 
-Der versteckte Ordner `.git` (unter Linux oft mit Strg+H sichtbar) ist das Tagebuch des Projekts, inklusive Adresse von **[origin](/glossar/origin/)**.
+Der versteckte Ordner `.git` (unter Linux z. B. **Strg+H** für versteckte Dateien) ist das Tagebuch des Projekts, inklusive Adresse von **[origin](/glossar/origin/)**.
 
 ## Cursor: Ordner auf, Agent an
 
 {{repodoc path="docs/cursor/README.md" title="Cursor (KI)" description="IDE, Agenten und typische Workflows im Projekt."}}
 
 
-**Open Folder**, dein geklonter Ordner. In dieser [IDE](/glossar/ide/) startest du typischerweise so:
+„File“ (Datei) → „Open Folder“ (Ordner öffnen) (macOS auch „Open…“), dein geklonter Ordner. In dieser [IDE](/glossar/ide/) startest du typischerweise so:
 
 - `docs/` für Dokumentation.
 - Dem [**Agenten**](/glossar/cursor-modi/) erzählen, was das Projekt ist ([Ask](/glossar/cursor-modi/), Agent, Plan: [Folge 008](/artikel/folge-008-cursor-modi/)): Lern-Website mit **KI**, **GitHub**, **[Cloudflare](/glossar/cloudflare-pages/)**; statische Astro-Seiten; Artikel mit Bildern und eingebetteten Videos (YouTube/Vimeo); Glossar; später [**CMS**](/glossar/cms/) ([**Sveltia**](/glossar/sveltia/). Redaktion im Browser, speichert trotzdem in [Git](/glossar/git/); Setup in [Folge 013](/artikel/folge-013-sveltia-pat/)).
 - Regeln aufschreiben: Texte/Doku auf Deutsch, Code auf Englisch, Commits/[Issues](/glossar/issue/) auf Deutsch, **keine Secrets** ins öffentliche Repo (auch gelöschte Dateien bleiben in der [**History**](/glossar/git-history/)). Wie du mit [Issues](/artikel/folge-002-github-issues/) arbeitest, kommt in Folge 002.
 
-Repo umbenannt? URL auf GitHub ändert sich — lokal Remote in `.git/config` anpassen. **Save Project As** speichert deinen [Cursor](/glossar/cursor/)-Workspace, damit Chats nicht jedes Mal weg sind.
+Repo umbenannt? URL auf GitHub ändert sich, lokal Remote in `.git/config` anpassen. „Save Workspace As…“ (Arbeitsbereich speichern) legt eine `.code-workspace`-Datei an, damit [Cursor](/glossar/cursor/) und Chats denselben [Workspace](/glossar/workspace/) wiedererkennen ([VS Code: Workspaces](https://code.visualstudio.com/docs/editor/workspaces)).
 
 ## Commit, Push, gitignore
 
-In **Source Control** siehst du Änderungen. **Commit** = Stand lokal festhalten. **[Push](/glossar/push/)** = hoch zu GitHub. Wenn Push blockiert oder zwei Ordner im Spiel sind: [Folge 006](/artikel/folge-006-git-push-pull/).
+Änderungen festhalten: dem [**Agenten**](/glossar/cursor-modi/) **commit** sagen (er macht Message und Commit), oder in der IDE unter „Source Control“ (Quellcode-Verwaltung) committen. [**Push**](/glossar/push/) erst auf dein Wort, sonst baut Cloudflare. Wenn Push blockiert oder zwei Ordner im Spiel sind: [Folge 006](/artikel/folge-006-git-push-pull/).
 
 Nur für dich: z. B. `.code-workspace` in **`.gitignore`**, dann wandert die Datei nicht mit ins Repo.
 

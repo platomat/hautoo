@@ -2,7 +2,7 @@
 title: 'Folge 007: Merge oder Rebase: Warum die Historie manchmal lügt'
 summary: Nach dem Zusammenführen sieht’s im Tool oft leer aus. Auf GitHub steckt trotzdem alles drin. Kurz erklärt, ohne Git-Guru-Werbung.
 pubDate: 2026-10-03 23:44:04+00:00
-modifiedDate: 2026-10-04
+modifiedDate: 2026-10-07
 status: published
 tags:
 - github
@@ -17,7 +17,7 @@ Kurzer Nachtrag zum Experiment mit zwei Projektordnern ([Folge 006](/artikel/fol
 
 ## Was dich im Tool verwirrt
 
-Nach einem [**Merge**](/glossar/merge/) kann der Graph so aussehen, als hättest du nur noch ein paar [Commits](/glossar/commit/). Die vielen Schritte davor stecken **im Merge-Commit** drin. Auf [**GitHub**](/glossar/github/) unter „Commits“ siehst du die Einzelteile weiter, oft ein langer Stapel.
+Nach einem [**Merge**](/glossar/merge/) kann der Graph so aussehen, als hättest du nur noch ein paar [Commits](/glossar/commit/). Die vielen Schritte davor stecken **im Merge-Commit** drin. Auf [**GitHub**](/glossar/github/) im Repo Tab „Commits“ (Commit-Verlauf) (oder Startseite des Repos mit Commit-Liste) siehst du die Einzelteile weiter, oft ein langer Stapel.
 
 ## Merge (dein Freund fürs Team)
 
