@@ -40,6 +40,7 @@ Mit **Screencast-Transkript** oder ohne:
 - **Fachbegriffe** beim ersten Vorkommen im Artikel **kurz erklären** oder per [**Glossar-Link**](/glossar/) verknüpfen.
 - **Gedankenstriche** (`—`, `–`) **sparsam**: in **Titeln, Teasern und FAQ-Fragen keine**; im Fließtext nur vereinzelt. Stattdessen Punkt, Komma, Doppelpunkt, Klammern oder Umformulierung (siehe auch [.cursor/rules/deutsche-prosa.mdc](../../.cursor/rules/deutsche-prosa.mdc)).
 - Prosa auf **Deutsch**; Code, Slugs, Pfade auf **Englisch** wie im Rest des Projekts.
+- **UI-Wortlaut:** Englische Menü- und Button-Texte nicht fett, sondern „Original“ (Deutsch) beim ersten Vorkommen pro Datei; deutsche Betonung weiter **fett**. Tabelle und Regeln: [ui-wortlaut.md](./ui-wortlaut.md); Unsicheres nach `tmp/ui-unverified.txt`.
 - **Ohne Video-Hinweise:** Artikel, Seiten und Glossar müssen **ohne Screencast/Video** verständlich sein. Keine Meta-Verweise wie „im Video“, „im Screencast“, „im Transkript“ im sichtbaren Text (Quellkommentare `<!-- … -->` sind ok). Ausnahme: Sicherheitshinweise wie „nicht im Video zeigen“ (Folge 013). Prüfung: `scripts/check-content-no-video-hints.py` (läuft mit `check-content-links.py` / `prebuild`).
 
 ### Begriffe (Laien vs. Entwickler-Doku)
