@@ -2,7 +2,7 @@
 title: 'Folge 003: Erstes Outfit: Ubuntu, Dark Mode und ein Footer, der nicht nervt'
 summary: 'Schrift rein, Farben festlegen, Breakpoints setzen. Plus die goldene Regel: committen ja, pushen nur, wenn du es wirklich willst.'
 pubDate: 2026-10-03 02:16:51+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - design
@@ -53,7 +53,7 @@ Per [Issue](/glossar/issue/) kamen **Pages** (Start, Über uns, Impressum …; [
 
 ## Issues = dein Projekt-Trello
 
-Logo-Issue mit Label **Design**, Favicon **blocked by** Logo, [GitHub](/glossar/github/)-**Views** nur für Design-Tickets. Projektmanagement ohne Extra-Tool.
+Logo-Issue mit Label „Design“, Favicon „blocked by“ (blockiert durch) Logo, [GitHub](/glossar/github/)-„Views“ (gespeicherte Ansichten) nur für Design-Tickets. Projektmanagement ohne Extra-Tool.
 
 ## Breakpoints (global merken)
 

@@ -6,3 +6,5 @@ src/content/articles/folge-021-bilder-suchen-nutzen/index.md:47 — „Media“ 
 src/content/articles/folge-021-bilder-suchen-nutzen/index.md:51 — „Replace“: Button-Label in Sveltia-Medieneditor nicht gegen Live-/admin geprüft
 src/content/articles/folge-021-bilder-suchen-nutzen/index.md:40 — gThumb „Resize“: Menütext abhängig von GNOME/gThumb-Locale (DE oft „Größe ändern“)
 src/content/articles/folge-021-bilder-suchen-nutzen/index.md:29 — Freepik-Filter „Free“ / „License“ / „AI generated“: UI-Labels können sich je nach Sprache der Website ändern
+src/content/articles/folge-003-erstes-design/index.md:56 — GitHub „Views“ (Issue-Listen) und „blocked by“ (Abhängigkeit): exakte UI je nach GitHub-Version/Locale nicht einzeln gegen Live-UI geprüft
+src/content/articles/folge-011-cloudflare-setup/index.md:23-24 — Cloudflare-Navigation „R2“ / „Databases“ und „Ask AI“: nicht gegen aktuelle Dashboard-Doku geprüft (nur laienfrei erklärt)

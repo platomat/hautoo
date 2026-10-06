@@ -19,9 +19,9 @@ Bisher: lokal und [GitHub](/glossar/github/). Jetzt wird’s öffentlich: [**Clo
 
 ## Begriffe ohne Panik
 
-- „Workers & Pages“ (Workers und Pages) unter „Compute“. „Pages“ (statische Websites) = statische Sites aus [Git](/glossar/git/) (dein [**Frontend**](/glossar/frontend/)), passt zu [**Astro**](/glossar/astro/). [**Workers**](/glossar/cloudflare-worker/) = Extra-Logik am Edge (später z. B. [CMS](/glossar/cms/)-Login; [OAuth](/glossar/oauth/)-Brücke: [Folge 014](/artikel/folge-014-sveltia-worker/)).
-- **R2 / Databases**: für hautuu erst mal egal, aber gut zu wissen.
-- **Ask AI** in Cloudflare. Deutsch geht, hilft bei DNS und Regeln.
+- „Workers & Pages“ (Workers und Pages) unter „Compute“ (Bereich Compute). „Pages“ (statische Websites) = statische Sites aus [Git](/glossar/git/) (dein [**Frontend**](/glossar/frontend/)), passt zu [**Astro**](/glossar/astro/). [**Workers**](/glossar/cloudflare-worker/) = Extra-Logik am Edge (später z. B. [CMS](/glossar/cms/)-Login; [OAuth](/glossar/oauth/)-Brücke: [Folge 014](/artikel/folge-014-sveltia-worker/)).
+- R2 / Databases (Speicher/Datenbanken in der Cloudflare-Navigation): für hautuu erst mal egal, aber gut zu wissen.
+- Ask AI (KI-Hilfe im Dashboard): Deutsch geht, hilft bei DNS und Regeln.
 
 {{block id="stack-uebersicht"}}
 
@@ -37,7 +37,7 @@ Cursor → commit → push → GitHub → Cloudflare Build → Live
 
 ## Projekt anlegen
 
-1. [Cloudflare Dashboard](https://dash.cloudflare.com) → „Workers & Pages“ → „Compute“ (Compute) → „Create“ (Erstellen) → „Pages“ → mit **GitHub** verbinden („Continue with Pages“ (Mit Pages fortfahren) / Import Git).
+1. [Cloudflare Dashboard](https://dash.cloudflare.com) → „Workers & Pages“ → „Compute“ → „Create“ (Erstellen) → „Pages“ → mit **GitHub** verbinden („Continue with Pages“ (Mit Pages fortfahren) / Import Git).
 2. Repo wählen (z. B. hautuu) → „Begin setup“ (Einrichtung starten).
 3. „Production branch:“ (Produktions-Branch) `main`. „Framework preset:“ (Framework-Voreinstellung) [Astro](/glossar/astro/) (falls angeboten).
 4. „[Build](/glossar/build/) command:“ (Build-Befehl) [`npm run build`](/glossar/build/). „Build output directory:“ (Build-Ausgabeordner) `dist`.

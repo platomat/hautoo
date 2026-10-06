@@ -2,7 +2,7 @@
 title: 'Folge 004: Seiten sind nur Dateien und trotzdem schlau strukturiert'
 summary: Was in der CMS-Config steckt, warum Unterseiten wie Ordner funktionieren und SEO lieber einmal definiert wird statt zwanzigmal copy-paste.
 pubDate: 2026-10-03 23:00:06+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - astro
@@ -29,8 +29,8 @@ Früher hing das Menü an jeder Seite, bei hautuu gibt’s eine eigene **menus**
 
 `src/content/pages/index/index.md` = Startseite.
 
-- Oben [**Frontmatter**](/glossar/frontmatter/) = ausgefüllte Felder (im CMS links: **Titel**, **Description**, **Übergeordnete Seite**, SEO usw.).
-- Darunter **Body** = [**Markdown**](/glossar/markdown/) (rechts im CMS eine einfache Preview).
+- Oben [**Frontmatter**](/glossar/frontmatter/) = ausgefüllte Felder (im CMS links: **Titel**, **Description** (Beschreibung), **Übergeordnete Seite**, SEO usw.).
+- Darunter **Body** (Inhalt) = [**Markdown**](/glossar/markdown/) (rechts im CMS eine einfache Preview).
 
 Du speicherst → Datei ändert sich → beim [Build](/glossar/build/) wird HTML. In der [IDE](/glossar/ide/)-**Preview** siehst du ungefähr, was [GitHub](/glossar/github/) auch rendert.
 

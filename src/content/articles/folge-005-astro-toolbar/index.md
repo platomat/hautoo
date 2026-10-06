@@ -2,7 +2,7 @@
 title: 'Folge 005: Die Astro-Leiste nervt? Breakpoints retten den Tag'
 summary: Lokal siehst du Werkzeugkram, den Besucher nie sehen. Und du kannst der KI sagen „mehr Luft im Footer“, ohne CSS-Professor zu sein.
 pubDate: 2026-10-03 23:23:55+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - astro
@@ -45,8 +45,8 @@ Du musst nicht „padding“ sagen. **„Im Footer bitte mehr Abstand links und 
 Wenn du’s genau willst:
 
 - [**Padding**](/glossar/css/): Innenabstand.
-- **Margin**: Abstand nach außen.
-- **Border-Radius**: runde Ecken.
+- `margin`: Abstand nach außen.
+- `border-radius`: runde Ecken.
 
 Der Agent soll bestehende Klassen im Projekt nutzen, nicht bei jedem Prompt neues Inline-[CSS](/glossar/css/) erfinden. Deine **Page Speed** dankt’s dir. Fonts, [CSS-Variablen](/glossar/css-variable/) und erster Look: [Folge 003](/artikel/folge-003-erstes-design/).
 

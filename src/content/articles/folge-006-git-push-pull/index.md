@@ -2,7 +2,7 @@
 title: 'Folge 006: Zwei Ordner, ein GitHub: Pull, Push und kein Datenmüll'
 summary: Warum der Server manchmal „nein“ sagt, bevor du pushen darfst. Und wie Klonen und Merge dich wieder einen Stand bringen.
 pubDate: 2026-10-03 23:28:46+00:00
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-07
 status: published
 tags:
 - github
@@ -38,7 +38,7 @@ Kurz als Beispiel:
 1. **Ordner A:** Du arbeitest, [pushst](/glossar/push/) nicht.
 2. **Ordner B:** Frischer [Clone](/glossar/clone/) vom Server.
 3. [**Push**](/glossar/push/) aus A. [GitHub](/glossar/github/) ist aktuell.
-4. In B legst du `test.txt` an, willst pushen → **Geht nicht.** (Meldung oft *rejected* / *fetch first*.) Server ist neuer. Erst im Projektordner **[`git pull`](/glossar/pull/)** oder in [Cursor](/glossar/cursor/) **Source Control** → **⋯** → **Pull**.
+4. In B legst du `test.txt` an, willst pushen → **Geht nicht.** (Meldung oft *rejected* / *fetch first*.) Server ist neuer. Erst im Projektordner **[`git pull`](/glossar/pull/)** oder in [Cursor](/glossar/cursor/) „Source Control“ (Quellcode-Verwaltung) → „⋯“ → „Pull“ (Pull).
 
 **[Pull](/glossar/pull/)** holt Remote-Änderungen. Oft kommt ein [**Merge**](/glossar/merge/) — Git klebt Historien zusammen. Verschiedene Dateien? Meist kein Stress. Dieselbe Datei an beiden Enden? Du entscheidest, welche Zeilen bleiben.
 

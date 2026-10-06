@@ -26,5 +26,12 @@ Unsichere oder nicht gegen Live-UI geprüfte Strings in [`tmp/ui-unverified.txt`
 | Konfiguration, Seiten, Artikel, Glossar, Bausteine, Menüs | (deutsche CMS-Labels) | [`public/admin/config.yml`](https://github.com/platomat/hautoo/blob/main/public/admin/config.yml) |
 | Design, Content, Inhaltsverzeichnis (TOC), Header | Design, Inhalt, TOC, Header | [`public/admin/config.yml`](https://github.com/platomat/hautoo/blob/main/public/admin/config.yml) (`site.yaml`-Editor) |
 | Baustein, Trennlinie, Repo-Dokument, Artikel-Listing, … | (deutsche Toolbar-Labels) | [`public/admin/editor-components.js`](https://github.com/platomat/hautoo/blob/main/public/admin/editor-components.js) |
-| Only select repositories | Nur ausgewählte Repositories | [Folge 011](https://hautoo.storyofai.net/artikel/folge-011-cloudflare-setup/), [Folge 013](https://hautoo.storyofai.net/artikel/folge-013-sveltia-pat/) |
+| Only select repositories | Nur ausgewählte Repositories | [GitHub App install](https://docs.github.com/en/apps/using-github-apps/installing-a-github-app-from-a-third-party) |
+| All repositories | Alle Repositories | [GitHub App install](https://docs.github.com/en/apps/using-github-apps/installing-a-github-app-from-a-third-party) |
+| Public | Öffentlich (Sichtbarkeit) | [Creating a new repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository) |
+| Code | Code kopieren (Repo-URL) | GitHub Repo-Seite |
+| New repository | Neues Repository | [Creating a new repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository) |
+| Milestone / Labels | Meilenstein / Labels | GitHub Issue-Formular |
+| Source Control / Pull | Quellcode-Verwaltung / Pull | [VS Code: Source Control](https://code.visualstudio.com/docs/sourcecontrol/overview) |
+| Save Workspace As… | Arbeitsbereich speichern | [VS Code: Workspaces](https://code.visualstudio.com/docs/editor/workspaces) |
 | Contents: Read and write | Inhalte: Lesen und Schreiben | [GitHub PAT docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) |
