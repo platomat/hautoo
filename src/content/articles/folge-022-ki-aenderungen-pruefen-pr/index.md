@@ -1,7 +1,7 @@
 ---
 title: 'Folge 022: KI-Änderungen prüfen, PR reviewen, Features im Blick'
 summary: In Cursor und GitHub siehst du, was der Agent geändert hat. Diff lesen, Review einreichen, Checks verstehen und vor dem Merge Cloudflare-Deployments einordnen.
-pubDate: 2026-10-06 23:50:12+00:00
+pubDate: 2026-10-06 00:23:17+00:00
 modifiedDate: 2026-10-07
 status: published
 tags:
@@ -68,4 +68,4 @@ Wenn du nur Inhalte und Farben tauschen willst: [Fork](/glossar/fork/) und eigen
 - **[Rollback](/glossar/rollback/)** nur über Production-Deployments und Dreipunkte-Menü.
 - **Features-Seite** + README = Überblick ohne Code lesen.
 
-<!-- Quelle: transkript-022_41b6.txt (hautoo - 022 - KI-Änderungen prüfen, PR, Features) -->
+<!-- Quelle: 2026-10-06--02-23-17--obs-screencast - hautoo - 022 - ki änderungen prüfen, pr, features.txt -->
