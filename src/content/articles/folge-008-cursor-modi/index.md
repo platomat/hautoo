@@ -21,7 +21,7 @@ seo:
 
 Manchmal startet [Cursor](/glossar/cursor/) chat-lastig. Für hautuu willst du den **[IDE](/glossar/ide/)**-Modus: Dateien, [Terminal](/glossar/terminal/), Agentenleiste. Button **IDE** schaltet um.
 
-**File** → **Open Folder** geht auch für Ordner **ohne** [Git](/glossar/git/) (Fotos, Notizen) — Kontext fürs Projekt, später wieder entfernen.
+**File** → **Open Folder** wechselt den geöffneten Ordner im Fenster: Das aktuelle Projekt wird geschlossen bzw. ersetzt (auch ohne [Git](/glossar/git/), z. B. ein reiner Fotos-Ordner). Zusätzlichen Kontext **neben** deinem Code-Projekt (Fotos, Notizen) fügst du mit **File** → **Add Folder to Workspace…** zum bestehenden [Workspace](/glossar/workspace/) hinzu: Beide Ordner stehen im Explorer, und der Agent sieht beide. Wieder entfernen: Rechtsklick auf den Ordner im Explorer → **Remove Folder from Workspace**.
 
 ## Drei Modi, drei Temperamentstufen
 
