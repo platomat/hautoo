@@ -3,11 +3,17 @@ title: Features
 description: Überblick über die umgesetzten Funktionen von hautuu auf der Website und im Repo.
 status: published
 modifiedDate: 2026-10-07
+backgroundImage: olga-kovalski-eAmNjd0Zbts-unsplash.cleaned.webp
+backgroundOverlay: 73
+backgroundAttribution: Photo by <a href="https://unsplash.com/@kovalskihelga?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Olga Kovalski</a> on <a href="https://unsplash.com/photos/an-old-brick-building-with-a-tree-in-the-foreground-eAmNjd0Zbts?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 showToc: true
 tocTitle: Inhalt
 tocLevels:
   - h2
+contentWidth: wide
 seo:
+  seo_title: Features von hautuu
+  seo_description: 'Was auf hautoo.storyofai.net steht: 21 Folgen, Sveltia CMS mit Config, Sticky Header, Glossar, Embeds, SEO und Cloudflare Deploy.'
   index_visibility: index
   follow_visibility: follow
   noarchive: false
@@ -19,8 +25,6 @@ seo:
   max_video_preview: -1
   max_image_preview_enabled: true
   max_image_preview: large
-  seo_title: Features von hautuu
-  seo_description: "Was auf hautoo.storyofai.net steht: 21 Folgen, Sveltia CMS mit Config, Sticky Header, Glossar, Embeds, SEO und Cloudflare Deploy."
 ---
 
 Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches Repo auf `main`). Details zu Begriffen im [**Glossar**](/glossar/), Antworten in der [**FAQ**](/faq/), Schritt für Schritt in den [**Artikeln**](/artikel/).

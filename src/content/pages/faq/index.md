@@ -10,8 +10,11 @@ backgroundAttribution: Photo by <a href="https://unsplash.com/@sebastiengoldberg
 showToc: true
 tocTitle: Inhalt
 tocLevels:
-- h2
+  - h2
+contentWidth: wide
 seo:
+  seo_title: FAQ zu hautuu, Git, Cursor und Cloudflare
+  seo_description: Antworten auf häufige Fragen zu hautuu, Git, Cursor, Astro, Cloudflare und dem CMS. Kurz, verlinkt und per Strg+F durchsuchbar auf einer Seite.
   index_visibility: index
   follow_visibility: follow
   noarchive: false
@@ -23,8 +26,6 @@ seo:
   max_video_preview: -1
   max_image_preview_enabled: true
   max_image_preview: large
-  seo_title: FAQ zu hautuu, Git, Cursor und Cloudflare
-  seo_description: Antworten auf häufige Fragen zu hautuu, Git, Cursor, Astro, Cloudflare und dem CMS. Kurz, verlinkt und per Strg+F durchsuchbar auf einer Seite.
 ---
 
 Antworten kurz und mit Links zu den [Folgen](/artikel/) und zum [Glossar](/glossar/). Alles steht offen auf der Seite, damit du mit der Browsersuche (Strg+F) jede Formulierung findest.
