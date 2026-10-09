@@ -2,7 +2,7 @@
 title: Features
 description: Überblick über die umgesetzten Funktionen von hautuu auf der Website und im Repo.
 status: published
-modifiedDate: 2026-10-07
+modifiedDate: 2026-10-10
 backgroundImage: olga-kovalski-eAmNjd0Zbts-unsplash.cleaned.webp
 backgroundOverlay: 73
 backgroundAttribution: Photo by <a href="https://unsplash.com/@kovalskihelga?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Olga Kovalski</a> on <a href="https://unsplash.com/photos/an-old-brick-building-with-a-tree-in-the-foreground-eAmNjd0Zbts?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
@@ -13,7 +13,7 @@ tocLevels:
 contentWidth: wide
 seo:
   seo_title: Features von hautuu
-  seo_description: 'Was auf hautoo.storyofai.net steht: 22 Folgen, Sveltia CMS mit Config, Inhaltsbreite, Sticky Header, Glossar, Embeds, SEO und Cloudflare Deploy.'
+  seo_description: 'Was auf hautoo.storyofai.net steht: 22 Folgen, Sveltia CMS mit Website-Titel und Config, Inhaltsbreite, Sticky Header, Glossar, Embeds, SEO und Cloudflare Deploy.'
   index_visibility: index
   follow_visibility: follow
   noarchive: false
@@ -40,7 +40,8 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 
 - **[Sveltia CMS](/glossar/sveltia/)** unter `/admin/`: Inhalte im Browser bearbeiten, Speichern landet als Dateien in [Git](/glossar/git/) ([Glossar CMS](/glossar/cms/), [Folge 013](/artikel/folge-013-sveltia-pat/)).
 - **[Collections](/glossar/collection/)** für Pages, Articles, Tags, Glossar, Menüs und **Bausteine** (`blocks`) ohne eigene URL.
-- **Config-Collection** (`config`): globale Site-Einstellungen als YAML (`site.yaml`), kein [Markdown](/glossar/markdown/). Gruppen **Design** und „Content“ (Inhalt) in der Collection **Konfiguration** (`public/admin/config.yml`).
+- **Config-Collection** (`config`): globale Site-Einstellungen als YAML (`site.yaml`), kein [Markdown](/glossar/markdown/). Gruppen **General**, **Design** und „Content“ (Inhalt) in der Collection **Konfiguration** (`public/admin/config.yml`).
+- **Website-Titel** unter **Konfiguration** → **General** → **Website title**: Markenname für Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`) und `og:site_name`.
 - **Menüs** als eigene Collection (`main`, `footer-legal`) statt Flags an einzelnen Seiten.
 - **Entwurfsstatus** (`draft`, `published`, `future`, `trash`) für Pages, Artikel und Glossar.
 - **Inhaltsverzeichnis** global unter **Konfiguration** → „Content“ → **Inhaltsverzeichnis (TOC)** (Seiten/Artikel: an/aus, Ebenen, Titel) und optional pro Eintrag überschreibbar.

@@ -9,7 +9,7 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 - **Klassen:** `.logo-mark__ink` (folgt `currentColor`), `.logo-mark__accent` (Aktionsfarbe)
 - **Statikdatei:** `public/img/logo-mark.svg` (gleiche Geometrie/Farben für README und Einbettungen)
 - **Header:** `LogoMark.astro`. Initial Ink hell + Accent grün; Hover invertiert (Ink → Aktionsfarbe, Accent → Textfarbe)
-- **Wortmarke:** `hautuu` neben dem Mark (Header)
+- **Wortmarke:** aus CMS **Konfiguration → Site → General → Website title** (`general.websiteTitle`), neben dem Mark im Header und in der Footer-Zeile
 - **Favicon:** `public/img/favicon.svg` (Ink dunkel bei hellem System, hell bei dunklem; Accent bleibt grün), Fallback `favicon.ico`
 
 ## Prinzipien
