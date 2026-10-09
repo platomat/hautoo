@@ -5,10 +5,8 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 ## Logo
 
 - **Markenzeichen:** Blatt mit Mittelrippe und Gabelnerven (Natur + Branch-Struktur)
-- **Farben:** Konturen/Punkte = Ink (`#e8eeea` / Textfarbe); Mittelrippe + Wurzelpunkt = Accent (`#3dcf8e` / Aktionsgrün)
-- **Klassen:** `.logo-mark__ink` (folgt `currentColor`), `.logo-mark__accent` (Aktionsfarbe)
-- **Statikdatei:** `public/img/logo-mark.svg` (gleiche Geometrie/Farben für README und Einbettungen)
-- **Header:** `LogoMark.astro`. Initial Ink hell + Accent grün; Hover invertiert (Ink → Aktionsfarbe, Accent → Textfarbe)
+- **Statikdatei:** `public/img/logo-mark.svg` (Quelle für Header, README und Content-Einbettungen)
+- **Header:** `LogoMark.astro` lädt die Public-SVG inline; Ink = `currentColor`, Accent = Aktionsfarbe; bei Hover/Focus/Active komplett Aktionsfarbe
 - **Wortmarke:** aus CMS **Konfiguration → Site → General → Website title** (`general.websiteTitle`), neben dem Mark im Header und in der Footer-Zeile
 - **Favicon:** `public/img/favicon.svg` (Ink dunkel bei hellem System, hell bei dunklem; Accent bleibt grün), Fallback `favicon.ico`
 

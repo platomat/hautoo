@@ -211,22 +211,26 @@ const headerStyle = [
 		width: 1.35rem;
 		height: 1.35rem;
 		flex-shrink: 0;
+		color: var(--color-text);
 	}
 
-	/* Hover/focus: ink → action (via currentColor), accent green → text white */
+	/* Hover/focus/active: wordmark + whole mark → action (accent follows currentColor). */
 	.site-header__brand:hover,
-	.site-header__brand:focus-visible {
-		color: var(--color-action-hover);
+	.site-header__brand:focus-visible,
+	.site-header__brand:active {
+		color: var(--color-action);
 	}
 
 	.site-header__brand:hover :global(.logo-mark__accent),
-	.site-header__brand:focus-visible :global(.logo-mark__accent) {
-		stroke: var(--color-text);
+	.site-header__brand:focus-visible :global(.logo-mark__accent),
+	.site-header__brand:active :global(.logo-mark__accent) {
+		stroke: currentColor;
 	}
 
 	.site-header__brand:hover :global(circle.logo-mark__accent),
-	.site-header__brand:focus-visible :global(circle.logo-mark__accent) {
-		fill: var(--color-text);
+	.site-header__brand:focus-visible :global(circle.logo-mark__accent),
+	.site-header__brand:active :global(circle.logo-mark__accent) {
+		fill: currentColor;
 		stroke: none;
 	}
 
