@@ -597,6 +597,12 @@ collections:
                 required: true
                 hint: "Markenname in Header, Browser-Titel-Suffix und og:site_name."
                 default: hautuu
+              - name: contactEmail
+                label: Contact email
+                widget: string
+                required: false
+                hint: "Optional für {{contact-email}} (Impressum/Datenschutz). Überschreibt CONTACT_EMAIL beim Build. Steht im öffentlichen Repo; leer lassen und ENV nutzen, wenn die Adresse nicht in Git soll."
+                default: ""
           - name: design
             label: Design
             widget: object

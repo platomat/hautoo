@@ -27,11 +27,14 @@ Die Domain `hautoo.storyofai.net` ist **kein Secret**. Sie darf in Doku und Code
 
 ## Kontakt-E-Mail (Impressum)
 
-Die Adresse **nicht** fest in Markdown committen (öffentliches Repo = Scraping auf GitHub). Stattdessen:
+Die Adresse **nicht** fest in Markdown committen (öffentliches Repo = Scraping auf GitHub). Einbindung immer über `{{contact-email}}` (Spam-Schutz: `[at]` im Text, `mailto:` erst bei Klick/Focus).
 
-1. Lokal in `.env`: `CONTACT_EMAIL=name@example.de`
-2. Bei Cloudflare Pages dieselbe Variable als Environment Variable setzen
-3. Im Inhalt den Block `{{contact-email}}` verwenden
+**Priorität beim Build:** CMS **Konfiguration → General → Contact email** (`general.contactEmail`), falls gesetzt; sonst Build-Variable `CONTACT_EMAIL`.
+
+| Quelle | Wann nutzen |
+| --- | --- |
+| **ENV** (`CONTACT_EMAIL`) | Empfohlen für öffentliche Repos: Adresse bleibt aus Git raus (lokal `.env`, Cloudflare Pages Env) |
+| **CMS** | Praktisch für Kunden-Forks; Wert landet in `site.yaml` und ist öffentlich auf GitHub |
 
 Zusätzlich empfohlen: im Cloudflare-Dashboard unter **Scrape Shield** → **Email Address Obfuscation** aktiv lassen — Cloudflare verschleiert E-Mail-Adressen in der ausgelieferten HTML.
 

@@ -1,7 +1,7 @@
 ---
 import { getContactEmail, splitContactEmail } from "../lib/contact-email";
 
-const email = getContactEmail();
+const email = await getContactEmail();
 const parts = email ? splitContactEmail(email) : undefined;
 ---
 
@@ -22,7 +22,7 @@ const parts = email ? splitContactEmail(email) : undefined;
 		</a>
 	) : (
 		<span class="text-muted text-sm">
-			E-Mail-Adresse folgt (Build-Variable <code>CONTACT_EMAIL</code>).
+			E-Mail-Adresse folgt (CMS Contact email oder Build-Variable <code>CONTACT_EMAIL</code>).
 		</span>
 	)
 }

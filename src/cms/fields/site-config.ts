@@ -50,6 +50,11 @@ export type SiteWidthConfig = z.infer<typeof siteWidthConfigSchema>;
 export const siteGeneralConfigSchema = z.object({
 	/** Brand / site name in header, title suffix, og:site_name. */
 	websiteTitle: z.string().trim().min(1).default("hautuu"),
+	/**
+	 * Optional contact address for `{{contact-email}}`.
+	 * When set, overrides env `CONTACT_EMAIL` at build time (value is public in Git).
+	 */
+	contactEmail: z.string().trim().default(""),
 });
 
 export type SiteGeneralConfig = z.infer<typeof siteGeneralConfigSchema>;

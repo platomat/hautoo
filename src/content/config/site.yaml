@@ -1,6 +1,8 @@
 # Global site settings (Sveltia collection `config`, file `site`). YAML, no Markdown.
 general:
   websiteTitle: hautuu
+  # Optional; if set, overrides CONTACT_EMAIL (value is public in Git). Leave empty to use ENV.
+  contactEmail: ""
 design:
   header:
     stickyDesktop: true

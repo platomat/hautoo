@@ -27,11 +27,12 @@ Globale Site-Einstellungen als **YAML-Datei**, kein Markdown-Body. Erweiterbar u
 
 YAML-Gruppen im CMS: **General**, **Design** und **Content**.
 
-### Site → General → Website title
+### Site → General
 
 | Feld | Bedeutung |
 | --- | --- |
 | `general.websiteTitle` | Markenname: Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`), `og:site_name` |
+| `general.contactEmail` | Optional für `{{contact-email}}`. Überschreibt `CONTACT_EMAIL` beim Build; leer = ENV. Wert ist öffentlich in Git. |
 
 ### Site → Design → Header (#44)
 

@@ -1,6 +1,6 @@
-/** Build-time contact address — set via env, never commit the real value. */
-export function getContactEmail(): string | undefined {
-	const raw = import.meta.env.CONTACT_EMAIL;
+import { getSiteConfig } from "./site-config";
+
+function normalizeEmail(raw: unknown): string | undefined {
 	if (typeof raw !== "string") {
 		return undefined;
 	}
@@ -9,6 +9,21 @@ export function getContactEmail(): string | undefined {
 		return undefined;
 	}
 	return email;
+}
+
+/**
+ * Contact address for `{{contact-email}}` (Impressum / Datenschutz).
+ * Priority: CMS `general.contactEmail` (if set) → env `CONTACT_EMAIL`.
+ * CMS value is committed with the public repo; leave it empty and use ENV
+ * when the address should stay out of Git.
+ */
+export async function getContactEmail(): Promise<string | undefined> {
+	const config = await getSiteConfig();
+	const fromCms = normalizeEmail(config.general?.contactEmail);
+	if (fromCms) {
+		return fromCms;
+	}
+	return normalizeEmail(import.meta.env.CONTACT_EMAIL);
 }
 
 export function splitContactEmail(

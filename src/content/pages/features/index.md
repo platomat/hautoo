@@ -42,6 +42,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **[Collections](/glossar/collection/)** für Pages, Articles, Tags, Glossar, Menüs und **Bausteine** (`blocks`) ohne eigene URL.
 - **Config-Collection** (`config`): globale Site-Einstellungen als YAML (`site.yaml`), kein [Markdown](/glossar/markdown/). Gruppen **General**, **Design** und „Content“ (Inhalt) in der Collection **Konfiguration** (`public/admin/config.yml`).
 - **Website-Titel** unter **Konfiguration** → **General** → **Website title**: Markenname für Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`) und `og:site_name`.
+- **Kontakt-E-Mail** unter **Konfiguration** → **General** → **Contact email** (optional): überschreibt `CONTACT_EMAIL` beim Build; Anzeige über `{{contact-email}}` mit Spam-Schutz. Leer = weiter ENV (empfohlen für öffentliche Repos).
 - **Menüs** als eigene Collection (`main`, `footer-legal`) statt Flags an einzelnen Seiten.
 - **Entwurfsstatus** (`draft`, `published`, `future`, `trash`) für Pages, Artikel und Glossar.
 - **Inhaltsverzeichnis** global unter **Konfiguration** → „Content“ → **Inhaltsverzeichnis (TOC)** (Seiten/Artikel: an/aus, Ebenen, Titel) und optional pro Eintrag überschreibbar.
@@ -62,7 +63,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 
 - **Wiederverwendbare Bausteine** (`{{block id="…"}}`): z. B. Stack-Grafik (`stack-uebersicht`) auf Startseite und in passenden Folgen ([Folge 020](/artikel/folge-020-bausteine-fork/)).
 - **Artikel-Listing** im Content: Anzahl, Sortierung, Grid oder Liste, wählbare Kartenfelder inkl. Lesezeit ([Folge 019](/artikel/folge-019-impressum-komponenten/)).
-- **Trennlinie** und **Kontakt-E-Mail** als Embed (`{{contact-email}}` aus Build-Variable, nicht im Klartext).
+- **Trennlinie** und **Kontakt-E-Mail** als Embed (`{{contact-email}}` aus CMS oder Build-Variable, nicht im Markdown).
 - **Markdown-Embeds** über die Sveltia-Toolbar; Rendering zentral in `CmsContent.astro`.
 - **Repo-Docs-Box** (`{{repodoc path="docs/…"}}`): Verlinkung zu Handbuch-Dateien auf [GitHub](/glossar/github/), Toolbar **Repo-Dokument** ([Folge 001](/artikel/folge-001-hautuu-intro/) als Beispiel).
 - **Embed-Check** vor dem Build: `{{repodoc}}` und `{{block}}` nur allein in einer Zeile, nicht mitten im Satz und **nicht zwischen Listenpunkten** (`check-content-embeds.py`).

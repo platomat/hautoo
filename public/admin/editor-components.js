@@ -348,7 +348,7 @@
 		pattern: /^\{\{contact-email\}\}\s*$/m,
 		toBlock: () => "{{contact-email}}",
 		toPreview: () =>
-			'<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Kontakt-E-Mail (aus Build-Variable CONTACT_EMAIL)</div>',
+			'<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Kontakt-E-Mail (CMS General → Contact email, sonst CONTACT_EMAIL)</div>',
 	});
 
 	CMS.registerEditorComponent({
