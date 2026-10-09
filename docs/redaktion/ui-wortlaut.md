@@ -24,7 +24,7 @@ Unsichere oder nicht gegen Live-UI geprüfte Strings in [`tmp/ui-unverified.txt`
 | Link-Vorschau (DE) / Preview Link (EN) | Link-Vorschau | [Mozilla: Link Previews](https://support.mozilla.org/kb/use-link-previews-firefox), [Folge 020](https://hautoo.storyofai.net/artikel/folge-020-bausteine-fork/) |
 | Start Recording / Stop Recording | Aufnahme starten / Aufnahme stoppen | [OBS Studio](https://obsproject.com/) (Steuerleiste; Sprache kann abweichen) |
 | Konfiguration, Seiten, Artikel, Glossar, Bausteine, Menüs | (deutsche CMS-Labels) | [`public/admin/config.yml`](https://github.com/platomat/hautoo/blob/main/public/admin/config.yml) |
-| Design, Content, Inhaltsverzeichnis (TOC), Header | Design, Inhalt, TOC, Header | [`public/admin/config.yml`](https://github.com/platomat/hautoo/blob/main/public/admin/config.yml) (`site.yaml`-Editor) |
+| General, Design, Content, Inhaltsverzeichnis (TOC), Header, Website title | General, Design, Inhalt, TOC, Header, Website-Titel | [`public/admin/config.yml`](https://github.com/platomat/hautoo/blob/main/public/admin/config.yml) (`site.yaml`-Editor) |
 | Baustein, Trennlinie, Repo-Dokument, Artikel-Listing, … | (deutsche Toolbar-Labels) | [`public/admin/editor-components.js`](https://github.com/platomat/hautoo/blob/main/public/admin/editor-components.js) |
 | Only select repositories | Nur ausgewählte Repositories | [GitHub App install](https://docs.github.com/en/apps/using-github-apps/installing-a-github-app-from-a-third-party) |
 | All repositories | Alle Repositories | [GitHub App install](https://docs.github.com/en/apps/using-github-apps/installing-a-github-app-from-a-third-party) |

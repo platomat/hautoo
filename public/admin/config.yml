@@ -44,7 +44,7 @@ output:
 
 collections:
 
-  # Global settings (YAML only, no Markdown). Groups: Design (#44), Content (#51).
+  # Global settings (YAML only, no Markdown). Groups: General, Design, Content.
   - name: config
     label: Konfiguration
     label_singular: Konfiguration
@@ -54,6 +54,17 @@ collections:
         file: src/content/config/site.yaml
         format: yaml
         fields:
+          - name: general
+            label: General
+            widget: object
+            collapsed: false
+            fields:
+              - name: websiteTitle
+                label: Website title
+                widget: string
+                required: true
+                hint: "Markenname in Header, Browser-Titel-Suffix und og:site_name."
+                default: hautuu
           - name: design
             label: Design
             widget: object

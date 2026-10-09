@@ -2,6 +2,7 @@
 import { getResolvedMenu, MENU_FOOTER_LEGAL } from "../lib/menus";
 import { withBuildId } from "../lib/build-id";
 import { getPublicPages } from "../lib/pages";
+import { getSiteWebsiteTitle } from "../lib/site-config";
 
 /** First calendar year of the project (copyright range start). */
 const COPYRIGHT_START_YEAR = 2026;
@@ -11,8 +12,9 @@ const copyrightYears =
 		? `${COPYRIGHT_START_YEAR}-${currentYear}`
 		: String(COPYRIGHT_START_YEAR);
 
+const websiteTitle = await getSiteWebsiteTitle();
 const REPO_URL = "https://github.com/platomat/hautoo/";
-const REPO_TITLE = "hautuu auf GitHub (platomat/hautoo)";
+const REPO_TITLE = `${websiteTitle} auf GitHub (platomat/hautoo)`;
 
 const pages = await getPublicPages();
 const legalItems = await getResolvedMenu(MENU_FOOTER_LEGAL, pages);
@@ -30,7 +32,7 @@ function isCurrent(href: string): boolean {
 		<p class="site-footer__copy text-sm text-muted">
 			<span>© {copyrightYears}</span>
 			{" "}
-			<span>hautoo ∙ One of <a href="https://platomat.com/">PlatoMat</a></span>
+			<span>{websiteTitle} ∙ One of <a href="https://platomat.com/">PlatoMat</a></span>
 		</p>
 		<a
 			class="site-footer__github"

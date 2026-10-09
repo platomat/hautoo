@@ -1,4 +1,6 @@
 # Global site settings (Sveltia collection `config`, file `site`). YAML, no Markdown.
+general:
+  websiteTitle: hautuu
 design:
   header:
     stickyDesktop: true

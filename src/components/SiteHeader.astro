@@ -3,11 +3,12 @@ import LogoMark from "./LogoMark.astro";
 import SiteSearch from "./SiteSearch.astro";
 import { getResolvedMenu, MENU_MAIN } from "../lib/menus";
 import { getPublicPages } from "../lib/pages";
-import { getSiteHeaderConfig } from "../lib/site-config";
+import { getSiteHeaderConfig, getSiteWebsiteTitle } from "../lib/site-config";
 
 const pages = await getPublicPages();
 const menuItems = await getResolvedMenu(MENU_MAIN, pages);
 const headerConfig = await getSiteHeaderConfig();
+const websiteTitle = await getSiteWebsiteTitle();
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 function isCurrent(href: string): boolean {
@@ -33,9 +34,9 @@ const headerStyle = [
 	data-site-header
 >
 	<div class="site-header__inner shell-inner">
-		<a class="site-header__brand" href="/" aria-label="hautuu Startseite">
+		<a class="site-header__brand" href="/" aria-label={`${websiteTitle} Startseite`}>
 			<LogoMark class="site-header__logo-mark" />
-			<span class="site-header__logo-text">hautuu</span>
+			<span class="site-header__logo-text">{websiteTitle}</span>
 		</a>
 		<nav id="site-nav" class="site-nav" data-site-nav aria-label="Hauptnavigation">
 			<ul class="site-nav__list list-plain">

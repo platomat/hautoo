@@ -23,9 +23,15 @@ Globale Site-Einstellungen als **YAML-Datei**, kein Markdown-Body. Erweiterbar u
 | Datei | `src/content/config/site.yaml` |
 | Schema | `src/cms/fields/site-config.ts` → Collection `config` in `src/content.config.ts` |
 | Sveltia | File-Collection `config` → Eintrag „Site“ |
-| Lesen | `src/lib/site-config.ts` (`getSiteConfig` / `getSiteHeaderConfig` / `resolveTocForCollection`) |
+| Lesen | `src/lib/site-config.ts` (`getSiteConfig` / `getSiteWebsiteTitle` / `getSiteHeaderConfig` / `resolveTocForCollection`) |
 
-YAML-Gruppen im CMS: **Design** und **Content**.
+YAML-Gruppen im CMS: **General**, **Design** und **Content**.
+
+### Site → General → Website title
+
+| Feld | Bedeutung |
+| --- | --- |
+| `general.websiteTitle` | Markenname: Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`), `og:site_name` |
 
 ### Site → Design → Header (#44)
 

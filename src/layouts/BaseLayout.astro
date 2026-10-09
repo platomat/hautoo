@@ -12,6 +12,7 @@ import {
 	type Seo,
 } from "../cms/fields/seo";
 import { getBuildId, withBuildId } from "../lib/build-id";
+import { getSiteWebsiteTitle } from "../lib/site-config";
 
 interface Props {
 	title?: string;
@@ -31,8 +32,10 @@ interface Props {
 	footerCode?: string;
 }
 
+const siteName = await getSiteWebsiteTitle();
+
 const {
-	title = "hautuu",
+	title = siteName,
 	description,
 	seo: seoProp,
 	ogType = "website",
@@ -49,7 +52,7 @@ const seo = resolveSeo(seoProp);
 
 const documentTitle = seo.seo_title?.trim() || title;
 const pageTitle =
-	documentTitle === "hautuu" ? documentTitle : `${documentTitle} · hautuu`;
+	documentTitle === siteName ? documentTitle : `${documentTitle} · ${siteName}`;
 const metaDescription =
 	seo.seo_description?.trim() || description?.trim() || undefined;
 const robots = buildRobotsContent(seo);
@@ -103,7 +106,7 @@ const readingMinutes =
 		{metaDescription && <meta property="og:description" content={metaDescription} />}
 		<meta property="og:type" content={ogType} />
 		<meta property="og:locale" content="de_DE" />
-		<meta property="og:site_name" content="hautuu" />
+		<meta property="og:site_name" content={siteName} />
 		{canonicalURL && <meta property="og:url" content={canonicalURL.href} />}
 		{
 			ogImageURL && (

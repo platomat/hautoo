@@ -1,5 +1,6 @@
 import { getEntry } from "astro:content";
 import {
+	DEFAULT_SITE_GENERAL_CONFIG,
 	DEFAULT_SITE_HEADER_CONFIG,
 	DEFAULT_SITE_TOC_CONFIG,
 	siteConfigSchema,
@@ -16,6 +17,15 @@ export async function getSiteConfig(): Promise<SiteConfig> {
 		return siteConfigSchema.parse({});
 	}
 	return siteConfigSchema.parse(entry.data);
+}
+
+/** Brand / site name from CMS (header wordmark, title suffix, og:site_name). */
+export async function getSiteWebsiteTitle(): Promise<string> {
+	const config = await getSiteConfig();
+	return (
+		config.general?.websiteTitle?.trim() ||
+		DEFAULT_SITE_GENERAL_CONFIG.websiteTitle
+	);
 }
 
 export async function getSiteHeaderConfig(): Promise<SiteHeaderConfig> {

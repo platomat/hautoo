@@ -46,8 +46,17 @@ export const siteWidthConfigSchema = z.object({
 
 export type SiteWidthConfig = z.infer<typeof siteWidthConfigSchema>;
 
+/** CMS group General (site name for chrome + document titles). */
+export const siteGeneralConfigSchema = z.object({
+	/** Brand / site name in header, title suffix, og:site_name. */
+	websiteTitle: z.string().trim().min(1).default("hautuu"),
+});
+
+export type SiteGeneralConfig = z.infer<typeof siteGeneralConfigSchema>;
+
 /** Root shape of `src/content/config/site.yaml`. */
 export const siteConfigSchema = z.object({
+	general: siteGeneralConfigSchema.default({}),
 	design: z
 		.object({
 			header: siteHeaderConfigSchema.default({}),
@@ -62,6 +71,9 @@ export const siteConfigSchema = z.object({
 });
 
 export type SiteConfig = z.infer<typeof siteConfigSchema>;
+
+export const DEFAULT_SITE_GENERAL_CONFIG: SiteGeneralConfig =
+	siteGeneralConfigSchema.parse({});
 
 export const DEFAULT_SITE_HEADER_CONFIG: SiteHeaderConfig =
 	siteHeaderConfigSchema.parse({});
