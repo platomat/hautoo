@@ -29,22 +29,22 @@ Der Agent kann den [Branch](/glossar/branch/) auch anlegen und z. B. die Start
 
 ## Push = Preview, nicht Production
 
-[Push](/glossar/push/) vom **Test-Branch** → im [Cloudflare Dashboard](https://dash.cloudflare.com) „Workers & Pages“ (Workers und Pages) → dein Projekt → „Deployments“ (Bereitstellungen): Eintrag mit „Preview“ (Vorschau) (nicht „Production“ (Produktion)), eigene `pages.dev`-URL, die niemand errät.
+[Push](/glossar/push/) vom **Test-[Branch](/glossar/branch/)** → im [Cloudflare Dashboard](https://dash.cloudflare.com) „Workers & Pages“ (Workers und Pages) → dein Projekt → „Deployments“ (Bereitstellungen): Eintrag mit „Preview“ (Vorschau) (nicht „[Production](/glossar/production/)“ (Produktion)), eigene `pages.dev`-URL, die niemand errät.
 
 Link an jemanden: „Gefällt dir das?“. Live bleibt unangetastet.
 
 ## Wenn’s gut ist: Merge
 
-Auf [GitHub](/glossar/github/) den [**Pull Request**](/glossar/pull-request/) vom Branch `test` öffnen und [**Merge**](/glossar/merge/) bestätigen („Confirm“ (Bestätigen)), oder lokal `test` in `main` mergen und [**push**](/glossar/push/) `main`. Cloudflare baut **[Production](/glossar/production/)**, jetzt ist’s öffentlich.
+Auf [GitHub](/glossar/github/) den [**Pull Request**](/glossar/pull-request/) vom Branch `test` öffnen und [**Merge**](/glossar/merge/) bestätigen („Confirm“ (Bestätigen)), oder lokal `test` in `main` [merge](/glossar/merge/)n und [**push**](/glossar/push/) `main`. [Cloudflare](/glossar/cloudflare-pages/) baut **[Production](/glossar/production/)**, jetzt ist’s öffentlich.
 
 Parallel kann auf `main` ein Bugfix laufen, während du auf `test` wochenlang Features stapelst. Klassisches Team-Spiel, auch solo sinnvoll.
 
 ## Rollback
 
-Im Projekt unter „Deployments“ ein älteres „Production“-Deployment öffnen → „Rollback to this deployment“ (Auf dieses Deployment zurücksetzen) (engl. Button). In Sekunden ist der alte Stand wieder live. Danach wieder vorwärts deployen, wenn du die neue Version zurückwillst.
+Im Projekt unter „[Deployments](/glossar/deploy/)“ (Bereitstellungen) beim gewünschten **älteren** „Production“-Eintrag das **Dreipunkte-Menü** (⋯) → „[Rollback](/glossar/rollback/) to this deployment“ (Auf dieses Deployment zurücksetzen). Laut [Cloudflare Rollbacks](https://developers.cloudflare.com/pages/configuration/rollbacks/) gilt das nur für erfolgreiche Production-[Build](/glossar/build/)s, nicht für den gerade laufenden Build und nicht für [Preview-Deployments](/glossar/preview-url/). In Sekunden ist der alte Stand wieder live.
 
-Kein [FTP](/glossar/ftp/). [**CI/CD**](/glossar/ci-cd/) heißt: Push, [Build](/glossar/build/), Preview, [Merge](/glossar/merge/), Live, und rückwärts geht auch. Merge vs. [Rebase](/glossar/rebase/) in der Historie: [Folge 007](/artikel/folge-007-merge-rebase/).
+Kein [FTP](/glossar/ftp/). [**CI/CD**](/glossar/ci-cd/) heißt: [Push](/glossar/push/), [Build](/glossar/build/), Preview, [Merge](/glossar/merge/), Live, und rückwärts geht auch. Merge vs. [Rebase](/glossar/rebase/) in der Historie: [Folge 007](/artikel/folge-007-merge-rebase/).
 
 {{repodoc path="docs/cloudflare/README.md" title="Cloudflare — Website online bringen" description="Preview-Deployments und Production im Repo nachlesen."}}
 
-<!-- Quelle: 2026-10-04--00-44-03--obs-screencast - hautoo - cloudflare - branches, rollbacks.txt -->
+<!-- Quelle: 2026-10-04--00-44-03--[obs](/glossar/obs/)-screencast - hautoo - cloudflare - branches, rollbacks.txt -->

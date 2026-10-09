@@ -22,7 +22,7 @@ Kurzliste dessen, was auf `main` schon umgesetzt ist (Details und Erläuterungen
 
 | Bereich | Punkte |
 | --- | --- |
-| **Inhalte** | 21 Screencast-Folgen als Artikel, statische Pages, Features-Seite, Redaktionsregeln in `docs/redaktion/` |
+| **Inhalte** | 22 Screencast-Folgen als Artikel, statische Pages, Features-Seite, Redaktionsregeln in `docs/redaktion/` |
 | **CMS** | Sveltia `/admin/`, Collections inkl. Bausteine (`blocks`), Menüs, **Config** (`site.yaml`: Design/Content), Entwurfsstatus, globales TOC und **Inhaltsbreite** (3 Stufen) mit lokaler Überschreibung, Head/Footer-Code, Worker-OAuth-Zugang |
 | **Glossar & FAQ** | Glossar mit verwandten Artikeln/Tags, Querverlink-Skript und Erstlink-Check, FAQ offen (kein Accordion), Tag-Seiten |
 | **Embeds** | Bausteine, Artikel-/Glossar-/Tag-Listings, Tagwolke, Trennlinie, Kontakt-E-Mail aus ENV, Repo-Docs-Box; Embed-Check (auch Listen-Regel) |
@@ -30,7 +30,7 @@ Kurzliste dessen, was auf `main` schon umgesetzt ist (Details und Erläuterungen
 | **Suche & UI** | MiniSearch im Header, Artikel-Übersicht mit Listing-Embed und Kartenfeldern |
 | **Design** | Dark Theme mit CSS-Variablen, Breakpoints, **Sticky Header**, Inhaltsbreite 3 Stufen, externe Links mit Pfeil-Indikator (nicht Header/Footer), Vollbild-Hintergrund, **Bildnachweise** auf dem Impressum |
 | **Deploy** | Astro-Build, Cloudflare Pages aus GitHub, Preview/Rollback, Cache-Header und Build-ID |
-| **Qualität & Doku** | `check-content-links.py` (inkl. Embeds), `docs/`, Cursor-Regeln, Glossar-/SEO-Hilfsskripte |
+| **Qualität & Doku** | `check-content-links.py` (inkl. Embeds), `check-content-no-video-hints.py`, `docs/`, Cursor-Regeln, Glossar-/SEO-Hilfsskripte |
 
 Die genaue Liste aller Features findest du auf der Website: [Features](https://hautoo.storyofai.net/features/).
 
@@ -78,4 +78,4 @@ Details: [docs/entwicklung](./docs/entwicklung/README.md)
 
 ## Status
 
-Astro-Site mit Sveltia-CMS, Glossar, FAQ, 21 Folgen-Artikeln und Cloudflare-Deploy ist live unter [hautoo.storyofai.net](https://hautoo.storyofai.net). Details: [Features](https://hautoo.storyofai.net/features/).
+Astro-Site mit Sveltia-CMS, Glossar, FAQ, 22 Folgen-Artikeln und Cloudflare-Deploy ist live unter [hautoo.storyofai.net](https://hautoo.storyofai.net). Details: [Features](https://hautoo.storyofai.net/features/).
