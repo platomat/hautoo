@@ -44,147 +44,6 @@ output:
 
 collections:
 
-  # Global settings (YAML only, no Markdown). Groups: General, Design, Content.
-  - name: config
-    label: Konfiguration
-    label_singular: Konfiguration
-    files:
-      - name: site
-        label: Site
-        file: src/content/config/site.yaml
-        format: yaml
-        fields:
-          - name: general
-            label: General
-            widget: object
-            collapsed: false
-            fields:
-              - name: websiteTitle
-                label: Website title
-                widget: string
-                required: true
-                hint: "Markenname in Header, Browser-Titel-Suffix und og:site_name."
-                default: hautuu
-          - name: design
-            label: Design
-            widget: object
-            collapsed: false
-            fields:
-              - name: header
-                label: Header
-                widget: object
-                collapsed: false
-                hint: "Sticky und Leistenhöhe pro Breakpoint (Desktop ≥1024px, Tablet 680–1023px, Mobile <680px)."
-                fields:
-                  - name: stickyDesktop
-                    label: Sticky auf Desktop
-                    widget: boolean
-                    default: true
-                  - name: stickyTablet
-                    label: Sticky auf Tablet
-                    widget: boolean
-                    default: true
-                  - name: stickyMobile
-                    label: Sticky auf Mobile
-                    widget: boolean
-                    default: true
-                  - name: heightDesktop
-                    label: Höhe Desktop (px)
-                    widget: number
-                    value_type: int
-                    default: 64
-                    min: 40
-                    max: 160
-                  - name: heightTablet
-                    label: Höhe Tablet (px)
-                    widget: number
-                    value_type: int
-                    default: 64
-                    min: 40
-                    max: 160
-                  - name: heightMobile
-                    label: Höhe Mobile (px)
-                    widget: number
-                    value_type: int
-                    default: 56
-                    min: 40
-                    max: 160
-          - name: content
-            label: Content
-            widget: object
-            collapsed: false
-            fields:
-              - name: toc
-                label: Inhaltsverzeichnis (TOC)
-                widget: object
-                collapsed: false
-                hint: "Globale TOC-Defaults. Einzelne Seiten/Artikel überschreiben mit ihren TOC-Feldern."
-                fields:
-                  - name: pages
-                    label: Seiten
-                    widget: object
-                    fields:
-                      - name: enabled
-                        label: Standardmäßig anzeigen
-                        widget: boolean
-                        default: false
-                      - name: levels
-                        label: Ebenen
-                        widget: select
-                        multiple: true
-                        options:
-                          - { label: h2, value: h2 }
-                          - { label: h3, value: h3 }
-                          - { label: h4, value: h4 }
-                        default: [h2]
-                      - name: title
-                        label: TOC-Titel
-                        widget: string
-                        default: Inhalt
-                  - name: articles
-                    label: Artikel
-                    widget: object
-                    fields:
-                      - name: enabled
-                        label: Standardmäßig anzeigen
-                        widget: boolean
-                        default: false
-                      - name: levels
-                        label: Ebenen
-                        widget: select
-                        multiple: true
-                        options:
-                          - { label: h2, value: h2 }
-                          - { label: h3, value: h3 }
-                          - { label: h4, value: h4 }
-                        default: [h2]
-                      - name: title
-                        label: TOC-Titel
-                        widget: string
-                        default: Inhalt
-              - name: width
-                label: Inhaltsbreite
-                widget: object
-                collapsed: false
-                hint: "Default-Breite, wenn Seite/Artikel kein eigenes Feld setzt und kein Listing-Embed die Breite auf „breit“ hebt."
-                fields:
-                  - name: pages
-                    label: Seiten (Standard)
-                    widget: select
-                    options:
-                      - { label: Standard (Lesespalte), value: default }
-                      - { label: Breit, value: wide }
-                      - { label: Vollbreit, value: full }
-                    default: default
-                  - name: articles
-                    label: Artikel (Standard)
-                    widget: select
-                    options:
-                      - { label: Standard (Lesespalte), value: default }
-                      - { label: Breit, value: wide }
-                      - { label: Vollbreit, value: full }
-                    default: default
-
   - name: pages
     label: Seiten
     label_singular: Seite
@@ -715,3 +574,145 @@ collections:
                   required: false,
                   hint: "Optional am <a>-Link. Mehrere Klassen mit Leerzeichen.",
                 }
+
+
+  # Global settings (YAML only, no Markdown). Groups: General, Design, Content.
+  - name: config
+    label: Konfiguration
+    label_singular: Konfiguration
+    files:
+      - name: site
+        label: Site
+        file: src/content/config/site.yaml
+        format: yaml
+        fields:
+          - name: general
+            label: General
+            widget: object
+            collapsed: false
+            fields:
+              - name: websiteTitle
+                label: Website title
+                widget: string
+                required: true
+                hint: "Markenname in Header, Browser-Titel-Suffix und og:site_name."
+                default: hautuu
+          - name: design
+            label: Design
+            widget: object
+            collapsed: false
+            fields:
+              - name: header
+                label: Header
+                widget: object
+                collapsed: false
+                hint: "Sticky und Leistenhöhe pro Breakpoint (Desktop ≥1024px, Tablet 680–1023px, Mobile <680px)."
+                fields:
+                  - name: stickyDesktop
+                    label: Sticky auf Desktop
+                    widget: boolean
+                    default: true
+                  - name: stickyTablet
+                    label: Sticky auf Tablet
+                    widget: boolean
+                    default: true
+                  - name: stickyMobile
+                    label: Sticky auf Mobile
+                    widget: boolean
+                    default: true
+                  - name: heightDesktop
+                    label: Höhe Desktop (px)
+                    widget: number
+                    value_type: int
+                    default: 64
+                    min: 40
+                    max: 160
+                  - name: heightTablet
+                    label: Höhe Tablet (px)
+                    widget: number
+                    value_type: int
+                    default: 64
+                    min: 40
+                    max: 160
+                  - name: heightMobile
+                    label: Höhe Mobile (px)
+                    widget: number
+                    value_type: int
+                    default: 56
+                    min: 40
+                    max: 160
+          - name: content
+            label: Content
+            widget: object
+            collapsed: false
+            fields:
+              - name: toc
+                label: Inhaltsverzeichnis (TOC)
+                widget: object
+                collapsed: false
+                hint: "Globale TOC-Defaults. Einzelne Seiten/Artikel überschreiben mit ihren TOC-Feldern."
+                fields:
+                  - name: pages
+                    label: Seiten
+                    widget: object
+                    fields:
+                      - name: enabled
+                        label: Standardmäßig anzeigen
+                        widget: boolean
+                        default: false
+                      - name: levels
+                        label: Ebenen
+                        widget: select
+                        multiple: true
+                        options:
+                          - { label: h2, value: h2 }
+                          - { label: h3, value: h3 }
+                          - { label: h4, value: h4 }
+                        default: [h2]
+                      - name: title
+                        label: TOC-Titel
+                        widget: string
+                        default: Inhalt
+                  - name: articles
+                    label: Artikel
+                    widget: object
+                    fields:
+                      - name: enabled
+                        label: Standardmäßig anzeigen
+                        widget: boolean
+                        default: false
+                      - name: levels
+                        label: Ebenen
+                        widget: select
+                        multiple: true
+                        options:
+                          - { label: h2, value: h2 }
+                          - { label: h3, value: h3 }
+                          - { label: h4, value: h4 }
+                        default: [h2]
+                      - name: title
+                        label: TOC-Titel
+                        widget: string
+                        default: Inhalt
+              - name: width
+                label: Inhaltsbreite
+                widget: object
+                collapsed: false
+                hint: "Default-Breite, wenn Seite/Artikel kein eigenes Feld setzt und kein Listing-Embed die Breite auf „breit“ hebt."
+                fields:
+                  - name: pages
+                    label: Seiten (Standard)
+                    widget: select
+                    options:
+                      - { label: Standard (Lesespalte), value: default }
+                      - { label: Breit, value: wide }
+                      - { label: Vollbreit, value: full }
+                    default: default
+                  - name: articles
+                    label: Artikel (Standard)
+                    widget: select
+                    options:
+                      - { label: Standard (Lesespalte), value: default }
+                      - { label: Breit, value: wide }
+                      - { label: Vollbreit, value: full }
+                    default: default
