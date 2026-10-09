@@ -238,6 +238,10 @@ def link_body_once(
         if in_fence:
             out_lines.append(line)
             continue
+        # Source filenames and other metadata must stay literal (no glossar links).
+        if stripped.startswith("<!--"):
+            out_lines.append(line)
+            continue
         if re.match(r"^#{1,6}\s", line):
             out_lines.append(line)
             continue

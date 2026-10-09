@@ -32,19 +32,19 @@ Der Worker ist **nicht** deine Website, nur die **Tür** fürs [CMS](/glossar/cm
 
 ## Umsetzung (grober Ablauf)
 
-Per [**Issue**](/glossar/issue/) (z. B. Menüs + GitHub-Login) lässt du den Agenten den Worker vorbereiten, oft mit „[Deploy](/glossar/deploy/) to Cloudflare“ (Zu Cloudflare bereitstellen). Worker-URL notieren.
+Per [**Issue**](/glossar/issue/) (z. B. Menüs + [GitHub](/glossar/github/)-Login) lässt du den Agenten den Worker vorbereiten, oft mit „[Deploy](/glossar/deploy/) to Cloudflare“ (Zu Cloudflare bereitstellen). Worker-URL notieren.
 
 Parallel [**GitHub OAuth App**](/glossar/oauth/):
 
-- GitHub „Settings“ (Einstellungen) → „Developer settings“ (Entwicklereinstellungen) → „OAuth Apps“ (OAuth-Apps) → „New OAuth App“ (Neue OAuth-App).
+- GitHub „Settings“ (Einstellungen) → „Developer settings“ (Entwicklereinstellungen) → „[OAuth](/glossar/oauth/) Apps“ (OAuth-Apps) → „New OAuth App“ (Neue OAuth-App).
 - „Homepage URL:“ (Startseiten-URL) deine Site (z. B. `https://hautoo.storyofai.net`).
 - „Callback URL:“ (Callback-URL) `https://<worker-url>/callback` (z. B. `https://hautoo-sveltia-cms-auth.platomat.workers.dev/callback`), exakt wie in der Doku.
 
 „Client ID“ (Client-ID) und „Client Secret“ (Client-Geheimnis) im Worker unter „Settings“ (Einstellungen) → „Variables“ (Variablen) (Runtime Variables, siehe `docs/sveltia/zugang-worker.md`) — „Client Secret“ nur als Secret, nicht als Klartext.
 
-„Allowed domains:“ (Zugelassene Domains) deine CMS-Domain.
+„Allowed domains:“ (Zugelassene Domains) deine [CMS](/glossar/cms/)-Domain.
 
-In `public/admin/config.yml`: GitHub-[**backend**](/glossar/backend/) mit Worker-URL, [Branch](/glossar/branch/) [`main`](/glossar/main/), committen, pushen.
+In `public/admin/config.yml`: GitHub-[**backend**](/glossar/backend/) mit Worker-URL, [Branch](/glossar/branch/) [`main`](/glossar/main/), [committen](/glossar/commit/), pushen.
 
 ## PAT wegwerfen
 
@@ -54,7 +54,7 @@ OAuth läuft? Alten Token bei GitHub **revoken**, weniger Schlüssel im Umlauf.
 
 [Collection](/glossar/collection/) **menus**: z. B. `main`, Footer legal. Einträge mit Label, Link zur **Seite** oder freie **URL**, optional **Untermenü** (eine Ebene).
 
-Speichern im CMS → [Commit](/glossar/commit/) „Update menu …“ → Cloudflare baut. Manchmal dauert der Hook einen Moment, unter Pages nach dem Deployment schauen („Retry“ (Erneut versuchen) baut denselben Commit nochmal, ersetzt keinen fehlenden [Build](/glossar/build/)).
+Speichern im CMS → [Commit](/glossar/commit/) „Update menu …“ → [Cloudflare](/glossar/cloudflare-pages/) baut. Manchmal dauert der Hook einen Moment, unter Pages nach dem [Deployment](/glossar/deploy/) schauen („Retry“ (Erneut versuchen) baut denselben Commit nochmal, ersetzt keinen fehlenden [Build](/glossar/build/)).
 
 ## Wenn’s knallt: Rebase-Konflikt
 
@@ -62,8 +62,8 @@ Lokal und im Live-CMS dieselbe Datei? [**Pull**](/glossar/pull/)/[Rebase](/gloss
 
 ## CI/CD in einem Satz
 
-Code in [Cursor](/glossar/cursor/) → [Push](/glossar/push/) → Build. Text im CMS → Commit → Build. Kein [FTP](/glossar/ftp/). Preview-Branches und [Rollback](/glossar/rollback/) von Cloudflare gelten weiter ([Folge 012](/artikel/folge-012-cloudflare-branches/)).
+Code in [Cursor](/glossar/cursor/) → [Push](/glossar/push/) → [Build](/glossar/build/). Text im CMS → Commit → Build. Kein [FTP](/glossar/ftp/). Preview-[Branches](/glossar/branch/) und [Rollback](/glossar/rollback/) von Cloudflare gelten weiter ([Folge 012](/artikel/folge-012-cloudflare-branches/)).
 
 Untermenü-Aussehen (Aufklappen vs. Klick) ist Feintuning. Pipeline und Zugang stehen.
 
-<!-- Quelle: 2026-10-04--01-38-06--obs-screencast - hautoo - [sveltia](/glossar/sveltia/) - worker.txt -->
+<!-- Quelle: 2026-10-04--01-38-06--obs-screencast - hautoo - sveltia - worker.txt -->
