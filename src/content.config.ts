@@ -8,6 +8,7 @@ import {
 	backgroundOverlaySchema,
 } from "./cms/fields/page-background";
 import { seoSchema } from "./cms/fields/seo";
+import { contentWidthSchema } from "./cms/fields/content-width";
 import { siteConfigSchema } from "./cms/fields/site-config";
 import { entryStatusSchema } from "./cms/fields/status";
 
@@ -46,6 +47,11 @@ const pages = defineCollection({
 		tocLevels: z.array(z.enum(["h2", "h3", "h4"])).optional(),
 		/** Omit / empty = global TOC title for pages. */
 		tocTitle: z.string().optional(),
+		/**
+		 * Content column width. Omit = global Config → Content → Breite,
+		 * or auto `wide` when the body has listing embeds.
+		 */
+		contentWidth: contentWidthSchema.optional(),
 		/** Raw HTML/JS/CSS injected before `</head>` (trusted CMS editors). */
 		headCode: z.string().optional(),
 		/** Raw HTML/JS/CSS injected before `</body>` (trusted CMS editors). */
@@ -96,6 +102,11 @@ const articles = defineCollection({
 			tocLevels: z.array(z.enum(["h2", "h3", "h4"])).optional(),
 			/** Omit / empty = global TOC title for articles. */
 			tocTitle: z.string().optional(),
+			/**
+			 * Content column width. Omit = global Config → Content → Breite,
+			 * or auto `wide` when the body has listing embeds.
+			 */
+			contentWidth: contentWidthSchema.optional(),
 		}),
 });
 

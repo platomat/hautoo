@@ -13,10 +13,9 @@ import {
 	getPublishedArticles,
 } from "../../lib/articles";
 import { resolveCmsImage } from "../../lib/cms-image";
-import {
-	contentNeedsWideLayout,
-	hasContentEmbeds,
-} from "../../lib/content-embeds";
+import { contentWidthClass } from "../../cms/fields/content-width";
+import { hasContentEmbeds } from "../../lib/content-embeds";
+import { resolveContentWidth } from "../../lib/content-width";
 import {
 	estimateReadingTimeMinutes,
 	formatReadingTime,
@@ -35,7 +34,12 @@ export async function getStaticPaths() {
 const { article } = Astro.props;
 const useEmbeds = hasContentEmbeds(article.body);
 const { Content } = await render(article);
-const wide = await contentNeedsWideLayout(article.body);
+const contentWidth = await resolveContentWidth(
+	"articles",
+	article.data,
+	article.body,
+);
+const widthClass = contentWidthClass(contentWidth);
 const { older, newer } = await getAdjacentArticles(article);
 const tags = await getCollection("tags");
 const tagMap = new Map(tags.map((tag) => [tag.id, tag]));
@@ -65,7 +69,7 @@ const readingTimeLabel = formatReadingTime(readingTimeMinutes);
 	backgroundImage={backgroundImage}
 	backgroundOverlay={article.data.backgroundOverlay}
 >
-	<main class:list={["page", { "page--wide": wide }]}>
+	<main class:list={["page", widthClass]}>
 		<article>
 			<p class="text-sm text-muted">
 				<a href="/artikel/">Artikel</a>

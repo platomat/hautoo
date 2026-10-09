@@ -48,6 +48,15 @@ Umsetzung in `SiteHeader.astro` (CSS-Klassen + Custom Properties).
 
 Eintrag ohne `showToc` nutzt den globalen Default. Lokales `showToc: true` / `false` überschreibt. Fehlende `tocLevels` / `tocTitle` fallen auf die globalen Werte zurück (`resolveTocForCollection` in `site-config.ts`).
 
+### Site → Content → Breite (#59)
+
+| Feld | Bedeutung |
+| --- | --- |
+| `content.width.pages` | Default-Inhaltsbreite für Seiten (`default` / `wide` / `full`) |
+| `content.width.articles` | dasselbe für Artikel |
+
+Pro Eintrag optional `contentWidth` (gleiche Werte). Leer = globaler Default; ohne Feld und mit Listing-Embed → automatisch `wide` (`resolveContentWidth`). CSS: Lesespalte 42rem, breit 64rem, vollbreit 80rem.
+
 ## Collection `menus` (umgesetzt)
 
 Navigation und Footer-Links werden **nicht** mehr über Flags an Seiten gesteuert, sondern über eigene Menü-Dateien.
@@ -112,6 +121,7 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | `showToc` | nein | TOC an/aus; leer = globaler Default (`content.toc.pages`) |
 | `tocLevels` | nein | `h2` / `h3` / `h4`; leer = global |
 | `tocTitle` | nein | TOC-Überschrift; leer = global |
+| `contentWidth` | nein | `default` / `wide` / `full`; leer = global (`content.width.pages`) |
 | `headCode` | nein | Roh-HTML vor `</head>` (`<style>` / `<script>`) |
 | `footerCode` | nein | Roh-HTML vor `</body>` |
 | Body | ja | Markdown-Inhalt |
@@ -189,6 +199,7 @@ Beispiel: Baustein `stack-uebersicht` → auf der Startseite `{{block id="stack-
 | `showToc` | nein | TOC an/aus; leer = globaler Default (`content.toc.articles`) |
 | `tocLevels` | nein | `h2` / `h3` / `h4`; leer = global |
 | `tocTitle` | nein | TOC-Überschrift; leer = global |
+| `contentWidth` | nein | `default` / `wide` / `full`; leer = global (`content.width.articles`) |
 | `seo` | ja (CMS) | SEO-Partial |
 | Body | ja | Markdown |
 

@@ -2,6 +2,16 @@
 
 Wiederverwendbare Feldgruppen für Sveltia und Astro.
 
+## Inhaltsbreite (`contentWidth`)
+
+| Seite | Ort |
+| --- | --- |
+| Sveltia | Anchor `&field_content_width`; globale Defaults unter Config → Content → Breite |
+| Astro | `src/cms/fields/content-width.ts`, Resolve `src/lib/content-width.ts` |
+| Collections | `pages`, `articles` |
+
+Werte: `default` (42rem) · `wide` (64rem) · `full` (80rem). Leer = globaler Default; ohne Feld und mit Listing-Embed → `wide`.
+
 ## Status (`status`)
 
 | Seite | Ort |

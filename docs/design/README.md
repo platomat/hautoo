@@ -48,6 +48,7 @@ Subset mit `pyftsubset` (DE inkl. Umlaute). Preload beider WOFF2 in `BaseLayout`
 - **Keine Unterstreichung** (`text-decoration: none`)
 - Farbe = **Aktionsfarbe** (`--color-action`)
 - Hover: etwas heller (`--color-action-hover`), optional leichte Opacity — weiterhin ohne Unterstreichung
+- **Externe Links** im Inhalt (`target="_blank"`, nicht Header/Footer): kleiner Pfeil `↗` per `::after` (`.site-main a[target="_blank"]::after`)
 - Fokus: sichtbarer Fokusring in Aktionsfarbe (Tastaturbedienbarkeit)
 
 ## Farbpalette
@@ -139,6 +140,10 @@ Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-
 
 Globale Defaults unter **Konfiguration → Site → Content → TOC** (Seiten / Artikel: an/aus, Ebenen, Titel). Einzelne Einträge überschreiben mit `showToc` / `tocLevels` / `tocTitle` (Feld leer = global).
 
+### Inhaltsbreite
+
+Drei Stufen über CMS **Content → Breite** (Default) und pro Seite/Artikel `contentWidth`: **Standard** (42rem), **Breit** (64rem), **Vollbreit** (80rem). Ohne lokales Feld und mit Listing-Embed wird automatisch breit gewählt.
+
 ### Mobile-Navigation (Burger)
 
 Unter **680px** (`max-width: 679px`):
@@ -170,7 +175,8 @@ Beliebig kombinieren, statt Flex-CSS in jeder Komponente neu zu schreiben:
 | `.stack-on-tablet` | ab `< 1024px` → Spalte |
 | `.stack-on-mobile` | ab `< 680px` → Spalte |
 | `.center-on-tablet` / `.center-on-mobile` | auf Breakpoint zentrieren; setzt `.ms-auto` zurück |
-| `.page--wide` / `.page--with-sidebar` | breitere Inhaltsbreite (`--content-wide-max-width`, 64rem) |
+| `.page--width-wide` / `.page--wide` / `.page--with-sidebar` | breite Inhaltsbreite (`--content-wide-max-width`, 64rem) |
+| `.page--width-full` | vollbreite Spalte (`--content-full-max-width`, 80rem); CMS-Feld `contentWidth` |
 | `.page-layout` / `.page-layout__main` | Flex-Zeile Inhalt/Sidebar (mit `.stack-on-tablet`) |
 | `.hero` / `.page-hero` | Titelblock überall (`PageHero.astro`: `h1` + optionale Beschreibung, Abstand zum Inhalt) |
 | `.separator` | Dezente Trennlinie (`Separator.astro` / CMS `{{separator height width color}}`; Default-Farbe `border`) |

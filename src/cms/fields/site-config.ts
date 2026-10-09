@@ -1,4 +1,5 @@
 import { z } from "astro/zod";
+import { contentWidthSchema } from "./content-width";
 
 const headerHeight = z.coerce.number().int().min(40).max(160);
 
@@ -37,6 +38,14 @@ export const siteTocConfigSchema = z.object({
 
 export type SiteTocConfig = z.infer<typeof siteTocConfigSchema>;
 
+/** Default content column when entry omits `contentWidth` (and no listing auto-wide). */
+export const siteWidthConfigSchema = z.object({
+	pages: contentWidthSchema.default("default"),
+	articles: contentWidthSchema.default("default"),
+});
+
+export type SiteWidthConfig = z.infer<typeof siteWidthConfigSchema>;
+
 /** Root shape of `src/content/config/site.yaml`. */
 export const siteConfigSchema = z.object({
 	design: z
@@ -47,6 +56,7 @@ export const siteConfigSchema = z.object({
 	content: z
 		.object({
 			toc: siteTocConfigSchema.default({}),
+			width: siteWidthConfigSchema.default({}),
 		})
 		.default({}),
 });
@@ -58,3 +68,6 @@ export const DEFAULT_SITE_HEADER_CONFIG: SiteHeaderConfig =
 
 export const DEFAULT_SITE_TOC_CONFIG: SiteTocConfig =
 	siteTocConfigSchema.parse({});
+
+export const DEFAULT_SITE_WIDTH_CONFIG: SiteWidthConfig =
+	siteWidthConfigSchema.parse({});

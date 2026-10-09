@@ -3,11 +3,17 @@ title: Features
 description: Überblick über die umgesetzten Funktionen von hautuu auf der Website und im Repo.
 status: published
 modifiedDate: 2026-10-07
+backgroundImage: olga-kovalski-eAmNjd0Zbts-unsplash.cleaned.webp
+backgroundOverlay: 73
+backgroundAttribution: Photo by <a href="https://unsplash.com/@kovalskihelga?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Olga Kovalski</a> on <a href="https://unsplash.com/photos/an-old-brick-building-with-a-tree-in-the-foreground-eAmNjd0Zbts?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 showToc: true
 tocTitle: Inhalt
 tocLevels:
   - h2
+contentWidth: wide
 seo:
+  seo_title: Features von hautuu
+  seo_description: 'Was auf hautoo.storyofai.net steht: 22 Folgen, Sveltia CMS mit Config, Inhaltsbreite, Sticky Header, Glossar, Embeds, SEO und Cloudflare Deploy.'
   index_visibility: index
   follow_visibility: follow
   noarchive: false
@@ -19,8 +25,6 @@ seo:
   max_video_preview: -1
   max_image_preview_enabled: true
   max_image_preview: large
-  seo_title: Features von hautuu
-  seo_description: "Was auf hautoo.storyofai.net steht: 22 Folgen, Sveltia CMS mit Config, Sticky Header, Glossar, Embeds, SEO und Cloudflare Deploy."
 ---
 
 Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo](/glossar/repository/) auf `main`). Details zu Begriffen im [**Glossar**](/glossar/), Antworten in der [**FAQ**](/faq/), Schritt für Schritt in den [**Artikeln**](/artikel/).
@@ -40,6 +44,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Menüs** als eigene Collection (`main`, `footer-legal`) statt Flags an einzelnen Seiten.
 - **Entwurfsstatus** (`draft`, `published`, `future`, `trash`) für Pages, Artikel und Glossar.
 - **Inhaltsverzeichnis** global unter **Konfiguration** → „Content“ → **Inhaltsverzeichnis (TOC)** (Seiten/Artikel: an/aus, Ebenen, Titel) und optional pro Eintrag überschreibbar.
+- **Inhaltsbreite** in drei Stufen (Standard, breit, vollbreit): global unter Content → Breite und pro Seite/Artikel per `contentWidth`.
 - **Seiten-Header und Footer-Code** für kleine HTML- oder [CSS](/glossar/css/)-Snippets nur auf einer Seite.
 - **Zugang über [Cloudflare Worker](/glossar/cloudflare-worker/)** mit [OAuth](/glossar/oauth/) statt nur [PAT](/glossar/pat/) ([Folge 014](/artikel/folge-014-sveltia-worker/)).
 
@@ -79,8 +84,8 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Vollbild-Hintergrund** optional pro Seite oder Artikel, mit Overlay und **Bildnachweis**-Feld (`backgroundAttribution`).
 - **Bildnachweise gesammelt** am Ende des **Impressums** (automatisch aus Pages und Artikeln, [Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum)).
 - **Bilder neben dem Content** (Variante B), [Astro](/glossar/astro/)-Optimierung inklusive [CMS](/glossar/cms/)-Pfade unter `/assets/` ([Folge 021](/artikel/folge-021-bilder-suchen-nutzen/)).
-- **Externe Links** öffnen in neuem Tab; interne bleiben in der Site.
-- **Artikel-Navigation** (älter/neuer) und breitere Spalte bei Listing-Embeds.
+- **Externe Links** öffnen in neuem Tab und zeigen im Inhalt einen kleinen Pfeil (`↗`); im Header und Footer ohne Indikator.
+- **Artikel-Navigation** (älter/neuer); Listing-Seiten nutzen die Breite **breit** (oder vollbreit), wählbar im CMS.
 
 ## Deployment und Workflow
 
