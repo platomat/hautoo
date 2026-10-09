@@ -6,6 +6,7 @@ modifiedDate: 2026-10-04
 backgroundImage: /assets/filip-kvasnak-NwmR1EDtiFg-unsplash.webp
 backgroundOverlay: 77
 backgroundAttribution: Photo by <a href="https://unsplash.com/@filipkvasnak?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Filip Kvasnak</a> on <a href="https://unsplash.com/photos/person-with-backpack-by-forest-lake-NwmR1EDtiFg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+showToc: false
 contentWidth: wide
 seo:
   seo_title: 'hautuu: Website mit Cursor, GitHub und Cloudflare'
@@ -24,6 +25,8 @@ seo:
 ---
 
 Willkommen bei **hautuu**.
+
+Schön, dass du da bist.
 
 Diese Website entsteht mit [Cursor](/glossar/cursor/), wird über [**GitHub**](/glossar/github/) versioniert und auf [Cloudflare](/glossar/cloudflare-pages/) ausgeliefert. Quellcode und Inhalte liegen im öffentlichen [Repository](/glossar/repository/): [github.com/platomat/hautoo](https://github.com/platomat/hautoo/).
 
