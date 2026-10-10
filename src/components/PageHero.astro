@@ -49,7 +49,11 @@ const crumbs =
 >
 	{
 		crumbs.length > 0 && (
-			<nav class="breadcrumbs" aria-label="Brotkrumen">
+			<nav
+				class="breadcrumbs"
+				aria-label="Brotkrumen"
+				style={`--breadcrumb-sep: ${JSON.stringify(hero.breadcrumbSeparator)}`}
+			>
 				<ol class="breadcrumbs__list list-plain">
 					{crumbs.map((crumb, index) => {
 						const isLast = index === crumbs.length - 1;

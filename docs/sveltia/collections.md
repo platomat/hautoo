@@ -52,6 +52,7 @@ Pro Collection eigene Defaults (Reihenfolge wie in der CMS-Leiste: Seiten, Artik
 | --- | --- | --- |
 | `hero.<collection>.textAlign` | `left` / `center` / `right` für Brotkrumen, Titel, Beschreibung | `left` |
 | `hero.<collection>.showBreadcrumbs` | Brotkrumen über dem Titel | `true` |
+| `hero.<collection>.breadcrumbSeparator` | Trenner zwischen Elementen: `/` · `•` · `→` · `-` | `/` |
 | `hero.<collection>.borderBottom` | 1px Linie unter dem Hero | `false` |
 
 Lokale Überschreibung an **Seiten** und **Artikeln**: `heroTextAlign`, `showBreadcrumbs`, `heroBorderBottom` (Feld leer/omit = Default der jeweiligen Collection). Umsetzung: `PageHero.astro` (`collection`-Prop), Pfade in `src/lib/breadcrumbs.ts`.

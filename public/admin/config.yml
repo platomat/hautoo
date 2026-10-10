@@ -749,6 +749,17 @@ collections:
                     label: Brotkrumen anzeigen
                     widget: boolean
                     default: true
+                  - name: breadcrumbSeparator
+                    label: Brotkrumen-Trenner
+                    widget: select
+                    options:
+                      - { label: "/", value: "/" }
+                      - { label: "•", value: "•" }
+                      - { label: "→", value: "→" }
+                      - { label: "-", value: "-" }
+                    default: "/"
+                    required: true
+                    hint: "Zeichen zwischen den Brotkrumen-Elementen."
                   - name: borderBottom
                     label: Trennlinie unten
                     widget: boolean
@@ -773,6 +784,17 @@ collections:
                     label: Brotkrumen anzeigen
                     widget: boolean
                     default: true
+                  - name: breadcrumbSeparator
+                    label: Brotkrumen-Trenner
+                    widget: select
+                    options:
+                      - { label: "/", value: "/" }
+                      - { label: "•", value: "•" }
+                      - { label: "→", value: "→" }
+                      - { label: "-", value: "-" }
+                    default: "/"
+                    required: true
+                    hint: "Zeichen zwischen den Brotkrumen-Elementen."
                   - name: borderBottom
                     label: Trennlinie unten
                     widget: boolean
@@ -797,6 +819,17 @@ collections:
                     label: Brotkrumen anzeigen
                     widget: boolean
                     default: true
+                  - name: breadcrumbSeparator
+                    label: Brotkrumen-Trenner
+                    widget: select
+                    options:
+                      - { label: "/", value: "/" }
+                      - { label: "•", value: "•" }
+                      - { label: "→", value: "→" }
+                      - { label: "-", value: "-" }
+                    default: "/"
+                    required: true
+                    hint: "Zeichen zwischen den Brotkrumen-Elementen."
                   - name: borderBottom
                     label: Trennlinie unten
                     widget: boolean
@@ -821,6 +854,17 @@ collections:
                     label: Brotkrumen anzeigen
                     widget: boolean
                     default: true
+                  - name: breadcrumbSeparator
+                    label: Brotkrumen-Trenner
+                    widget: select
+                    options:
+                      - { label: "/", value: "/" }
+                      - { label: "•", value: "•" }
+                      - { label: "→", value: "→" }
+                      - { label: "-", value: "-" }
+                    default: "/"
+                    required: true
+                    hint: "Zeichen zwischen den Brotkrumen-Elementen."
                   - name: borderBottom
                     label: Trennlinie unten
                     widget: boolean
@@ -845,6 +889,17 @@ collections:
                     label: Brotkrumen anzeigen
                     widget: boolean
                     default: true
+                  - name: breadcrumbSeparator
+                    label: Brotkrumen-Trenner
+                    widget: select
+                    options:
+                      - { label: "/", value: "/" }
+                      - { label: "•", value: "•" }
+                      - { label: "→", value: "→" }
+                      - { label: "-", value: "-" }
+                    default: "/"
+                    required: true
+                    hint: "Zeichen zwischen den Brotkrumen-Elementen."
                   - name: borderBottom
                     label: Trennlinie unten
                     widget: boolean

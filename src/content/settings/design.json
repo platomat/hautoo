@@ -11,26 +11,31 @@
 		"pages": {
 			"textAlign": "left",
 			"showBreadcrumbs": true,
+			"breadcrumbSeparator": "/",
 			"borderBottom": false
 		},
 		"articles": {
 			"textAlign": "left",
 			"showBreadcrumbs": true,
+			"breadcrumbSeparator": "/",
 			"borderBottom": false
 		},
 		"categories": {
 			"textAlign": "left",
 			"showBreadcrumbs": true,
+			"breadcrumbSeparator": "/",
 			"borderBottom": false
 		},
 		"tags": {
 			"textAlign": "left",
 			"showBreadcrumbs": true,
+			"breadcrumbSeparator": "/",
 			"borderBottom": false
 		},
 		"glossar": {
 			"textAlign": "left",
 			"showBreadcrumbs": true,
+			"breadcrumbSeparator": "/",
 			"borderBottom": false
 		}
 	}

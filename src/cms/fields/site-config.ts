@@ -25,12 +25,19 @@ export const heroTextAlignSchema = z.enum(["left", "center", "right"]);
 
 export type HeroTextAlign = z.infer<typeof heroTextAlignSchema>;
 
+/** Separator between breadcrumb items (CMS Design → Hero per collection). */
+export const breadcrumbSeparatorSchema = z.enum(["/", "•", "→", "-"]);
+
+export type BreadcrumbSeparator = z.infer<typeof breadcrumbSeparatorSchema>;
+
 /** Hero block defaults for one collection (CMS Design → Hero → …). */
 export const siteHeroConfigSchema = z.object({
 	/** Alignment for breadcrumbs, title, and description. */
 	textAlign: heroTextAlignSchema.default("left"),
 	/** Show breadcrumb trail above the title. */
 	showBreadcrumbs: z.boolean().default(true),
+	/** Character between breadcrumb crumbs. */
+	breadcrumbSeparator: breadcrumbSeparatorSchema.default("/"),
 	/** 1px border under the hero block. */
 	borderBottom: z.boolean().default(false),
 });
@@ -75,6 +82,7 @@ export function normalizeHeroByCollection(raw: unknown): unknown {
 	const looksFlat =
 		("textAlign" in obj ||
 			"showBreadcrumbs" in obj ||
+			"breadcrumbSeparator" in obj ||
 			"borderBottom" in obj) &&
 		!("pages" in obj) &&
 		!("articles" in obj);

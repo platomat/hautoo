@@ -330,7 +330,7 @@ body.is-nav-locked {
 }
 
 .breadcrumbs__item + .breadcrumbs__item::before {
-	content: "/";
+	content: var(--breadcrumb-sep, "/");
 	color: var(--color-text-muted);
 	opacity: 0.7;
 }

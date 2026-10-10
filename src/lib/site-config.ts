@@ -10,6 +10,7 @@ import {
 	siteContentConfigSchema,
 	siteDesignConfigSchema,
 	siteGeneralConfigSchema,
+	type BreadcrumbSeparator,
 	type EntryHeroFields,
 	type HeroCollectionKey,
 	type HeroTextAlign,
@@ -59,6 +60,7 @@ export function getSiteHeroConfig(
 export type ResolvedHeroSettings = {
 	textAlign: HeroTextAlign;
 	showBreadcrumbs: boolean;
+	breadcrumbSeparator: BreadcrumbSeparator;
 	borderBottom: boolean;
 };
 
@@ -76,6 +78,7 @@ export function resolveHeroSettings(
 			typeof entry.showBreadcrumbs === "boolean"
 				? entry.showBreadcrumbs
 				: globalHero.showBreadcrumbs,
+		breadcrumbSeparator: globalHero.breadcrumbSeparator,
 		borderBottom:
 			typeof entry.heroBorderBottom === "boolean"
 				? entry.heroBorderBottom
