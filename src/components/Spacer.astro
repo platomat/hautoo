@@ -1,0 +1,20 @@
+---
+import {
+	DEFAULT_SPACER_HEIGHT,
+	clampSpacerHeight,
+} from "../lib/spacer";
+
+interface Props {
+	/** Vertical gap in px (default 32). */
+	height?: number;
+}
+
+const { height = DEFAULT_SPACER_HEIGHT } = Astro.props;
+const heightPx = clampSpacerHeight(height);
+---
+
+<div
+	class="spacer"
+	style={`--spacer-height: ${heightPx}px`}
+	aria-hidden="true"
+></div>

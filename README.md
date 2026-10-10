@@ -25,7 +25,7 @@ Kurzliste dessen, was auf `main` schon umgesetzt ist (Details und Erläuterungen
 | **Inhalte** | 22 Screencast-Folgen als Artikel, statische Pages, Features-Seite, Redaktionsregeln in `docs/redaktion/` |
 | **CMS** | Sveltia `/admin/`, Collections inkl. Bausteine (`blocks`), Menüs, **Settings** (JSON: General / Design / Content inkl. **Website-Titel** und **Hero**), Entwurfsstatus, globales TOC und **Inhaltsbreite** (3 Stufen) mit lokaler Überschreibung, Head/Footer-Code, Worker-OAuth-Zugang |
 | **Glossar & FAQ** | Glossar mit verwandten Artikeln/Tags, Querverlink-Skript und Erstlink-Check, FAQ offen (kein Accordion), Tag-Seiten |
-| **Embeds** | Bausteine, Artikel-/Glossar-/Tag-Listings, Tagwolke, Trennlinie, Button, Kontakt-E-Mail aus ENV, Repo-Docs-Box; Embed-Check (auch Listen-Regel) |
+| **Embeds** | Bausteine, Artikel-/Glossar-/Tag-Listings, Tagwolke, Trennlinie, Abstandshalter, Button, Kontakt-E-Mail aus ENV, Repo-Docs-Box; Embed-Check (auch Listen-Regel) |
 | **SEO** | `seo`-Felder, Open Graph/Twitter inkl. OG-Bild (1200×630), Canonical, Sitemap, Lesezeit, noindex für Impressum/Datenschutz |
 | **Suche & UI** | MiniSearch im Header, Artikel-Übersicht mit Listing-Embed und Kartenfeldern |
 | **Design** | Dark Theme mit CSS-Variablen, Breakpoints, **Sticky Header**, **Hero** (Ausrichtung, Brotkrumen, Trennlinie; global + Override), Inhaltsbreite 3 Stufen, externe Links mit Pfeil-Indikator (nicht Header/Footer), Vollbild-Hintergrund, **Bildnachweise** auf dem Impressum |

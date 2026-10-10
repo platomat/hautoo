@@ -195,6 +195,7 @@ Beliebig kombinieren, statt Flex-CSS in jeder Komponente neu zu schreiben:
 | `.page-layout` / `.page-layout__main` | Flex-Zeile Inhalt/Sidebar (mit `.stack-on-tablet`) |
 | `.hero` / `.page-hero` | Titelblock überall (`PageHero.astro`: `h1` + optionale Beschreibung, Abstand zum Inhalt) |
 | `.separator` | Dezente Trennlinie (`Separator.astro` / CMS `{{separator height width color}}`; Default-Farbe `border`) |
+| `.spacer` | Vertikaler Leerraum (`Spacer.astro` / CMS `{{spacer height}}`; Default 32 px, Max. 600) |
 | `.cms-button` | CMS-Button (`CmsButton.astro` / `{{button label href …}}`; solid/outline, Palette wie Trennlinie, Ausrichtung inkl. volle Breite) |
 | `.article-list` | Artikelliste (Titel, Summary, Datum) |
 

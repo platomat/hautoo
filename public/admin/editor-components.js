@@ -631,6 +631,39 @@
 		},
 	});
 
+	CMS.registerEditorComponent({
+		id: "spacer",
+		label: "Abstandshalter",
+		icon: "height",
+		fields: [
+			{
+				name: "height",
+				label: "Höhe (px)",
+				widget: "number",
+				value_type: "int",
+				default: 32,
+				min: 1,
+				max: 600,
+				hint: "Vertikaler Leerraum. Standard 32 px.",
+			},
+		],
+		pattern: /^\{\{spacer(?<attrs>[^}]*)\}\}\s*$/m,
+		fromBlock: (match) => {
+			const attrs = parseAttrs(match?.groups?.attrs || "");
+			return {
+				height: attrs.height || "32",
+			};
+		},
+		toBlock: ({ height = 32 }) => {
+			if (!height || Number(height) === 32) return "{{spacer}}";
+			return `{{spacer height="${height}"}}`;
+		},
+		toPreview: ({ height = 32 }) => {
+			const h = Math.min(600, Math.max(1, Number(height) || 32));
+			return `<div style="height:${h}px;margin:0;border:1px dashed #2e3833;border-radius:4px;background:repeating-linear-gradient(135deg,transparent,transparent 6px,#2e3833 6px,#2e3833 7px);opacity:.55" title="Abstand ${h}px" aria-hidden="true"></div>`;
+		},
+	});
+
 	const BUTTON_LIGHT_FILLS = new Set([
 		"text",
 		"text-muted",

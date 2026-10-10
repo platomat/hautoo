@@ -2,7 +2,7 @@
 title: Features
 description: Überblick über die umgesetzten Funktionen von hautuu auf der Website und im Repo.
 status: published
-modifiedDate: 2026-10-10
+modifiedDate: 2026-10-11
 backgroundImage: olga-kovalski-eAmNjd0Zbts-unsplash.cleaned.webp
 backgroundOverlay: 73
 backgroundAttribution: Photo by <a href="https://unsplash.com/@kovalskihelga?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Olga Kovalski</a> on <a href="https://unsplash.com/photos/an-old-brick-building-with-a-tree-in-the-foreground-eAmNjd0Zbts?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
@@ -65,7 +65,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 
 - **Wiederverwendbare Bausteine** (`{{block id="…"}}`): z. B. Stack-Grafik (`stack-uebersicht`) auf Startseite und in passenden Folgen ([Folge 020](/artikel/folge-020-bausteine-fork/)).
 - **Artikel-Listing** im Content: Anzahl, Sortierung, Grid oder Liste, wählbare Kartenfelder inkl. Lesezeit ([Folge 019](/artikel/folge-019-impressum-komponenten/)).
-- **Trennlinie**, **Button** (`{{button label="…" href="…"}}`, solid/outline, Palette, Ausrichtung) und **Kontakt-E-Mail** als Embed (`{{contact-email}}` aus CMS oder Build-Variable, nicht im Markdown).
+- **Trennlinie**, **Abstandshalter** (`{{spacer}}` bzw. `{{spacer height="…"}}`, Default 32 px), **Button** (`{{button label="…" href="…"}}`, solid/outline, Palette, Ausrichtung) und **Kontakt-E-Mail** als Embed (`{{contact-email}}` aus CMS oder Build-Variable, nicht im Markdown).
 - **Markdown-Embeds** über die Sveltia-Toolbar; Rendering zentral in `CmsContent.astro`.
 - **Repo-Docs-Box** (`{{repodoc path="docs/…"}}`): Verlinkung zu Handbuch-Dateien auf [GitHub](/glossar/github/), Toolbar **Repo-Dokument** ([Folge 001](/artikel/folge-001-hautuu-intro/) als Beispiel).
 - **Embed-Check** vor dem Build: `{{repodoc}}` und `{{block}}` nur allein in einer Zeile, nicht mitten im Satz und **nicht zwischen Listenpunkten** (`check-content-embeds.py`).

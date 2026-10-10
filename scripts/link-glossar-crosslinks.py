@@ -145,7 +145,7 @@ def protected_ranges_in_line(line: str) -> list[tuple[int, int]]:
         ranges.append(m.span())
     for m in re.finditer(r"\[[^\]]*$", line):
         ranges.append(m.span())
-    for m in re.finditer(r"\{\{(?:repodoc|block|separator|article-listing|tag-listing)[^}]*\}\}", line):
+    for m in re.finditer(r"\{\{(?:repodoc|block|separator|spacer|article-listing|tag-listing)[^}]*\}\}", line):
         ranges.append(m.span())
     return ranges
 

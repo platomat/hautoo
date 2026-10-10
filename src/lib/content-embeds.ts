@@ -22,6 +22,7 @@ import {
 	resolveSeparatorColor,
 	type SeparatorColor,
 } from "./separator";
+import { DEFAULT_SPACER_HEIGHT, clampSpacerHeight } from "./spacer";
 import type { VideoProvider } from "./video";
 import { normalizeVideoId } from "./video";
 
@@ -85,6 +86,11 @@ export type SeparatorEmbedProps = {
 	color: SeparatorColor;
 };
 
+export type SpacerEmbedProps = {
+	/** Vertical gap in px. */
+	height: number;
+};
+
 export type ButtonEmbedProps = {
 	label: string;
 	href: string;
@@ -109,6 +115,7 @@ export type ContentSegment =
 	| { type: "category-listing"; props: CategoryListingEmbedProps }
 	| { type: "tag-cloud" }
 	| { type: "separator"; props: SeparatorEmbedProps }
+	| { type: "spacer"; props: SpacerEmbedProps }
 	| { type: "button"; props: ButtonEmbedProps }
 	| { type: "contact-email" }
 	| { type: "repodoc"; props: RepoDocEmbedProps }
@@ -177,9 +184,13 @@ const DEFAULT_SEPARATOR: SeparatorEmbedProps = {
 	color: DEFAULT_SEPARATOR_COLOR,
 };
 
+const DEFAULT_SPACER: SpacerEmbedProps = {
+	height: DEFAULT_SPACER_HEIGHT,
+};
+
 /** Line must be only the embed (optional attrs). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|tag-cloud|separator|button|contact-email|repodoc|block|video|video-consent-reset)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|tag-cloud|separator|spacer|button|contact-email|repodoc|block|video|video-consent-reset)(?<attrs>[^}]*)\}\}\s*$/gm;
 
 const ARTICLE_SORTS = new Set<ArticleSort>([
 	"newest",
@@ -417,6 +428,15 @@ export function parseSeparatorProps(
 	};
 }
 
+export function parseSpacerProps(
+	attrsRaw: string | undefined,
+): SpacerEmbedProps {
+	const attrs = parseAttrs(attrsRaw ?? "");
+	return {
+		height: clampSpacerHeight(attrs.height ?? DEFAULT_SPACER.height),
+	};
+}
+
 export function parseButtonProps(
 	attrsRaw: string | undefined,
 ): ButtonEmbedProps | undefined {
@@ -522,6 +542,11 @@ export async function buildContentSegments(
 			segments.push({
 				type: "separator",
 				props: parseSeparatorProps(attrs),
+			});
+		} else if (name === "spacer") {
+			segments.push({
+				type: "spacer",
+				props: parseSpacerProps(attrs),
 			});
 		} else if (name === "button") {
 			const props = parseButtonProps(attrs);

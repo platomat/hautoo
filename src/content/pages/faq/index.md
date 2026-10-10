@@ -444,6 +444,10 @@ Stichworte zu Artikeln, keine tiefe Kategorie-Hierarchie. [Folge 004](/artikel/f
 
 **Trennlinie** im CMS mit Höhe und Breite. [Folge 019](/artikel/folge-019-impressum-komponenten/).
 
+### Was ist der Abstandshalter?
+
+Vertikaler Leerraum im Inhalt (`{{spacer}}`, optional `height` in px, Standard 32). Toolbar **Abstandshalter**. Ohne sichtbare Linie, anders als die **Trennlinie**.
+
 ### Wie pflege ich das Glossar?
 
 Eigene Collection `glossar`, Übersicht unter `/glossar/`. [Glossar](/glossar/), [Folge 004](/artikel/folge-004-collection-pages/).

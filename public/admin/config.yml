@@ -197,7 +197,7 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Kategorie-Listing“, „Baustein“, „Repo-Dokument“, „Tagwolke“, „Video“, „Trennlinie“, „Button“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Kategorie-Listing“, „Baustein“, „Repo-Dokument“, „Tagwolke“, „Video“, „Trennlinie“, „Abstandshalter“, „Button“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
         pattern:
           - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
           - "Keine H1 (# …) im Inhalt. Die Überschrift kommt aus dem Hero (Feld Titel)."
@@ -215,6 +215,7 @@ collections:
           - video
           - video-consent-reset
           - separator
+          - spacer
           - button
       - &field_seo
         label: SEO
@@ -431,7 +432,7 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Kategorie-Listing“, „Baustein“, „Repo-Dokument“, „Tagwolke“, „Video“, „Trennlinie“, „Button“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Kategorie-Listing“, „Baustein“, „Repo-Dokument“, „Tagwolke“, „Video“, „Trennlinie“, „Abstandshalter“, „Button“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
         pattern:
           - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
           - "Keine H1 (# …) im Inhalt. Die Überschrift kommt aus dem Hero (Feld Titel)."
@@ -449,6 +450,7 @@ collections:
           - video
           - video-consent-reset
           - separator
+          - spacer
           - button
       - *field_seo
 
@@ -594,6 +596,7 @@ collections:
           - video
           - video-consent-reset
           - separator
+          - spacer
           - button
 
   # Menus: filename = slot id (main, footer-legal, …). Navigation is not driven by page flags.

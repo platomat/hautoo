@@ -359,6 +359,15 @@ body.is-nav-locked {
 	opacity: 0.65;
 }
 
+/* CMS content spacer embed (`{{spacer height="…"}}`) */
+.spacer {
+	display: block;
+	width: 100%;
+	height: var(--spacer-height, 32px);
+	flex-shrink: 0;
+	pointer-events: none;
+}
+
 /* CMS content button embed (`{{button …}}`) */
 .cms-button {
 	margin: 1.25rem 0;
