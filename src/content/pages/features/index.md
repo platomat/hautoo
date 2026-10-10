@@ -70,7 +70,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 ## Bausteine und Embeds
 
 - **Wiederverwendbare Bausteine** (`{{block id="…"}}`): z. B. Stack-Grafik (`stack-uebersicht`) auf Startseite und in passenden Folgen ([Folge 020](/artikel/folge-020-bausteine-fork/)).
-- **Artikel-Listing** im Content: Anzahl, Sortierung, Grid oder Liste, wählbare Kartenfelder inkl. Lesezeit ([Folge 019](/artikel/folge-019-impressum-komponenten/)).
+- **Artikel-Listing** im Content: Anzahl, Sortierung, Grid oder Liste, wählbare Kartenfelder inkl. Kategorien (links neben Tags, Default an) und Lesezeit ([Folge 019](/artikel/folge-019-impressum-komponenten/)).
 - **Trennlinie**, **Abstandshalter** (`{{spacer}}` bzw. `{{spacer height="…"}}`, Default 32 px), **Button** (`{{button label="…" href="…"}}`, solid/outline, Palette, Ausrichtung) und **Kontakt-E-Mail** als Embed (`{{contact-email}}` aus CMS oder Build-Variable, nicht im Markdown).
 - **Markdown-Embeds** über die Sveltia-Toolbar; Rendering zentral in `CmsContent.astro`.
 - **Repo-Docs-Box** (`{{repodoc path="docs/…"}}`): Verlinkung zu Handbuch-Dateien auf [GitHub](/glossar/github/), Toolbar **Repo-Dokument** ([Folge 001](/artikel/folge-001-hautuu-intro/) als Beispiel).
@@ -83,7 +83,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Open Graph und Twitter Cards**: Titel, Beschreibung, Canonical, optional OG-Bild aus dem Seitenhintergrund (1200×630).
 - **Lesezeit** in Artikel-Meta und auf der Karte im Listing.
 - **Sitemap** ohne Impressum, Datenschutz und `/admin`; Legal-Seiten mit **noindex**.
-- **Artikel-Übersicht** (`/artikel/`): Listing-Embed mit SEO-Feldern und konfigurierbaren Kartenfeldern (Titel, Teaser, Datum, Tags, Lesezeit).
+- **Artikel-Übersicht** (`/artikel/`): Listing-Embed mit SEO-Feldern und konfigurierbaren Kartenfeldern (Titel, Teaser, Kategorien, Tags, Datum, Lesezeit).
 
 ## Design und Nutzung
 

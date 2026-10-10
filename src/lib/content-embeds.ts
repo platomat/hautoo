@@ -32,11 +32,13 @@ export type ArticleCardField =
 	| "intro"
 	| "date"
 	| "readingTime"
+	| "categories"
 	| "tags";
 
 export const ARTICLE_CARD_FIELDS = [
 	"title",
 	"intro",
+	"categories",
 	"tags",
 	"date",
 	"readingTime",
@@ -125,6 +127,7 @@ export type ContentSegment =
 const DEFAULT_SHOW: ArticleCardField[] = [
 	"title",
 	"intro",
+	"categories",
 	"tags",
 	"date",
 	"readingTime",

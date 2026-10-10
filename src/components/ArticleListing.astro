@@ -10,6 +10,10 @@ import {
 	type ArticleSort,
 } from "../lib/articles";
 import {
+	getCategoryHref,
+	type CategoryEntry,
+} from "../lib/categories";
+import {
 	ARTICLE_CARD_FIELDS,
 	parseArticleCardShow,
 	type ArticleCardField,
@@ -27,7 +31,7 @@ interface Props {
 	columns?: number;
 	/** Gap between items, in rem (grid and list). */
 	gap?: number;
-	/** Card fields: title, intro, date, readingTime, tags. */
+	/** Card fields: title, intro, categories, tags, date, readingTime. */
 	show?: ArticleCardField[] | string;
 	/** Only these article slugs, in listed order (published only). */
 	articleIds?: string[];
@@ -66,8 +70,10 @@ const showTitle = showFields.has("title");
 const showIntro = showFields.has("intro");
 const showDate = showFields.has("date");
 const showReadingTime = showFields.has("readingTime");
+const showCategories = showFields.has("categories");
 const showTags = showFields.has("tags");
-const showMeta = showDate || showReadingTime || showTags;
+const showTaxonomies = showCategories || showTags;
+const showMeta = showDate || showReadingTime || showTaxonomies;
 
 /** `count === 0` → all published articles (or all with tag/category filter). */
 const articles = articleIds?.length
@@ -86,8 +92,12 @@ const articles = articleIds?.length
 					sort,
 					limit: count === 0 ? undefined : count,
 				});
-const tags = await getCollection("tags");
+const [tags, categories] = await Promise.all([
+	getCollection("tags"),
+	getCollection("categories"),
+]);
 const tagMap = new Map(tags.map((tag) => [tag.id, tag]));
+const categoryMap = new Map(categories.map((cat) => [cat.id, cat]));
 const col = Math.min(4, Math.max(1, columns));
 const gapRem = Math.min(8, Math.max(0, gap));
 
@@ -95,6 +105,15 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 	return (article.data.tags ?? [])
 		.map((id) => tagMap.get(id))
 		.filter((tag): tag is TagEntry => Boolean(tag))
+		.sort((a, b) =>
+			a.data.title.localeCompare(b.data.title, "de", { sensitivity: "base" }),
+		);
+}
+
+function categoriesFor(article: (typeof articles)[number]): CategoryEntry[] {
+	return (article.data.categories ?? [])
+		.map((id) => categoryMap.get(id))
+		.filter((cat): cat is CategoryEntry => Boolean(cat))
 		.sort((a, b) =>
 			a.data.title.localeCompare(b.data.title, "de", { sensitivity: "base" }),
 		);
@@ -117,8 +136,12 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 			<ul class="article-listing__list list-plain">
 				{articles.map((article) => {
 					const articleTags = tagsFor(article);
+					const articleCategories = categoriesFor(article);
 					const minutes = estimateReadingTimeMinutes(article.body);
 					const readingLabel = formatReadingTime(minutes);
+					const hasCategories =
+						showCategories && articleCategories.length > 0;
+					const hasTags = showTags && articleTags.length > 0;
 					return (
 						<li class="article-listing__item">
 							<a class="article-listing__link" href={getArticleHref(article)}>
@@ -136,15 +159,37 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 							</a>
 							{showMeta && (
 								<div class="article-listing__meta text-sm text-muted">
-									{showTags && articleTags.length > 0 && (
-										<p class="article-listing__tags">
-											{articleTags.map((tag, index) => (
-												<>
-													{index > 0 && " "}
-													<a href={getTagHref(tag)}>{formatTagHashtag(tag)}</a>
-												</>
-											))}
-										</p>
+									{(hasCategories || hasTags) && (
+										<div class="article-listing__taxonomies">
+											{hasCategories ? (
+												<p class="article-listing__categories">
+													{articleCategories.map((cat, index) => (
+														<>
+															{index > 0 && " "}
+															<a href={getCategoryHref(cat)}>
+																{cat.data.title}
+															</a>
+														</>
+													))}
+												</p>
+											) : (
+												<span />
+											)}
+											{hasTags ? (
+												<p class="article-listing__tags">
+													{articleTags.map((tag, index) => (
+														<>
+															{index > 0 && " "}
+															<a href={getTagHref(tag)}>
+																{formatTagHashtag(tag)}
+															</a>
+														</>
+													))}
+												</p>
+											) : (
+												<span />
+											)}
+										</div>
 									)}
 									{(showDate || showReadingTime) && (
 										<p class="article-listing__meta-row">
@@ -242,7 +287,7 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 		margin: 0;
 	}
 
-	/* Tags first line, date / reading time below (grid and list). */
+	/* Categories + tags on one row; date / reading time below. */
 	.article-listing__meta {
 		margin: 0;
 		display: flex;
@@ -259,7 +304,17 @@ function tagsFor(article: (typeof articles)[number]): TagEntry[] {
 		margin-top: auto;
 	}
 
+	.article-listing__taxonomies {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.35rem 1rem;
+		width: 100%;
+	}
+
 	.article-listing__meta-row,
+	.article-listing__categories,
 	.article-listing__tags {
 		margin: 0;
 	}

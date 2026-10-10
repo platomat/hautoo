@@ -58,7 +58,7 @@ Live-Überblick: [**Features**](/features/).
 
 ## Neuste Artikel
 
-{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25" show="title,intro,tags,date,readingTime"}}
+{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25" show="title,intro,categories,tags,date,readingTime"}}
 
 {{button label="Alle Artikel" href="/artikel/" style="outline"}}
 

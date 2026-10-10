@@ -11,12 +11,17 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "src" / "content"
 SCAN_DIRS = ("articles", "glossar", "pages", "tags")
 
+# Keep in sync with EMBED_LINE names in src/lib/content-embeds.ts
+_EMBED_NAMES = (
+    r"article-listing|glossar-listing|tag-listing|category-listing|tag-cloud|"
+    r"separator|spacer|button|contact-email|repodoc|block|video|video-consent-reset"
+)
 EMBED_LINE = re.compile(
-    r"^\s*(\{\{(?:repodoc|block)\b[^}]*\}\})\s*$",
+    rf"^\s*(\{{\{{(?:{_EMBED_NAMES})\b[^}}]*\}}\}})\s*$",
     re.MULTILINE,
 )
 # Inline mention in backticks or prose — not a rendered embed line
-EMBED_INLINE = re.compile(r"\{\{(?:repodoc|block)\b")
+EMBED_INLINE = re.compile(rf"\{{\{{(?:{_EMBED_NAMES})\b")
 
 HEADING = re.compile(r"^#{1,6}\s")
 LIST_ITEM = re.compile(r"^\s*([-*+]|\d+\.)\s")
