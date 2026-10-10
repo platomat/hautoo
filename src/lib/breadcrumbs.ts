@@ -14,9 +14,11 @@ export type BreadcrumbItem = {
 	label: string;
 	/** Omit on the current (last) crumb. */
 	href?: string;
+	/** Optional UI icon (e.g. home for the first crumb). */
+	icon?: "home";
 };
 
-const HOME: BreadcrumbItem = { label: "Start", href: "/" };
+const HOME: BreadcrumbItem = { label: "Start", href: "/", icon: "home" };
 
 /** Parent chain for a CMS page, ending with the current title (no href). */
 export function buildPageBreadcrumbs(

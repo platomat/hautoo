@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
 import ArticleNav from "../../components/ArticleNav.astro";
 import CmsContent from "../../components/CmsContent.astro";
+import Icon from "../../components/Icon.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import VideoEmbed from "../../components/VideoEmbed.astro";
@@ -128,7 +129,14 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 									>
 										{linkedCategories.map((cat) => (
 											<li>
-												<a href={getCategoryHref(cat)}>
+												<a
+													class="article-categories__link"
+													href={getCategoryHref(cat)}
+												>
+													<Icon
+														name="category"
+														class="article-categories__icon"
+													/>
 													{cat.data.title}
 												</a>
 											</li>
@@ -199,10 +207,17 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 			}
 			<ArticleNav older={older} newer={newer} />
 		</article>
-		<p class="text-sm">
+		<p class="text-sm entry-footer-links">
 			<a href="/artikel/">← Alle Artikel</a>
 			{" · "}
-			<a href={getArticleHref(article)} aria-current="page">Permalink</a>
+			<a
+				class="permalink-link"
+				href={getArticleHref(article)}
+				aria-current="page"
+			>
+				<Icon name="permalink" class="permalink-link__icon" />
+				Permalink
+			</a>
 		</p>
 	</main>
 </BaseLayout>

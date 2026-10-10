@@ -1,6 +1,7 @@
 ---
 import { render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Icon from "../../components/Icon.astro";
 import PageHero from "../../components/PageHero.astro";
 import ArticleListing from "../../components/ArticleListing.astro";
 import TagListing from "../../components/TagListing.astro";
@@ -80,10 +81,17 @@ const spacingStyle = contentSpacingStyle(resolveContentSpacing("glossar"));
 				)
 			}
 		</article>
-		<p class="text-sm">
+		<p class="text-sm entry-footer-links">
 			<a href="/glossar/">← Alle Begriffe</a>
 			{" · "}
-			<a href={getGlossarHref(entry)} aria-current="page">Permalink</a>
+			<a
+				class="permalink-link"
+				href={getGlossarHref(entry)}
+				aria-current="page"
+			>
+				<Icon name="permalink" class="permalink-link__icon" />
+				Permalink
+			</a>
 		</p>
 	</main>
 </BaseLayout>

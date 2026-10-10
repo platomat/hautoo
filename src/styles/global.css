@@ -234,6 +234,26 @@ body.is-nav-locked {
 	padding: 0;
 }
 
+.article-categories__link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.article-categories__icon {
+	opacity: 0.9;
+}
+
+.permalink-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.permalink-link__icon {
+	opacity: 0.9;
+}
+
 .hero:not(:has(.hero__lead)):not(:has(.page-hero__lead)):not(
 		:has(.page-hero__taxonomies)
 	)
@@ -293,7 +313,7 @@ body.is-nav-locked {
 
 .breadcrumbs__item {
 	display: inline-flex;
-	align-items: baseline;
+	align-items: center;
 	gap: 0.5rem;
 }
 
@@ -305,6 +325,18 @@ body.is-nav-locked {
 
 .breadcrumbs a {
 	color: var(--color-action);
+}
+
+.breadcrumbs__home {
+	display: inline-flex;
+	align-items: center;
+	line-height: 1;
+}
+
+.breadcrumbs__home-icon {
+	display: block;
+	width: 1.05em;
+	height: 1.05em;
 }
 
 .breadcrumbs a:hover,

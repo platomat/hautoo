@@ -1,0 +1,65 @@
+---
+/**
+ * Small UI icons (stroke, currentColor). Used in breadcrumbs, taxonomies, permalinks.
+ */
+export type IconName = "home" | "permalink" | "category";
+
+interface Props {
+	name: IconName;
+	class?: string;
+	/** CSS length; default 1em so icons track surrounding text size. */
+	size?: string | number;
+}
+
+const { name, class: className, size = "1em" } = Astro.props;
+const sizeCss = typeof size === "number" ? `${size}px` : size;
+---
+
+<svg
+	class:list={["icon", `icon--${name}`, className]}
+	xmlns="http://www.w3.org/2000/svg"
+	viewBox="0 0 24 24"
+	width={sizeCss}
+	height={sizeCss}
+	fill="none"
+	stroke="currentColor"
+	stroke-width="2"
+	stroke-linecap="round"
+	stroke-linejoin="round"
+	aria-hidden="true"
+	focusable="false"
+>
+	{
+		name === "home" && (
+			<>
+				<path d="M4 11.5 12 4l8 7.5" />
+				<path d="M6 10v10h12V10" />
+				<path d="M10 20v-6h4v6" />
+			</>
+		)
+	}
+	{
+		name === "permalink" && (
+			<>
+				<path d="M10 13a5 5 0 0 0 7.54.54l2-2a5 5 0 0 0-7.07-7.07l-1.25 1.25" />
+				<path d="M14 11a5 5 0 0 0-7.54-.54l-2 2a5 5 0 0 0 7.07 7.07l1.25-1.25" />
+			</>
+		)
+	}
+	{
+		name === "category" && (
+			<>
+				<path d="M3 7h6l2 2h10v11H3z" />
+				<path d="M3 7V5h5l2 2" />
+			</>
+		)
+	}
+</svg>
+
+<style>
+	.icon {
+		display: inline-block;
+		vertical-align: -0.125em;
+		flex-shrink: 0;
+	}
+</style>

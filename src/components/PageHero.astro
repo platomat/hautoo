@@ -3,6 +3,7 @@ import type {
 	EntryHero,
 	HeroCollectionKey,
 } from "../cms/fields/site-config";
+import Icon from "./Icon.astro";
 import type { BreadcrumbItem } from "../lib/breadcrumbs";
 import { resolveHeroForEntry } from "../lib/site-config";
 
@@ -50,10 +51,21 @@ const crumbs =
 				<ol class="breadcrumbs__list list-plain">
 					{crumbs.map((crumb, index) => {
 						const isLast = index === crumbs.length - 1;
+						const showHomeIcon = crumb.icon === "home" && !isLast;
 						return (
 							<li class="breadcrumbs__item">
 								{!isLast && crumb.href ? (
-									<a href={crumb.href}>{crumb.label}</a>
+									<a
+										href={crumb.href}
+										class:list={[showHomeIcon && "breadcrumbs__home"]}
+										aria-label={showHomeIcon ? crumb.label : undefined}
+									>
+										{showHomeIcon ? (
+											<Icon name="home" class="breadcrumbs__home-icon" />
+										) : (
+											crumb.label
+										)}
+									</a>
 								) : (
 									<span aria-current={isLast ? "page" : undefined}>
 										{crumb.label}

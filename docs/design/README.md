@@ -150,6 +150,16 @@ Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-
 
 Seiten und Artikel überschreiben mit dem Objekt `hero` (`textAlign`, `showBreadcrumbs`, `borderBottom`) den Collection-Default. Komponente: `PageHero.astro` (`collection`-Prop; Klassen `.page-hero--align-*`, `.page-hero--border`, `.breadcrumbs`). Brotkrumen-Links nutzen die Linkfarbe (`--color-action`).
 
+### UI-Icons (#31)
+
+Kleine Stroke-Icons (`currentColor`) in `Icon.astro`; Quell-SVGs unter `public/img/icons/`.
+
+| Icon | Einsatz |
+| --- | --- |
+| Haus | Erstes Brotkrumen-Element (Start), nur Symbol + `aria-label` |
+| Ordner | Vor Kategorie-Links im Artikel-Hero |
+| Kette | Vor „Permalink“ (Artikel, Glossar) |
+
 Artikel: Kategorien stehen im Hero unter der Beschreibung; Tags per `tagPlacement` im Hero (rechts daneben), nach dem Inhalt oder beides (`hero` / `after` / `both`).
 
 ### Inhaltsverzeichnis (TOC)

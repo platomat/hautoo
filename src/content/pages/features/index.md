@@ -93,7 +93,8 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Schrift** unter **Einstellungen** → **Design** → **Schrift**: eigene Schrift für Text und Überschriften, Textgröße und Überschriften-Stil (Größe, Stärke, Groß-/Kleinschreibung). Beim Build lokal eingebettet, keine externe Schrift-Anfrage beim Besuch.
 - **Sticky Header** pro [Breakpoint](/glossar/breakpoint/) ein/aus; feste Leistenhöhe bei Sticky und Mindesthöhe ohne Sticky (jeweils Desktop / Tablet / Mobile), gesteuert über **Einstellungen** → **Design** → **Header**.
 - **Hero-Defaults pro Collection** unter **Einstellungen** → **Design** → **Hero** (Reihenfolge wie CMS-Leiste: Seiten, Artikel, Kategorien, Tags, Glossar): Textausrichtung, Brotkrumen an/aus, Brotkrumen-Trenner, Trennlinie unten. Einzelne Seiten/Artikel überschreiben im Objekt `hero` (`textAlign`, `showBreadcrumbs`, `borderBottom`).
-- **Brotkrumen-Trenner** pro Collection wählbar (`/`, `•`, `→`, `-`; Default `/`); Brotkrumen-Links in der Linkfarbe.
+- **Brotkrumen-Trenner** pro Collection wählbar (`/`, `•`, `→`, `-`; Default `/`); Brotkrumen-Links in der Linkfarbe; Start als Haus-Icon.
+- **UI-Icons** für Permalink (Artikel/Glossar) und Kategorie vor dem Kategorienamen im Artikel-Hero.
 - **Breakpoints** und gemeinsame Layout-Hilfsklassen ([docs/design](https://github.com/platomat/hautoo/blob/main/docs/design/README.md)).
 - **Vollbild-Hintergrund** optional pro Seite oder Artikel, mit Overlay und **Bildnachweis**-Feld (`background.attribution`).
 - **Bildnachweise gesammelt** am Ende des **Impressums** (automatisch aus Pages und Artikeln, [Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum)).
