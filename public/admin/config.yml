@@ -414,7 +414,7 @@ collections:
           label: Titelbild,
           widget: image,
           required: false,
-          hint: "Wird neben index.md gespeichert (Variante B).",
+          hint: "Upload landet neben index.md (Variante B). Bilder aus der Mediathek (/assets/…) gehen auch.",
         }
       - *field_entry_hero
       - *field_entry_toc

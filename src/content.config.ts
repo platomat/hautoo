@@ -3,6 +3,7 @@ import { glob } from "astro/loaders";
 import { modifiedDateSchema } from "./cms/fields/dates";
 import { menuSchema } from "./cms/fields/menu";
 import {
+	cmsImagePathSchema,
 	entryBackgroundSchema,
 } from "./cms/fields/page-background";
 import { seoSchema } from "./cms/fields/seo";
@@ -105,42 +106,44 @@ const categories = defineCollection({
 
 const articles = defineCollection({
 	loader: glob({ pattern: "**/index.md", base: "./src/content/articles" }),
-	schema: ({ image }) =>
-		z.preprocess(
-			normalizeEntryLayout,
-			z.object({
-				title: z.string(),
-				summary: z.string().optional(),
-				pubDate: z.coerce.date(),
-				/** draft | published | future | trash (`pubDate` gates `future`) */
-				status: entryStatusSchema,
-				/** Last editorial change (SEO meta; not shown in article UI yet). */
-				modifiedDate: modifiedDateSchema,
-				/** Entry-relative only (Variante B) — use `image()` for optimization. */
-				heroImage: image().optional(),
-				/** Hero overrides; omit = Design → Hero → Artikel. */
-				hero: entryHeroSchema,
-				/** TOC overrides; omit = Content → TOC → Artikel. */
-				toc: entryTocSchema,
-				background: entryBackgroundSchema,
-				/** Category slugs (hierarchical taxonomy; see `categories` collection). */
-				categories: z.array(z.string()).default([]),
-				tags: z.array(z.string()).default([]),
-				/**
-				 * Where to show tags on the article page.
-				 * Categories always appear in the hero under the description.
-				 */
-				tagPlacement: z.enum(["hero", "after", "both"]).default("hero"),
-				videoProvider: z.enum(["youtube", "vimeo"]).optional(),
-				videoId: z.string().optional(),
-				seo: seoSchema.optional(),
-				/**
-				 * Width + optional spacing. Omit fields = Content → Breite / Abstand,
-				 * or auto `wide` when the body has listing embeds.
-				 */
-				layout: entryLayoutSchema,
-			}),
-		),
+	schema: z.preprocess(
+		normalizeEntryLayout,
+		z.object({
+			title: z.string(),
+			summary: z.string().optional(),
+			pubDate: z.coerce.date(),
+			/** draft | published | future | trash (`pubDate` gates `future`) */
+			status: entryStatusSchema,
+			/** Last editorial change (SEO meta; not shown in article UI yet). */
+			modifiedDate: modifiedDateSchema,
+			/**
+			 * Title image: `/assets/…` (shared pool) or entry-relative (Variante B).
+			 * Resolved via `resolveCmsImage` (Astro `image()` cannot load `/assets/`).
+			 */
+			heroImage: cmsImagePathSchema,
+			/** Hero overrides; omit = Design → Hero → Artikel. */
+			hero: entryHeroSchema,
+			/** TOC overrides; omit = Content → TOC → Artikel. */
+			toc: entryTocSchema,
+			background: entryBackgroundSchema,
+			/** Category slugs (hierarchical taxonomy; see `categories` collection). */
+			categories: z.array(z.string()).default([]),
+			tags: z.array(z.string()).default([]),
+			/**
+			 * Where to show tags on the article page.
+			 * Categories always appear in the hero under the description.
+			 */
+			tagPlacement: z.enum(["hero", "after", "both"]).default("hero"),
+			videoProvider: z.enum(["youtube", "vimeo"]).optional(),
+			videoId: z.string().optional(),
+			seo: seoSchema.optional(),
+			/**
+			 * Width + optional spacing. Omit fields = Content → Breite / Abstand,
+			 * or auto `wide` when the body has listing embeds.
+			 */
+			layout: entryLayoutSchema,
+		}),
+	),
 });
 
 const glossar = defineCollection({

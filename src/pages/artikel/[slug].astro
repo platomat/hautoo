@@ -75,10 +75,12 @@ const showTagsAfter =
 	(tagPlacement === "after" || tagPlacement === "both");
 const showHeroTaxonomies =
 	linkedCategories.length > 0 || showTagsInHero;
+const articleEntryDir = `content/articles/${article.id}/`;
 const backgroundImage = resolveCmsImage(
 	article.data.background?.image,
-	`content/articles/${article.id}/`,
+	articleEntryDir,
 );
+const heroImage = resolveCmsImage(article.data.heroImage, articleEntryDir);
 const toc = await resolveTocForCollection("articles", article.data);
 /** Dynamic import: avoid shipping TOC CSS on pages that do not show a TOC. */
 const TableOfContents = toc.show
@@ -174,15 +176,15 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 				/>
 			)}
 			{
-				article.data.heroImage && (
-					<p>
+				heroImage && (
+					<figure class="article-hero-image">
 						<Image
-							src={article.data.heroImage}
+							src={heroImage}
 							alt={article.data.title}
 							widths={[640, 960]}
 							sizes="(max-width: 679px) 100vw, 42rem"
 						/>
-					</p>
+					</figure>
 				)
 			}
 			<VideoEmbed
@@ -223,6 +225,17 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 </BaseLayout>
 
 <style>
+	.article-hero-image {
+		margin: 0 0 1.75rem;
+		padding: 0;
+	}
+
+	.article-hero-image :global(img) {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
 	.article-tags--after {
 		margin: 1.5rem 0 0;
 		padding: 0;

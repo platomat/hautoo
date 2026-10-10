@@ -258,7 +258,7 @@ Beispiel: Baustein `stack-uebersicht` → auf der Startseite `{{block id="stack-
 | | |
 | --- | --- |
 | Ordner | `src/content/articles/<slug>/index.md` |
-| Schema | `src/content.config.ts` (`image()` für Titelbild) |
+| Schema | `src/content.config.ts` (Titelbild als CMS-Pfad, Auflösung via `resolveCmsImage`) |
 | Sveltia | Collection `articles` |
 | Routen | Einzelartikel `/artikel/<slug>/`; Übersicht = CMS-Seite `pages/artikel` (Sidebar fest; Listing per Embed) |
 | Medien | Variante B (`media_folder: ""`) — [Medien](./medien-variante-b.md) |
@@ -272,7 +272,7 @@ Beispiel: Baustein `stack-uebersicht` → auf der Startseite `{{block id="stack-
 | `pubDate` | ja | Publikationsdatum |
 | `status` | ja | `draft` / `published` / `future` / `trash` |
 | `modifiedDate` | nein | Letzte Änderung → SEO-Meta im `<head>` |
-| `heroImage` | nein | Titelbild neben dem Eintrag |
+| `heroImage` | nein | Titelbild: eintragsrelativ (Variante B) oder `/assets/…` aus der Mediathek |
 | `background.image` | nein | Vollflächiger Viewport-Hintergrund |
 | `background.overlay` | nein | Abdunkelung 0–100 % |
 | `background.attribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |

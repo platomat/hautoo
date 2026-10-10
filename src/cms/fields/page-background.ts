@@ -8,17 +8,20 @@ export const backgroundOverlaySchema = z.coerce
 	.default(40);
 
 /**
- * Background image path from Sveltia (`/assets/…` or entry-relative).
+ * CMS image path from Sveltia (`/assets/…` or entry-relative).
  * Resolved at render via `resolveCmsImage` — not Astro `image()`, which
  * cannot load global `/assets/` paths.
  */
-export const backgroundImageSchema = z.preprocess((value) => {
+export const cmsImagePathSchema = z.preprocess((value) => {
 	if (typeof value !== "string") {
 		return value;
 	}
 	const trimmed = value.trim();
 	return trimmed === "" ? undefined : trimmed;
 }, z.string().min(1).optional());
+
+/** Same as `cmsImagePathSchema` (page background image path). */
+export const backgroundImageSchema = cmsImagePathSchema;
 
 /**
  * Credit for the page background — plain text, bare URL, or HTML
