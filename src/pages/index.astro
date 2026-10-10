@@ -20,7 +20,7 @@ if (!isPagePublic(page)) {
 const useEmbeds = hasContentEmbeds(page.body);
 const { Content } = await render(page);
 const backgroundImage = resolveCmsImage(
-	page.data.backgroundImage,
+	page.data.background?.image,
 	`content/pages/${page.id}/`,
 );
 const contentWidth = await resolveContentWidth("pages", page.data, page.body);
@@ -31,9 +31,7 @@ const heroProps = {
 	title: page.data.title,
 	description: page.data.description,
 	collection: "pages" as const,
-	heroTextAlign: page.data.heroTextAlign,
-	showBreadcrumbs: page.data.showBreadcrumbs,
-	heroBorderBottom: page.data.heroBorderBottom,
+	hero: page.data.hero,
 };
 /** Dynamic import: avoid shipping TOC CSS on pages that do not show a TOC. */
 const TableOfContents = toc.show
@@ -47,7 +45,7 @@ const TableOfContents = toc.show
 	seo={page.data.seo}
 	modifiedDate={page.data.modifiedDate}
 	backgroundImage={backgroundImage}
-	backgroundOverlay={page.data.backgroundOverlay}
+	backgroundOverlay={page.data.background?.overlay}
 	headCode={page.data.headCode}
 	footerCode={page.data.footerCode}
 >

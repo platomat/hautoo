@@ -32,7 +32,7 @@ export async function collectBackgroundAttributions(): Promise<
 
 	for (const page of pages) {
 		const item = toItem(
-			page.data.backgroundAttribution,
+			page.data.background?.attribution,
 			page.data.title,
 			getPageHref(page, pagesById),
 		);
@@ -43,7 +43,7 @@ export async function collectBackgroundAttributions(): Promise<
 
 	for (const article of articles) {
 		const item = toItem(
-			article.data.backgroundAttribution,
+			article.data.background?.attribution,
 			article.data.title,
 			getArticleHref(article),
 		);

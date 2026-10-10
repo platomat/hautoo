@@ -4,9 +4,11 @@ description: Artikel-Kategorien auf hautuu. Hierarchisch geordnet, wie in WordPr
 status: published
 publishDate: 2026-10-10
 modifiedDate: 2026-10-10
-backgroundImage: /assets/casey-horner-mLPjQs-YK5g-unsplash.webp
-backgroundOverlay: 77
-backgroundAttribution: Photo by <a href="https://unsplash.com/@mischievous_penguins?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Casey Horner</a> on <a href="https://unsplash.com/photos/brown-house-overseeing-stars-mLPjQs-YK5g?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+background:
+  image: /assets/casey-horner-mLPjQs-YK5g-unsplash.webp
+  overlay: 77
+  attribution: |-
+    Photo by <a href="https://unsplash.com/@mischievous_penguins?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Casey Horner</a> on <a href="https://unsplash.com/photos/brown-house-overseeing-stars-mLPjQs-YK5g?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 contentWidth: wide
 seo:
   index_visibility: index

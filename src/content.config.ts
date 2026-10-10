@@ -3,13 +3,14 @@ import { glob } from "astro/loaders";
 import { modifiedDateSchema } from "./cms/fields/dates";
 import { menuSchema } from "./cms/fields/menu";
 import {
-	backgroundAttributionSchema,
-	backgroundImageSchema,
-	backgroundOverlaySchema,
+	entryBackgroundSchema,
 } from "./cms/fields/page-background";
 import { seoSchema } from "./cms/fields/seo";
 import { contentWidthSchema } from "./cms/fields/content-width";
-import { entryHeroFieldsSchema } from "./cms/fields/site-config";
+import {
+	entryHeroSchema,
+	entryTocSchema,
+} from "./cms/fields/site-config";
 import { entryStatusSchema } from "./cms/fields/status";
 
 const publishDateSchema = z.coerce.date().optional();
@@ -27,33 +28,22 @@ const pages = defineCollection({
 		modifiedDate: modifiedDateSchema,
 		/** Parent page id (folder slug), builds nested URLs like `/parent/child/`. */
 		parent: z.string().optional(),
+		/** Hero overrides; omit = Design → Hero → Seiten. */
+		hero: entryHeroSchema,
+		/** TOC overrides; omit = Content → TOC → Seiten. */
+		toc: entryTocSchema,
 		/**
 		 * Full-viewport background. CMS may store `/assets/…` (shared library)
 		 * or an entry-relative filename — resolved via resolveCmsImage.
 		 */
-		backgroundImage: backgroundImageSchema,
-		/** Black overlay over background, 0–100%. */
-		backgroundOverlay: backgroundOverlaySchema.optional(),
-		/** Credit text or bare URL; listed on Impressum. */
-		backgroundAttribution: backgroundAttributionSchema,
-		/** Shared SEO object (same shape as Sveltia `&field_seo`). */
-		seo: seoSchema.optional(),
-		/**
-		 * TOC after hero. Omit = use global Config → Content → TOC → Seiten.
-		 * `true` / `false` override the global default for this page.
-		 */
-		showToc: z.boolean().optional(),
-		/** Omit = global levels for pages. */
-		tocLevels: z.array(z.enum(["h2", "h3", "h4"])).optional(),
-		/** Omit / empty = global TOC title for pages. */
-		tocTitle: z.string().optional(),
+		background: entryBackgroundSchema,
 		/**
 		 * Content column width. Omit = global Config → Content → Breite,
 		 * or auto `wide` when the body has listing embeds.
 		 */
 		contentWidth: contentWidthSchema.optional(),
-		/** Hero overrides; omit = Design → Hero for this collection. */
-		...entryHeroFieldsSchema.shape,
+		/** Shared SEO object (same shape as Sveltia `&field_seo`). */
+		seo: seoSchema.optional(),
 		/** Raw HTML/JS/CSS injected before `</head>` (trusted CMS editors). */
 		headCode: z.string().optional(),
 		/** Raw HTML/JS/CSS injected before `</body>` (trusted CMS editors). */
@@ -100,9 +90,11 @@ const articles = defineCollection({
 			modifiedDate: modifiedDateSchema,
 			/** Entry-relative only (Variante B) — use `image()` for optimization. */
 			heroImage: image().optional(),
-			backgroundImage: backgroundImageSchema,
-			backgroundOverlay: backgroundOverlaySchema.optional(),
-			backgroundAttribution: backgroundAttributionSchema,
+			/** Hero overrides; omit = Design → Hero → Artikel. */
+			hero: entryHeroSchema,
+			/** TOC overrides; omit = Content → TOC → Artikel. */
+			toc: entryTocSchema,
+			background: entryBackgroundSchema,
 			/** Category slugs (hierarchical taxonomy; see `categories` collection). */
 			categories: z.array(z.string()).default([]),
 			tags: z.array(z.string()).default([]),
@@ -115,21 +107,10 @@ const articles = defineCollection({
 			videoId: z.string().optional(),
 			seo: seoSchema.optional(),
 			/**
-			 * TOC after hero. Omit = use global Config → Content → TOC → Artikel.
-			 * `true` / `false` override the global default for this article.
-			 */
-			showToc: z.boolean().optional(),
-			/** Omit = global levels for articles. */
-			tocLevels: z.array(z.enum(["h2", "h3", "h4"])).optional(),
-			/** Omit / empty = global TOC title for articles. */
-			tocTitle: z.string().optional(),
-			/**
 			 * Content column width. Omit = global Config → Content → Breite,
 			 * or auto `wide` when the body has listing embeds.
 			 */
 			contentWidth: contentWidthSchema.optional(),
-			/** Hero overrides; omit = Design → Hero for this collection. */
-			...entryHeroFieldsSchema.shape,
 		}),
 });
 

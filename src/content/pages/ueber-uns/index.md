@@ -3,10 +3,12 @@ title: Über uns
 description: Kurzvorstellung des Projekts hautuu.
 status: published
 modifiedDate: 2026-10-05
-backgroundImage: /assets/599-1920x1280.webp
-backgroundOverlay: 84
-backgroundAttribution: https://picsum.photos/id/599/1920/1280
-showToc: false
+toc:
+  show: false
+background:
+  image: /assets/599-1920x1280.webp
+  overlay: 84
+  attribution: https://picsum.photos/id/599/1920/1280
 seo:
   seo_title: Über hautuu
   seo_description: Was hautuu ist, warum das Projekt öffentlich auf GitHub liegt und wie du mit den Artikeln deine eigene Site nachbauen kannst. Kurzvorstellung des Projekts.

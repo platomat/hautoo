@@ -36,6 +36,17 @@ export const backgroundAttributionSchema = z.preprocess((value) => {
 export type BackgroundOverlay = z.infer<typeof backgroundOverlaySchema>;
 export type BackgroundAttribution = z.infer<typeof backgroundAttributionSchema>;
 
+/** Per-entry page background (CMS object `background`). */
+export const entryBackgroundSchema = z
+	.object({
+		image: backgroundImageSchema,
+		overlay: backgroundOverlaySchema.optional(),
+		attribution: backgroundAttributionSchema,
+	})
+	.optional();
+
+export type EntryBackground = z.infer<typeof entryBackgroundSchema>;
+
 export type AttributionKind = "url" | "html" | "text";
 
 /** True when the whole field is a single http(s) URL (no surrounding text). */

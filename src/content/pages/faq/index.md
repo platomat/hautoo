@@ -4,13 +4,16 @@ description: Häufige Fragen zu hautuu, Git, Cursor, Cloudflare und dem CMS.
 status: published
 publishDate: 2026-10-04
 modifiedDate: 2026-10-07
-backgroundImage: /assets/sebastien-goldberg-9R_bNdo4-2I-unsplash.webp
-backgroundOverlay: 88
-backgroundAttribution: Photo by <a href="https://unsplash.com/@sebastiengoldberg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sébastien Goldberg</a> on <a href="https://unsplash.com/photos/a-sea-turtle-swimming-in-the-ocean-9R_bNdo4-2I?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-showToc: true
-tocTitle: Inhalt
-tocLevels:
+toc:
+  show: true
+  title: Inhalt
+  levels:
   - h2
+background:
+  image: /assets/sebastien-goldberg-9R_bNdo4-2I-unsplash.webp
+  overlay: 88
+  attribution: |-
+    Photo by <a href="https://unsplash.com/@sebastiengoldberg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sébastien Goldberg</a> on <a href="https://unsplash.com/photos/a-sea-turtle-swimming-in-the-ocean-9R_bNdo4-2I?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 contentWidth: wide
 seo:
   seo_title: FAQ zu hautuu, Git, Cursor und Cloudflare
@@ -502,7 +505,7 @@ Oft **noindex** für Impressum/Datenschutz. [Folge 004](/artikel/folge-004-colle
 
 ### Bildnachweise?
 
-Feld **`backgroundAttribution`** im CMS; gesammelte Credits auf dem Impressum. [Glossar Bildnachweis](/glossar/bildnachweis/), [Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum), [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/).
+Feld **Bildnachweis** (`background.attribution`) im CMS; gesammelte Credits auf dem Impressum. [Glossar Bildnachweis](/glossar/bildnachweis/), [Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum), [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/).
 
 ### KI-generierte Rechtstexte ungeprüft übernehmen?
 

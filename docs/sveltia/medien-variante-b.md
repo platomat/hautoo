@@ -126,7 +126,7 @@ Ohne `Image`/`getImage` entfällt die Optimierung — die Datei muss trotzdem ko
 
 Eintragsbilder aus Variante B sind in anderen Einträgen **nicht** automatisch als „alle Assets“ wählbar — sie gehören zum jeweiligen Ordner. Geteilte Dateien bewusst unter `src/assets/` ablegen.
 
-**Keine Asset-Beschreibung in der Mediathek:** Sveltia speichert am Bild selbst keine editierbare Beschreibung/Attribution (nur abgeleitete Infos wie Größe, Nutzung). Bildnachweise gehören in Eintragsfelder — für Seitenhintergründe: `backgroundAttribution` (siehe [CMS-Felder](../cms-fields/README.md)).
+**Keine Asset-Beschreibung in der Mediathek:** Sveltia speichert am Bild selbst keine editierbare Beschreibung/Attribution (nur abgeleitete Infos wie Größe, Nutzung). Bildnachweise gehören in Eintragsfelder — für Seitenhintergründe: `background.attribution` (siehe [CMS-Felder](../cms-fields/README.md)).
 
 ## Checkliste Variante B
 

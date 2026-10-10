@@ -44,10 +44,11 @@ field_defaults:
 # src/cms/fields/status.ts, src/cms/fields/dates.ts
 # -----------------------------------------------------------------------------
 
-# Page / article full-viewport background (inject as three list items).
-# - *field_background_image
-# - *field_background_overlay
-# - *field_background_attribution
+# Entry layout groups after modifiedDate (pages, articles):
+# - *field_entry_hero
+# - *field_entry_toc
+# - *field_entry_background
+# - *field_content_width
 
 # Editorial status (pages, articles, glossar — not tags/menus)
 # - *field_status
@@ -55,14 +56,6 @@ field_defaults:
 
 # Last change (all collections; SEO meta only for now)
 # - *field_modified_date
-
-# Optional TOC / Hero after hero block (pages, articles)
-# - *field_show_toc
-# - *field_toc_title
-# - *field_toc_levels
-# - *field_hero_text_align
-# - *field_show_breadcrumbs
-# - *field_hero_border_bottom
 
 collections:
 
@@ -117,51 +110,87 @@ collections:
         display_fields: [title]
         required: false
         hint: "Optional. URL wird /eltern-slug/diese-seite/."
-      - &field_background_image
-        name: backgroundImage
+      - &field_entry_hero
+        name: hero
+        label: Hero
+        widget: object
+        collapsed: true
+        required: false
+        hint: "Leer = Defaults unter Einstellungen → Design → Hero für diese Collection. Einzelne Felder überschreiben nur lokal."
+        fields:
+          - name: textAlign
+            label: Textausrichtung
+            widget: select
+            required: false
+            options:
+              - { label: Links, value: left }
+              - { label: Zentriert, value: center }
+              - { label: Rechts, value: right }
+            hint: "Leer = Collection-Default. Gilt für Brotkrumen, Titel und Beschreibung."
+          - name: showBreadcrumbs
+            label: Brotkrumen anzeigen
+            widget: boolean
+            required: false
+            hint: "Leer lassen = Collection-Default. An/Aus überschreibt die globale Vorgabe."
+          - name: borderBottom
+            label: Trennlinie unten
+            widget: boolean
+            required: false
+            hint: "Leer lassen = Collection-Default. An = 1px Linie unter dem Hero."
+      - &field_entry_toc
+        name: toc
+        label: Inhaltsverzeichnis (TOC)
+        widget: object
+        collapsed: true
+        required: false
+        hint: "Leer = globale Config unter Einstellungen → Content → TOC. Lokale Werte überschreiben."
+        fields:
+          - name: show
+            label: Anzeigen
+            widget: boolean
+            required: false
+            hint: "Leer lassen = globaler Default. An/Aus überschreibt für diesen Eintrag."
+          - name: title
+            label: Titel
+            widget: string
+            required: false
+            hint: "Leer = Titel aus der globalen Config."
+          - name: levels
+            label: Ebenen
+            widget: select
+            multiple: true
+            options:
+              - { label: h2, value: h2 }
+              - { label: h3, value: h3 }
+              - { label: h4, value: h4 }
+            required: false
+            hint: "Leer = Ebenen aus der globalen Config."
+      - &field_entry_background
+        name: background
         label: Seitenhintergrund
-        widget: image
+        widget: object
+        collapsed: true
         required: false
         hint: "Vollflächig hinter der sichtbaren Seite (Viewport). Header und Footer bleiben darüber."
-      - &field_background_overlay
-        name: backgroundOverlay
-        label: Abdunkelung (%)
-        widget: number
-        value_type: int
-        min: 0
-        max: 100
-        default: 40
-        required: false
-        hint: "Schwarzes Overlay über dem Hintergrundbild. 0 = keine Abdunkelung, 100 = fast schwarz."
-      - &field_background_attribution
-        name: backgroundAttribution
-        label: Bildnachweis
-        widget: text
-        required: false
-        hint: "Text, reine URL oder HTML 1:1 von Unsplash/Pexels („Copy attribution“). Nur <a href> wird übernommen; erscheint automatisch am Ende des Impressums."
-      - &field_show_toc
-        name: showToc
-        label: Inhaltsverzeichnis
-        widget: boolean
-        required: false
-        hint: "Leer lassen = globale Config (Content → TOC). An/Aus überschreibt die globale Vorgabe für diesen Eintrag."
-      - &field_toc_title
-        name: tocTitle
-        label: TOC-Titel
-        widget: string
-        required: false
-        hint: "Leer = Titel aus der globalen Config. Sonst lokale Überschrift über dem Verzeichnis."
-      - &field_toc_levels
-        name: tocLevels
-        label: TOC-Ebenen
-        widget: select
-        multiple: true
-        options:
-          - { label: h2, value: h2 }
-          - { label: h3, value: h3 }
-          - { label: h4, value: h4 }
-        required: false
-        hint: "Leer = Ebenen aus der globalen Config. Sonst lokale Auswahl."
+        fields:
+          - name: image
+            label: Bild
+            widget: image
+            required: false
+          - name: overlay
+            label: Abdunkelung (%)
+            widget: number
+            value_type: int
+            min: 0
+            max: 100
+            default: 40
+            required: false
+            hint: "Schwarzes Overlay über dem Hintergrundbild. 0 = keine Abdunkelung, 100 = fast schwarz."
+          - name: attribution
+            label: Bildnachweis
+            widget: text
+            required: false
+            hint: "Text, reine URL oder HTML 1:1 von Unsplash/Pexels („Copy attribution“). Nur <a href> wird übernommen; erscheint automatisch am Ende des Impressums."
       - &field_content_width
         name: contentWidth
         label: Inhaltsbreite
@@ -172,28 +201,6 @@ collections:
           - { label: Breit, value: wide }
           - { label: Vollbreit, value: full }
         hint: "Leer = globale Config (Content → Breite). Listing-Embeds wählen ohne gesetztes Feld automatisch „Breit“."
-      - &field_hero_text_align
-        name: heroTextAlign
-        label: Hero-Ausrichtung
-        widget: select
-        required: false
-        options:
-          - { label: Links, value: left }
-          - { label: Zentriert, value: center }
-          - { label: Rechts, value: right }
-        hint: "Leer = Default der Collection (Einstellungen → Design → Hero). Ausrichtung für Brotkrumen, Titel und Beschreibung."
-      - &field_show_breadcrumbs
-        name: showBreadcrumbs
-        label: Brotkrumen anzeigen
-        widget: boolean
-        required: false
-        hint: "Leer lassen = Default der Collection (Einstellungen → Design → Hero). An/Aus überschreibt die globale Vorgabe."
-      - &field_hero_border_bottom
-        name: heroBorderBottom
-        label: Hero-Trennlinie unten
-        widget: boolean
-        required: false
-        hint: "Leer lassen = Default der Collection (Einstellungen → Design → Hero). An = 1px Linie unter dem Hero."
       - name: body
         label: Inhalt
         widget: markdown
@@ -374,9 +381,10 @@ collections:
           required: false,
           hint: "Wird neben index.md gespeichert (Variante B).",
         }
-      - *field_background_image
-      - *field_background_overlay
-      - *field_background_attribution
+      - *field_entry_hero
+      - *field_entry_toc
+      - *field_entry_background
+      - *field_content_width
       - name: categories
         label: Kategorien
         widget: relation
@@ -422,13 +430,6 @@ collections:
           required: false,
           hint: "YouTube-/Vimeo-ID oder URL.",
         }
-      - *field_show_toc
-      - *field_toc_title
-      - *field_toc_levels
-      - *field_content_width
-      - *field_hero_text_align
-      - *field_show_breadcrumbs
-      - *field_hero_border_bottom
       - name: body
         label: Inhalt
         widget: markdown

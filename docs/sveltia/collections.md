@@ -74,7 +74,7 @@ Pro Collection eigene Defaults (Reihenfolge wie in der CMS-Leiste: Seiten, Artik
 | `hero.<collection>.breadcrumbSeparator` | Trenner zwischen Elementen: `/` · `•` · `→` · `-` | `/` |
 | `hero.<collection>.borderBottom` | 1px Linie unter dem Hero | `false` |
 
-Lokale Überschreibung an **Seiten** und **Artikeln**: `heroTextAlign`, `showBreadcrumbs`, `heroBorderBottom` (Feld leer/omit = Default der jeweiligen Collection). Umsetzung: `PageHero.astro` (`collection`-Prop), Pfade in `src/lib/breadcrumbs.ts`.
+Lokale Überschreibung an **Seiten** und **Artikeln**: Objekt `hero` mit `textAlign`, `showBreadcrumbs`, `borderBottom` (Feld leer/omit = Default der jeweiligen Collection). Umsetzung: `PageHero.astro` (`hero`-Prop), Pfade in `src/lib/breadcrumbs.ts`.
 
 ### Einstellungen → Content → TOC (#51)
 
@@ -84,7 +84,7 @@ Lokale Überschreibung an **Seiten** und **Artikeln**: `heroTextAlign`, `showBre
 | `content.toc.pages.levels` / `title` | Default-Ebenen und Titel |
 | `content.toc.articles.*` | dasselbe für Artikel |
 
-Eintrag ohne `showToc` nutzt den globalen Default. Lokales `showToc: true` / `false` überschreibt. Fehlende `tocLevels` / `tocTitle` fallen auf die globalen Werte zurück (`resolveTocForCollection` in `site-config.ts`).
+Eintrag ohne `toc.show` nutzt den globalen Default. Lokales `toc.show: true` / `false` überschreibt. Fehlende `toc.levels` / `toc.title` fallen auf die globalen Werte zurück (`resolveTocForCollection` in `site-config.ts`).
 
 ### Einstellungen → Content → Breite (#59)
 
@@ -149,16 +149,16 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | `title` | ja | Seitentitel |
 | `description` | nein | Meta-Beschreibung |
 | `parent` | nein | ID/Slug der übergeordneten Seite → URL `/parent/child/` |
-| `backgroundImage` | nein | Vollflächiger Viewport-Hintergrund (Variante B) |
-| `backgroundOverlay` | nein | Abdunkelung 0–100 % (schwarzes Overlay) |
+| `background.image` | nein | Vollflächiger Viewport-Hintergrund (Variante B) |
+| `background.overlay` | nein | Abdunkelung 0–100 % (schwarzes Overlay) |
 | `status` | ja | `draft` / `published` / `future` / `trash` |
 | `publishDate` | nein | Termin für Status `future` |
 | `modifiedDate` | nein | Letzte Änderung → SEO-Meta im `<head>` |
-| `backgroundAttribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |
+| `background.attribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |
 | `seo` | ja (CMS) | SEO-Objekt (Titel, Description, Robots) — Partial `&field_seo` |
-| `showToc` | nein | TOC an/aus; leer = globaler Default (`content.toc.pages`) |
-| `tocLevels` | nein | `h2` / `h3` / `h4`; leer = global |
-| `tocTitle` | nein | TOC-Überschrift; leer = global |
+| `toc.show` | nein | TOC an/aus; leer = globaler Default (`content.toc.pages`) |
+| `toc.levels` | nein | `h2` / `h3` / `h4`; leer = global |
+| `toc.title` | nein | TOC-Überschrift; leer = global |
 | `contentWidth` | nein | `default` / `wide` / `full`; leer = global (`content.width.pages`) |
 | `headCode` | nein | Roh-HTML vor `</head>` (`<style>` / `<script>`) |
 | `footerCode` | nein | Roh-HTML vor `</body>` |
@@ -250,17 +250,17 @@ Beispiel: Baustein `stack-uebersicht` → auf der Startseite `{{block id="stack-
 | `status` | ja | `draft` / `published` / `future` / `trash` |
 | `modifiedDate` | nein | Letzte Änderung → SEO-Meta im `<head>` |
 | `heroImage` | nein | Titelbild neben dem Eintrag |
-| `backgroundImage` | nein | Vollflächiger Viewport-Hintergrund |
-| `backgroundOverlay` | nein | Abdunkelung 0–100 % |
-| `backgroundAttribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |
+| `background.image` | nein | Vollflächiger Viewport-Hintergrund |
+| `background.overlay` | nein | Abdunkelung 0–100 % |
+| `background.attribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |
 | `categories` | nein | Relation zu `categories` (mehrere; Hierarchie über Parent); Anzeige immer im Hero unter der Beschreibung |
 | `tags` | nein | Relation zu `tags` (mehrere) |
 | `tagPlacement` | nein | Wo Tags erscheinen: `hero` (neben Kategorien), `after` (nach Inhalt, vor Navigation), `both` (Default: `hero`) |
 | `videoProvider` | nein | `youtube` / `vimeo` (Hero-Video; Facade mit Consent) |
 | `videoId` | nein | ID oder URL; alternativ Body-Embed `{{video …}}` |
-| `showToc` | nein | TOC an/aus; leer = globaler Default (`content.toc.articles`) |
-| `tocLevels` | nein | `h2` / `h3` / `h4`; leer = global |
-| `tocTitle` | nein | TOC-Überschrift; leer = global |
+| `toc.show` | nein | TOC an/aus; leer = globaler Default (`content.toc.articles`) |
+| `toc.levels` | nein | `h2` / `h3` / `h4`; leer = global |
+| `toc.title` | nein | TOC-Überschrift; leer = global |
 | `contentWidth` | nein | `default` / `wide` / `full`; leer = global (`content.width.articles`) |
 | `seo` | ja (CMS) | SEO-Partial |
 | Body | ja | Markdown |

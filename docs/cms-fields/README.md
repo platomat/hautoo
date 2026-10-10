@@ -64,41 +64,41 @@ schema: z.object({
 }),
 ```
 
-## Seitenhintergrund (`backgroundImage` / `backgroundOverlay` / `backgroundAttribution`)
+## Eintrags-Gruppen nach `modifiedDate` (`hero` / `toc` / `background` / `contentWidth`)
+
+Auf **Seiten** und **Artikeln** folgen nach dem Änderungsdatum collapsible Objects (wie bei Einstellungen):
+
+| CMS-Gruppe | Frontmatter | Felder |
+| --- | --- | --- |
+| **Hero** | `hero` | `textAlign`, `showBreadcrumbs`, `borderBottom` (Keys wie Design → Hero) |
+| **Inhaltsverzeichnis (TOC)** | `toc` | `show`, `title`, `levels` |
+| **Seitenhintergrund** | `background` | `image`, `overlay`, `attribution` |
+| **Inhaltsbreite** | `contentWidth` | Select `default` / `wide` / `full` (ein Feld, kein Object) |
+
+Sveltia-Anchors: `&field_entry_hero`, `&field_entry_toc`, `&field_entry_background`, `&field_content_width`. Zod: `entryHeroSchema` / `entryTocSchema` in `site-config.ts`, `entryBackgroundSchema` in `page-background.ts`.
+
+### Seitenhintergrund (`background`)
 
 | Seite | Ort |
 | --- | --- |
-| Sveltia | Anchors `&field_background_image` / `&field_background_overlay` / `&field_background_attribution` in `public/admin/config.yml` |
-| Astro | Pfad als String (`backgroundImageSchema`); Auflösung `src/lib/cms-image.ts` |
-| UI | `PageBackground.astro` — fixed, full viewport; `srcset` 640–1920 px WebP; schwarzes Overlay 0–100 % |
-| Nachweis | `backgroundAttribution` (Text oder reine URL) → Liste auf `/impressum/` via `BackgroundAttributions.astro` |
+| Astro | `background.image` als String; Auflösung `src/lib/cms-image.ts` |
+| UI | `PageBackground.astro` — fixed, full viewport; `srcset` 640–1920 px WebP; Overlay 0–100 % |
+| Nachweis | `background.attribution` → Liste auf `/impressum/` via `BackgroundAttributions.astro` |
 
-Pfade:
+Pfade: Shared Library `/assets/…` oder eintragsrelativ (Variante B). Nicht Astro-`image()` im Schema.
 
-- Shared Library: `/assets/datei.webp` → Datei unter `src/assets/` (globaler CMS-`media_folder`)
-- Eintragsrelativ: `datei.webp` neben `index.md` (Variante B)
+**Bildnachweis:** Freitext, URL oder HTML von Stock-Plattformen; Sanitizing `sanitizeAttributionHtml`.
 
-Nicht Astro-`image()` im Schema — das scheitert an `/assets/…`. Genutzt bei `pages` und `articles`.
-
-**Markdown-Bilder im Body** mit `/assets/…` werden beim Render über `hast-cms-assets` auf die gebauten Asset-URLs umgeschrieben (gleiche Auflösung wie Background). Ohne Embeds/`CmsContent` greift das nicht; Seiten mit Bildern im Text brauchen also Embeds oder diesen Pfad.
-
-**Bildnachweis:** Ein Feld reicht — Freitext, alleinstehende `http(s)`-URL (dann verlinkt) oder HTML 1:1 von Stock-Plattformen (z. B. Unsplash „Copy attribution“ mit `<a href>`). HTML wird auf erlaubte Links sanitisiert (`sanitizeAttributionHtml`). Sammlung: `src/lib/background-attributions.ts` (alle Pages + veröffentlichte Articles). Am Asset selbst speichert Sveltia keine Beschreibung; der Nachweis hängt am Eintrag.
-
-**Hinweis:** YAML-Anchors gelten nur **innerhalb derselben** `config.yml` (Sveltia-Limit). Zod und YAML bei Feldänderungen gemeinsam pflegen.
-
-## Inhaltsverzeichnis (`showToc` / `tocLevels` / `tocTitle`)
+### Inhaltsverzeichnis (`toc`)
 
 | Seite | Ort |
 | --- | --- |
-| Sveltia | Anchors `&field_show_toc`, `&field_toc_levels`, `&field_toc_title` (pages, articles) |
-| Astro | `showToc` (Default `false`), `tocLevels` (Default `["h2"]`), `tocTitle` (Default `Inhalt`) |
+| Astro | Resolve `resolveTocForCollection` — fehlt `toc.show` → global `enabled` |
 | UI | `TableOfContents.astro` nach dem Hero; Einträge aus `src/lib/toc.ts` |
 
-- **An:** `showToc: true`
-- **Ebenen:** Multi-Select `h2` / `h3` / `h4` (leer oder fehlend → nur `h2`)
-- **Titel:** Überschrift über der Liste (leer → „Inhalt“)
+Anker-IDs: `github-slugger`.
 
-Anker-IDs entsprechen den gerenderten Heading-IDs (`github-slugger`).
+**Hinweis:** YAML-Anchors gelten nur **innerhalb derselben** `config.yml`. Zod und YAML bei Feldänderungen gemeinsam pflegen.
 
 ## Header-/Footer-Code (`headCode` / `footerCode`)
 

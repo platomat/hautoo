@@ -37,7 +37,7 @@ Kurz: ENV = [Umgebungsvariablen](/glossar/env/), getrennt für lokal und [Produc
 
 ## Bildnachweise im Impressum
 
-Nutzt du für **Seiten** oder **Artikel** ein **Hintergrundbild**, brauchst du oft einen [**Bildnachweis**](/glossar/bildnachweis/) (Urheber, Quelle, Lizenztext). Im [**CMS**](/glossar/cms/) ([Sveltia](/glossar/sveltia/)) liegt dazu das Feld **Bildnachweis** (`backgroundAttribution`) neben **Seitenhintergrund** und **Abdunkelung** bei **Seiten** und **Artikel**.
+Nutzt du für **Seiten** oder **Artikel** ein **Hintergrundbild**, brauchst du oft einen [**Bildnachweis**](/glossar/bildnachweis/) (Urheber, Quelle, Lizenztext). Im [**CMS**](/glossar/cms/) ([Sveltia](/glossar/sveltia/)) liegt dazu das Feld **Bildnachweis** (`background.attribution`) neben **Seitenhintergrund** und **Abdunkelung** bei **Seiten** und **Artikel**.
 
 Du trägst reinen Text ein, eine alleinstehende `https://…`-URL (die Site verlinkt sie) oder HTML von Stock-Plattformen (z. B. Unsplash „Copy attribution“ (Attribution kopieren)). Erlaubt sind nur sichere Links im HTML.
 

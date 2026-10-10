@@ -147,13 +147,13 @@ Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-
 | Brotkrumen-Trenner | `/` | `/` · `•` · `→` · `-` zwischen den Elementen (pro Collection) |
 | Trennlinie unten | aus | optional `border-bottom` unter dem Hero |
 
-Seiten und Artikel können mit `heroTextAlign`, `showBreadcrumbs`, `heroBorderBottom` den Collection-Default überschreiben. Komponente: `PageHero.astro` (`collection`-Prop; Klassen `.page-hero--align-*`, `.page-hero--border`, `.breadcrumbs`). Brotkrumen-Links nutzen die Linkfarbe (`--color-action`).
+Seiten und Artikel überschreiben mit dem Objekt `hero` (`textAlign`, `showBreadcrumbs`, `borderBottom`) den Collection-Default. Komponente: `PageHero.astro` (`collection`-Prop; Klassen `.page-hero--align-*`, `.page-hero--border`, `.breadcrumbs`). Brotkrumen-Links nutzen die Linkfarbe (`--color-action`).
 
 Artikel: Kategorien stehen im Hero unter der Beschreibung; Tags per `tagPlacement` im Hero (rechts daneben), nach dem Inhalt oder beides (`hero` / `after` / `both`).
 
 ### Inhaltsverzeichnis (TOC)
 
-Globale Defaults unter **Einstellungen → Content → TOC** (Seiten / Artikel: an/aus, Ebenen, Titel). Einzelne Einträge überschreiben mit `showToc` / `tocLevels` / `tocTitle` (Feld leer = global).
+Globale Defaults unter **Einstellungen → Content → TOC** (Seiten / Artikel: an/aus, Ebenen, Titel). Einzelne Einträge überschreiben mit dem Objekt `toc` (`show`, `levels`, `title`; Feld leer = global).
 
 ### Inhaltsbreite
 

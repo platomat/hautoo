@@ -3,13 +3,16 @@ title: Features
 description: Überblick über die umgesetzten Funktionen von hautuu auf der Website und im Repo.
 status: published
 modifiedDate: 2026-10-11
-backgroundImage: olga-kovalski-eAmNjd0Zbts-unsplash.cleaned.webp
-backgroundOverlay: 73
-backgroundAttribution: Photo by <a href="https://unsplash.com/@kovalskihelga?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Olga Kovalski</a> on <a href="https://unsplash.com/photos/an-old-brick-building-with-a-tree-in-the-foreground-eAmNjd0Zbts?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-showToc: true
-tocTitle: Inhalt
-tocLevels:
+toc:
+  show: true
+  title: Inhalt
+  levels:
   - h2
+background:
+  image: olga-kovalski-eAmNjd0Zbts-unsplash.cleaned.webp
+  overlay: 73
+  attribution: |-
+    Photo by <a href="https://unsplash.com/@kovalskihelga?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Olga Kovalski</a> on <a href="https://unsplash.com/photos/an-old-brick-building-with-a-tree-in-the-foreground-eAmNjd0Zbts?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 contentWidth: wide
 seo:
   seo_title: Features von hautuu
@@ -85,10 +88,10 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Dark Theme** mit [CSS-Variablen](/glossar/css-variable/), Ubuntu-Schrift, responsive Header mit Mobile-Menü.
 - **Farbpalette** unter **Einstellungen** → **Design** → **Farbpalette**: alle Site-Farben (`--color-*`) redaktionell wählbar, jeweils mit Kurzhinweis zur Verwendung; gelten nach Deploy siteweit.
 - **Sticky Header** pro [Breakpoint](/glossar/breakpoint/) ein/aus; feste Leistenhöhe bei Sticky und Mindesthöhe ohne Sticky (jeweils Desktop / Tablet / Mobile), gesteuert über **Einstellungen** → **Design** → **Header**.
-- **Hero-Defaults pro Collection** unter **Einstellungen** → **Design** → **Hero** (Reihenfolge wie CMS-Leiste: Seiten, Artikel, Kategorien, Tags, Glossar): Textausrichtung, Brotkrumen an/aus, Brotkrumen-Trenner, Trennlinie unten. Einzelne Seiten/Artikel überschreiben mit `heroTextAlign`, `showBreadcrumbs`, `heroBorderBottom`.
+- **Hero-Defaults pro Collection** unter **Einstellungen** → **Design** → **Hero** (Reihenfolge wie CMS-Leiste: Seiten, Artikel, Kategorien, Tags, Glossar): Textausrichtung, Brotkrumen an/aus, Brotkrumen-Trenner, Trennlinie unten. Einzelne Seiten/Artikel überschreiben im Objekt `hero` (`textAlign`, `showBreadcrumbs`, `borderBottom`).
 - **Brotkrumen-Trenner** pro Collection wählbar (`/`, `•`, `→`, `-`; Default `/`); Brotkrumen-Links in der Linkfarbe.
 - **Breakpoints** und gemeinsame Layout-Hilfsklassen ([docs/design](https://github.com/platomat/hautoo/blob/main/docs/design/README.md)).
-- **Vollbild-Hintergrund** optional pro Seite oder Artikel, mit Overlay und **Bildnachweis**-Feld (`backgroundAttribution`).
+- **Vollbild-Hintergrund** optional pro Seite oder Artikel, mit Overlay und **Bildnachweis**-Feld (`background.attribution`).
 - **Bildnachweise gesammelt** am Ende des **Impressums** (automatisch aus Pages und Artikeln, [Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum)).
 - **Bilder neben dem Content** (Variante B), [Astro](/glossar/astro/)-Optimierung inklusive [CMS](/glossar/cms/)-Pfade unter `/assets/` ([Folge 021](/artikel/folge-021-bilder-suchen-nutzen/)).
 - **Externe Links** öffnen in neuem Tab und zeigen im Inhalt einen kleinen Pfeil (`↗`); im Header und Footer ohne Indikator.

@@ -68,7 +68,7 @@ const showTagsAfter =
 const showHeroTaxonomies =
 	linkedCategories.length > 0 || showTagsInHero;
 const backgroundImage = resolveCmsImage(
-	article.data.backgroundImage,
+	article.data.background?.image,
 	`content/articles/${article.id}/`,
 );
 const toc = await resolveTocForCollection("articles", article.data);
@@ -89,7 +89,7 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 	readingTimeMinutes={readingTimeMinutes}
 	modifiedDate={article.data.modifiedDate}
 	backgroundImage={backgroundImage}
-	backgroundOverlay={article.data.backgroundOverlay}
+	backgroundOverlay={article.data.background?.overlay}
 >
 	<main class:list={["page", widthClass]}>
 		<article>
@@ -105,9 +105,7 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 				description={article.data.summary}
 				breadcrumbs={breadcrumbs}
 				collection="articles"
-				heroTextAlign={article.data.heroTextAlign}
-				showBreadcrumbs={article.data.showBreadcrumbs}
-				heroBorderBottom={article.data.heroBorderBottom}
+				hero={article.data.hero}
 			>
 				{
 					showHeroTaxonomies && (

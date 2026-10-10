@@ -40,7 +40,7 @@ Bei **Seiten** kannst du optional **Header-Code** und **Footer-Code** setzen: kl
 
 ## FAQ mit Inhaltsverzeichnis
 
-Die [**FAQ**](/faq/) bündelt viele Fragen in **Themengruppen** (Überschriften **H2**). Pro Frage gibt es eine **H3**-Überschrift. Mit `showToc` und `tocLevels: h2` springst du nur zwischen den Gruppen, nicht durch jede einzelne Frage. Das gleiche Muster kennst du von Artikeln mit optionalem Inhaltsverzeichnis ([Folge 004](/artikel/folge-004-collection-pages/)).
+Die [**FAQ**](/faq/) bündelt viele Fragen in **Themengruppen** (Überschriften **H2**). Pro Frage gibt es eine **H3**-Überschrift. Mit `toc.show` und `toc.levels: [h2]` springst du nur zwischen den Gruppen, nicht durch jede einzelne Frage. Das gleiche Muster kennst du von Artikeln mit optionalem Inhaltsverzeichnis ([Folge 004](/artikel/folge-004-collection-pages/)).
 
 Glossar-Einträge und Folgen sind von dort verlinkt, damit du nicht alles auswendig lernen musst.
 

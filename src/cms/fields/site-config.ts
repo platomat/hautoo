@@ -102,18 +102,35 @@ export function normalizeHeroByCollection(raw: unknown): unknown {
 	};
 }
 
-/** Per-entry hero overrides (omit = use Design → Hero for that collection). */
-export const entryHeroFieldsSchema = z.object({
-	heroTextAlign: heroTextAlignSchema.optional(),
-	showBreadcrumbs: z.boolean().optional(),
-	heroBorderBottom: z.boolean().optional(),
-});
+/**
+ * Per-entry hero overrides (CMS object `hero`).
+ * Omit object or fields = Design → Hero for that collection.
+ */
+export const entryHeroSchema = z
+	.object({
+		textAlign: heroTextAlignSchema.optional(),
+		showBreadcrumbs: z.boolean().optional(),
+		borderBottom: z.boolean().optional(),
+	})
+	.optional();
 
-export type EntryHeroFields = z.infer<typeof entryHeroFieldsSchema>;
+export type EntryHero = z.infer<typeof entryHeroSchema>;
+
+/** Per-entry TOC overrides (CMS object `toc`). */
+export const entryTocSchema = z
+	.object({
+		/** Omit = global Content → TOC → enabled for this collection. */
+		show: z.boolean().optional(),
+		levels: z.array(tocLevelSchema).optional(),
+		title: z.string().optional(),
+	})
+	.optional();
+
+export type EntryToc = z.infer<typeof entryTocSchema>;
 
 /** Per-collection TOC defaults (CMS group Content). */
 export const siteTocCollectionSchema = z.object({
-	/** Show TOC when entry does not set `showToc`. */
+	/** Show TOC when entry omits `toc.show`. */
 	enabled: z.boolean().default(false),
 	levels: z.array(tocLevelSchema).default(["h2"]),
 	title: z.string().default("Inhalt"),

@@ -11,7 +11,8 @@ import {
 	siteDesignConfigSchema,
 	siteGeneralConfigSchema,
 	type BreadcrumbSeparator,
-	type EntryHeroFields,
+	type EntryHero,
+	type EntryToc,
 	type HeroCollectionKey,
 	type HeroTextAlign,
 	type SiteConfig,
@@ -65,29 +66,29 @@ export type ResolvedHeroSettings = {
 };
 
 /**
- * Merge entry hero fields with Design → Hero for that collection.
+ * Merge entry `hero` object with Design → Hero for that collection.
  * Missing local values → collection defaults.
  */
 export function resolveHeroSettings(
-	entry: EntryHeroFields,
+	entry: EntryHero | undefined,
 	globalHero: SiteHeroConfig = DEFAULT_SITE_HERO_CONFIG,
 ): ResolvedHeroSettings {
 	return {
-		textAlign: entry.heroTextAlign ?? globalHero.textAlign,
+		textAlign: entry?.textAlign ?? globalHero.textAlign,
 		showBreadcrumbs:
-			typeof entry.showBreadcrumbs === "boolean"
+			typeof entry?.showBreadcrumbs === "boolean"
 				? entry.showBreadcrumbs
 				: globalHero.showBreadcrumbs,
 		breadcrumbSeparator: globalHero.breadcrumbSeparator,
 		borderBottom:
-			typeof entry.heroBorderBottom === "boolean"
-				? entry.heroBorderBottom
+			typeof entry?.borderBottom === "boolean"
+				? entry.borderBottom
 				: globalHero.borderBottom,
 	};
 }
 
 export function resolveHeroForEntry(
-	entry: EntryHeroFields,
+	entry: EntryHero | undefined,
 	collection: HeroCollectionKey = "pages",
 ): ResolvedHeroSettings {
 	return resolveHeroSettings(entry, getSiteHeroConfig(collection));
@@ -100,10 +101,8 @@ export function getSiteTocConfig(): SiteTocConfig {
 
 export type TocCollectionKey = "pages" | "articles";
 
-export type EntryTocFields = {
-	showToc?: boolean | undefined;
-	tocLevels?: Array<"h2" | "h3" | "h4"> | undefined;
-	tocTitle?: string | undefined;
+export type EntryWithToc = {
+	toc?: EntryToc;
 };
 
 export type ResolvedTocSettings = {
@@ -113,26 +112,26 @@ export type ResolvedTocSettings = {
 };
 
 /**
- * Merge entry TOC fields with global config.
- * Missing `showToc` → global `enabled`; local true/false wins.
+ * Merge entry `toc` object with global config.
+ * Missing `toc.show` → global `enabled`; local true/false wins.
  * Empty/missing levels or title → global values for that collection.
  */
 export function resolveTocSettings(
-	entry: EntryTocFields,
+	entryToc: EntryToc | undefined,
 	globalForCollection: SiteTocCollectionConfig,
 ): ResolvedTocSettings {
 	const show =
-		typeof entry.showToc === "boolean"
-			? entry.showToc
+		typeof entryToc?.show === "boolean"
+			? entryToc.show
 			: globalForCollection.enabled;
 
 	const levels =
-		entry.tocLevels && entry.tocLevels.length > 0
-			? entry.tocLevels
+		entryToc?.levels && entryToc.levels.length > 0
+			? entryToc.levels
 			: globalForCollection.levels;
 
 	const title =
-		entry.tocTitle?.trim() ||
+		entryToc?.title?.trim() ||
 		globalForCollection.title.trim() ||
 		"Inhalt";
 
@@ -141,11 +140,11 @@ export function resolveTocSettings(
 
 export function resolveTocForCollection(
 	collection: TocCollectionKey,
-	entry: EntryTocFields,
+	entry: EntryWithToc,
 ): ResolvedTocSettings {
 	const toc = getSiteTocConfig();
 	const globalForCollection = toc[collection] ?? siteTocCollectionFallback();
-	return resolveTocSettings(entry, globalForCollection);
+	return resolveTocSettings(entry.toc, globalForCollection);
 }
 
 function siteTocCollectionFallback(): SiteTocCollectionConfig {
