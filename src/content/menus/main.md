@@ -5,12 +5,13 @@ items:
   - label: Artikel
     linkType: page
     page: artikel
-  - label: Kategorien
-    linkType: page
-    page: kategorien
-  - label: Tags
-    linkType: page
-    page: tags
+    children:
+      - label: Kategorien
+        linkType: page
+        page: kategorien
+      - label: Tags
+        linkType: page
+        page: tags
   - label: Glossar
     linkType: page
     page: glossar
