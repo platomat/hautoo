@@ -689,30 +689,30 @@ collections:
             label: Header
             widget: object
             collapsed: false
-            hint: "Pro Breakpoint (Desktop ≥1024px, Tablet 680–1023px, Mobile <680px): zuerst Mindesthöhe (nicht sticky), dann Sticky ein/aus, dann feste Höhe bei Sticky."
+            hint: "Pro Breakpoint: zuerst Ruhehöhe (Seitenanfang), dann Sticky ein/aus, dann kompakte Höhe wenn Sticky durch Scrollen greift. Desktop ≥1024px, Tablet 680–1023px, Mobile <680px."
             fields:
               - name: minHeightDesktop
-                label: Mindesthöhe Desktop (px)
+                label: Ruhehöhe Desktop (px)
                 widget: number
                 value_type: int
                 default: 64
                 min: 40
-                max: 160
-                hint: "Mindestens so hoch, wenn Sticky auf Desktop aus ist (Leiste darf wachsen)."
+                max: 600
+                hint: "Höhe am Seitenanfang. Mit Sticky gilt sie, bis die Leiste festklebt; ohne Sticky Mindesthöhe (darf wachsen)."
               - name: minHeightTablet
-                label: Mindesthöhe Tablet (px)
+                label: Ruhehöhe Tablet (px)
                 widget: number
                 value_type: int
                 default: 64
                 min: 40
-                max: 160
+                max: 600
               - name: minHeightMobile
-                label: Mindesthöhe Mobile (px)
+                label: Ruhehöhe Mobile (px)
                 widget: number
                 value_type: int
                 default: 56
                 min: 40
-                max: 160
+                max: 600
               - name: stickyDesktop
                 label: Sticky auf Desktop
                 widget: boolean
@@ -731,22 +731,22 @@ collections:
                 value_type: int
                 default: 64
                 min: 40
-                max: 160
-                hint: "Feste Leistenhöhe, wenn Sticky auf Desktop aktiv ist."
+                max: 600
+                hint: "Kompakte Leistenhöhe, sobald Sticky durch Scrollen aktiv ist."
               - name: heightTablet
                 label: Höhe sticky Tablet (px)
                 widget: number
                 value_type: int
                 default: 64
                 min: 40
-                max: 160
+                max: 600
               - name: heightMobile
                 label: Höhe sticky Mobile (px)
                 widget: number
                 value_type: int
                 default: 56
                 min: 40
-                max: 160
+                max: 600
           - name: hero
             label: Hero
             widget: object

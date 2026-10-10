@@ -1,4 +1,5 @@
 import MiniSearch from "minisearch";
+import { closeMobileNav } from "./nav-toggle";
 
 type SearchCopy = {
 	open: string;
@@ -81,19 +82,6 @@ function groupResults(results: SearchHit[]) {
 
 function closeDialog(dialog: HTMLDialogElement | null) {
 	dialog?.close();
-}
-
-function closeMobileNav() {
-	const header = document.querySelector("[data-site-header]");
-	if (!(header instanceof HTMLElement)) return;
-	if (!header.classList.contains("is-nav-open")) return;
-	header.classList.remove("is-nav-open");
-	document.body.classList.remove("is-nav-locked");
-	const toggle = header.querySelector("[data-nav-toggle]");
-	if (toggle instanceof HTMLButtonElement) {
-		toggle.setAttribute("aria-expanded", "false");
-		toggle.setAttribute("aria-label", "Menü öffnen");
-	}
 }
 
 function renderResults(

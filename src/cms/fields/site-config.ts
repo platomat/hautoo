@@ -1,13 +1,13 @@
 import { z } from "astro/zod";
 import { contentWidthSchema } from "./content-width";
 
-const headerHeight = z.coerce.number().int().min(40).max(160);
+const headerHeight = z.coerce.number().int().min(40).max(600);
 
 const tocLevelSchema = z.enum(["h2", "h3", "h4"]);
 
 /** Sticky header + bar heights (CMS group Design). Order: min heights → sticky toggles → sticky heights. */
 export const siteHeaderConfigSchema = z.object({
-	/** Min bar height when not sticky (desktop). */
+	/** Resting bar height at page top; also min-height when sticky is off. */
 	minHeightDesktop: headerHeight.default(64),
 	minHeightTablet: headerHeight.default(64),
 	minHeightMobile: headerHeight.default(56),
@@ -17,7 +17,7 @@ export const siteHeaderConfigSchema = z.object({
 	stickyTablet: z.boolean().default(true),
 	/** Sticky on mobile (< 680px). */
 	stickyMobile: z.boolean().default(true),
-	/** Fixed bar height when sticky (desktop). */
+	/** Compact bar height after sticky engages on scroll. */
 	heightDesktop: headerHeight.default(64),
 	heightTablet: headerHeight.default(64),
 	heightMobile: headerHeight.default(56),

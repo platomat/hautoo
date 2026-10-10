@@ -26,6 +26,11 @@ const headerStyle = [
 ].join("; ");
 ---
 
+{/*
+  Sentinel above the sticky header: when it leaves the viewport, the bar is stuck
+  and switches from Ruhehöhe (minHeight) to sticky height.
+*/}
+<div class="site-header-sticky-sentinel" data-header-sticky-sentinel aria-hidden="true"></div>
 <header
 	class:list={[
 		"site-header",
@@ -135,6 +140,7 @@ const headerStyle = [
 <script>
 	import "../scripts/nav-toggle";
 	import "../scripts/nav-submenu";
+	import "../scripts/header-sticky";
 </script>
 
 <style is:global>
@@ -142,6 +148,15 @@ const headerStyle = [
 	  Global (not scoped): sticky must win over page-bg stacking rules,
 	  and height tokens must apply at every viewport without attribute scoping quirks.
 	*/
+	.site-header-sticky-sentinel {
+		height: 1px;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		pointer-events: none;
+		visibility: hidden;
+	}
+
 	.site-header {
 		--header-bar-height: var(--header-h-desktop, 64px);
 		--header-bar-min-height: var(--header-min-h-desktop, 64px);
@@ -156,11 +171,20 @@ const headerStyle = [
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 1rem 1.5rem;
-		/* Sticky: fixed bar. Not sticky: min-height only (can grow). */
+		/* Ruhehöhe / ohne Sticky: min-height (darf wachsen). Sticky+stuck: feste Höhe. */
 		min-height: var(--header-bar-min-height);
 		height: auto;
 		padding-block: 0;
 		box-sizing: border-box;
+		transition:
+			min-height 0.28s ease,
+			height 0.28s ease;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.site-header__inner {
+			transition: none;
+		}
 	}
 
 	/* Breakpoints: same px as --bp-tablet / --bp-mobile (docs/design). */
@@ -184,7 +208,13 @@ const headerStyle = [
 			top: 0;
 		}
 
+		/* Explicit px heights so Ruhe → sticky animates (auto → px does not). */
 		.site-header.site-header--sticky-desktop .site-header__inner {
+			min-height: var(--header-bar-min-height);
+			height: var(--header-bar-min-height);
+		}
+
+		.site-header.site-header--sticky-desktop.is-stuck .site-header__inner {
 			min-height: var(--header-bar-height);
 			height: var(--header-bar-height);
 		}
@@ -197,6 +227,11 @@ const headerStyle = [
 		}
 
 		.site-header.site-header--sticky-tablet .site-header__inner {
+			min-height: var(--header-bar-min-height);
+			height: var(--header-bar-min-height);
+		}
+
+		.site-header.site-header--sticky-tablet.is-stuck .site-header__inner {
 			min-height: var(--header-bar-height);
 			height: var(--header-bar-height);
 		}
@@ -209,6 +244,11 @@ const headerStyle = [
 		}
 
 		.site-header.site-header--sticky-mobile .site-header__inner {
+			min-height: var(--header-bar-min-height);
+			height: var(--header-bar-min-height);
+		}
+
+		.site-header.site-header--sticky-mobile.is-stuck .site-header__inner {
 			min-height: var(--header-bar-height);
 			height: var(--header-bar-height);
 		}
@@ -479,6 +519,18 @@ const headerStyle = [
 	@media (max-width: 679px) {
 		.site-header {
 			border-bottom: none;
+		}
+
+		/*
+		  overflow:hidden / body scroll-lock breaks position:sticky — while the
+		  menu is open, pin the bar to the viewport so it stays visible.
+		*/
+		.site-header.is-nav-open {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
 		}
 
 		.site-header__inner {
