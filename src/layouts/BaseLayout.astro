@@ -152,8 +152,6 @@ const readingMinutes =
 			)
 		}
 		<title>{pageTitle}</title>
-		<style is:inline set:html={siteColorRootCss} />
-		<style is:inline set:html={siteTypographyRootCss} />
 		{
 			fontPreloadHrefs.map((href) => (
 				<link
@@ -166,6 +164,9 @@ const readingMinutes =
 			))
 		}
 		{headCodeHtml && <Fragment set:html={headCodeHtml} />}
+		{/* After bundled CSS: Design → Farbpalette / Schrift must win over global.css. */}
+		<style is:inline set:html={siteColorRootCss} />
+		<style is:inline set:html={siteTypographyRootCss} />
 	</head>
 	<body class:list={{ "has-page-bg": hasPageBackground }}>
 		{

@@ -2,46 +2,12 @@
 @import "./fonts.generated.css";
 
 :root {
-	--color-bg: #0f1412;
-	--color-surface: #1a211e;
-	/* Opaque enough for WCAG text over page backgrounds (Lighthouse contrast) */
-	--color-surface-glass: rgba(26, 33, 30, 0.9);
-	/* Header / footer / nav panels (overridable when a page BG is set) */
+	/*
+	 * --color-* and --font-* come from Design settings (inline in BaseLayout).
+	 * Do not set them here: bundled CSS loads after those tags and would win.
+	 */
+	/* Header / footer / nav panels (switches to surface-glass with page BG) */
 	--color-chrome: var(--color-surface);
-	--color-surface-raised: #232b27;
-	--color-border: #2e3833;
-	--color-text: #e8eeea;
-	--color-text-muted: #9aa89f;
-	--color-action: #3dcf8e;
-	--color-action-hover: #56d9a0;
-	--color-action-muted: #1a3d2e;
-	--color-danger: #e57373;
-
-	/* Design → Schrift (overridden inline from settings; see site-typography.ts) */
-	--font-size-base: 16px;
-	--font-body: "Ubuntu", system-ui, sans-serif;
-	--font-heading: "Ubuntu", system-ui, sans-serif;
-	--font-sans: var(--font-body);
-	--font-weight-body: 300;
-	--font-weight-heading: 500;
-	--font-h1-size: 2rem;
-	--font-h1-weight: 500;
-	--font-h1-transform: none;
-	--font-h2-size: 1.5rem;
-	--font-h2-weight: 500;
-	--font-h2-transform: none;
-	--font-h3-size: 1.25rem;
-	--font-h3-weight: 500;
-	--font-h3-transform: none;
-	--font-h4-size: 1.125rem;
-	--font-h4-weight: 500;
-	--font-h4-transform: none;
-	--font-h5-size: 1rem;
-	--font-h5-weight: 500;
-	--font-h5-transform: none;
-	--font-h6-size: 0.875rem;
-	--font-h6-weight: 500;
-	--font-h6-transform: none;
 	--content-max-width: 42rem;
 	--content-wide-max-width: 64rem;
 	--content-full-max-width: 80rem;

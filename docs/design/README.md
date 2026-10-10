@@ -54,7 +54,7 @@ Preload der benötigten Latin-WOFF2 in `BaseLayout`. Stylesheets werden im Build
 
 Grün ist die **primäre Aktionsfarbe**. Die übrigen Töne sind kühl-neutral mit leicht grünem Stich, damit alles zusammenpasst, nicht lila, nicht grell.
 
-Redaktionell unter **Einstellungen → Design → Farbpalette** (`src/content/settings/design.json` → `colors`). Beim Build schreibt `BaseLayout` die Werte als `:root`-Overrides (`src/lib/site-colors.ts`). Fallbacks bleiben in `global.css`.
+Redaktionell unter **Einstellungen → Design → Farbpalette** (`src/content/settings/design.json` → `colors`). Beim Build schreibt `BaseLayout` die Werte als `:root` (`src/lib/site-colors.ts`). Die Palette liegt nicht in `global.css` (sonst würde das gebündelte CSS die CMS-Werte überschreiben).
 
 ### CSS-Variablen (`:root`)
 
