@@ -3,6 +3,11 @@ title: Start
 description: 'hautuu: thematische Website mit Cursor, GitHub und Cloudflare.'
 status: published
 modifiedDate: 2026-10-10
+hero:
+  showBreadcrumbs: false
+  borderBottom: false
+toc:
+  show: false
 background:
   image: /assets/filip-kvasnak-NwmR1EDtiFg-unsplash.webp
   overlay: 77
