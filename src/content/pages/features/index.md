@@ -88,9 +88,9 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 ## Design und Nutzung
 
 - **Suche im Header** (MiniSearch): statischer Suchindex beim Build, Treffer zu Artikeln, Glossar und Seiten.
-- **Dark Theme** mit [CSS-Variablen](/glossar/css-variable/), wählbarer Schrift (Design → Schrift, lokal selbst gehostet), responsive Header mit Mobile-Menü.
+- **Dark Theme** mit [CSS-Variablen](/glossar/css-variable/), responsive Header mit Mobile-Menü; Logo färbt sich bei Hover in der Aktionsfarbe.
 - **Farbpalette** unter **Einstellungen** → **Design** → **Farbpalette**: alle Site-Farben (`--color-*`) redaktionell wählbar, jeweils mit Kurzhinweis zur Verwendung; gelten nach Deploy siteweit.
-- **Schrift** unter **Einstellungen** → **Design** → **Schrift**: Fließtext- und Überschriften-Schrift aus kuratiertem Katalog, Basisgröße (px), Stärke, sowie pro H1–H6 Größe (rem), Stärke und Transform. Beim Build von Fontsource (jsDelivr) geladen, lokal ausgeliefert (keine CDN-Anfrage beim Besuch).
+- **Schrift** unter **Einstellungen** → **Design** → **Schrift**: eigene Schrift für Text und Überschriften, Textgröße und Überschriften-Stil (Größe, Stärke, Groß-/Kleinschreibung). Beim Build lokal eingebettet, keine externe Schrift-Anfrage beim Besuch.
 - **Sticky Header** pro [Breakpoint](/glossar/breakpoint/) ein/aus; feste Leistenhöhe bei Sticky und Mindesthöhe ohne Sticky (jeweils Desktop / Tablet / Mobile), gesteuert über **Einstellungen** → **Design** → **Header**.
 - **Hero-Defaults pro Collection** unter **Einstellungen** → **Design** → **Hero** (Reihenfolge wie CMS-Leiste: Seiten, Artikel, Kategorien, Tags, Glossar): Textausrichtung, Brotkrumen an/aus, Brotkrumen-Trenner, Trennlinie unten. Einzelne Seiten/Artikel überschreiben im Objekt `hero` (`textAlign`, `showBreadcrumbs`, `borderBottom`).
 - **Brotkrumen-Trenner** pro Collection wählbar (`/`, `•`, `→`, `-`; Default `/`); Brotkrumen-Links in der Linkfarbe.

@@ -838,7 +838,7 @@ collections:
             hint: "Schriften werden beim Build von Fontsource (jsDelivr) geladen und lokal ausgeliefert — keine CDN-Anfrage beim Besuch. Katalog: Ubuntu, Inter, Open Sans, Source Sans 3, Roboto, Lato, Nunito Sans, IBM Plex Sans, Merriweather, Lora, Source Serif 4."
             fields:
               - name: bodyFont
-                label: Fließtext-Schrift
+                label: Basis-Schriftart
                 widget: select
                 required: true
                 default: ubuntu
@@ -854,12 +854,7 @@ collections:
                   - { label: Merriweather, value: merriweather }
                   - { label: Lora, value: lora }
                   - { label: Source Serif 4, value: source-serif-4 }
-              - name: headingFont
-                label: Überschriften-Schrift
-                widget: select
-                required: true
-                default: ubuntu
-                options: *font_family_options
+                hint: "Schrift für Fließtext und UI. Wird beim Build lokal eingebettet."
               - name: baseSize
                 label: Basisgröße (px)
                 widget: number
@@ -881,10 +876,18 @@ collections:
                   - { label: "600 Semibold", value: "600" }
                   - { label: "700 Bold", value: "700" }
                 hint: "Fehlt der Schnitt bei der Schrift, wählt der Build den nächsten verfügbaren."
+              - name: headingFont
+                label: Überschriften-Schriftart
+                widget: select
+                required: true
+                default: ubuntu
+                options: *font_family_options
+                hint: "Kann von der Basis-Schriftart abweichen (z. B. Serif für Überschriften)."
               - name: headings
                 label: Überschriften
                 widget: object
                 collapsed: false
+                hint: "Größe (rem), Stärke und Transform pro Ebene H1–H6."
                 fields:
                   - name: h1
                     label: H1

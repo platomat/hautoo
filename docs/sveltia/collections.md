@@ -55,10 +55,10 @@ Umsetzung: `src/lib/site-colors.ts`, Inline-`:root` in `BaseLayout.astro`. Defau
 
 | Feld | Bedeutung | Default |
 | --- | --- | --- |
-| `design.typography.bodyFont` | Fontsource-ID für Fließtext | `ubuntu` |
-| `design.typography.headingFont` | Fontsource-ID für Überschriften | `ubuntu` |
-| `design.typography.baseSize` | `html` font-size in px (12–24) | `16` |
+| `design.typography.bodyFont` | Basis-Schriftart (Fontsource-ID) | `ubuntu` |
+| `design.typography.baseSize` | Basisgröße: `html` font-size in px (12–24) | `16` |
 | `design.typography.bodyWeight` | Fließtext-Stärke (300–700) | `300` |
+| `design.typography.headingFont` | Überschriften-Schriftart (Fontsource-ID) | `ubuntu` |
 | `design.typography.headings.h1`–`h6` | Je `size` (rem), `weight`, `transform` (`none` / `capitalize` / `uppercase` / `lowercase`) | Browser-ähnliche Größen, Weight 500, Transform none |
 
 Katalog: `src/cms/fields/site-fonts.json`. Sync: `scripts/sync-site-fonts.mjs` → `public/fonts/` + `src/styles/fonts.generated.css`. CSS-Variablen: `src/lib/site-typography.ts`.
