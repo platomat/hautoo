@@ -630,4 +630,131 @@
 			return `<hr style="display:block;border:0;background:${bg};opacity:.65;height:${height}px;width:${width}%;margin:1.25rem auto">`;
 		},
 	});
+
+	const BUTTON_LIGHT_FILLS = new Set([
+		"text",
+		"text-muted",
+		"action",
+		"action-hover",
+		"danger",
+	]);
+
+	CMS.registerEditorComponent({
+		id: "button",
+		label: "Button",
+		icon: "smart_button",
+		fields: [
+			{
+				name: "label",
+				label: "Beschriftung",
+				widget: "string",
+				default: "Mehr erfahren",
+			},
+			{
+				name: "href",
+				label: "Link (URL)",
+				widget: "string",
+				hint: "Intern z. B. /kontakt/ oder absolute URL.",
+			},
+			{
+				name: "target",
+				label: "Ziel",
+				widget: "select",
+				default: "_self",
+				options: [
+					{ label: "Gleicher Tab", value: "_self" },
+					{ label: "Neuer Tab", value: "_blank" },
+				],
+			},
+			{
+				name: "style",
+				label: "Stil",
+				widget: "select",
+				default: "solid",
+				options: [
+					{ label: "Ausgefüllt", value: "solid" },
+					{ label: "Kontur", value: "outline" },
+				],
+			},
+			{
+				name: "color",
+				label: "Farbe",
+				widget: "select",
+				default: "action",
+				options: [
+					{ label: "Aktion (Standard)", value: "action" },
+					{ label: "Aktion Hover", value: "action-hover" },
+					{ label: "Aktion gedämpft", value: "action-muted" },
+					{ label: "Rahmen", value: "border" },
+					{ label: "Text", value: "text" },
+					{ label: "Text gedämpft", value: "text-muted" },
+					{ label: "Fläche", value: "surface" },
+					{ label: "Fläche angehoben", value: "surface-raised" },
+					{ label: "Hintergrund", value: "bg" },
+					{ label: "Danger", value: "danger" },
+				],
+				hint: "Bei Ausgefüllt: Hintergrund; bei Kontur: Rand und Text. Solid-Textfarbe wird kontrastreich gewählt.",
+			},
+			{
+				name: "align",
+				label: "Ausrichtung",
+				widget: "select",
+				default: "left",
+				options: [
+					{ label: "Links", value: "left" },
+					{ label: "Zentriert", value: "center" },
+					{ label: "Rechts", value: "right" },
+					{ label: "Volle Breite", value: "full" },
+				],
+			},
+		],
+		pattern: /^\{\{button(?<attrs>[^}]*)\}\}\s*$/m,
+		fromBlock: (match) => {
+			const attrs = parseAttrs(match?.groups?.attrs || "");
+			return {
+				label: attrs.label || attrs.text || "Mehr erfahren",
+				href: attrs.href || attrs.url || "",
+				target: attrs.target || "_self",
+				style: attrs.style || "solid",
+				color: attrs.color || "action",
+				align: attrs.align || "left",
+			};
+		},
+		toBlock: ({
+			label = "Mehr erfahren",
+			href = "",
+			target = "_self",
+			style = "solid",
+			color = "action",
+			align = "left",
+		}) => {
+			const parts = [`label="${label}"`, `href="${href}"`];
+			if (target && target !== "_self") parts.push(`target="${target}"`);
+			if (style && style !== "solid") parts.push(`style="${style}"`);
+			if (color && color !== "action") parts.push(`color="${color}"`);
+			if (align && align !== "left") parts.push(`align="${align}"`);
+			return `{{button ${parts.join(" ")}}}`;
+		},
+		toPreview: ({
+			label = "Mehr erfahren",
+			style = "solid",
+			color = "action",
+			align = "left",
+		}) => {
+			const fill = SEPARATOR_COLORS[color] || SEPARATOR_COLORS.action;
+			const fg = BUTTON_LIGHT_FILLS.has(color) ? "#0f1412" : "#e8eeea";
+			const solid = style !== "outline";
+			const alignCss =
+				align === "center"
+					? "center"
+					: align === "right"
+						? "right"
+						: "left";
+			const widthCss = align === "full" ? "width:100%;box-sizing:border-box;" : "";
+			const btn = solid
+				? `background:${fill};color:${fg};border:2px solid ${fill};`
+				: `background:transparent;color:${fill};border:2px solid ${fill};`;
+			return `<div style="text-align:${alignCss};margin:0.75rem 0"><span style="display:inline-block;${widthCss}padding:0.45rem 1rem;border-radius:4px;font-weight:500;${btn}">${label}</span></div>`;
+		},
+	});
 })();

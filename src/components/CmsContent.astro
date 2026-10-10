@@ -1,6 +1,7 @@
 ---
 import ArticleListing from "./ArticleListing.astro";
 import CategoryListing from "./CategoryListing.astro";
+import CmsButton from "./CmsButton.astro";
 import ContactEmail from "./ContactEmail.astro";
 import GlossarListing from "./GlossarListing.astro";
 import Separator from "./Separator.astro";
@@ -81,6 +82,18 @@ const segments = await buildContentSegments(body);
 					height={segment.props.height}
 					width={segment.props.width}
 					color={segment.props.color}
+				/>
+			);
+		}
+		if (segment.type === "button") {
+			return (
+				<CmsButton
+					label={segment.props.label}
+					href={segment.props.href}
+					target={segment.props.target}
+					style={segment.props.style}
+					color={segment.props.color}
+					align={segment.props.align}
 				/>
 			);
 		}

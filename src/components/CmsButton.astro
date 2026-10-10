@@ -1,0 +1,66 @@
+---
+import {
+	BUTTON_COLOR_CSS,
+	DEFAULT_BUTTON_ALIGN,
+	DEFAULT_BUTTON_COLOR,
+	DEFAULT_BUTTON_STYLE,
+	DEFAULT_BUTTON_TARGET,
+	buttonSolidForegroundCss,
+	resolveButtonAlign,
+	resolveButtonColor,
+	resolveButtonStyle,
+	resolveButtonTarget,
+	type ButtonAlign,
+	type ButtonColor,
+	type ButtonStyle,
+	type ButtonTarget,
+} from "../lib/button";
+
+interface Props {
+	label: string;
+	href: string;
+	target?: ButtonTarget | string;
+	style?: ButtonStyle | string;
+	color?: ButtonColor | string;
+	align?: ButtonAlign | string;
+}
+
+const {
+	label,
+	href,
+	target: targetRaw = DEFAULT_BUTTON_TARGET,
+	style: styleRaw = DEFAULT_BUTTON_STYLE,
+	color: colorRaw = DEFAULT_BUTTON_COLOR,
+	align: alignRaw = DEFAULT_BUTTON_ALIGN,
+} = Astro.props;
+
+const target = resolveButtonTarget(
+	typeof targetRaw === "string" ? targetRaw : DEFAULT_BUTTON_TARGET,
+);
+const style = resolveButtonStyle(
+	typeof styleRaw === "string" ? styleRaw : DEFAULT_BUTTON_STYLE,
+);
+const color = resolveButtonColor(
+	typeof colorRaw === "string" ? colorRaw : DEFAULT_BUTTON_COLOR,
+);
+const align = resolveButtonAlign(
+	typeof alignRaw === "string" ? alignRaw : DEFAULT_BUTTON_ALIGN,
+);
+
+const colorCss = BUTTON_COLOR_CSS[color];
+const fgCss =
+	style === "solid" ? buttonSolidForegroundCss(color) : colorCss;
+const rel = target === "_blank" ? "noopener noreferrer" : undefined;
+---
+
+<div class:list={["cms-button", `cms-button--align-${align}`]}>
+	<a
+		class:list={["cms-button__link", `cms-button__link--${style}`]}
+		href={href}
+		target={target === "_blank" ? "_blank" : undefined}
+		rel={rel}
+		style={`--cms-button-color: ${colorCss}; --cms-button-fg: ${fgCss}`}
+	>
+		{label}
+	</a>
+</div>

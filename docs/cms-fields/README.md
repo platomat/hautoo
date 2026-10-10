@@ -123,11 +123,12 @@ Im CMS über die Markdown-Toolbar einfügen (wie Bilder):
 | **Baustein** | `{{block id="stack-uebersicht"}}` | `id` = Slug aus Collection `blocks` (Bausteine); Inhalt wird an Ort und Stelle injiziert |
 | **Tagwolke** | `{{tag-cloud}}` | Kurzform für Tag-Listing mit Layout Wolke |
 | **Trennlinie** | `{{separator height="1" width="100" color="border"}}` | Höhe in px (Default 1), Breite in % (Default 100), Farbe = Design-Token (`border` Standard = bisherige Linienfarbe; auch `text`, `text-muted`, `action`, `action-hover`, `action-muted`, `surface`, `surface-raised`, `bg`, `danger`) |
+| **Button** | `{{button label="Mehr erfahren" href="/kontakt/" target="_self" style="solid" color="action" align="left"}}` | Pflicht: `label`, `href`. Optional: `target` (`_self` / `_blank`), `style` (`solid` / `outline`), `color` (gleiche Palette wie Trennlinie, Default `action`), `align` (`left` / `center` / `right` / `full`). Solid: Kontrast-Text automatisch |
 | **Kontakt-E-Mail** | `{{contact-email}}` | Adresse aus CMS `general.contactEmail` (falls gesetzt), sonst `CONTACT_EMAIL`; nicht im Markdown speichern |
 | **Repo-Dokument** | `{{repodoc path="docs/github/README.md" title="GitHub" description="Kurzer Satz"}}` | `path` = existierende Datei unter `docs/`; Link zu GitHub `main`; optional `title` / `description` |
 | **Video** | `{{video provider="youtube" id="…" title="Video" poster="/assets/…"}}` | YouTube/Vimeo; Facade ohne Drittanbieter-Kontakt bis Klick; Consent in `localStorage` (`hautuu-video-consent`); optionales lokales Poster |
 | **Video-Consent zurücksetzen** | `{{video-consent-reset}}` | Button zum Widerruf (Datenschutz) |
 
-Registrierung: `public/admin/editor-components.js`. Rendering: `ArticleListing.astro` / `GlossarListing.astro` / `TagListing.astro` / `CategoryListing.astro` / `Separator.astro` / `ContactEmail.astro` / `RepoDocLink.astro` / `VideoEmbed.astro` / `VideoConsentReset.astro`; Bausteine werden in `content-embeds.ts` expandiert.
+Registrierung: `public/admin/editor-components.js`. Rendering: `ArticleListing.astro` / `GlossarListing.astro` / `TagListing.astro` / `CategoryListing.astro` / `Separator.astro` / `CmsButton.astro` / `ContactEmail.astro` / `RepoDocLink.astro` / `VideoEmbed.astro` / `VideoConsentReset.astro`; Bausteine werden in `content-embeds.ts` expandiert.
 
 **Externe Links** im Markdown-Inhalt (Seiten, Artikel, Glossar, Embed-Markdown) öffnen in einem neuen Tab (`target="_blank"` + `rel="noopener noreferrer"`). Intern (`/…`, Anker, gleiche Domain) bleiben im selben Tab. Plugin: `src/lib/hast-external-links.ts`.

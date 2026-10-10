@@ -178,7 +178,7 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Kategorie-Listing“, „Baustein“, „Repo-Dokument“, „Tagwolke“, „Video“, „Trennlinie“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Kategorie-Listing“, „Baustein“, „Repo-Dokument“, „Tagwolke“, „Video“, „Trennlinie“, „Button“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
         editor_components:
           - image
           - code-block
@@ -193,6 +193,7 @@ collections:
           - video
           - video-consent-reset
           - separator
+          - button
       - &field_seo
         label: SEO
         name: seo
@@ -408,7 +409,7 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Kategorie-Listing“, „Baustein“, „Repo-Dokument“, „Tagwolke“, „Video“, „Trennlinie“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Kategorie-Listing“, „Baustein“, „Repo-Dokument“, „Tagwolke“, „Video“, „Trennlinie“, „Button“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
         editor_components:
           - image
           - code-block
@@ -423,6 +424,7 @@ collections:
           - video
           - video-consent-reset
           - separator
+          - button
       - *field_seo
 
 
@@ -561,6 +563,7 @@ collections:
           - video
           - video-consent-reset
           - separator
+          - button
 
   # Menus: filename = slot id (main, footer-legal, …). Navigation is not driven by page flags.
   - name: menus

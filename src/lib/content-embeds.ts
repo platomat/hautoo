@@ -8,6 +8,16 @@ import type { CategorySort } from "./categories";
 import type { TagSort } from "./tags";
 import { parseRepoDocProps, type RepoDocEmbedProps } from "./repodoc";
 import {
+	resolveButtonAlign,
+	resolveButtonColor,
+	resolveButtonStyle,
+	resolveButtonTarget,
+	type ButtonAlign,
+	type ButtonColor,
+	type ButtonStyle,
+	type ButtonTarget,
+} from "./button";
+import {
 	DEFAULT_SEPARATOR_COLOR,
 	resolveSeparatorColor,
 	type SeparatorColor,
@@ -75,6 +85,15 @@ export type SeparatorEmbedProps = {
 	color: SeparatorColor;
 };
 
+export type ButtonEmbedProps = {
+	label: string;
+	href: string;
+	target: ButtonTarget;
+	style: ButtonStyle;
+	color: ButtonColor;
+	align: ButtonAlign;
+};
+
 export type VideoEmbedProps = {
 	provider: VideoProvider;
 	id: string;
@@ -90,6 +109,7 @@ export type ContentSegment =
 	| { type: "category-listing"; props: CategoryListingEmbedProps }
 	| { type: "tag-cloud" }
 	| { type: "separator"; props: SeparatorEmbedProps }
+	| { type: "button"; props: ButtonEmbedProps }
 	| { type: "contact-email" }
 	| { type: "repodoc"; props: RepoDocEmbedProps }
 	| { type: "video"; props: VideoEmbedProps }
@@ -159,7 +179,7 @@ const DEFAULT_SEPARATOR: SeparatorEmbedProps = {
 
 /** Line must be only the embed (optional attrs). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|tag-cloud|separator|contact-email|repodoc|block|video|video-consent-reset)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|tag-cloud|separator|button|contact-email|repodoc|block|video|video-consent-reset)(?<attrs>[^}]*)\}\}\s*$/gm;
 
 const ARTICLE_SORTS = new Set<ArticleSort>([
 	"newest",
@@ -397,6 +417,25 @@ export function parseSeparatorProps(
 	};
 }
 
+export function parseButtonProps(
+	attrsRaw: string | undefined,
+): ButtonEmbedProps | undefined {
+	const attrs = parseAttrs(attrsRaw ?? "");
+	const label = (attrs.label ?? attrs.text ?? "").trim();
+	const href = (attrs.href ?? attrs.url ?? "").trim();
+	if (!label || !href) {
+		return undefined;
+	}
+	return {
+		label,
+		href,
+		target: resolveButtonTarget(attrs.target),
+		style: resolveButtonStyle(attrs.style),
+		color: resolveButtonColor(attrs.color),
+		align: resolveButtonAlign(attrs.align),
+	};
+}
+
 export function parseVideoEmbedProps(
 	attrsRaw: string | undefined,
 ): VideoEmbedProps | undefined {
@@ -484,6 +523,11 @@ export async function buildContentSegments(
 				type: "separator",
 				props: parseSeparatorProps(attrs),
 			});
+		} else if (name === "button") {
+			const props = parseButtonProps(attrs);
+			if (props) {
+				segments.push({ type: "button", props });
+			}
 		} else if (name === "article-listing") {
 			segments.push({
 				type: "article-listing",
