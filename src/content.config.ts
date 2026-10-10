@@ -9,7 +9,10 @@ import {
 } from "./cms/fields/page-background";
 import { seoSchema } from "./cms/fields/seo";
 import { contentWidthSchema } from "./cms/fields/content-width";
-import { siteConfigSchema } from "./cms/fields/site-config";
+import {
+	entryHeroFieldsSchema,
+	siteConfigSchema,
+} from "./cms/fields/site-config";
 import { entryStatusSchema } from "./cms/fields/status";
 
 const publishDateSchema = z.coerce.date().optional();
@@ -52,6 +55,8 @@ const pages = defineCollection({
 		 * or auto `wide` when the body has listing embeds.
 		 */
 		contentWidth: contentWidthSchema.optional(),
+		/** Hero overrides; omit = global Design → Hero. */
+		...entryHeroFieldsSchema.shape,
 		/** Raw HTML/JS/CSS injected before `</head>` (trusted CMS editors). */
 		headCode: z.string().optional(),
 		/** Raw HTML/JS/CSS injected before `</body>` (trusted CMS editors). */
@@ -107,6 +112,8 @@ const articles = defineCollection({
 			 * or auto `wide` when the body has listing embeds.
 			 */
 			contentWidth: contentWidthSchema.optional(),
+			/** Hero overrides; omit = global Design → Hero. */
+			...entryHeroFieldsSchema.shape,
 		}),
 });
 

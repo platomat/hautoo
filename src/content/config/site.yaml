@@ -11,6 +11,10 @@ design:
     heightDesktop: 64
     heightTablet: 64
     heightMobile: 56
+  hero:
+    textAlign: left
+    showBreadcrumbs: true
+    borderBottom: false
 content:
   toc:
     pages:

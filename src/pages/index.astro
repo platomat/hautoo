@@ -26,6 +26,14 @@ const backgroundImage = resolveCmsImage(
 const contentWidth = await resolveContentWidth("pages", page.data, page.body);
 const widthClass = contentWidthClass(contentWidth);
 const toc = await resolveTocForCollection("pages", page.data);
+/** Home has no trail; PageHero hides breadcrumbs when length ≤ 1. */
+const heroProps = {
+	title: page.data.title,
+	description: page.data.description,
+	heroTextAlign: page.data.heroTextAlign,
+	showBreadcrumbs: page.data.showBreadcrumbs,
+	heroBorderBottom: page.data.heroBorderBottom,
+};
 /** Dynamic import: avoid shipping TOC CSS on pages that do not show a TOC. */
 const TableOfContents = toc.show
 	? (await import("../components/TableOfContents.astro")).default
@@ -44,7 +52,7 @@ const TableOfContents = toc.show
 >
 	<main class:list={["page", widthClass]}>
 		<article>
-			<PageHero title={page.data.title} description={page.data.description} />
+			<PageHero {...heroProps} />
 			{TableOfContents && (
 				<TableOfContents
 					body={page.body}

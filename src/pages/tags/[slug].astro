@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import ArticleListing from "../../components/ArticleListing.astro";
 import { getArticlesByTag } from "../../lib/articles";
+import { buildTagBreadcrumbs } from "../../lib/breadcrumbs";
 import { getGlossarForTag, getGlossarHref } from "../../lib/glossar";
 import { formatTagHashtag } from "../../lib/tags";
 
@@ -19,6 +20,7 @@ const { tag } = Astro.props;
 const articles = await getArticlesByTag(tag.id, { sort: "newest" });
 const hashtag = formatTagHashtag(tag);
 const glossarEntry = await getGlossarForTag(tag.id);
+const breadcrumbs = buildTagBreadcrumbs(hashtag);
 ---
 
 <BaseLayout
@@ -27,8 +29,11 @@ const glossarEntry = await getGlossarForTag(tag.id);
 	modifiedDate={tag.data.modifiedDate}
 >
 	<main class="page">
-		<p class="text-sm text-muted"><a href="/artikel/">Artikel</a></p>
-		<PageHero title={hashtag} description={tag.data.description} />
+		<PageHero
+			title={hashtag}
+			description={tag.data.description}
+			breadcrumbs={breadcrumbs}
+		/>
 		{
 			glossarEntry && (
 				<p class="tag-glossar-link text-sm">

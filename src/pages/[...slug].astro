@@ -9,6 +9,7 @@ import { contentWidthClass } from "../cms/fields/content-width";
 import { hasContentEmbeds } from "../lib/content-embeds";
 import { resolveContentWidth } from "../lib/content-width";
 import { resolveCmsImage } from "../lib/cms-image";
+import { buildPageBreadcrumbs } from "../lib/breadcrumbs";
 import { getPageHref, getPublicPages, indexPagesById } from "../lib/pages";
 import { resolveTocForCollection } from "../lib/site-config";
 
@@ -42,6 +43,16 @@ const showArticleSidebar = page.id === "artikel";
 const contentWidth = await resolveContentWidth("pages", page.data, page.body);
 const widthClass = contentWidthClass(contentWidth);
 const toc = await resolveTocForCollection("pages", page.data);
+const allPages = await getPublicPages();
+const breadcrumbs = buildPageBreadcrumbs(page, allPages);
+const heroProps = {
+	title: page.data.title,
+	description: page.data.description,
+	breadcrumbs,
+	heroTextAlign: page.data.heroTextAlign,
+	showBreadcrumbs: page.data.showBreadcrumbs,
+	heroBorderBottom: page.data.heroBorderBottom,
+};
 /** Dynamic import: avoid shipping TOC CSS on pages that do not show a TOC. */
 const TableOfContents = toc.show
 	? (await import("../components/TableOfContents.astro")).default
@@ -70,10 +81,7 @@ const TableOfContents = toc.show
 				<div class="page-layout flex-row gap-lg stack-on-tablet">
 					<div class="page-layout__main min-w-0 w-full">
 						<article>
-							<PageHero
-								title={page.data.title}
-								description={page.data.description}
-							/>
+							<PageHero {...heroProps} />
 							{TableOfContents && (
 								<TableOfContents
 									body={page.body}
@@ -88,10 +96,7 @@ const TableOfContents = toc.show
 				</div>
 			) : (
 				<article>
-					<PageHero
-						title={page.data.title}
-						description={page.data.description}
-					/>
+					<PageHero {...heroProps} />
 					{TableOfContents && (
 						<TableOfContents
 							body={page.body}

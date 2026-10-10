@@ -134,6 +134,18 @@ Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-
 
 Über CMS **Konfiguration → Site → Design → Header** (`src/content/config/site.yaml`): Sticky ein/aus pro Breakpoint und **Höhe der Leiste** in px (Desktop ab 1024, Tablet 680–1023, Mobile unter 680). Defaults: sticky auf allen Geräten, 64 / 64 / 56 px. Sticky gilt auch auf Seiten mit Viewport-Hintergrund.
 
+### Hero (Titelbereich)
+
+Über CMS **Konfiguration → Site → Design → Hero**:
+
+| Einstellung | Default | Wirkung |
+| --- | --- | --- |
+| Textausrichtung | links | Brotkrumen, H1 und Beschreibung links / zentriert / rechts |
+| Brotkrumen | an | Trail z. B. Start / Elternseite / aktuelle Seite |
+| Trennlinie unten | aus | optional `border-bottom` unter dem Hero |
+
+Seiten und Artikel können mit `heroTextAlign`, `showBreadcrumbs`, `heroBorderBottom` überschreiben. Komponente: `PageHero.astro` (Klassen `.page-hero--align-*`, `.page-hero--border`, `.breadcrumbs`).
+
 ### Inhaltsverzeichnis (TOC)
 
 Globale Defaults unter **Konfiguration → Site → Content → TOC** (Seiten / Artikel: an/aus, Ebenen, Titel). Einzelne Einträge überschreiben mit `showToc` / `tocLevels` / `tocTitle` (Feld leer = global).

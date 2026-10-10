@@ -37,10 +37,13 @@ output:
 # Last change (all collections; SEO meta only for now)
 # - *field_modified_date
 
-# Optional TOC after hero (pages, articles)
+# Optional TOC / Hero after hero block (pages, articles)
 # - *field_show_toc
 # - *field_toc_title
 # - *field_toc_levels
+# - *field_hero_text_align
+# - *field_show_breadcrumbs
+# - *field_hero_border_bottom
 
 collections:
 
@@ -150,6 +153,28 @@ collections:
           - { label: Breit, value: wide }
           - { label: Vollbreit, value: full }
         hint: "Leer = globale Config (Content → Breite). Listing-Embeds wählen ohne gesetztes Feld automatisch „Breit“."
+      - &field_hero_text_align
+        name: heroTextAlign
+        label: Hero-Ausrichtung
+        widget: select
+        required: false
+        options:
+          - { label: Links, value: left }
+          - { label: Zentriert, value: center }
+          - { label: Rechts, value: right }
+        hint: "Leer = globale Config (Design → Hero). Ausrichtung für Brotkrumen, Titel und Beschreibung."
+      - &field_show_breadcrumbs
+        name: showBreadcrumbs
+        label: Brotkrumen anzeigen
+        widget: boolean
+        required: false
+        hint: "Leer lassen = globale Config (Design → Hero). An/Aus überschreibt die globale Vorgabe."
+      - &field_hero_border_bottom
+        name: heroBorderBottom
+        label: Hero-Trennlinie unten
+        widget: boolean
+        required: false
+        hint: "Leer lassen = globale Config (Design → Hero). An = 1px Linie unter dem Hero."
       - name: body
         label: Inhalt
         widget: markdown
@@ -356,6 +381,9 @@ collections:
       - *field_toc_title
       - *field_toc_levels
       - *field_content_width
+      - *field_hero_text_align
+      - *field_show_breadcrumbs
+      - *field_hero_border_bottom
       - name: body
         label: Inhalt
         widget: markdown
@@ -647,6 +675,31 @@ collections:
                     default: 56
                     min: 40
                     max: 160
+              - name: hero
+                label: Hero
+                widget: object
+                collapsed: false
+                hint: "Titelbereich (Brotkrumen, H1, Beschreibung). Einzelne Seiten/Artikel können überschreiben."
+                fields:
+                  - name: textAlign
+                    label: Textausrichtung
+                    widget: select
+                    options:
+                      - { label: Links, value: left }
+                      - { label: Zentriert, value: center }
+                      - { label: Rechts, value: right }
+                    default: left
+                    required: true
+                    hint: "Gilt für Brotkrumen, Titel und Beschreibung."
+                  - name: showBreadcrumbs
+                    label: Brotkrumen anzeigen
+                    widget: boolean
+                    default: true
+                  - name: borderBottom
+                    label: Trennlinie unten
+                    widget: boolean
+                    default: false
+                    hint: "1px Linie unter dem Hero-Block."
           - name: content
             label: Content
             widget: object

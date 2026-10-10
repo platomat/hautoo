@@ -21,6 +21,31 @@ export const siteHeaderConfigSchema = z.object({
 
 export type SiteHeaderConfig = z.infer<typeof siteHeaderConfigSchema>;
 
+export const heroTextAlignSchema = z.enum(["left", "center", "right"]);
+
+export type HeroTextAlign = z.infer<typeof heroTextAlignSchema>;
+
+/** Hero block defaults (CMS group Design → Hero). */
+export const siteHeroConfigSchema = z.object({
+	/** Alignment for breadcrumbs, title, and description. */
+	textAlign: heroTextAlignSchema.default("left"),
+	/** Show breadcrumb trail above the title. */
+	showBreadcrumbs: z.boolean().default(true),
+	/** 1px border under the hero block. */
+	borderBottom: z.boolean().default(false),
+});
+
+export type SiteHeroConfig = z.infer<typeof siteHeroConfigSchema>;
+
+/** Per-entry hero overrides (omit = use global Design → Hero). */
+export const entryHeroFieldsSchema = z.object({
+	heroTextAlign: heroTextAlignSchema.optional(),
+	showBreadcrumbs: z.boolean().optional(),
+	heroBorderBottom: z.boolean().optional(),
+});
+
+export type EntryHeroFields = z.infer<typeof entryHeroFieldsSchema>;
+
 /** Per-collection TOC defaults (CMS group Content). */
 export const siteTocCollectionSchema = z.object({
 	/** Show TOC when entry does not set `showToc`. */
@@ -65,6 +90,7 @@ export const siteConfigSchema = z.object({
 	design: z
 		.object({
 			header: siteHeaderConfigSchema.default({}),
+			hero: siteHeroConfigSchema.default({}),
 		})
 		.default({}),
 	content: z
@@ -82,6 +108,9 @@ export const DEFAULT_SITE_GENERAL_CONFIG: SiteGeneralConfig =
 
 export const DEFAULT_SITE_HEADER_CONFIG: SiteHeaderConfig =
 	siteHeaderConfigSchema.parse({});
+
+export const DEFAULT_SITE_HERO_CONFIG: SiteHeroConfig =
+	siteHeroConfigSchema.parse({});
 
 export const DEFAULT_SITE_TOC_CONFIG: SiteTocConfig =
 	siteTocConfigSchema.parse({});

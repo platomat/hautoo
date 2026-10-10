@@ -20,6 +20,7 @@ import {
 	estimateReadingTimeMinutes,
 	formatReadingTime,
 } from "../../lib/reading-time";
+import { buildArticleBreadcrumbs } from "../../lib/breadcrumbs";
 import { resolveTocForCollection } from "../../lib/site-config";
 import { formatTagHashtag, getTagHref } from "../../lib/tags";
 
@@ -57,6 +58,7 @@ const TableOfContents = toc.show
 	: null;
 const readingTimeMinutes = estimateReadingTimeMinutes(article.body);
 const readingTimeLabel = formatReadingTime(readingTimeMinutes);
+const breadcrumbs = buildArticleBreadcrumbs(article);
 ---
 
 <BaseLayout
@@ -72,15 +74,20 @@ const readingTimeLabel = formatReadingTime(readingTimeMinutes);
 	<main class:list={["page", widthClass]}>
 		<article>
 			<p class="text-sm text-muted">
-				<a href="/artikel/">Artikel</a>
-				{" · "}
 				<time datetime={article.data.pubDate.toISOString()}>
 					{formatArticleDate(article.data.pubDate)}
 				</time>
 				{" · "}
 				<span>{readingTimeLabel}</span>
 			</p>
-			<PageHero title={article.data.title} description={article.data.summary} />
+			<PageHero
+				title={article.data.title}
+				description={article.data.summary}
+				breadcrumbs={breadcrumbs}
+				heroTextAlign={article.data.heroTextAlign}
+				showBreadcrumbs={article.data.showBreadcrumbs}
+				heroBorderBottom={article.data.heroBorderBottom}
+			/>
 			{TableOfContents && (
 				<TableOfContents
 					body={article.body}

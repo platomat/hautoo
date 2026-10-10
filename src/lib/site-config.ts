@@ -2,10 +2,14 @@ import { getEntry } from "astro:content";
 import {
 	DEFAULT_SITE_GENERAL_CONFIG,
 	DEFAULT_SITE_HEADER_CONFIG,
+	DEFAULT_SITE_HERO_CONFIG,
 	DEFAULT_SITE_TOC_CONFIG,
 	siteConfigSchema,
+	type EntryHeroFields,
+	type HeroTextAlign,
 	type SiteConfig,
 	type SiteHeaderConfig,
+	type SiteHeroConfig,
 	type SiteTocCollectionConfig,
 	type SiteTocConfig,
 } from "../cms/fields/site-config";
@@ -31,6 +35,45 @@ export async function getSiteWebsiteTitle(): Promise<string> {
 export async function getSiteHeaderConfig(): Promise<SiteHeaderConfig> {
 	const config = await getSiteConfig();
 	return config.design?.header ?? DEFAULT_SITE_HEADER_CONFIG;
+}
+
+export async function getSiteHeroConfig(): Promise<SiteHeroConfig> {
+	const config = await getSiteConfig();
+	return config.design?.hero ?? DEFAULT_SITE_HERO_CONFIG;
+}
+
+export type ResolvedHeroSettings = {
+	textAlign: HeroTextAlign;
+	showBreadcrumbs: boolean;
+	borderBottom: boolean;
+};
+
+/**
+ * Merge entry hero fields with global Design → Hero.
+ * Missing local values → global defaults.
+ */
+export function resolveHeroSettings(
+	entry: EntryHeroFields,
+	globalHero: SiteHeroConfig = DEFAULT_SITE_HERO_CONFIG,
+): ResolvedHeroSettings {
+	return {
+		textAlign: entry.heroTextAlign ?? globalHero.textAlign,
+		showBreadcrumbs:
+			typeof entry.showBreadcrumbs === "boolean"
+				? entry.showBreadcrumbs
+				: globalHero.showBreadcrumbs,
+		borderBottom:
+			typeof entry.heroBorderBottom === "boolean"
+				? entry.heroBorderBottom
+				: globalHero.borderBottom,
+	};
+}
+
+export async function resolveHeroForEntry(
+	entry: EntryHeroFields,
+): Promise<ResolvedHeroSettings> {
+	const globalHero = await getSiteHeroConfig();
+	return resolveHeroSettings(entry, globalHero);
 }
 
 export async function getSiteTocConfig(): Promise<SiteTocConfig> {

@@ -23,7 +23,7 @@ Globale Site-Einstellungen als **YAML-Datei**, kein Markdown-Body. Erweiterbar u
 | Datei | `src/content/config/site.yaml` |
 | Schema | `src/cms/fields/site-config.ts` → Collection `config` in `src/content.config.ts` |
 | Sveltia | File-Collection `config` → Eintrag „Site“ |
-| Lesen | `src/lib/site-config.ts` (`getSiteConfig` / `getSiteWebsiteTitle` / `getSiteHeaderConfig` / `resolveTocForCollection`) |
+| Lesen | `src/lib/site-config.ts` (`getSiteConfig` / `getSiteWebsiteTitle` / `getSiteHeaderConfig` / `getSiteHeroConfig` / `resolveHeroForEntry` / `resolveTocForCollection`) |
 
 YAML-Gruppen im CMS: **General**, **Design** und **Content**.
 
@@ -44,6 +44,16 @@ YAML-Gruppen im CMS: **General**, **Design** und **Content**.
 | `design.header.heightDesktop` / `Tablet` / `Mobile` | Leistenhöhe in px (40–160), pro Breakpoint |
 
 Umsetzung in `SiteHeader.astro` (CSS-Klassen + Custom Properties).
+
+### Site → Design → Hero (#63)
+
+| Feld | Bedeutung | Default |
+| --- | --- | --- |
+| `design.hero.textAlign` | `left` / `center` / `right` für Brotkrumen, Titel, Beschreibung | `left` |
+| `design.hero.showBreadcrumbs` | Brotkrumen über dem Titel | `true` |
+| `design.hero.borderBottom` | 1px Linie unter dem Hero | `false` |
+
+Lokale Überschreibung an **Seiten** und **Artikeln**: `heroTextAlign`, `showBreadcrumbs`, `heroBorderBottom` (Feld leer/omit = global). Umsetzung: `PageHero.astro`, Pfade in `src/lib/breadcrumbs.ts`.
 
 ### Site → Content → TOC (#51)
 

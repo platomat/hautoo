@@ -82,6 +82,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Suche im Header** (MiniSearch): statischer Suchindex beim Build, Treffer zu Artikeln, Glossar und Seiten.
 - **Dark Theme** mit [CSS-Variablen](/glossar/css-variable/), Ubuntu-Schrift, responsive Header mit Mobile-Menü.
 - **Sticky Header** pro [Breakpoint](/glossar/breakpoint/) ein/aus und Leistenhöhe in px, gesteuert über **Konfiguration** → **Design** → **Header**.
+- **Hero-Bereich** global unter **Konfiguration** → **Design** → **Hero**: Textausrichtung (links/zentriert/rechts), Brotkrumen an/aus, optionale Trennlinie; pro Seite/Artikel überschreibbar.
 - **Breakpoints** und gemeinsame Layout-Hilfsklassen ([docs/design](https://github.com/platomat/hautoo/blob/main/docs/design/README.md)).
 - **Vollbild-Hintergrund** optional pro Seite oder Artikel, mit Overlay und **Bildnachweis**-Feld (`backgroundAttribution`).
 - **Bildnachweise gesammelt** am Ende des **Impressums** (automatisch aus Pages und Artikeln, [Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum)).

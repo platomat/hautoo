@@ -1,14 +1,65 @@
 ---
-interface Props {
+import type { EntryHeroFields } from "../cms/fields/site-config";
+import type { BreadcrumbItem } from "../lib/breadcrumbs";
+import { resolveHeroForEntry } from "../lib/site-config";
+
+interface Props extends EntryHeroFields {
 	title: string;
 	description?: string;
+	/** Trail for breadcrumbs; ignored when showBreadcrumbs resolves to false. */
+	breadcrumbs?: BreadcrumbItem[];
 }
 
-const { title, description } = Astro.props;
+const {
+	title,
+	description,
+	breadcrumbs = [],
+	heroTextAlign,
+	showBreadcrumbs: showBreadcrumbsProp,
+	heroBorderBottom,
+} = Astro.props;
+
+const hero = await resolveHeroForEntry({
+	heroTextAlign,
+	showBreadcrumbs: showBreadcrumbsProp,
+	heroBorderBottom,
+});
+
 const lead = description?.trim();
+const crumbs =
+	hero.showBreadcrumbs && breadcrumbs.length > 1 ? breadcrumbs : [];
 ---
 
-<header class="hero page-hero">
+<header
+	class:list={[
+		"hero",
+		"page-hero",
+		`page-hero--align-${hero.textAlign}`,
+		hero.borderBottom && "page-hero--border",
+	]}
+>
+	{
+		crumbs.length > 0 && (
+			<nav class="breadcrumbs" aria-label="Brotkrumen">
+				<ol class="breadcrumbs__list list-plain">
+					{crumbs.map((crumb, index) => {
+						const isLast = index === crumbs.length - 1;
+						return (
+							<li class="breadcrumbs__item">
+								{!isLast && crumb.href ? (
+									<a href={crumb.href}>{crumb.label}</a>
+								) : (
+									<span aria-current={isLast ? "page" : undefined}>
+										{crumb.label}
+									</span>
+								)}
+							</li>
+						);
+					})}
+				</ol>
+			</nav>
+		)
+	}
 	<h1>{title}</h1>
 	{lead && <p class="hero__lead page-hero__lead text-muted">{lead}</p>}
 </header>
