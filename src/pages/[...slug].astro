@@ -3,7 +3,7 @@ import { render } from "astro:content";
 import BackgroundAttributions from "../components/BackgroundAttributions.astro";
 import CmsContent from "../components/CmsContent.astro";
 import PageHero from "../components/PageHero.astro";
-import TagSidebar from "../components/TagSidebar.astro";
+import ArticleSidebar from "../components/ArticleSidebar.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { contentWidthClass } from "../cms/fields/content-width";
 import { hasContentEmbeds } from "../lib/content-embeds";
@@ -99,7 +99,7 @@ const TableOfContents = toc.show
 							{useEmbeds ? <CmsContent body={page.body} /> : <Content />}
 						</article>
 					</div>
-					<TagSidebar />
+					<ArticleSidebar />
 				</div>
 			) : (
 				<article>
