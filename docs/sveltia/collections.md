@@ -93,7 +93,16 @@ Eintrag ohne `toc.show` nutzt den globalen Default. Lokales `toc.show: true` / `
 | `content.width.pages` | Default-Inhaltsbreite für Seiten (`default` / `wide` / `full`) |
 | `content.width.articles` | dasselbe für Artikel |
 
-Pro Eintrag optional `contentWidth` (gleiche Werte). Leer = globaler Default; ohne Feld und mit Listing-Embed → automatisch `wide` (`resolveContentWidth`). CSS: Lesespalte 42rem, breit 64rem, vollbreit 80rem.
+Pro Eintrag optional `layout.contentWidth` (gleiche Werte). Leer = globaler Default; ohne Feld und mit Listing-Embed → automatisch `wide` (`resolveContentWidth`). CSS: Lesespalte 42rem, breit 64rem, vollbreit 80rem.
+
+### Einstellungen → Content → Abstand (#73)
+
+| Feld | Bedeutung |
+| --- | --- |
+| `content.spacing.<collection>.afterHero` | Abstand unter dem Hero (rem), Default 2.5 |
+| `content.spacing.<collection>.beforeFooter` | Unterer Seitenabstand vor Footer (rem), Default 4 |
+
+Collections: `pages`, `articles`, `categories`, `tags`, `glossar`. Pro Seite/Artikel optional `layout.afterHero` / `layout.beforeFooter` (Gruppe Inhaltsbreite). Resolve: `resolveContentSpacing` → CSS-Variablen am `.page`.
 
 ## Collection `menus` (umgesetzt)
 
@@ -159,7 +168,9 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | `toc.show` | nein | TOC an/aus; leer = globaler Default (`content.toc.pages`) |
 | `toc.levels` | nein | `h2` / `h3` / `h4`; leer = global |
 | `toc.title` | nein | TOC-Überschrift; leer = global |
-| `contentWidth` | nein | `default` / `wide` / `full`; leer = global (`content.width.pages`) |
+| `layout.contentWidth` | nein | `default` / `wide` / `full`; leer = global (`content.width.pages`) |
+| `layout.afterHero` | nein | Abstand unter Hero (rem); leer = `content.spacing.pages` |
+| `layout.beforeFooter` | nein | Abstand vor Footer (rem); leer = `content.spacing.pages` |
 | `headCode` | nein | Roh-HTML vor `</head>` (`<style>` / `<script>`) |
 | `footerCode` | nein | Roh-HTML vor `</body>` |
 | Body | ja | Markdown-Inhalt |
@@ -261,7 +272,9 @@ Beispiel: Baustein `stack-uebersicht` → auf der Startseite `{{block id="stack-
 | `toc.show` | nein | TOC an/aus; leer = globaler Default (`content.toc.articles`) |
 | `toc.levels` | nein | `h2` / `h3` / `h4`; leer = global |
 | `toc.title` | nein | TOC-Überschrift; leer = global |
-| `contentWidth` | nein | `default` / `wide` / `full`; leer = global (`content.width.articles`) |
+| `layout.contentWidth` | nein | `default` / `wide` / `full`; leer = global (`content.width.articles`) |
+| `layout.afterHero` | nein | Abstand unter Hero (rem); leer = `content.spacing.articles` |
+| `layout.beforeFooter` | nein | Abstand vor Footer (rem); leer = `content.spacing.articles` |
 | `seo` | ja (CMS) | SEO-Partial |
 | Body | ja | Markdown |
 

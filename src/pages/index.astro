@@ -5,6 +5,10 @@ import CmsContent from "../components/CmsContent.astro";
 import PageHero from "../components/PageHero.astro";
 import { contentWidthClass } from "../cms/fields/content-width";
 import { hasContentEmbeds } from "../lib/content-embeds";
+import {
+	contentSpacingStyle,
+	resolveContentSpacing,
+} from "../lib/content-spacing";
 import { resolveContentWidth } from "../lib/content-width";
 import { resolveCmsImage } from "../lib/cms-image";
 import { isPagePublic } from "../lib/pages";
@@ -25,6 +29,9 @@ const backgroundImage = resolveCmsImage(
 );
 const contentWidth = await resolveContentWidth("pages", page.data, page.body);
 const widthClass = contentWidthClass(contentWidth);
+const spacingStyle = contentSpacingStyle(
+	resolveContentSpacing("pages", page.data),
+);
 const toc = await resolveTocForCollection("pages", page.data);
 /** Home has no trail; PageHero hides breadcrumbs when length ≤ 1. */
 const heroProps = {
@@ -49,7 +56,7 @@ const TableOfContents = toc.show
 	headCode={page.data.headCode}
 	footerCode={page.data.footerCode}
 >
-	<main class:list={["page", widthClass]}>
+	<main class:list={["page", widthClass]} style={spacingStyle}>
 		<article>
 			<PageHero {...heroProps} />
 			{TableOfContents && (

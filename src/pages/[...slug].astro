@@ -7,6 +7,10 @@ import TagSidebar from "../components/TagSidebar.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { contentWidthClass } from "../cms/fields/content-width";
 import { hasContentEmbeds } from "../lib/content-embeds";
+import {
+	contentSpacingStyle,
+	resolveContentSpacing,
+} from "../lib/content-spacing";
 import { resolveContentWidth } from "../lib/content-width";
 import { resolveCmsImage } from "../lib/cms-image";
 import { buildPageBreadcrumbs } from "../lib/breadcrumbs";
@@ -42,6 +46,9 @@ const showBackgroundAttributions = page.id === "impressum";
 const showArticleSidebar = page.id === "artikel";
 const contentWidth = await resolveContentWidth("pages", page.data, page.body);
 const widthClass = contentWidthClass(contentWidth);
+const spacingStyle = contentSpacingStyle(
+	resolveContentSpacing("pages", page.data),
+);
 const toc = await resolveTocForCollection("pages", page.data);
 const allPages = await getPublicPages();
 const breadcrumbs = buildPageBreadcrumbs(page, allPages);
@@ -74,6 +81,7 @@ const TableOfContents = toc.show
 			widthClass,
 			{ "page--with-sidebar": showArticleSidebar },
 		]}
+		style={spacingStyle}
 	>
 		{
 			showArticleSidebar ? (

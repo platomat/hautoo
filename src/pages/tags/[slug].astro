@@ -7,6 +7,10 @@ import { getArticlesByTag } from "../../lib/articles";
 import { buildTagBreadcrumbs } from "../../lib/breadcrumbs";
 import { getGlossarForTag, getGlossarHref } from "../../lib/glossar";
 import { formatTagHashtag } from "../../lib/tags";
+import {
+	contentSpacingStyle,
+	resolveContentSpacing,
+} from "../../lib/content-spacing";
 
 export async function getStaticPaths() {
 	const tags = await getCollection("tags");
@@ -21,6 +25,7 @@ const articles = await getArticlesByTag(tag.id, { sort: "newest" });
 const hashtag = formatTagHashtag(tag);
 const glossarEntry = await getGlossarForTag(tag.id);
 const breadcrumbs = buildTagBreadcrumbs(hashtag);
+const spacingStyle = contentSpacingStyle(resolveContentSpacing("tags"));
 ---
 
 <BaseLayout
@@ -28,7 +33,7 @@ const breadcrumbs = buildTagBreadcrumbs(hashtag);
 	description={tag.data.description}
 	modifiedDate={tag.data.modifiedDate}
 >
-	<main class="page">
+	<main class="page" style={spacingStyle}>
 		<PageHero
 			title={hashtag}
 			description={tag.data.description}

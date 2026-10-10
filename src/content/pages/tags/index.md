@@ -9,7 +9,6 @@ background:
   overlay: 77
   attribution: |-
     Photo by <a href="https://unsplash.com/@mischievous_penguins?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Casey Horner</a> on <a href="https://unsplash.com/photos/brown-house-overseeing-stars-mLPjQs-YK5g?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-contentWidth: wide
 seo:
   index_visibility: index
   follow_visibility: follow
@@ -24,6 +23,9 @@ seo:
   max_image_preview: large
   seo_title: Themen Tags der Artikel
   seo_description: Stöbere hautuu Artikel nach Themen wie GitHub, Cloudflare oder Cursor. Jeder Tag zeigt passende Folgen und verlinkt zum Glossar, wenn es einen Eintrag gibt.
+layout:
+  contentWidth: wide
+
 ---
 
 Themen-Tags bündeln die Artikel nach Stichwort. Tippe auf ein Tag, um die passenden Beiträge zu sehen.

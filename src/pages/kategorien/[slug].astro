@@ -9,6 +9,10 @@ import {
 	getCategoryChildren,
 	getCategoryHref,
 } from "../../lib/categories";
+import {
+	contentSpacingStyle,
+	resolveContentSpacing,
+} from "../../lib/content-spacing";
 
 export async function getStaticPaths() {
 	const categories = await getCollection("categories");
@@ -23,6 +27,7 @@ const allCategories = await getCollection("categories");
 const articles = await getArticlesByCategory(category.id, { sort: "newest" });
 const children = getCategoryChildren(category.id, allCategories);
 const breadcrumbs = buildCategoryBreadcrumbs(category, allCategories);
+const spacingStyle = contentSpacingStyle(resolveContentSpacing("categories"));
 ---
 
 <BaseLayout
@@ -30,7 +35,7 @@ const breadcrumbs = buildCategoryBreadcrumbs(category, allCategories);
 	description={category.data.description}
 	modifiedDate={category.data.modifiedDate}
 >
-	<main class="page">
+	<main class="page" style={spacingStyle}>
 		<PageHero
 			title={category.data.title}
 			description={category.data.description}

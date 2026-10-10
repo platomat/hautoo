@@ -2,15 +2,17 @@
 
 Wiederverwendbare Feldgruppen für Sveltia und Astro.
 
-## Inhaltsbreite (`contentWidth`)
+## Inhaltsbreite & Abstand (`layout`)
 
 | Seite | Ort |
 | --- | --- |
-| Sveltia | Anchor `&field_content_width`; globale Defaults unter Config → Content → Breite |
-| Astro | `src/cms/fields/content-width.ts`, Resolve `src/lib/content-width.ts` |
-| Collections | `pages`, `articles` |
+| Sveltia | Anchor `&field_entry_layout`; globale Defaults unter Config → Content → Breite / Abstand |
+| Astro | `src/cms/fields/content-width.ts` (`entryLayoutSchema`), Resolve `src/lib/content-width.ts` / `src/lib/content-spacing.ts` |
+| Collections | `pages`, `articles` (Taxonomien nur globaler Abstand) |
 
-Werte: `default` (42rem) · `wide` (64rem) · `full` (80rem). Leer = globaler Default; ohne Feld und mit Listing-Embed → `wide`.
+Breite: `layout.contentWidth` = `default` (42rem) · `wide` (64rem) · `full` (80rem). Leer = globaler Default; ohne Feld und mit Listing-Embed → `wide`.
+
+Abstand (rem, 0–12): `layout.afterHero` / `layout.beforeFooter`. Leer = Content → Abstand für die jeweilige Collection. CSS-Variablen `--page-space-after-hero` / `--page-space-before-footer` am `.page`.
 
 ## Status (`status`)
 
@@ -64,7 +66,7 @@ schema: z.object({
 }),
 ```
 
-## Eintrags-Gruppen nach `modifiedDate` (`hero` / `toc` / `background` / `contentWidth`)
+## Eintrags-Gruppen nach `modifiedDate` (`hero` / `toc` / `background` / `layout`)
 
 Auf **Seiten** und **Artikeln** folgen nach dem Änderungsdatum collapsible Objects (wie bei Einstellungen):
 
@@ -73,11 +75,11 @@ Auf **Seiten** und **Artikeln** folgen nach dem Änderungsdatum collapsible Obje
 | **Hero überschreiben** | `hero` | `textAlign`, `showBreadcrumbs`, `borderBottom` (Keys wie Design → Hero); leer = Collection-Default |
 | **TOC überschreiben** | `toc` | `show`, `title`, `levels`; leer = globaler Default |
 | **Seitenhintergrund einstellen** | `background` | `image`, `overlay`, `attribution` |
-| **Inhaltsbreite** | `contentWidth` | Select `default` / `wide` / `full` (ein Feld, kein Object) |
+| **Inhaltsbreite** | `layout` | `contentWidth`, `afterHero`, `beforeFooter`; leer = Content → Breite / Abstand |
 
 Listen-Vorschau: Collection-Option `thumbnail: background.image` (Sveltia erkennt nested Images nicht automatisch).
 
-Sveltia-Anchors: `&field_entry_hero`, `&field_entry_toc`, `&field_entry_background`, `&field_content_width`. Zod: `entryHeroSchema` / `entryTocSchema` in `site-config.ts`, `entryBackgroundSchema` in `page-background.ts`.
+Sveltia-Anchors: `&field_entry_hero`, `&field_entry_toc`, `&field_entry_background`, `&field_entry_layout`. Zod: `entryHeroSchema` / `entryTocSchema` in `site-config.ts`, `entryBackgroundSchema` in `page-background.ts`, `entryLayoutSchema` in `content-width.ts`.
 
 ### Seitenhintergrund (`background`)
 

@@ -204,7 +204,9 @@ body.is-nav-locked {
 .page {
 	max-width: var(--content-max-width);
 	margin: 0 auto;
-	padding: 2.5rem var(--shell-padding-inline) 4rem;
+	/* --page-space-*: Content → Abstand / Eintrags-Override (layout). */
+	padding: 2.5rem var(--shell-padding-inline)
+		var(--page-space-before-footer, 4rem);
 }
 
 /* Editorial widths (`contentWidth`: default | wide | full). */
@@ -238,7 +240,7 @@ body.is-nav-locked {
 /* Title + optional lead; spacing before body content */
 .hero,
 .page-hero {
-	margin-bottom: 2.5rem;
+	margin-bottom: var(--page-space-after-hero, 2.5rem);
 }
 
 .hero h1,

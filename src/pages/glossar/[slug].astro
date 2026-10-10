@@ -11,6 +11,10 @@ import {
 	getGlossarHref,
 	getGlossarRelatedTags,
 } from "../../lib/glossar";
+import {
+	contentSpacingStyle,
+	resolveContentSpacing,
+} from "../../lib/content-spacing";
 
 export async function getStaticPaths() {
 	const entries = await getGlossarEntries();
@@ -27,6 +31,7 @@ const related = await getArticlesByIds(relatedArticleIds);
 const relatedTags = await getGlossarRelatedTags(entry);
 const relatedTagIds = relatedTags.map(({ tag }) => tag.id);
 const breadcrumbs = buildGlossarBreadcrumbs(entry);
+const spacingStyle = contentSpacingStyle(resolveContentSpacing("glossar"));
 ---
 
 <BaseLayout
@@ -35,7 +40,7 @@ const breadcrumbs = buildGlossarBreadcrumbs(entry);
 	seo={entry.data.seo}
 	modifiedDate={entry.data.modifiedDate}
 >
-	<main class="page">
+	<main class="page" style={spacingStyle}>
 		<article>
 			<PageHero
 				title={entry.data.title}

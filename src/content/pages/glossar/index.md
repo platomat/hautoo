@@ -8,7 +8,6 @@ background:
   overlay: 66
   attribution: |-
     Photo by <a href="https://unsplash.com/@lemarko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Pavel Marianov</a> on <a href="https://unsplash.com/photos/brown-wooden-house-near-green-tree-under-blue-sky-during-night-time-8nAb6Rt4CEs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-contentWidth: wide
 seo:
   index_visibility: index
   follow_visibility: follow
@@ -23,6 +22,9 @@ seo:
   max_image_preview: large
   seo_title: 'Glossar: Begriffe zum hautuu Stack'
   seo_description: Kurze Erklärungen zu Git, GitHub, Astro, Cloudflare, Cursor und CMS Begriffen. Das hautuu Glossar hilft dir beim Lesen der Artikel und FAQ.
+layout:
+  contentWidth: wide
+
 ---
 
 Kurze Erklärungen zu Begriffen rund um hautuu: [Astro](/glossar/astro/), [GitHub](/glossar/github/), [Cloudflare](/glossar/cloudflare-pages/) und Co.

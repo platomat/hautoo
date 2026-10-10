@@ -48,7 +48,7 @@ field_defaults:
 # - *field_entry_hero
 # - *field_entry_toc
 # - *field_entry_background
-# - *field_content_width
+# - *field_entry_layout  (Inhaltsbreite + Abstand Hero/Footer)
 
 # Editorial status (pages, articles, glossar — not tags/menus)
 # - *field_status
@@ -196,16 +196,42 @@ collections:
             widget: text
             required: false
             hint: "Text, reine URL oder HTML 1:1 von Unsplash/Pexels („Copy attribution“). Nur <a href> wird übernommen; erscheint automatisch am Ende des Impressums."
-      - &field_content_width
-        name: contentWidth
+      - &field_entry_layout
+        name: layout
         label: Inhaltsbreite
-        widget: select
-        required: false
-        options:
-          - { label: Standard (Lesespalte), value: default }
-          - { label: Breit, value: wide }
-          - { label: Vollbreit, value: full }
-        hint: "Leer = globale Config (Content → Breite). Listing-Embeds wählen ohne gesetztes Feld automatisch „Breit“."
+        widget: object
+        collapsed: true
+        required: true
+        default: {}
+        hint: "Breite und Abstände. Felder leer = Defaults unter Einstellungen → Content → Breite / Abstand."
+        fields:
+          - name: contentWidth
+            label: Spaltenbreite
+            widget: select
+            required: false
+            options:
+              - { label: Standard (Lesespalte), value: default }
+              - { label: Breit, value: wide }
+              - { label: Vollbreit, value: full }
+            hint: "Leer = globale Config (Content → Breite). Listing-Embeds wählen ohne gesetztes Feld automatisch „Breit“."
+          - name: afterHero
+            label: Abstand unter Hero (rem)
+            widget: number
+            value_type: float
+            min: 0
+            max: 12
+            step: 0.25
+            required: false
+            hint: "Leer = Content → Abstand für diese Collection. Abstand zwischen Hero und TOC/Inhalt."
+          - name: beforeFooter
+            label: Abstand vor Footer (rem)
+            widget: number
+            value_type: float
+            min: 0
+            max: 12
+            step: 0.25
+            required: false
+            hint: "Leer = Content → Abstand für diese Collection. Unterer Innenabstand der Seite vor dem Footer."
       - name: body
         label: Inhalt
         widget: markdown
@@ -393,7 +419,7 @@ collections:
       - *field_entry_hero
       - *field_entry_toc
       - *field_entry_background
-      - *field_content_width
+      - *field_entry_layout
       - name: categories
         label: Kategorien
         widget: relation
@@ -1124,3 +1150,49 @@ collections:
                   - { label: Breit, value: wide }
                   - { label: Vollbreit, value: full }
                 default: default
+          - name: spacing
+            label: Abstand
+            widget: object
+            collapsed: false
+            hint: "Vertikaler Abstand unter dem Hero und vor dem Footer, pro Collection. Einzelne Seiten/Artikel überschreiben unter Inhaltsbreite."
+            fields:
+              - name: pages
+                label: Seiten
+                widget: object
+                fields: &fields_spacing_collection
+                  - name: afterHero
+                    label: Unter Hero (rem)
+                    widget: number
+                    value_type: float
+                    min: 0
+                    max: 12
+                    step: 0.25
+                    default: 2.5
+                    required: true
+                    hint: "Abstand zwischen Hero und TOC/Inhalt."
+                  - name: beforeFooter
+                    label: Vor Footer (rem)
+                    widget: number
+                    value_type: float
+                    min: 0
+                    max: 12
+                    step: 0.25
+                    default: 4
+                    required: true
+                    hint: "Unterer Innenabstand der Seite vor dem Footer."
+              - name: articles
+                label: Artikel
+                widget: object
+                fields: *fields_spacing_collection
+              - name: categories
+                label: Kategorien
+                widget: object
+                fields: *fields_spacing_collection
+              - name: tags
+                label: Tags
+                widget: object
+                fields: *fields_spacing_collection
+              - name: glossar
+                label: Glossar
+                widget: object
+                fields: *fields_spacing_collection

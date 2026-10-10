@@ -157,7 +157,11 @@ Globale Defaults unter **Einstellungen → Content → TOC** (Seiten / Artikel: 
 
 ### Inhaltsbreite
 
-Drei Stufen über CMS **Content → Breite** (Default) und pro Seite/Artikel `contentWidth`: **Standard** (42rem), **Breit** (64rem), **Vollbreit** (80rem). Ohne lokales Feld und mit Listing-Embed wird automatisch breit gewählt.
+Drei Stufen über CMS **Content → Breite** (Default) und pro Seite/Artikel `layout.contentWidth`: **Standard** (42rem), **Breit** (64rem), **Vollbreit** (80rem). Ohne lokales Feld und mit Listing-Embed wird automatisch breit gewählt.
+
+### Inhaltsabstand (Hero / Footer)
+
+Global unter **Content → Abstand** pro Collection (`afterHero`, `beforeFooter` in rem). Seiten und Artikel überschreiben in der Gruppe **Inhaltsbreite**. CSS: `--page-space-after-hero` (`.page-hero` margin-bottom), `--page-space-before-footer` (`.page` padding-bottom).
 
 ### Mobile-Navigation (Burger)
 
@@ -191,7 +195,7 @@ Beliebig kombinieren, statt Flex-CSS in jeder Komponente neu zu schreiben:
 | `.stack-on-mobile` | ab `< 680px` → Spalte |
 | `.center-on-tablet` / `.center-on-mobile` | auf Breakpoint zentrieren; setzt `.ms-auto` zurück |
 | `.page--width-wide` / `.page--wide` / `.page--with-sidebar` | breite Inhaltsbreite (`--content-wide-max-width`, 64rem) |
-| `.page--width-full` | vollbreite Spalte (`--content-full-max-width`, 80rem); CMS-Feld `contentWidth` |
+| `.page--width-full` | vollbreite Spalte (`--content-full-max-width`, 80rem); CMS-Feld `layout.contentWidth` |
 | `.page-layout` / `.page-layout__main` | Flex-Zeile Inhalt/Sidebar (mit `.stack-on-tablet`) |
 | `.hero` / `.page-hero` | Titelblock überall (`PageHero.astro`: `h1` + optionale Beschreibung, Abstand zum Inhalt) |
 | `.separator` | Dezente Trennlinie (`Separator.astro` / CMS `{{separator height width color}}`; Default-Farbe `border`) |

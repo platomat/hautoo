@@ -145,13 +145,43 @@ export const siteTocConfigSchema = z.object({
 
 export type SiteTocConfig = z.infer<typeof siteTocConfigSchema>;
 
-/** Default content column when entry omits `contentWidth` (and no listing auto-wide). */
+/** Default content column when entry omits `layout.contentWidth` (and no listing auto-wide). */
 export const siteWidthConfigSchema = z.object({
 	pages: contentWidthSchema.default("default"),
 	articles: contentWidthSchema.default("default"),
 });
 
 export type SiteWidthConfig = z.infer<typeof siteWidthConfigSchema>;
+
+/** Vertical gap after hero / before footer (rem), matching previous CSS defaults. */
+export const siteSpacingRemSchema = z.coerce.number().min(0).max(12);
+
+export const siteSpacingCollectionSchema = z.object({
+	/** Margin below `.page-hero` before TOC/body. */
+	afterHero: siteSpacingRemSchema.default(2.5),
+	/** Bottom padding of `.page` before the site footer. */
+	beforeFooter: siteSpacingRemSchema.default(4),
+});
+
+export type SiteSpacingCollectionConfig = z.infer<
+	typeof siteSpacingCollectionSchema
+>;
+
+/** Per-collection content spacing (CMS Content → Abstand; same keys as Design → Hero). */
+export const siteSpacingByCollectionSchema = z.object({
+	pages: siteSpacingCollectionSchema.default({}),
+	articles: siteSpacingCollectionSchema.default({}),
+	categories: siteSpacingCollectionSchema.default({}),
+	tags: siteSpacingCollectionSchema.default({}),
+	glossar: siteSpacingCollectionSchema.default({}),
+});
+
+export type SiteSpacingByCollectionConfig = z.infer<
+	typeof siteSpacingByCollectionSchema
+>;
+
+export const DEFAULT_SITE_SPACING_COLLECTION: SiteSpacingCollectionConfig =
+	siteSpacingCollectionSchema.parse({});
 
 /** CMS group General (site name for chrome + document titles). */
 export const siteGeneralConfigSchema = z.object({
@@ -209,6 +239,7 @@ export const DEFAULT_SITE_COLORS: SiteColorsConfig =
 export const siteContentConfigSchema = z.object({
 	toc: siteTocConfigSchema.default({}),
 	width: siteWidthConfigSchema.default({}),
+	spacing: siteSpacingByCollectionSchema.default({}),
 });
 
 export type SiteContentFileConfig = z.infer<typeof siteContentConfigSchema>;
@@ -236,3 +267,6 @@ export const DEFAULT_SITE_TOC_CONFIG: SiteTocConfig =
 
 export const DEFAULT_SITE_WIDTH_CONFIG: SiteWidthConfig =
 	siteWidthConfigSchema.parse({});
+
+export const DEFAULT_SITE_SPACING_CONFIG: SiteSpacingByCollectionConfig =
+	siteSpacingByCollectionSchema.parse({});

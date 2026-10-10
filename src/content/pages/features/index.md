@@ -13,7 +13,6 @@ background:
   overlay: 73
   attribution: |-
     Photo by <a href="https://unsplash.com/@kovalskihelga?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Olga Kovalski</a> on <a href="https://unsplash.com/photos/an-old-brick-building-with-a-tree-in-the-foreground-eAmNjd0Zbts?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-contentWidth: wide
 seo:
   seo_title: Features von hautuu
   seo_description: 'Was auf hautoo.storyofai.net steht: 22 Folgen, Sveltia CMS mit Hero und Tag-Einstellungen, Inhaltsbreite, Sticky Header, Glossar, Embeds, SEO und Cloudflare Deploy.'
@@ -28,6 +27,9 @@ seo:
   max_video_preview: -1
   max_image_preview_enabled: true
   max_image_preview: large
+layout:
+  contentWidth: wide
+
 ---
 
 Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo](/glossar/repository/) auf `main`). Details zu Begriffen im [**Glossar**](/glossar/), Antworten in der [**FAQ**](/faq/), Schritt für Schritt in den [**Artikeln**](/artikel/).
@@ -49,7 +51,8 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Menüs** als eigene Collection (`main`, `footer-legal`) statt Flags an einzelnen Seiten.
 - **Entwurfsstatus** (`draft`, `published`, `future`, `trash`) für Pages, Artikel und Glossar.
 - **Inhaltsverzeichnis** global unter **Einstellungen** → **Content** → **Inhaltsverzeichnis (TOC)** (Seiten/Artikel: an/aus, Ebenen, Titel) und optional pro Eintrag überschreibbar.
-- **Inhaltsbreite** in drei Stufen (Standard, breit, vollbreit): global unter Content → Breite und pro Seite/Artikel per `contentWidth`.
+- **Inhaltsbreite** in drei Stufen (Standard, breit, vollbreit): global unter Content → Breite und pro Seite/Artikel unter **Inhaltsbreite** (`layout.contentWidth`).
+- **Inhaltsabstand** zum Hero und Footer (rem): global unter Content → Abstand pro Collection (Seiten, Artikel, Kategorien, Tags, Glossar); lokal unter Inhaltsbreite überschreibbar (`layout.afterHero` / `layout.beforeFooter`).
 - **Seiten-Header und Footer-Code** für kleine HTML- oder [CSS](/glossar/css/)-Snippets nur auf einer Seite.
 - **Zugang über [Cloudflare Worker](/glossar/cloudflare-worker/)** mit [OAuth](/glossar/oauth/) statt nur [PAT](/glossar/pat/) ([Folge 014](/artikel/folge-014-sveltia-worker/)).
 
