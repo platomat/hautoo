@@ -13,8 +13,11 @@ const { height = DEFAULT_SPACER_HEIGHT } = Astro.props;
 const heightPx = clampSpacerHeight(height);
 ---
 
+{/* Inline height + ZWSP: reliable layout even if CSS vars lag. */}
 <div
 	class="spacer"
-	style={`--spacer-height: ${heightPx}px`}
+	style={`height: ${heightPx}px; --spacer-height: ${heightPx}px`}
 	aria-hidden="true"
-></div>
+>
+	&#8203;
+</div>

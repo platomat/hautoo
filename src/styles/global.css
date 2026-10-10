@@ -364,8 +364,13 @@ body.is-nav-locked {
 	display: block;
 	width: 100%;
 	height: var(--spacer-height, 32px);
+	margin: 0;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
 	flex-shrink: 0;
 	pointer-events: none;
+	visibility: hidden;
 }
 
 /* CMS content button embed (`{{button …}}`) */
