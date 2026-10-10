@@ -154,3 +154,61 @@ export function getCategoryChildren(
 			a.data.title.localeCompare(b.data.title, "de", { sensitivity: "base" }),
 		);
 }
+
+export type CategoryTreeNode = {
+	category: CategoryEntry;
+	children: CategoryTreeNode[];
+};
+
+/**
+ * Hierarchical forest for sidebars: used categories plus ancestors needed
+ * to show the tree. Roots first, children A–Z.
+ */
+export function buildCategoryForest(
+	all: CategoryEntry[],
+	usedIds: Iterable<string>,
+): CategoryTreeNode[] {
+	const byId = new Map(all.map((entry) => [entry.id, entry]));
+	const used = new Set(
+		[...usedIds].filter((id) => byId.has(id)),
+	);
+	if (used.size === 0) {
+		return [];
+	}
+
+	const visible = new Set<string>();
+	for (const id of used) {
+		let current: string | undefined = id;
+		const seen = new Set<string>();
+		while (current && byId.has(current) && !seen.has(current)) {
+			visible.add(current);
+			seen.add(current);
+			current = byId.get(current)?.data.parent;
+		}
+	}
+
+	function childrenOf(parentId: string | undefined): CategoryTreeNode[] {
+		return all
+			.filter((entry) => {
+				if (!visible.has(entry.id)) {
+					return false;
+				}
+				const parent = entry.data.parent;
+				if (!parentId) {
+					return !parent || !byId.has(parent);
+				}
+				return parent === parentId;
+			})
+			.sort((a, b) =>
+				a.data.title.localeCompare(b.data.title, "de", {
+					sensitivity: "base",
+				}),
+			)
+			.map((category) => ({
+				category,
+				children: childrenOf(category.id),
+			}));
+	}
+
+	return childrenOf(undefined);
+}

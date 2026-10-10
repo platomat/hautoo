@@ -42,7 +42,7 @@ const backgroundImage = resolveCmsImage(
 );
 /** Hardwired system pages (same idea as Impressum attributions). */
 const showBackgroundAttributions = page.id === "impressum";
-/** Artikel overview keeps Tag-Sidebar; listing comes from CMS embed. */
+/** Artikel overview: category tree + tags sidebar; listing from CMS embed. */
 const showArticleSidebar = page.id === "artikel";
 const contentWidth = await resolveContentWidth("pages", page.data, page.body);
 const widthClass = contentWidthClass(contentWidth);

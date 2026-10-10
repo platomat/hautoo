@@ -1,39 +1,102 @@
 ---
+import { getCollection } from "astro:content";
+import CategoryTree from "./CategoryTree.astro";
+import {
+	articleCountsByCategory,
+	buildCategoryForest,
+} from "../lib/categories";
 import {
 	formatTagHashtag,
 	getTagHref,
 	getUsedTagsSorted,
 } from "../lib/tags";
 
-const tags = await getUsedTagsSorted();
+const [allCategories, counts, tags] = await Promise.all([
+	getCollection("categories"),
+	articleCountsByCategory(),
+	getUsedTagsSorted(),
+]);
+
+const usedCategoryIds = [...counts.entries()]
+	.filter(([, count]) => count > 0)
+	.map(([id]) => id);
+const categoryForest = buildCategoryForest(allCategories, usedCategoryIds);
+const showCategories = categoryForest.length > 0;
+const showTags = tags.length > 0;
 ---
 
 {
-	tags.length > 0 && (
-		<aside class="tag-sidebar" aria-labelledby="tag-sidebar-heading">
-			<h2 id="tag-sidebar-heading" class="tag-sidebar__title text-sm">
-				Tags
-			</h2>
-			<ul class="tag-sidebar__list list-plain">
-				{tags.map((tag) => (
-					<li>
-						<a href={getTagHref(tag)}>{formatTagHashtag(tag)}</a>
-					</li>
-				))}
-			</ul>
+	(showCategories || showTags) && (
+		<aside
+			class="article-sidebar"
+			aria-label={
+				showCategories && showTags
+					? "Kategorien und Tags"
+					: showCategories
+						? "Kategorien"
+						: "Tags"
+			}
+		>
+			{
+				showCategories && (
+					<section
+						class="article-sidebar__section"
+						aria-labelledby="article-sidebar-categories"
+					>
+						<h2
+							id="article-sidebar-categories"
+							class="article-sidebar__title text-sm"
+						>
+							Kategorien
+						</h2>
+						<CategoryTree nodes={categoryForest} />
+					</section>
+				)
+			}
+			{
+				showTags && (
+					<section
+						class:list={[
+							"article-sidebar__section",
+							showCategories && "article-sidebar__section--divided",
+						]}
+						aria-labelledby="article-sidebar-tags"
+					>
+						<h2
+							id="article-sidebar-tags"
+							class="article-sidebar__title text-sm"
+						>
+							Tags
+						</h2>
+						<ul class="article-sidebar__tag-list list-plain">
+							{tags.map((tag) => (
+								<li>
+									<a href={getTagHref(tag)}>{formatTagHashtag(tag)}</a>
+								</li>
+							))}
+						</ul>
+					</section>
+				)
+			}
 		</aside>
 	)
 }
 
 <style>
-	.tag-sidebar {
+	.article-sidebar {
 		flex: 0 0 11rem;
 		min-width: 9rem;
 		padding-inline-start: 1.5rem;
 		border-inline-start: 1px solid var(--color-border);
 	}
 
-	.tag-sidebar__title {
+	.article-sidebar__section--divided {
+		margin-top: 1.15rem;
+		padding-top: 1.15rem;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.article-sidebar__title {
 		margin: 0 0 0.75rem;
 		font-weight: var(--font-weight-heading);
 		text-transform: uppercase;
@@ -41,7 +104,7 @@ const tags = await getUsedTagsSorted();
 		color: var(--color-text-muted);
 	}
 
-	.tag-sidebar__list {
+	.article-sidebar__tag-list {
 		display: flex;
 		flex-direction: column;
 		gap: 0.4rem;
@@ -50,7 +113,7 @@ const tags = await getUsedTagsSorted();
 	}
 
 	@media (max-width: 1023px) {
-		.tag-sidebar {
+		.article-sidebar {
 			flex-basis: auto;
 			min-width: 0;
 			padding-inline-start: 0;
@@ -60,7 +123,12 @@ const tags = await getUsedTagsSorted();
 			border-top: 1px solid var(--color-border);
 		}
 
-		.tag-sidebar__list {
+		.article-sidebar__section--divided {
+			margin-top: 1.25rem;
+			padding-top: 1.25rem;
+		}
+
+		.article-sidebar__tag-list {
 			flex-direction: row;
 			flex-wrap: wrap;
 			gap: 0.5rem 1rem;

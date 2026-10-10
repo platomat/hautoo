@@ -1,0 +1,62 @@
+---
+import CategoryTree from "./CategoryTree.astro";
+import {
+	getCategoryHref,
+	type CategoryTreeNode,
+} from "../lib/categories";
+
+interface Props {
+	nodes: CategoryTreeNode[];
+	/** Nesting depth (0 = root list). */
+	depth?: number;
+}
+
+const { nodes, depth = 0 } = Astro.props;
+---
+
+{
+	nodes.length > 0 && (
+		<ul
+			class:list={[
+				"category-tree",
+				depth > 0 && "category-tree--nested",
+				"list-plain",
+			]}
+		>
+			{nodes.map((node) => (
+				<li class="category-tree__item">
+					<a
+						class="category-tree__link"
+						href={getCategoryHref(node.category)}
+					>
+						{node.category.data.title}
+					</a>
+					{node.children.length > 0 && (
+						<CategoryTree nodes={node.children} depth={depth + 1} />
+					)}
+				</li>
+			))}
+		</ul>
+	)
+}
+
+<style>
+	.category-tree {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		margin: 0;
+		padding: 0;
+	}
+
+	.category-tree--nested {
+		margin-top: 0.35rem;
+		padding-inline-start: 0.85rem;
+		border-inline-start: 1px solid var(--color-border);
+	}
+
+	.category-tree__link {
+		display: inline-block;
+		line-height: 1.35;
+	}
+</style>

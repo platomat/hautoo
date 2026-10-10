@@ -161,7 +161,7 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | Hierarchie | Feld `parent` (Relation) → verschachtelte URL |
 | SEO | Shared-Objekt `seo` (`&field_seo` / `src/cms/fields/seo.ts`) |
 | Medien | Variante B vorbereitet (`path` + leere `media_*`) — siehe [Medien](./medien-variante-b.md) |
-| System | Eintrag-ID `artikel` → Tag-Sidebar + `{{article-listing …}}`; `kategorien` → CMS-Seite + `{{category-listing …}}`; `tags` → CMS-Seite + `{{tag-listing …}}`; `glossar` → CMS-Seite + `{{glossar-listing …}}`; `impressum` → Bildnachweise |
+| System | Eintrag-ID `artikel` → Seitenleiste (Kategorie-Tree + Tags) + `{{article-listing …}}`; `kategorien` → CMS-Seite + `{{category-listing …}}`; `tags` → CMS-Seite + `{{tag-listing …}}`; `glossar` → CMS-Seite + `{{glossar-listing …}}`; `impressum` → Bildnachweise |
 
 ### Felder
 

@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import Icon from "./Icon.astro";
 import {
 	formatArticleDate,
 	getArticleHref,
@@ -166,7 +167,14 @@ function categoriesFor(article: (typeof articles)[number]): CategoryEntry[] {
 													{articleCategories.map((cat, index) => (
 														<>
 															{index > 0 && " "}
-															<a href={getCategoryHref(cat)}>
+															<a
+																class="article-categories__link"
+																href={getCategoryHref(cat)}
+															>
+																<Icon
+																	name="category"
+																	class="article-categories__icon"
+																/>
 																{cat.data.title}
 															</a>
 														</>
@@ -317,6 +325,13 @@ function categoriesFor(article: (typeof articles)[number]): CategoryEntry[] {
 	.article-listing__categories,
 	.article-listing__tags {
 		margin: 0;
+	}
+
+	.article-listing__categories {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.35rem 0.65rem;
 	}
 
 	.article-listing__meta a {
