@@ -13,10 +13,14 @@ export const siteHeaderConfigSchema = z.object({
 	stickyTablet: z.boolean().default(true),
 	/** Sticky on mobile (< 680px). */
 	stickyMobile: z.boolean().default(true),
-	/** Min bar height in px (desktop). */
+	/** Fixed bar height when sticky (desktop). */
 	heightDesktop: headerHeight.default(64),
 	heightTablet: headerHeight.default(64),
 	heightMobile: headerHeight.default(56),
+	/** Min bar height when not sticky (desktop). */
+	minHeightDesktop: headerHeight.default(64),
+	minHeightTablet: headerHeight.default(64),
+	minHeightMobile: headerHeight.default(56),
 });
 
 export type SiteHeaderConfig = z.infer<typeof siteHeaderConfigSchema>;

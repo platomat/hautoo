@@ -132,7 +132,7 @@ Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-
 
 ### Sticky Header
 
-Über CMS **Einstellungen → Design → Header** (`src/content/settings/design.json`): Sticky ein/aus pro Breakpoint und **Höhe der Leiste** in px (Desktop ab 1024, Tablet 680–1023, Mobile unter 680). Defaults: sticky auf allen Geräten, 64 / 64 / 56 px. Sticky gilt auch auf Seiten mit Viewport-Hintergrund.
+Über CMS **Einstellungen → Design → Header** (`src/content/settings/design.json`): Sticky ein/aus pro Breakpoint; **feste Höhe** bei Sticky und **Mindesthöhe** ohne Sticky (Desktop ab 1024, Tablet 680–1023, Mobile unter 680). Defaults: sticky auf allen Geräten, Höhe und Mindesthöhe jeweils 64 / 64 / 56 px. Sticky gilt auch auf Seiten mit Viewport-Hintergrund.
 
 ### Hero (Titelbereich)
 

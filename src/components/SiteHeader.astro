@@ -20,6 +20,9 @@ const headerStyle = [
 	`--header-h-desktop: ${headerConfig.heightDesktop}px`,
 	`--header-h-tablet: ${headerConfig.heightTablet}px`,
 	`--header-h-mobile: ${headerConfig.heightMobile}px`,
+	`--header-min-h-desktop: ${headerConfig.minHeightDesktop}px`,
+	`--header-min-h-tablet: ${headerConfig.minHeightTablet}px`,
+	`--header-min-h-mobile: ${headerConfig.minHeightMobile}px`,
 ].join("; ");
 ---
 
@@ -141,6 +144,7 @@ const headerStyle = [
 	*/
 	.site-header {
 		--header-bar-height: var(--header-h-desktop, 64px);
+		--header-bar-min-height: var(--header-min-h-desktop, 64px);
 		position: relative;
 		z-index: 20;
 		background: var(--color-chrome);
@@ -152,9 +156,9 @@ const headerStyle = [
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 1rem 1.5rem;
-		/* Config heights are the bar size; padding is inside that box. */
-		min-height: var(--header-bar-height);
-		height: var(--header-bar-height);
+		/* Sticky: fixed bar. Not sticky: min-height only (can grow). */
+		min-height: var(--header-bar-min-height);
+		height: auto;
 		padding-block: 0;
 		box-sizing: border-box;
 	}
@@ -163,12 +167,14 @@ const headerStyle = [
 	@media (max-width: 1023px) {
 		.site-header {
 			--header-bar-height: var(--header-h-tablet, 64px);
+			--header-bar-min-height: var(--header-min-h-tablet, 64px);
 		}
 	}
 
 	@media (max-width: 679px) {
 		.site-header {
 			--header-bar-height: var(--header-h-mobile, 56px);
+			--header-bar-min-height: var(--header-min-h-mobile, 56px);
 		}
 	}
 
@@ -177,6 +183,11 @@ const headerStyle = [
 			position: sticky;
 			top: 0;
 		}
+
+		.site-header.site-header--sticky-desktop .site-header__inner {
+			min-height: var(--header-bar-height);
+			height: var(--header-bar-height);
+		}
 	}
 
 	@media (max-width: 1023px) and (min-width: 680px) {
@@ -184,12 +195,22 @@ const headerStyle = [
 			position: sticky;
 			top: 0;
 		}
+
+		.site-header.site-header--sticky-tablet .site-header__inner {
+			min-height: var(--header-bar-height);
+			height: var(--header-bar-height);
+		}
 	}
 
 	@media (max-width: 679px) {
 		.site-header.site-header--sticky-mobile {
 			position: sticky;
 			top: 0;
+		}
+
+		.site-header.site-header--sticky-mobile .site-header__inner {
+			min-height: var(--header-bar-height);
+			height: var(--header-bar-height);
 		}
 	}
 </style>

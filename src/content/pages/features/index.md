@@ -13,7 +13,7 @@ tocLevels:
 contentWidth: wide
 seo:
   seo_title: Features von hautuu
-  seo_description: 'Was auf hautoo.storyofai.net steht: 22 Folgen, Sveltia CMS mit Website-Titel und Config, Inhaltsbreite, Sticky Header, Glossar, Embeds, SEO und Cloudflare Deploy.'
+  seo_description: 'Was auf hautoo.storyofai.net steht: 22 Folgen, Sveltia CMS mit Hero und Tag-Einstellungen, Inhaltsbreite, Sticky Header, Glossar, Embeds, SEO und Cloudflare Deploy.'
   index_visibility: index
   follow_visibility: follow
   noarchive: false
@@ -57,9 +57,9 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Erstes sinnvolles Glossar-Vorkommen** pro Seite verlinkt; Hilfsskript `link-glossar-crosslinks.py` und **Erstlink-Warnung** im [Build](/glossar/build/) (`check-glossar-first-links.py`, nicht blockierend).
 - **FAQ** als eine lange Seite mit Themengruppen (H2), alles offen sichtbar, durchsuchbar per Strg+F (kein Accordion).
 - **Kategorie-Seiten** unter `/kategorien/<slug>/` mit Parent-Brotkrumen, Unterkategorien und Artikel-Grid.
-- **Artikel-Taxonomien:** Kategorien im Hero unter der Beschreibung; Tags wahlweise im Hero (rechts daneben), nach dem Inhalt oder beides (`tagPlacement`).
+- **Tag-Position pro Artikel** (`tagPlacement`): Tags im Hero (rechts neben den Kategorien), nach dem Inhalt (vor der Artikel-Navigation) oder beides. Kategorien stehen immer im Hero unter der Beschreibung.
 - **Tag-Seiten** mit Artikel-Grid und Link zum passenden Glossar-Eintrag, wenn der Slug passt.
-- **Tag-Wolke** und **Listing-Embeds** für Glossar und Tags im Seiten- oder Artikeltext.
+- **Tag-Wolke** und **Listing-Embeds** für Glossar, Tags und Kategorien im Seiten- oder Artikeltext.
 
 ## Bausteine und Embeds
 
@@ -83,8 +83,9 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 
 - **Suche im Header** (MiniSearch): statischer Suchindex beim Build, Treffer zu Artikeln, Glossar und Seiten.
 - **Dark Theme** mit [CSS-Variablen](/glossar/css-variable/), Ubuntu-Schrift, responsive Header mit Mobile-Menü.
-- **Sticky Header** pro [Breakpoint](/glossar/breakpoint/) ein/aus und Leistenhöhe in px, gesteuert über **Einstellungen** → **Design** → **Header**.
-- **Hero-Bereich** unter **Einstellungen** → **Design** → **Hero**: Defaults pro Collection (Seiten, Artikel, Kategorien, Tags, Glossar); Textausrichtung, Brotkrumen, Trennlinie; pro Seite/Artikel überschreibbar.
+- **Sticky Header** pro [Breakpoint](/glossar/breakpoint/) ein/aus; feste Leistenhöhe bei Sticky und Mindesthöhe ohne Sticky (jeweils Desktop / Tablet / Mobile), gesteuert über **Einstellungen** → **Design** → **Header**.
+- **Hero-Defaults pro Collection** unter **Einstellungen** → **Design** → **Hero** (Reihenfolge wie CMS-Leiste: Seiten, Artikel, Kategorien, Tags, Glossar): Textausrichtung, Brotkrumen an/aus, Brotkrumen-Trenner, Trennlinie unten. Einzelne Seiten/Artikel überschreiben mit `heroTextAlign`, `showBreadcrumbs`, `heroBorderBottom`.
+- **Brotkrumen-Trenner** pro Collection wählbar (`/`, `•`, `→`, `-`; Default `/`); Brotkrumen-Links in der Linkfarbe.
 - **Breakpoints** und gemeinsame Layout-Hilfsklassen ([docs/design](https://github.com/platomat/hautoo/blob/main/docs/design/README.md)).
 - **Vollbild-Hintergrund** optional pro Seite oder Artikel, mit Overlay und **Bildnachweis**-Feld (`backgroundAttribution`).
 - **Bildnachweise gesammelt** am Ende des **Impressums** (automatisch aus Pages und Artikeln, [Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum)).

@@ -689,7 +689,7 @@ collections:
             label: Header
             widget: object
             collapsed: false
-            hint: "Sticky und Leistenhöhe pro Breakpoint (Desktop ≥1024px, Tablet 680–1023px, Mobile <680px)."
+            hint: "Sticky und Leistenhöhe pro Breakpoint (Desktop ≥1024px, Tablet 680–1023px, Mobile <680px). Sticky = feste Höhe; nicht sticky = Mindesthöhe."
             fields:
               - name: stickyDesktop
                 label: Sticky auf Desktop
@@ -704,21 +704,44 @@ collections:
                 widget: boolean
                 default: true
               - name: heightDesktop
-                label: Höhe Desktop (px)
+                label: Höhe sticky Desktop (px)
                 widget: number
                 value_type: int
                 default: 64
                 min: 40
                 max: 160
+                hint: "Feste Leistenhöhe, wenn Sticky auf Desktop aktiv ist."
               - name: heightTablet
-                label: Höhe Tablet (px)
+                label: Höhe sticky Tablet (px)
                 widget: number
                 value_type: int
                 default: 64
                 min: 40
                 max: 160
               - name: heightMobile
-                label: Höhe Mobile (px)
+                label: Höhe sticky Mobile (px)
+                widget: number
+                value_type: int
+                default: 56
+                min: 40
+                max: 160
+              - name: minHeightDesktop
+                label: Mindesthöhe Desktop (px)
+                widget: number
+                value_type: int
+                default: 64
+                min: 40
+                max: 160
+                hint: "Mindestens so hoch, wenn Sticky auf Desktop aus ist (Leiste darf wachsen)."
+              - name: minHeightTablet
+                label: Mindesthöhe Tablet (px)
+                widget: number
+                value_type: int
+                default: 64
+                min: 40
+                max: 160
+              - name: minHeightMobile
+                label: Mindesthöhe Mobile (px)
                 widget: number
                 value_type: int
                 default: 56
