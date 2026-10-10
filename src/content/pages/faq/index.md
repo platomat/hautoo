@@ -224,6 +224,10 @@ Der Standardname für dein Remote auf GitHub. [Glossar Origin](/glossar/origin/)
 
 **[Ask](/glossar/cursor-modi/)** fragt nur, „Agent“ (Agent) schreibt und nutzt das Terminal, „[Plan](/glossar/cursor-modi/)“ (Plan) plant erst. [Glossar Ask, Agent und Plan](/glossar/cursor-modi/), [Folge 008](/artikel/folge-008-cursor-modi/).
 
+### Was ist ein Prompt?
+
+Deine Anweisung an die KI: was sie tun oder erklären soll. Klarer Prompt, weniger Korrekturrunden. [Glossar Prompt](/glossar/prompt/), [Folge 005](/artikel/folge-005-astro-toolbar/), [Folge 008](/artikel/folge-008-cursor-modi/).
+
 ### Warum zwei Chats?
 
 Ein Chat sucht Probleme, einer fixt. Klarere Rollen. [Folge 010](/artikel/folge-010-cursor-chats/).

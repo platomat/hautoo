@@ -6,9 +6,9 @@
 		"stickyDesktop": true,
 		"stickyTablet": true,
 		"stickyMobile": true,
-		"heightDesktop": 64,
-		"heightTablet": 64,
-		"heightMobile": 56
+		"heightDesktop": 48,
+		"heightTablet": 48,
+		"heightMobile": 40
 	},
 	"hero": {
 		"pages": {

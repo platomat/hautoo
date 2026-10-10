@@ -86,6 +86,7 @@ TERM_PATTERNS: list[tuple[str, str]] = [
     ("route", r"\bRoute\b"),
     ("astro", r"Astro"),
     ("cursor", r"Cursor"),
+    ("prompt", r"Prompts?"),
     ("git", r"\bGit\b"),
     ("pull", r"\bPull\b"),
     ("pull", r"pullst"),
