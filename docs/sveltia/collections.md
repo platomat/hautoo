@@ -46,13 +46,15 @@ Umsetzung in `SiteHeader.astro` (CSS-Klassen + Custom Properties).
 
 ### Einstellungen → Design → Hero (#63)
 
+Pro Collection eigene Defaults (Reihenfolge wie in der CMS-Leiste: Seiten, Artikel, Kategorien, Tags, Glossar). Felder jeweils:
+
 | Feld | Bedeutung | Default |
 | --- | --- | --- |
-| `hero.textAlign` | `left` / `center` / `right` für Brotkrumen, Titel, Beschreibung | `left` |
-| `hero.showBreadcrumbs` | Brotkrumen über dem Titel | `true` |
-| `hero.borderBottom` | 1px Linie unter dem Hero | `false` |
+| `hero.<collection>.textAlign` | `left` / `center` / `right` für Brotkrumen, Titel, Beschreibung | `left` |
+| `hero.<collection>.showBreadcrumbs` | Brotkrumen über dem Titel | `true` |
+| `hero.<collection>.borderBottom` | 1px Linie unter dem Hero | `false` |
 
-Lokale Überschreibung an **Seiten** und **Artikeln**: `heroTextAlign`, `showBreadcrumbs`, `heroBorderBottom` (Feld leer/omit = global). Umsetzung: `PageHero.astro`, Pfade in `src/lib/breadcrumbs.ts`.
+Lokale Überschreibung an **Seiten** und **Artikeln**: `heroTextAlign`, `showBreadcrumbs`, `heroBorderBottom` (Feld leer/omit = Default der jeweiligen Collection). Umsetzung: `PageHero.astro` (`collection`-Prop), Pfade in `src/lib/breadcrumbs.ts`.
 
 ### Einstellungen → Content → TOC (#51)
 

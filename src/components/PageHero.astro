@@ -1,5 +1,8 @@
 ---
-import type { EntryHeroFields } from "../cms/fields/site-config";
+import type {
+	EntryHeroFields,
+	HeroCollectionKey,
+} from "../cms/fields/site-config";
 import type { BreadcrumbItem } from "../lib/breadcrumbs";
 import { resolveHeroForEntry } from "../lib/site-config";
 
@@ -8,22 +11,28 @@ interface Props extends EntryHeroFields {
 	description?: string;
 	/** Trail for breadcrumbs; ignored when showBreadcrumbs resolves to false. */
 	breadcrumbs?: BreadcrumbItem[];
+	/** Which Design → Hero collection defaults to use (CMS rail order). */
+	collection?: HeroCollectionKey;
 }
 
 const {
 	title,
 	description,
 	breadcrumbs = [],
+	collection = "pages",
 	heroTextAlign,
 	showBreadcrumbs: showBreadcrumbsProp,
 	heroBorderBottom,
 } = Astro.props;
 
-const hero = resolveHeroForEntry({
-	heroTextAlign,
-	showBreadcrumbs: showBreadcrumbsProp,
-	heroBorderBottom,
-});
+const hero = resolveHeroForEntry(
+	{
+		heroTextAlign,
+		showBreadcrumbs: showBreadcrumbsProp,
+		heroBorderBottom,
+	},
+	collection,
+);
 
 const lead = description?.trim();
 const crumbs =

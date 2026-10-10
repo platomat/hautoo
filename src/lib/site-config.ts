@@ -11,6 +11,7 @@ import {
 	siteDesignConfigSchema,
 	siteGeneralConfigSchema,
 	type EntryHeroFields,
+	type HeroCollectionKey,
 	type HeroTextAlign,
 	type SiteConfig,
 	type SiteHeaderConfig,
@@ -18,6 +19,8 @@ import {
 	type SiteTocCollectionConfig,
 	type SiteTocConfig,
 } from "../cms/fields/site-config";
+
+export type { HeroCollectionKey };
 
 /**
  * Merge CMS settings JSON files (like cdr-legal `src/content/settings/`).
@@ -45,9 +48,12 @@ export function getSiteHeaderConfig(): SiteHeaderConfig {
 	return config.design?.header ?? DEFAULT_SITE_HEADER_CONFIG;
 }
 
-export function getSiteHeroConfig(): SiteHeroConfig {
+/** Hero defaults for one collection (Design → Hero → Seiten/Artikel/…). */
+export function getSiteHeroConfig(
+	collection: HeroCollectionKey = "pages",
+): SiteHeroConfig {
 	const config = getSiteConfig();
-	return config.design?.hero ?? DEFAULT_SITE_HERO_CONFIG;
+	return config.design?.hero?.[collection] ?? DEFAULT_SITE_HERO_CONFIG;
 }
 
 export type ResolvedHeroSettings = {
@@ -57,8 +63,8 @@ export type ResolvedHeroSettings = {
 };
 
 /**
- * Merge entry hero fields with global Design → Hero.
- * Missing local values → global defaults.
+ * Merge entry hero fields with Design → Hero for that collection.
+ * Missing local values → collection defaults.
  */
 export function resolveHeroSettings(
 	entry: EntryHeroFields,
@@ -79,8 +85,9 @@ export function resolveHeroSettings(
 
 export function resolveHeroForEntry(
 	entry: EntryHeroFields,
+	collection: HeroCollectionKey = "pages",
 ): ResolvedHeroSettings {
-	return resolveHeroSettings(entry, getSiteHeroConfig());
+	return resolveHeroSettings(entry, getSiteHeroConfig(collection));
 }
 
 export function getSiteTocConfig(): SiteTocConfig {

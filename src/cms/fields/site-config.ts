@@ -25,7 +25,7 @@ export const heroTextAlignSchema = z.enum(["left", "center", "right"]);
 
 export type HeroTextAlign = z.infer<typeof heroTextAlignSchema>;
 
-/** Hero block defaults (CMS group Design → Hero). */
+/** Hero block defaults for one collection (CMS Design → Hero → …). */
 export const siteHeroConfigSchema = z.object({
 	/** Alignment for breadcrumbs, title, and description. */
 	textAlign: heroTextAlignSchema.default("left"),
@@ -37,7 +37,60 @@ export const siteHeroConfigSchema = z.object({
 
 export type SiteHeroConfig = z.infer<typeof siteHeroConfigSchema>;
 
-/** Per-entry hero overrides (omit = use global Design → Hero). */
+/**
+ * Collections with a public hero (order = CMS left rail).
+ * Blocks/menus/settings have no public hero pages.
+ */
+export const HERO_COLLECTION_KEYS = [
+	"pages",
+	"articles",
+	"categories",
+	"tags",
+	"glossar",
+] as const;
+
+export type HeroCollectionKey = (typeof HERO_COLLECTION_KEYS)[number];
+
+/** Per-collection hero defaults (CMS Design → Hero). */
+export const siteHeroByCollectionSchema = z.object({
+	pages: siteHeroConfigSchema.default({}),
+	articles: siteHeroConfigSchema.default({}),
+	categories: siteHeroConfigSchema.default({}),
+	tags: siteHeroConfigSchema.default({}),
+	glossar: siteHeroConfigSchema.default({}),
+});
+
+export type SiteHeroByCollectionConfig = z.infer<
+	typeof siteHeroByCollectionSchema
+>;
+
+/**
+ * Accept legacy flat `hero: { textAlign, … }` and expand to all collections.
+ */
+export function normalizeHeroByCollection(raw: unknown): unknown {
+	if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
+		return raw;
+	}
+	const obj = raw as Record<string, unknown>;
+	const looksFlat =
+		("textAlign" in obj ||
+			"showBreadcrumbs" in obj ||
+			"borderBottom" in obj) &&
+		!("pages" in obj) &&
+		!("articles" in obj);
+	if (!looksFlat) {
+		return raw;
+	}
+	return {
+		pages: obj,
+		articles: obj,
+		categories: obj,
+		tags: obj,
+		glossar: obj,
+	};
+}
+
+/** Per-entry hero overrides (omit = use Design → Hero for that collection). */
 export const entryHeroFieldsSchema = z.object({
 	heroTextAlign: heroTextAlignSchema.optional(),
 	showBreadcrumbs: z.boolean().optional(),
@@ -87,7 +140,10 @@ export type SiteGeneralConfig = z.infer<typeof siteGeneralConfigSchema>;
 /** `src/content/settings/design.json` */
 export const siteDesignConfigSchema = z.object({
 	header: siteHeaderConfigSchema.default({}),
-	hero: siteHeroConfigSchema.default({}),
+	hero: z.preprocess(
+		normalizeHeroByCollection,
+		siteHeroByCollectionSchema.default({}),
+	),
 });
 
 export type SiteDesignConfig = z.infer<typeof siteDesignConfigSchema>;

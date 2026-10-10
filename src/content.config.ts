@@ -52,7 +52,7 @@ const pages = defineCollection({
 		 * or auto `wide` when the body has listing embeds.
 		 */
 		contentWidth: contentWidthSchema.optional(),
-		/** Hero overrides; omit = global Design → Hero. */
+		/** Hero overrides; omit = Design → Hero for this collection. */
 		...entryHeroFieldsSchema.shape,
 		/** Raw HTML/JS/CSS injected before `</head>` (trusted CMS editors). */
 		headCode: z.string().optional(),
@@ -128,7 +128,7 @@ const articles = defineCollection({
 			 * or auto `wide` when the body has listing embeds.
 			 */
 			contentWidth: contentWidthSchema.optional(),
-			/** Hero overrides; omit = global Design → Hero. */
+			/** Hero overrides; omit = Design → Hero for this collection. */
 			...entryHeroFieldsSchema.shape,
 		}),
 });

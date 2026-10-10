@@ -30,6 +30,7 @@ const toc = await resolveTocForCollection("pages", page.data);
 const heroProps = {
 	title: page.data.title,
 	description: page.data.description,
+	collection: "pages" as const,
 	heroTextAlign: page.data.heroTextAlign,
 	showBreadcrumbs: page.data.showBreadcrumbs,
 	heroBorderBottom: page.data.heroBorderBottom,

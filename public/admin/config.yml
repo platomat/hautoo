@@ -162,19 +162,19 @@ collections:
           - { label: Links, value: left }
           - { label: Zentriert, value: center }
           - { label: Rechts, value: right }
-        hint: "Leer = globale Config (Design → Hero). Ausrichtung für Brotkrumen, Titel und Beschreibung."
+        hint: "Leer = Default der Collection (Einstellungen → Design → Hero). Ausrichtung für Brotkrumen, Titel und Beschreibung."
       - &field_show_breadcrumbs
         name: showBreadcrumbs
         label: Brotkrumen anzeigen
         widget: boolean
         required: false
-        hint: "Leer lassen = globale Config (Design → Hero). An/Aus überschreibt die globale Vorgabe."
+        hint: "Leer lassen = Default der Collection (Einstellungen → Design → Hero). An/Aus überschreibt die globale Vorgabe."
       - &field_hero_border_bottom
         name: heroBorderBottom
         label: Hero-Trennlinie unten
         widget: boolean
         required: false
-        hint: "Leer lassen = globale Config (Design → Hero). An = 1px Linie unter dem Hero."
+        hint: "Leer lassen = Default der Collection (Einstellungen → Design → Hero). An = 1px Linie unter dem Hero."
       - name: body
         label: Inhalt
         widget: markdown
@@ -728,27 +728,129 @@ collections:
             label: Hero
             widget: object
             collapsed: false
-            hint: "Titelbereich (Brotkrumen, H1, Beschreibung). Einzelne Seiten/Artikel können überschreiben."
+            hint: "Titelbereich pro Collection (Reihenfolge wie in der CMS-Leiste). Einzelne Einträge bei Seiten/Artikeln können überschreiben."
             fields:
-              - name: textAlign
-                label: Textausrichtung
-                widget: select
-                options:
-                  - { label: Links, value: left }
-                  - { label: Zentriert, value: center }
-                  - { label: Rechts, value: right }
-                default: left
-                required: true
-                hint: "Gilt für Brotkrumen, Titel und Beschreibung."
-              - name: showBreadcrumbs
-                label: Brotkrumen anzeigen
-                widget: boolean
-                default: true
-              - name: borderBottom
-                label: Trennlinie unten
-                widget: boolean
-                default: false
-                hint: "1px Linie unter dem Hero-Block."
+              - name: pages
+                label: Seiten
+                widget: object
+                collapsed: false
+                fields:
+                  - name: textAlign
+                    label: Textausrichtung
+                    widget: select
+                    options:
+                      - { label: Links, value: left }
+                      - { label: Zentriert, value: center }
+                      - { label: Rechts, value: right }
+                    default: left
+                    required: true
+                    hint: "Gilt für Brotkrumen, Titel und Beschreibung."
+                  - name: showBreadcrumbs
+                    label: Brotkrumen anzeigen
+                    widget: boolean
+                    default: true
+                  - name: borderBottom
+                    label: Trennlinie unten
+                    widget: boolean
+                    default: false
+                    hint: "1px Linie unter dem Hero-Block."
+              - name: articles
+                label: Artikel
+                widget: object
+                collapsed: false
+                fields:
+                  - name: textAlign
+                    label: Textausrichtung
+                    widget: select
+                    options:
+                      - { label: Links, value: left }
+                      - { label: Zentriert, value: center }
+                      - { label: Rechts, value: right }
+                    default: left
+                    required: true
+                    hint: "Gilt für Brotkrumen, Titel und Beschreibung."
+                  - name: showBreadcrumbs
+                    label: Brotkrumen anzeigen
+                    widget: boolean
+                    default: true
+                  - name: borderBottom
+                    label: Trennlinie unten
+                    widget: boolean
+                    default: false
+                    hint: "1px Linie unter dem Hero-Block."
+              - name: categories
+                label: Kategorien
+                widget: object
+                collapsed: false
+                fields:
+                  - name: textAlign
+                    label: Textausrichtung
+                    widget: select
+                    options:
+                      - { label: Links, value: left }
+                      - { label: Zentriert, value: center }
+                      - { label: Rechts, value: right }
+                    default: left
+                    required: true
+                    hint: "Gilt für Brotkrumen, Titel und Beschreibung."
+                  - name: showBreadcrumbs
+                    label: Brotkrumen anzeigen
+                    widget: boolean
+                    default: true
+                  - name: borderBottom
+                    label: Trennlinie unten
+                    widget: boolean
+                    default: false
+                    hint: "1px Linie unter dem Hero-Block."
+              - name: tags
+                label: Tags
+                widget: object
+                collapsed: false
+                fields:
+                  - name: textAlign
+                    label: Textausrichtung
+                    widget: select
+                    options:
+                      - { label: Links, value: left }
+                      - { label: Zentriert, value: center }
+                      - { label: Rechts, value: right }
+                    default: left
+                    required: true
+                    hint: "Gilt für Brotkrumen, Titel und Beschreibung."
+                  - name: showBreadcrumbs
+                    label: Brotkrumen anzeigen
+                    widget: boolean
+                    default: true
+                  - name: borderBottom
+                    label: Trennlinie unten
+                    widget: boolean
+                    default: false
+                    hint: "1px Linie unter dem Hero-Block."
+              - name: glossar
+                label: Glossar
+                widget: object
+                collapsed: false
+                fields:
+                  - name: textAlign
+                    label: Textausrichtung
+                    widget: select
+                    options:
+                      - { label: Links, value: left }
+                      - { label: Zentriert, value: center }
+                      - { label: Rechts, value: right }
+                    default: left
+                    required: true
+                    hint: "Gilt für Brotkrumen, Titel und Beschreibung."
+                  - name: showBreadcrumbs
+                    label: Brotkrumen anzeigen
+                    widget: boolean
+                    default: true
+                  - name: borderBottom
+                    label: Trennlinie unten
+                    widget: boolean
+                    default: false
+                    hint: "1px Linie unter dem Hero-Block."
+
       - name: content
         label: Content
         file: src/content/settings/content.json

@@ -8,8 +8,30 @@
 		"heightMobile": 56
 	},
 	"hero": {
-		"textAlign": "left",
-		"showBreadcrumbs": true,
-		"borderBottom": false
+		"pages": {
+			"textAlign": "left",
+			"showBreadcrumbs": true,
+			"borderBottom": false
+		},
+		"articles": {
+			"textAlign": "left",
+			"showBreadcrumbs": true,
+			"borderBottom": false
+		},
+		"categories": {
+			"textAlign": "left",
+			"showBreadcrumbs": true,
+			"borderBottom": false
+		},
+		"tags": {
+			"textAlign": "left",
+			"showBreadcrumbs": true,
+			"borderBottom": false
+		},
+		"glossar": {
+			"textAlign": "left",
+			"showBreadcrumbs": true,
+			"borderBottom": false
+		}
 	}
 }
