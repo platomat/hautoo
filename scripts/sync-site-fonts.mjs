@@ -1,0 +1,179 @@
+#!/usr/bin/env node
+/**
+ * Download selected Design → Schrift fonts from Fontsource (jsDelivr) into
+ * public/fonts/ and write src/styles/fonts.generated.css.
+ * Run from predev/prebuild — visitor traffic never hits an external CDN.
+ */
+import { mkdir, readFile, writeFile } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const root = path.resolve(__dirname, "..");
+const catalogPath = path.join(root, "src/cms/fields/site-fonts.json");
+const designPath = path.join(root, "src/content/settings/design.json");
+const outCssPath = path.join(root, "src/styles/fonts.generated.css");
+const fontsRoot = path.join(root, "public/fonts");
+
+const SUBSETS = ["latin", "latin-ext"];
+const HEADING_LEVELS = ["h1", "h2", "h3", "h4", "h5", "h6"];
+
+const FALLBACK_UNICODE = {
+	latin:
+		"U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+	"latin-ext":
+		"U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF",
+};
+
+function nearestWeight(available, wanted) {
+	if (!available?.length) {
+		return wanted;
+	}
+	return available.reduce((best, weight) =>
+		Math.abs(weight - wanted) < Math.abs(best - wanted) ? weight : best,
+	);
+}
+
+async function readJson(filePath) {
+	return JSON.parse(await readFile(filePath, "utf8"));
+}
+
+async function fetchJson(url) {
+	const response = await fetch(url);
+	if (!response.ok) {
+		throw new Error(`GET ${url} → ${response.status}`);
+	}
+	return response.json();
+}
+
+async function downloadFile(url, dest) {
+	const response = await fetch(url);
+	if (!response.ok) {
+		return false;
+	}
+	await mkdir(path.dirname(dest), { recursive: true });
+	const buffer = Buffer.from(await response.arrayBuffer());
+	await writeFile(dest, buffer);
+	return true;
+}
+
+function cdnUrl(fontId, subset, weight) {
+	return `https://cdn.jsdelivr.net/fontsource/fonts/${fontId}@latest/${subset}-${weight}-normal.woff2`;
+}
+
+async function main() {
+	const catalog = await readJson(catalogPath);
+	const design = await readJson(designPath);
+	const typography = design.typography ?? {};
+	const bodyFont = typography.bodyFont ?? "ubuntu";
+	const headingFont = typography.headingFont ?? "ubuntu";
+	const bodyWeight = Number(typography.bodyWeight ?? 300);
+	const headings = typography.headings ?? {};
+
+	const wantedWeights = new Set([bodyWeight]);
+	for (const level of HEADING_LEVELS) {
+		wantedWeights.add(Number(headings[level]?.weight ?? 500));
+	}
+
+	const fontIds = [...new Set([bodyFont, headingFont])];
+	const familyById = new Map(
+		catalog.fonts.map((font) => [font.id, font.family]),
+	);
+
+	/** @type {Map<string, { family: string, faces: Array<{ weight: number, subset: string, file: string, unicodeRange: string }> }>} */
+	const plan = new Map();
+
+	for (const fontId of fontIds) {
+		if (!familyById.has(fontId)) {
+			throw new Error(`Unknown font id "${fontId}" in design.typography`);
+		}
+		let meta;
+		try {
+			meta = await fetchJson(`https://api.fontsource.org/v1/fonts/${fontId}`);
+		} catch (error) {
+			console.warn(
+				`[sync-site-fonts] Metadata for ${fontId} unavailable (${error.message}); using CDN defaults.`,
+			);
+			meta = {
+				weights: [...wantedWeights],
+				unicodeRange: FALLBACK_UNICODE,
+			};
+		}
+
+		const available = meta.weights ?? [...wantedWeights];
+		const faces = [];
+		const resolvedWeights = new Set();
+
+		for (const wanted of [...wantedWeights].sort((a, b) => a - b)) {
+			const weight = nearestWeight(available, wanted);
+			if (weight !== wanted) {
+				console.warn(
+					`[sync-site-fonts] ${fontId}: weight ${wanted} → ${weight} (nearest available)`,
+				);
+			}
+			resolvedWeights.add(weight);
+		}
+
+		for (const weight of [...resolvedWeights].sort((a, b) => a - b)) {
+			for (const subset of SUBSETS) {
+				const fileName = `${weight}-normal-${subset}.woff2`;
+				const dest = path.join(fontsRoot, fontId, fileName);
+				const url = cdnUrl(fontId, subset, weight);
+				const ok = await downloadFile(url, dest);
+				if (!ok) {
+					if (subset === "latin") {
+						throw new Error(`Failed to download ${url}`);
+					}
+					console.warn(`[sync-site-fonts] skip missing ${url}`);
+					continue;
+				}
+				const unicodeRange =
+					meta.unicodeRange?.[subset] ??
+					FALLBACK_UNICODE[subset] ??
+					FALLBACK_UNICODE.latin;
+				faces.push({
+					weight,
+					subset,
+					file: `/fonts/${fontId}/${fileName}`,
+					unicodeRange: unicodeRange.replaceAll(",", ", "),
+				});
+				console.log(`[sync-site-fonts] ${fontId}/${fileName}`);
+			}
+		}
+
+		plan.set(fontId, {
+			family: familyById.get(fontId),
+			faces,
+		});
+	}
+
+	const cssChunks = [
+		"/* Generated by scripts/sync-site-fonts.mjs — do not edit. */",
+		"/* Fonts from Fontsource via jsDelivr; served locally from public/fonts/. */",
+		"",
+	];
+
+	for (const [fontId, { family, faces }] of plan) {
+		cssChunks.push(`/* ${family} (${fontId}) */`);
+		for (const face of faces) {
+			cssChunks.push(`@font-face {
+	font-family: "${family}";
+	src: url("${face.file}") format("woff2");
+	font-weight: ${face.weight};
+	font-style: normal;
+	font-display: swap;
+	unicode-range: ${face.unicodeRange};
+}`);
+			cssChunks.push("");
+		}
+	}
+
+	await mkdir(path.dirname(outCssPath), { recursive: true });
+	await writeFile(outCssPath, `${cssChunks.join("\n").trimEnd()}\n`, "utf8");
+	console.log(`[sync-site-fonts] wrote ${path.relative(root, outCssPath)}`);
+}
+
+main().catch((error) => {
+	console.error("[sync-site-fonts]", error);
+	process.exit(1);
+});

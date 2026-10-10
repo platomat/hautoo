@@ -1,27 +1,5 @@
-/* Latin + Latin-Extended subsets (DE) — see docs/design/README.md */
-@font-face {
-	font-family: "Ubuntu";
-	src:
-		url("/fonts/ubuntu/Ubuntu-Light.woff2") format("woff2"),
-		url("/fonts/ubuntu/Ubuntu-Light.woff") format("woff");
-	font-weight: 300;
-	font-style: normal;
-	font-display: swap;
-	unicode-range: U+0000-00FF, U+0100-024F, U+0259, U+1E00-1EFF, U+2020,
-		U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-	font-family: "Ubuntu";
-	src:
-		url("/fonts/ubuntu/Ubuntu-Medium.woff2") format("woff2"),
-		url("/fonts/ubuntu/Ubuntu-Medium.woff") format("woff");
-	font-weight: 500;
-	font-style: normal;
-	font-display: swap;
-	unicode-range: U+0000-00FF, U+0100-024F, U+0259, U+1E00-1EFF, U+2020,
-		U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
+/* @font-face: src/styles/fonts.generated.css (scripts/sync-site-fonts.mjs) */
+@import "./fonts.generated.css";
 
 :root {
 	--color-bg: #0f1412;
@@ -39,10 +17,31 @@
 	--color-action-muted: #1a3d2e;
 	--color-danger: #e57373;
 
-	--font-sans: "Ubuntu", system-ui, sans-serif;
+	/* Design → Schrift (overridden inline from settings; see site-typography.ts) */
+	--font-size-base: 16px;
+	--font-body: "Ubuntu", system-ui, sans-serif;
+	--font-heading: "Ubuntu", system-ui, sans-serif;
+	--font-sans: var(--font-body);
 	--font-weight-body: 300;
-	/* Matches shipped Ubuntu Medium (no Bold file) */
 	--font-weight-heading: 500;
+	--font-h1-size: 2rem;
+	--font-h1-weight: 500;
+	--font-h1-transform: none;
+	--font-h2-size: 1.5rem;
+	--font-h2-weight: 500;
+	--font-h2-transform: none;
+	--font-h3-size: 1.25rem;
+	--font-h3-weight: 500;
+	--font-h3-transform: none;
+	--font-h4-size: 1.125rem;
+	--font-h4-weight: 500;
+	--font-h4-transform: none;
+	--font-h5-size: 1rem;
+	--font-h5-weight: 500;
+	--font-h5-transform: none;
+	--font-h6-size: 0.875rem;
+	--font-h6-weight: 500;
+	--font-h6-transform: none;
 	--content-max-width: 42rem;
 	--content-wide-max-width: 64rem;
 	--content-full-max-width: 80rem;
@@ -61,6 +60,7 @@
 
 html {
 	color-scheme: dark;
+	font-size: var(--font-size-base);
 	/* Absolute menus / 100vw must not create a horizontal scrollbar */
 	overflow-x: clip;
 }
@@ -72,7 +72,7 @@ body {
 	flex-direction: column;
 	background: var(--color-bg);
 	color: var(--color-text);
-	font-family: var(--font-sans);
+	font-family: var(--font-body);
 	font-weight: var(--font-weight-body);
 	line-height: 1.6;
 	overflow-x: clip;
@@ -518,8 +518,44 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: var(--font-weight-heading);
+	font-family: var(--font-heading);
 	line-height: 1.25;
+}
+
+h1 {
+	font-size: var(--font-h1-size);
+	font-weight: var(--font-h1-weight);
+	text-transform: var(--font-h1-transform);
+}
+
+h2 {
+	font-size: var(--font-h2-size);
+	font-weight: var(--font-h2-weight);
+	text-transform: var(--font-h2-transform);
+}
+
+h3 {
+	font-size: var(--font-h3-size);
+	font-weight: var(--font-h3-weight);
+	text-transform: var(--font-h3-transform);
+}
+
+h4 {
+	font-size: var(--font-h4-size);
+	font-weight: var(--font-h4-weight);
+	text-transform: var(--font-h4-transform);
+}
+
+h5 {
+	font-size: var(--font-h5-size);
+	font-weight: var(--font-h5-weight);
+	text-transform: var(--font-h5-transform);
+}
+
+h6 {
+	font-size: var(--font-h6-size);
+	font-weight: var(--font-h6-weight);
+	text-transform: var(--font-h6-transform);
 }
 
 /*

@@ -831,6 +831,110 @@ collections:
                 allowInput: true
                 default: "#e57373"
                 hint: "Fehler und destruktive Hinweise."
+          - name: typography
+            label: Schrift
+            widget: object
+            collapsed: false
+            hint: "Schriften werden beim Build von Fontsource (jsDelivr) geladen und lokal ausgeliefert — keine CDN-Anfrage beim Besuch. Katalog: Ubuntu, Inter, Open Sans, Source Sans 3, Roboto, Lato, Nunito Sans, IBM Plex Sans, Merriweather, Lora, Source Serif 4."
+            fields:
+              - name: bodyFont
+                label: Fließtext-Schrift
+                widget: select
+                required: true
+                default: ubuntu
+                options: &font_family_options
+                  - { label: Ubuntu, value: ubuntu }
+                  - { label: Inter, value: inter }
+                  - { label: Open Sans, value: open-sans }
+                  - { label: Source Sans 3, value: source-sans-3 }
+                  - { label: Roboto, value: roboto }
+                  - { label: Lato, value: lato }
+                  - { label: Nunito Sans, value: nunito-sans }
+                  - { label: IBM Plex Sans, value: ibm-plex-sans }
+                  - { label: Merriweather, value: merriweather }
+                  - { label: Lora, value: lora }
+                  - { label: Source Serif 4, value: source-serif-4 }
+              - name: headingFont
+                label: Überschriften-Schrift
+                widget: select
+                required: true
+                default: ubuntu
+                options: *font_family_options
+              - name: baseSize
+                label: Basisgröße (px)
+                widget: number
+                value_type: int
+                min: 12
+                max: 24
+                default: 16
+                required: true
+                hint: "html font-size. Alle rem-Angaben (Überschriften) beziehen sich darauf."
+              - name: bodyWeight
+                label: Fließtext-Stärke
+                widget: select
+                required: true
+                default: "300"
+                options: &font_weight_options
+                  - { label: "300 Light", value: "300" }
+                  - { label: "400 Regular", value: "400" }
+                  - { label: "500 Medium", value: "500" }
+                  - { label: "600 Semibold", value: "600" }
+                  - { label: "700 Bold", value: "700" }
+                hint: "Fehlt der Schnitt bei der Schrift, wählt der Build den nächsten verfügbaren."
+              - name: headings
+                label: Überschriften
+                widget: object
+                collapsed: false
+                fields:
+                  - name: h1
+                    label: H1
+                    widget: object
+                    fields: &fields_heading_level
+                      - name: size
+                        label: Größe (rem)
+                        widget: number
+                        value_type: float
+                        min: 0.5
+                        max: 4
+                        step: 0.125
+                        default: 2
+                        required: true
+                      - name: weight
+                        label: Stärke
+                        widget: select
+                        required: true
+                        default: "500"
+                        options: *font_weight_options
+                      - name: transform
+                        label: Transform
+                        widget: select
+                        required: true
+                        default: none
+                        options: &text_transform_options
+                          - { label: Keine, value: none }
+                          - { label: Capitalize, value: capitalize }
+                          - { label: Uppercase, value: uppercase }
+                          - { label: Lowercase, value: lowercase }
+                  - name: h2
+                    label: H2
+                    widget: object
+                    fields: *fields_heading_level
+                  - name: h3
+                    label: H3
+                    widget: object
+                    fields: *fields_heading_level
+                  - name: h4
+                    label: H4
+                    widget: object
+                    fields: *fields_heading_level
+                  - name: h5
+                    label: H5
+                    widget: object
+                    fields: *fields_heading_level
+                  - name: h6
+                    label: H6
+                    widget: object
+                    fields: *fields_heading_level
           - name: header
             label: Header
             widget: object

@@ -1,0 +1,15 @@
+{
+	"fonts": [
+		{ "id": "ubuntu", "label": "Ubuntu", "family": "Ubuntu", "fallback": "system-ui, sans-serif" },
+		{ "id": "inter", "label": "Inter", "family": "Inter", "fallback": "system-ui, sans-serif" },
+		{ "id": "open-sans", "label": "Open Sans", "family": "Open Sans", "fallback": "system-ui, sans-serif" },
+		{ "id": "source-sans-3", "label": "Source Sans 3", "family": "Source Sans 3", "fallback": "system-ui, sans-serif" },
+		{ "id": "roboto", "label": "Roboto", "family": "Roboto", "fallback": "system-ui, sans-serif" },
+		{ "id": "lato", "label": "Lato", "family": "Lato", "fallback": "system-ui, sans-serif" },
+		{ "id": "nunito-sans", "label": "Nunito Sans", "family": "Nunito Sans", "fallback": "system-ui, sans-serif" },
+		{ "id": "ibm-plex-sans", "label": "IBM Plex Sans", "family": "IBM Plex Sans", "fallback": "system-ui, sans-serif" },
+		{ "id": "merriweather", "label": "Merriweather", "family": "Merriweather", "fallback": "Georgia, serif" },
+		{ "id": "lora", "label": "Lora", "family": "Lora", "fallback": "Georgia, serif" },
+		{ "id": "source-serif-4", "label": "Source Serif 4", "family": "Source Serif 4", "fallback": "Georgia, serif" }
+	]
+}

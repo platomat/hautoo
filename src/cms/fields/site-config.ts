@@ -1,5 +1,6 @@
 import { z } from "astro/zod";
 import { contentWidthSchema } from "./content-width";
+import { siteTypographyConfigSchema } from "./site-typography";
 
 const headerHeight = z.coerce.number().int().min(40).max(600);
 
@@ -223,6 +224,7 @@ export type SiteColorsConfig = z.infer<typeof siteColorsConfigSchema>;
 /** `src/content/settings/design.json` */
 export const siteDesignConfigSchema = z.object({
 	colors: siteColorsConfigSchema.default({}),
+	typography: siteTypographyConfigSchema.default({}),
 	header: siteHeaderConfigSchema.default({}),
 	hero: z.preprocess(
 		normalizeHeroByCollection,
@@ -234,6 +236,11 @@ export type SiteDesignConfig = z.infer<typeof siteDesignConfigSchema>;
 
 export const DEFAULT_SITE_COLORS: SiteColorsConfig =
 	siteColorsConfigSchema.parse({});
+
+export {
+	DEFAULT_SITE_TYPOGRAPHY,
+	type SiteTypographyConfig,
+} from "./site-typography";
 
 /** `src/content/settings/content.json` */
 export const siteContentConfigSchema = z.object({

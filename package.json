@@ -10,10 +10,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "predev": "node scripts/build-search-index.mjs",
-    "prebuild": "node scripts/build-search-index.mjs && python3 scripts/check-content-links.py",
+    "predev": "node scripts/sync-site-fonts.mjs && node scripts/build-search-index.mjs",
+    "prebuild": "node scripts/sync-site-fonts.mjs && node scripts/build-search-index.mjs && python3 scripts/check-content-links.py",
     "check:content-links": "python3 scripts/check-content-links.py",
-    "build:search": "node scripts/build-search-index.mjs"
+    "build:search": "node scripts/build-search-index.mjs",
+    "sync:fonts": "node scripts/sync-site-fonts.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.2",

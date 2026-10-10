@@ -18,28 +18,29 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 
 ## Typografie
 
-| Rolle | Schrift | Schnitt | Stärke (`font-weight`) |
-| --- | --- | --- | --- |
-| Fließtext | **Ubuntu** | Light | **300** |
-| Überschriften (`h1`–`h6`) | **Ubuntu** | Medium | **500** |
+Redaktionell unter **Einstellungen → Design → Schrift** (`design.typography`). Defaults entsprechen dem bisherigen Ubuntu-Setup:
 
-- `font-family`: `'Ubuntu', system-ui, sans-serif`
-- Keine zweite Display-Schrift — eine Familie für alles
+| Rolle | CMS-Feld | Default |
+| --- | --- | --- |
+| Fließtext | `bodyFont` / `bodyWeight` | Ubuntu · 300 |
+| Überschriften | `headingFont` + `headings.h1`–`h6` | Ubuntu · Größe/Stärke/Transform pro Ebene |
+| Basisgröße | `baseSize` | 16 px (`html` font-size) |
+
+- Katalog (Fontsource-IDs): Ubuntu, Inter, Open Sans, Source Sans 3, Roboto, Lato, Nunito Sans, IBM Plex Sans, Merriweather, Lora, Source Serif 4
 - Zeilenlänge Fließtext: ca. 60–75 Zeichen, angenehme `line-height` (z. B. 1.6)
 - Content-Überschriften (`.page h2`–`h6` ohne Klasse): **mehr Abstand nach oben** als nach unten, damit Überschrift + folgender Text als Block wirken (z. B. FAQ Frage→Antwort)
 
-### Bereitstellung
+### Bereitstellung (#71)
 
-Schriften werden **lokal** unter `public/fonts/ubuntu/` gehostet (kein CDN):
+Beim Build (`scripts/sync-site-fonts.mjs`, auch `predev`) werden die gewählten Schnitte von **Fontsource über jsDelivr** geladen und unter `public/fonts/<id>/` abgelegt. Besucher sehen **keine** externe Schrift-Anfrage.
 
-| Datei | Schnitt |
+| Artefakt | Rolle |
 | --- | --- |
-| `Ubuntu-Light.woff2` / `.woff` | Light (300), Latin + Latin-Extended Subset |
-| `Ubuntu-Medium.woff2` / `.woff` | Medium (500), Latin + Latin-Extended Subset |
+| `public/fonts/<id>/<weight>-normal-latin.woff2` (+ `latin-ext`) | Lokale Dateien |
+| `src/styles/fonts.generated.css` | `@font-face` (generiert, nicht von Hand editieren) |
+| Inline `:root` in `BaseLayout` | Größen/Stärken/Transform (`src/lib/site-typography.ts`) |
 
-Subset mit `pyftsubset` (DE inkl. Umlaute). Preload beider WOFF2 in `BaseLayout`. Stylesheets werden im Build inline (`build.inlineStylesheets: 'always'`), damit kein render-blocking CSS-Request die FCP verzögert.
-
-`@font-face` und zentrale **CSS-Variablen** (im Englischen oft *design tokens* oder *custom properties*) liegen in `src/styles/global.css`, eingebunden über `src/layouts/BaseLayout.astro`.
+Preload der benötigten Latin-WOFF2 in `BaseLayout`. Stylesheets werden im Build inline (`build.inlineStylesheets: 'always'`). Fehlt ein gewählter Schnitt, wählt der Sync den nächsten verfügbaren Weight.
 
 ## Links
 

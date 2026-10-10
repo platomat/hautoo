@@ -37,7 +37,7 @@ Komponenten, Props und Kommentare im Code: **Englisch**. Sichtbare Texte und Dok
 
 ## Erscheinungsbild
 
-Vorgaben zu dunklem Theme, Farbpalette (Aktionsgrün), Ubuntu und Links: **[Design & Erscheinungsbild](../design/README.md)**.
+Vorgaben zu dunklem Theme, Farbpalette (Aktionsgrün), Schrift (Design → Schrift) und Links: **[Design & Erscheinungsbild](../design/README.md)**.
 
 ## Aktueller Stand
 
