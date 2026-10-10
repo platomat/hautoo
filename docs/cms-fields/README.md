@@ -110,6 +110,10 @@ Anker-IDs entsprechen den gerenderten Heading-IDs (`github-slugger`).
 
 Optional. Für seitenspezifisches `<style>` / `<script>`. Nur für vertrauenswürdige Redaktion (kein Sanitizing). Nicht nötig für FAQ-Abstände — die kommen aus generischem Heading-CSS.
 
+## Markdown-Inhalt: kein H1
+
+Seiten-, Artikel-, Glossar- und Baustein-Bodies: Die sichtbare **H1** kommt aus dem Hero (`title`). Im Editor fehlt deshalb der Toolbar-Eintrag **H1** (`field_defaults.richtext.buttons` ohne `heading-one`). Beim Speichern greift zusätzlich ein `pattern`, das Zeilen mit `# …` (nicht `##`) ablehnt. Im Raw-Modus kann man `# ` noch tippen; Save blockt dann. Hinweis: `# ` in Codeblöcken kann das Muster fälschlich treffen.
+
 ## Inhalts-Blöcke (Seiten-/Artikel-Body)
 
 Im CMS über die Markdown-Toolbar einfügen (wie Bilder):

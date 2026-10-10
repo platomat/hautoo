@@ -18,6 +18,25 @@ public_folder: /assets
 output:
   omit_empty_optional_fields: true
 
+# Markdown/RichText defaults: no H1 in the body (page/article title is the Hero H1).
+# Editors can still type `# ` in raw mode; `pattern` on body fields blocks Save then.
+field_defaults:
+  richtext:
+    buttons:
+      - bold
+      - italic
+      - strikethrough
+      - code
+      - link
+      - heading-two
+      - heading-three
+      - heading-four
+      - heading-five
+      - heading-six
+      - bulleted-list
+      - numbered-list
+      - quote
+
 # -----------------------------------------------------------------------------
 # Shared field partials (YAML anchors) — DRY across collections.
 # Aliases only work inside THIS file. Inject with: - *field_seo
@@ -178,7 +197,10 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Kategorie-Listing“, „Baustein“, „Repo-Dokument“, „Tagwolke“, „Video“, „Trennlinie“, „Button“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Kategorie-Listing“, „Baustein“, „Repo-Dokument“, „Tagwolke“, „Video“, „Trennlinie“, „Button“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        pattern:
+          - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
+          - "Keine H1 (# …) im Inhalt. Die Überschrift kommt aus dem Hero (Feld Titel)."
         editor_components:
           - image
           - code-block
@@ -409,7 +431,10 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Kategorie-Listing“, „Baustein“, „Repo-Dokument“, „Tagwolke“, „Video“, „Trennlinie“, „Button“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Kategorie-Listing“, „Baustein“, „Repo-Dokument“, „Tagwolke“, „Video“, „Trennlinie“, „Button“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        pattern:
+          - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
+          - "Keine H1 (# …) im Inhalt. Die Überschrift kommt aus dem Hero (Feld Titel)."
         editor_components:
           - image
           - code-block
@@ -517,12 +542,15 @@ collections:
         multiple: true
         required: false
         hint: "Zusätzlich zum automatischen Tag mit gleichem Slug (z. B. Glossar astro → #astro)."
-      - {
-          name: body,
-          label: Längere Erklärung,
-          widget: markdown,
-          required: false,
-        }
+      - name: body
+        label: Längere Erklärung
+        widget: markdown
+        required: false
+        hint: "Kein H1: der Glossar-Titel steht im Hero."
+        pattern:
+          - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
+          - "Keine H1 (# …) im Inhalt. Der Begriffstitel kommt aus dem Hero."
+
       - *field_seo
 
   - name: blocks
@@ -548,7 +576,10 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Gleicher Markdown-Editor wie bei Seiten; kann Listings, Bilder und weitere Bausteine enthalten."
+        hint: "Kein H1 im Baustein-Inhalt (Seiten-/Artikeltitel kommt aus dem Hero). Gleicher Markdown-Editor wie bei Seiten; kann Listings, Bilder und weitere Bausteine enthalten."
+        pattern:
+          - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
+          - "Keine H1 (# …) im Inhalt. Die Seitenüberschrift kommt aus dem Hero, nicht aus dem Baustein."
         editor_components:
           - image
           - code-block
