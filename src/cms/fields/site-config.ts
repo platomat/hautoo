@@ -84,21 +84,27 @@ export const siteGeneralConfigSchema = z.object({
 
 export type SiteGeneralConfig = z.infer<typeof siteGeneralConfigSchema>;
 
-/** Root shape of `src/content/config/site.yaml`. */
+/** `src/content/settings/design.json` */
+export const siteDesignConfigSchema = z.object({
+	header: siteHeaderConfigSchema.default({}),
+	hero: siteHeroConfigSchema.default({}),
+});
+
+export type SiteDesignConfig = z.infer<typeof siteDesignConfigSchema>;
+
+/** `src/content/settings/content.json` */
+export const siteContentConfigSchema = z.object({
+	toc: siteTocConfigSchema.default({}),
+	width: siteWidthConfigSchema.default({}),
+});
+
+export type SiteContentFileConfig = z.infer<typeof siteContentConfigSchema>;
+
+/** Merged site settings (general + design + content JSON files). */
 export const siteConfigSchema = z.object({
 	general: siteGeneralConfigSchema.default({}),
-	design: z
-		.object({
-			header: siteHeaderConfigSchema.default({}),
-			hero: siteHeroConfigSchema.default({}),
-		})
-		.default({}),
-	content: z
-		.object({
-			toc: siteTocConfigSchema.default({}),
-			width: siteWidthConfigSchema.default({}),
-		})
-		.default({}),
+	design: siteDesignConfigSchema.default({}),
+	content: siteContentConfigSchema.default({}),
 });
 
 export type SiteConfig = z.infer<typeof siteConfigSchema>;

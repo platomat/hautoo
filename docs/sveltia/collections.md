@@ -6,7 +6,7 @@ Zurück zur [Sveltia-Übersicht](./README.md). Shared Field-Partials: [CMS Field
 
 | Collection | Schlüssel | Status |
 | --- | --- | --- |
-| Konfiguration | `config` | umgesetzt (#45), YAML ohne Markdown |
+| Konfiguration | `settings` | umgesetzt (#45), JSON-Dateien (General / Design / Content) |
 | Seiten | `pages` | umgesetzt (#3) |
 | Artikel | `articles` | umgesetzt (#4) |
 | Tags | `tags` | umgesetzt (#5) |
@@ -14,27 +14,25 @@ Zurück zur [Sveltia-Übersicht](./README.md). Shared Field-Partials: [CMS Field
 | Bausteine | `blocks` | umgesetzt |
 | Menüs | `menus` | umgesetzt (#13) |
 
-## Collection `config` (umgesetzt)
+## Collection `settings` (umgesetzt)
 
-Globale Site-Einstellungen als **YAML-Datei**, kein Markdown-Body. Erweiterbar um weitere Dateien unter `files:`.
+Globale Site-Einstellungen als **JSON-Dateien** (wie cdr-legal), kein Markdown-Body. Pro Bereich ein eigener CMS-Eintrag.
 
 | | |
 | --- | --- |
-| Datei | `src/content/config/site.yaml` |
-| Schema | `src/cms/fields/site-config.ts` → Collection `config` in `src/content.config.ts` |
-| Sveltia | File-Collection `config` → Eintrag „Site“ |
-| Lesen | `src/lib/site-config.ts` (`getSiteConfig` / `getSiteWebsiteTitle` / `getSiteHeaderConfig` / `getSiteHeroConfig` / `resolveHeroForEntry` / `resolveTocForCollection`) |
+| Dateien | `src/content/settings/general.json`, `design.json`, `content.json` |
+| Schema | `src/cms/fields/site-config.ts` |
+| Sveltia | File-Collection `settings` → Einträge **General**, **Design**, **Content** |
+| Lesen | Direkter JSON-Import in `src/lib/site-config.ts` (keine Astro-Content-Collection) |
 
-YAML-Gruppen im CMS: **General**, **Design** und **Content**.
-
-### Site → General
+### Konfiguration → General
 
 | Feld | Bedeutung |
 | --- | --- |
-| `general.websiteTitle` | Markenname: Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`), `og:site_name` |
-| `general.contactEmail` | Optional für `{{contact-email}}`. Überschreibt `CONTACT_EMAIL` beim Build; leer = ENV. Wert ist öffentlich in Git. |
+| `websiteTitle` | Markenname: Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`), `og:site_name` |
+| `contactEmail` | Optional für `{{contact-email}}`. Überschreibt `CONTACT_EMAIL` beim Build; leer = ENV. Wert ist öffentlich in Git. |
 
-### Site → Design → Header (#44)
+### Konfiguration → Design → Header (#44)
 
 | Feld | Bedeutung |
 | --- | --- |
@@ -45,17 +43,17 @@ YAML-Gruppen im CMS: **General**, **Design** und **Content**.
 
 Umsetzung in `SiteHeader.astro` (CSS-Klassen + Custom Properties).
 
-### Site → Design → Hero (#63)
+### Konfiguration → Design → Hero (#63)
 
 | Feld | Bedeutung | Default |
 | --- | --- | --- |
-| `design.hero.textAlign` | `left` / `center` / `right` für Brotkrumen, Titel, Beschreibung | `left` |
-| `design.hero.showBreadcrumbs` | Brotkrumen über dem Titel | `true` |
-| `design.hero.borderBottom` | 1px Linie unter dem Hero | `false` |
+| `hero.textAlign` | `left` / `center` / `right` für Brotkrumen, Titel, Beschreibung | `left` |
+| `hero.showBreadcrumbs` | Brotkrumen über dem Titel | `true` |
+| `hero.borderBottom` | 1px Linie unter dem Hero | `false` |
 
 Lokale Überschreibung an **Seiten** und **Artikeln**: `heroTextAlign`, `showBreadcrumbs`, `heroBorderBottom` (Feld leer/omit = global). Umsetzung: `PageHero.astro`, Pfade in `src/lib/breadcrumbs.ts`.
 
-### Site → Content → TOC (#51)
+### Konfiguration → Content → TOC (#51)
 
 | Feld | Bedeutung |
 | --- | --- |
@@ -65,7 +63,7 @@ Lokale Überschreibung an **Seiten** und **Artikeln**: `heroTextAlign`, `showBre
 
 Eintrag ohne `showToc` nutzt den globalen Default. Lokales `showToc: true` / `false` überschreibt. Fehlende `tocLevels` / `tocTitle` fallen auf die globalen Werte zurück (`resolveTocForCollection` in `site-config.ts`).
 
-### Site → Content → Breite (#59)
+### Konfiguration → Content → Breite (#59)
 
 | Feld | Bedeutung |
 | --- | --- |

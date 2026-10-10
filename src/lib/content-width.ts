@@ -24,7 +24,7 @@ export async function resolveContentWidth(
 	if (await contentNeedsWideLayout(body)) {
 		return "wide";
 	}
-	const config = await getSiteConfig();
+	const config = getSiteConfig();
 	const globalDefault = config.content?.width?.[collection];
 	const parsed = contentWidthSchema.safeParse(globalDefault);
 	return parsed.success ? parsed.data : "default";

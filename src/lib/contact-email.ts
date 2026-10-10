@@ -17,8 +17,8 @@ function normalizeEmail(raw: unknown): string | undefined {
  * CMS value is committed with the public repo; leave it empty and use ENV
  * when the address should stay out of Git.
  */
-export async function getContactEmail(): Promise<string | undefined> {
-	const config = await getSiteConfig();
+export function getContactEmail(): string | undefined {
+	const config = getSiteConfig();
 	const fromCms = normalizeEmail(config.general?.contactEmail);
 	if (fromCms) {
 		return fromCms;

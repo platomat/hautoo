@@ -29,12 +29,12 @@ Die Domain `hautoo.storyofai.net` ist **kein Secret**. Sie darf in Doku und Code
 
 Die Adresse **nicht** fest in Markdown committen (öffentliches Repo = Scraping auf GitHub). Einbindung immer über `{{contact-email}}` (Spam-Schutz: `[at]` im Text, `mailto:` erst bei Klick/Focus).
 
-**Priorität beim Build:** CMS **Konfiguration → General → Contact email** (`general.contactEmail`), falls gesetzt; sonst Build-Variable `CONTACT_EMAIL`.
+**Priorität beim Build:** CMS **Konfiguration → General → Contact email** (`settings/general.json`), falls gesetzt; sonst Build-Variable `CONTACT_EMAIL`.
 
 | Quelle | Wann nutzen |
 | --- | --- |
 | **ENV** (`CONTACT_EMAIL`) | Empfohlen für öffentliche Repos: Adresse bleibt aus Git raus (lokal `.env`, Cloudflare Pages Env) |
-| **CMS** | Praktisch für Kunden-Forks; Wert landet in `site.yaml` und ist öffentlich auf GitHub |
+| **CMS** | Praktisch für Kunden-Forks; Wert landet in `settings/general.json` und ist öffentlich auf GitHub |
 
 Zusätzlich empfohlen: im Cloudflare-Dashboard unter **Scrape Shield** → **Email Address Obfuscation** aktiv lassen — Cloudflare verschleiert E-Mail-Adressen in der ausgelieferten HTML.
 

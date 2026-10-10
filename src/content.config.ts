@@ -9,10 +9,7 @@ import {
 } from "./cms/fields/page-background";
 import { seoSchema } from "./cms/fields/seo";
 import { contentWidthSchema } from "./cms/fields/content-width";
-import {
-	entryHeroFieldsSchema,
-	siteConfigSchema,
-} from "./cms/fields/site-config";
+import { entryHeroFieldsSchema } from "./cms/fields/site-config";
 import { entryStatusSchema } from "./cms/fields/status";
 
 const publishDateSchema = z.coerce.date().optional();
@@ -143,12 +140,6 @@ const blocks = defineCollection({
 	}),
 });
 
-/** Global YAML settings (no Markdown body). Entry id = filename without extension. */
-const config = defineCollection({
-	loader: glob({ pattern: "*.yaml", base: "./src/content/config" }),
-	schema: siteConfigSchema,
-});
-
 export const collections = {
 	pages,
 	menus,
@@ -156,5 +147,4 @@ export const collections = {
 	articles,
 	glossar,
 	blocks,
-	config,
 };

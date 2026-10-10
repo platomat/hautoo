@@ -1,10 +1,15 @@
-import { getEntry } from "astro:content";
+import contentRaw from "../content/settings/content.json" with { type: "json" };
+import designRaw from "../content/settings/design.json" with { type: "json" };
+import generalRaw from "../content/settings/general.json" with { type: "json" };
 import {
 	DEFAULT_SITE_GENERAL_CONFIG,
 	DEFAULT_SITE_HEADER_CONFIG,
 	DEFAULT_SITE_HERO_CONFIG,
 	DEFAULT_SITE_TOC_CONFIG,
 	siteConfigSchema,
+	siteContentConfigSchema,
+	siteDesignConfigSchema,
+	siteGeneralConfigSchema,
 	type EntryHeroFields,
 	type HeroTextAlign,
 	type SiteConfig,
@@ -14,31 +19,34 @@ import {
 	type SiteTocConfig,
 } from "../cms/fields/site-config";
 
-/** Load `src/content/config/site.yaml` with Zod defaults. */
-export async function getSiteConfig(): Promise<SiteConfig> {
-	const entry = await getEntry("config", "site");
-	if (!entry) {
-		return siteConfigSchema.parse({});
-	}
-	return siteConfigSchema.parse(entry.data);
+/**
+ * Merge CMS settings JSON files (like cdr-legal `src/content/settings/`).
+ * Loaded via direct import — not an Astro content collection.
+ */
+export function getSiteConfig(): SiteConfig {
+	return siteConfigSchema.parse({
+		general: siteGeneralConfigSchema.parse(generalRaw),
+		design: siteDesignConfigSchema.parse(designRaw),
+		content: siteContentConfigSchema.parse(contentRaw),
+	});
 }
 
 /** Brand / site name from CMS (header wordmark, title suffix, og:site_name). */
-export async function getSiteWebsiteTitle(): Promise<string> {
-	const config = await getSiteConfig();
+export function getSiteWebsiteTitle(): string {
+	const config = getSiteConfig();
 	return (
 		config.general?.websiteTitle?.trim() ||
 		DEFAULT_SITE_GENERAL_CONFIG.websiteTitle
 	);
 }
 
-export async function getSiteHeaderConfig(): Promise<SiteHeaderConfig> {
-	const config = await getSiteConfig();
+export function getSiteHeaderConfig(): SiteHeaderConfig {
+	const config = getSiteConfig();
 	return config.design?.header ?? DEFAULT_SITE_HEADER_CONFIG;
 }
 
-export async function getSiteHeroConfig(): Promise<SiteHeroConfig> {
-	const config = await getSiteConfig();
+export function getSiteHeroConfig(): SiteHeroConfig {
+	const config = getSiteConfig();
 	return config.design?.hero ?? DEFAULT_SITE_HERO_CONFIG;
 }
 
@@ -69,15 +77,14 @@ export function resolveHeroSettings(
 	};
 }
 
-export async function resolveHeroForEntry(
+export function resolveHeroForEntry(
 	entry: EntryHeroFields,
-): Promise<ResolvedHeroSettings> {
-	const globalHero = await getSiteHeroConfig();
-	return resolveHeroSettings(entry, globalHero);
+): ResolvedHeroSettings {
+	return resolveHeroSettings(entry, getSiteHeroConfig());
 }
 
-export async function getSiteTocConfig(): Promise<SiteTocConfig> {
-	const config = await getSiteConfig();
+export function getSiteTocConfig(): SiteTocConfig {
+	const config = getSiteConfig();
 	return config.content?.toc ?? DEFAULT_SITE_TOC_CONFIG;
 }
 
@@ -122,11 +129,11 @@ export function resolveTocSettings(
 	return { show, levels, title };
 }
 
-export async function resolveTocForCollection(
+export function resolveTocForCollection(
 	collection: TocCollectionKey,
 	entry: EntryTocFields,
-): Promise<ResolvedTocSettings> {
-	const toc = await getSiteTocConfig();
+): ResolvedTocSettings {
+	const toc = getSiteTocConfig();
 	const globalForCollection = toc[collection] ?? siteTocCollectionFallback();
 	return resolveTocSettings(entry, globalForCollection);
 }

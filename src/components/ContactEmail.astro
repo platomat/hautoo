@@ -1,7 +1,7 @@
 ---
 import { getContactEmail, splitContactEmail } from "../lib/contact-email";
 
-const email = await getContactEmail();
+const email = getContactEmail();
 const parts = email ? splitContactEmail(email) : undefined;
 ---
 

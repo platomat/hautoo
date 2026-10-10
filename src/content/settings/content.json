@@ -1,0 +1,18 @@
+{
+	"toc": {
+		"pages": {
+			"enabled": false,
+			"levels": ["h2"],
+			"title": "Inhalt"
+		},
+		"articles": {
+			"enabled": false,
+			"levels": ["h2"],
+			"title": "Inhalt"
+		}
+	},
+	"width": {
+		"pages": "default",
+		"articles": "default"
+	}
+}

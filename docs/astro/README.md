@@ -15,7 +15,7 @@ Entsprechen den Sveltia-Sammlungen:
 
 | Collection | Zweck |
 | --- | --- |
-| `config` | Globale YAML-Einstellungen (kein Markdown), z. B. sticky Header |
+| `settings` | Globale JSON-Einstellungen (`src/content/settings/`), nicht als Astro-Collection |
 | `pages` | Allgemeine Seiten |
 | `menus` | Hauptmenü, Footer-Links (Slots per Dateiname) |
 | `articles` | Artikel inkl. Medien und Video-Embed |
@@ -51,7 +51,7 @@ Vorgaben zu dunklem Theme, Farbpalette (Aktionsgrün), Ubuntu und Links: **[Desi
 - Installation und Scripts: [Lokale Entwicklung](../entwicklung/README.md)
 - **Medien:** Bilder neben Content-Einträgen (`src/content/...`), damit Astro sie optimieren kann — siehe [Medien — Variante B](../sveltia/medien-variante-b.md) und [Inhalte](../inhalte/README.md). CMS-Markdown-Bilder bekommen via `hast-cms-assets` WebP-srcset; erstes Rasterbild eager + `fetchpriority=high` (LCP).
 - **Design:** dunkles Theme und Ubuntu lokal (`public/fonts/ubuntu/`) — siehe [Design](../design/README.md)
-- **Config:** Collection `config` / `site.yaml` (Website-Titel unter General, sticky Header + Hero unter Design, TOC/Inhaltsbreite unter Content)
+- **Settings:** Collection `settings` / `src/content/settings/*.json` (General, Design, Content als eigene CMS-Einträge)
 
 ## Noch auszuarbeiten
 
