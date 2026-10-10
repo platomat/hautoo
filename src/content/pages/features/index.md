@@ -83,6 +83,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 
 - **Suche im Header** (MiniSearch): statischer Suchindex beim Build, Treffer zu Artikeln, Glossar und Seiten.
 - **Dark Theme** mit [CSS-Variablen](/glossar/css-variable/), Ubuntu-Schrift, responsive Header mit Mobile-Menü.
+- **Farbpalette** unter **Einstellungen** → **Design** → **Farbpalette**: alle Site-Farben (`--color-*`) redaktionell wählbar, jeweils mit Kurzhinweis zur Verwendung; gelten nach Deploy siteweit.
 - **Sticky Header** pro [Breakpoint](/glossar/breakpoint/) ein/aus; feste Leistenhöhe bei Sticky und Mindesthöhe ohne Sticky (jeweils Desktop / Tablet / Mobile), gesteuert über **Einstellungen** → **Design** → **Header**.
 - **Hero-Defaults pro Collection** unter **Einstellungen** → **Design** → **Hero** (Reihenfolge wie CMS-Leiste: Seiten, Artikel, Kategorien, Tags, Glossar): Textausrichtung, Brotkrumen an/aus, Brotkrumen-Trenner, Trennlinie unten. Einzelne Seiten/Artikel überschreiben mit `heroTextAlign`, `showBreadcrumbs`, `heroBorderBottom`.
 - **Brotkrumen-Trenner** pro Collection wählbar (`/`, `•`, `→`, `-`; Default `/`); Brotkrumen-Links in der Linkfarbe.
