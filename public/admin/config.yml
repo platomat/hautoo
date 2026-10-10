@@ -197,7 +197,7 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Kategorie-Listing“, „Baustein“, „Repo-Dokument“, „Tagwolke“, „Video“, „Trennlinie“, „Abstandshalter“, „Button“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Kategorie-Listing“, „Tag-Listing“, „Tagwolke“, „Glossar-Listing“, „Baustein“, „Button“, „Trennlinie“, „Abstandshalter“, „Kontakt-E-Mail“, „Video“, „Video-Freischaltung widerrufen“ und „Repo-Dokument“ über die Toolbar einfügen (wie Bilder)."
         pattern:
           - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
           - "Keine H1 (# …) im Inhalt. Die Überschrift kommt aus dem Hero (Feld Titel)."
@@ -205,18 +205,18 @@ collections:
           - image
           - code-block
           - article-listing
-          - glossar-listing
-          - tag-listing
           - category-listing
-          - block
-          - repodoc
+          - tag-listing
           - tag-cloud
+          - glossar-listing
+          - block
+          - button
+          - separator
+          - spacer
           - contact-email
           - video
           - video-consent-reset
-          - separator
-          - spacer
-          - button
+          - repodoc
       - &field_seo
         label: SEO
         name: seo
@@ -432,7 +432,7 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Glossar-Listing“, „Tag-Listing“, „Kategorie-Listing“, „Baustein“, „Repo-Dokument“, „Tagwolke“, „Video“, „Trennlinie“, „Abstandshalter“, „Button“ und „Kontakt-E-Mail“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Kategorie-Listing“, „Tag-Listing“, „Tagwolke“, „Glossar-Listing“, „Baustein“, „Button“, „Trennlinie“, „Abstandshalter“, „Kontakt-E-Mail“, „Video“, „Video-Freischaltung widerrufen“ und „Repo-Dokument“ über die Toolbar einfügen (wie Bilder)."
         pattern:
           - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
           - "Keine H1 (# …) im Inhalt. Die Überschrift kommt aus dem Hero (Feld Titel)."
@@ -440,18 +440,18 @@ collections:
           - image
           - code-block
           - article-listing
-          - glossar-listing
-          - tag-listing
           - category-listing
-          - block
-          - repodoc
+          - tag-listing
           - tag-cloud
+          - glossar-listing
+          - block
+          - button
+          - separator
+          - spacer
           - contact-email
           - video
           - video-consent-reset
-          - separator
-          - spacer
-          - button
+          - repodoc
       - *field_seo
 
 
@@ -586,18 +586,18 @@ collections:
           - image
           - code-block
           - article-listing
-          - glossar-listing
-          - tag-listing
           - category-listing
-          - block
-          - repodoc
+          - tag-listing
           - tag-cloud
+          - glossar-listing
+          - block
+          - button
+          - separator
+          - spacer
           - contact-email
           - video
           - video-consent-reset
-          - separator
-          - spacer
-          - button
+          - repodoc
 
   # Menus: filename = slot id (main, footer-legal, …). Navigation is not driven by page flags.
   - name: menus

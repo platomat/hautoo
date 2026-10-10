@@ -132,7 +132,7 @@ Im CMS über die Markdown-Toolbar einfügen (wie Bilder):
 | **Kontakt-E-Mail** | `{{contact-email}}` | Adresse aus CMS `general.contactEmail` (falls gesetzt), sonst `CONTACT_EMAIL`; nicht im Markdown speichern |
 | **Repo-Dokument** | `{{repodoc path="docs/github/README.md" title="GitHub" description="Kurzer Satz"}}` | `path` = existierende Datei unter `docs/`; Link zu GitHub `main`; optional `title` / `description` |
 | **Video** | `{{video provider="youtube" id="…" title="Video" poster="/assets/…"}}` | YouTube/Vimeo; Facade ohne Drittanbieter-Kontakt bis Klick; Consent in `localStorage` (`hautuu-video-consent`); optionales lokales Poster |
-| **Video-Consent zurücksetzen** | `{{video-consent-reset}}` | Button zum Widerruf (Datenschutz) |
+| **Video-Freischaltung widerrufen** | `{{video-consent-reset}}` | Button zum Widerruf (Datenschutz) |
 
 Registrierung: `public/admin/editor-components.js`. Rendering: `ArticleListing.astro` / `GlossarListing.astro` / `TagListing.astro` / `CategoryListing.astro` / `Separator.astro` / `Spacer.astro` / `CmsButton.astro` / `ContactEmail.astro` / `RepoDocLink.astro` / `VideoEmbed.astro` / `VideoConsentReset.astro`; Bausteine werden in `content-embeds.ts` expandiert.
 

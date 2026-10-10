@@ -544,7 +544,7 @@
 
 	CMS.registerEditorComponent({
 		id: "video-consent-reset",
-		label: "Video-Consent zurücksetzen",
+		label: "Video-Freischaltung widerrufen",
 		icon: "cookie",
 		fields: [],
 		pattern: /^\{\{video-consent-reset\}\}\s*$/m,
