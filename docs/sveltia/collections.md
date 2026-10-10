@@ -231,8 +231,9 @@ Beispiel: Baustein `stack-uebersicht` → auf der Startseite `{{block id="stack-
 | `backgroundImage` | nein | Vollflächiger Viewport-Hintergrund |
 | `backgroundOverlay` | nein | Abdunkelung 0–100 % |
 | `backgroundAttribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |
-| `categories` | nein | Relation zu `categories` (mehrere; Hierarchie über Parent) |
+| `categories` | nein | Relation zu `categories` (mehrere; Hierarchie über Parent); Anzeige immer im Hero unter der Beschreibung |
 | `tags` | nein | Relation zu `tags` (mehrere) |
+| `tagPlacement` | nein | Wo Tags erscheinen: `hero` (neben Kategorien), `after` (nach Inhalt, vor Navigation), `both` (Default: `hero`) |
 | `videoProvider` | nein | `youtube` / `vimeo` (Hero-Video; Facade mit Consent) |
 | `videoId` | nein | ID oder URL; alternativ Body-Embed `{{video …}}` |
 | `showToc` | nein | TOC an/aus; leer = globaler Default (`content.toc.articles`) |

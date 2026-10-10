@@ -58,6 +58,15 @@ const linkedCategories = (article.data.categories ?? [])
 	.sort((a, b) =>
 		a.data.title.localeCompare(b.data.title, "de", { sensitivity: "base" }),
 	);
+const tagPlacement = article.data.tagPlacement ?? "hero";
+const showTagsInHero =
+	linkedTags.length > 0 &&
+	(tagPlacement === "hero" || tagPlacement === "both");
+const showTagsAfter =
+	linkedTags.length > 0 &&
+	(tagPlacement === "after" || tagPlacement === "both");
+const showHeroTaxonomies =
+	linkedCategories.length > 0 || showTagsInHero;
 const backgroundImage = resolveCmsImage(
 	article.data.backgroundImage,
 	`content/articles/${article.id}/`,
@@ -98,7 +107,51 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 				heroTextAlign={article.data.heroTextAlign}
 				showBreadcrumbs={article.data.showBreadcrumbs}
 				heroBorderBottom={article.data.heroBorderBottom}
-			/>
+			>
+				{
+					showHeroTaxonomies && (
+						<div
+							class="page-hero__taxonomies flex-row flex-between flex-wrap gap-md text-sm"
+							slot="below"
+						>
+							{
+								linkedCategories.length > 0 ? (
+									<ul
+										class="article-categories list-plain flex-row flex-wrap gap-md"
+										aria-label="Kategorien"
+									>
+										{linkedCategories.map((cat) => (
+											<li>
+												<a href={getCategoryHref(cat)}>
+													{cat.data.title}
+												</a>
+											</li>
+										))}
+									</ul>
+								) : (
+									<span />
+								)
+							}
+							{
+								showTagsInHero && (
+									<ul
+										class="article-tags list-plain flex-row flex-wrap gap-md"
+										aria-label="Tags"
+									>
+										{linkedTags.map((tag) => (
+											<li>
+												<a href={getTagHref(tag)}>
+													{formatTagHashtag(tag)}
+												</a>
+											</li>
+										))}
+									</ul>
+								)
+							}
+						</div>
+					)
+				}
+			</PageHero>
 			{TableOfContents && (
 				<TableOfContents
 					body={article.body}
@@ -106,28 +159,6 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 					title={toc.title}
 				/>
 			)}
-			{
-				linkedCategories.length > 0 && (
-					<ul class="article-categories list-plain flex-row flex-wrap gap-md text-sm">
-						{linkedCategories.map((cat) => (
-							<li>
-								<a href={getCategoryHref(cat)}>{cat.data.title}</a>
-							</li>
-						))}
-					</ul>
-				)
-			}
-			{
-				linkedTags.length > 0 && (
-					<ul class="article-tags list-plain flex-row flex-wrap gap-md text-sm">
-						{linkedTags.map((tag) => (
-							<li>
-								<a href={getTagHref(tag)}>{formatTagHashtag(tag)}</a>
-							</li>
-						))}
-					</ul>
-				)
-			}
 			{
 				article.data.heroImage && (
 					<p>
@@ -146,6 +177,20 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 				title={`Video: ${article.data.title}`}
 			/>
 			{useEmbeds ? <CmsContent body={article.body} /> : <Content />}
+			{
+				showTagsAfter && (
+					<ul
+						class="article-tags article-tags--after list-plain flex-row flex-wrap gap-md text-sm"
+						aria-label="Tags"
+					>
+						{linkedTags.map((tag) => (
+							<li>
+								<a href={getTagHref(tag)}>{formatTagHashtag(tag)}</a>
+							</li>
+						))}
+					</ul>
+				)
+			}
 			<ArticleNav older={older} newer={newer} />
 		</article>
 		<p class="text-sm">
@@ -157,13 +202,8 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 </BaseLayout>
 
 <style>
-	.article-categories,
-	.article-tags {
-		margin: 0 0 1.25rem;
+	.article-tags--after {
+		margin: 1.5rem 0 0;
 		padding: 0;
-	}
-
-	.article-categories + .article-tags {
-		margin-top: -0.5rem;
 	}
 </style>

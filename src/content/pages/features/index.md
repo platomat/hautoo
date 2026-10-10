@@ -57,6 +57,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Erstes sinnvolles Glossar-Vorkommen** pro Seite verlinkt; Hilfsskript `link-glossar-crosslinks.py` und **Erstlink-Warnung** im [Build](/glossar/build/) (`check-glossar-first-links.py`, nicht blockierend).
 - **FAQ** als eine lange Seite mit Themengruppen (H2), alles offen sichtbar, durchsuchbar per Strg+F (kein Accordion).
 - **Kategorie-Seiten** unter `/kategorien/<slug>/` mit Parent-Brotkrumen, Unterkategorien und Artikel-Grid.
+- **Artikel-Taxonomien:** Kategorien im Hero unter der Beschreibung; Tags wahlweise im Hero (rechts daneben), nach dem Inhalt oder beides (`tagPlacement`).
 - **Tag-Seiten** mit Artikel-Grid und Link zum passenden Glossar-Eintrag, wenn der Slug passt.
 - **Tag-Wolke** und **Listing-Embeds** für Glossar und Tags im Seiten- oder Artikeltext.
 

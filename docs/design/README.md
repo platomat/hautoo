@@ -146,6 +146,8 @@ Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-
 
 Seiten und Artikel können mit `heroTextAlign`, `showBreadcrumbs`, `heroBorderBottom` überschreiben. Komponente: `PageHero.astro` (Klassen `.page-hero--align-*`, `.page-hero--border`, `.breadcrumbs`).
 
+Artikel: Kategorien stehen im Hero unter der Beschreibung; Tags per `tagPlacement` im Hero (rechts daneben), nach dem Inhalt oder beides (`hero` / `after` / `both`).
+
 ### Inhaltsverzeichnis (TOC)
 
 Globale Defaults unter **Einstellungen → Content → TOC** (Seiten / Artikel: an/aus, Ebenen, Titel). Einzelne Einträge überschreiben mit `showToc` / `tocLevels` / `tocTitle` (Feld leer = global).

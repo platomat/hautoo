@@ -372,6 +372,16 @@ collections:
         display_fields: [title]
         multiple: true
         required: false
+      - name: tagPlacement
+        label: Tags anzeigen
+        widget: select
+        options:
+          - { label: Im Hero (neben Kategorien), value: hero }
+          - { label: Nach dem Inhalt, value: after }
+          - { label: Hero und nach dem Inhalt, value: both }
+        default: hero
+        required: false
+        hint: "Kategorien stehen immer im Hero unter der Beschreibung. Tags wahlweise dort (rechts daneben), nach dem Inhalt (vor der Artikel-Navigation) oder beides."
       - name: videoProvider
         label: Video-Anbieter
         widget: select

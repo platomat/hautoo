@@ -106,6 +106,11 @@ const articles = defineCollection({
 			/** Category slugs (hierarchical taxonomy; see `categories` collection). */
 			categories: z.array(z.string()).default([]),
 			tags: z.array(z.string()).default([]),
+			/**
+			 * Where to show tags on the article page.
+			 * Categories always appear in the hero under the description.
+			 */
+			tagPlacement: z.enum(["hero", "after", "both"]).default("hero"),
 			videoProvider: z.enum(["youtube", "vimeo"]).optional(),
 			videoId: z.string().optional(),
 			seo: seoSchema.optional(),

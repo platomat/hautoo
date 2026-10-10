@@ -254,8 +254,26 @@ body.is-nav-locked {
 	line-height: 1.45;
 }
 
-.hero:not(:has(.hero__lead)):not(:has(.page-hero__lead)) h1,
-.page-hero:not(:has(.hero__lead)):not(:has(.page-hero__lead)) h1 {
+.page-hero__taxonomies {
+	margin-top: 0.85rem;
+	align-items: baseline;
+	width: 100%;
+}
+
+.page-hero__taxonomies .article-categories,
+.page-hero__taxonomies .article-tags {
+	margin: 0;
+	padding: 0;
+}
+
+.hero:not(:has(.hero__lead)):not(:has(.page-hero__lead)):not(
+		:has(.page-hero__taxonomies)
+	)
+	h1,
+.page-hero:not(:has(.hero__lead)):not(:has(.page-hero__lead)):not(
+		:has(.page-hero__taxonomies)
+	)
+	h1 {
 	margin-bottom: 0;
 }
 
