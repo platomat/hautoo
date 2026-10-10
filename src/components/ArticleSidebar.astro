@@ -1,27 +1,18 @@
 ---
-import { getCollection } from "astro:content";
-import CategoryTree from "./CategoryTree.astro";
-import {
-	articleCountsByCategory,
-	buildCategoryForest,
-} from "../lib/categories";
+import CategoriesTree from "./CategoriesTree.astro";
+import { getUsedCategoryForest } from "../lib/categories";
 import {
 	formatTagHashtag,
 	getTagHref,
 	getUsedTagsSorted,
 } from "../lib/tags";
 
-const [allCategories, counts, tags] = await Promise.all([
-	getCollection("categories"),
-	articleCountsByCategory(),
+const [{ forest, counts }, tags] = await Promise.all([
+	getUsedCategoryForest(),
 	getUsedTagsSorted(),
 ]);
 
-const usedCategoryIds = [...counts.entries()]
-	.filter(([, count]) => count > 0)
-	.map(([id]) => id);
-const categoryForest = buildCategoryForest(allCategories, usedCategoryIds);
-const showCategories = categoryForest.length > 0;
+const showCategories = forest.length > 0;
 const showTags = tags.length > 0;
 ---
 
@@ -49,7 +40,7 @@ const showTags = tags.length > 0;
 						>
 							Kategorien
 						</h2>
-						<CategoryTree nodes={categoryForest} />
+						<CategoriesTree nodes={forest} counts={counts} />
 					</section>
 				)
 			}

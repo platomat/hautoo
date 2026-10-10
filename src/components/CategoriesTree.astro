@@ -1,0 +1,38 @@
+---
+/**
+ * Self-contained hierarchical category tree (used categories only).
+ * Parallel to TagCloud for tags.
+ */
+import CategoryTree from "./CategoryTree.astro";
+import {
+	getUsedCategoryForest,
+	type CategoryTreeNode,
+} from "../lib/categories";
+
+interface Props {
+	/** Show article counts in parentheses after each title. Default off. */
+	showCounts?: boolean;
+	/** Optional preloaded forest (skips internal fetch). */
+	nodes?: CategoryTreeNode[];
+	/** Optional preloaded counts (used when showCounts is on). */
+	counts?: Map<string, number>;
+}
+
+const { showCounts = false, nodes, counts } = Astro.props;
+const loaded =
+	nodes !== undefined
+		? { forest: nodes, counts: counts ?? new Map<string, number>() }
+		: await getUsedCategoryForest();
+const forest = loaded.forest;
+const countMap = counts ?? loaded.counts;
+---
+
+{
+	forest.length > 0 && (
+		<CategoryTree
+			nodes={forest}
+			showCounts={showCounts}
+			counts={showCounts ? countMap : undefined}
+		/>
+	)
+}

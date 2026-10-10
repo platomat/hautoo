@@ -161,6 +161,27 @@ export type CategoryTreeNode = {
 };
 
 /**
+ * Used categories as a hierarchical forest plus per-category article counts.
+ * Includes ancestors so nested paths stay visible.
+ */
+export async function getUsedCategoryForest(): Promise<{
+	forest: CategoryTreeNode[];
+	counts: Map<string, number>;
+}> {
+	const [allCategories, counts] = await Promise.all([
+		getCollection("categories"),
+		articleCountsByCategory(),
+	]);
+	const usedCategoryIds = [...counts.entries()]
+		.filter(([, count]) => count > 0)
+		.map(([id]) => id);
+	return {
+		forest: buildCategoryForest(allCategories, usedCategoryIds),
+		counts,
+	};
+}
+
+/**
  * Hierarchical forest for sidebars: used categories plus ancestors needed
  * to show the tree. Roots first, children A–Z.
  */

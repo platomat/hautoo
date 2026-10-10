@@ -9,9 +9,12 @@ interface Props {
 	nodes: CategoryTreeNode[];
 	/** Nesting depth (0 = root list). */
 	depth?: number;
+	/** Show article counts in parentheses after the title. */
+	showCounts?: boolean;
+	counts?: Map<string, number>;
 }
 
-const { nodes, depth = 0 } = Astro.props;
+const { nodes, depth = 0, showCounts = false, counts } = Astro.props;
 ---
 
 {
@@ -23,19 +26,33 @@ const { nodes, depth = 0 } = Astro.props;
 				"list-plain",
 			]}
 		>
-			{nodes.map((node) => (
-				<li class="category-tree__item">
-					<a
-						class="category-tree__link"
-						href={getCategoryHref(node.category)}
-					>
-						{node.category.data.title}
-					</a>
-					{node.children.length > 0 && (
-						<CategoryTree nodes={node.children} depth={depth + 1} />
-					)}
-				</li>
-			))}
+			{nodes.map((node) => {
+				const n = counts?.get(node.category.id) ?? 0;
+				return (
+					<li class="category-tree__item">
+						<a
+							class="category-tree__link"
+							href={getCategoryHref(node.category)}
+						>
+							{node.category.data.title}
+							{showCounts && (
+								<span class="category-tree__count text-muted">
+									{" "}
+									({n})
+								</span>
+							)}
+						</a>
+						{node.children.length > 0 && (
+							<CategoryTree
+								nodes={node.children}
+								depth={depth + 1}
+								showCounts={showCounts}
+								counts={counts}
+							/>
+						)}
+					</li>
+				);
+			})}
 		</ul>
 	)
 }
@@ -57,5 +74,9 @@ const { nodes, depth = 0 } = Astro.props;
 	.category-tree__link {
 		display: inline-block;
 		line-height: 1.35;
+	}
+
+	.category-tree__count {
+		font-weight: var(--font-weight-body);
 	}
 </style>
