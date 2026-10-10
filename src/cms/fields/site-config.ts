@@ -149,8 +149,33 @@ export const siteGeneralConfigSchema = z.object({
 
 export type SiteGeneralConfig = z.infer<typeof siteGeneralConfigSchema>;
 
+/** Hex from Sveltia color widget (`#RGB` / `#RRGGBB` / `#RRGGBBAA`, any case). */
+const cssHexColor = z
+	.string()
+	.trim()
+	.regex(/^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/, "Invalid CSS hex color");
+
+/** Design → Farbpalette (`design.colors`). Defaults match `global.css` :root. */
+export const siteColorsConfigSchema = z.object({
+	bg: cssHexColor.default("#0f1412"),
+	surface: cssHexColor.default("#1a211e"),
+	/** 8-digit hex with alpha preferred (Sveltia `enableAlpha`). */
+	surfaceGlass: cssHexColor.default("#1a211ee6"),
+	surfaceRaised: cssHexColor.default("#232b27"),
+	border: cssHexColor.default("#2e3833"),
+	text: cssHexColor.default("#e8eeea"),
+	textMuted: cssHexColor.default("#9aa89f"),
+	action: cssHexColor.default("#3dcf8e"),
+	actionHover: cssHexColor.default("#56d9a0"),
+	actionMuted: cssHexColor.default("#1a3d2e"),
+	danger: cssHexColor.default("#e57373"),
+});
+
+export type SiteColorsConfig = z.infer<typeof siteColorsConfigSchema>;
+
 /** `src/content/settings/design.json` */
 export const siteDesignConfigSchema = z.object({
+	colors: siteColorsConfigSchema.default({}),
 	header: siteHeaderConfigSchema.default({}),
 	hero: z.preprocess(
 		normalizeHeroByCollection,
@@ -159,6 +184,9 @@ export const siteDesignConfigSchema = z.object({
 });
 
 export type SiteDesignConfig = z.infer<typeof siteDesignConfigSchema>;
+
+export const DEFAULT_SITE_COLORS: SiteColorsConfig =
+	siteColorsConfigSchema.parse({});
 
 /** `src/content/settings/content.json` */
 export const siteContentConfigSchema = z.object({

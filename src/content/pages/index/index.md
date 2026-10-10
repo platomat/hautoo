@@ -8,6 +8,8 @@ backgroundOverlay: 77
 backgroundAttribution: Photo by <a href="https://unsplash.com/@filipkvasnak?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Filip Kvasnak</a> on <a href="https://unsplash.com/photos/person-with-backpack-by-forest-lake-NwmR1EDtiFg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 showToc: false
 contentWidth: wide
+showBreadcrumbs: false
+heroBorderBottom: false
 seo:
   seo_title: 'hautuu: Website mit Cursor, GitHub und Cloudflare'
   seo_description: hautuu zeigt Schritt für Schritt, wie du mit Cursor, GitHub und Cloudflare eine schnelle Website baust. Open Source, Artikel, Glossar und FAQ für Einsteiger.
@@ -48,7 +50,7 @@ Live-Überblick: [**Features**](/features/)
 
 {{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25" show="title,intro,tags,date,readingTime"}}
 
-[Alle Artikel](/artikel/)
+{{button label="Alle Artikel" href="/artikel/" style="outline"}}
 
 {{separator height="1" width="100"}}
 

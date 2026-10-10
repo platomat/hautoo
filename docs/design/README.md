@@ -51,24 +51,26 @@ Subset mit `pyftsubset` (DE inkl. Umlaute). Preload beider WOFF2 in `BaseLayout`
 
 ## Farbpalette
 
-Grün ist die **primäre Aktionsfarbe**. Die übrigen Töne sind kühl-neutral mit leicht grünem Stich, damit alles zusammenpasst — nicht lila, nicht grell.
+Grün ist die **primäre Aktionsfarbe**. Die übrigen Töne sind kühl-neutral mit leicht grünem Stich, damit alles zusammenpasst, nicht lila, nicht grell.
+
+Redaktionell unter **Einstellungen → Design → Farbpalette** (`src/content/settings/design.json` → `colors`). Beim Build schreibt `BaseLayout` die Werte als `:root`-Overrides (`src/lib/site-colors.ts`). Fallbacks bleiben in `global.css`.
 
 ### CSS-Variablen (`:root`)
 
-| Variable | Hex / Wert | Rolle |
-| --- | --- | --- |
-| `--color-bg` | `#0F1412` | Seitenhintergrund |
-| `--color-surface` | `#1A211E` | Flächen (Header, Footer, abgesetzte Bereiche) |
-| `--color-surface-glass` | `rgba(26, 33, 30, 0.5)` | Halbtransparente Fläche (~50 %) |
-| `--color-chrome` | standard: `var(--color-surface)` | Header/Footer/Nav; bei Seiten-BG → `surface-glass` |
-| `--color-surface-raised` | `#232B27` | leicht angehoben (z. B. Code, Zitat) |
-| `--color-border` | `#2E3833` | Linien, Trenner |
-| `--color-text` | `#E8EEEA` | Haupttext |
-| `--color-text-muted` | `#9AA89F` | Nebentext, Meta, Captions |
-| `--color-action` | `#3DCF8E` | Primär / Links / Buttons / Fokus |
-| `--color-action-hover` | `#56D9A0` | Hover-Zustand der Aktion |
-| `--color-action-muted` | `#1A3D2E` | dezenter Aktions-Hintergrund (z. B. Chip, Hover-Fläche) |
-| `--color-danger` | `#E57373` | Fehler, destruktive Hinweise |
+| Variable | CMS-Feld | Default | Rolle |
+| --- | --- | --- | --- |
+| `--color-bg` | `bg` | `#0f1412` | Seitenhintergrund |
+| `--color-surface` | `surface` | `#1a211e` | Solide Flächen (Header/Footer ohne Seiten-BG, Panels) |
+| `--color-surface-glass` | `surfaceGlass` (mit Alpha) | `#1a211ee6` | Halbtransparent über Hintergrundbildern |
+| `--color-chrome` | (abgeleitet) | `var(--color-surface)` | Header/Footer/Nav; bei Seiten-BG → `surface-glass` |
+| `--color-surface-raised` | `surfaceRaised` | `#232b27` | leicht angehoben (z. B. Code, Zitat) |
+| `--color-border` | `border` | `#2e3833` | Linien, Trenner |
+| `--color-text` | `text` | `#e8eeea` | Haupttext |
+| `--color-text-muted` | `textMuted` | `#9aa89f` | Nebentext, Meta, Captions |
+| `--color-action` | `action` | `#3dcf8e` | Primär / Links / Buttons / Fokus |
+| `--color-action-hover` | `actionHover` | `#56d9a0` | Hover-Zustand der Aktion |
+| `--color-action-muted` | `actionMuted` | `#1a3d2e` | dezenter Aktions-Hintergrund (z. B. Chip, Hover-Fläche) |
+| `--color-danger` | `danger` | `#e57373` | Fehler, destruktive Hinweise |
 
 Wenn eine Seite/ein Artikel ein Hintergrundbild hat (`body.has-page-bg`), nutzen Header, Footer und Nav-Panels `--color-surface-glass` plus leichtes `backdrop-filter`, damit das Bild durchscheint.
 

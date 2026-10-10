@@ -1,4 +1,17 @@
 {
+	"colors": {
+		"bg": "#0f1412",
+		"surface": "#1a211e",
+		"surfaceGlass": "#1a211ee6",
+		"surfaceRaised": "#232b27",
+		"border": "#2e3833",
+		"text": "#e8eeea",
+		"textMuted": "#9aa89f",
+		"action": "#3dcf8e",
+		"actionHover": "#56d9a0",
+		"actionMuted": "#1a3d2e",
+		"danger": "#e57373"
+	},
 	"header": {
 		"minHeightDesktop": 64,
 		"minHeightTablet": 64,

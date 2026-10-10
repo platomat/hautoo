@@ -719,6 +719,79 @@ collections:
         file: src/content/settings/design.json
         format: json
         fields:
+          - name: colors
+            label: Farbpalette
+            widget: object
+            collapsed: false
+            hint: "CSS-Farben der Site (--color-*). Änderungen gelten nach Speichern und Deploy auf der ganzen Website."
+            fields:
+              - name: bg
+                label: Hintergrund (bg)
+                widget: color
+                allowInput: true
+                default: "#0f1412"
+                hint: "Seitenhintergrund hinter Inhalt und Chrome."
+              - name: surface
+                label: Fläche (surface)
+                widget: color
+                allowInput: true
+                default: "#1a211e"
+                hint: "Solide Flächen: Header/Footer ohne Seiten-BG, Panels, abgesetzte Boxen."
+              - name: surfaceGlass
+                label: Fläche Glas (surface-glass)
+                widget: color
+                enableAlpha: true
+                allowInput: true
+                default: "#1a211ee6"
+                hint: "Halbtransparente Fläche über Hintergrundbildern (Header/Footer bei Seiten-BG)."
+              - name: surfaceRaised
+                label: Fläche angehoben (surface-raised)
+                widget: color
+                allowInput: true
+                default: "#232b27"
+                hint: "Leicht angehobene Flächen, z. B. Codeblöcke und Zitate."
+              - name: border
+                label: Rahmen (border)
+                widget: color
+                allowInput: true
+                default: "#2e3833"
+                hint: "Linien, Trenner, Kartenrahmen, Trennlinien-Default."
+              - name: text
+                label: Text (text)
+                widget: color
+                allowInput: true
+                default: "#e8eeea"
+                hint: "Haupttext und starke Beschriftungen."
+              - name: textMuted
+                label: Text gedämpft (text-muted)
+                widget: color
+                allowInput: true
+                default: "#9aa89f"
+                hint: "Nebentext, Meta, Captions, schwächere UI-Labels."
+              - name: action
+                label: Aktion (action)
+                widget: color
+                allowInput: true
+                default: "#3dcf8e"
+                hint: "Primärfarbe: Links, Buttons, Fokusringe, aktive Akzente."
+              - name: actionHover
+                label: Aktion Hover (action-hover)
+                widget: color
+                allowInput: true
+                default: "#56d9a0"
+                hint: "Hover-/Active-Zustand der Aktionsfarbe."
+              - name: actionMuted
+                label: Aktion gedämpft (action-muted)
+                widget: color
+                allowInput: true
+                default: "#1a3d2e"
+                hint: "Dezenter Aktions-Hintergrund (Chips, Hover-Flächen, Outline-Button-Hover)."
+              - name: danger
+                label: Gefahr (danger)
+                widget: color
+                allowInput: true
+                default: "#e57373"
+                hint: "Fehler und destruktive Hinweise."
           - name: header
             label: Header
             widget: object

@@ -33,6 +33,24 @@ Globale Site-Einstellungen als **JSON-Dateien** (wie cdr-legal), kein Markdown-B
 | `websiteTitle` | Markenname: Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`), `og:site_name` |
 | `contactEmail` | Optional für `{{contact-email}}`. Überschreibt `CONTACT_EMAIL` beim Build; leer = ENV. Wert ist öffentlich in Git. |
 
+### Einstellungen → Design → Farbpalette (#70)
+
+| Feld | CSS-Variable | Bedeutung |
+| --- | --- | --- |
+| `design.colors.bg` | `--color-bg` | Seitenhintergrund |
+| `design.colors.surface` | `--color-surface` | Solide Flächen |
+| `design.colors.surfaceGlass` | `--color-surface-glass` | Glas-Fläche (Alpha) |
+| `design.colors.surfaceRaised` | `--color-surface-raised` | Angehobene Flächen |
+| `design.colors.border` | `--color-border` | Rahmen / Trenner |
+| `design.colors.text` | `--color-text` | Haupttext |
+| `design.colors.textMuted` | `--color-text-muted` | Nebentext |
+| `design.colors.action` | `--color-action` | Primär / Links / Fokus |
+| `design.colors.actionHover` | `--color-action-hover` | Hover der Aktion |
+| `design.colors.actionMuted` | `--color-action-muted` | Gedämpfter Aktions-Hintergrund |
+| `design.colors.danger` | `--color-danger` | Fehler / destruktiv |
+
+Umsetzung: `src/lib/site-colors.ts`, Inline-`:root` in `BaseLayout.astro`. Defaults wie bisher in `global.css`.
+
 ### Einstellungen → Design → Header (#44)
 
 | Feld | Bedeutung |

@@ -12,6 +12,7 @@ import {
 	type Seo,
 } from "../cms/fields/seo";
 import { getBuildId, withBuildId } from "../lib/build-id";
+import { buildSiteColorRootCss } from "../lib/site-colors";
 import { getSiteWebsiteTitle } from "../lib/site-config";
 
 interface Props {
@@ -33,6 +34,7 @@ interface Props {
 }
 
 const siteName = await getSiteWebsiteTitle();
+const siteColorRootCss = buildSiteColorRootCss();
 
 const {
 	title = siteName,
@@ -144,6 +146,7 @@ const readingMinutes =
 			)
 		}
 		<title>{pageTitle}</title>
+		<style is:inline set:html={siteColorRootCss} />
 		<link
 			rel="preload"
 			href="/fonts/ubuntu/Ubuntu-Light.woff2"
