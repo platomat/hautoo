@@ -27,7 +27,7 @@ Kurzliste dessen, was auf `main` schon umgesetzt ist (Details und Erläuterungen
 | **Glossar & FAQ** | Glossar mit verwandten Artikeln/Tags, Querverlink-Skript und Erstlink-Check, FAQ offen (kein Accordion), Tag-Seiten |
 | **Embeds** | Bausteine, Artikel-/Glossar-/Tag-Listings, Tagwolke, Trennlinie, Abstandshalter, Button, Kontakt-E-Mail aus ENV, Repo-Docs-Box; Embed-Check (auch Listen-Regel) |
 | **SEO** | `seo`-Felder, Open Graph/Twitter inkl. OG-Bild (1200×630), Canonical, Sitemap, Lesezeit, noindex für Impressum/Datenschutz |
-| **Suche & UI** | MiniSearch im Header, Artikel-Übersicht mit Listing-Embed und Kartenfeldern |
+| **Suche & UI** | MiniSearch im Header, Artikel-Übersicht mit Listing-Embed und Kartenfeldern, Seitenleiste mit Kategorie-Tree und Tags |
 | **Design** | Dark Theme mit CSS-Variablen, Breakpoints, **Sticky Header**, **Hero**, **Schrift** (Fließtext/Überschriften, Basisgröße, H1–H6; Build lädt von Fontsource/jsDelivr, Auslieferung lokal), Inhaltsbreite 3 Stufen, Abstand Hero/Footer pro Collection, UI-Icons (Brotkrumen-Haus, Kategorie, Permalink), externe Links mit Pfeil-Indikator (nicht Header/Footer), Vollbild-Hintergrund, **Bildnachweise** auf dem Impressum |
 | **Deploy** | Astro-Build, Cloudflare Pages aus GitHub, Preview/Rollback, Cache-Header und Build-ID |
 | **Qualität & Doku** | `check-content-links.py` (inkl. Embeds), `check-content-no-video-hints.py`, `docs/`, Cursor-Regeln, Glossar-/SEO-Hilfsskripte |
