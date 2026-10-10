@@ -4,6 +4,9 @@ summary: Repo verbinden, Astro bauen lassen, eigene Subdomain drauf. An der Comm
 pubDate: 2026-10-04 00:22:44+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - deploy
+  - screencasts
 tags:
 - cloudflare
 - github

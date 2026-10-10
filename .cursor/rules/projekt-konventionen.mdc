@@ -47,6 +47,7 @@ Secrets gehören in Umgebungsvariablen der jeweiligen Plattform (z. B. Cloudflar
 - `settings` (globale JSON-Einstellungen unter `src/content/settings/`: general, design, content)
 - `pages`
 - `articles`
+- `categories` (hierarchisch; für Artikel)
 - `tags` (für Artikel)
 - `glossar`
 - `blocks` (Bausteine; Einbinden via `{{block id="slug"}}`)

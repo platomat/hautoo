@@ -83,6 +83,17 @@ export async function getArticlesByTag(
 	return articles.filter((article) => (article.data.tags ?? []).includes(tagId));
 }
 
+/** Published articles that include a category slug. */
+export async function getArticlesByCategory(
+	categoryId: string,
+	options: ArticleListingOptions = {},
+): Promise<ArticleEntry[]> {
+	const articles = await getPublishedArticles(options);
+	return articles.filter((article) =>
+		(article.data.categories ?? []).includes(categoryId),
+	);
+}
+
 /**
  * Neighbors by publish date: older = past (left), newer = future (right).
  * Same-day ties use title (A–Z).

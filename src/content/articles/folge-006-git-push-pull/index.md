@@ -4,6 +4,9 @@ summary: Warum der Server manchmal „nein“ sagt, bevor du pushen darfst. Und 
 pubDate: 2026-10-03 23:28:46+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - git-github
+  - screencasts
 tags:
 - github
 - cursor

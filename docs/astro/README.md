@@ -19,6 +19,7 @@ Entsprechen den Sveltia-Sammlungen:
 | `pages` | Allgemeine Seiten |
 | `menus` | Hauptmenü, Footer-Links (Slots per Dateiname) |
 | `articles` | Artikel inkl. Medien und Video-Embed |
+| `categories` | Hierarchische Kategorien für Artikel |
 | `tags` | Tags für Artikel |
 | `glossar` | Begriffserklärungen |
 

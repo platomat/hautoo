@@ -26,6 +26,7 @@ Mit **Screencast-Transkript** oder ohne:
 | **Slug / Ordner** | `folge-nnn-<kurz>` unter `src/content/articles/folge-nnn-<kurz>/index.md` |
 | **pubDate** | Aus **Aufnahmezeitpunkt** im Originaldateinamen (`YYYY-MM-DD--HH-MM-SS--…`) als ISO-UTC, z. B. `2026-10-04T23:47:38Z` |
 | **summary** | Teaser mit **Leser-Nutzen**, Du-Form, **kein** Gedankenstrich |
+| **categories** | Vorhandene Kategorien aus `src/content/categories/` **bevorzugen**; wenige pro Artikel; Hierarchie über Parent an der Kategorie |
 | **tags** | Vorhandene Tags aus `src/content/tags/` **bevorzugen**, **wenige** (typisch 3–5), thematisch passend |
 | **seo** | `seo_title`, `seo_description`, `index_visibility`, `follow_visibility`, … (siehe Abschnitt SEO-Felder) |
 | **Video** | Frontmatter `videoProvider` / `videoId` **oder** Body-Embed `{{video provider="youtube" id="…" }}`. Leer lassen, bis ein echtes Video da ist. Player erst nach Consent (Facade); optionales lokales `poster` unter `/assets/…` |
@@ -114,13 +115,14 @@ Mit **Screencast-Transkript** oder ohne:
 
 Schema und Ausgabe: `src/cms/fields/seo.ts`, gebaut in `BaseLayout.astro` (`<title>`, `<meta name="description">`, `<meta name="robots">`). CMS-Anker `&field_seo` in `public/admin/config.yml`.
 
-**Pflicht für Agenten:** Bei **jedem neuen oder geänderten** Eintrag in `articles`, `pages`, `glossar`, `tags` (und wo `seo` im Schema existiert) die SEO-relevanten Felder **mit erzeugen oder aktualisieren**, inhaltlich aus dem Text abgeleitet, nichts erfinden. Bestehende gute Werte nicht verschlechtern, **keine doppelten** Meta-Descriptions zwischen Seiten.
+**Pflicht für Agenten:** Bei **jedem neuen oder geänderten** Eintrag in `articles`, `pages`, `glossar`, `categories`, `tags` (und wo `seo` im Schema existiert) die SEO-relevanten Felder **mit erzeugen oder aktualisieren**, inhaltlich aus dem Text abgeleitet, nichts erfinden. Bestehende gute Werte nicht verschlechtern, **keine doppelten** Meta-Descriptions zwischen Seiten.
 
 | Collection | Felder | Ausgabe / Hinweis |
 | --- | --- | --- |
 | **articles** | `seo.seo_title`, `seo.seo_description`, `index_visibility`, `follow_visibility`, … | Fallback Titel: `title`, Description: `summary`. Robots-Defaults: index, follow. |
 | **pages** | wie oben + Seiten-`description` | **Impressum** und **Datenschutz:** `index_visibility: noindex` **beibehalten** (nicht auf index stellen). |
 | **glossar** | `seo.seo_title`, `seo.seo_description`, … | Sichtbare Kurzdefinition bleibt `definition`; Meta kann länger sein. |
+| **categories** | `description` (kein `seo`-Objekt) | Wird als Meta-Description auf `/kategorien/<slug>/` genutzt. |
 | **tags** | `description` (kein `seo`-Objekt) | Wird als Meta-Description auf `/tags/<slug>/` genutzt. |
 | **blocks**, **menus** | kein eigenes SEO (keine URL) | Nur `title` / Menütext pflegen. |
 
@@ -142,7 +144,7 @@ Hilfsskript (Bulk, einmalig): `scripts/fill-seo-fields.py` (manuell anpassen, ni
 
 ## Checkliste vor dem Pull Request
 
-- [ ] **Schema:** Titel `Folge nnn: …`, Slug `folge-nnn-<kurz>`, pubDate, summary, tags, Video leer, Quellkommentar
+- [ ] **Schema:** Titel `Folge nnn: …`, Slug `folge-nnn-<kurz>`, pubDate, summary, categories, tags, Video leer, Quellkommentar
 - [ ] **SEO:** Meta-Titel und Description (bzw. Tag-`description`, Glossar-`seo`) gesetzt oder aktualisiert; Länge und Stil wie oben; Impressum/Datenschutz **noindex**
 - [ ] **Stil:** Du-Form, laienverständlich, keine Striche in Titel/Teaser/FAQ-Fragen
 - [ ] **Glossar:** neue/angepasste Einträge, relatedTags, Querverweise

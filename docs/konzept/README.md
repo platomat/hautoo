@@ -45,6 +45,7 @@ flowchart LR
 | --- | --- |
 | **Seiten** (`pages`) | Statische Seiten (z. B. Start, Über uns, Impressum) |
 | **Artikel** (`articles`) | Beiträge mit Text, Bildern und optional eingebettetem How-to-Video (Vimeo oder YouTube) |
+| **Kategorien** (`categories`) | Hierarchische Themengruppen für Artikel |
 | **Tags** (`tags`) | Verschlagwortung für Artikel |
 | **Glossar** (`glossar`) | Kurze Erklärungen zu Fachbegriffen |
 

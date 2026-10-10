@@ -17,6 +17,7 @@ const TYPE_LABELS = {
 	glossar: "Glossar",
 	page: "Seite",
 	tag: "Tag",
+	category: "Kategorie",
 };
 
 /** Paths that must never appear in site search. */
@@ -135,7 +136,7 @@ function collectPages() {
 	return documents;
 }
 
-function collectArticles(tagTitles) {
+function collectArticles(tagTitles, categoryTitles) {
 	const documents = [];
 	for (const file of listIndexMarkdown(path.join(CONTENT, "articles"))) {
 		const { data, content } = matter(fs.readFileSync(file, "utf8"));
@@ -147,6 +148,10 @@ function collectArticles(tagTitles) {
 		const slug = rel.replace(/\\/g, "/").replace(/\/index\.md$/, "");
 		const tags = Array.isArray(data.tags) ? data.tags : [];
 		const tagLabels = tags.map((id) => tagTitles.get(id) ?? id);
+		const categories = Array.isArray(data.categories) ? data.categories : [];
+		const categoryLabels = categories.map(
+			(id) => categoryTitles.get(id) ?? id,
+		);
 		documents.push({
 			id: `article/${slug}`,
 			type: "article",
@@ -154,7 +159,7 @@ function collectArticles(tagTitles) {
 			title: typeof data.title === "string" ? data.title : slug,
 			description: stripMarkdown(data.summary ?? data.seo?.seo_description ?? ""),
 			body: stripMarkdown(content),
-			extra: tagLabels.join(" "),
+			extra: [...categoryLabels, ...tagLabels].join(" "),
 			url: `/artikel/${slug}/`,
 		});
 	}
@@ -206,13 +211,37 @@ function collectTags() {
 	return { documents, tagTitles };
 }
 
+function collectCategories() {
+	const documents = [];
+	const categoryTitles = new Map();
+	for (const file of listFlatMarkdown(path.join(CONTENT, "categories"))) {
+		const { data, content } = matter(fs.readFileSync(file, "utf8"));
+		const slug = path.basename(file, ".md");
+		const title = typeof data.title === "string" ? data.title : slug;
+		categoryTitles.set(slug, title);
+		documents.push({
+			id: `category/${slug}`,
+			type: "category",
+			typeLabel: TYPE_LABELS.category,
+			title,
+			description: stripMarkdown(data.description ?? ""),
+			body: stripMarkdown(content),
+			extra: title,
+			url: `/kategorien/${slug}/`,
+		});
+	}
+	return { documents, categoryTitles };
+}
+
 function main() {
 	fs.mkdirSync(OUT_DIR, { recursive: true });
 	const { documents: tagDocs, tagTitles } = collectTags();
+	const { documents: categoryDocs, categoryTitles } = collectCategories();
 	const documents = [
-		...collectArticles(tagTitles),
+		...collectArticles(tagTitles, categoryTitles),
 		...collectGlossar(),
 		...collectPages(),
+		...categoryDocs,
 		...tagDocs,
 	].filter((doc) => !isExcludedUrl(doc.url));
 

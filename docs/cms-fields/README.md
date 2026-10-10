@@ -31,7 +31,7 @@ Werte: `draft` · `published` · `future` · `trash`.
 | --- | --- |
 | Sveltia | Anchor `&field_modified_date` / Alias `*field_modified_date` |
 | Astro (Zod) | `src/cms/fields/dates.ts` → in allen Collections |
-| Collections | `pages`, `menus`, `tags`, `articles`, `glossar` |
+| Collections | `pages`, `menus`, `categories`, `tags`, `articles`, `glossar` |
 | Ausgabe | SEO-Meta im `<head>`: `description`, `og:title` / `og:description` / `og:url`, bei Hintergrundbild auch `og:image` (1200×630), Twitter-Card, Canonical, Sitemap-Link; bei Artikeln `reading-time` (+ Twitter Lesezeit); bei `modifiedDate` auch `article:modified_time` / `og:updated_time` |
 
 Optional. Bei inhaltlichen Änderungen im CMS setzen.
@@ -119,6 +119,7 @@ Im CMS über die Markdown-Toolbar einfügen (wie Bilder):
 | **Artikel-Listing** | `{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25" show="title,intro,tags,date,readingTime"}}` | Anzahl (`0` = alle), Sortierung, Layout (`grid` / `list`), Spalten, Abstand, Kartenfelder (`title` / `intro` / `tags` / `date` / `readingTime`; Tags eigene Zeile über Datum/Lesezeit) |
 | **Glossar-Listing** | `{{glossar-listing count="0" sort="title-asc" layout="list" columns="2" gap="1.5"}}` | Anzahl (`0` = alle), Sortierung (`title-asc` / `title-desc` / `newest` / `oldest`), Layout (`list` / `grid`), Spalten 1–4 (nur Grid), Abstand in rem |
 | **Tag-Listing** | `{{tag-listing count="0" sort="title-asc" layout="cloud" columns="3" gap="1.25"}}` | Anzahl (`0` = alle genutzten), Sortierung (`title-asc` / `title-desc` / `most-used`), Layout (`cloud` / `list` / `grid`), Spalten 1–4 (nur Grid), Abstand in rem |
+| **Kategorie-Listing** | `{{category-listing count="0" sort="title-asc" layout="grid" columns="3" gap="1.25"}}` | Wie Tag-Listing; Default-Layout Grid; Titel ohne Hashtag |
 | **Baustein** | `{{block id="stack-uebersicht"}}` | `id` = Slug aus Collection `blocks` (Bausteine); Inhalt wird an Ort und Stelle injiziert |
 | **Tagwolke** | `{{tag-cloud}}` | Kurzform für Tag-Listing mit Layout Wolke |
 | **Trennlinie** | `{{separator height="1" width="100" color="border"}}` | Höhe in px (Default 1), Breite in % (Default 100), Farbe = Design-Token (`border` Standard = bisherige Linienfarbe; auch `text`, `text-muted`, `action`, `action-hover`, `action-muted`, `surface`, `surface-raised`, `bg`, `danger`) |
@@ -127,6 +128,6 @@ Im CMS über die Markdown-Toolbar einfügen (wie Bilder):
 | **Video** | `{{video provider="youtube" id="…" title="Video" poster="/assets/…"}}` | YouTube/Vimeo; Facade ohne Drittanbieter-Kontakt bis Klick; Consent in `localStorage` (`hautuu-video-consent`); optionales lokales Poster |
 | **Video-Consent zurücksetzen** | `{{video-consent-reset}}` | Button zum Widerruf (Datenschutz) |
 
-Registrierung: `public/admin/editor-components.js`. Rendering: `ArticleListing.astro` / `GlossarListing.astro` / `TagListing.astro` / `Separator.astro` / `ContactEmail.astro` / `RepoDocLink.astro` / `VideoEmbed.astro` / `VideoConsentReset.astro`; Bausteine werden in `content-embeds.ts` expandiert.
+Registrierung: `public/admin/editor-components.js`. Rendering: `ArticleListing.astro` / `GlossarListing.astro` / `TagListing.astro` / `CategoryListing.astro` / `Separator.astro` / `ContactEmail.astro` / `RepoDocLink.astro` / `VideoEmbed.astro` / `VideoConsentReset.astro`; Bausteine werden in `content-embeds.ts` expandiert.
 
 **Externe Links** im Markdown-Inhalt (Seiten, Artikel, Glossar, Embed-Markdown) öffnen in einem neuen Tab (`target="_blank"` + `rel="noopener noreferrer"`). Intern (`/…`, Anker, gleiche Domain) bleiben im selben Tab. Plugin: `src/lib/hast-external-links.ts`.

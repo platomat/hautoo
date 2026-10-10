@@ -1,5 +1,10 @@
 import type { CollectionEntry } from "astro:content";
 import {
+	getCategoryAncestors,
+	getCategoryHref,
+	type CategoryEntry,
+} from "./categories";
+import {
 	getPageHref,
 	indexPagesById,
 	type PageEntry,
@@ -80,5 +85,22 @@ export function buildTagBreadcrumbs(label: string): BreadcrumbItem[] {
 		HOME,
 		{ label: "Artikel", href: "/artikel/" },
 		{ label },
+	];
+}
+
+/** Home → Kategorien → ancestors → current category title. */
+export function buildCategoryBreadcrumbs(
+	category: CategoryEntry,
+	all: CategoryEntry[],
+): BreadcrumbItem[] {
+	const ancestors = getCategoryAncestors(category, all);
+	return [
+		HOME,
+		{ label: "Kategorien", href: "/kategorien/" },
+		...ancestors.map((entry) => ({
+			label: entry.data.title,
+			href: getCategoryHref(entry),
+		})),
+		{ label: category.data.title },
 	];
 }

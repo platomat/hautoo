@@ -4,6 +4,9 @@ summary: Lokal siehst du Werkzeugkram, den Besucher nie sehen. Und du kannst der
 pubDate: 2026-10-03 23:23:55+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - screencasts
+  - werkzeuge
 tags:
 - astro
 - css

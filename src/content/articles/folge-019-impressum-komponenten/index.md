@@ -4,6 +4,8 @@ summary: Rechtstexte per Agent, Kontakt-E-Mail als Secret, Bildnachweise auf dem
 pubDate: 2026-10-04 20:57:40+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - screencasts
 tags:
 - astro
 - sveltia

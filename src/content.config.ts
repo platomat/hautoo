@@ -75,6 +75,18 @@ const tags = defineCollection({
 	}),
 });
 
+/** Hierarchical article categories (optional parent = another category slug). */
+const categories = defineCollection({
+	loader: glob({ pattern: "*.md", base: "./src/content/categories" }),
+	schema: z.object({
+		title: z.string(),
+		description: z.string().optional(),
+		/** Parent category slug (flat files; URL stays `/kategorien/<slug>/`). */
+		parent: z.string().optional(),
+		modifiedDate: modifiedDateSchema,
+	}),
+});
+
 const articles = defineCollection({
 	loader: glob({ pattern: "**/index.md", base: "./src/content/articles" }),
 	schema: ({ image }) =>
@@ -91,6 +103,8 @@ const articles = defineCollection({
 			backgroundImage: backgroundImageSchema,
 			backgroundOverlay: backgroundOverlaySchema.optional(),
 			backgroundAttribution: backgroundAttributionSchema,
+			/** Category slugs (hierarchical taxonomy; see `categories` collection). */
+			categories: z.array(z.string()).default([]),
 			tags: z.array(z.string()).default([]),
 			videoProvider: z.enum(["youtube", "vimeo"]).optional(),
 			videoId: z.string().optional(),
@@ -143,6 +157,7 @@ const blocks = defineCollection({
 export const collections = {
 	pages,
 	menus,
+	categories,
 	tags,
 	articles,
 	glossar,

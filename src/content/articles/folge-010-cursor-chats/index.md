@@ -4,6 +4,9 @@ summary: 'Kein Extra-Bot nötig: ein Chat sucht Fehler, der andere räumt auf. S
 pubDate: 2026-10-04 00:14:37+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - cursor
+  - screencasts
 tags:
 - cursor
 seo:

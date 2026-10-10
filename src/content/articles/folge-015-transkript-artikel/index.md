@@ -4,6 +4,8 @@ summary: Screencasts aufnehmen, fertige Videos in Transkripte wandeln und den Cl
 pubDate: 2026-10-04 04:29:47+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - screencasts
 tags:
 - cursor
 - github

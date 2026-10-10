@@ -4,6 +4,9 @@ summary: Am Branch experimentieren, Preview-Link verschicken, mergen wenn’s pa
 pubDate: 2026-10-04 00:44:03+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - deploy
+  - screencasts
 tags:
 - cloudflare
 - github

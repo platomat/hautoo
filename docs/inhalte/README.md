@@ -11,6 +11,7 @@ Die Website publiziert thematische Inhalte. Technisch stecken sie in den Sveltia
 | Seiten | `pages` | Startseite, Über uns, rechtliche Seiten |
 | Menüs | `menus` | Hauptmenü, Footer-Rechtliches, später weitere |
 | Artikel | `articles` | Text, Bilder, eingebettetes How-to-Video |
+| Kategorien | `categories` | Hierarchische Themengruppen für Artikel |
 | Tags | `tags` | Themen-Labels für Artikel |
 | Glossar | `glossar` | Begriffserklärungen |
 | Bausteine | `blocks` | Wiederverwendbare Snippets ohne eigene URL (z. B. Stack-Grafik) |
@@ -57,6 +58,10 @@ Entscheidung: **Variante B — neben dem Content** (nicht `public/media`).
 ## Glossar (`glossar`)
 
 Umgesetzt (#6): Collection unter `src/content/glossar/<slug>.md`, Übersicht `/glossar/`, Eintrag `/glossar/<slug>/`. Optional Verweise auf Artikel. Ziel: Einsteiger verstehen GitHub, Cloudflare, Astro usw. — siehe auch [Glossar der Doku](../glossar.md). Details: [Collections — glossar](../sveltia/collections.md#collection-glossar-umgesetzt).
+
+## Kategorien (`categories`)
+
+Umgesetzt (#64): Collection unter `src/content/categories/<slug>.md` mit optionalem `parent`. Artikel referenzieren Kategorien per Relation. Details: [Collections — categories](../sveltia/collections.md#collection-categories-umgesetzt).
 
 ## Tags (`tags`)
 

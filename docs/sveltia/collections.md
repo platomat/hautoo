@@ -9,6 +9,7 @@ Zurück zur [Sveltia-Übersicht](./README.md). Shared Field-Partials: [CMS Field
 | Konfiguration | `settings` | umgesetzt (#45), JSON-Dateien (General / Design / Content) |
 | Seiten | `pages` | umgesetzt (#3) |
 | Artikel | `articles` | umgesetzt (#4) |
+| Kategorien | `categories` | umgesetzt (#64) |
 | Tags | `tags` | umgesetzt (#5) |
 | Glossar | `glossar` | umgesetzt (#6) |
 | Bausteine | `blocks` | umgesetzt |
@@ -117,7 +118,7 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | Hierarchie | Feld `parent` (Relation) → verschachtelte URL |
 | SEO | Shared-Objekt `seo` (`&field_seo` / `src/cms/fields/seo.ts`) |
 | Medien | Variante B vorbereitet (`path` + leere `media_*`) — siehe [Medien](./medien-variante-b.md) |
-| System | Eintrag-ID `artikel` → Tag-Sidebar + `{{article-listing …}}`; `tags` → CMS-Seite + `{{tag-listing …}}`; `glossar` → CMS-Seite + `{{glossar-listing …}}`; `impressum` → Bildnachweise |
+| System | Eintrag-ID `artikel` → Tag-Sidebar + `{{article-listing …}}`; `kategorien` → CMS-Seite + `{{category-listing …}}`; `tags` → CMS-Seite + `{{tag-listing …}}`; `glossar` → CMS-Seite + `{{glossar-listing …}}`; `impressum` → Bildnachweise |
 
 ### Felder
 
@@ -167,6 +168,28 @@ Wiederverwendbare Inhaltsstücke (ähnlich WordPress-Reusable-Blocks). Keine eig
 
 Beispiel: Baustein `stack-uebersicht` → auf der Startseite `{{block id="stack-uebersicht"}}`. Änderung am Baustein gilt überall.
 
+
+## Collection `categories` (umgesetzt)
+
+| | |
+| --- | --- |
+| Ordner | `src/content/categories/<slug>.md` |
+| Schema | `src/content.config.ts` |
+| Sveltia | Collection `categories` (zwischen Artikel und Tags) |
+| Nutzung | Relation von `articles`; Übersicht = CMS-Seite `pages/kategorien` mit `{{category-listing …}}`; Einzelansicht `/kategorien/<slug>/` |
+
+### Felder
+
+| Feld | Pflicht | Bedeutung |
+| --- | --- | --- |
+| `title` | ja | Anzeigename |
+| `description` | nein | Kurze Erklärung (auch Meta-Description) |
+| `parent` | nein | Slug einer übergeordneten Kategorie (Hierarchie) |
+| `modifiedDate` | nein | Letzte Änderung → SEO-Meta im `<head>` |
+| Dateiname | — | Slug (z. B. `cursor.md` → `cursor`) |
+
+Öffentliche URLs bleiben flach (`/kategorien/<slug>/`). Parent steuert Brotkrumen und Unterkategorien-Liste.
+
 ## Collection `tags` (umgesetzt)
 
 | | |
@@ -208,6 +231,7 @@ Beispiel: Baustein `stack-uebersicht` → auf der Startseite `{{block id="stack-
 | `backgroundImage` | nein | Vollflächiger Viewport-Hintergrund |
 | `backgroundOverlay` | nein | Abdunkelung 0–100 % |
 | `backgroundAttribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |
+| `categories` | nein | Relation zu `categories` (mehrere; Hierarchie über Parent) |
 | `tags` | nein | Relation zu `tags` (mehrere) |
 | `videoProvider` | nein | `youtube` / `vimeo` (Hero-Video; Facade mit Consent) |
 | `videoId` | nein | ID oder URL; alternativ Body-Embed `{{video …}}` |

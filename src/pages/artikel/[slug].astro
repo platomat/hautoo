@@ -21,6 +21,7 @@ import {
 	formatReadingTime,
 } from "../../lib/reading-time";
 import { buildArticleBreadcrumbs } from "../../lib/breadcrumbs";
+import { getCategoryHref } from "../../lib/categories";
 import { resolveTocForCollection } from "../../lib/site-config";
 import { formatTagHashtag, getTagHref } from "../../lib/tags";
 
@@ -42,11 +43,21 @@ const contentWidth = await resolveContentWidth(
 );
 const widthClass = contentWidthClass(contentWidth);
 const { older, newer } = await getAdjacentArticles(article);
-const tags = await getCollection("tags");
+const [tags, categories] = await Promise.all([
+	getCollection("tags"),
+	getCollection("categories"),
+]);
 const tagMap = new Map(tags.map((tag) => [tag.id, tag]));
+const categoryMap = new Map(categories.map((cat) => [cat.id, cat]));
 const linkedTags = (article.data.tags ?? [])
 	.map((id) => tagMap.get(id))
 	.filter((tag): tag is (typeof tags)[number] => Boolean(tag));
+const linkedCategories = (article.data.categories ?? [])
+	.map((id) => categoryMap.get(id))
+	.filter((cat): cat is (typeof categories)[number] => Boolean(cat))
+	.sort((a, b) =>
+		a.data.title.localeCompare(b.data.title, "de", { sensitivity: "base" }),
+	);
 const backgroundImage = resolveCmsImage(
 	article.data.backgroundImage,
 	`content/articles/${article.id}/`,
@@ -96,6 +107,17 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 				/>
 			)}
 			{
+				linkedCategories.length > 0 && (
+					<ul class="article-categories list-plain flex-row flex-wrap gap-md text-sm">
+						{linkedCategories.map((cat) => (
+							<li>
+								<a href={getCategoryHref(cat)}>{cat.data.title}</a>
+							</li>
+						))}
+					</ul>
+				)
+			}
+			{
 				linkedTags.length > 0 && (
 					<ul class="article-tags list-plain flex-row flex-wrap gap-md text-sm">
 						{linkedTags.map((tag) => (
@@ -135,8 +157,13 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 </BaseLayout>
 
 <style>
+	.article-categories,
 	.article-tags {
 		margin: 0 0 1.25rem;
 		padding: 0;
+	}
+
+	.article-categories + .article-tags {
+		margin-top: -0.5rem;
 	}
 </style>

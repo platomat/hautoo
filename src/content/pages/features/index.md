@@ -39,7 +39,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 ## CMS und Collections
 
 - **[Sveltia CMS](/glossar/sveltia/)** unter `/admin/`: Inhalte im Browser bearbeiten, Speichern landet als Dateien in [Git](/glossar/git/) ([Glossar CMS](/glossar/cms/), [Folge 013](/artikel/folge-013-sveltia-pat/)).
-- **[Collections](/glossar/collection/)** für Pages, Articles, Tags, Glossar, Menüs und **Bausteine** (`blocks`) ohne eigene URL.
+- **[Collections](/glossar/collection/)** für Pages, Articles, **Kategorien** (hierarchisch), Tags, Glossar, Menüs und **Bausteine** (`blocks`) ohne eigene URL.
 - **Settings-Collection** (`settings`): globale Site-Einstellungen als JSON unter `src/content/settings/` (wie cdr-legal). Eigene CMS-Einträge **General**, **Design** und **Content**.
 - **Website-Titel** unter **Konfiguration** → **General** → **Website title**: Markenname für Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`) und `og:site_name`.
 - **Kontakt-E-Mail** unter **Konfiguration** → **General** → **Contact email** (optional): überschreibt `CONTACT_EMAIL` beim Build; Anzeige über `{{contact-email}}` mit Spam-Schutz. Leer = weiter ENV (empfohlen für öffentliche Repos).
@@ -56,6 +56,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Viele Begriffe** ([Git](/glossar/git/), [Deploy](/glossar/deploy/), [CI/CD](/glossar/ci-cd/), [Route](/glossar/route/), [Bildnachweis](/glossar/bildnachweis/) und mehr), jeweils eigene URL unter `/glossar/<slug>/`.
 - **Erstes sinnvolles Glossar-Vorkommen** pro Seite verlinkt; Hilfsskript `link-glossar-crosslinks.py` und **Erstlink-Warnung** im [Build](/glossar/build/) (`check-glossar-first-links.py`, nicht blockierend).
 - **FAQ** als eine lange Seite mit Themengruppen (H2), alles offen sichtbar, durchsuchbar per Strg+F (kein Accordion).
+- **Kategorie-Seiten** unter `/kategorien/<slug>/` mit Parent-Brotkrumen, Unterkategorien und Artikel-Grid.
 - **Tag-Seiten** mit Artikel-Grid und Link zum passenden Glossar-Eintrag, wenn der Slug passt.
 - **Tag-Wolke** und **Listing-Embeds** für Glossar und Tags im Seiten- oder Artikeltext.
 

@@ -4,6 +4,9 @@ summary: Sveltia fühlt sich wie ein Mini-CMS an, speichert aber nur Dateien. So
 pubDate: 2026-10-04 01:09:23+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - screencasts
+  - werkzeuge
 tags:
 - sveltia
 - github

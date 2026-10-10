@@ -4,6 +4,9 @@ summary: 'Nach dem Clone: Node über das offizielle Install-Skript, Abhängigkei
 pubDate: 2026-10-04 20:22:22+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - screencasts
+  - werkzeuge
 tags:
 - node
 - astro

@@ -4,6 +4,9 @@ summary: Nach dem Zusammenführen sieht’s im Tool oft leer aus. Auf GitHub ste
 pubDate: 2026-10-03 23:44:04+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - git-github
+  - screencasts
 tags:
 - github
 seo:

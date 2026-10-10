@@ -4,6 +4,9 @@ summary: Permission denied beim Clone? Schlüsselpaar erzeugen, config anlegen, 
 pubDate: 2026-10-04 20:01:04+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - git-github
+  - screencasts
 tags:
 - github
 - ssh

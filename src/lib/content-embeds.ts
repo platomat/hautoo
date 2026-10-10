@@ -4,6 +4,7 @@ import { getPublicBlock } from "./blocks";
 import type { GlossarSort } from "./glossar";
 import { hastCmsAssets } from "./hast-cms-assets";
 import { hastExternalLinks } from "./hast-external-links";
+import type { CategorySort } from "./categories";
 import type { TagSort } from "./tags";
 import { parseRepoDocProps, type RepoDocEmbedProps } from "./repodoc";
 import {
@@ -57,6 +58,14 @@ export type TagListingEmbedProps = {
 	gap: number;
 };
 
+export type CategoryListingEmbedProps = {
+	count: number;
+	sort: CategorySort;
+	layout: "cloud" | "list" | "grid";
+	columns: number;
+	gap: number;
+};
+
 export type SeparatorEmbedProps = {
 	/** Thickness in px. */
 	height: number;
@@ -78,6 +87,7 @@ export type ContentSegment =
 	| { type: "article-listing"; props: ArticleListingEmbedProps }
 	| { type: "glossar-listing"; props: GlossarListingEmbedProps }
 	| { type: "tag-listing"; props: TagListingEmbedProps }
+	| { type: "category-listing"; props: CategoryListingEmbedProps }
 	| { type: "tag-cloud" }
 	| { type: "separator"; props: SeparatorEmbedProps }
 	| { type: "contact-email" }
@@ -133,6 +143,14 @@ const DEFAULT_TAG_LISTING: TagListingEmbedProps = {
 	gap: 1.25,
 };
 
+const DEFAULT_CATEGORY_LISTING: CategoryListingEmbedProps = {
+	count: 0,
+	sort: "title-asc",
+	layout: "grid",
+	columns: 3,
+	gap: 1.25,
+};
+
 const DEFAULT_SEPARATOR: SeparatorEmbedProps = {
 	height: 1,
 	width: 100,
@@ -141,7 +159,7 @@ const DEFAULT_SEPARATOR: SeparatorEmbedProps = {
 
 /** Line must be only the embed (optional attrs). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|tag-cloud|separator|contact-email|repodoc|block|video|video-consent-reset)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|tag-cloud|separator|contact-email|repodoc|block|video|video-consent-reset)(?<attrs>[^}]*)\}\}\s*$/gm;
 
 const ARTICLE_SORTS = new Set<ArticleSort>([
 	"newest",
@@ -158,6 +176,12 @@ const GLOSSAR_SORTS = new Set<GlossarSort>([
 ]);
 
 const TAG_SORTS = new Set<TagSort>(["title-asc", "title-desc", "most-used"]);
+
+const CATEGORY_SORTS = new Set<CategorySort>([
+	"title-asc",
+	"title-desc",
+	"most-used",
+]);
 
 let markdownProcessor: Awaited<
 	ReturnType<typeof createSatteriMarkdownProcessor>
@@ -199,12 +223,20 @@ export function hasTagListingEmbed(body: string | undefined): boolean {
 	return /\{\{tag-listing\b/.test(body);
 }
 
+export function hasCategoryListingEmbed(body: string | undefined): boolean {
+	if (!body) {
+		return false;
+	}
+	return /\{\{category-listing\b/.test(body);
+}
+
 /** Wide content column for card/list embeds (direct markers only). */
 export function hasWideListingEmbed(body: string | undefined): boolean {
 	return (
 		hasArticleListingEmbed(body) ||
 		hasGlossarListingEmbed(body) ||
-		hasTagListingEmbed(body)
+		hasTagListingEmbed(body) ||
+		hasCategoryListingEmbed(body)
 	);
 }
 
@@ -230,7 +262,8 @@ export async function contentNeedsWideLayout(
 		(segment) =>
 			segment.type === "article-listing" ||
 			segment.type === "glossar-listing" ||
-			segment.type === "tag-listing",
+			segment.type === "tag-listing" ||
+			segment.type === "category-listing",
 	);
 }
 
@@ -327,6 +360,27 @@ export function parseTagListingProps(
 	};
 }
 
+export function parseCategoryListingProps(
+	attrsRaw: string | undefined,
+): CategoryListingEmbedProps {
+	const attrs = parseAttrs(attrsRaw ?? "");
+	const sort = CATEGORY_SORTS.has(attrs.sort as CategorySort)
+		? (attrs.sort as CategorySort)
+		: DEFAULT_CATEGORY_LISTING.sort;
+	const layout =
+		attrs.layout === "list" || attrs.layout === "cloud"
+			? attrs.layout
+			: "grid";
+	return {
+		/** `0` = all used categories (no limit). */
+		count: clampInt(attrs.count, DEFAULT_CATEGORY_LISTING.count, 0, 48),
+		sort,
+		layout,
+		columns: clampInt(attrs.columns, DEFAULT_CATEGORY_LISTING.columns, 1, 4),
+		gap: clampRem(attrs.gap, DEFAULT_CATEGORY_LISTING.gap, 0, 8),
+	};
+}
+
 export function parseSeparatorProps(
 	attrsRaw: string | undefined,
 ): SeparatorEmbedProps {
@@ -405,6 +459,11 @@ export async function buildContentSegments(
 			segments.push({
 				type: "tag-listing",
 				props: parseTagListingProps(attrs),
+			});
+		} else if (name === "category-listing") {
+			segments.push({
+				type: "category-listing",
+				props: parseCategoryListingProps(attrs),
 			});
 		} else if (name === "contact-email") {
 			segments.push({ type: "contact-email" });

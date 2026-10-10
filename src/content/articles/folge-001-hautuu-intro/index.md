@@ -4,6 +4,8 @@ summary: Du legst GitHub an, holst das Projekt auf den Rechner und sagst Cursor 
 pubDate: 2026-10-03 01:04:26+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - screencasts
 tags:
 - github
 - cursor

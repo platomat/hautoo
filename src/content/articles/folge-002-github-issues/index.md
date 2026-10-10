@@ -4,6 +4,9 @@ summary: Tickets, Meilensteine und ein Bild, wie Cursor, GitHub und Cloudflare z
 pubDate: 2026-10-03 01:35:20+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - git-github
+  - screencasts
 tags:
 - github
 - cursor

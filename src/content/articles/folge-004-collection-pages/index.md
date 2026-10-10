@@ -4,6 +4,8 @@ summary: Was in der CMS-Config steckt, warum Unterseiten wie Ordner funktioniere
 pubDate: 2026-10-03 23:00:06+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - screencasts
 tags:
 - astro
 - sveltia

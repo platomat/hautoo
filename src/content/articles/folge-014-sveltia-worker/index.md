@@ -4,6 +4,9 @@ summary: 'Schluss mit Token-Zettel am Monitor: OAuth, Secrets in Cloudflare und 
 pubDate: 2026-10-04 01:38:06+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - screencasts
+  - werkzeuge
 tags:
 - sveltia
 - cloudflare

@@ -4,6 +4,8 @@ summary: Kostenlose Quellen mit Lizenz im Blick, WebP und sinnvolle Breite vor d
 pubDate: 2026-10-05 00:28:15+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - screencasts
 tags:
 - design
 - astro

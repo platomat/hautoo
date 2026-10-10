@@ -5,6 +5,9 @@ items:
   - label: Artikel
     linkType: page
     page: artikel
+  - label: Kategorien
+    linkType: page
+    page: kategorien
   - label: Tags
     linkType: page
     page: tags

@@ -4,6 +4,8 @@ summary: Wiederverwendbare CMS Bausteine statt Copy Paste, Überblick über Glos
 pubDate: 2026-10-04 23:47:38+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - screencasts
 tags:
 - github
 - cursor

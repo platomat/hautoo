@@ -1,0 +1,86 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import ArticleListing from "../../components/ArticleListing.astro";
+import { getArticlesByCategory } from "../../lib/articles";
+import { buildCategoryBreadcrumbs } from "../../lib/breadcrumbs";
+import {
+	getCategoryChildren,
+	getCategoryHref,
+} from "../../lib/categories";
+
+export async function getStaticPaths() {
+	const categories = await getCollection("categories");
+	return categories.map((category) => ({
+		params: { slug: category.id },
+		props: { category },
+	}));
+}
+
+const { category } = Astro.props;
+const allCategories = await getCollection("categories");
+const articles = await getArticlesByCategory(category.id, { sort: "newest" });
+const children = getCategoryChildren(category.id, allCategories);
+const breadcrumbs = buildCategoryBreadcrumbs(category, allCategories);
+---
+
+<BaseLayout
+	title={category.data.title}
+	description={category.data.description}
+	modifiedDate={category.data.modifiedDate}
+>
+	<main class="page">
+		<PageHero
+			title={category.data.title}
+			description={category.data.description}
+			breadcrumbs={breadcrumbs}
+		/>
+		{
+			children.length > 0 && (
+				<section class="category-children" aria-label="Unterkategorien">
+					<h2 class="category-children__title text-sm text-muted">
+						Unterkategorien
+					</h2>
+					<ul class="category-children__list list-plain flex-row flex-wrap gap-md text-sm">
+						{children.map((child) => (
+							<li>
+								<a href={getCategoryHref(child)}>{child.data.title}</a>
+							</li>
+						))}
+					</ul>
+				</section>
+			)
+		}
+		{
+			articles.length === 0 ? (
+				<p>Keine veröffentlichten Artikel in dieser Kategorie.</p>
+			) : (
+				<ArticleListing
+					categoryId={category.id}
+					count={0}
+					sort="newest"
+					layout="grid"
+					columns={1}
+					gap={3}
+				/>
+			)
+		}
+	</main>
+</BaseLayout>
+
+<style>
+	.category-children {
+		margin: 0 0 1.5rem;
+	}
+
+	.category-children__title {
+		margin: 0 0 0.5rem;
+		font-weight: var(--font-weight-heading);
+	}
+
+	.category-children__list {
+		margin: 0;
+		padding: 0;
+	}
+</style>

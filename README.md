@@ -9,7 +9,7 @@ Dokumentation und (geplante) Website-Grundlage, um mit **Cursor**, **GitHub** un
 ## Was hier entsteht
 
 - Statische Website mit **Astro**
-- Inhalte über **Sveltia** (`pages`, `articles`, `tags`, `glossar`, `menus`, `blocks`)
+- Inhalte über **Sveltia** (`pages`, `articles`, `categories`, `tags`, `glossar`, `menus`, `blocks`)
 - Artikel mit Text, Bildern und eingebetteten How-to-Videos (Vimeo/YouTube)
 - Glossar für Begriffe
 - Anleitungen für Menschen, die das nachbauen oder mitarbeiten wollen

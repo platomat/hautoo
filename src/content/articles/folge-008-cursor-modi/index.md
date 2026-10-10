@@ -4,6 +4,9 @@ summary: Unterschied zwischen „bitte nichts anfassen“ und „bau mir das Bur
 pubDate: 2026-10-03 23:48:14+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - cursor
+  - screencasts
 tags:
 - cursor
 - css

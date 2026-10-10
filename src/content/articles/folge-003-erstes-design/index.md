@@ -4,6 +4,8 @@ summary: 'Schrift rein, Farben festlegen, Breakpoints setzen. Plus die goldene R
 pubDate: 2026-10-03 02:16:51+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - screencasts
 tags:
 - design
 - css

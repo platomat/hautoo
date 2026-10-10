@@ -1,5 +1,6 @@
 ---
 import ArticleListing from "./ArticleListing.astro";
+import CategoryListing from "./CategoryListing.astro";
 import ContactEmail from "./ContactEmail.astro";
 import GlossarListing from "./GlossarListing.astro";
 import Separator from "./Separator.astro";
@@ -49,6 +50,17 @@ const segments = await buildContentSegments(body);
 		if (segment.type === "tag-listing") {
 			return (
 				<TagListing
+					count={segment.props.count}
+					sort={segment.props.sort}
+					layout={segment.props.layout}
+					columns={segment.props.columns}
+					gap={segment.props.gap}
+				/>
+			);
+		}
+		if (segment.type === "category-listing") {
+			return (
+				<CategoryListing
 					count={segment.props.count}
 					sort={segment.props.sort}
 					layout={segment.props.layout}

@@ -4,6 +4,9 @@ summary: Du siehst, was die KI frisst. Und wann Auto reicht oder du lieber kurz 
 pubDate: 2026-10-04 00:05:52+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - cursor
+  - screencasts
 tags:
 - cursor
 seo:

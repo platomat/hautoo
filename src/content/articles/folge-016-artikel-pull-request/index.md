@@ -4,6 +4,9 @@ summary: Branch statt main, Cloudflare-Preview in der Mail, grüne Checks und Me
 pubDate: 2026-10-04 19:11:35+00:00
 modifiedDate: 2026-10-07
 status: published
+categories:
+  - git-github
+  - screencasts
 tags:
 - cursor
 - github
