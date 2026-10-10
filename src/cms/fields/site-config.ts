@@ -5,8 +5,12 @@ const headerHeight = z.coerce.number().int().min(40).max(160);
 
 const tocLevelSchema = z.enum(["h2", "h3", "h4"]);
 
-/** Sticky header + bar heights (CMS group Design). */
+/** Sticky header + bar heights (CMS group Design). Order: min heights → sticky toggles → sticky heights. */
 export const siteHeaderConfigSchema = z.object({
+	/** Min bar height when not sticky (desktop). */
+	minHeightDesktop: headerHeight.default(64),
+	minHeightTablet: headerHeight.default(64),
+	minHeightMobile: headerHeight.default(56),
 	/** `position: sticky` from desktop breakpoint (≥ 1024px). */
 	stickyDesktop: z.boolean().default(true),
 	/** Sticky on tablet (680–1023px). */
@@ -17,10 +21,6 @@ export const siteHeaderConfigSchema = z.object({
 	heightDesktop: headerHeight.default(64),
 	heightTablet: headerHeight.default(64),
 	heightMobile: headerHeight.default(56),
-	/** Min bar height when not sticky (desktop). */
-	minHeightDesktop: headerHeight.default(64),
-	minHeightTablet: headerHeight.default(64),
-	minHeightMobile: headerHeight.default(56),
 });
 
 export type SiteHeaderConfig = z.infer<typeof siteHeaderConfigSchema>;

@@ -37,11 +37,11 @@ Globale Site-Einstellungen als **JSON-Dateien** (wie cdr-legal), kein Markdown-B
 
 | Feld | Bedeutung |
 | --- | --- |
+| `design.header.minHeightDesktop` / `Tablet` / `Mobile` | Mindesthöhe ohne Sticky (40–160 px; Default 64 / 64 / 56) |
 | `design.header.stickyDesktop` | Sticky ab Desktop (≥ 1024px) |
 | `design.header.stickyTablet` | Sticky auf Tablet (680–1023px) |
 | `design.header.stickyMobile` | Sticky auf Mobile (< 680px) |
 | `design.header.heightDesktop` / `Tablet` / `Mobile` | Feste Leistenhöhe bei Sticky (40–160 px) |
-| `design.header.minHeightDesktop` / `Tablet` / `Mobile` | Mindesthöhe ohne Sticky (40–160 px; Default wie bisher 64 / 64 / 56) |
 
 Umsetzung in `SiteHeader.astro` (CSS-Klassen + Custom Properties).
 

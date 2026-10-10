@@ -1,14 +1,14 @@
 {
 	"header": {
+		"minHeightDesktop": 64,
+		"minHeightTablet": 64,
+		"minHeightMobile": 56,
 		"stickyDesktop": true,
 		"stickyTablet": true,
 		"stickyMobile": true,
 		"heightDesktop": 64,
 		"heightTablet": 64,
-		"heightMobile": 56,
-		"minHeightDesktop": 64,
-		"minHeightTablet": 64,
-		"minHeightMobile": 56
+		"heightMobile": 56
 	},
 	"hero": {
 		"pages": {
