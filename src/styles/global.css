@@ -336,12 +336,12 @@ body.is-nav-locked {
 }
 
 .breadcrumbs a {
-	color: var(--color-text-muted);
+	color: var(--color-action);
 }
 
 .breadcrumbs a:hover,
 .breadcrumbs a:focus-visible {
-	color: var(--color-action);
+	color: var(--color-action-hover);
 }
 
 .breadcrumbs [aria-current="page"] {

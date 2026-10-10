@@ -144,7 +144,7 @@ Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-
 | Brotkrumen | an | Trail z. B. Start / Elternseite / aktuelle Seite |
 | Trennlinie unten | aus | optional `border-bottom` unter dem Hero |
 
-Seiten und Artikel können mit `heroTextAlign`, `showBreadcrumbs`, `heroBorderBottom` den Collection-Default überschreiben. Komponente: `PageHero.astro` (`collection`-Prop; Klassen `.page-hero--align-*`, `.page-hero--border`, `.breadcrumbs`).
+Seiten und Artikel können mit `heroTextAlign`, `showBreadcrumbs`, `heroBorderBottom` den Collection-Default überschreiben. Komponente: `PageHero.astro` (`collection`-Prop; Klassen `.page-hero--align-*`, `.page-hero--border`, `.breadcrumbs`). Brotkrumen-Links nutzen die Linkfarbe (`--color-action`).
 
 Artikel: Kategorien stehen im Hero unter der Beschreibung; Tags per `tagPlacement` im Hero (rechts daneben), nach dem Inhalt oder beides (`hero` / `after` / `both`).
 
