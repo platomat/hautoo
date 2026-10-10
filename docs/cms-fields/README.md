@@ -70,10 +70,12 @@ Auf **Seiten** und **Artikeln** folgen nach dem Änderungsdatum collapsible Obje
 
 | CMS-Gruppe | Frontmatter | Felder |
 | --- | --- | --- |
-| **Hero** | `hero` | `textAlign`, `showBreadcrumbs`, `borderBottom` (Keys wie Design → Hero) |
-| **Inhaltsverzeichnis (TOC)** | `toc` | `show`, `title`, `levels` |
-| **Seitenhintergrund** | `background` | `image`, `overlay`, `attribution` |
+| **Hero überschreiben** | `hero` | `textAlign`, `showBreadcrumbs`, `borderBottom` (Keys wie Design → Hero); leer = Collection-Default |
+| **TOC überschreiben** | `toc` | `show`, `title`, `levels`; leer = globaler Default |
+| **Seitenhintergrund einstellen** | `background` | `image`, `overlay`, `attribution` |
 | **Inhaltsbreite** | `contentWidth` | Select `default` / `wide` / `full` (ein Feld, kein Object) |
+
+Listen-Vorschau: Collection-Option `thumbnail: background.image` (Sveltia erkennt nested Images nicht automatisch).
 
 Sveltia-Anchors: `&field_entry_hero`, `&field_entry_toc`, `&field_entry_background`, `&field_content_width`. Zod: `entryHeroSchema` / `entryTocSchema` in `site-config.ts`, `entryBackgroundSchema` in `page-background.ts`.
 

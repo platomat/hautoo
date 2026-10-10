@@ -70,6 +70,8 @@ collections:
     slug: "{{slug}}"
     extension: md
     format: yaml-frontmatter
+    # Nested image (auto-detect only sees top-level Image fields).
+    thumbnail: background.image
     fields:
       - { name: title, label: Titel, widget: string }
       - { name: description, label: Beschreibung, widget: string, required: false }
@@ -112,11 +114,12 @@ collections:
         hint: "Optional. URL wird /eltern-slug/diese-seite/."
       - &field_entry_hero
         name: hero
-        label: Hero
+        label: Hero überschreiben
         widget: object
         collapsed: true
-        required: false
-        hint: "Leer = Defaults unter Einstellungen → Design → Hero für diese Collection. Einzelne Felder überschreiben nur lokal."
+        required: true
+        default: {}
+        hint: "Felder leer = Defaults unter Einstellungen → Design → Hero. Nur ausgefüllte Werte überschreiben lokal."
         fields:
           - name: textAlign
             label: Textausrichtung
@@ -139,11 +142,12 @@ collections:
             hint: "Leer lassen = Collection-Default. An = 1px Linie unter dem Hero."
       - &field_entry_toc
         name: toc
-        label: Inhaltsverzeichnis (TOC)
+        label: TOC überschreiben
         widget: object
         collapsed: true
-        required: false
-        hint: "Leer = globale Config unter Einstellungen → Content → TOC. Lokale Werte überschreiben."
+        required: true
+        default: {}
+        hint: "Felder leer = globale Config unter Einstellungen → Content → TOC. Nur ausgefüllte Werte überschreiben lokal."
         fields:
           - name: show
             label: Anzeigen
@@ -167,11 +171,12 @@ collections:
             hint: "Leer = Ebenen aus der globalen Config."
       - &field_entry_background
         name: background
-        label: Seitenhintergrund
+        label: Seitenhintergrund einstellen
         widget: object
         collapsed: true
-        required: false
-        hint: "Vollflächig hinter der sichtbaren Seite (Viewport). Header und Footer bleiben darüber."
+        required: true
+        default: {}
+        hint: "Optional. Vollflächig hinter der sichtbaren Seite (Viewport). Ohne Bild kein Hintergrund. Header und Footer bleiben darüber."
         fields:
           - name: image
             label: Bild
@@ -354,6 +359,10 @@ collections:
     extension: md
     format: yaml-frontmatter
     summary: "{{title}}"
+    # Titelbild first, else nested page background.
+    thumbnail:
+      - heroImage
+      - background.image
     hint: "Medien neben dem Eintrag (Variante B). URL: /artikel/<slug>/."
     fields:
       - { name: title, label: Titel, widget: string }
