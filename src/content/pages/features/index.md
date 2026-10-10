@@ -41,11 +41,11 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **[Sveltia CMS](/glossar/sveltia/)** unter `/admin/`: Inhalte im Browser bearbeiten, Speichern landet als Dateien in [Git](/glossar/git/) ([Glossar CMS](/glossar/cms/), [Folge 013](/artikel/folge-013-sveltia-pat/)).
 - **[Collections](/glossar/collection/)** für Pages, Articles, **Kategorien** (hierarchisch), Tags, Glossar, Menüs und **Bausteine** (`blocks`) ohne eigene URL.
 - **Settings-Collection** (`settings`): globale Site-Einstellungen als JSON unter `src/content/settings/` (wie cdr-legal). Eigene CMS-Einträge **General**, **Design** und **Content**.
-- **Website-Titel** unter **Konfiguration** → **General** → **Website title**: Markenname für Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`) und `og:site_name`.
-- **Kontakt-E-Mail** unter **Konfiguration** → **General** → **Contact email** (optional): überschreibt `CONTACT_EMAIL` beim Build; Anzeige über `{{contact-email}}` mit Spam-Schutz. Leer = weiter ENV (empfohlen für öffentliche Repos).
+- **Website-Titel** unter **Einstellungen** → **General** → **Website title**: Markenname für Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`) und `og:site_name`.
+- **Kontakt-E-Mail** unter **Einstellungen** → **General** → **Contact email** (optional): überschreibt `CONTACT_EMAIL` beim Build; Anzeige über `{{contact-email}}` mit Spam-Schutz. Leer = weiter ENV (empfohlen für öffentliche Repos).
 - **Menüs** als eigene Collection (`main`, `footer-legal`) statt Flags an einzelnen Seiten.
 - **Entwurfsstatus** (`draft`, `published`, `future`, `trash`) für Pages, Artikel und Glossar.
-- **Inhaltsverzeichnis** global unter **Konfiguration** → **Content** → **Inhaltsverzeichnis (TOC)** (Seiten/Artikel: an/aus, Ebenen, Titel) und optional pro Eintrag überschreibbar.
+- **Inhaltsverzeichnis** global unter **Einstellungen** → **Content** → **Inhaltsverzeichnis (TOC)** (Seiten/Artikel: an/aus, Ebenen, Titel) und optional pro Eintrag überschreibbar.
 - **Inhaltsbreite** in drei Stufen (Standard, breit, vollbreit): global unter Content → Breite und pro Seite/Artikel per `contentWidth`.
 - **Seiten-Header und Footer-Code** für kleine HTML- oder [CSS](/glossar/css/)-Snippets nur auf einer Seite.
 - **Zugang über [Cloudflare Worker](/glossar/cloudflare-worker/)** mit [OAuth](/glossar/oauth/) statt nur [PAT](/glossar/pat/) ([Folge 014](/artikel/folge-014-sveltia-worker/)).
@@ -82,8 +82,8 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 
 - **Suche im Header** (MiniSearch): statischer Suchindex beim Build, Treffer zu Artikeln, Glossar und Seiten.
 - **Dark Theme** mit [CSS-Variablen](/glossar/css-variable/), Ubuntu-Schrift, responsive Header mit Mobile-Menü.
-- **Sticky Header** pro [Breakpoint](/glossar/breakpoint/) ein/aus und Leistenhöhe in px, gesteuert über **Konfiguration** → **Design** → **Header**.
-- **Hero-Bereich** unter **Konfiguration** → **Design** → **Hero**: Textausrichtung (links/zentriert/rechts), Brotkrumen an/aus, optionale Trennlinie; pro Seite/Artikel überschreibbar.
+- **Sticky Header** pro [Breakpoint](/glossar/breakpoint/) ein/aus und Leistenhöhe in px, gesteuert über **Einstellungen** → **Design** → **Header**.
+- **Hero-Bereich** unter **Einstellungen** → **Design** → **Hero**: Textausrichtung (links/zentriert/rechts), Brotkrumen an/aus, optionale Trennlinie; pro Seite/Artikel überschreibbar.
 - **Breakpoints** und gemeinsame Layout-Hilfsklassen ([docs/design](https://github.com/platomat/hautoo/blob/main/docs/design/README.md)).
 - **Vollbild-Hintergrund** optional pro Seite oder Artikel, mit Overlay und **Bildnachweis**-Feld (`backgroundAttribution`).
 - **Bildnachweise gesammelt** am Ende des **Impressums** (automatisch aus Pages und Artikeln, [Folge 019](/artikel/folge-019-impressum-komponenten/#bildnachweise-im-impressum)).

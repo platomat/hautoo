@@ -649,7 +649,7 @@ collections:
 
   # Global settings (JSON files, like cdr-legal). Separate CMS entries per area.
   - name: settings
-    label: Konfiguration
+    label: Einstellungen
     label_singular: Einstellung
     delete: false
     files:

@@ -7,7 +7,7 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 - **Markenzeichen:** Blatt mit Mittelrippe und Gabelnerven (Natur + Branch-Struktur)
 - **Statikdatei:** `public/img/logo-mark.svg` (Quelle für Header, README und Content-Einbettungen)
 - **Header:** `LogoMark.astro` lädt die Public-SVG inline; Ink = `currentColor`, Accent = Aktionsfarbe; bei Hover/Focus/Active komplett Aktionsfarbe
-- **Wortmarke:** aus CMS **Konfiguration → General → Website title** (`settings/general.json`), neben dem Mark im Header und in der Footer-Zeile
+- **Wortmarke:** aus CMS **Einstellungen → General → Website title** (`settings/general.json`), neben dem Mark im Header und in der Footer-Zeile
 - **Favicon:** `public/img/favicon.svg` (Ink dunkel bei hellem System, hell bei dunklem; Accent bleibt grün), Fallback `favicon.ico`
 
 ## Prinzipien
@@ -132,11 +132,11 @@ Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-
 
 ### Sticky Header
 
-Über CMS **Konfiguration → Design → Header** (`src/content/settings/design.json`): Sticky ein/aus pro Breakpoint und **Höhe der Leiste** in px (Desktop ab 1024, Tablet 680–1023, Mobile unter 680). Defaults: sticky auf allen Geräten, 64 / 64 / 56 px. Sticky gilt auch auf Seiten mit Viewport-Hintergrund.
+Über CMS **Einstellungen → Design → Header** (`src/content/settings/design.json`): Sticky ein/aus pro Breakpoint und **Höhe der Leiste** in px (Desktop ab 1024, Tablet 680–1023, Mobile unter 680). Defaults: sticky auf allen Geräten, 64 / 64 / 56 px. Sticky gilt auch auf Seiten mit Viewport-Hintergrund.
 
 ### Hero (Titelbereich)
 
-Über CMS **Konfiguration → Design → Hero**:
+Über CMS **Einstellungen → Design → Hero**:
 
 | Einstellung | Default | Wirkung |
 | --- | --- | --- |
@@ -148,7 +148,7 @@ Seiten und Artikel können mit `heroTextAlign`, `showBreadcrumbs`, `heroBorderBo
 
 ### Inhaltsverzeichnis (TOC)
 
-Globale Defaults unter **Konfiguration → Content → TOC** (Seiten / Artikel: an/aus, Ebenen, Titel). Einzelne Einträge überschreiben mit `showToc` / `tocLevels` / `tocTitle` (Feld leer = global).
+Globale Defaults unter **Einstellungen → Content → TOC** (Seiten / Artikel: an/aus, Ebenen, Titel). Einzelne Einträge überschreiben mit `showToc` / `tocLevels` / `tocTitle` (Feld leer = global).
 
 ### Inhaltsbreite
 

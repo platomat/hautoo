@@ -6,7 +6,7 @@ Zurück zur [Sveltia-Übersicht](./README.md). Shared Field-Partials: [CMS Field
 
 | Collection | Schlüssel | Status |
 | --- | --- | --- |
-| Konfiguration | `settings` | umgesetzt (#45), JSON-Dateien (General / Design / Content) |
+| Einstellungen | `settings` | umgesetzt (#45), JSON-Dateien (General / Design / Content) |
 | Seiten | `pages` | umgesetzt (#3) |
 | Artikel | `articles` | umgesetzt (#4) |
 | Kategorien | `categories` | umgesetzt (#64) |
@@ -26,14 +26,14 @@ Globale Site-Einstellungen als **JSON-Dateien** (wie cdr-legal), kein Markdown-B
 | Sveltia | File-Collection `settings` → Einträge **General**, **Design**, **Content** |
 | Lesen | Direkter JSON-Import in `src/lib/site-config.ts` (keine Astro-Content-Collection) |
 
-### Konfiguration → General
+### Einstellungen → General
 
 | Feld | Bedeutung |
 | --- | --- |
 | `websiteTitle` | Markenname: Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`), `og:site_name` |
 | `contactEmail` | Optional für `{{contact-email}}`. Überschreibt `CONTACT_EMAIL` beim Build; leer = ENV. Wert ist öffentlich in Git. |
 
-### Konfiguration → Design → Header (#44)
+### Einstellungen → Design → Header (#44)
 
 | Feld | Bedeutung |
 | --- | --- |
@@ -44,7 +44,7 @@ Globale Site-Einstellungen als **JSON-Dateien** (wie cdr-legal), kein Markdown-B
 
 Umsetzung in `SiteHeader.astro` (CSS-Klassen + Custom Properties).
 
-### Konfiguration → Design → Hero (#63)
+### Einstellungen → Design → Hero (#63)
 
 | Feld | Bedeutung | Default |
 | --- | --- | --- |
@@ -54,7 +54,7 @@ Umsetzung in `SiteHeader.astro` (CSS-Klassen + Custom Properties).
 
 Lokale Überschreibung an **Seiten** und **Artikeln**: `heroTextAlign`, `showBreadcrumbs`, `heroBorderBottom` (Feld leer/omit = global). Umsetzung: `PageHero.astro`, Pfade in `src/lib/breadcrumbs.ts`.
 
-### Konfiguration → Content → TOC (#51)
+### Einstellungen → Content → TOC (#51)
 
 | Feld | Bedeutung |
 | --- | --- |
@@ -64,7 +64,7 @@ Lokale Überschreibung an **Seiten** und **Artikeln**: `heroTextAlign`, `showBre
 
 Eintrag ohne `showToc` nutzt den globalen Default. Lokales `showToc: true` / `false` überschreibt. Fehlende `tocLevels` / `tocTitle` fallen auf die globalen Werte zurück (`resolveTocForCollection` in `site-config.ts`).
 
-### Konfiguration → Content → Breite (#59)
+### Einstellungen → Content → Breite (#59)
 
 | Feld | Bedeutung |
 | --- | --- |
