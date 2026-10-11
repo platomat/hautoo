@@ -12,17 +12,10 @@ export const headerLogoPositionSchema = z.enum(["left", "right", "center"]);
 
 export type HeaderLogoPosition = z.infer<typeof headerLogoPositionSchema>;
 
-/** Where the search trigger sits in the header chrome. */
-export const headerSearchPlacementSchema = z.enum(["end", "start"]);
-
-export type HeaderSearchPlacement = z.infer<typeof headerSearchPlacementSchema>;
-
 /** Sticky header + bar heights (CMS group Design). Order: layout → min heights → sticky → sticky heights. */
 export const siteHeaderConfigSchema = z.object({
-	/** Logo left / right, or centered with nav on a second row (#74). */
+	/** Logo left / right, or centered with nav on a second row (#74). Search always follows the menu. */
 	logoPosition: headerLogoPositionSchema.default("left"),
-	/** Search trigger with actions (end) or on the leading edge (start). */
-	searchPlacement: headerSearchPlacementSchema.default("end"),
 	/** Resting bar height at page top; also min-height when sticky is off. */
 	minHeightDesktop: headerHeight.default(64),
 	minHeightTablet: headerHeight.default(64),

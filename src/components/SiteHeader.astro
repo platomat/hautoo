@@ -13,7 +13,6 @@ const websiteTitle = await getSiteWebsiteTitle();
 const useStickyLogo = stickyLogoDiffers();
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 const logoPosition = headerConfig.logoPosition;
-const searchAtStart = headerConfig.searchPlacement === "start";
 
 function isCurrent(href: string): boolean {
 	const key = href.replace(/\/$/, "") || "/";
@@ -44,7 +43,6 @@ const headerStyle = [
 	class:list={[
 		"site-header",
 		`site-header--logo-${logoPosition}`,
-		searchAtStart && "site-header--search-start",
 		headerConfig.stickyDesktop && "site-header--sticky-desktop",
 		headerConfig.stickyTablet && "site-header--sticky-tablet",
 		headerConfig.stickyMobile && "site-header--sticky-mobile",
@@ -53,13 +51,6 @@ const headerStyle = [
 	data-site-header
 >
 	<div class="site-header__inner shell-inner">
-		{
-			searchAtStart && (
-				<div class="site-header__search site-header__search--start">
-					<SiteSearch />
-				</div>
-			)
-		}
 		<a class="site-header__brand" href="/" aria-label={`${websiteTitle} Startseite`}>
 			<span class="site-header__logo-slot">
 				<LogoMark
@@ -80,85 +71,85 @@ const headerStyle = [
 			</span>
 			<span class="site-header__logo-text">{websiteTitle}</span>
 		</a>
-		<nav id="site-nav" class="site-nav" data-site-nav aria-label="Hauptnavigation">
-			<ul class="site-nav__list list-plain">
-				{
-					menuItems.map((item, index) => {
-						const current = !item.external && isCurrent(item.href);
-						const hasChildren = item.children.length > 0;
-						const subId = `site-nav-sub-${index}`;
-						return (
-							<li
-								class:list={{
-									"site-nav__item": true,
-									"has-children": hasChildren,
-								}}
-								data-nav-item={hasChildren ? "" : undefined}
-							>
-								<div class="site-nav__item-row">
-									<a
-										href={item.href}
-										class:list={item.cssClasses}
-										aria-current={current ? "page" : undefined}
-										target={item.external ? "_blank" : undefined}
-										rel={item.external ? "noopener noreferrer" : undefined}
-									>
-										{item.label}
-									</a>
-									{hasChildren && (
-										<button
-											type="button"
-											class="site-nav__sub-toggle"
-											data-nav-sub-toggle
-											aria-expanded="false"
-											aria-controls={subId}
-											aria-label={`Untermenü ${item.label}`}
+		<div class="site-header__nav-cluster">
+			<nav id="site-nav" class="site-nav" data-site-nav aria-label="Hauptnavigation">
+				<ul class="site-nav__list list-plain">
+					{
+						menuItems.map((item, index) => {
+							const current = !item.external && isCurrent(item.href);
+							const hasChildren = item.children.length > 0;
+							const subId = `site-nav-sub-${index}`;
+							return (
+								<li
+									class:list={{
+										"site-nav__item": true,
+										"has-children": hasChildren,
+									}}
+									data-nav-item={hasChildren ? "" : undefined}
+								>
+									<div class="site-nav__item-row">
+										<a
+											href={item.href}
+											class:list={item.cssClasses}
+											aria-current={current ? "page" : undefined}
+											target={item.external ? "_blank" : undefined}
+											rel={item.external ? "noopener noreferrer" : undefined}
 										>
-											<span class="site-nav__chevron" aria-hidden="true" />
-										</button>
+											{item.label}
+										</a>
+										{hasChildren && (
+											<button
+												type="button"
+												class="site-nav__sub-toggle"
+												data-nav-sub-toggle
+												aria-expanded="false"
+												aria-controls={subId}
+												aria-label={`Untermenü ${item.label}`}
+											>
+												<span class="site-nav__chevron" aria-hidden="true" />
+											</button>
+										)}
+									</div>
+									{hasChildren && (
+										<ul
+											id={subId}
+											class="site-nav__sub list-plain"
+											data-nav-sub
+										>
+											{item.children.map((child) => {
+												const childCurrent =
+													!child.external && isCurrent(child.href);
+												return (
+													<li>
+														<a
+															href={child.href}
+															class:list={child.cssClasses}
+															aria-current={childCurrent ? "page" : undefined}
+															target={child.external ? "_blank" : undefined}
+															rel={
+																child.external
+																	? "noopener noreferrer"
+																	: undefined
+															}
+														>
+															{child.label}
+														</a>
+													</li>
+												);
+											})}
+										</ul>
 									)}
-								</div>
-								{hasChildren && (
-									<ul
-										id={subId}
-										class="site-nav__sub list-plain"
-										data-nav-sub
-									>
-										{item.children.map((child) => {
-											const childCurrent =
-												!child.external && isCurrent(child.href);
-											return (
-												<li>
-													<a
-														href={child.href}
-														class:list={child.cssClasses}
-														aria-current={childCurrent ? "page" : undefined}
-														target={child.external ? "_blank" : undefined}
-														rel={
-															child.external ? "noopener noreferrer" : undefined
-														}
-													>
-														{child.label}
-													</a>
-												</li>
-											);
-										})}
-									</ul>
-								)}
-							</li>
-						);
-					})
-				}
-			</ul>
-		</nav>
+								</li>
+							);
+						})
+					}
+				</ul>
+			</nav>
+			<div class="site-header__search">
+				<SiteSearch />
+			</div>
+		</div>
 		<div class="site-header__actions">
-			{
-				!searchAtStart && (
-					<div class="site-header__search site-header__search--end">
-						<SiteSearch />
-					</div>
-				)
-			}
 			<button
 				type="button"
 				class="site-nav-toggle"
@@ -353,15 +344,24 @@ const headerStyle = [
 		flex-shrink: 0;
 	}
 
+	/* Menu + search; search always follows the items (#74). */
+	.site-header__nav-cluster {
+		display: flex;
+		align-items: center;
+		gap: 0.35rem 0.75rem;
+		margin-inline-start: auto;
+		min-width: 0;
+	}
+
 	.site-header__search {
 		display: flex;
 		align-items: center;
 		flex-shrink: 0;
 	}
 
-	/* Logo right: nav leading, brand + actions trailing (#74). */
+	/* Logo right: menu+search leading, brand trailing (#74). */
 	@media (min-width: 680px) {
-		.site-header--logo-right .site-nav {
+		.site-header--logo-right .site-header__nav-cluster {
 			order: 1;
 			margin-inline-start: 0;
 			margin-inline-end: auto;
@@ -374,17 +374,9 @@ const headerStyle = [
 		.site-header--logo-right .site-header__brand {
 			order: 3;
 		}
-
-		.site-header--logo-right.site-header--search-start .site-header__search--start {
-			order: 0;
-		}
-
-		.site-header--logo-right.site-header--search-start .site-nav {
-			order: 1;
-		}
 	}
 
-	/* Logo center: brand row + nav row below (#74). */
+	/* Logo center: brand row + menu/search row below (#74). */
 	@media (min-width: 680px) {
 		.site-header--logo-center .site-header__inner {
 			display: grid;
@@ -398,11 +390,6 @@ const headerStyle = [
 			height: auto;
 		}
 
-		.site-header--logo-center .site-header__search--start {
-			grid-area: lead;
-			justify-self: start;
-		}
-
 		.site-header--logo-center .site-header__brand {
 			grid-area: brand;
 			justify-self: center;
@@ -413,10 +400,10 @@ const headerStyle = [
 			justify-self: end;
 		}
 
-		.site-header--logo-center .site-nav {
+		.site-header--logo-center .site-header__nav-cluster {
 			grid-area: nav;
 			margin-inline-start: 0;
-			justify-self: center;
+			justify-content: center;
 			width: 100%;
 		}
 
@@ -495,10 +482,6 @@ const headerStyle = [
 	.site-header.is-nav-open .site-nav-toggle__bar:nth-child(3) {
 		top: calc(50% - 1px);
 		transform: rotate(-45deg);
-	}
-
-	.site-nav {
-		margin-inline-start: auto;
 	}
 
 	.site-nav__list {
@@ -661,51 +644,44 @@ const headerStyle = [
 			border-bottom: 1px solid var(--color-border);
 		}
 
-		.site-header__actions {
+		/* Nav is a dropdown; search stays in the bar after (visual: before burger). */
+		.site-header__nav-cluster {
 			margin-inline-start: auto;
 		}
 
+		.site-header__actions {
+			margin-inline-start: 0;
+		}
+
+		/* Logo right: Burger, Lupe, … Logo */
 		.site-header--logo-right .site-header__actions {
 			order: 1;
-			margin-inline-start: 0;
-			/* DOM: Lupe dann Burger → mobil links Burger, dann Lupe */
-			flex-direction: row-reverse;
 		}
 
-		.site-header--logo-right .site-header__search--start {
+		.site-header--logo-right .site-header__nav-cluster {
 			order: 2;
-			margin-inline-start: auto;
+			margin-inline-start: 0;
 		}
 
 		.site-header--logo-right .site-header__brand {
 			order: 3;
-		}
-
-		.site-header--logo-right:not(.site-header--search-start) .site-header__brand {
 			margin-inline-start: auto;
 		}
 
-		.site-header--logo-right .site-nav {
-			order: 4;
-		}
-
+		/* Logo center: Lupe + Burger rechts, Logo optisch mittig */
 		.site-header--logo-center .site-header__inner {
 			position: relative;
 			justify-content: flex-end;
 		}
 
-		.site-header--logo-center.site-header--search-start .site-header__inner {
-			justify-content: space-between;
+		.site-header--logo-center .site-header__nav-cluster {
+			margin-inline-start: 0;
 		}
 
 		.site-header--logo-center .site-header__brand {
 			position: absolute;
 			left: 50%;
 			transform: translateX(-50%);
-		}
-
-		.site-header--logo-center .site-header__actions {
-			margin-inline-start: 0;
 		}
 
 		.site-nav-toggle {

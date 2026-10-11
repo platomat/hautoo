@@ -53,8 +53,7 @@
     }
   },
   "header": {
-    "logoPosition": "left",
-    "searchPlacement": "end",
+    "logoPosition": "center",
     "minHeightDesktop": 64,
     "minHeightTablet": 64,
     "minHeightMobile": 56,

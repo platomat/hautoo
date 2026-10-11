@@ -1249,7 +1249,7 @@ collections:
             label: Header
             widget: object
             collapsed: false
-            hint: "Layout (Logo/Menü/Suche), dann pro Breakpoint: Ruhehöhe, Sticky ein/aus, kompakte Sticky-Höhe. Desktop ≥1024px, Tablet 680–1023px, Mobile <680px."
+            hint: "Logo-Position, dann pro Breakpoint: Ruhehöhe, Sticky ein/aus, kompakte Sticky-Höhe. Die Suchlupe steht immer hinter den Menüpunkten. Desktop ≥1024px, Tablet 680–1023px, Mobile <680px."
             fields:
               - name: logoPosition
                 label: Logo-Position
@@ -1259,15 +1259,7 @@ collections:
                   - { label: "Links (Menü rechts)", value: left }
                   - { label: "Rechts (Menü links)", value: right }
                   - { label: "Mittig (Menü darunter)", value: center }
-                hint: "Bei „Mittig“ steht das Menü ab Tablet unter dem Logo. Sticky-Höhen gelten dort als Mindesthöhe (Leiste darf zwei Zeilen hoch sein)."
-              - name: searchPlacement
-                label: Suchlupe
-                widget: select
-                default: end
-                options:
-                  - { label: "Bei den Aktionen (Ende)", value: end }
-                  - { label: "Am Anfang (vor dem Logo)", value: start }
-                hint: "Position der Suchlupe in der Header-Leiste."
+                hint: "Bei „Mittig“ steht das Menü ab Tablet unter dem Logo. Sticky-Höhen gelten dort als Mindesthöhe (Leiste darf zwei Zeilen hoch sein). Suchlupe immer direkt hinter den Menüpunkten."
               - name: minHeightDesktop
                 label: Ruhehöhe Desktop (px)
                 widget: number

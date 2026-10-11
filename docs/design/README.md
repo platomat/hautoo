@@ -142,8 +142,7 @@ Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-
 
 | Einstellung | Default | Wirkung |
 | --- | --- | --- |
-| `logoPosition` | `left` | Logo links / rechts, oder `center` (Menü ab Tablet unter dem Logo) ([#74](https://github.com/platomat/hautoo/issues/74)) |
-| `searchPlacement` | `end` | Suchlupe bei den Aktionen (`end`) oder am Anfang (`start`) |
+| `logoPosition` | `left` | Logo links / rechts, oder `center` (Menü ab Tablet unter dem Logo) ([#74](https://github.com/platomat/hautoo/issues/74)). Suchlupe immer hinter den Menüpunkten. |
 | Ruhehöhe Desktop/Tablet/Mobile | 64 / 64 / 56 | Höhe am Seitenanfang; ohne Sticky Mindesthöhe |
 | Sticky pro Breakpoint | an | Sticky ein/aus (Desktop ≥1024, Tablet 680–1023, Mobile <680) |
 | Sticky-Höhe | 64 / 64 / 56 | Kompakte Höhe nach Scrollen; bei `logoPosition: center` nur Mindesthöhe (zwei Zeilen) |
