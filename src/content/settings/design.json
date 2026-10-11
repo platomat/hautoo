@@ -53,7 +53,7 @@
     }
   },
   "header": {
-    "logoPosition": "center",
+    "logoPosition": "left",
     "minHeightDesktop": 64,
     "minHeightTablet": 64,
     "minHeightMobile": 56,

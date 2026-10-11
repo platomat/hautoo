@@ -4,19 +4,21 @@ description: Übersicht aller Markdown-Elemente und Content-Komponenten von haut
 status: published
 modifiedDate: 2026-10-11
 parent: features
+hero:
+  showBreadcrumbs: true
+  borderBottom: false
 toc:
   show: true
   title: Inhalt
   levels:
-  - h2
-  - h3
-hero:
-  showBreadcrumbs: true
-  borderBottom: true
+    - h2
+    - h3
 background:
-  image: /assets/alex-gruber-ATMEDyTPQG4-unsplash.webp
-  overlay: 78
-  attribution: Photo by <a href="https://unsplash.com/@alexgruber?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alex Gruber</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  image: /assets/brayden-law-kTQ1m-vTOsg-unsplash.webp
+  overlay: 88
+  attribution: Photo by <a href="https://unsplash.com/@braydenlaw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Brayden Law</a> on <a href="https://unsplash.com/photos/people-dining-at-neon-city-restaurant-kTQ1m-vTOsg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+layout:
+  contentWidth: wide
 seo:
   seo_title: Demo · Markdown und Komponenten
   seo_description: Demo-Seite mit Überschriften, Text, Links, Bildern und allen CMS-Content-Komponenten von hautuu.
@@ -31,9 +33,6 @@ seo:
   max_video_preview: -1
   max_image_preview_enabled: true
   max_image_preview: large
-layout:
-  contentWidth: wide
-
 ---
 
 Diese Seite zeigt **Markdown** und die **Content-Komponenten** aus der Sveltia-Toolbar. Parent ist [Features](/features/); URL: `/features/demo/`.

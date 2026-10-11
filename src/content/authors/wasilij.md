@@ -8,6 +8,7 @@ socialLinks:
   - platform: website
     url: https://wasilij.de/
     label: Meine Webseite
+showSocialInHero: true
 ---
 
 **hautuu** ist ein Lern- und Demo-Projekt: Wie man mit [**Cursor**](/glossar/cursor/) (KI), [**GitHub**](/glossar/github/) und [**Cloudflare**](/glossar/cloudflare-pages/) eine thematische, statische Website baut und pflegt, von leerem [**Repo**](/glossar/repository/) bis zur laufenden Site.
