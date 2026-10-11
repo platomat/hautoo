@@ -161,8 +161,15 @@ function categoriesFor(article: (typeof articles)[number]): CategoryEntry[] {
 							{showMeta && (
 								<div class="article-listing__meta text-sm text-muted">
 									{(hasCategories || hasTags) && (
-										<div class="article-listing__taxonomies">
-											{hasCategories ? (
+										<div
+											class:list={[
+												"article-listing__taxonomies",
+												hasCategories &&
+													hasTags &&
+													"article-listing__taxonomies--split",
+											]}
+										>
+											{hasCategories && (
 												<p class="article-listing__categories">
 													{articleCategories.map((cat, index) => (
 														<>
@@ -180,10 +187,8 @@ function categoriesFor(article: (typeof articles)[number]): CategoryEntry[] {
 														</>
 													))}
 												</p>
-											) : (
-												<span />
 											)}
-											{hasTags ? (
+											{hasTags && (
 												<p class="article-listing__tags">
 													{articleTags.map((tag, index) => (
 														<>
@@ -194,8 +199,6 @@ function categoriesFor(article: (typeof articles)[number]): CategoryEntry[] {
 														</>
 													))}
 												</p>
-											) : (
-												<span />
 											)}
 										</div>
 									)}
@@ -316,9 +319,13 @@ function categoriesFor(article: (typeof articles)[number]): CategoryEntry[] {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: flex-start;
 		gap: 0.35rem 1rem;
 		width: 100%;
+	}
+
+	.article-listing__taxonomies--split {
+		justify-content: space-between;
 	}
 
 	.article-listing__meta-row,
