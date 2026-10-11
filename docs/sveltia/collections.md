@@ -206,8 +206,8 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | `layout.contentWidth` | nein | `default` / `wide` / `full`; leer = global (`content.width.pages`) |
 | `layout.afterHero` | nein | Abstand unter Hero (rem); leer = `content.spacing.pages` |
 | `layout.beforeFooter` | nein | Abstand vor Footer (rem); leer = `content.spacing.pages` |
-| `headCode` | nein | Roh-HTML vor `</head>` (`<style>` / `<script>`) |
-| `footerCode` | nein | Roh-HTML vor `</body>` |
+| `headCode` | nein | HTML-Fragmente vor `</head>` (`<style>` / `<script>` gemischt möglich; Highlighting fest HTML) |
+| `footerCode` | nein | HTML-Fragmente vor `</body>` (Highlighting fest HTML) |
 | Body | ja | Markdown-Inhalt |
 
 Seiten bleiben flach unter `src/content/pages/<slug>/index.md`. Die URL-Hierarchie kommt aus `parent` (Kette möglich). Beispiel: Seite `team` mit `parent: ueber-uns` → `/ueber-uns/team/`.

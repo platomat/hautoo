@@ -108,11 +108,11 @@ Anker-IDs: `github-slugger`.
 
 | Seite | Ort |
 | --- | --- |
-| Sveltia | Collection `pages`, Felder „Header-Code“ / „Footer-Code“ (`widget: code`, `output_code_only: true`) |
+| Sveltia | Collection `pages`, Felder „Header-Code“ / „Footer-Code“ (`widget: code`, `output_code_only: true`, `default_language: html`, `allow_language_selection: false`) |
 | Astro | `pages` Schema → Props an `BaseLayout.astro` |
 | Injection | `headCode` vor `</head>`, `footerCode` vor `</body>` (nach Site-Footer), per `set:html` |
 
-Optional. Für seitenspezifisches `<style>` / `<script>`. Nur für vertrauenswürdige Redaktion (kein Sanitizing). Nicht nötig für FAQ-Abstände — die kommen aus generischem Heading-CSS.
+Optional. HTML-Fragmente: `<style>` und `<script>` dürfen im selben Feld stehen. Sprachauswahl ist ausgeblendet (Highlighting fest HTML). Nur für vertrauenswürdige Redaktion (kein Sanitizing).
 
 ## Markdown-Inhalt: kein H1
 
