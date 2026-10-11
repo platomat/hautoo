@@ -3,12 +3,14 @@ import LogoMark from "./LogoMark.astro";
 import SiteSearch from "./SiteSearch.astro";
 import { getResolvedMenu, MENU_MAIN } from "../lib/menus";
 import { getPublicPages } from "../lib/pages";
+import { stickyLogoDiffers } from "../lib/site-logo";
 import { getSiteHeaderConfig, getSiteWebsiteTitle } from "../lib/site-config";
 
 const pages = await getPublicPages();
 const menuItems = await getResolvedMenu(MENU_MAIN, pages);
 const headerConfig = await getSiteHeaderConfig();
 const websiteTitle = await getSiteWebsiteTitle();
+const useStickyLogo = stickyLogoDiffers();
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 function isCurrent(href: string): boolean {
@@ -43,7 +45,23 @@ const headerStyle = [
 >
 	<div class="site-header__inner shell-inner">
 		<a class="site-header__brand" href="/" aria-label={`${websiteTitle} Startseite`}>
-			<LogoMark class="site-header__logo-mark" />
+			<span class="site-header__logo-slot">
+				<LogoMark
+					variant="header"
+					class:list={[
+						"site-header__logo-mark",
+						useStickyLogo && "site-header__logo-mark--rest",
+					]}
+				/>
+				{
+					useStickyLogo && (
+						<LogoMark
+							variant="headerSticky"
+							class="site-header__logo-mark site-header__logo-mark--stuck"
+						/>
+					)
+				}
+			</span>
 			<span class="site-header__logo-text">{websiteTitle}</span>
 		</a>
 		<nav id="site-nav" class="site-nav" data-site-nav aria-label="Hauptnavigation">
@@ -267,12 +285,31 @@ const headerStyle = [
 		line-height: 1;
 	}
 
-	.site-header__brand :global(.site-header__logo-mark) {
-		display: block;
+	.site-header__logo-slot {
+		display: grid;
+		flex-shrink: 0;
 		width: 1.35rem;
 		height: 1.35rem;
-		flex-shrink: 0;
+	}
+
+	.site-header__brand :global(.site-header__logo-mark) {
+		display: block;
+		grid-area: 1 / 1;
+		width: 1.35rem;
+		height: 1.35rem;
 		color: var(--color-text);
+	}
+
+	.site-header__brand :global(.site-header__logo-mark--stuck) {
+		display: none;
+	}
+
+	.site-header.is-stuck :global(.site-header__logo-mark--rest) {
+		display: none;
+	}
+
+	.site-header.is-stuck :global(.site-header__logo-mark--stuck) {
+		display: block;
 	}
 
 	/* Hover/focus/active: wordmark + whole mark → action (accent follows currentColor). */

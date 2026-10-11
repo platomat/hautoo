@@ -49,6 +49,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Autoren-Collection**: Name, Bio (Markdown), lokaler Avatar oder Gravatar-URL (Download beim Build nach `src/assets/authors/gravatar/`). An Artikel 0..n zuweisbar. Byline mit Avatar im Hero und/oder am Artikelende (Einstellungen → Content → Autoren: Platzierung und Form rund/eckig). Übersicht `/autoren/`, Profil `/autoren/<slug>/` mit runden Foto, Bio und Artikelliste („Artikel (N)“).
 - **Settings-Collection** (`settings`): globale Site-Einstellungen als JSON unter `src/content/settings/` (wie cdr-legal). Eigene CMS-Einträge **General**, **Design** und **Content**.
 - **Website-Titel** unter **Einstellungen** → **General** → **Website title**: Markenname für Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`) und `og:site_name`.
+- **Logos** unter **Einstellungen** → **General** → **Logos**: Header, optional Sticky-Header und Footer aus der Mediathek (SVG inline/einfärbbar); Embed `{{logo …}}` im Inhalt (#79).
 - **Website-Beschreibung** unter **Einstellungen** → **General** → **Description**: optionale Kurzbeschreibung oder Slogan (`websiteDescription`); Speichern für spätere Anzeige.
 - **Footer-Copyright** unter **Einstellungen** → **General** → **Footer copyright**: optionaler Claim nach © und Website-Titel (Text oder HTML-Link wie beim Bildnachweis) plus wählbarer Trenner (`•`, `-`, `—`, `/`).
 - **Kontakt-E-Mail** unter **Einstellungen** → **General** → **Contact email** (optional): überschreibt `CONTACT_EMAIL` beim Build; Anzeige über `{{contact-email}}` mit Spam-Schutz. Leer = weiter ENV (empfohlen für öffentliche Repos).
@@ -76,6 +77,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 
 - **Wiederverwendbare Bausteine** (`{{block id="…"}}`): z. B. Stack-Grafik (`stack-uebersicht`) auf Startseite und in passenden Folgen ([Folge 020](/artikel/folge-020-bausteine-fork/)).
 - **Artikel-Listing** im Content: Anzahl, Sortierung, Grid oder Liste, wählbare Kartenfelder inkl. Kategorien, Tags, optional **Autoren**, Datum und Lesezeit; optional Filter nach Autoren, Kategorien und Tags (UND/ODER) ([Folge 019](/artikel/folge-019-impressum-komponenten/), #78).
+- **Logo**-Embed (`{{logo variant="header" width="120" unit="px" align="center"}}`): eines der drei Site-Logos mit Breite und Ausrichtung (#79).
 - **Autoren-Listing** (`{{author-listing}}`): alle Autoren mit Avatar und Artikelanzahl.
 - **Trennlinie**, **Abstandshalter** (`{{spacer}}` bzw. `{{spacer height="…"}}`, Default 32 px), **Button** (`{{button label="…" href="…"}}`, solid/outline, Palette, Ausrichtung) und **Kontakt-E-Mail** als Embed (`{{contact-email}}` aus CMS oder Build-Variable, nicht im Markdown).
 - **Markdown-Embeds** über die Sveltia-Toolbar; Rendering zentral in `CmsContent.astro`.

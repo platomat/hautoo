@@ -256,6 +256,7 @@ collections:
           - separator
           - spacer
           - contact-email
+          - logo
           - video
           - video-consent-reset
           - repodoc
@@ -513,6 +514,7 @@ collections:
           - separator
           - spacer
           - contact-email
+          - logo
           - video
           - video-consent-reset
           - repodoc
@@ -716,6 +718,7 @@ collections:
           - separator
           - spacer
           - contact-email
+          - logo
           - video
           - video-consent-reset
           - repodoc
@@ -926,6 +929,27 @@ collections:
             required: false
             hint: "Optional owner/name für das Footer-Icon (z. B. platomat/hautoo). Leer = Site-Logo verlinkt auf die Startseite (typisch für Forks)."
             default: ""
+          - name: logos
+            label: Logos
+            widget: object
+            collapsed: false
+            hint: "Optional aus der Mediathek. Leer = Standard-Logo. SVG wird inline eingebettet (einfärbbar per CSS)."
+            fields:
+              - name: header
+                label: Header
+                widget: image
+                required: false
+                hint: "Logo neben dem Website-Titel im Header. Leer = public/img/logo-mark.svg."
+              - name: headerSticky
+                label: Sticky Header
+                widget: image
+                required: false
+                hint: "Optional anderes Logo, wenn der Header sticky „festklebt“. Leer = gleiches wie Header."
+              - name: footer
+                label: Footer
+                widget: image
+                required: false
+                hint: "Mitte im Footer, wenn kein GitHub-Repo gesetzt ist. Leer = gleiches wie Header."
       - name: design
         label: Design
         file: src/content/settings/design.json

@@ -5,11 +5,13 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 ## Logo
 
 - **Markenzeichen:** Blatt mit Mittelrippe und Gabelnerven (Natur + Branch-Struktur)
-- **Statikdatei:** `public/img/logo-mark.svg` (Quelle für Header, README und Content-Einbettungen)
-- **Header:** `LogoMark.astro` lädt die Public-SVG inline; Ink = `currentColor`, Accent = Aktionsfarbe; bei Hover/Focus/Active komplett Aktionsfarbe
+- **Default:** `public/img/logo-mark.svg`, wenn CMS-Logos leer
+- **CMS:** Einstellungen → General → **Logos** (`header` / `headerSticky` / `footer`); SVG wird inline eingebettet und per CSS eingefärbt (`LogoMark.astro`, #79)
+- **Header:** Default-Mark mit Ink/Accent; Hover/Focus/Active → Aktionsfarbe. Sticky kann ein zweites Logo nutzen
 - **Wortmarke:** aus CMS **Einstellungen → General → Website title** (`settings/general.json`), neben dem Mark im Header und in der Footer-Zeile
 - **Footer-Copyright-Claim:** CMS General → Footer copyright (`footerCopyright.claim` / `.separator`)
-- **Footer-Mitte:** bei gesetztem `githubRepo` (General) GitHub-Icon; sonst Logo-Mark → Startseite
+- **Footer-Mitte:** bei gesetztem `githubRepo` (General) GitHub-Icon; sonst Site-Logo → Startseite
+- **Inhalt:** Embed `{{logo variant="header" width="120" unit="px" align="center"}}`
 - **Favicon:** `public/img/favicon.svg` (Ink dunkel bei hellem System, hell bei dunklem; Accent bleibt grün), Fallback `favicon.ico`
 
 ## Prinzipien

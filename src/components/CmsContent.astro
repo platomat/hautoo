@@ -3,6 +3,7 @@ import ArticleListing from "./ArticleListing.astro";
 import AuthorListing from "./AuthorListing.astro";
 import CategoryListing from "./CategoryListing.astro";
 import CmsButton from "./CmsButton.astro";
+import CmsLogo from "./CmsLogo.astro";
 import ContactEmail from "./ContactEmail.astro";
 import GlossarListing from "./GlossarListing.astro";
 import Separator from "./Separator.astro";
@@ -81,6 +82,16 @@ const segments = await buildContentSegments(body);
 		}
 		if (segment.type === "contact-email") {
 			return <ContactEmail />;
+		}
+		if (segment.type === "logo") {
+			return (
+				<CmsLogo
+					variant={segment.props.variant}
+					width={segment.props.width}
+					unit={segment.props.unit}
+					align={segment.props.align}
+				/>
+			);
 		}
 		if (segment.type === "separator") {
 			return (

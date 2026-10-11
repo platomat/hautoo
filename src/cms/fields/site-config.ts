@@ -1,5 +1,6 @@
 import { z } from "astro/zod";
 import { contentWidthSchema } from "./content-width";
+import { cmsImagePathSchema } from "./page-background";
 import { siteTypographyConfigSchema } from "./site-typography";
 
 const headerHeight = z.coerce.number().int().min(40).max(600);
@@ -233,6 +234,19 @@ export type SiteSpacingByCollectionConfig = z.infer<
 export const DEFAULT_SITE_SPACING_COLLECTION: SiteSpacingCollectionConfig =
 	siteSpacingCollectionSchema.parse({});
 
+/**
+ * Brand logos from the media library (#79).
+ * Empty path → default `public/img/logo-mark.svg`.
+ * Sticky/footer empty → fall back to header logo.
+ */
+export const siteLogosConfigSchema = z.object({
+	header: cmsImagePathSchema,
+	headerSticky: cmsImagePathSchema,
+	footer: cmsImagePathSchema,
+});
+
+export type SiteLogosConfig = z.infer<typeof siteLogosConfigSchema>;
+
 /** CMS group General (site name for chrome + document titles). */
 export const siteGeneralConfigSchema = z.object({
 	/** Brand / site name in header, title suffix, og:site_name. */
@@ -254,6 +268,8 @@ export const siteGeneralConfigSchema = z.object({
 	 * Set for hautoo (`platomat/hautoo`); leave empty on forks → site logo → `/`.
 	 */
 	githubRepo: z.string().trim().default(""),
+	/** Header / sticky / footer logos (SVG preferred for CSS color). */
+	logos: siteLogosConfigSchema.default({}),
 });
 
 export type SiteGeneralConfig = z.infer<typeof siteGeneralConfigSchema>;

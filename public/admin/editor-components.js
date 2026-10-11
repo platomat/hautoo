@@ -557,6 +557,81 @@
 	});
 
 	CMS.registerEditorComponent({
+		id: "logo",
+		label: "Logo",
+		icon: "image",
+		fields: [
+			{
+				name: "variant",
+				label: "Welches Logo",
+				widget: "select",
+				default: "header",
+				options: [
+					{ label: "Header", value: "header" },
+					{ label: "Sticky Header", value: "sticky" },
+					{ label: "Footer", value: "footer" },
+				],
+				hint: "Aus Einstellungen → General → Logos. Sticky/Footer fallen auf Header zurück, wenn leer.",
+			},
+			{
+				name: "width",
+				label: "Breite",
+				widget: "number",
+				value_type: "int",
+				default: 120,
+				min: 1,
+				max: 1200,
+				hint: "Zahl; Einheit darunter (px oder %).",
+			},
+			{
+				name: "unit",
+				label: "Einheit",
+				widget: "select",
+				default: "px",
+				options: [
+					{ label: "Pixel (px)", value: "px" },
+					{ label: "Prozent (%)", value: "%" },
+				],
+			},
+			{
+				name: "align",
+				label: "Ausrichtung",
+				widget: "select",
+				default: "left",
+				options: [
+					{ label: "Links", value: "left" },
+					{ label: "Zentriert", value: "center" },
+					{ label: "Rechts", value: "right" },
+				],
+			},
+		],
+		pattern: /^\{\{logo(?<attrs>[^}]*)\}\}\s*$/m,
+		fromBlock: (match) => {
+			const attrs = parseAttrs(match?.groups?.attrs || "");
+			return {
+				variant: attrs.variant || "header",
+				width: attrs.width || "120",
+				unit: attrs.unit === "%" ? "%" : "px",
+				align: attrs.align || "left",
+			};
+		},
+		toBlock: ({
+			variant = "header",
+			width = 120,
+			unit = "px",
+			align = "left",
+		}) =>
+			`{{logo variant="${variant}" width="${width}" unit="${unit}" align="${align}"}}`,
+		toPreview: ({
+			variant = "header",
+			width = 120,
+			unit = "px",
+			align = "left",
+		}) =>
+			`<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Logo · ${variant} · ${width}${unit} · ${align}</div>`,
+	});
+
+	CMS.registerEditorComponent({
 		id: "repodoc",
 		label: "Repo-Dokument",
 		icon: "description",

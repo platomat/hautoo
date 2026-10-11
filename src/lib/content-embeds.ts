@@ -131,6 +131,17 @@ export type VideoEmbedProps = {
 	poster?: string;
 };
 
+export type LogoEmbedVariant = "header" | "sticky" | "footer";
+export type LogoEmbedAlign = "left" | "center" | "right";
+export type LogoEmbedUnit = "px" | "%";
+
+export type LogoEmbedProps = {
+	variant: LogoEmbedVariant;
+	width: number;
+	unit: LogoEmbedUnit;
+	align: LogoEmbedAlign;
+};
+
 export type ContentSegment =
 	| { type: "html"; html: string }
 	| { type: "article-listing"; props: ArticleListingEmbedProps }
@@ -142,6 +153,7 @@ export type ContentSegment =
 	| { type: "spacer"; props: SpacerEmbedProps }
 	| { type: "button"; props: ButtonEmbedProps }
 	| { type: "contact-email" }
+	| { type: "logo"; props: LogoEmbedProps }
 	| { type: "repodoc"; props: RepoDocEmbedProps }
 	| { type: "video"; props: VideoEmbedProps }
 	| { type: "video-consent-reset" }
@@ -220,7 +232,37 @@ const DEFAULT_SPACER: SpacerEmbedProps = {
 
 /** Line must be only the embed (optional attrs). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|author-listing|tag-cloud|separator|spacer|button|contact-email|repodoc|block|video-consent-reset|video)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|author-listing|tag-cloud|separator|spacer|button|contact-email|logo|repodoc|block|video-consent-reset|video)(?<attrs>[^}]*)\}\}\s*$/gm;
+
+const LOGO_VARIANTS = new Set<LogoEmbedVariant>(["header", "sticky", "footer"]);
+const LOGO_ALIGNS = new Set<LogoEmbedAlign>(["left", "center", "right"]);
+
+const DEFAULT_LOGO_EMBED: LogoEmbedProps = {
+	variant: "header",
+	width: 120,
+	unit: "px",
+	align: "left",
+};
+
+export function parseLogoEmbedProps(
+	attrsRaw: string | undefined,
+): LogoEmbedProps {
+	const attrs = parseAttrs(attrsRaw ?? "");
+	const variant = LOGO_VARIANTS.has(attrs.variant as LogoEmbedVariant)
+		? (attrs.variant as LogoEmbedVariant)
+		: DEFAULT_LOGO_EMBED.variant;
+	const align = LOGO_ALIGNS.has(attrs.align as LogoEmbedAlign)
+		? (attrs.align as LogoEmbedAlign)
+		: DEFAULT_LOGO_EMBED.align;
+	const unit: LogoEmbedUnit = attrs.unit === "%" ? "%" : "px";
+	const max = unit === "%" ? 100 : 1200;
+	return {
+		variant,
+		width: clampInt(attrs.width, DEFAULT_LOGO_EMBED.width, 1, max),
+		unit,
+		align,
+	};
+}
 
 const ARTICLE_SORTS = new Set<ArticleSort>([
 	"newest",
@@ -606,6 +648,11 @@ export async function buildContentSegments(
 			});
 		} else if (name === "contact-email") {
 			segments.push({ type: "contact-email" });
+		} else if (name === "logo") {
+			segments.push({
+				type: "logo",
+				props: parseLogoEmbedProps(attrs),
+			});
 		} else if (name === "repodoc") {
 			const props = parseRepoDocProps(attrs);
 			if (props) {

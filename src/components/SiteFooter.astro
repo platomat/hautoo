@@ -1,4 +1,5 @@
 ---
+import LogoMark from "./LogoMark.astro";
 import { getResolvedMenu, MENU_FOOTER_LEGAL } from "../lib/menus";
 import { withBuildId } from "../lib/build-id";
 import {
@@ -113,7 +114,7 @@ function isCurrent(href: string): boolean {
 					title={homeLabel}
 					aria-label={homeLabel}
 				>
-					<span class="site-footer__home-mark" aria-hidden="true" />
+					<LogoMark variant="footer" class="site-footer__home-mark" />
 				</a>
 			)
 		}

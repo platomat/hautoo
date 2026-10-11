@@ -135,6 +135,7 @@ Im CMS über die Markdown-Toolbar einfügen (wie Bilder):
 | **Abstandshalter** | `{{spacer}}` oder `{{spacer height="48"}}` | Vertikaler Leerraum in px (Default 32, Min. 1, Max. 600). Ohne sichtbare Linie. |
 | **Button** | `{{button label="Mehr erfahren" href="/kontakt/" target="_self" style="solid" color="action" align="left"}}` | Pflicht: `label`, `href`. Optional: `target` (`_self` / `_blank`), `style` (`solid` / `outline`), `color` (gleiche Palette wie Trennlinie, Default `action`), `align` (`left` / `center` / `right` / `full`). Solid: Kontrast-Text automatisch |
 | **Kontakt-E-Mail** | `{{contact-email}}` | Adresse aus CMS `general.contactEmail` (falls gesetzt), sonst `CONTACT_EMAIL`; nicht im Markdown speichern |
+| **Logo** | `{{logo variant="header" width="120" unit="px" align="center"}}` | Site-Logo aus General → Logos (`header` / `sticky` / `footer`); Breite px oder %; Ausrichtung links/zentriert/rechts |
 | **Repo-Dokument** | `{{repodoc path="docs/github/README.md" title="GitHub" description="Kurzer Satz"}}` | `path` = existierende Datei unter `docs/`; Link zu GitHub `main`; optional `title` / `description` |
 | **Video** | `{{video provider="youtube" id="…" }}` oder `provider="file" src="datei.mp4"` | YT/Vimeo: Facade + Consent. **file**/R2: HTML5-`<video>`, Basis-URL unter Content → Medien (`videoBaseUrl`); optionales Poster per Medienauswahl; siehe [R2-Videos](../cloudflare/r2-videos.md) |
 | **Video-Freischaltung widerrufen** | `{{video-consent-reset}}` | Button zum Widerruf (Datenschutz) |

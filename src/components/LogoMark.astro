@@ -1,28 +1,49 @@
 ---
 /**
- * Header leaf mark: inlines `public/img/logo-mark.svg` so CSS can recolor
- * (ink = currentColor, accent = action; hover → all action via SiteHeader).
+ * Site logo: CMS path from General → Logos, else default `public/img/logo-mark.svg`.
+ * SVGs are inlined so CSS can recolor (default mark: ink/accent classes).
  */
-import logoMarkSvg from "../../public/img/logo-mark.svg?raw";
+import { Image } from "astro:assets";
+import {
+	resolveLogo,
+	type LogoSlot,
+} from "../lib/site-logo";
 
 interface Props {
+	/** Which configured logo (sticky/footer fall back to header). */
+	variant?: LogoSlot;
 	class?: string;
 }
 
-const { class: className } = Astro.props;
-
-/** Strip XML prolog / comments; keep inner SVG for set:html. */
-const svgHtml = logoMarkSvg
-	.replace(/<\?xml[^?]*\?>/gi, "")
-	.replace(/<!--[\s\S]*?-->/g, "")
-	.trim();
+const { variant = "header", class: className } = Astro.props;
+const logo = resolveLogo(variant);
 ---
 
-<span
-	class:list={["logo-mark", className]}
-	aria-hidden="true"
-	set:html={svgHtml}
-/>
+{
+	logo.kind === "svg" ? (
+		<span
+			class:list={[
+				"logo-mark",
+				logo.isDefault ? "logo-mark--default" : "logo-mark--custom",
+				className,
+			]}
+			aria-hidden="true"
+			set:html={logo.html}
+		/>
+	) : (
+		<span
+			class:list={["logo-mark", "logo-mark--raster", className]}
+			aria-hidden="true"
+		>
+			<Image
+				src={logo.meta}
+				alt=""
+				width={logo.meta.width}
+				height={logo.meta.height}
+			/>
+		</span>
+	)
+}
 
 <style>
 	.logo-mark :global(svg) {
@@ -31,24 +52,41 @@ const svgHtml = logoMarkSvg
 		height: 100%;
 	}
 
-	.logo-mark :global(.logo-mark__ink) {
+	.logo-mark--raster :global(img) {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
+	/* Default leaf mark: ink = currentColor, accent = action */
+	.logo-mark--default :global(.logo-mark__ink) {
 		stroke: currentColor;
 		fill: none;
 	}
 
-	.logo-mark :global(.logo-mark__ink.logo-mark__leaf),
-	.logo-mark :global(circle.logo-mark__ink) {
+	.logo-mark--default :global(.logo-mark__ink.logo-mark__leaf),
+	.logo-mark--default :global(circle.logo-mark__ink) {
 		fill: currentColor;
 		stroke: none;
 	}
 
-	.logo-mark :global(.logo-mark__accent) {
+	.logo-mark--default :global(.logo-mark__accent) {
 		stroke: var(--color-action);
 		fill: none;
 	}
 
-	.logo-mark :global(circle.logo-mark__accent) {
+	.logo-mark--default :global(circle.logo-mark__accent) {
 		fill: var(--color-action);
 		stroke: none;
+	}
+
+	/* Custom SVG: paint with currentColor (override hard-coded fills/strokes). */
+	.logo-mark--custom :global(svg [fill]:not([fill="none"])) {
+		fill: currentColor;
+	}
+
+	.logo-mark--custom :global(svg [stroke]:not([stroke="none"])) {
+		stroke: currentColor;
 	}
 </style>

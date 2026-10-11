@@ -1,0 +1,75 @@
+---
+/**
+ * Content embed: site logo (header / sticky / footer) with size and alignment.
+ */
+import LogoMark from "./LogoMark.astro";
+import type { LogoSlot } from "../lib/site-logo";
+
+export type CmsLogoVariant = "header" | "sticky" | "footer";
+export type CmsLogoAlign = "left" | "center" | "right";
+export type CmsLogoUnit = "px" | "%";
+
+interface Props {
+	variant?: CmsLogoVariant;
+	/** Numeric width; unit via `unit`. */
+	width?: number;
+	unit?: CmsLogoUnit;
+	align?: CmsLogoAlign;
+}
+
+const {
+	variant = "header",
+	width = 120,
+	unit = "px",
+	align = "left",
+} = Astro.props;
+
+const logoVariant: LogoSlot =
+	variant === "sticky"
+		? "headerSticky"
+		: variant === "footer"
+			? "footer"
+			: "header";
+
+const safeWidth = Math.min(
+	unit === "%" ? 100 : 1200,
+	Math.max(1, Number.isFinite(width) ? width : 120),
+);
+const cssWidth = unit === "%" ? `${safeWidth}%` : `${safeWidth}px`;
+---
+
+<div
+	class:list={["cms-logo", `cms-logo--align-${align}`]}
+	style={`--cms-logo-width: ${cssWidth}`}
+>
+	<LogoMark variant={logoVariant} class="cms-logo__mark" />
+</div>
+
+<style>
+	.cms-logo {
+		margin: 1rem 0;
+		line-height: 0;
+	}
+
+	.cms-logo--align-left {
+		text-align: left;
+	}
+
+	.cms-logo--align-center {
+		text-align: center;
+	}
+
+	.cms-logo--align-right {
+		text-align: right;
+	}
+
+	.cms-logo__mark {
+		display: inline-block;
+		width: var(--cms-logo-width);
+		height: auto;
+		max-width: 100%;
+		color: var(--color-text);
+		vertical-align: middle;
+		aspect-ratio: 1;
+	}
+</style>

@@ -49,6 +49,9 @@ Globale Site-Einstellungen als **JSON-Dateien** (wie cdr-legal), kein Markdown-B
 | `footerCopyright.claim` | Optionaler Footer-Zusatz nach dem Website-Titel (Text/URL/HTML mit `<a href>`, wie Bildnachweis) |
 | `footerCopyright.separator` | Trenner Titel↔Claim: `•` / `-` / `—` / `/` (Default `•`) |
 | `githubRepo` | Optional `owner/name` für Footer-Mitte (GitHub-Icon). Leer = Site-Logo → Startseite (Forks) |
+| `logos.header` | Optional Header-Logo aus Mediathek; leer = `public/img/logo-mark.svg`. SVG wird inline eingebettet (#79) |
+| `logos.headerSticky` | Optional Logo im sticky Header; leer = Header-Logo |
+| `logos.footer` | Optional Footer-Logo (ohne GitHub-Repo); leer = Header-Logo |
 | `contactEmail` | Optional für `{{contact-email}}`. Überschreibt `CONTACT_EMAIL` beim Build; leer = ENV. Wert ist öffentlich in Git. |
 
 ### Einstellungen → Design → Farbpalette (#70)
