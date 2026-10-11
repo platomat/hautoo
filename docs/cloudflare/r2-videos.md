@@ -72,7 +72,7 @@ Leer lassen: Im Embed nur **volle** `https://…`-URLs verwenden.
 - Objektname stabil und sprechend, z. B. `folge-001-intro.mp4`.
 - Upload: Dashboard (R2 → Bucket → Upload) oder `wrangler r2 object put …` (CLI, Token nur lokal/CI).
 
-Poster-Bilder (Vorschaubild) können weiter **klein** im Repo unter `src/assets/` liegen und im Embed als `poster="/assets/…"` gesetzt werden.
+Poster-Bilder (Vorschaubild) liegen klein im Repo (Mediathek / `src/assets/`). Im Video-Block per **Medienauswahl** setzen (Feld Poster), nicht als Freitext-Pfad.
 
 ## Schritt 5: Im Artikel einbinden
 
