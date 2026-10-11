@@ -16,6 +16,11 @@ export type HeaderLogoPosition = z.infer<typeof headerLogoPositionSchema>;
 export const siteHeaderConfigSchema = z.object({
 	/** Logo left / right, or centered with nav on a second row (#74). Search always follows the menu. */
 	logoPosition: headerLogoPositionSchema.default("left"),
+	/**
+	 * Inner shell max-width (same steps as content).
+	 * Default `wide` matches previous hard-coded header shell.
+	 */
+	contentWidth: contentWidthSchema.default("wide"),
 	/** Resting bar height at page top; also min-height when sticky is off. */
 	minHeightDesktop: headerHeight.default(64),
 	minHeightTablet: headerHeight.default(64),
@@ -115,12 +120,21 @@ export const footerBrandAlignSchema = z.enum(["start", "center", "end"]);
 
 export type FooterBrandAlign = z.infer<typeof footerBrandAlignSchema>;
 
+/** How links inside the footer brand menu are laid out. */
+export const footerBrandMenuLayoutSchema = z.enum(["row", "stack"]);
+
+export type FooterBrandMenuLayout = z.infer<typeof footerBrandMenuLayoutSchema>;
+
 /** Brand strip above the copyright bar (Design → Footer → Brand). */
 export const siteFooterBrandConfigSchema = z.object({
 	/** Master switch for the brand strip. */
 	enabled: z.boolean().default(false),
 	direction: footerBrandDirectionSchema.default("row"),
 	align: footerBrandAlignSchema.default("center"),
+	/** Menu links side-by-side or stacked. */
+	menuLayout: footerBrandMenuLayoutSchema.default("row"),
+	/** Inner shell max-width (default / wide / full). */
+	contentWidth: contentWidthSchema.default("wide"),
 	/** Menu collection slug (default `footer`); not `footer-legal`. */
 	menu: z.string().trim().default("footer"),
 	/** Ordered blocks (Sveltia list = drag-and-drop). */
@@ -132,8 +146,17 @@ export const siteFooterBrandConfigSchema = z.object({
 
 export type SiteFooterBrandConfig = z.infer<typeof siteFooterBrandConfigSchema>;
 
+/** Copyright row under the brand strip. */
+export const siteFooterBarConfigSchema = z.object({
+	/** Inner shell max-width (default / wide / full). */
+	contentWidth: contentWidthSchema.default("wide"),
+});
+
+export type SiteFooterBarConfig = z.infer<typeof siteFooterBarConfigSchema>;
+
 export const siteFooterConfigSchema = z.object({
 	brand: siteFooterBrandConfigSchema.default({}),
+	bar: siteFooterBarConfigSchema.default({}),
 });
 
 export type SiteFooterConfig = z.infer<typeof siteFooterConfigSchema>;
@@ -470,6 +493,9 @@ export const DEFAULT_SITE_HEADER_CONFIG: SiteHeaderConfig =
 
 export const DEFAULT_SITE_FOOTER_BRAND_CONFIG: SiteFooterBrandConfig =
 	siteFooterBrandConfigSchema.parse({});
+
+export const DEFAULT_SITE_FOOTER_BAR_CONFIG: SiteFooterBarConfig =
+	siteFooterBarConfigSchema.parse({});
 
 export const DEFAULT_SITE_HERO_CONFIG: SiteHeroConfig =
 	siteHeroConfigSchema.parse({});

@@ -2,6 +2,7 @@ import contentRaw from "../content/settings/content.json" with { type: "json" };
 import designRaw from "../content/settings/design.json" with { type: "json" };
 import generalRaw from "../content/settings/general.json" with { type: "json" };
 import {
+	DEFAULT_SITE_FOOTER_BAR_CONFIG,
 	DEFAULT_SITE_FOOTER_BRAND_CONFIG,
 	DEFAULT_SITE_GENERAL_CONFIG,
 	DEFAULT_SITE_HEADER_CONFIG,
@@ -11,6 +12,7 @@ import {
 	siteConfigSchema,
 	siteContentConfigSchema,
 	siteDesignConfigSchema,
+	siteFooterBarConfigSchema,
 	siteFooterBrandConfigSchema,
 	siteGeneralConfigSchema,
 	type BreadcrumbSeparator,
@@ -20,6 +22,7 @@ import {
 	type HeroCollectionKey,
 	type HeroTextAlign,
 	type SiteConfig,
+	type SiteFooterBarConfig,
 	type SiteFooterBrandConfig,
 	type SiteHeaderConfig,
 	type SiteHeroConfig,
@@ -95,6 +98,14 @@ export function getFooterBrandConfig(): SiteFooterBrandConfig {
 	const config = getSiteConfig();
 	return siteFooterBrandConfigSchema.parse(
 		config.design?.footer?.brand ?? DEFAULT_SITE_FOOTER_BRAND_CONFIG,
+	);
+}
+
+/** Copyright row shell width (Design → Footer → Bar). */
+export function getFooterBarConfig(): SiteFooterBarConfig {
+	const config = getSiteConfig();
+	return siteFooterBarConfigSchema.parse(
+		config.design?.footer?.bar ?? DEFAULT_SITE_FOOTER_BAR_CONFIG,
 	);
 }
 

@@ -62,7 +62,8 @@
     "stickyMobile": true,
     "heightDesktop": 48,
     "heightTablet": 48,
-    "heightMobile": 40
+    "heightMobile": 40,
+    "contentWidth": "wide"
   },
   "footer": {
     "brand": {
@@ -71,10 +72,24 @@
       "align": "center",
       "menu": "footer",
       "blocks": [
-        { "id": "logo", "enabled": true },
-        { "id": "description", "enabled": true },
-        { "id": "menu", "enabled": true }
-      ]
+        {
+          "id": "logo",
+          "enabled": true
+        },
+        {
+          "id": "description",
+          "enabled": true
+        },
+        {
+          "id": "menu",
+          "enabled": true
+        }
+      ],
+      "menuLayout": "row",
+      "contentWidth": "wide"
+    },
+    "bar": {
+      "contentWidth": "wide"
     }
   },
   "hero": {

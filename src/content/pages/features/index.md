@@ -103,7 +103,7 @@ Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Co
 - **Farbpalette** (CSS-Variablen, inkl. Alpha für Glas; Untermenü-Hintergrund und -Text separat) ([#70](https://github.com/platomat/hautoo/issues/70), [#84](https://github.com/platomat/hautoo/issues/84)).
 - **Schrift:** Fließtext und Überschriften (Fontsource), Basisgröße, Gewicht, H1–H6 Größe/Transform ([#71](https://github.com/platomat/hautoo/issues/71)).
 - **Header:** Logo-Position (links / rechts / mittig mit Menü darunter); Suchlupe immer hinter den Menüpunkten ([#74](https://github.com/platomat/hautoo/issues/74)); Ruhehöhe und Sticky ein/aus sowie kompakte Sticky-Höhe pro Breakpoint ([#44](https://github.com/platomat/hautoo/issues/44)); Anker-Sprünge (TOC) mit `scroll-padding`, damit Überschriften nicht unter der Leiste landen.
-- **Footer-Brand** oberhalb der Copyright-Zeile: Logo, Description und Menü; Layout Nebeneinander/Untereinander; Bausteine einzeln und per Drag-and-Drop sortierbar ([#81](https://github.com/platomat/hautoo/issues/81)).
+- **Footer-Brand** oberhalb der Copyright-Zeile: Logo, Description und Menü; Layout Nebeneinander/Untereinander; Menü-Links neben- oder untereinander; Breiten für Brand, Copyright-Zeile und Header wie Inhaltsbreite ([#81](https://github.com/platomat/hautoo/issues/81)).
 - **Hero-Defaults** pro Collection: Ausrichtung, Brotkrumen, Trenner, Trennlinie unten ([#63](https://github.com/platomat/hautoo/issues/63)).
 - **Inhaltsbreite** Standard / breit / vollbreit für Seiten und Artikel ([#59](https://github.com/platomat/hautoo/issues/59)).
 - **Abstand** unter Hero und vor Footer, pro Collection ([#73](https://github.com/platomat/hautoo/issues/73)).

@@ -1270,6 +1270,15 @@ collections:
                   - { label: "Rechts (Menü links)", value: right }
                   - { label: "Mittig (Menü darunter)", value: center }
                 hint: "Bei „Mittig“ steht das Menü ab Tablet unter dem Logo. Sticky-Höhen gelten dort als Mindesthöhe (Leiste darf zwei Zeilen hoch sein). Suchlupe immer direkt hinter den Menüpunkten."
+              - name: contentWidth
+                label: Inhaltsbreite
+                widget: select
+                default: wide
+                options:
+                  - { label: Standard (Lesespalte), value: default }
+                  - { label: Breit, value: wide }
+                  - { label: Vollbreit, value: full }
+                hint: "Maximale Breite der Header-Innenzeile (wie Inhaltsbreite: 42 / 64 / 80 rem). Default Breit."
               - name: minHeightDesktop
                 label: Ruhehöhe Desktop (px)
                 widget: number
@@ -1330,7 +1339,7 @@ collections:
             label: Footer
             widget: object
             collapsed: false
-            hint: "Brand-Bereich oberhalb der Copyright-Zeile (#81). Die untere Copyright-Zeile bleibt unter General → Footer copyright."
+            hint: "Brand oberhalb der Copyright-Zeile (#81); Breiten wie Inhaltsbreite. Copyright-Inhalt weiter unter General → Footer copyright."
             fields:
               - name: brand
                 label: Brand
@@ -1359,6 +1368,23 @@ collections:
                       - { label: "Mitte", value: center }
                       - { label: "Ende (unten bzw. rechts)", value: end }
                     hint: "Bei Nebeneinander: vertikale Ausrichtung der Bausteine. Bei Untereinander: horizontale Ausrichtung."
+                  - name: menuLayout
+                    label: Menü-Einträge
+                    widget: select
+                    default: row
+                    options:
+                      - { label: Nebeneinander, value: row }
+                      - { label: Untereinander, value: stack }
+                    hint: "Anordnung der Links im Footer-Menü (Baustein Menü)."
+                  - name: contentWidth
+                    label: Inhaltsbreite
+                    widget: select
+                    default: wide
+                    options:
+                      - { label: Standard (Lesespalte), value: default }
+                      - { label: Breit, value: wide }
+                      - { label: Vollbreit, value: full }
+                    hint: "Maximale Breite der Brand-Zeile (42 / 64 / 80 rem)."
                   - name: menu
                     label: Menü-Slug
                     widget: string
@@ -1384,6 +1410,21 @@ collections:
                         label: Anzeigen
                         widget: boolean
                         default: true
+              - name: bar
+                label: Copyright-Zeile
+                widget: object
+                collapsed: false
+                hint: "Untere Zeile (©, Mitte, Rechtliches). Inhalt weiter unter General → Footer copyright."
+                fields:
+                  - name: contentWidth
+                    label: Inhaltsbreite
+                    widget: select
+                    default: wide
+                    options:
+                      - { label: Standard (Lesespalte), value: default }
+                      - { label: Breit, value: wide }
+                      - { label: Vollbreit, value: full }
+                    hint: "Maximale Breite der Copyright-Zeile (42 / 64 / 80 rem)."
           - name: hero
             label: Hero
             widget: object

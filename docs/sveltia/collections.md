@@ -95,6 +95,7 @@ Katalog: `src/cms/fields/site-fonts.json`. Sync: `scripts/sync-site-fonts.mjs` �
 | Feld | Bedeutung |
 | --- | --- |
 | `design.header.logoPosition` | `left` / `right` / `center` (Menü darunter ab Tablet) ([#74](https://github.com/platomat/hautoo/issues/74)); Suchlupe immer hinter den Menüpunkten |
+| `design.header.contentWidth` | Shell-Breite `default` / `wide` / `full` (42 / 64 / 80 rem; Default `wide`) |
 | `design.header.minHeightDesktop` / `Tablet` / `Mobile` | Ruhehöhe am Seitenanfang; ohne Sticky Mindesthöhe (40–600 px; Default 64 / 64 / 56) |
 | `design.header.stickyDesktop` | Sticky ab Desktop (≥ 1024px) |
 | `design.header.stickyTablet` | Sticky auf Tablet (680–1023px) |
@@ -112,10 +113,13 @@ Brand-Streifen oberhalb der Copyright-Zeile (Copyright bleibt unter General → 
 | `design.footer.brand.enabled` | Brand-Bereich an/aus | `false` |
 | `design.footer.brand.direction` | `row` (links→rechts) oder `stack` (oben→unten) | `row` |
 | `design.footer.brand.align` | `start` / `center` / `end` (bei `row` vertikal, bei `stack` horizontal) | `center` |
+| `design.footer.brand.menuLayout` | Menü-Links `row` (nebeneinander) oder `stack` (untereinander) | `row` |
+| `design.footer.brand.contentWidth` | Shell-Breite `default` / `wide` / `full` | `wide` |
 | `design.footer.brand.menu` | Menü-Slug (Standard `footer`, nicht `footer-legal`) | `footer` |
 | `design.footer.brand.blocks` | Liste `{ id, enabled }`; Reihenfolge per Drag-and-Drop; `id`: `logo` / `description` / `menu` | Logo, Beschreibung, Menü (je an) |
+| `design.footer.bar.contentWidth` | Shell-Breite der Copyright-Zeile | `wide` |
 
-Logo aus `general.logos.footer` (Fallback Header). Beschreibung = `websiteDescription`. Umsetzung: `SiteFooter.astro`.
+Logo aus `general.logos.footer` (Fallback Header). Beschreibung = `websiteDescription`. Umsetzung: `SiteFooter.astro` / `SiteHeader.astro` (Header-`contentWidth`).
 
 ### Einstellungen → Design → Hero (#63)
 

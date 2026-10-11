@@ -4,6 +4,7 @@ import SiteSearch from "./SiteSearch.astro";
 import { getResolvedMenu, MENU_MAIN } from "../lib/menus";
 import { getPublicPages } from "../lib/pages";
 import { stickyLogoDiffers } from "../lib/site-logo";
+import { shellWidthClass } from "../cms/fields/content-width";
 import { getSiteHeaderConfig, getSiteWebsiteTitle } from "../lib/site-config";
 
 const pages = await getPublicPages();
@@ -13,6 +14,7 @@ const websiteTitle = await getSiteWebsiteTitle();
 const useStickyLogo = stickyLogoDiffers();
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 const logoPosition = headerConfig.logoPosition;
+const headerShellClass = shellWidthClass(headerConfig.contentWidth);
 
 function isCurrent(href: string): boolean {
 	const key = href.replace(/\/$/, "") || "/";
@@ -50,7 +52,7 @@ const headerStyle = [
 	style={headerStyle}
 	data-site-header
 >
-	<div class="site-header__inner shell-inner">
+	<div class:list={["site-header__inner", "shell-inner", headerShellClass]}>
 		<a class="site-header__brand" href="/" aria-label={`${websiteTitle} Startseite`}>
 			<span class="site-header__logo-slot">
 				<LogoMark

@@ -12,13 +12,16 @@ import {
 	sanitizeSoftHtml,
 } from "../cms/fields/page-background";
 import { getPublicPages } from "../lib/pages";
+import { shellWidthClass } from "../cms/fields/content-width";
 import {
+	getFooterBarConfig,
 	getFooterBrandConfig,
 	getFooterCopyrightConfig,
 	getSiteConfig,
 	getSiteWebsiteDescription,
 	getSiteWebsiteTitle,
 } from "../lib/site-config";
+
 /** First calendar year of the project (copyright range start). */
 const COPYRIGHT_START_YEAR = 2026;
 const currentYear = new Date().getFullYear();
@@ -54,6 +57,9 @@ const legalItems = await getResolvedMenu(MENU_FOOTER_LEGAL, pages);
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 const brand = getFooterBrandConfig();
+const footerBar = getFooterBarConfig();
+const brandShellClass = shellWidthClass(brand.contentWidth);
+const barShellClass = shellWidthClass(footerBar.contentWidth);
 const brandDescriptionRaw = getSiteWebsiteDescription();
 const brandDescriptionHtml = brandDescriptionRaw
 	? sanitizeSoftHtml(brandDescriptionRaw)
@@ -82,171 +88,184 @@ function isCurrent(href: string): boolean {
 <footer class="site-footer">
 	{
 		showBrand && (
-			<div
-				class:list={[
-					"site-footer__brand",
-					`site-footer__brand--${brand.direction}`,
-					`site-footer__brand--align-${brand.align}`,
-				]}
-			>
-				{brandBlocks.map((block) => {
-					if (block.id === "logo") {
-						return (
-							<a
-								class="site-footer__brand-logo"
-								href="/"
-								title={homeLabel}
-								aria-label={homeLabel}
-							>
-								<LogoMark
-									variant="footer"
-									class="site-footer__brand-mark"
+			<div class="site-footer__brand">
+				<div
+					class:list={[
+						"shell-inner",
+						brandShellClass,
+						"site-footer__brand-inner",
+						`site-footer__brand-inner--${brand.direction}`,
+						`site-footer__brand-inner--align-${brand.align}`,
+					]}
+				>
+					{brandBlocks.map((block) => {
+						if (block.id === "logo") {
+							return (
+								<a
+									class="site-footer__brand-logo"
+									href="/"
+									title={homeLabel}
+									aria-label={homeLabel}
+								>
+									<LogoMark
+										variant="footer"
+										class="site-footer__brand-mark"
+									/>
+								</a>
+							);
+						}
+						if (block.id === "description") {
+							return (
+								<div
+									class="site-footer__brand-desc text-sm text-muted"
+									set:html={brandDescriptionHtml}
 								/>
-							</a>
-						);
-					}
-					if (block.id === "description") {
+							);
+						}
 						return (
-							<div
-								class="site-footer__brand-desc text-sm text-muted"
-								set:html={brandDescriptionHtml}
-							/>
+							<nav
+								class="site-footer__brand-nav"
+								aria-label="Footer"
+							>
+								<ul
+									class:list={[
+										"site-footer__brand-menu",
+										`site-footer__brand-menu--${brand.menuLayout}`,
+										"list-plain",
+										"text-sm",
+									]}
+								>
+									{brandMenuItems.map((item) => {
+										const current =
+											!item.external && isCurrent(item.href);
+										return (
+											<li>
+												<a
+													href={item.href}
+													class:list={item.cssClasses}
+													aria-current={
+														current ? "page" : undefined
+													}
+													target={
+														item.external
+															? "_blank"
+															: undefined
+													}
+													rel={
+														item.external
+															? "noopener noreferrer"
+															: undefined
+													}
+												>
+													{item.label}
+												</a>
+											</li>
+										);
+									})}
+								</ul>
+							</nav>
 						);
-					}
-					return (
-						<nav
-							class="site-footer__brand-nav"
-							aria-label="Footer"
-						>
-							<ul class="site-footer__brand-menu list-plain text-sm">
-								{brandMenuItems.map((item) => {
-									const current =
-										!item.external && isCurrent(item.href);
-									return (
-										<li>
-											<a
-												href={item.href}
-												class:list={item.cssClasses}
-												aria-current={
-													current ? "page" : undefined
-												}
-												target={
-													item.external
-														? "_blank"
-														: undefined
-												}
-												rel={
-													item.external
-														? "noopener noreferrer"
-														: undefined
-												}
-											>
-												{item.label}
-											</a>
-										</li>
-									);
-								})}
-							</ul>
-						</nav>
-					);
-				})}
+					})}
+				</div>
 			</div>
 		)
 	}
 	<div class="site-footer__bar">
-		<p class="site-footer__copy text-sm text-muted">
-			<span>© {copyrightYears}</span>
-			{" "}
-			<span>
-				<strong class="site-footer__site-name">{websiteTitle}</strong>
-				{
-					showClaim && (
-						<>
-							{" "}
-							<span class="site-footer__sep" aria-hidden="true">
-								{claimSeparator}
-							</span>{" "}
-							{
-								claimKind === "html" ? (
-									<span
-										class="site-footer__claim"
-										set:html={claimHtml}
-									/>
-								) : claimKind === "url" ? (
-									<a
-										class="site-footer__claim"
-										href={claimRaw}
-										rel="noopener noreferrer"
-										target="_blank"
-									>
-										{claimRaw}
-									</a>
-								) : (
-									<span class="site-footer__claim">{claimRaw}</span>
-								)
-							}
-						</>
-					)
-				}
-			</span>
-		</p>
-		{
-			showGithub ? (
-				<a
-					class="site-footer__center site-footer__github"
-					href={repoUrl}
-					title={repoTitle}
-					aria-label={repoTitle}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<img
-						src={withBuildId("/img/github.svg")}
-						alt=""
-						width="28"
-						height="28"
-						decoding="async"
-					/>
-				</a>
-			) : showHomeLogo ? (
-				<a
-					class="site-footer__center site-footer__home"
-					href="/"
-					title={homeLabel}
-					aria-label={homeLabel}
-				>
-					<LogoMark variant="footer" class="site-footer__home-mark" />
-				</a>
-			) : (
-				<span class="site-footer__center" aria-hidden="true" />
-			)
-		}
-		{
-			legalItems.length > 0 ? (
-				<nav class="site-footer__legal" aria-label="Rechtliches">
-					<ul class="flex-row flex-align-baseline gap-md list-plain text-sm">
-						{legalItems.map((item) => {
-							const current = !item.external && isCurrent(item.href);
-							return (
-								<li>
-									<a
-										href={item.href}
-										class:list={item.cssClasses}
-										aria-current={current ? "page" : undefined}
-										target={item.external ? "_blank" : undefined}
-										rel={item.external ? "noopener noreferrer" : undefined}
-									>
-										{item.label}
-									</a>
-								</li>
-							);
-						})}
-					</ul>
-				</nav>
-			) : (
-				<span class="site-footer__legal" aria-hidden="true" />
-			)
-		}
+		<div class:list={["shell-inner", barShellClass, "site-footer__bar-inner"]}>
+			<p class="site-footer__copy text-sm text-muted">
+				<span>© {copyrightYears}</span>
+				{" "}
+				<span>
+					<strong class="site-footer__site-name">{websiteTitle}</strong>
+					{
+						showClaim && (
+							<>
+								{" "}
+								<span class="site-footer__sep" aria-hidden="true">
+									{claimSeparator}
+								</span>{" "}
+								{
+									claimKind === "html" ? (
+										<span
+											class="site-footer__claim"
+											set:html={claimHtml}
+										/>
+									) : claimKind === "url" ? (
+										<a
+											class="site-footer__claim"
+											href={claimRaw}
+											rel="noopener noreferrer"
+											target="_blank"
+										>
+											{claimRaw}
+										</a>
+									) : (
+										<span class="site-footer__claim">{claimRaw}</span>
+									)
+								}
+							</>
+						)
+					}
+				</span>
+			</p>
+			{
+				showGithub ? (
+					<a
+						class="site-footer__center site-footer__github"
+						href={repoUrl}
+						title={repoTitle}
+						aria-label={repoTitle}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<img
+							src={withBuildId("/img/github.svg")}
+							alt=""
+							width="28"
+							height="28"
+							decoding="async"
+						/>
+					</a>
+				) : showHomeLogo ? (
+					<a
+						class="site-footer__center site-footer__home"
+						href="/"
+						title={homeLabel}
+						aria-label={homeLabel}
+					>
+						<LogoMark variant="footer" class="site-footer__home-mark" />
+					</a>
+				) : (
+					<span class="site-footer__center" aria-hidden="true" />
+				)
+			}
+			{
+				legalItems.length > 0 ? (
+					<nav class="site-footer__legal" aria-label="Rechtliches">
+						<ul class="flex-row flex-align-baseline gap-md list-plain text-sm">
+							{legalItems.map((item) => {
+								const current = !item.external && isCurrent(item.href);
+								return (
+									<li>
+										<a
+											href={item.href}
+											class:list={item.cssClasses}
+											aria-current={current ? "page" : undefined}
+											target={item.external ? "_blank" : undefined}
+											rel={item.external ? "noopener noreferrer" : undefined}
+										>
+											{item.label}
+										</a>
+									</li>
+								);
+							})}
+						</ul>
+					</nav>
+				) : (
+					<span class="site-footer__legal" aria-hidden="true" />
+				)
+			}
+		</div>
 	</div>
 </footer>
 

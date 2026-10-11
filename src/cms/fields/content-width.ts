@@ -33,3 +33,11 @@ export function contentWidthClass(width: ContentWidth): string {
 	}
 	return `page--width-${width}`;
 }
+
+/**
+ * Chrome shell (header / footer) max-width modifier on `.shell-inner`.
+ * Same three steps as content: default 42rem · wide 64rem · full 80rem.
+ */
+export function shellWidthClass(width: ContentWidth): string {
+	return `shell-inner--width-${width}`;
+}
