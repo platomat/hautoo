@@ -1,9 +1,10 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import ArticleListing from "../../components/ArticleListing.astro";
+import CmsContent from "../../components/CmsContent.astro";
 import { getArticlesByAuthor } from "../../lib/articles";
 import {
 	resolveAuthorAvatar,
@@ -25,10 +26,11 @@ export async function getStaticPaths() {
 
 const { author } = Astro.props as { author: AuthorEntry };
 const articles = await getArticlesByAuthor(author.id, { sort: "newest" });
-const { Content } = await render(author);
 const avatar = resolveAuthorAvatar(author);
 const breadcrumbs = buildAuthorBreadcrumbs(author);
 const spacingStyle = contentSpacingStyle(resolveContentSpacing("authors"));
+const bio = author.data.bio?.trim() || "";
+const hasBody = Boolean(author.body?.trim());
 const articleCount = articles.length;
 const articlesHeading =
 	articleCount === 1 ? "Artikel (1)" : `Artikel (${articleCount})`;
@@ -61,29 +63,38 @@ const articlesHeading =
 			}
 		</PageHero>
 		{
-			author.body?.trim() && (
-				<div class="author-profile__bio cms-md">
-					<Content />
+			bio && (
+				<div class="author-profile__bio">
+					<CmsContent body={bio} />
 				</div>
 			)
 		}
-		<section class="author-profile__articles" aria-labelledby="author-articles">
-			<h2 id="author-articles">{articlesHeading}</h2>
-			{
-				articleCount === 0 ? (
-					<p>Keine veröffentlichten Artikel von diesem Autor.</p>
-				) : (
-					<ArticleListing
-						authorId={author.id}
-						count={0}
-						sort="newest"
-						layout="grid"
-						columns={1}
-						gap={3}
-					/>
-				)
-			}
-		</section>
+		{
+			hasBody ? (
+				<div class="author-profile__content">
+					<CmsContent body={author.body} />
+				</div>
+			) : (
+				<section
+					class="author-profile__articles"
+					aria-labelledby="author-articles"
+				>
+					<h2 id="author-articles">{articlesHeading}</h2>
+					{articleCount === 0 ? (
+						<p>Keine veröffentlichten Artikel von diesem Autor.</p>
+					) : (
+						<ArticleListing
+							authorId={author.id}
+							count={0}
+							sort="newest"
+							layout="grid"
+							columns={1}
+							gap={3}
+						/>
+					)}
+				</section>
+			)
+		}
 	</main>
 </BaseLayout>
 
@@ -105,6 +116,10 @@ const articlesHeading =
 	}
 
 	.author-profile__bio {
+		margin: 0 0 2rem;
+	}
+
+	.author-profile__content {
 		margin: 0 0 2rem;
 	}
 

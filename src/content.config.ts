@@ -92,7 +92,7 @@ const tags = defineCollection({
 	}),
 });
 
-/** Article authors; profile at `/autoren/<slug>/`. Bio = Markdown body. */
+/** Article authors; profile at `/autoren/<slug>/`. Bio in frontmatter; body = free content (#85). */
 const authors = defineCollection({
 	loader: glob({ pattern: "*.md", base: "./src/content/authors" }),
 	schema: z.object({
@@ -106,6 +106,8 @@ const authors = defineCollection({
 		 * `src/assets/authors/gravatar/<slug>.*` (see sync-author-avatars.mjs).
 		 */
 		gravatarUrl: z.string().trim().optional(),
+		/** Profile bio (Markdown); shown under name/avatar. */
+		bio: z.string().optional(),
 		modifiedDate: modifiedDateSchema,
 	}),
 });

@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "src" / "content"
-SCAN_DIRS = ("articles", "glossar", "pages", "tags")
+SCAN_DIRS = ("articles", "authors", "glossar", "pages", "tags")
 
 # Keep in sync with EMBED_LINE names in src/lib/content-embeds.ts
 _EMBED_NAMES = (

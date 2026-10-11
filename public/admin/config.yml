@@ -593,7 +593,7 @@ collections:
     extension: md
     format: yaml-frontmatter
     summary: "{{title}}"
-    hint: "Autorinnen und Autoren für Artikel. Dateiname = Slug. Profil: /autoren/<slug>/. Bio im Markdown-Body."
+    hint: "Autoren für Artikel. Dateiname = Slug. Profil: /autoren/<slug>/. Bio und optional freier Inhalt mit Embeds."
     fields:
       - { name: title, label: Name, widget: string }
       - {
@@ -601,7 +601,7 @@ collections:
           label: Kurzbeschreibung,
           widget: text,
           required: false,
-          hint: "Optional für Meta/Übersicht. Die ausführliche Bio steht im Inhalt darunter.",
+          hint: "Optional für Meta/Übersicht. Die ausführliche Bio steht im Feld Bio.",
         }
       - {
           name: avatar,
@@ -618,11 +618,38 @@ collections:
           hint: "E-Mail (MD5 → Gravatar) oder https-Bild-URL. Beim Build nach src/assets/authors/gravatar/ heruntergeladen.",
         }
       - *field_modified_date
-      - name: body
+      - name: bio
         label: Bio
         widget: markdown
         required: false
-        hint: "Kurze Beschreibung (Markdown). Erscheint auf der Autor-Profilseite unter Name und Avatar."
+        hint: "Kurze Beschreibung (Markdown). Erscheint auf der Profilseite unter Name und Avatar."
+      - name: body
+        label: Inhalt
+        widget: markdown
+        required: false
+        hint: "Optionaler freier Inhalt mit Embeds (Artikel-Listing, Buttons, …). Wenn gesetzt, ersetzt das automatische Artikel-Listing auf dem Profil. Für eigene Artikel: Artikel-Listing mit Filter Autoren = dieser Autor."
+        pattern:
+          - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
+          - "Keine H1 (# …) im Inhalt. Die Überschrift kommt aus dem Hero (Feld Name)."
+        editor_components:
+          - block
+          - image
+          - code-block
+          - article-listing
+          - category-listing
+          - tag-listing
+          - tag-cloud
+          - author-listing
+          - glossar-listing
+          - button
+          - button-group
+          - separator
+          - spacer
+          - contact-email
+          - logo
+          - video
+          - video-consent-reset
+          - repodoc
 
   - name: glossar
     label: Glossar

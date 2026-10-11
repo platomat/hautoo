@@ -305,7 +305,7 @@ Beispiel: Quellen `/alter-slug/` und `/noch-alter/` → Ziel `/neuer-slug/` mit 
 | `modifiedDate` | nein | Letzte Änderung → SEO-Meta im `<head>` |
 | Dateiname | — | Slug (z. B. `astro.md` → `astro`) |
 
-## Collection `authors` (umgesetzt, #77)
+## Collection `authors` (umgesetzt, #77, #85)
 
 | | |
 | --- | --- |
@@ -323,16 +323,17 @@ Beispiel: Quellen `/alter-slug/` und `/noch-alter/` → Ziel `/neuer-slug/` mit 
 | `description` | nein | Kurzbeschreibung (Meta/Listing) |
 | `avatar` | nein | Lokales Bild (`/assets/…`), Vorrang vor Gravatar |
 | `gravatarUrl` | nein | E-Mail oder https-URL; Download beim Build |
-| `body` | nein | Bio (Markdown) auf der Profilseite |
+| `bio` | nein | Bio (Markdown) unter Name/Avatar ([#85](https://github.com/platomat/hautoo/issues/85)) |
+| `body` | nein | Freier Inhalt mit Embeds; wenn gesetzt, ersetzt das automatische Artikel-Listing ([#85](https://github.com/platomat/hautoo/issues/85)) |
 | `modifiedDate` | nein | Letzte Änderung |
 
 ### Anzeige
 
 | Ort | Steuerung |
 | --- | --- |
-| Artikel-Karten | Embed `show` inkl. `authors` (opt-in) |
+| Artikel-Karten | Embed `show` inkl. `displayAuthors` (opt-in) |
 | Artikel-Einzelseite | Content → Autoren: `articlePlacement` (`none` / `hero` / `after` / `both`), `avatarShape` (`round` / `square`) |
-| Profil | immer runder Avatar, Name, Bio, dann „Artikel (N)“ |
+| Profil | Avatar, Name, Bio; dann `body` (CmsContent) oder Fallback „Artikel (N)“ mit Auto-Listing |
 
 ## Collection `articles` (umgesetzt)
 
