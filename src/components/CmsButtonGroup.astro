@@ -2,6 +2,7 @@
 import {
 	BUTTON_COLOR_CSS,
 	DEFAULT_BUTTON_GROUP_ALIGN,
+	DEFAULT_BUTTON_GROUP_FULL_WIDTH_MOBILE,
 	DEFAULT_BUTTON_GROUP_LAYOUT,
 	buttonSolidForegroundCss,
 	resolveButtonGroupAlign,
@@ -15,12 +16,14 @@ interface Props {
 	items: ButtonGroupItem[];
 	layout?: ButtonGroupLayout | string;
 	align?: ButtonGroupAlign | string;
+	fullWidthMobile?: boolean;
 }
 
 const {
 	items,
 	layout: layoutRaw = DEFAULT_BUTTON_GROUP_LAYOUT,
 	align: alignRaw = DEFAULT_BUTTON_GROUP_ALIGN,
+	fullWidthMobile = DEFAULT_BUTTON_GROUP_FULL_WIDTH_MOBILE,
 } = Astro.props;
 
 const layout = resolveButtonGroupLayout(
@@ -47,6 +50,7 @@ const layoutClass =
 				"cms-button-group",
 				layoutClass,
 				`cms-button-group--align-${align}`,
+				fullWidthMobile && "cms-button-group--full-mobile",
 			]}
 		>
 			{items.map((item) => {

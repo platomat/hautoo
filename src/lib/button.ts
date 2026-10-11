@@ -108,8 +108,17 @@ export const BUTTON_GROUP_ALIGNS = ["left", "center", "right"] as const;
 export type ButtonGroupAlign = (typeof BUTTON_GROUP_ALIGNS)[number];
 export const DEFAULT_BUTTON_GROUP_ALIGN: ButtonGroupAlign = "left";
 
+/** Stretch each button to full content width under 680px. */
+export const DEFAULT_BUTTON_GROUP_FULL_WIDTH_MOBILE = false;
+
 const GROUP_LAYOUT_SET = new Set<string>(BUTTON_GROUP_LAYOUTS);
 const GROUP_ALIGN_SET = new Set<string>(BUTTON_GROUP_ALIGNS);
+
+/** Truthy embed attrs: `true` / `1` / `yes` (case-insensitive). */
+export function parseEmbedFlag(raw: string | undefined): boolean {
+	const key = (raw ?? "").trim().toLowerCase();
+	return key === "true" || key === "1" || key === "yes";
+}
 
 export function resolveButtonGroupLayout(
 	raw: string | undefined,

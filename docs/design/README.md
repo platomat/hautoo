@@ -215,7 +215,7 @@ Beliebig kombinieren, statt Flex-CSS in jeder Komponente neu zu schreiben:
 | `.separator` | Dezente Trennlinie (`Separator.astro` / CMS `{{separator height width color}}`; Default-Farbe `border`) |
 | `.spacer` | Vertikaler Leerraum (`Spacer.astro` / CMS `{{spacer height}}`; Default 32 px, Max. 600) |
 | `.cms-button` | CMS-Button (`CmsButton.astro` / `{{button label href …}}`; solid/outline, Palette wie Trennlinie, Ausrichtung inkl. volle Breite) |
-| `.cms-button-group` | Button-Gruppe (`CmsButtonGroup.astro` / `{{button-group items …}}`; Layout row / row-nowrap / stack-mobile / stack; Align left/center/right; nutzt `.cms-button__link`) |
+| `.cms-button-group` | Button-Gruppe (`CmsButtonGroup.astro` / `{{button-group items …}}`; Layout row / row-nowrap / stack-mobile / stack; Align left/center/right; optional `--full-mobile` unter 680px; nutzt `.cms-button__link`) |
 | `.article-list` | Artikelliste (Titel, Summary, Datum) |
 
 Beispiel: `class="flex-row flex-between stack-on-mobile center-on-mobile"`

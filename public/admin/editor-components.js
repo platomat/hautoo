@@ -1184,11 +1184,23 @@ CMS.registerEditorComponent({
 					{ label: "Rechts", value: "right" },
 				],
 			},
+			{
+				name: "fullWidthMobile",
+				label: "Auf Mobile volle Breite",
+				widget: "boolean",
+				default: false,
+				hint: "Unter 680px: jeder Button über die volle Inhaltsbreite (eine Zeile pro Button).",
+			},
 		],
 		pattern: /^\{\{button-group(?<attrs>[^}]*)\}\}\s*$/m,
 		fromBlock: (match) => {
 			const attrs = parseAttrs(match?.groups?.attrs || "");
 			const items = parseButtonGroupItemsAttr(attrs.items);
+			const fullRaw = (
+				attrs.fullWidthMobile ||
+				attrs.fullwidthmobile ||
+				""
+			).toLowerCase();
 			return {
 				items:
 					items.length > 0
@@ -1204,12 +1216,15 @@ CMS.registerEditorComponent({
 							],
 				layout: attrs.layout || "stack-mobile",
 				align: attrs.align || "left",
+				fullWidthMobile:
+					fullRaw === "true" || fullRaw === "1" || fullRaw === "yes",
 			};
 		},
 		toBlock: ({
 			items = [],
 			layout = "stack-mobile",
 			align = "left",
+			fullWidthMobile = false,
 		}) => {
 			const itemsAttr = serializeButtonGroupItems(items);
 			const parts = [`items="${itemsAttr}"`];
@@ -1217,12 +1232,16 @@ CMS.registerEditorComponent({
 				parts.push(`layout="${layout}"`);
 			}
 			if (align && align !== "left") parts.push(`align="${align}"`);
+			if (fullWidthMobile === true || fullWidthMobile === "true") {
+				parts.push(`fullWidthMobile="true"`);
+			}
 			return `{{button-group ${parts.join(" ")}}}`;
 		},
 		toPreview: ({
 			items = [],
 			layout = "stack-mobile",
 			align = "left",
+			fullWidthMobile = false,
 		}) => {
 			const list = Array.isArray(items) ? items : [];
 			const justify =
@@ -1255,7 +1274,19 @@ CMS.registerEditorComponent({
 			const body =
 				spans ||
 				`<span style="color:#9aa89f;font-size:0.9rem">Button-Gruppe (leer)</span>`;
-			return `<div style="display:flex;flex-direction:${direction};flex-wrap:${wrap};gap:0.5rem;justify-content:${justify};align-items:${justify === "flex-start" ? "flex-start" : justify === "flex-end" ? "flex-end" : "center"};margin:0.75rem 0">${body}</div>`;
+			const fullOn =
+				fullWidthMobile === true || fullWidthMobile === "true";
+			const childWidth = fullOn ? "width:100%;box-sizing:border-box;" : "";
+			const styledBody = childWidth
+				? body.replaceAll(
+						'display:inline-block;',
+						`display:inline-block;${childWidth}`,
+					)
+				: body;
+			const note = fullOn
+				? `<div style="margin-top:0.35rem;color:#9aa89f;font-size:0.8rem">Mobile: volle Breite</div>`
+				: "";
+			return `<div style="display:flex;flex-direction:${fullOn ? "column" : direction};flex-wrap:${wrap};gap:0.5rem;justify-content:${justify};align-items:${fullOn ? "stretch" : justify === "flex-start" ? "flex-start" : justify === "flex-end" ? "flex-end" : "center"};margin:0.75rem 0">${styledBody}</div>${note}`;
 		},
 	});
 })();

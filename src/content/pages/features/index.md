@@ -73,7 +73,7 @@ Im Markdown über die Sveltia-Toolbar einfügbar; Speichern als `{{…}}`-Zeile;
 - **Autoren-Listing** (`{{author-listing}}`): Alle Autoren mit Avatar und Artikelanzahl (z. B. auf `/autoren/`).
 - **Glossar-Listing** (`{{glossar-listing …}}`): Glossar-Einträge als Liste oder Grid; Anzahl und Sortierung wählbar.
 - **Button** (`{{button …}}`): Einzelner Aktionslink mit Stil (ausgefüllt/Kontur), Farbe, Ziel und Ausrichtung inkl. voller Breite.
-- **Button-Gruppe** (`{{button-group …}}`): Mehrere Buttons in einer Gruppe; Layout nebeneinander (mit/ohne Umbruch), mobil untereinander oder immer gestapelt; Ausrichtung der Gruppe ([#83](https://github.com/platomat/hautoo/issues/83)).
+- **Button-Gruppe** (`{{button-group …}}`): Mehrere Buttons in einer Gruppe; Layout nebeneinander (mit/ohne Umbruch), mobil untereinander oder immer gestapelt; Ausrichtung der Gruppe; optional volle Breite auf Mobile ([#83](https://github.com/platomat/hautoo/issues/83)).
 - **Trennlinie** (`{{separator …}}`): Horizontale Linie mit Höhe, Breite und Design-Token-Farbe.
 - **Abstandshalter** (`{{spacer …}}`): Vertikaler Leerraum in Pixeln ohne sichtbare Linie.
 - **Kontakt-E-Mail** (`{{contact-email}}`): Adresse aus General → Contact email oder Build-Variable `CONTACT_EMAIL`, obfuscated im Markup.

@@ -9,6 +9,7 @@ import type { TagSort } from "./tags";
 import { parseRepoDocProps, type RepoDocEmbedProps } from "./repodoc";
 import {
 	parseButtonGroupItems,
+	parseEmbedFlag,
 	resolveButtonAlign,
 	resolveButtonColor,
 	resolveButtonGroupAlign,
@@ -131,6 +132,8 @@ export type ButtonGroupEmbedProps = {
 	items: ButtonGroupItem[];
 	layout: ButtonGroupLayout;
 	align: ButtonGroupAlign;
+	/** Full-width buttons under 680px. */
+	fullWidthMobile: boolean;
 };
 
 export type VideoEmbedProps = {
@@ -601,6 +604,9 @@ export function parseButtonGroupProps(
 		items,
 		layout: resolveButtonGroupLayout(attrs.layout),
 		align: resolveButtonGroupAlign(attrs.align),
+		fullWidthMobile: parseEmbedFlag(
+			attrs.fullWidthMobile ?? attrs.fullwidthmobile,
+		),
 	};
 }
 

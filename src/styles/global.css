@@ -431,6 +431,20 @@ body.is-nav-locked {
 	align-items: flex-end;
 }
 
+/* Mobile full-width buttons (`fullWidthMobile="true"`) */
+@media (max-width: 679px) {
+	.cms-button-group--full-mobile {
+		width: 100%;
+		flex-wrap: wrap;
+	}
+
+	.cms-button-group--full-mobile > .cms-button__link {
+		flex: 1 1 100%;
+		width: 100%;
+		box-sizing: border-box;
+	}
+}
+
 .cms-button--align-left {
 	text-align: left;
 }

@@ -102,6 +102,10 @@ Immer untereinander, zentriert:
 
 {{button-group items="Primär|/features/|solid|action|_self||Sekundär|/faq/|outline|action|_self" layout="stack" align="center"}}
 
+Mit voller Breite auf Mobile (`fullWidthMobile="true"`):
+
+{{button-group items="Primär|/features/|solid|action|_self||Sekundär|/faq/|outline|action|_self" layout="stack-mobile" align="left" fullWidthMobile="true"}}
+
 ## Logo
 
 {{logo variant="header" width="120" unit="px" align="left"}}
