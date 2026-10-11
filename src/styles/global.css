@@ -308,7 +308,8 @@ body.is-nav-locked {
 	margin-inline: auto;
 }
 
-.page-hero--align-center .breadcrumbs__list {
+.page-hero--align-center .breadcrumbs__list,
+.page-hero--align-center .author-social__list {
 	justify-content: center;
 }
 
@@ -321,7 +322,8 @@ body.is-nav-locked {
 	margin-inline-start: auto;
 }
 
-.page-hero--align-right .breadcrumbs__list {
+.page-hero--align-right .breadcrumbs__list,
+.page-hero--align-right .author-social__list {
 	justify-content: flex-end;
 }
 
