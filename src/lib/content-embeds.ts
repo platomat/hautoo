@@ -200,7 +200,7 @@ const DEFAULT_SPACER: SpacerEmbedProps = {
 
 /** Line must be only the embed (optional attrs). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|tag-cloud|separator|spacer|button|contact-email|repodoc|block|video|video-consent-reset)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|tag-cloud|separator|spacer|button|contact-email|repodoc|block|video-consent-reset|video)(?<attrs>[^}]*)\}\}\s*$/gm;
 
 const ARTICLE_SORTS = new Set<ArticleSort>([
 	"newest",
