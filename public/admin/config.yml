@@ -607,7 +607,7 @@ collections:
         label: Bio
         widget: markdown
         required: false
-        hint: "Kurze Beschreibung (Markdown). Erscheint auf der Autor-Profilseite unter Name und Avatar.",
+        hint: "Kurze Beschreibung (Markdown). Erscheint auf der Autor-Profilseite unter Name und Avatar."
 
   - name: glossar
     label: Glossar
