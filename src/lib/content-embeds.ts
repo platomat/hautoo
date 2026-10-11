@@ -235,6 +235,28 @@ async function getProcessor() {
 	return markdownProcessor;
 }
 
+/**
+ * CMS authors write address lines under each other. CommonMark soft-breaks
+ * become spaces in HTML, so the lines sit side by side. Turn single newlines
+ * into Markdown hard breaks (`  \\n`), leaving blank lines and fenced code alone.
+ */
+export function markdownSoftBreaksAsHard(source: string): string {
+	const chunks = source.split(/(```[\s\S]*?```|~~~[\s\S]*?~~~)/g);
+	return chunks
+		.map((chunk, index) => {
+			if (index % 2 === 1) {
+				return chunk;
+			}
+			return chunk.replace(/([^\n])\n(?!\n)/g, (match, char: string, offset: number) => {
+				if (char === " " && offset > 0 && chunk[offset - 1] === " ") {
+					return match;
+				}
+				return `${char}  \n`;
+			});
+		})
+		.join("");
+}
+
 export function hasContentEmbeds(body: string | undefined): boolean {
 	if (!body) {
 		return false;
@@ -505,7 +527,7 @@ export async function buildContentSegments(
 	body: string | undefined,
 	options?: { visitedBlocks?: Set<string> },
 ): Promise<ContentSegment[]> {
-	const source = body ?? "";
+	const source = markdownSoftBreaksAsHard(body ?? "");
 	if (!source.trim()) {
 		return [];
 	}
