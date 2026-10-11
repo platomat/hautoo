@@ -126,7 +126,7 @@ Text unter H6.
 
 ### Tag-Listing
 
-{{tag-listing count="8" sort="title-asc" layout="list" columns="2" gap="1"}}
+{{tag-listing count="6" sort="title-asc" layout="grid" columns="3" gap="1"}}
 
 ### Tagwolke
 
@@ -145,5 +145,9 @@ Text unter H6.
 Consent-Facade (YouTube-Beispiel, Big Buck Bunny):
 
 {{video provider="youtube" id="aqz-KE-bpKQ" title="Demo-Video"}}
+
+### Video-Freischaltung widerrufen
+
+Nach dem Abspielen speichert der Browser die Einwilligung lokal (`localStorage`). Mit dem Button darunter kannst du sie wieder löschen; danach erscheint die Consent-Facade erneut.
 
 {{video-consent-reset}}

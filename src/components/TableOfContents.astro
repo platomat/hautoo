@@ -73,12 +73,13 @@ const heading = resolveTocTitle(title);
 	}
 
 	.toc__item--h3 {
-		padding-inline-start: 0.75rem;
+		/* margin (not padding): outside list markers stay with the item */
+		margin-inline-start: 0.75rem;
 		font-size: 0.95rem;
 	}
 
 	.toc__item--h4 {
-		padding-inline-start: 1.5rem;
+		margin-inline-start: 1.5rem;
 		font-size: 0.9rem;
 	}
 
