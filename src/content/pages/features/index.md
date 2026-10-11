@@ -66,7 +66,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 Im Markdown über die Sveltia-Toolbar einfügbar; Speichern als `{{…}}`-Zeile; Rendering in `CmsContent.astro`. Jede Komponente allein in einer Zeile (mit Leerzeilen drumherum); Prüfung im Build (`check-content-embeds.py`). Alle auf der [Demo](/features/demo/) sichtbar.
 
 - **Baustein** (`{{block id="…"}}`): Wiederverwendbarer Inhalt aus der Collection `blocks`, einmal pflegen und überall einbinden ([Folge 020](/artikel/folge-020-bausteine-fork/)).
-- **Artikel-Listing** (`{{article-listing …}}`): Öffentliche Artikel als Grid oder Liste; Anzahl, Sortierung, Kartenfelder an/aus, Filter nach Autoren/Kategorien/Tags (UND/ODER) ([#78](https://github.com/platomat/hautoo/issues/78)).
+- **Artikel-Listing** (`{{article-listing …}}`): Öffentliche Artikel als Grid oder Liste; Anzahl, Sortierung, Kartenfelder über `display*`-Tokens (Titel, Intro, Kategorien, Tags, Datum, Lesezeit, Autoren), Filter nach Autoren/Kategorien/Tags (UND/ODER) getrennt von der Anzeige ([#78](https://github.com/platomat/hautoo/issues/78)).
 - **Kategorie-Listing** (`{{category-listing …}}`): Kategorien als Grid, Liste oder Wolke; optional begrenzt und sortiert.
 - **Tag-Listing** (`{{tag-listing …}}`): Genutzte Tags als Wolke, Liste oder Grid; Sortierung nach Titel oder Häufigkeit.
 - **Tagwolke** (`{{tag-cloud}}`): Kurzform für Tag-Listing im Layout Wolke.
@@ -78,7 +78,7 @@ Im Markdown über die Sveltia-Toolbar einfügbar; Speichern als `{{…}}`-Zeile;
 - **Abstandshalter** (`{{spacer …}}`): Vertikaler Leerraum in Pixeln ohne sichtbare Linie.
 - **Kontakt-E-Mail** (`{{contact-email}}`): Adresse aus General → Contact email oder Build-Variable `CONTACT_EMAIL`, obfuscated im Markup.
 - **Logo** (`{{logo …}}`): Site-Logo aus General → Logos (Header/Sticky/Footer) mit Breite und Ausrichtung ([#79](https://github.com/platomat/hautoo/issues/79)).
-- **Video** (`{{video …}}`): YouTube/Vimeo mit Consent-Facade (Datenschutz-Link aus Privacy page) oder selbst gehostete MP4 über R2.
+- **Video** (`{{video …}}`): YouTube/Vimeo mit Consent-Facade (Datenschutz-Link aus Privacy page); nach Freigabe füllt der Player die 16:9-Box. Alternativ selbst gehostete MP4 über R2.
 - **Video-Freischaltung widerrufen** (`{{video-consent-reset}}`): Button, der die gespeicherte Video-Einwilligung im Browser löscht.
 - **Repo-Dokument** (`{{repodoc …}}`): Hinweisbox mit Link zu einer Datei unter `docs/` auf GitHub (`main`).
 
@@ -102,7 +102,7 @@ Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Co
 
 - **Farbpalette** (CSS-Variablen, inkl. Alpha für Glas; Untermenü-Hintergrund und -Text separat) ([#70](https://github.com/platomat/hautoo/issues/70), [#84](https://github.com/platomat/hautoo/issues/84)).
 - **Schrift:** Fließtext und Überschriften (Fontsource), Basisgröße, Gewicht, H1–H6 Größe/Transform ([#71](https://github.com/platomat/hautoo/issues/71)).
-- **Header:** Ruhehöhe und Sticky ein/aus sowie kompakte Sticky-Höhe pro Breakpoint ([#44](https://github.com/platomat/hautoo/issues/44)); Anker-Sprünge (TOC) mit `scroll-padding`, damit Überschriften nicht unter der Leiste landen.
+- **Header:** Logo-Position (links / rechts / mittig mit Menü darunter) und Suchlupe (Anfang oder Ende) ([#74](https://github.com/platomat/hautoo/issues/74)); Ruhehöhe und Sticky ein/aus sowie kompakte Sticky-Höhe pro Breakpoint ([#44](https://github.com/platomat/hautoo/issues/44)); Anker-Sprünge (TOC) mit `scroll-padding`, damit Überschriften nicht unter der Leiste landen.
 - **Hero-Defaults** pro Collection: Ausrichtung, Brotkrumen, Trenner, Trennlinie unten ([#63](https://github.com/platomat/hautoo/issues/63)).
 - **Inhaltsbreite** Standard / breit / vollbreit für Seiten und Artikel ([#59](https://github.com/platomat/hautoo/issues/59)).
 - **Abstand** unter Hero und vor Footer, pro Collection ([#73](https://github.com/platomat/hautoo/issues/73)).
