@@ -2,12 +2,12 @@
 title: Autoren
 status: published
 modifiedDate: 2026-10-11
-description: Autorinnen und Autoren der Artikel auf hautuu.
+description: Autoren der Artikel auf hautuu.
 toc:
   show: false
 seo:
   seo_title: Autoren
-  seo_description: Übersicht der Autorinnen und Autoren hinter den Artikeln auf hautuu.
+  seo_description: Übersicht der Autoren hinter den Artikeln auf hautuu.
   index_visibility: index
   follow_visibility: follow
   noarchive: false
@@ -21,6 +21,6 @@ seo:
   max_image_preview: large
 ---
 
-Hier findest du die Autorinnen und Autoren der Artikel. Über den Namen gelangst du zum Profil mit Bio und Artikelliste.
+Hier findest du die Autoren der Artikel. Über den Namen gelangst du zum Profil mit Bio und Artikelliste.
 
 {{author-listing}}

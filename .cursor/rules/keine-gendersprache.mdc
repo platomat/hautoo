@@ -1,0 +1,27 @@
+---
+description: Keine Gendersprache in Texten; generisches Maskulinum oder neutrale Umformulierung
+alwaysApply: true
+---
+
+# Keine Gendersprache
+
+In **Website-Texten, CMS-Inhalten, UI-Copy, Doku und CMS-Labels** keine Gendersprache verwenden, die den Lesefluss behindert. Formen mit Stern, Doppelpunkt, Unterstrich, Binnen-I oder Doppel-Nennungen sind zudem grammatikalisch unsauber (Artikel, Kasus, Kongruenz).
+
+## Vermeiden
+
+- `Autor:innen`, `Autor*innen`, `Autor_innen`, `AutorInnen`
+- Doppelungen wie `Autorinnen und Autoren`, wenn ein Wort reicht
+- Sonderzeichen mitten im Wort
+
+## Bevorzugen
+
+| Statt | Besser |
+| --- | --- |
+| Autor:innen | Autoren |
+| Nutzer*innen | Nutzer |
+| Autorinnen und Autoren | Autoren |
+| Mitarbeiter:innen | Team, Mitarbeitende (nur wenn wirklich geschlechtsneutral nötig) |
+
+Singular: `Autor`, `Nutzer`. Plural: `Autoren`, `Nutzer`. Oder Satz umformulieren (`Wer schreibt …`, `Beitrag von …`).
+
+Beim Überarbeiten bestehender Texte Gendersprache mitentfernen, wenn der Satz dadurch natürlicher wird.
