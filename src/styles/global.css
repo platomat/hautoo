@@ -578,6 +578,12 @@ body.is-nav-locked {
 	height: auto;
 }
 
+/* Consent player fills the 16:9 box (overrides height:auto on .page iframe). */
+.page .video-embed iframe {
+	max-width: none;
+	height: 100%;
+}
+
 .page img {
 	display: block;
 }

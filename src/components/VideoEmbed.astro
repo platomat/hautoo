@@ -144,12 +144,17 @@ const providerLabel =
 		overflow: hidden;
 	}
 
-	.video-embed iframe,
+	/*
+	 * iframe is injected by videoEmbed.ts after consent — no Astro scope attr.
+	 * :global keeps the fill rules matching the live DOM node.
+	 */
+	.video-embed :global(iframe),
 	.video-embed__player {
 		position: absolute;
 		inset: 0;
 		width: 100%;
 		height: 100%;
+		max-width: none;
 		border: 0;
 	}
 

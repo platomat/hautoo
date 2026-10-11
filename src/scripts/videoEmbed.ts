@@ -41,6 +41,10 @@ function activateEmbed(root: HTMLElement) {
 	iframe.allow = IFRAME_ALLOW;
 	iframe.allowFullscreen = true;
 	iframe.loading = "eager";
+	iframe.setAttribute(
+		"style",
+		"position:absolute;inset:0;width:100%;height:100%;max-width:none;border:0",
+	);
 	root.appendChild(iframe);
 }
 
