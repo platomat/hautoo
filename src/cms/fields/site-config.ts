@@ -125,6 +125,8 @@ export const footerBrandMenuLayoutSchema = z.enum(["row", "stack"]);
 
 export type FooterBrandMenuLayout = z.infer<typeof footerBrandMenuLayoutSchema>;
 
+const footerBrandLogoSize = z.coerce.number().int().min(24).max(160);
+
 /** Brand strip above the copyright bar (Design → Footer → Brand). */
 export const siteFooterBrandConfigSchema = z.object({
 	/** Master switch for the brand strip. */
@@ -135,6 +137,8 @@ export const siteFooterBrandConfigSchema = z.object({
 	menuLayout: footerBrandMenuLayoutSchema.default("row"),
 	/** Inner shell max-width (default / wide / full). */
 	contentWidth: contentWidthSchema.default("wide"),
+	/** Brand logo mark size in px (CSS `--footer-brand-logo-size`). */
+	logoSize: footerBrandLogoSize.default(44),
 	/** Menu collection slug (default `footer`); not `footer-legal`. */
 	menu: z.string().trim().default("footer"),
 	/** Ordered blocks (Sveltia list = drag-and-drop). */

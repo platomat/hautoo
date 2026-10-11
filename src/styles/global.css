@@ -124,15 +124,26 @@ body.has-page-bg .site-nav__sub {
 }
 
 /* Footer brand strip above copyright (#81) */
+.site-footer--has-brand {
+	border-top: none;
+	/* Chrome lives on brand gradient + solid bar; outer stays clear. */
+	background: transparent;
+}
+
 .site-footer__brand {
-	border-bottom: 1px solid var(--color-border);
+	/* No top edge: fade from page into chrome. */
+	background: linear-gradient(
+		to bottom,
+		transparent 0%,
+		var(--color-chrome) 72%
+	);
 }
 
 .site-footer__brand-inner {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1.25rem 2rem;
-	padding-block: 1.5rem 1.35rem;
+	padding-block: 1.75rem 1.35rem;
 }
 
 .site-footer__brand-inner--row {
@@ -186,8 +197,8 @@ body.has-page-bg .site-nav__sub {
 
 .site-footer__brand-mark {
 	display: block;
-	width: 2.75rem;
-	height: 2.75rem;
+	width: var(--footer-brand-logo-size, 2.75rem);
+	height: var(--footer-brand-logo-size, 2.75rem);
 }
 
 .site-footer__brand-desc {
@@ -259,6 +270,10 @@ body.has-page-bg .site-nav__sub {
 }
 
 /* Footer bar: copyright | GitHub or home logo | legal */
+.site-footer__bar {
+	background: var(--color-chrome);
+}
+
 .site-footer__bar-inner {
 	display: grid;
 	grid-template-columns: 1fr auto 1fr;

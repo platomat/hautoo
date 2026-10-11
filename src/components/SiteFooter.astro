@@ -78,6 +78,10 @@ const brandBlocks = brand.enabled
 		})
 	: [];
 const showBrand = brandBlocks.length > 0;
+const brandLogoSize = Math.min(160, Math.max(24, brand.logoSize || 44));
+const brandStyle = showBrand
+	? `--footer-brand-logo-size: ${brandLogoSize}px`
+	: undefined;
 
 function isCurrent(href: string): boolean {
 	const key = href.replace(/\/$/, "") || "/";
@@ -85,7 +89,10 @@ function isCurrent(href: string): boolean {
 }
 ---
 
-<footer class="site-footer">
+<footer
+	class:list={["site-footer", showBrand && "site-footer--has-brand"]}
+	style={brandStyle}
+>
 	{
 		showBrand && (
 			<div class="site-footer__brand">
@@ -274,5 +281,11 @@ function isCurrent(href: string): boolean {
 		margin-top: auto;
 		background: var(--color-chrome);
 		border-top: 1px solid var(--color-border);
+	}
+
+	/* Brand strip: no top border; chrome via gradient (see global.css). */
+	.site-footer--has-brand {
+		background: transparent;
+		border-top: none;
 	}
 </style>

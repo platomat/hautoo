@@ -1385,6 +1385,14 @@ collections:
                       - { label: Breit, value: wide }
                       - { label: Vollbreit, value: full }
                     hint: "Maximale Breite der Brand-Zeile (42 / 64 / 80 rem)."
+                  - name: logoSize
+                    label: Logo-Größe (px)
+                    widget: number
+                    value_type: int
+                    default: 44
+                    min: 24
+                    max: 160
+                    hint: "Größe des Brand-Logos in der Footer-Brand-Zeile (Default 44)."
                   - name: menu
                     label: Menü-Slug
                     widget: string

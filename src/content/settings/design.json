@@ -86,7 +86,8 @@
         }
       ],
       "menuLayout": "row",
-      "contentWidth": "wide"
+      "contentWidth": "wide",
+      "logoSize": 44
     },
     "bar": {
       "contentWidth": "wide"
