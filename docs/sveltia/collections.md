@@ -15,6 +15,18 @@ Zurück zur [Sveltia-Übersicht](./README.md). Shared Field-Partials: [CMS Field
 | Bausteine | `blocks` | umgesetzt |
 | Menüs | `menus` | umgesetzt (#13) |
 
+## Slug bearbeiten
+
+Bei Ordner-Collections (`pages`, `articles`, `categories`, `tags`, `glossar`, `blocks`, `menus`) legt `slug` in `public/admin/config.yml` den Datei-/Ordnernamen fest (Template `{{slug}}` = slugifizierter Titel bzw. Identifier).
+
+| | |
+| --- | --- |
+| Neu | Slug folgt dem Titel, bis er im **Slug**-Panel der Editor-Sidebar (Stift) überschrieben wird. |
+| Gespeichert | Titel ändern lässt den Slug unverändert. Umbenennen nur über das Slug-Panel; beim Speichern verschiebt Sveltia die Datei und passt Verweise an. |
+| Config | `slug: { template: "{{slug}}", editable: true, hint: "…" }` |
+
+Hinweis: Geänderte öffentliche URLs brauchen ggf. Redirects (siehe [Redaktion](../redaktion/README.md)).
+
 ## Collection `settings` (umgesetzt)
 
 Globale Site-Einstellungen als **JSON-Dateien** (wie cdr-legal), kein Markdown-Body. Pro Bereich ein eigener CMS-Eintrag.

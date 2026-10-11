@@ -67,7 +67,10 @@ collections:
     path: "{{slug}}/index"
     media_folder: ""
     public_folder: ""
-    slug: "{{slug}}"
+    slug:
+      template: "{{slug}}"
+      editable: true
+      hint: "URL-Teil und Dateiname. Beim Speichern wird der Eintrag umbenannt; Verweise werden angepasst."
     extension: md
     format: yaml-frontmatter
     # Nested image (auto-detect only sees top-level Image fields).
@@ -381,7 +384,10 @@ collections:
     path: "{{slug}}/index"
     media_folder: ""
     public_folder: ""
-    slug: "{{slug}}"
+    slug:
+      template: "{{slug}}"
+      editable: true
+      hint: "URL-Teil und Dateiname. Beim Speichern wird der Eintrag umbenannt; Verweise werden angepasst."
     extension: md
     format: yaml-frontmatter
     summary: "{{title}}"
@@ -497,7 +503,10 @@ collections:
     label_singular: Kategorie
     folder: src/content/categories
     create: true
-    slug: "{{slug}}"
+    slug:
+      template: "{{slug}}"
+      editable: true
+      hint: "URL-Teil und Dateiname. Beim Speichern wird der Eintrag umbenannt; Verweise werden angepasst."
     extension: md
     format: yaml-frontmatter
     summary: "{{title}}"
@@ -526,7 +535,10 @@ collections:
     label_singular: Tag
     folder: src/content/tags
     create: true
-    slug: "{{slug}}"
+    slug:
+      template: "{{slug}}"
+      editable: true
+      hint: "URL-Teil und Dateiname. Beim Speichern wird der Eintrag umbenannt; Verweise werden angepasst."
     extension: md
     format: yaml-frontmatter
     summary: "{{title}}"
@@ -546,7 +558,10 @@ collections:
     label_singular: Begriff
     folder: src/content/glossar
     create: true
-    slug: "{{slug}}"
+    slug:
+      template: "{{slug}}"
+      editable: true
+      hint: "URL-Teil und Dateiname. Beim Speichern wird der Eintrag umbenannt; Verweise werden angepasst."
     extension: md
     format: yaml-frontmatter
     summary: "{{title}}"
@@ -597,7 +612,10 @@ collections:
     label_singular: Baustein
     folder: src/content/blocks
     create: true
-    slug: "{{slug}}"
+    slug:
+      template: "{{slug}}"
+      editable: true
+      hint: "URL-Teil und Dateiname. Beim Speichern wird der Eintrag umbenannt; Verweise werden angepasst."
     extension: md
     format: yaml-frontmatter
     summary: "{{title}} ({{slug}})"
@@ -642,7 +660,10 @@ collections:
     label_singular: Menü
     folder: src/content/menus
     create: true
-    slug: "{{slug}}"
+    slug:
+      template: "{{slug}}"
+      editable: true
+      hint: "URL-Teil und Dateiname. Beim Speichern wird der Eintrag umbenannt; Verweise werden angepasst."
     extension: md
     format: yaml-frontmatter
     summary: "{{title}} ({{slug}})"
