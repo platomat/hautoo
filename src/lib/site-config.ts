@@ -6,6 +6,7 @@ import {
 	DEFAULT_SITE_HEADER_CONFIG,
 	DEFAULT_SITE_HERO_CONFIG,
 	DEFAULT_SITE_TOC_CONFIG,
+	footerCopyrightConfigSchema,
 	siteConfigSchema,
 	siteContentConfigSchema,
 	siteDesignConfigSchema,
@@ -13,6 +14,7 @@ import {
 	type BreadcrumbSeparator,
 	type EntryHero,
 	type EntryToc,
+	type FooterCopyrightConfig,
 	type HeroCollectionKey,
 	type HeroTextAlign,
 	type SiteConfig,
@@ -49,6 +51,14 @@ export function getSiteWebsiteTitle(): string {
 export function getSiteWebsiteDescription(): string {
 	const config = getSiteConfig();
 	return config.general?.websiteDescription?.trim() ?? "";
+}
+
+/** Footer copyright claim + separator from CMS General. */
+export function getFooterCopyrightConfig(): FooterCopyrightConfig {
+	const config = getSiteConfig();
+	return footerCopyrightConfigSchema.parse(
+		config.general?.footerCopyright ?? {},
+	);
 }
 
 export function getSiteHeaderConfig(): SiteHeaderConfig {

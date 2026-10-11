@@ -1,8 +1,16 @@
 ---
 import { getResolvedMenu, MENU_FOOTER_LEGAL } from "../lib/menus";
 import { withBuildId } from "../lib/build-id";
+import {
+	classifyAttribution,
+	sanitizeAttributionHtml,
+} from "../cms/fields/page-background";
 import { getPublicPages } from "../lib/pages";
-import { getSiteConfig, getSiteWebsiteTitle } from "../lib/site-config";
+import {
+	getFooterCopyrightConfig,
+	getSiteConfig,
+	getSiteWebsiteTitle,
+} from "../lib/site-config";
 
 /** First calendar year of the project (copyright range start). */
 const COPYRIGHT_START_YEAR = 2026;
@@ -13,6 +21,14 @@ const copyrightYears =
 		: String(COPYRIGHT_START_YEAR);
 
 const websiteTitle = await getSiteWebsiteTitle();
+const footerCopyright = getFooterCopyrightConfig();
+const claimRaw = footerCopyright.claim.trim();
+const claimKind = claimRaw ? classifyAttribution(claimRaw) : null;
+const claimHtml =
+	claimKind === "html" ? sanitizeAttributionHtml(claimRaw) : "";
+const showClaim = Boolean(claimRaw);
+const claimSeparator = footerCopyright.separator;
+
 const githubRepo = getSiteConfig().general?.githubRepo?.trim() ?? "";
 const showGithub = Boolean(githubRepo);
 const repoUrl = showGithub
@@ -41,8 +57,35 @@ function isCurrent(href: string): boolean {
 			{" "}
 			<span>
 				<strong class="site-footer__site-name">{websiteTitle}</strong>
-				{" "}
-				∙ One of <a href="https://platomat.com/">PlatoMat</a>
+				{
+					showClaim && (
+						<>
+							{" "}
+							<span class="site-footer__sep" aria-hidden="true">
+								{claimSeparator}
+							</span>{" "}
+							{
+								claimKind === "html" ? (
+									<span
+										class="site-footer__claim"
+										set:html={claimHtml}
+									/>
+								) : claimKind === "url" ? (
+									<a
+										class="site-footer__claim"
+										href={claimRaw}
+										rel="noopener noreferrer"
+										target="_blank"
+									>
+										{claimRaw}
+									</a>
+								) : (
+									<span class="site-footer__claim">{claimRaw}</span>
+								)
+							}
+						</>
+					)
+				}
 			</span>
 		</p>
 		{

@@ -32,6 +32,8 @@ Globale Site-Einstellungen als **JSON-Dateien** (wie cdr-legal), kein Markdown-B
 | --- | --- |
 | `websiteTitle` | Markenname: Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`), `og:site_name` |
 | `websiteDescription` | Optional kurze Beschreibung / Slogan (#75); Speichern für spätere Anzeige |
+| `footerCopyright.claim` | Optionaler Footer-Zusatz nach dem Website-Titel (Text/URL/HTML mit `<a href>`, wie Bildnachweis) |
+| `footerCopyright.separator` | Trenner Titel↔Claim: `•` / `-` / `—` / `/` (Default `•`) |
 | `githubRepo` | Optional `owner/name` für Footer-Mitte (GitHub-Icon). Leer = Site-Logo → Startseite (Forks) |
 | `contactEmail` | Optional für `{{contact-email}}`. Überschreibt `CONTACT_EMAIL` beim Build; leer = ENV. Wert ist öffentlich in Git. |
 

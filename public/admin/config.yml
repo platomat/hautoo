@@ -754,6 +754,29 @@ collections:
             required: false
             hint: "Kurze Beschreibung oder Slogan der Website. Speichern für spätere Anzeige (z. B. Hero/Meta); aktuell noch nicht auf jeder Seite sichtbar."
             default: ""
+          - name: footerCopyright
+            label: Footer copyright
+            widget: object
+            collapsed: false
+            hint: "Optionaler Zusatz nach ©-Jahr und Website-Titel in der Footer-Zeile."
+            fields:
+              - name: claim
+                label: Claim
+                widget: text
+                required: false
+                default: ""
+                hint: "Text, reine URL oder HTML mit <a href> (wie Bildnachweis). Leer = nur © und Website-Titel."
+              - name: separator
+                label: Separator
+                widget: select
+                options:
+                  - { label: "•", value: "•" }
+                  - { label: "-", value: "-" }
+                  - { label: "—", value: "—" }
+                  - { label: "/", value: "/" }
+                default: "•"
+                required: true
+                hint: "Zeichen zwischen Website-Titel und Claim."
           - name: contactEmail
             label: Contact email
             widget: string

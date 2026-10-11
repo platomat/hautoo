@@ -1,6 +1,10 @@
 {
 	"websiteTitle": "hautuu",
 	"websiteDescription": "",
+	"footerCopyright": {
+		"claim": "One of <a href=\"https://platomat.com/\">PlatoMat</a>",
+		"separator": "•"
+	},
 	"contactEmail": "",
 	"githubRepo": "platomat/hautoo"
 }

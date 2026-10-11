@@ -35,6 +35,26 @@ export const breadcrumbSeparatorSchema = z.enum(["/", "•", "→", "-"]);
 
 export type BreadcrumbSeparator = z.infer<typeof breadcrumbSeparatorSchema>;
 
+/** Separator between site name and footer copyright claim (CMS General). */
+export const footerCopyrightSeparatorSchema = z.enum(["•", "-", "—", "/"]);
+
+export type FooterCopyrightSeparator = z.infer<
+	typeof footerCopyrightSeparatorSchema
+>;
+
+/** Optional claim after © year + site name in the footer. */
+export const footerCopyrightConfigSchema = z.object({
+	/**
+	 * Text or HTML (same allowlist as background.attribution: `<a href>`).
+	 * Empty = only © year and site name.
+	 */
+	claim: z.string().trim().default(""),
+	/** Character between site name and claim. */
+	separator: footerCopyrightSeparatorSchema.default("•"),
+});
+
+export type FooterCopyrightConfig = z.infer<typeof footerCopyrightConfigSchema>;
+
 /** Hero block defaults for one collection (CMS Design → Hero → …). */
 export const siteHeroConfigSchema = z.object({
 	/** Alignment for breadcrumbs, title, and description. */
@@ -193,6 +213,8 @@ export const siteGeneralConfigSchema = z.object({
 	 * Stored for later UI use; not required on every page yet.
 	 */
 	websiteDescription: z.string().trim().default(""),
+	/** Optional footer line after site name (claim + separator). */
+	footerCopyright: footerCopyrightConfigSchema.default({}),
 	/**
 	 * Optional contact address for `{{contact-email}}`.
 	 * When set, overrides env `CONTACT_EMAIL` at build time (value is public in Git).

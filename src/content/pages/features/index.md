@@ -48,6 +48,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Settings-Collection** (`settings`): globale Site-Einstellungen als JSON unter `src/content/settings/` (wie cdr-legal). Eigene CMS-Einträge **General**, **Design** und **Content**.
 - **Website-Titel** unter **Einstellungen** → **General** → **Website title**: Markenname für Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`) und `og:site_name`.
 - **Website-Beschreibung** unter **Einstellungen** → **General** → **Description**: optionale Kurzbeschreibung oder Slogan (`websiteDescription`); Speichern für spätere Anzeige.
+- **Footer-Copyright** unter **Einstellungen** → **General** → **Footer copyright**: optionaler Claim nach © und Website-Titel (Text oder HTML-Link wie beim Bildnachweis) plus wählbarer Trenner (`•`, `-`, `—`, `/`).
 - **Kontakt-E-Mail** unter **Einstellungen** → **General** → **Contact email** (optional): überschreibt `CONTACT_EMAIL` beim Build; Anzeige über `{{contact-email}}` mit Spam-Schutz. Leer = weiter ENV (empfohlen für öffentliche Repos).
 - **Menüs** als eigene Collection (`main`, `footer-legal`) statt Flags an einzelnen Seiten.
 - **Entwurfsstatus** (`draft`, `published`, `future`, `trash`) für Pages, Artikel und Glossar.
