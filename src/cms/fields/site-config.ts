@@ -236,7 +236,7 @@ export const DEFAULT_SITE_SPACING_COLLECTION: SiteSpacingCollectionConfig =
 
 /**
  * Brand logos from the media library (#79).
- * Empty path → default `public/img/logo-mark.svg`.
+ * Empty path → default `/assets/logo-mark.svg`.
  * Sticky/footer empty → fall back to header logo.
  */
 export const siteLogosConfigSchema = z.object({
@@ -249,7 +249,7 @@ export type SiteLogosConfig = z.infer<typeof siteLogosConfigSchema>;
 
 /**
  * Favicons from the media library (#80).
- * Empty default → `public/img/favicon.svg` (+ `.ico`).
+ * Empty default → `/assets/favicon.svg`.
  * Dark empty → same as default (built-in SVG already adapts via color-scheme).
  */
 export const siteFaviconsConfigSchema = z.object({

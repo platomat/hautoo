@@ -1,8 +1,15 @@
 {
   "websiteTitle": "hautuu",
+  "websiteDescription": "<b>hautuu</b> ist ein Lern- und Demo-Projekt: Wie man mit Cursor (KI), GitHub und Cloudflare eine thematische, statische Website baut und pflegt, von leerem Repo bis zur laufenden Site.",
   "footerCopyright": {
     "claim": "One of <a href=\"https://platomat.com/\">PlatoMat</a>",
     "separator": "•"
   },
-  "githubRepo": "platomat/hautoo"
+  "githubRepo": "platomat/hautoo",
+  "logos": {
+    "header": "/assets/logo-mark.svg"
+  },
+  "favicons": {
+    "default": "/assets/favicon.svg"
+  }
 }

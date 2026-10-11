@@ -50,7 +50,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Settings-Collection** (`settings`): globale Site-Einstellungen als JSON unter `src/content/settings/` (wie cdr-legal). Eigene CMS-Einträge **General**, **Design** und **Content**.
 - **Website-Titel** unter **Einstellungen** → **General** → **Website title**: Markenname für Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`) und `og:site_name`.
 - **Logos** unter **Einstellungen** → **General** → **Logos**: Header, optional Sticky-Header und Footer aus der Mediathek (SVG inline/einfärbbar); Embed `{{logo …}}` im Inhalt (#79).
-- **Favicons** unter **Einstellungen** → **General** → **Favicons**: Standard und optional dunkles Icon aus der Mediathek; leer = `public/img/favicon.svg` (passt sich an color-scheme an) (#80).
+- **Favicons** unter **Einstellungen** → **General** → **Favicons**: Standard und optional dunkles Icon aus der Mediathek; leer = `/assets/favicon.svg` (passt sich an color-scheme an) (#80).
 - **Website-Beschreibung** unter **Einstellungen** → **General** → **Description**: optionale Kurzbeschreibung oder Slogan (`websiteDescription`); Speichern für spätere Anzeige.
 - **Footer-Copyright** unter **Einstellungen** → **General** → **Footer copyright**: optionaler Claim nach © und Website-Titel (Text oder HTML-Link wie beim Bildnachweis) plus wählbarer Trenner (`•`, `-`, `—`, `/`).
 - **Kontakt-E-Mail** unter **Einstellungen** → **General** → **Contact email** (optional): überschreibt `CONTACT_EMAIL` beim Build; Anzeige über `{{contact-email}}` mit Spam-Schutz. Leer = weiter ENV (empfohlen für öffentliche Repos).

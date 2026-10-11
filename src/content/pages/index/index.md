@@ -76,4 +76,4 @@ Live-Überblick: [**Features**](/features/).
 
 {{separator height="1" width="100"}}
 
-<img src="/img/logo-mark.svg" alt="hautuu Logo" width="120" />
+{{logo variant="header" width="120" unit="px" align="left"}}

@@ -5,14 +5,14 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 ## Logo
 
 - **Markenzeichen:** Blatt mit Mittelrippe und Gabelnerven (Natur + Branch-Struktur)
-- **Default:** `public/img/logo-mark.svg`, wenn CMS-Logos leer
+- **Default:** `/assets/logo-mark.svg`, wenn CMS-Logos leer
 - **CMS:** Einstellungen → General → **Logos** (`header` / `headerSticky` / `footer`); SVG wird inline eingebettet und per CSS eingefärbt (`LogoMark.astro`, #79)
 - **Header:** Default-Mark mit Ink/Accent; Hover/Focus/Active → Aktionsfarbe. Sticky kann ein zweites Logo nutzen
 - **Wortmarke:** aus CMS **Einstellungen → General → Website title** (`settings/general.json`), neben dem Mark im Header und in der Footer-Zeile
 - **Footer-Copyright-Claim:** CMS General → Footer copyright (`footerCopyright.claim` / `.separator`)
 - **Footer-Mitte:** bei gesetztem `githubRepo` (General) GitHub-Icon; sonst Site-Logo → Startseite
 - **Inhalt:** Embed `{{logo variant="header" width="120" unit="px" align="center"}}`
-- **Favicon:** CMS General → **Favicons** (`default` / `dark`, #80); leer = `public/img/favicon.svg` (Ink passt sich an color-scheme an; Accent bleibt grün) + `favicon.ico`. Dunkles Icon nur bei gesetztem `dark` per `prefers-color-scheme`
+- **Favicon:** CMS General → **Favicons** (`default` / `dark`, #80); leer = `/assets/favicon.svg` (Ink passt sich an color-scheme an; Accent bleibt grün). Dunkles Icon nur bei gesetztem `dark` per `prefers-color-scheme`
 
 ## Prinzipien
 

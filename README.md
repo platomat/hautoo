@@ -1,4 +1,4 @@
-<a href="https://hautoo.storyofai.net"><img src="public/img/logo-mark.svg" alt="hautuu Logo" width="120" /></a>
+<a href="https://hautoo.storyofai.net"><img src="src/assets/logo-mark.svg" alt="hautuu Logo" width="120" /></a>
 
 # hautuu
 

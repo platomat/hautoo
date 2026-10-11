@@ -1,5 +1,4 @@
 import { resolveCmsImage } from "./cms-image";
-import { withBuildId } from "./build-id";
 import { getSiteConfig } from "./site-config";
 
 export type FaviconLink = {
@@ -8,8 +7,8 @@ export type FaviconLink = {
 	media?: string;
 };
 
-const DEFAULT_SVG = "/img/favicon.svg";
-const DEFAULT_ICO = "/img/favicon.ico";
+/** Media-library fallback when CMS favicon fields are empty. */
+const DEFAULT_CMS_PATH = "/assets/favicon.svg";
 
 function mimeForPath(path: string): string | undefined {
 	const lower = path.toLowerCase().split("?")[0] ?? "";
@@ -36,14 +35,21 @@ function resolveFaviconHref(cmsPath: string | undefined): string | undefined {
 
 /**
  * `<link rel="icon">` entries for BaseLayout.
- * Default = CMS or `public/img/favicon.svg`; optional dark via prefers-color-scheme.
+ * Default = CMS or `/assets/favicon.svg`; optional dark via prefers-color-scheme.
  */
 export function getFaviconLinks(): FaviconLink[] {
 	const favicons = getSiteConfig().general?.favicons;
 	const defaultHref =
-		resolveFaviconHref(favicons?.default) ?? withBuildId(DEFAULT_SVG);
+		resolveFaviconHref(favicons?.default) ??
+		resolveFaviconHref(DEFAULT_CMS_PATH);
 	const darkHref = resolveFaviconHref(favicons?.dark);
-	const usingBuiltInDefault = !favicons?.default?.trim();
+
+	if (!defaultHref) {
+		console.warn(
+			`[site-favicon] no favicon resolved (CMS empty and ${DEFAULT_CMS_PATH} missing)`,
+		);
+		return [];
+	}
 
 	const links: FaviconLink[] = [];
 
@@ -67,13 +73,6 @@ export function getFaviconLinks(): FaviconLink[] {
 		links.push({
 			href: defaultHref,
 			type: mimeForPath(defaultHref),
-		});
-	}
-
-	if (usingBuiltInDefault) {
-		links.push({
-			href: withBuildId(DEFAULT_ICO),
-			type: "image/x-icon",
 		});
 	}
 

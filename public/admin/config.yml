@@ -933,13 +933,13 @@ collections:
             label: Logos
             widget: object
             collapsed: false
-            hint: "Optional aus der Mediathek. Leer = Standard-Logo. SVG wird inline eingebettet (einfärbbar per CSS)."
+            hint: "Aus der Mediathek (z. B. `/assets/logo-mark.svg`). Leer = Fallback `/assets/logo-mark.svg`. SVG wird inline eingebettet (einfärbbar per CSS)."
             fields:
               - name: header
                 label: Header
                 widget: image
                 required: false
-                hint: "Logo neben dem Website-Titel im Header. Leer = public/img/logo-mark.svg."
+                hint: "Logo neben dem Website-Titel im Header. Leer = Mediathek `/assets/logo-mark.svg`."
               - name: headerSticky
                 label: Sticky Header
                 widget: image
@@ -954,13 +954,13 @@ collections:
             label: Favicons
             widget: object
             collapsed: false
-            hint: "Optional aus der Mediathek (SVG oder PNG). Leer = Standard-Favicon unter public/img/."
+            hint: "Aus der Mediathek (SVG oder PNG, z. B. `/assets/favicon.svg`). Leer = Fallback `/assets/favicon.svg`."
             fields:
               - name: default
                 label: Favicon
                 widget: image
                 required: false
-                hint: "Browser-Tab-Icon (helles System bzw. Fallback). Leer = public/img/favicon.svg."
+                hint: "Browser-Tab-Icon (helles System bzw. Fallback). Leer = Mediathek `/assets/favicon.svg`."
               - name: dark
                 label: Favicon (dunkel)
                 widget: image

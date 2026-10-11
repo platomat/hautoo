@@ -10,10 +10,11 @@ export type ResolvedLogo =
 	| { kind: "svg"; html: string; isDefault: boolean }
 	| { kind: "image"; meta: ImageMetadata };
 
+/** Media-library fallback when CMS logo fields are empty. */
 const DEFAULT_LOGO_FS = path.join(
 	process.cwd(),
-	"public",
-	"img",
+	"src",
+	"assets",
 	"logo-mark.svg",
 );
 
