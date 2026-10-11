@@ -950,6 +950,22 @@ collections:
                 widget: image
                 required: false
                 hint: "Mitte im Footer, wenn kein GitHub-Repo gesetzt ist. Leer = gleiches wie Header."
+          - name: favicons
+            label: Favicons
+            widget: object
+            collapsed: false
+            hint: "Optional aus der Mediathek (SVG oder PNG). Leer = Standard-Favicon unter public/img/."
+            fields:
+              - name: default
+                label: Favicon
+                widget: image
+                required: false
+                hint: "Browser-Tab-Icon (helles System bzw. Fallback). Leer = public/img/favicon.svg."
+              - name: dark
+                label: Favicon (dunkel)
+                widget: image
+                required: false
+                hint: "Optional für prefers-color-scheme: dark. Leer = gleiches wie Favicon (Standard-SVG passt sich selbst an)."
       - name: design
         label: Design
         file: src/content/settings/design.json

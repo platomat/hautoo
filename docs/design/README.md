@@ -12,7 +12,7 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 - **Footer-Copyright-Claim:** CMS General → Footer copyright (`footerCopyright.claim` / `.separator`)
 - **Footer-Mitte:** bei gesetztem `githubRepo` (General) GitHub-Icon; sonst Site-Logo → Startseite
 - **Inhalt:** Embed `{{logo variant="header" width="120" unit="px" align="center"}}`
-- **Favicon:** `public/img/favicon.svg` (Ink dunkel bei hellem System, hell bei dunklem; Accent bleibt grün), Fallback `favicon.ico`
+- **Favicon:** CMS General → **Favicons** (`default` / `dark`, #80); leer = `public/img/favicon.svg` (Ink passt sich an color-scheme an; Accent bleibt grün) + `favicon.ico`. Dunkles Icon nur bei gesetztem `dark` per `prefers-color-scheme`
 
 ## Prinzipien
 

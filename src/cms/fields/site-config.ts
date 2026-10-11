@@ -247,6 +247,18 @@ export const siteLogosConfigSchema = z.object({
 
 export type SiteLogosConfig = z.infer<typeof siteLogosConfigSchema>;
 
+/**
+ * Favicons from the media library (#80).
+ * Empty default → `public/img/favicon.svg` (+ `.ico`).
+ * Dark empty → same as default (built-in SVG already adapts via color-scheme).
+ */
+export const siteFaviconsConfigSchema = z.object({
+	default: cmsImagePathSchema,
+	dark: cmsImagePathSchema,
+});
+
+export type SiteFaviconsConfig = z.infer<typeof siteFaviconsConfigSchema>;
+
 /** CMS group General (site name for chrome + document titles). */
 export const siteGeneralConfigSchema = z.object({
 	/** Brand / site name in header, title suffix, og:site_name. */
@@ -270,6 +282,8 @@ export const siteGeneralConfigSchema = z.object({
 	githubRepo: z.string().trim().default(""),
 	/** Header / sticky / footer logos (SVG preferred for CSS color). */
 	logos: siteLogosConfigSchema.default({}),
+	/** Browser tab icons (default + optional dark color-scheme). */
+	favicons: siteFaviconsConfigSchema.default({}),
 });
 
 export type SiteGeneralConfig = z.infer<typeof siteGeneralConfigSchema>;

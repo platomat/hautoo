@@ -11,9 +11,10 @@ import {
 	resolveSeo,
 	type Seo,
 } from "../cms/fields/seo";
-import { getBuildId, withBuildId } from "../lib/build-id";
+import { getBuildId } from "../lib/build-id";
 import { buildSiteColorRootCss } from "../lib/site-colors";
 import { getSiteWebsiteTitle } from "../lib/site-config";
+import { getFaviconLinks } from "../lib/site-favicon";
 import {
 	buildSiteTypographyRootCss,
 	getFontPreloadHrefs,
@@ -95,14 +96,23 @@ const readingMinutes =
 	readingTimeMinutes > 0
 		? Math.round(readingTimeMinutes)
 		: undefined;
+const faviconLinks = getFaviconLinks();
 ---
 
 <!doctype html>
 <html lang="de">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href={withBuildId("/img/favicon.svg")} />
-		<link rel="icon" href={withBuildId("/img/favicon.ico")} />
+		{
+			faviconLinks.map((icon) => (
+				<link
+					rel="icon"
+					href={icon.href}
+					type={icon.type}
+					media={icon.media}
+				/>
+			))
+		}
 		<link rel="sitemap" type="application/xml" href={sitemapURL.toString()} title="Sitemap" />
 		{canonicalURL && <link rel="canonical" href={canonicalURL.href} />}
 		<meta name="viewport" content="width=device-width" />

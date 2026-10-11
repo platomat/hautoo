@@ -52,6 +52,8 @@ Globale Site-Einstellungen als **JSON-Dateien** (wie cdr-legal), kein Markdown-B
 | `logos.header` | Optional Header-Logo aus Mediathek; leer = `public/img/logo-mark.svg`. SVG wird inline eingebettet (#79) |
 | `logos.headerSticky` | Optional Logo im sticky Header; leer = Header-Logo |
 | `logos.footer` | Optional Footer-Logo (ohne GitHub-Repo); leer = Header-Logo |
+| `favicons.default` | Optional Favicon aus Mediathek; leer = `public/img/favicon.svg` (+ `.ico`) (#80) |
+| `favicons.dark` | Optional Favicon für `prefers-color-scheme: dark`; leer = gleiches wie default |
 | `contactEmail` | Optional für `{{contact-email}}`. Überschreibt `CONTACT_EMAIL` beim Build; leer = ENV. Wert ist öffentlich in Git. |
 
 ### Einstellungen → Design → Farbpalette (#70)
