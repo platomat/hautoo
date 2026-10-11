@@ -187,12 +187,16 @@ export function parseArticleCardShow(
 	raw: string | undefined,
 ): ArticleCardField[] {
 	if (!raw?.trim()) return [...DEFAULT_SHOW];
-	const fields = raw
-		.split(/[,\s]+/)
-		.map((part) => part.trim())
-		.filter((part): part is ArticleCardField =>
-			ARTICLE_CARD_FIELD_SET.has(part),
-		);
+	const selected = new Set(
+		raw
+			.split(/[,\s]+/)
+			.map((part) => part.trim())
+			.filter((part): part is ArticleCardField =>
+				ARTICLE_CARD_FIELD_SET.has(part),
+			),
+	);
+	/** Keep canonical card order; selection is on/off only (FE layout is fixed). */
+	const fields = ARTICLE_CARD_FIELDS.filter((field) => selected.has(field));
 	return fields.length > 0 ? fields : [...DEFAULT_SHOW];
 }
 

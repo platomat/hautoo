@@ -18,6 +18,26 @@
 		return out;
 	}
 
+	/** Canonical card-field order (FE layout is fixed; CMS is checkbox-only). */
+	const ARTICLE_CARD_SHOW_ORDER = [
+		"title",
+		"intro",
+		"categories",
+		"tags",
+		"authors",
+		"date",
+		"readingTime",
+	];
+
+	function normalizeArticleCardShow(show) {
+		const selected = new Set(
+			(Array.isArray(show) ? show : String(show || "").split(/[,\s]+/))
+				.map((part) => String(part).trim())
+				.filter(Boolean),
+		);
+		return ARTICLE_CARD_SHOW_ORDER.filter((field) => selected.has(field));
+	}
+
 	CMS.registerEditorComponent({
 		id: "article-listing",
 		label: "Artikel-Listing",
@@ -81,6 +101,8 @@
 				label: "Felder auf der Karte",
 				widget: "select",
 				multiple: true,
+				/** Keep checkboxes (not tag UI): tags allow drag-reorder that FE ignores. */
+				dropdown_threshold: 20,
 				default: ["title", "intro", "categories", "tags", "date", "readingTime"],
 				options: [
 					{ label: "Titel", value: "title" },
@@ -91,7 +113,7 @@
 					{ label: "Datum", value: "date" },
 					{ label: "Lesezeit", value: "readingTime" },
 				],
-				hint: "Kategorien links neben Tags; darunter Datum und Lesezeit.",
+				hint: "Nur an/aus per Checkbox. Feste Kartenreihenfolge: Titel, Intro, Kategorien | Tags, Autoren, Datum · Lesezeit.",
 			},
 			{
 				name: "authors",
@@ -150,13 +172,14 @@
 					.split(",")
 					.map((s) => s.trim())
 					.filter(Boolean);
+			const showParsed = normalizeArticleCardShow(attrs.show || showDefault);
 			return {
 				count: attrs.count !== undefined && attrs.count !== "" ? attrs.count : "3",
 				sort: attrs.sort || "newest",
 				layout: attrs.layout || "grid",
 				columns: attrs.columns || "3",
 				gap: attrs.gap || "1.25",
-				show: (attrs.show || showDefault).split(",").filter(Boolean),
+				show: showParsed.length > 0 ? showParsed : showDefault.split(","),
 				authors: splitList(attrs.authors),
 				categories: splitList(attrs.categories),
 				tags: splitList(attrs.tags),
@@ -175,7 +198,12 @@
 			tags = [],
 			match = "all",
 		}) => {
-			const showAttr = Array.isArray(show) ? show.join(",") : String(show || "");
+			const showNormalized = normalizeArticleCardShow(show);
+			const showAttr = (
+				showNormalized.length > 0
+					? showNormalized
+					: ["title", "intro", "categories", "tags", "date", "readingTime"]
+			).join(",");
 			const listAttr = (value) =>
 				(Array.isArray(value) ? value : String(value || "").split(","))
 					.map((s) => String(s).trim())
@@ -212,7 +240,12 @@
 			tags = [],
 			match = "all",
 		}) => {
-			const showLabel = Array.isArray(show) ? show.join(", ") : String(show || "");
+			const showNormalized = normalizeArticleCardShow(show);
+			const showLabel = (
+				showNormalized.length > 0
+					? showNormalized
+					: ["title", "intro", "categories", "tags", "date", "readingTime"]
+			).join(", ");
 			const listLabel = (value) =>
 				(Array.isArray(value) ? value : String(value || "").split(","))
 					.map((s) => String(s).trim())
