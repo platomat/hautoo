@@ -3,6 +3,7 @@ import ArticleListing from "./ArticleListing.astro";
 import AuthorListing from "./AuthorListing.astro";
 import CategoryListing from "./CategoryListing.astro";
 import CmsButton from "./CmsButton.astro";
+import CmsButtonGroup from "./CmsButtonGroup.astro";
 import CmsLogo from "./CmsLogo.astro";
 import ContactEmail from "./ContactEmail.astro";
 import GlossarListing from "./GlossarListing.astro";
@@ -113,6 +114,15 @@ const segments = await buildContentSegments(body);
 					target={segment.props.target}
 					style={segment.props.style}
 					color={segment.props.color}
+					align={segment.props.align}
+				/>
+			);
+		}
+		if (segment.type === "button-group") {
+			return (
+				<CmsButtonGroup
+					items={segment.props.items}
+					layout={segment.props.layout}
 					align={segment.props.align}
 				/>
 			);

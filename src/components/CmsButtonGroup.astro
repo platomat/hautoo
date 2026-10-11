@@ -1,0 +1,77 @@
+---
+import {
+	BUTTON_COLOR_CSS,
+	DEFAULT_BUTTON_GROUP_ALIGN,
+	DEFAULT_BUTTON_GROUP_LAYOUT,
+	buttonSolidForegroundCss,
+	resolveButtonGroupAlign,
+	resolveButtonGroupLayout,
+	type ButtonGroupAlign,
+	type ButtonGroupItem,
+	type ButtonGroupLayout,
+} from "../lib/button";
+
+interface Props {
+	items: ButtonGroupItem[];
+	layout?: ButtonGroupLayout | string;
+	align?: ButtonGroupAlign | string;
+}
+
+const {
+	items,
+	layout: layoutRaw = DEFAULT_BUTTON_GROUP_LAYOUT,
+	align: alignRaw = DEFAULT_BUTTON_GROUP_ALIGN,
+} = Astro.props;
+
+const layout = resolveButtonGroupLayout(
+	typeof layoutRaw === "string" ? layoutRaw : DEFAULT_BUTTON_GROUP_LAYOUT,
+);
+const align = resolveButtonGroupAlign(
+	typeof alignRaw === "string" ? alignRaw : DEFAULT_BUTTON_GROUP_ALIGN,
+);
+
+const layoutClass =
+	layout === "row"
+		? "flex-row flex-wrap gap-sm"
+		: layout === "row-nowrap"
+			? "flex-row gap-sm"
+			: layout === "stack"
+				? "flex-col gap-sm"
+				: "flex-row flex-wrap gap-sm stack-on-mobile";
+---
+
+{
+	items.length > 0 && (
+		<div
+			class:list={[
+				"cms-button-group",
+				layoutClass,
+				`cms-button-group--align-${align}`,
+			]}
+		>
+			{items.map((item) => {
+				const colorCss = BUTTON_COLOR_CSS[item.color];
+				const fgCss =
+					item.style === "solid"
+						? buttonSolidForegroundCss(item.color)
+						: colorCss;
+				const rel =
+					item.target === "_blank" ? "noopener noreferrer" : undefined;
+				return (
+					<a
+						class:list={[
+							"cms-button__link",
+							`cms-button__link--${item.style}`,
+						]}
+						href={item.href}
+						target={item.target === "_blank" ? "_blank" : undefined}
+						rel={rel}
+						style={`--cms-button-color: ${colorCss}; --cms-button-fg: ${fgCss}`}
+					>
+						{item.label}
+					</a>
+				);
+			})}
+		</div>
+	)
+}

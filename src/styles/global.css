@@ -407,9 +407,28 @@ body.is-nav-locked {
 	visibility: hidden;
 }
 
-/* CMS content button embed (`{{button …}}`) */
+/* CMS content button embed (`{{button …}}` / `{{button-group …}}`) */
 .cms-button {
 	margin: 1.25rem 0;
+}
+
+.cms-button-group {
+	margin: 1.25rem 0;
+}
+
+.cms-button-group--align-left {
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+.cms-button-group--align-center {
+	justify-content: center;
+	align-items: center;
+}
+
+.cms-button-group--align-right {
+	justify-content: flex-end;
+	align-items: flex-end;
 }
 
 .cms-button--align-left {
@@ -650,7 +669,8 @@ a:focus-visible {
 }
 
 .site-main a[target="_blank"]:has(> img:only-child)::after,
-.site-main .cms-button a[target="_blank"]::after {
+.site-main .cms-button a[target="_blank"]::after,
+.site-main .cms-button-group > a[target="_blank"]::after {
 	content: none;
 }
 

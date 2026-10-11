@@ -915,6 +915,74 @@ CMS.registerEditorComponent({
 		"danger",
 	]);
 
+	const BUTTON_COLOR_OPTIONS = [
+		{ label: "Aktion (Standard)", value: "action" },
+		{ label: "Aktion Hover", value: "action-hover" },
+		{ label: "Aktion gedämpft", value: "action-muted" },
+		{ label: "Rahmen", value: "border" },
+		{ label: "Text", value: "text" },
+		{ label: "Text gedämpft", value: "text-muted" },
+		{ label: "Fläche", value: "surface" },
+		{ label: "Fläche angehoben", value: "surface-raised" },
+		{ label: "Hintergrund", value: "bg" },
+		{ label: "Danger", value: "danger" },
+	];
+
+	const BUTTON_STYLE_OPTIONS = [
+		{ label: "Ausgefüllt", value: "solid" },
+		{ label: "Kontur", value: "outline" },
+	];
+
+	const BUTTON_TARGET_OPTIONS = [
+		{ label: "Gleicher Tab", value: "_self" },
+		{ label: "Neuer Tab", value: "_blank" },
+	];
+
+	function serializeButtonGroupItems(items) {
+		return (Array.isArray(items) ? items : [])
+			.filter((item) => item && String(item.label || "").trim() && String(item.href || "").trim())
+			.map((item) =>
+				[
+					String(item.label).trim(),
+					String(item.href).trim(),
+					item.style || "solid",
+					item.color || "action",
+					item.target || "_self",
+				].join("|"),
+			)
+			.join("||");
+	}
+
+	function parseButtonGroupItemsAttr(raw) {
+		if (!raw || !String(raw).trim()) return [];
+		return String(raw)
+			.split("||")
+			.map((chunk) => {
+				const parts = chunk.split("|").map((part) => part.trim());
+				const label = parts[0] || "";
+				const href = parts[1] || "";
+				if (!label || !href) return null;
+				return {
+					label,
+					href,
+					style: parts[2] || "solid",
+					color: parts[3] || "action",
+					target: parts[4] || "_self",
+				};
+			})
+			.filter(Boolean);
+	}
+
+	function buttonPreviewSpan(label, style, color) {
+		const fill = SEPARATOR_COLORS[color] || SEPARATOR_COLORS.action;
+		const fg = BUTTON_LIGHT_FILLS.has(color) ? "#0f1412" : "#e8eeea";
+		const solid = style !== "outline";
+		const btn = solid
+			? `background:${fill};color:${fg};border:2px solid ${fill};`
+			: `background:transparent;color:${fill};border:2px solid ${fill};`;
+		return `<span style="display:inline-block;padding:0.45rem 1rem;border-radius:4px;font-weight:500;${btn}">${label}</span>`;
+	}
+
 	CMS.registerEditorComponent({
 		id: "button",
 		label: "Button",
@@ -937,38 +1005,21 @@ CMS.registerEditorComponent({
 				label: "Ziel",
 				widget: "select",
 				default: "_self",
-				options: [
-					{ label: "Gleicher Tab", value: "_self" },
-					{ label: "Neuer Tab", value: "_blank" },
-				],
+				options: BUTTON_TARGET_OPTIONS,
 			},
 			{
 				name: "style",
 				label: "Stil",
 				widget: "select",
 				default: "solid",
-				options: [
-					{ label: "Ausgefüllt", value: "solid" },
-					{ label: "Kontur", value: "outline" },
-				],
+				options: BUTTON_STYLE_OPTIONS,
 			},
 			{
 				name: "color",
 				label: "Farbe",
 				widget: "select",
 				default: "action",
-				options: [
-					{ label: "Aktion (Standard)", value: "action" },
-					{ label: "Aktion Hover", value: "action-hover" },
-					{ label: "Aktion gedämpft", value: "action-muted" },
-					{ label: "Rahmen", value: "border" },
-					{ label: "Text", value: "text" },
-					{ label: "Text gedämpft", value: "text-muted" },
-					{ label: "Fläche", value: "surface" },
-					{ label: "Fläche angehoben", value: "surface-raised" },
-					{ label: "Hintergrund", value: "bg" },
-					{ label: "Danger", value: "danger" },
-				],
+				options: BUTTON_COLOR_OPTIONS,
 				hint: "Bei Ausgefüllt: Hintergrund; bei Kontur: Rand und Text. Solid-Textfarbe wird kontrastreich gewählt.",
 			},
 			{
@@ -984,7 +1035,8 @@ CMS.registerEditorComponent({
 				],
 			},
 		],
-		pattern: /^\{\{button(?<attrs>[^}]*)\}\}\s*$/m,
+		/** Negative lookahead so `button-group` is not captured as `button`. */
+		pattern: /^\{\{button(?!-)(?<attrs>[^}]*)\}\}\s*$/m,
 		fromBlock: (match) => {
 			const attrs = parseAttrs(match?.groups?.attrs || "");
 			return {
@@ -1017,20 +1069,189 @@ CMS.registerEditorComponent({
 			color = "action",
 			align = "left",
 		}) => {
-			const fill = SEPARATOR_COLORS[color] || SEPARATOR_COLORS.action;
-			const fg = BUTTON_LIGHT_FILLS.has(color) ? "#0f1412" : "#e8eeea";
-			const solid = style !== "outline";
 			const alignCss =
 				align === "center"
 					? "center"
 					: align === "right"
 						? "right"
 						: "left";
-			const widthCss = align === "full" ? "width:100%;box-sizing:border-box;" : "";
-			const btn = solid
-				? `background:${fill};color:${fg};border:2px solid ${fill};`
-				: `background:transparent;color:${fill};border:2px solid ${fill};`;
-			return `<div style="text-align:${alignCss};margin:0.75rem 0"><span style="display:inline-block;${widthCss}padding:0.45rem 1rem;border-radius:4px;font-weight:500;${btn}">${label}</span></div>`;
+			const widthCss =
+				align === "full" ? "width:100%;box-sizing:border-box;" : "";
+			const span = buttonPreviewSpan(label, style, color).replace(
+				'display:inline-block;',
+				`display:inline-block;${widthCss}`,
+			);
+			return `<div style="text-align:${alignCss};margin:0.75rem 0">${span}</div>`;
+		},
+	});
+
+	CMS.registerEditorComponent({
+		id: "button-group",
+		label: "Button-Gruppe",
+		icon: "view_week",
+		fields: [
+			{
+				name: "items",
+				label: "Buttons",
+				widget: "list",
+				min: 1,
+				max: 12,
+				summary: "{{fields.label}} → {{fields.href}}",
+				default: [
+					{
+						label: "Mehr erfahren",
+						href: "/features/",
+						style: "solid",
+						color: "action",
+						target: "_self",
+					},
+					{
+						label: "Artikel",
+						href: "/artikel/",
+						style: "outline",
+						color: "action",
+						target: "_self",
+					},
+				],
+				fields: [
+					{
+						name: "label",
+						label: "Beschriftung",
+						widget: "string",
+					},
+					{
+						name: "href",
+						label: "Link (URL)",
+						widget: "string",
+						hint: "Intern z. B. /kontakt/ oder absolute URL. Kein | in Werten.",
+					},
+					{
+						name: "style",
+						label: "Stil",
+						widget: "select",
+						default: "solid",
+						options: BUTTON_STYLE_OPTIONS,
+					},
+					{
+						name: "color",
+						label: "Farbe",
+						widget: "select",
+						default: "action",
+						options: BUTTON_COLOR_OPTIONS,
+					},
+					{
+						name: "target",
+						label: "Ziel",
+						widget: "select",
+						default: "_self",
+						options: BUTTON_TARGET_OPTIONS,
+					},
+				],
+			},
+			{
+				name: "layout",
+				label: "Layout",
+				widget: "select",
+				default: "stack-mobile",
+				options: [
+					{
+						label: "Nebeneinander (umbricht)",
+						value: "row",
+					},
+					{
+						label: "Nebeneinander (kein Umbruch)",
+						value: "row-nowrap",
+					},
+					{
+						label: "Nebeneinander, mobil untereinander",
+						value: "stack-mobile",
+					},
+					{ label: "Immer untereinander", value: "stack" },
+				],
+			},
+			{
+				name: "align",
+				label: "Ausrichtung",
+				widget: "select",
+				default: "left",
+				options: [
+					{ label: "Links", value: "left" },
+					{ label: "Zentriert", value: "center" },
+					{ label: "Rechts", value: "right" },
+				],
+			},
+		],
+		pattern: /^\{\{button-group(?<attrs>[^}]*)\}\}\s*$/m,
+		fromBlock: (match) => {
+			const attrs = parseAttrs(match?.groups?.attrs || "");
+			const items = parseButtonGroupItemsAttr(attrs.items);
+			return {
+				items:
+					items.length > 0
+						? items
+						: [
+								{
+									label: "Mehr erfahren",
+									href: "/features/",
+									style: "solid",
+									color: "action",
+									target: "_self",
+								},
+							],
+				layout: attrs.layout || "stack-mobile",
+				align: attrs.align || "left",
+			};
+		},
+		toBlock: ({
+			items = [],
+			layout = "stack-mobile",
+			align = "left",
+		}) => {
+			const itemsAttr = serializeButtonGroupItems(items);
+			const parts = [`items="${itemsAttr}"`];
+			if (layout && layout !== "stack-mobile") {
+				parts.push(`layout="${layout}"`);
+			}
+			if (align && align !== "left") parts.push(`align="${align}"`);
+			return `{{button-group ${parts.join(" ")}}}`;
+		},
+		toPreview: ({
+			items = [],
+			layout = "stack-mobile",
+			align = "left",
+		}) => {
+			const list = Array.isArray(items) ? items : [];
+			const justify =
+				align === "center"
+					? "center"
+					: align === "right"
+						? "flex-end"
+						: "flex-start";
+			const direction =
+				layout === "stack" ? "column" : "row";
+			const wrap =
+				layout === "row-nowrap" || layout === "stack"
+					? "nowrap"
+					: "wrap";
+			const spans = list
+				.filter(
+					(item) =>
+						item &&
+						String(item.label || "").trim() &&
+						String(item.href || "").trim(),
+				)
+				.map((item) =>
+					buttonPreviewSpan(
+						item.label,
+						item.style || "solid",
+						item.color || "action",
+					),
+				)
+				.join("");
+			const body =
+				spans ||
+				`<span style="color:#9aa89f;font-size:0.9rem">Button-Gruppe (leer)</span>`;
+			return `<div style="display:flex;flex-direction:${direction};flex-wrap:${wrap};gap:0.5rem;justify-content:${justify};align-items:${justify === "flex-start" ? "flex-start" : justify === "flex-end" ? "flex-end" : "center"};margin:0.75rem 0">${body}</div>`;
 		},
 	});
 })();

@@ -8,12 +8,18 @@ import type { CategorySort } from "./categories";
 import type { TagSort } from "./tags";
 import { parseRepoDocProps, type RepoDocEmbedProps } from "./repodoc";
 import {
+	parseButtonGroupItems,
 	resolveButtonAlign,
 	resolveButtonColor,
+	resolveButtonGroupAlign,
+	resolveButtonGroupLayout,
 	resolveButtonStyle,
 	resolveButtonTarget,
 	type ButtonAlign,
 	type ButtonColor,
+	type ButtonGroupAlign,
+	type ButtonGroupItem,
+	type ButtonGroupLayout,
 	type ButtonStyle,
 	type ButtonTarget,
 } from "./button";
@@ -121,6 +127,12 @@ export type ButtonEmbedProps = {
 	align: ButtonAlign;
 };
 
+export type ButtonGroupEmbedProps = {
+	items: ButtonGroupItem[];
+	layout: ButtonGroupLayout;
+	align: ButtonGroupAlign;
+};
+
 export type VideoEmbedProps = {
 	provider: VideoProvider;
 	/** YouTube/Vimeo id; for `file` unused when `src` is set. */
@@ -152,6 +164,7 @@ export type ContentSegment =
 	| { type: "separator"; props: SeparatorEmbedProps }
 	| { type: "spacer"; props: SpacerEmbedProps }
 	| { type: "button"; props: ButtonEmbedProps }
+	| { type: "button-group"; props: ButtonGroupEmbedProps }
 	| { type: "contact-email" }
 	| { type: "logo"; props: LogoEmbedProps }
 	| { type: "repodoc"; props: RepoDocEmbedProps }
@@ -236,7 +249,7 @@ const DEFAULT_SPACER: SpacerEmbedProps = {
 
 /** Line must be only the embed (optional attrs). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|author-listing|tag-cloud|separator|spacer|button|contact-email|logo|repodoc|block|video-consent-reset|video)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|author-listing|tag-cloud|separator|spacer|button-group|button|contact-email|logo|repodoc|block|video-consent-reset|video)(?<attrs>[^}]*)\}\}\s*$/gm;
 
 const LOGO_VARIANTS = new Set<LogoEmbedVariant>(["header", "sticky", "footer"]);
 const LOGO_ALIGNS = new Set<LogoEmbedAlign>(["left", "center", "right"]);
@@ -576,6 +589,21 @@ export function parseButtonProps(
 	};
 }
 
+export function parseButtonGroupProps(
+	attrsRaw: string | undefined,
+): ButtonGroupEmbedProps | undefined {
+	const attrs = parseAttrs(attrsRaw ?? "");
+	const items = parseButtonGroupItems(attrs.items);
+	if (items.length === 0) {
+		return undefined;
+	}
+	return {
+		items,
+		layout: resolveButtonGroupLayout(attrs.layout),
+		align: resolveButtonGroupAlign(attrs.align),
+	};
+}
+
 export function parseVideoEmbedProps(
 	attrsRaw: string | undefined,
 ): VideoEmbedProps | undefined {
@@ -681,6 +709,11 @@ export async function buildContentSegments(
 				type: "spacer",
 				props: parseSpacerProps(attrs),
 			});
+		} else if (name === "button-group") {
+			const props = parseButtonGroupProps(attrs);
+			if (props) {
+				segments.push({ type: "button-group", props });
+			}
 		} else if (name === "button") {
 			const props = parseButtonProps(attrs);
 			if (props) {

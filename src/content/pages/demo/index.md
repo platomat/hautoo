@@ -92,6 +92,16 @@ Text unter H6.
 
 {{button label="Extern" href="https://github.com/platomat/hautoo/" target="_blank" style="solid" color="action" align="left"}}
 
+### Button-Gruppe
+
+Nebeneinander, auf schmalen Viewports untereinander (`layout="stack-mobile"`):
+
+{{button-group items="Mehr erfahren|/features/|solid|action|_self||Artikel|/artikel/|outline|action|_self||GitHub|https://github.com/platomat/hautoo/|outline|border|_blank" layout="stack-mobile" align="left"}}
+
+Immer untereinander, zentriert:
+
+{{button-group items="Primär|/features/|solid|action|_self||Sekundär|/faq/|outline|action|_self" layout="stack" align="center"}}
+
 ## Logo
 
 {{logo variant="header" width="120" unit="px" align="left"}}
