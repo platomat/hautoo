@@ -38,7 +38,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 ## Inhalte und Redaktion
 
 - **Screencast-Folgen als Artikel** (001 bis 022): How-tos zu [GitHub](/glossar/github/), [Cursor](/glossar/cursor/), [Cloudflare](/glossar/cloudflare-pages/), [Sveltia](/glossar/sveltia/) und Redaktion, mit Teaser, Tags und Querverweisen. Agenten-Output prüfen: [Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/).
-- **Statische Seiten** (Collection `pages`): Startseite, Artikelübersicht, Tags, Autoren, Glossar, FAQ, Über uns, Impressum, Datenschutz, diese Features-Seite und die [Demo](/features/demo/) (Parent: Features).
+- **Statische Seiten** (Collection `pages`): Startseite, Artikelübersicht, Tags, Autoren, Glossar, FAQ, Über mich (Autorprofil), Impressum, Datenschutz, diese Features-Seite und die [Demo](/features/demo/) (Parent: Features).
 - **Redaktionsregeln** im Repo (`docs/redaktion/`) und als [Cursor](/glossar/cursor/)-Regel: Schema, Stil, SEO-Felder, [Bausteine](/glossar/baustein/), Querverlinkung, PR-Checkliste.
 - **Transkript-basierte Folgen**: Speech-to-Text korrigieren, nichts erfinden, Quellkommentar im Artikel ([Folge 015](/artikel/folge-015-transkript-artikel/)).
 

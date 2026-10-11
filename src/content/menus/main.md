@@ -1,6 +1,6 @@
 ---
 title: Hauptmenü
-modifiedDate: 2026-10-06
+modifiedDate: 2026-10-12
 items:
   - label: Artikel
     linkType: page
@@ -28,7 +28,7 @@ items:
       - label: Demo
         linkType: page
         page: demo
-  - label: Über uns
-    linkType: page
-    page: ueber-uns
+  - label: Über mich
+    linkType: url
+    url: /autoren/wasilij/
 ---

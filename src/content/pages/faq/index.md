@@ -43,7 +43,7 @@ Ein öffentliches Lernprojekt: [**Astro**](/glossar/astro/) baut statische Seite
 
 ### Kann ich das für meine eigene Website nachbauen?
 
-Ja, das ist die Idee. Du brauchst Accounts, etwas Geduld und die Folgen Schritt für Schritt. hautuu zeigt einen Weg, kein fertiger Shop-Baukasten. [Folge 001](/artikel/folge-001-hautuu-intro/), [Über uns](/ueber-uns/).
+Ja, das ist die Idee. Du brauchst Accounts, etwas Geduld und die Folgen Schritt für Schritt. hautuu zeigt einen Weg, kein fertiger Shop-Baukasten. [Folge 001](/artikel/folge-001-hautuu-intro/), [Über mich](/autoren/wasilij/).
 
 ### Wie forke ich hautoo für mein eigenes Projekt?
 
@@ -119,7 +119,7 @@ Für [Sveltia](/glossar/sveltia/) online wird **Chrome/Chromium** empfohlen; Fir
 
 ### Ist hautuu nur eine Demo oder „echt“ live?
 
-Echte Site unter der Projekt-Domain, öffentliches Repo, echte [Deployments](/glossar/deploy/). Du kannst mitlesen und denselben Stack lernen. [Über uns](/ueber-uns/).
+Echte Site unter der Projekt-Domain, öffentliches Repo, echte [Deployments](/glossar/deploy/). Du kannst mitlesen und denselben Stack lernen. [Über mich](/autoren/wasilij/).
 
 ### Muss ich KI extra bezahlen neben Cursor?
 
