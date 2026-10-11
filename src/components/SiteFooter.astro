@@ -39,7 +39,11 @@ function isCurrent(href: string): boolean {
 		<p class="site-footer__copy text-sm text-muted">
 			<span>© {copyrightYears}</span>
 			{" "}
-			<span>{websiteTitle} ∙ One of <a href="https://platomat.com/">PlatoMat</a></span>
+			<span>
+				<strong class="site-footer__site-name">{websiteTitle}</strong>
+				{" "}
+				∙ One of <a href="https://platomat.com/">PlatoMat</a>
+			</span>
 		</p>
 		{
 			showGithub ? (
