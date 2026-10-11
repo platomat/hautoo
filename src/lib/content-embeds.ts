@@ -60,23 +60,7 @@ export const ARTICLE_CARD_FIELDS = [
 	"displayReadingTime",
 ] as const satisfies readonly ArticleCardField[];
 
-/** Legacy `show=` tokens → canonical `display*` keys. */
-const ARTICLE_CARD_FIELD_ALIASES: Record<string, ArticleCardField> = {
-	title: "displayTitle",
-	intro: "displayIntro",
-	categories: "displayCategories",
-	tags: "displayTags",
-	authors: "displayAuthors",
-	date: "displayDate",
-	readingTime: "displayReadingTime",
-	displayTitle: "displayTitle",
-	displayIntro: "displayIntro",
-	displayCategories: "displayCategories",
-	displayTags: "displayTags",
-	displayAuthors: "displayAuthors",
-	displayDate: "displayDate",
-	displayReadingTime: "displayReadingTime",
-};
+const ARTICLE_CARD_FIELD_SET = new Set<string>(ARTICLE_CARD_FIELDS);
 
 export type ArticleListingFilterMatch = "all" | "any";
 
@@ -218,16 +202,18 @@ const DEFAULT_LISTING: ArticleListingEmbedProps = {
 	match: "all",
 };
 
-/** Normalize CMS/array/`show=` tokens to canonical card fields (legacy aliases ok). */
+/** Normalize CMS/array/`show=` tokens to canonical card fields. */
 export function normalizeArticleCardShowList(
 	fields: readonly string[] | undefined,
 ): ArticleCardField[] {
 	if (!fields?.length) return [...DEFAULT_SHOW];
-	const selected = new Set<ArticleCardField>();
-	for (const raw of fields) {
-		const key = ARTICLE_CARD_FIELD_ALIASES[raw.trim()];
-		if (key) selected.add(key);
-	}
+	const selected = new Set(
+		fields
+			.map((raw) => raw.trim())
+			.filter((part): part is ArticleCardField =>
+				ARTICLE_CARD_FIELD_SET.has(part),
+			),
+	);
 	/** Keep canonical card order; selection is on/off only (FE layout is fixed). */
 	const out = ARTICLE_CARD_FIELDS.filter((field) => selected.has(field));
 	return out.length > 0 ? out : [...DEFAULT_SHOW];

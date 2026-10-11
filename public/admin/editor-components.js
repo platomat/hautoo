@@ -29,24 +29,6 @@
 		"displayReadingTime",
 	];
 
-	/** Legacy show= tokens → display* (and identity for canonical keys). */
-	const ARTICLE_CARD_SHOW_ALIASES = {
-		title: "displayTitle",
-		intro: "displayIntro",
-		categories: "displayCategories",
-		tags: "displayTags",
-		authors: "displayAuthors",
-		date: "displayDate",
-		readingTime: "displayReadingTime",
-		displayTitle: "displayTitle",
-		displayIntro: "displayIntro",
-		displayCategories: "displayCategories",
-		displayTags: "displayTags",
-		displayAuthors: "displayAuthors",
-		displayDate: "displayDate",
-		displayReadingTime: "displayReadingTime",
-	};
-
 	const ARTICLE_CARD_SHOW_DEFAULT = [
 		"displayTitle",
 		"displayIntro",
@@ -56,14 +38,14 @@
 		"displayReadingTime",
 	];
 
+	const ARTICLE_CARD_SHOW_SET = new Set(ARTICLE_CARD_SHOW_ORDER);
+
 	function normalizeArticleCardShow(show) {
-		const selected = new Set();
-		for (const part of Array.isArray(show)
-			? show
-			: String(show || "").split(/[,\s]+/)) {
-			const key = ARTICLE_CARD_SHOW_ALIASES[String(part).trim()];
-			if (key) selected.add(key);
-		}
+		const selected = new Set(
+			(Array.isArray(show) ? show : String(show || "").split(/[,\s]+/))
+				.map((part) => String(part).trim())
+				.filter((part) => ARTICLE_CARD_SHOW_SET.has(part)),
+		);
 		return ARTICLE_CARD_SHOW_ORDER.filter((field) => selected.has(field));
 	}
 
