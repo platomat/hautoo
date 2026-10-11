@@ -596,6 +596,16 @@ const headerStyle = [
 			padding: 0.75rem 0;
 		}
 
+		.site-nav__chevron {
+			width: 0.75rem;
+			height: 0.75rem;
+			transform: rotate(45deg) translateY(-0.15rem);
+		}
+
+		.site-nav__item.is-sub-open .site-nav__chevron {
+			transform: rotate(225deg) translateY(-0.15rem);
+		}
+
 		.site-nav__sub {
 			display: none;
 			padding: 0 0 0.5rem 0.75rem;
