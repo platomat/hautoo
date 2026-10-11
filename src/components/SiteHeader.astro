@@ -297,7 +297,6 @@ const headerStyle = [
 		grid-area: 1 / 1;
 		width: 1.35rem;
 		height: 1.35rem;
-		color: var(--color-text);
 	}
 
 	.site-header__brand :global(.site-header__logo-mark--stuck) {
@@ -312,24 +311,11 @@ const headerStyle = [
 		display: block;
 	}
 
-	/* Hover/focus/active: wordmark + whole mark → action (accent follows currentColor). */
+	/* Wordmark only; CMS logos keep their own colors. */
 	.site-header__brand:hover,
 	.site-header__brand:focus-visible,
 	.site-header__brand:active {
 		color: var(--color-action);
-	}
-
-	.site-header__brand:hover :global(.logo-mark__accent),
-	.site-header__brand:focus-visible :global(.logo-mark__accent),
-	.site-header__brand:active :global(.logo-mark__accent) {
-		stroke: currentColor;
-	}
-
-	.site-header__brand:hover :global(circle.logo-mark__accent),
-	.site-header__brand:focus-visible :global(circle.logo-mark__accent),
-	.site-header__brand:active :global(circle.logo-mark__accent) {
-		fill: currentColor;
-		stroke: none;
 	}
 
 	.site-header__actions {

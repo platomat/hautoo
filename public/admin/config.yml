@@ -933,7 +933,7 @@ collections:
             label: Logos
             widget: object
             collapsed: false
-            hint: "Aus der Mediathek (z. B. `/assets/logo-mark.svg`). Leer = Fallback `/assets/logo-mark.svg`. SVG wird inline eingebettet (einfärbbar per CSS)."
+            hint: "Aus der Mediathek (z. B. `/assets/logo-mark.svg`). Leer = Fallback `/assets/logo-mark.svg`. Darstellung mit den Farben der Datei."
             fields:
               - name: header
                 label: Header

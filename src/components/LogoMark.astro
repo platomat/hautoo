@@ -1,7 +1,7 @@
 ---
 /**
- * Site logo: CMS path from General → Logos, else default `/assets/logo-mark.svg`.
- * SVGs are inlined so CSS can recolor (default mark: ink/accent classes).
+ * Site logo from General → Logos (or `/assets/logo-mark.svg`).
+ * SVGs are inlined as authored; raster formats use Astro Image.
  */
 import { Image } from "astro:assets";
 import {
@@ -22,11 +22,7 @@ const logo = resolveLogo(variant);
 {
 	logo.kind === "svg" ? (
 		<span
-			class:list={[
-				"logo-mark",
-				logo.isDefault ? "logo-mark--default" : "logo-mark--custom",
-				className,
-			]}
+			class:list={["logo-mark", className]}
 			aria-hidden="true"
 			set:html={logo.html}
 		/>
@@ -49,44 +45,13 @@ const logo = resolveLogo(variant);
 	.logo-mark :global(svg) {
 		display: block;
 		width: 100%;
-		height: 100%;
+		height: auto;
 	}
 
 	.logo-mark--raster :global(img) {
 		display: block;
 		width: 100%;
-		height: 100%;
+		height: auto;
 		object-fit: contain;
-	}
-
-	/* Default leaf mark: ink = currentColor, accent = action */
-	.logo-mark--default :global(.logo-mark__ink) {
-		stroke: currentColor;
-		fill: none;
-	}
-
-	.logo-mark--default :global(.logo-mark__ink.logo-mark__leaf),
-	.logo-mark--default :global(circle.logo-mark__ink) {
-		fill: currentColor;
-		stroke: none;
-	}
-
-	.logo-mark--default :global(.logo-mark__accent) {
-		stroke: var(--color-action);
-		fill: none;
-	}
-
-	.logo-mark--default :global(circle.logo-mark__accent) {
-		fill: var(--color-action);
-		stroke: none;
-	}
-
-	/* Custom SVG: paint with currentColor (override hard-coded fills/strokes). */
-	.logo-mark--custom :global(svg [fill]:not([fill="none"])) {
-		fill: currentColor;
-	}
-
-	.logo-mark--custom :global(svg [stroke]:not([stroke="none"])) {
-		stroke: currentColor;
 	}
 </style>

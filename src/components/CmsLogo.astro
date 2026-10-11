@@ -63,13 +63,12 @@ const cssWidth = unit === "%" ? `${safeWidth}%` : `${safeWidth}px`;
 		text-align: right;
 	}
 
-	.cms-logo__mark {
+	/* LogoMark is a child component → needs :global for scoped styles to apply. */
+	.cms-logo :global(.cms-logo__mark) {
 		display: inline-block;
 		width: var(--cms-logo-width);
-		height: auto;
 		max-width: 100%;
-		color: var(--color-text);
+		height: auto;
 		vertical-align: middle;
-		aspect-ratio: 1;
 	}
 </style>

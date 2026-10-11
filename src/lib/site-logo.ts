@@ -7,7 +7,7 @@ import { getSiteConfig } from "./site-config";
 export type LogoSlot = "header" | "headerSticky" | "footer";
 
 export type ResolvedLogo =
-	| { kind: "svg"; html: string; isDefault: boolean }
+	| { kind: "svg"; html: string }
 	| { kind: "image"; meta: ImageMetadata };
 
 /** Media-library fallback when CMS logo fields are empty. */
@@ -45,9 +45,6 @@ function cmsPathToFs(cmsPath: string): string | undefined {
 	if (raw.startsWith("/assets/")) {
 		return path.join(process.cwd(), "src", raw.slice(1));
 	}
-	if (raw.startsWith("/img/")) {
-		return path.join(process.cwd(), "public", raw.slice(1));
-	}
 	if (raw.startsWith("src/assets/")) {
 		return path.join(process.cwd(), raw);
 	}
@@ -64,12 +61,12 @@ function prepareSvgHtml(raw: string): string {
 
 function readDefaultSvg(): ResolvedLogo {
 	const html = prepareSvgHtml(readFileSync(DEFAULT_LOGO_FS, "utf8"));
-	return { kind: "svg", html, isDefault: true };
+	return { kind: "svg", html };
 }
 
 /**
  * Resolve logo for header / sticky header / footer.
- * SVGs are inlined for CSS `currentColor`; other formats use ImageMetadata.
+ * SVGs are inlined as authored; other formats use ImageMetadata.
  */
 export function resolveLogo(slot: LogoSlot): ResolvedLogo {
 	const cmsPath = resolveLogoCmsPath(slot);
@@ -84,10 +81,8 @@ export function resolveLogo(slot: LogoSlot): ResolvedLogo {
 			return {
 				kind: "svg",
 				html: prepareSvgHtml(readFileSync(fsPath, "utf8")),
-				isDefault: false,
 			};
 		}
-		// Fall through to default if missing file
 		console.warn(`[site-logo] SVG not found: ${cmsPath}`);
 		return readDefaultSvg();
 	}

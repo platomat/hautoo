@@ -280,7 +280,7 @@ export const siteGeneralConfigSchema = z.object({
 	 * Set for hautoo (`platomat/hautoo`); leave empty on forks → site logo → `/`.
 	 */
 	githubRepo: z.string().trim().default(""),
-	/** Header / sticky / footer logos (SVG preferred for CSS color). */
+	/** Header / sticky / footer logos from the media library. */
 	logos: siteLogosConfigSchema.default({}),
 	/** Browser tab icons (default + optional dark color-scheme). */
 	favicons: siteFaviconsConfigSchema.default({}),
