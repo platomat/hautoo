@@ -125,12 +125,12 @@ Im CMS über die Markdown-Toolbar einfügen (wie Bilder):
 | CMS-Block | Gespeicherter Marker | Optionen |
 | --- | --- | --- |
 | **Artikel-Listing** | `{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25" show="title,intro,categories,tags,date,readingTime"}}` | Anzahl (`0` = alle), Sortierung, Layout (`grid` / `list`), Spalten, Abstand, Kartenfelder (`title` / `intro` / `categories` / `tags` / `authors` / `date` / `readingTime`; Autoren opt-in). Optional Filter: `authors`, `categories`, `tags` (kommagetrennte Slugs; innerhalb einer Art reicht ein Treffer). Mehrere Filterarten: `match="all"` (UND, Default) oder `match="any"` (ODER). Artikel-Prev/Next bleibt siteweit chronologisch. |
+| **Kategorie-Listing** | `{{category-listing count="0" sort="title-asc" layout="grid" columns="3" gap="1.25"}}` | Wie Tag-Listing; Default-Layout Grid; Titel ohne Hashtag |
+| **Tag-Listing** | `{{tag-listing count="0" sort="title-asc" layout="cloud" columns="3" gap="1.25"}}` | Anzahl (`0` = alle genutzten), Sortierung (`title-asc` / `title-desc` / `most-used`), Layout (`cloud` / `list` / `grid`), Spalten 1–4 (nur Grid), Abstand in rem |
+| **Tagwolke** | `{{tag-cloud}}` | Kurzform für Tag-Listing mit Layout Wolke |
 | **Autoren-Listing** | `{{author-listing}}` | Alle Autoren mit Avatar und Artikelanzahl (Seite `/autoren/`) |
 | **Glossar-Listing** | `{{glossar-listing count="0" sort="title-asc" layout="list" columns="2" gap="1.5"}}` | Anzahl (`0` = alle), Sortierung (`title-asc` / `title-desc` / `newest` / `oldest`), Layout (`list` / `grid`), Spalten 1–4 (nur Grid), Abstand in rem |
-| **Tag-Listing** | `{{tag-listing count="0" sort="title-asc" layout="cloud" columns="3" gap="1.25"}}` | Anzahl (`0` = alle genutzten), Sortierung (`title-asc` / `title-desc` / `most-used`), Layout (`cloud` / `list` / `grid`), Spalten 1–4 (nur Grid), Abstand in rem |
-| **Kategorie-Listing** | `{{category-listing count="0" sort="title-asc" layout="grid" columns="3" gap="1.25"}}` | Wie Tag-Listing; Default-Layout Grid; Titel ohne Hashtag |
 | **Baustein** | `{{block id="stack-uebersicht"}}` | `id` = Slug aus Collection `blocks` (Bausteine); Inhalt wird an Ort und Stelle injiziert |
-| **Tagwolke** | `{{tag-cloud}}` | Kurzform für Tag-Listing mit Layout Wolke |
 | **Trennlinie** | `{{separator height="1" width="100" color="border"}}` | Höhe in px (Default 1), Breite in % (Default 100), Farbe = Design-Token (`border` Standard = bisherige Linienfarbe; auch `text`, `text-muted`, `action`, `action-hover`, `action-muted`, `surface`, `surface-raised`, `bg`, `danger`) |
 | **Abstandshalter** | `{{spacer}}` oder `{{spacer height="48"}}` | Vertikaler Leerraum in px (Default 32, Min. 1, Max. 600). Ohne sichtbare Linie. |
 | **Button** | `{{button label="Mehr erfahren" href="/kontakt/" target="_self" style="solid" color="action" align="left"}}` | Pflicht: `label`, `href`. Optional: `target` (`_self` / `_blank`), `style` (`solid` / `outline`), `color` (gleiche Palette wie Trennlinie, Default `action`), `align` (`left` / `center` / `right` / `full`). Solid: Kontrast-Text automatisch |

@@ -249,8 +249,8 @@ collections:
           - article-listing
           - category-listing
           - tag-listing
-          - author-listing
           - tag-cloud
+          - author-listing
           - glossar-listing
           - button
           - separator
@@ -507,8 +507,8 @@ collections:
           - article-listing
           - category-listing
           - tag-listing
-          - author-listing
           - tag-cloud
+          - author-listing
           - glossar-listing
           - button
           - separator
@@ -711,8 +711,8 @@ collections:
           - article-listing
           - category-listing
           - tag-listing
-          - author-listing
           - tag-cloud
+          - author-listing
           - glossar-listing
           - button
           - separator
