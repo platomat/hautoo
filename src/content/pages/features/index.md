@@ -61,6 +61,32 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **redirects:** Weiterleitungen ([#76](https://github.com/platomat/hautoo/issues/76)). Mehrere Quellen → ein Ziel (301/302); Build erzeugt `_redirects`.
 - **settings:** Globale JSON-Einstellungen (**General**, **Design**, **Content**); keine Relationen ([#45](https://github.com/platomat/hautoo/issues/45)).
 
+## Content-Komponenten (Embeds)
+
+Im Markdown über die Sveltia-Toolbar einfügbar; Speichern als `{{…}}`-Zeile; Rendering in `CmsContent.astro`. Jede Komponente allein in einer Zeile (mit Leerzeilen drumherum); Prüfung im Build (`check-content-embeds.py`). Alle auf der [Demo](/features/demo/) sichtbar.
+
+- **Baustein** (`{{block id="…"}}`): Wiederverwendbarer Inhalt aus der Collection `blocks`, einmal pflegen und überall einbinden ([Folge 020](/artikel/folge-020-bausteine-fork/)).
+- **Artikel-Listing** (`{{article-listing …}}`): Öffentliche Artikel als Grid oder Liste; Anzahl, Sortierung, Kartenfelder an/aus, Filter nach Autoren/Kategorien/Tags (UND/ODER) ([#78](https://github.com/platomat/hautoo/issues/78)).
+- **Kategorie-Listing** (`{{category-listing …}}`): Kategorien als Grid, Liste oder Wolke; optional begrenzt und sortiert.
+- **Tag-Listing** (`{{tag-listing …}}`): Genutzte Tags als Wolke, Liste oder Grid; Sortierung nach Titel oder Häufigkeit.
+- **Tagwolke** (`{{tag-cloud}}`): Kurzform für Tag-Listing im Layout Wolke.
+- **Autoren-Listing** (`{{author-listing}}`): Alle Autoren mit Avatar und Artikelanzahl (z. B. auf `/autoren/`).
+- **Glossar-Listing** (`{{glossar-listing …}}`): Glossar-Einträge als Liste oder Grid; Anzahl und Sortierung wählbar.
+- **Button** (`{{button …}}`): Einzelner Aktionslink mit Stil (ausgefüllt/Kontur), Farbe, Ziel und Ausrichtung inkl. voller Breite.
+- **Trennlinie** (`{{separator …}}`): Horizontale Linie mit Höhe, Breite und Design-Token-Farbe.
+- **Abstandshalter** (`{{spacer …}}`): Vertikaler Leerraum in Pixeln ohne sichtbare Linie.
+- **Kontakt-E-Mail** (`{{contact-email}}`): Adresse aus General → Contact email oder Build-Variable `CONTACT_EMAIL`, obfuscated im Markup.
+- **Logo** (`{{logo …}}`): Site-Logo aus General → Logos (Header/Sticky/Footer) mit Breite und Ausrichtung ([#79](https://github.com/platomat/hautoo/issues/79)).
+- **Video** (`{{video …}}`): YouTube/Vimeo mit Consent-Facade (Datenschutz-Link aus Privacy page) oder selbst gehostete MP4 über R2.
+- **Video-Freischaltung widerrufen** (`{{video-consent-reset}}`): Button, der die gespeicherte Video-Einwilligung im Browser löscht.
+- **Repo-Dokument** (`{{repodoc …}}`): Hinweisbox mit Link zu einer Datei unter `docs/` auf GitHub (`main`).
+
+Zusätzlich in der Toolbar: **Bild** und **Codeblock** (Sveltia-Standard, kein eigenes `{{…}}`-Embed).
+
+## Settings (Konfiguration)
+
+Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Content) ([#45](https://github.com/platomat/hautoo/issues/45)).
+
 ### Settings → General
 
 - **Website title** und optionale **Description** / Slogan ([#75](https://github.com/platomat/hautoo/issues/75)).
@@ -99,19 +125,6 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Tag-Seiten** mit Artikel-Grid; Link zum Glossar, wenn der Slug passt. Am Artikel: `tagPlacement` (Hero, nach Inhalt oder beides); Kategorien immer im Hero.
 - **Autoren-Seiten** (Avatar, Bio, Artikelliste) und Übersicht `/autoren/`.
 - **Artikel-Übersicht** `/artikel/` mit Seitenleiste (Kategorie-Tree, genutzte Tags); auf Desktop sticky, wenn die Leiste in den Viewport passt.
-
-## Content-Komponenten (Embeds)
-
-Im Markdown über die Sveltia-Toolbar; Rendering in `CmsContent.astro`.
-
-- **Baustein** (`{{block id="…"}}`): Inhalt aus Collection `blocks` ([Folge 020](/artikel/folge-020-bausteine-fork/)).
-- **Logo** (`{{logo variant="header" width="120" unit="px" align="center"}}`): Site-Logo aus General → Logos mit Breite und Ausrichtung ([#79](https://github.com/platomat/hautoo/issues/79)).
-- **Artikel-Listing**: Anzahl, Sortierung, Grid/Liste, Kartenfelder an/aus (feste Kartenreihenfolge); Filter nach Autoren, Kategorien und Tags (UND/ODER) ([#78](https://github.com/platomat/hautoo/issues/78)).
-- **Kategorie-Listing**, **Tag-Listing**, **Tagwolke**, **Autoren-Listing**, **Glossar-Listing**.
-- **Trennlinie**, **Abstandshalter**, **Button**, **Kontakt-E-Mail** (`{{contact-email}}` aus CMS oder ENV).
-- **Video:** YouTube/Vimeo (Consent-Facade, Datenschutz-Link aus General → Privacy page) oder selbst gehostete MP4 über R2; **Video-Freischaltung widerrufen**.
-- **Repo-Dokument** (`{{repodoc path="docs/…"}}`): Link zu Handbuch-Dateien auf [GitHub](/glossar/github/).
-- **Embed-Check** vor dem Build: Embeds nur allein in einer Zeile (`check-content-embeds.py`).
 
 ## SEO und Auffindbarkeit
 
