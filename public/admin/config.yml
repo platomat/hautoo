@@ -900,7 +900,7 @@ collections:
             label: Footer copyright
             widget: object
             collapsed: false
-            hint: "Optionaler Zusatz nach ©-Jahr und Website-Titel in der Footer-Zeile."
+            hint: "Copyright-Zeile im Footer: links Claim, Mitte optional Mark/Icon."
             fields:
               - name: claim
                 label: Claim
@@ -919,6 +919,12 @@ collections:
                 default: "•"
                 required: true
                 hint: "Zeichen zwischen Website-Titel und Claim."
+              - name: showCenter
+                label: Show center mark
+                widget: boolean
+                required: false
+                default: true
+                hint: "Kleines Icon in der Mitte der Zeile. An = GitHub-Icon bei gesetztem Repo, sonst Site-Logo zur Startseite. Aus = nichts in der Mitte."
           - name: contactEmail
             label: Contact email
             widget: string
@@ -939,14 +945,8 @@ collections:
             label: GitHub repository
             widget: string
             required: false
-            hint: "Optional owner/name für das Footer-Icon (z. B. platomat/hautoo). Leer = Site-Logo verlinkt auf die Startseite (typisch für Forks). Wirkt nur, wenn „Show footer center mark“ an ist."
+            hint: "Optional owner/name für das Footer-Icon (z. B. platomat/hautoo). Leer = Site-Logo verlinkt auf die Startseite (typisch für Forks). Wirkt nur, wenn Footer copyright → Show center mark an ist."
             default: ""
-          - name: showFooterCenter
-            label: Show footer center mark
-            widget: boolean
-            required: false
-            default: true
-            hint: "Kleines Icon in der Mitte der Copyright-Zeile. An = GitHub-Icon bei gesetztem Repo, sonst Site-Logo zur Startseite. Aus = nichts in der Mitte."
           - name: logos
             label: Logos
             widget: object
@@ -967,7 +967,7 @@ collections:
                 label: Footer
                 widget: image
                 required: false
-                hint: "Mitte im Footer, wenn Center-Mark an und kein GitHub-Repo gesetzt ist. Leer = gleiches wie Header."
+                hint: "Footer-Mitte, wenn Show center mark an und kein GitHub-Repo gesetzt ist. Leer = gleiches wie Header."
           - name: favicons
             label: Favicons
             widget: object

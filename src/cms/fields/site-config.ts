@@ -52,6 +52,11 @@ export const footerCopyrightConfigSchema = z.object({
 	claim: z.string().trim().default(""),
 	/** Character between site name and claim. */
 	separator: footerCopyrightSeparatorSchema.default("•"),
+	/**
+	 * Small mark in the copyright row center.
+	 * When true: GitHub icon if `githubRepo` is set, otherwise site logo → `/`.
+	 */
+	showCenter: z.boolean().default(true),
 });
 
 export type FooterCopyrightConfig = z.infer<typeof footerCopyrightConfigSchema>;
@@ -285,11 +290,6 @@ export const siteGeneralConfigSchema = z.object({
 	 * Set for hautoo (`platomat/hautoo`); leave empty on forks → site logo → `/`.
 	 */
 	githubRepo: z.string().trim().default(""),
-	/**
-	 * Show the small mark in the copyright footer center.
-	 * When true: GitHub icon if `githubRepo` is set, otherwise site logo → `/`.
-	 */
-	showFooterCenter: z.boolean().default(true),
 	/** Header / sticky / footer logos from the media library. */
 	logos: siteLogosConfigSchema.default({}),
 	/** Browser tab icons (default + optional dark color-scheme). */

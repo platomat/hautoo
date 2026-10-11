@@ -29,9 +29,9 @@ const claimHtml =
 	claimKind === "html" ? sanitizeAttributionHtml(claimRaw) : "";
 const showClaim = Boolean(claimRaw);
 const claimSeparator = footerCopyright.separator;
+const showFooterCenter = footerCopyright.showCenter !== false;
 
 const general = getSiteConfig().general;
-const showFooterCenter = general?.showFooterCenter !== false;
 const githubRepo = general?.githubRepo?.trim() ?? "";
 const showGithub = showFooterCenter && Boolean(githubRepo);
 const showHomeLogo = showFooterCenter && !showGithub;

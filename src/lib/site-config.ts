@@ -35,9 +35,21 @@ export type { HeroCollectionKey };
 export function getSiteConfig(): SiteConfig {
 	const contentObj = contentRaw as Record<string, unknown>;
 	const designObj = designRaw as Record<string, unknown>;
+	const generalObj = generalRaw as Record<string, unknown>;
+	const footerCopyrightRaw =
+		(generalObj.footerCopyright as Record<string, unknown> | undefined) ?? {};
+	// Legacy top-level showFooterCenter → footerCopyright.showCenter.
+	const footerCopyright = {
+		...footerCopyrightRaw,
+		showCenter:
+			footerCopyrightRaw.showCenter ?? generalObj.showFooterCenter ?? true,
+	};
 	// width/spacing live under Design; fall back to legacy Content JSON keys.
 	return siteConfigSchema.parse({
-		general: siteGeneralConfigSchema.parse(generalRaw),
+		general: siteGeneralConfigSchema.parse({
+			...generalObj,
+			footerCopyright,
+		}),
 		design: siteDesignConfigSchema.parse({
 			...designObj,
 			width: designObj.width ?? contentObj.width,
