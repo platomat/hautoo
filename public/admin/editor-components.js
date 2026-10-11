@@ -116,7 +116,11 @@
 				hint: "Nur an/aus per Checkbox. Feste Kartenreihenfolge: Titel, Intro, Kategorien | Tags, Autoren, Datum · Lesezeit.",
 			},
 			{
-				name: "authors",
+				/**
+				 * Must not share names with `show` option values (`authors` / `categories` /
+				 * `tags`): Sveltia can then overwrite the card-field checkbox state.
+				 */
+				name: "filterAuthors",
 				label: "Nur Autoren",
 				widget: "relation",
 				collection: "authors",
@@ -128,7 +132,7 @@
 				hint: "Leer = alle. Mehrere: Artikel mit mindestens einem dieser Autoren.",
 			},
 			{
-				name: "categories",
+				name: "filterCategories",
 				label: "Nur Kategorien",
 				widget: "relation",
 				collection: "categories",
@@ -140,7 +144,7 @@
 				hint: "Leer = alle. Mehrere: Artikel mit mindestens einer dieser Kategorien.",
 			},
 			{
-				name: "tags",
+				name: "filterTags",
 				label: "Nur Tags",
 				widget: "relation",
 				collection: "tags",
@@ -180,9 +184,9 @@
 				columns: attrs.columns || "3",
 				gap: attrs.gap || "1.25",
 				show: showParsed.length > 0 ? showParsed : showDefault.split(","),
-				authors: splitList(attrs.authors),
-				categories: splitList(attrs.categories),
-				tags: splitList(attrs.tags),
+				filterAuthors: splitList(attrs.authors),
+				filterCategories: splitList(attrs.categories),
+				filterTags: splitList(attrs.tags),
 				match: attrs.match === "any" ? "any" : "all",
 			};
 		},
@@ -193,9 +197,9 @@
 			columns = 3,
 			gap = 1.25,
 			show = ["title", "intro", "categories", "tags", "date", "readingTime"],
-			authors = [],
-			categories = [],
-			tags = [],
+			filterAuthors = [],
+			filterCategories = [],
+			filterTags = [],
 			match = "all",
 		}) => {
 			const showNormalized = normalizeArticleCardShow(show);
@@ -209,9 +213,9 @@
 					.map((s) => String(s).trim())
 					.filter(Boolean)
 					.join(",");
-			const authorsAttr = listAttr(authors);
-			const categoriesAttr = listAttr(categories);
-			const tagsAttr = listAttr(tags);
+			const authorsAttr = listAttr(filterAuthors);
+			const categoriesAttr = listAttr(filterCategories);
+			const tagsAttr = listAttr(filterTags);
 			const parts = [
 				`count="${count}"`,
 				`sort="${sort}"`,
@@ -235,9 +239,9 @@
 			columns = 3,
 			gap = 1.25,
 			show = ["title", "intro", "categories", "tags", "date", "readingTime"],
-			authors = [],
-			categories = [],
-			tags = [],
+			filterAuthors = [],
+			filterCategories = [],
+			filterTags = [],
 			match = "all",
 		}) => {
 			const showNormalized = normalizeArticleCardShow(show);
@@ -252,9 +256,9 @@
 					.filter(Boolean)
 					.join(", ");
 			const filterBits = [];
-			const authorsLabel = listLabel(authors);
-			const categoriesLabel = listLabel(categories);
-			const tagsLabel = listLabel(tags);
+			const authorsLabel = listLabel(filterAuthors);
+			const categoriesLabel = listLabel(filterCategories);
+			const tagsLabel = listLabel(filterTags);
 			if (authorsLabel) filterBits.push(`Autoren ${authorsLabel}`);
 			if (categoriesLabel) filterBits.push(`Kategorien ${categoriesLabel}`);
 			if (tagsLabel) filterBits.push(`Tags ${tagsLabel}`);
