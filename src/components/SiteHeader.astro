@@ -12,6 +12,8 @@ const headerConfig = await getSiteHeaderConfig();
 const websiteTitle = await getSiteWebsiteTitle();
 const useStickyLogo = stickyLogoDiffers();
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const logoPosition = headerConfig.logoPosition;
+const searchAtStart = headerConfig.searchPlacement === "start";
 
 function isCurrent(href: string): boolean {
 	const key = href.replace(/\/$/, "") || "/";
@@ -41,6 +43,8 @@ const headerStyle = [
 <header
 	class:list={[
 		"site-header",
+		`site-header--logo-${logoPosition}`,
+		searchAtStart && "site-header--search-start",
 		headerConfig.stickyDesktop && "site-header--sticky-desktop",
 		headerConfig.stickyTablet && "site-header--sticky-tablet",
 		headerConfig.stickyMobile && "site-header--sticky-mobile",
@@ -49,6 +53,13 @@ const headerStyle = [
 	data-site-header
 >
 	<div class="site-header__inner shell-inner">
+		{
+			searchAtStart && (
+				<div class="site-header__search site-header__search--start">
+					<SiteSearch />
+				</div>
+			)
+		}
 		<a class="site-header__brand" href="/" aria-label={`${websiteTitle} Startseite`}>
 			<span class="site-header__logo-slot">
 				<LogoMark
@@ -141,7 +152,13 @@ const headerStyle = [
 			</ul>
 		</nav>
 		<div class="site-header__actions">
-			<SiteSearch />
+			{
+				!searchAtStart && (
+					<div class="site-header__search site-header__search--end">
+						<SiteSearch />
+					</div>
+				)
+			}
 			<button
 				type="button"
 				class="site-nav-toggle"
@@ -276,6 +293,19 @@ const headerStyle = [
 			height: var(--header-bar-height);
 		}
 	}
+
+	/*
+	  Centered logo uses two rows from tablet up — sticky px heights would clip
+	  the nav row, so they become min-height only.
+	*/
+	@media (min-width: 680px) {
+		.site-header--logo-center.site-header--sticky-desktop .site-header__inner,
+		.site-header--logo-center.site-header--sticky-desktop.is-stuck .site-header__inner,
+		.site-header--logo-center.site-header--sticky-tablet .site-header__inner,
+		.site-header--logo-center.site-header--sticky-tablet.is-stuck .site-header__inner {
+			height: auto;
+		}
+	}
 </style>
 
 <style>
@@ -321,6 +351,78 @@ const headerStyle = [
 		align-items: center;
 		gap: 0.15rem;
 		flex-shrink: 0;
+	}
+
+	.site-header__search {
+		display: flex;
+		align-items: center;
+		flex-shrink: 0;
+	}
+
+	/* Logo right: nav leading, brand + actions trailing (#74). */
+	@media (min-width: 680px) {
+		.site-header--logo-right .site-nav {
+			order: 1;
+			margin-inline-start: 0;
+			margin-inline-end: auto;
+		}
+
+		.site-header--logo-right .site-header__actions {
+			order: 2;
+		}
+
+		.site-header--logo-right .site-header__brand {
+			order: 3;
+		}
+
+		.site-header--logo-right.site-header--search-start .site-header__search--start {
+			order: 0;
+		}
+
+		.site-header--logo-right.site-header--search-start .site-nav {
+			order: 1;
+		}
+	}
+
+	/* Logo center: brand row + nav row below (#74). */
+	@media (min-width: 680px) {
+		.site-header--logo-center .site-header__inner {
+			display: grid;
+			grid-template-columns: 1fr auto 1fr;
+			grid-template-areas:
+				"lead brand trail"
+				"nav nav nav";
+			align-items: center;
+			column-gap: 1rem;
+			row-gap: 0.35rem;
+			height: auto;
+		}
+
+		.site-header--logo-center .site-header__search--start {
+			grid-area: lead;
+			justify-self: start;
+		}
+
+		.site-header--logo-center .site-header__brand {
+			grid-area: brand;
+			justify-self: center;
+		}
+
+		.site-header--logo-center .site-header__actions {
+			grid-area: trail;
+			justify-self: end;
+		}
+
+		.site-header--logo-center .site-nav {
+			grid-area: nav;
+			margin-inline-start: 0;
+			justify-self: center;
+			width: 100%;
+		}
+
+		.site-header--logo-center .site-nav__list {
+			justify-content: center;
+		}
 	}
 
 	.site-nav-toggle {
@@ -561,6 +663,47 @@ const headerStyle = [
 
 		.site-header__actions {
 			margin-inline-start: auto;
+		}
+
+		.site-header--logo-right .site-header__actions {
+			order: 1;
+			margin-inline-start: 0;
+		}
+
+		.site-header--logo-right .site-header__search--start {
+			order: 2;
+			margin-inline-start: auto;
+		}
+
+		.site-header--logo-right .site-header__brand {
+			order: 3;
+		}
+
+		.site-header--logo-right:not(.site-header--search-start) .site-header__brand {
+			margin-inline-start: auto;
+		}
+
+		.site-header--logo-right .site-nav {
+			order: 4;
+		}
+
+		.site-header--logo-center .site-header__inner {
+			position: relative;
+			justify-content: flex-end;
+		}
+
+		.site-header--logo-center.site-header--search-start .site-header__inner {
+			justify-content: space-between;
+		}
+
+		.site-header--logo-center .site-header__brand {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		.site-header--logo-center .site-header__actions {
+			margin-inline-start: 0;
 		}
 
 		.site-nav-toggle {

@@ -94,13 +94,15 @@ Katalog: `src/cms/fields/site-fonts.json`. Sync: `scripts/sync-site-fonts.mjs` �
 
 | Feld | Bedeutung |
 | --- | --- |
+| `design.header.logoPosition` | `left` / `right` / `center` (Menü darunter ab Tablet) ([#74](https://github.com/platomat/hautoo/issues/74)) |
+| `design.header.searchPlacement` | Suchlupe `end` (bei Aktionen) oder `start` (vor dem Logo) |
 | `design.header.minHeightDesktop` / `Tablet` / `Mobile` | Ruhehöhe am Seitenanfang; ohne Sticky Mindesthöhe (40–600 px; Default 64 / 64 / 56) |
 | `design.header.stickyDesktop` | Sticky ab Desktop (≥ 1024px) |
 | `design.header.stickyTablet` | Sticky auf Tablet (680–1023px) |
 | `design.header.stickyMobile` | Sticky auf Mobile (< 680px) |
-| `design.header.heightDesktop` / `Tablet` / `Mobile` | Kompakte Höhe, sobald Sticky durch Scrollen greift (40–600 px) |
+| `design.header.heightDesktop` / `Tablet` / `Mobile` | Kompakte Höhe, sobald Sticky durch Scrollen greift (40–600 px; bei `center` nur Mindesthöhe) |
 
-Umsetzung in `SiteHeader.astro` (CSS-Klassen + Custom Properties).
+Umsetzung in `SiteHeader.astro` (Klassen `site-header--logo-*`, `site-header--search-start` + Custom Properties).
 
 ### Einstellungen → Design → Hero (#63)
 

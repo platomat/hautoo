@@ -138,7 +138,17 @@ Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-
 
 ### Sticky Header
 
-Über CMS **Einstellungen → Design → Header** (`src/content/settings/design.json`): **Ruhehöhe** am Seitenanfang (auch mit Sticky, solange noch nicht festgeklebt); Sticky ein/aus pro Breakpoint; **kompakte Höhe**, sobald Sticky durch Scrollen greift. Ohne Sticky ist die Ruhehöhe die Mindesthöhe (Leiste darf wachsen). Breakpoints: Desktop ab 1024, Tablet 680–1023, Mobile unter 680. Werte 40–600 px; Defaults sticky auf allen Geräten, Ruhe- und Sticky-Höhe jeweils 64 / 64 / 56 px. Sticky gilt auch auf Seiten mit Viewport-Hintergrund.
+Über CMS **Einstellungen → Design → Header** (`src/content/settings/design.json`):
+
+| Einstellung | Default | Wirkung |
+| --- | --- | --- |
+| `logoPosition` | `left` | Logo links / rechts, oder `center` (Menü ab Tablet unter dem Logo) ([#74](https://github.com/platomat/hautoo/issues/74)) |
+| `searchPlacement` | `end` | Suchlupe bei den Aktionen (`end`) oder am Anfang (`start`) |
+| Ruhehöhe Desktop/Tablet/Mobile | 64 / 64 / 56 | Höhe am Seitenanfang; ohne Sticky Mindesthöhe |
+| Sticky pro Breakpoint | an | Sticky ein/aus (Desktop ≥1024, Tablet 680–1023, Mobile <680) |
+| Sticky-Höhe | 64 / 64 / 56 | Kompakte Höhe nach Scrollen; bei `logoPosition: center` nur Mindesthöhe (zwei Zeilen) |
+
+Werte 40–600 px. Sticky gilt auch auf Seiten mit Viewport-Hintergrund.
 
 Anker-Sprünge (TOC, `#…`): bei aktivem Sticky setzt `html` `scroll-padding-top` aus der Ruhehöhe (+ Abstand), damit Überschriften nicht unter der Leiste landen. Header-Höhen-Tokens liegen dafür auf `:root`.
 
