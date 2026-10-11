@@ -1,27 +1,27 @@
 ---
 title: Datenschutz
+description: Informationen zur Verarbeitung personenbezogener Daten auf hautuu.
 status: published
 modifiedDate: 2026-10-05
-description: Informationen zur Verarbeitung personenbezogener Daten auf hautuu.
 seo:
+  seo_title: Datenschutz
+  seo_description: Informationen zur Verarbeitung personenbezogener Daten auf hautuu. Hosting, Videos erst nach Consent, Kontakt und deine Rechte. Seite mit Noindex.
   index_visibility: noindex
   follow_visibility: follow
   noarchive: false
   noimageindex: false
   nosnippet: true
   max_snippet_enabled: false
+  max_snippet: -1
   max_video_preview_enabled: false
+  max_video_preview: -1
   max_image_preview_enabled: false
-  seo_title: Datenschutz
-  seo_description: Informationen zur Verarbeitung personenbezogener Daten auf hautuu. Hosting, Videos erst nach Consent, Kontakt und deine Rechte. Seite mit Noindex.
+  max_image_preview: large
 ---
 
 ## Verantwortlicher
 
-Wasilij Pfeifer  
-Bergstr. 14  
-98744 Unterweißbach  
-Deutschland
+{{block id="kontakt-anschrift"}}
 
 E-Mail:
 
@@ -35,7 +35,7 @@ Personenbezogene Daten fallen vor allem dort an, wo Technik Dritter unvermeidbar
 
 ## Hosting (Cloudflare)
 
-Die Website wird über **[Cloudflare Pages](/glossar/cloudflare-pages/)** ausgeliefert. Dabei können technisch erforderliche Verbindungsdaten verarbeitet werden, insbesondere:
+Die Website wird über [**Cloudflare Pages**](/glossar/cloudflare-pages/) ausgeliefert. Dabei können technisch erforderliche Verbindungsdaten verarbeitet werden, insbesondere:
 
 - IP-Adresse
 - Datum und Uhrzeit der Anfrage
@@ -60,7 +60,7 @@ Erst wenn du auf „Video laden“ klickst, wird der Player nachgeladen. Dann ve
 
 Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Du kannst die Einwilligung jederzeit widerrufen (Button unten oder indem du die Website-Daten für diese Domain in deinem Browser löschst). Bis zur erneuten Zustimmung werden die Player wieder nicht geladen.
 
-{{video-consent-reset}}
+
 
 Die Entscheidung speichern wir in deinem Browser unter dem Schlüssel `hautuu-video-consent` in der **localStorage** (kein First-Party-Cookie nur für diesen Schalter).
 

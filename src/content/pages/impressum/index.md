@@ -1,27 +1,27 @@
 ---
 title: Impressum
+description: Angaben gemäß § 5 DDG — Betreiber und Kontakt.
 status: published
 modifiedDate: 2026-10-04
-description: Angaben gemäß § 5 DDG — Betreiber und Kontakt.
 seo:
+  seo_title: Impressum
+  seo_description: 'Angaben gemäß DDG: Betreiber, Adresse und Kontakt zu hautuu. Diese Seite ist für Pflichtangaben gedacht und nicht für die Google Suche optimiert.'
   index_visibility: noindex
   follow_visibility: follow
   noarchive: false
   noimageindex: false
   nosnippet: true
   max_snippet_enabled: false
+  max_snippet: -1
   max_video_preview_enabled: false
+  max_video_preview: -1
   max_image_preview_enabled: false
-  seo_title: Impressum
-  seo_description: 'Angaben gemäß DDG: Betreiber, Adresse und Kontakt zu hautuu. Diese Seite ist für Pflichtangaben gedacht und nicht für die Google Suche optimiert.'
+  max_image_preview: large
 ---
 
 ## Angaben gemäß § 5 DDG
 
-Wasilij Pfeifer  
-Bergstr. 14  
-98744 Unterweißbach  
-Deutschland
+{{block id="kontakt-anschrift"}}
 
 ## Kontakt
 
@@ -31,7 +31,7 @@ E-Mail:
 
 ## Verantwortlichkeit
 
-Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV: Wasilij Pfeifer (Anschrift wie oben).
+Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV: (Anschrift wie oben).
 
 ## Haftung für Inhalte
 
