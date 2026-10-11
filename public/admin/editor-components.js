@@ -20,21 +20,50 @@
 
 	/** Canonical card-field order (FE layout is fixed; CMS is checkbox-only). */
 	const ARTICLE_CARD_SHOW_ORDER = [
-		"title",
-		"intro",
-		"categories",
-		"tags",
-		"authors",
-		"date",
-		"readingTime",
+		"displayTitle",
+		"displayIntro",
+		"displayCategories",
+		"displayTags",
+		"displayAuthors",
+		"displayDate",
+		"displayReadingTime",
+	];
+
+	/** Legacy show= tokens → display* (and identity for canonical keys). */
+	const ARTICLE_CARD_SHOW_ALIASES = {
+		title: "displayTitle",
+		intro: "displayIntro",
+		categories: "displayCategories",
+		tags: "displayTags",
+		authors: "displayAuthors",
+		date: "displayDate",
+		readingTime: "displayReadingTime",
+		displayTitle: "displayTitle",
+		displayIntro: "displayIntro",
+		displayCategories: "displayCategories",
+		displayTags: "displayTags",
+		displayAuthors: "displayAuthors",
+		displayDate: "displayDate",
+		displayReadingTime: "displayReadingTime",
+	};
+
+	const ARTICLE_CARD_SHOW_DEFAULT = [
+		"displayTitle",
+		"displayIntro",
+		"displayCategories",
+		"displayTags",
+		"displayDate",
+		"displayReadingTime",
 	];
 
 	function normalizeArticleCardShow(show) {
-		const selected = new Set(
-			(Array.isArray(show) ? show : String(show || "").split(/[,\s]+/))
-				.map((part) => String(part).trim())
-				.filter(Boolean),
-		);
+		const selected = new Set();
+		for (const part of Array.isArray(show)
+			? show
+			: String(show || "").split(/[,\s]+/)) {
+			const key = ARTICLE_CARD_SHOW_ALIASES[String(part).trim()];
+			if (key) selected.add(key);
+		}
 		return ARTICLE_CARD_SHOW_ORDER.filter((field) => selected.has(field));
 	}
 
@@ -103,22 +132,29 @@
 				multiple: true,
 				/** Keep checkboxes (not tag UI): tags allow drag-reorder that FE ignores. */
 				dropdown_threshold: 20,
-				default: ["title", "intro", "categories", "tags", "date", "readingTime"],
-				options: [
-					{ label: "Titel", value: "title" },
-					{ label: "Intro", value: "intro" },
-					{ label: "Kategorien", value: "categories" },
-					{ label: "Tags", value: "tags" },
-					{ label: "Autoren", value: "authors" },
-					{ label: "Datum", value: "date" },
-					{ label: "Lesezeit", value: "readingTime" },
+				default: [
+					"displayTitle",
+					"displayIntro",
+					"displayCategories",
+					"displayTags",
+					"displayDate",
+					"displayReadingTime",
 				],
-				hint: "Nur an/aus per Checkbox. Feste Kartenreihenfolge: Titel, Intro, Kategorien | Tags, Autoren, Datum · Lesezeit.",
+				options: [
+					{ label: "Titel", value: "displayTitle" },
+					{ label: "Intro", value: "displayIntro" },
+					{ label: "Kategorien", value: "displayCategories" },
+					{ label: "Tags", value: "displayTags" },
+					{ label: "Autoren", value: "displayAuthors" },
+					{ label: "Datum", value: "displayDate" },
+					{ label: "Lesezeit", value: "displayReadingTime" },
+				],
+				hint: "Nur an/aus per Checkbox (`display*`). Feste Kartenreihenfolge: Titel, Intro, Kategorien | Tags, Autoren, Datum · Lesezeit.",
 			},
 			{
 				/**
-				 * Must not share names with `show` option values (`authors` / `categories` /
-				 * `tags`): Sveltia can then overwrite the card-field checkbox state.
+				 * Distinct from card `show` values (`displayAuthors`, …) and from embed
+				 * filter attrs written as `authors=` / `categories=` / `tags=`.
 				 */
 				name: "filterAuthors",
 				label: "Nur Autoren",
@@ -170,7 +206,7 @@
 		pattern: /^\{\{article-listing(?<attrs>[^}]*)\}\}\s*$/m,
 		fromBlock: (match) => {
 			const attrs = parseAttrs(match?.groups?.attrs || "");
-			const showDefault = "title,intro,categories,tags,date,readingTime";
+			const showDefault = ARTICLE_CARD_SHOW_DEFAULT.join(",");
 			const splitList = (raw) =>
 				(raw || "")
 					.split(",")
@@ -196,7 +232,7 @@
 			layout = "grid",
 			columns = 3,
 			gap = 1.25,
-			show = ["title", "intro", "categories", "tags", "date", "readingTime"],
+			show = ARTICLE_CARD_SHOW_DEFAULT,
 			filterAuthors = [],
 			filterCategories = [],
 			filterTags = [],
@@ -206,7 +242,7 @@
 			const showAttr = (
 				showNormalized.length > 0
 					? showNormalized
-					: ["title", "intro", "categories", "tags", "date", "readingTime"]
+					: ARTICLE_CARD_SHOW_DEFAULT
 			).join(",");
 			const listAttr = (value) =>
 				(Array.isArray(value) ? value : String(value || "").split(","))
@@ -238,7 +274,7 @@
 			layout = "grid",
 			columns = 3,
 			gap = 1.25,
-			show = ["title", "intro", "categories", "tags", "date", "readingTime"],
+			show = ARTICLE_CARD_SHOW_DEFAULT,
 			filterAuthors = [],
 			filterCategories = [],
 			filterTags = [],
@@ -248,7 +284,7 @@
 			const showLabel = (
 				showNormalized.length > 0
 					? showNormalized
-					: ["title", "intro", "categories", "tags", "date", "readingTime"]
+					: ARTICLE_CARD_SHOW_DEFAULT
 			).join(", ");
 			const listLabel = (value) =>
 				(Array.isArray(value) ? value : String(value || "").split(","))

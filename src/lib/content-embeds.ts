@@ -37,25 +37,46 @@ import {
 	normalizeVideoId,
 } from "./video";
 
-/** Fields shown on article listing cards (CMS `show="…"`). */
+/**
+ * Fields shown on article listing cards (CMS `show="…"`).
+ * `display*` names stay distinct from filter attrs (`authors=`, `tags=`, …).
+ */
 export type ArticleCardField =
-	| "title"
-	| "intro"
-	| "date"
-	| "readingTime"
-	| "categories"
-	| "tags"
-	| "authors";
+	| "displayTitle"
+	| "displayIntro"
+	| "displayCategories"
+	| "displayTags"
+	| "displayAuthors"
+	| "displayDate"
+	| "displayReadingTime";
 
 export const ARTICLE_CARD_FIELDS = [
-	"title",
-	"intro",
-	"categories",
-	"tags",
-	"authors",
-	"date",
-	"readingTime",
+	"displayTitle",
+	"displayIntro",
+	"displayCategories",
+	"displayTags",
+	"displayAuthors",
+	"displayDate",
+	"displayReadingTime",
 ] as const satisfies readonly ArticleCardField[];
+
+/** Legacy `show=` tokens → canonical `display*` keys. */
+const ARTICLE_CARD_FIELD_ALIASES: Record<string, ArticleCardField> = {
+	title: "displayTitle",
+	intro: "displayIntro",
+	categories: "displayCategories",
+	tags: "displayTags",
+	authors: "displayAuthors",
+	date: "displayDate",
+	readingTime: "displayReadingTime",
+	displayTitle: "displayTitle",
+	displayIntro: "displayIntro",
+	displayCategories: "displayCategories",
+	displayTags: "displayTags",
+	displayAuthors: "displayAuthors",
+	displayDate: "displayDate",
+	displayReadingTime: "displayReadingTime",
+};
 
 export type ArticleListingFilterMatch = "all" | "any";
 
@@ -176,12 +197,12 @@ export type ContentSegment =
 	| { type: "author-listing" };
 
 const DEFAULT_SHOW: ArticleCardField[] = [
-	"title",
-	"intro",
-	"categories",
-	"tags",
-	"date",
-	"readingTime",
+	"displayTitle",
+	"displayIntro",
+	"displayCategories",
+	"displayTags",
+	"displayDate",
+	"displayReadingTime",
 ];
 
 const DEFAULT_LISTING: ArticleListingEmbedProps = {
@@ -197,23 +218,26 @@ const DEFAULT_LISTING: ArticleListingEmbedProps = {
 	match: "all",
 };
 
-const ARTICLE_CARD_FIELD_SET = new Set<string>(ARTICLE_CARD_FIELDS);
+/** Normalize CMS/array/`show=` tokens to canonical card fields (legacy aliases ok). */
+export function normalizeArticleCardShowList(
+	fields: readonly string[] | undefined,
+): ArticleCardField[] {
+	if (!fields?.length) return [...DEFAULT_SHOW];
+	const selected = new Set<ArticleCardField>();
+	for (const raw of fields) {
+		const key = ARTICLE_CARD_FIELD_ALIASES[raw.trim()];
+		if (key) selected.add(key);
+	}
+	/** Keep canonical card order; selection is on/off only (FE layout is fixed). */
+	const out = ARTICLE_CARD_FIELDS.filter((field) => selected.has(field));
+	return out.length > 0 ? out : [...DEFAULT_SHOW];
+}
 
 export function parseArticleCardShow(
 	raw: string | undefined,
 ): ArticleCardField[] {
 	if (!raw?.trim()) return [...DEFAULT_SHOW];
-	const selected = new Set(
-		raw
-			.split(/[,\s]+/)
-			.map((part) => part.trim())
-			.filter((part): part is ArticleCardField =>
-				ARTICLE_CARD_FIELD_SET.has(part),
-			),
-	);
-	/** Keep canonical card order; selection is on/off only (FE layout is fixed). */
-	const fields = ARTICLE_CARD_FIELDS.filter((field) => selected.has(field));
-	return fields.length > 0 ? fields : [...DEFAULT_SHOW];
+	return normalizeArticleCardShowList(raw.split(/[,\s]+/));
 }
 
 const DEFAULT_GLOSSAR_LISTING: GlossarListingEmbedProps = {

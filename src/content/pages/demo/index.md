@@ -132,7 +132,7 @@ Mit voller Breite auf Mobile (`fullWidthMobile="true"`):
 
 ### Artikel-Listing
 
-{{article-listing count="2" sort="newest" layout="grid" columns="2" gap="1.25" show="title,intro,categories,tags,date,readingTime"}}
+{{article-listing count="2" sort="newest" layout="grid" columns="2" gap="1.25" show="displayTitle,displayIntro,displayCategories,displayTags,displayDate,displayReadingTime"}}
 
 ### Kategorie-Listing
 

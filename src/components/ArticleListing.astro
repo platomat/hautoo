@@ -19,7 +19,7 @@ import {
 	type CategoryEntry,
 } from "../lib/categories";
 import {
-	ARTICLE_CARD_FIELDS,
+	normalizeArticleCardShowList,
 	parseArticleCardShow,
 	type ArticleCardField,
 } from "../lib/content-embeds";
@@ -36,7 +36,7 @@ interface Props {
 	columns?: number;
 	/** Gap between items, in rem (grid and list). */
 	gap?: number;
-	/** Card fields: title, intro, categories, tags, authors, date, readingTime. */
+	/** Card fields: displayTitle, displayIntro, displayCategories, … */
 	show?: ArticleCardField[] | string;
 	/** Only these article slugs, in listed order (published only). */
 	articleIds?: string[];
@@ -106,19 +106,17 @@ const showFields = new Set(
 	typeof showProp === "string"
 		? parseArticleCardShow(showProp)
 		: showProp?.length
-			? showProp.filter((field) =>
-					(ARTICLE_CARD_FIELDS as readonly string[]).includes(field),
-				)
+			? normalizeArticleCardShowList(showProp)
 			: parseArticleCardShow(undefined),
 );
 
-const showTitle = showFields.has("title");
-const showIntro = showFields.has("intro");
-const showDate = showFields.has("date");
-const showReadingTime = showFields.has("readingTime");
-const showCategories = showFields.has("categories");
-const showTags = showFields.has("tags");
-const showAuthors = showFields.has("authors");
+const showTitle = showFields.has("displayTitle");
+const showIntro = showFields.has("displayIntro");
+const showDate = showFields.has("displayDate");
+const showReadingTime = showFields.has("displayReadingTime");
+const showCategories = showFields.has("displayCategories");
+const showTags = showFields.has("displayTags");
+const showAuthors = showFields.has("displayAuthors");
 const showTaxonomies = showCategories || showTags;
 const showMeta = showDate || showReadingTime || showTaxonomies || showAuthors;
 
