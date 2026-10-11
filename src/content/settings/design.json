@@ -86,6 +86,12 @@
       "breadcrumbSeparator": "/",
       "borderBottom": false
     },
+    "authors": {
+      "textAlign": "left",
+      "showBreadcrumbs": true,
+      "breadcrumbSeparator": "/",
+      "borderBottom": false
+    },
     "glossar": {
       "textAlign": "left",
       "showBreadcrumbs": true,

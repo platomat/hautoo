@@ -12,6 +12,9 @@ items:
       - label: Tags
         linkType: page
         page: tags
+      - label: Autoren
+        linkType: page
+        page: autoren
   - label: Glossar
     linkType: page
     page: glossar

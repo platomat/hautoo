@@ -20,8 +20,10 @@ import {
 	type SiteConfig,
 	type SiteHeaderConfig,
 	type SiteHeroConfig,
+	type SiteAuthorsConfig,
 	type SiteTocCollectionConfig,
 	type SiteTocConfig,
+	siteAuthorsConfigSchema,
 } from "../cms/fields/site-config";
 
 export type { HeroCollectionKey };
@@ -171,4 +173,10 @@ function siteTocCollectionFallback(): SiteTocCollectionConfig {
 export function getVideoBaseUrl(): string {
 	const config = getSiteConfig();
 	return config.content?.media?.videoBaseUrl?.trim() ?? "";
+}
+
+/** Content → Autoren: article byline placement + avatar shape. */
+export function getAuthorsDisplayConfig(): SiteAuthorsConfig {
+	const config = getSiteConfig();
+	return siteAuthorsConfigSchema.parse(config.content?.authors ?? {});
 }

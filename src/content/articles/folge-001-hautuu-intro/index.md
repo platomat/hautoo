@@ -11,6 +11,8 @@ tags:
 - cursor
 - astro
 - cloudflare
+authors:
+  - wasilij-pfeifer
 seo:
   index_visibility: index
   follow_visibility: follow

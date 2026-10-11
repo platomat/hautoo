@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
 import ArticleNav from "../../components/ArticleNav.astro";
+import AuthorByline from "../../components/AuthorByline.astro";
 import CmsContent from "../../components/CmsContent.astro";
 import Icon from "../../components/Icon.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -13,6 +14,7 @@ import {
 	getArticleHref,
 	getPublishedArticles,
 } from "../../lib/articles";
+import { getAuthorsByIds } from "../../lib/authors";
 import { resolveCmsImage } from "../../lib/cms-image";
 import { contentWidthClass } from "../../cms/fields/content-width";
 import { hasContentEmbeds } from "../../lib/content-embeds";
@@ -27,7 +29,10 @@ import {
 } from "../../lib/reading-time";
 import { buildArticleBreadcrumbs } from "../../lib/breadcrumbs";
 import { getCategoryHref } from "../../lib/categories";
-import { resolveTocForCollection } from "../../lib/site-config";
+import {
+	getAuthorsDisplayConfig,
+	resolveTocForCollection,
+} from "../../lib/site-config";
 import { formatTagHashtag, getTagHref } from "../../lib/tags";
 
 export async function getStaticPaths() {
@@ -73,8 +78,18 @@ const showTagsInHero =
 const showTagsAfter =
 	linkedTags.length > 0 &&
 	(tagPlacement === "after" || tagPlacement === "both");
+const linkedAuthors = await getAuthorsByIds(article.data.authors ?? []);
+const authorsDisplay = getAuthorsDisplayConfig();
+const showAuthorsInHero =
+	linkedAuthors.length > 0 &&
+	(authorsDisplay.articlePlacement === "hero" ||
+		authorsDisplay.articlePlacement === "both");
+const showAuthorsAfter =
+	linkedAuthors.length > 0 &&
+	(authorsDisplay.articlePlacement === "after" ||
+		authorsDisplay.articlePlacement === "both");
 const showHeroTaxonomies =
-	linkedCategories.length > 0 || showTagsInHero;
+	linkedCategories.length > 0 || showTagsInHero || showAuthorsInHero;
 const articleEntryDir = `content/articles/${article.id}/`;
 const backgroundImage = resolveCmsImage(
 	article.data.background?.image,
@@ -118,52 +133,57 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 				hero={article.data.hero}
 			>
 				{
-					showHeroTaxonomies && (
-						<div
-							class="page-hero__taxonomies flex-row flex-between flex-wrap gap-md text-sm"
-							slot="below"
-						>
-							{
-								linkedCategories.length > 0 ? (
-									<ul
-										class="article-categories list-plain flex-row flex-wrap gap-md"
-										aria-label="Kategorien"
-									>
-										{linkedCategories.map((cat) => (
-											<li>
-												<a
-													class="article-categories__link"
-													href={getCategoryHref(cat)}
-												>
-													<Icon
-														name="category"
-														class="article-categories__icon"
-													/>
-													{cat.data.title}
-												</a>
-											</li>
-										))}
-									</ul>
-								) : (
-									<span />
-								)
-							}
-							{
-								showTagsInHero && (
-									<ul
-										class="article-tags list-plain flex-row flex-wrap gap-md"
-										aria-label="Tags"
-									>
-										{linkedTags.map((tag) => (
-											<li>
-												<a href={getTagHref(tag)}>
-													{formatTagHashtag(tag)}
-												</a>
-											</li>
-										))}
-									</ul>
-								)
-							}
+					(showHeroTaxonomies || showAuthorsInHero) && (
+						<div class="page-hero__below" slot="below">
+							{showHeroTaxonomies && (
+								<div class="page-hero__taxonomies flex-row flex-between flex-wrap gap-md text-sm">
+									{linkedCategories.length > 0 ? (
+										<ul
+											class="article-categories list-plain flex-row flex-wrap gap-md"
+											aria-label="Kategorien"
+										>
+											{linkedCategories.map((cat) => (
+												<li>
+													<a
+														class="article-categories__link"
+														href={getCategoryHref(cat)}
+													>
+														<Icon
+															name="category"
+															class="article-categories__icon"
+														/>
+														{cat.data.title}
+													</a>
+												</li>
+											))}
+										</ul>
+									) : (
+										<span />
+									)}
+									{showTagsInHero && (
+										<ul
+											class="article-tags list-plain flex-row flex-wrap gap-md"
+											aria-label="Tags"
+										>
+											{linkedTags.map((tag) => (
+												<li>
+													<a href={getTagHref(tag)}>
+														{formatTagHashtag(tag)}
+													</a>
+												</li>
+											))}
+										</ul>
+									)}
+								</div>
+							)}
+							{showAuthorsInHero && (
+								<div class="article-authors article-authors--hero">
+									<AuthorByline
+										authors={linkedAuthors}
+										avatarShape={authorsDisplay.avatarShape}
+									/>
+								</div>
+							)}
 						</div>
 					)
 				}
@@ -207,6 +227,16 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 					</ul>
 				)
 			}
+			{
+				showAuthorsAfter && (
+					<div class="article-authors article-authors--after">
+						<AuthorByline
+							authors={linkedAuthors}
+							avatarShape={authorsDisplay.avatarShape}
+						/>
+					</div>
+				)
+			}
 			<ArticleNav older={older} newer={newer} />
 		</article>
 		<p class="text-sm entry-footer-links">
@@ -240,5 +270,13 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 	.article-tags--after {
 		margin: 1.5rem 0 0;
 		padding: 0;
+	}
+
+	.article-authors--hero {
+		margin-top: 0.85rem;
+	}
+
+	.article-authors--after {
+		margin: 1.5rem 0 0;
 	}
 </style>

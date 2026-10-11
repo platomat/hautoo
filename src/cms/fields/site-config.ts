@@ -78,6 +78,7 @@ export const HERO_COLLECTION_KEYS = [
 	"articles",
 	"categories",
 	"tags",
+	"authors",
 	"glossar",
 ] as const;
 
@@ -89,6 +90,7 @@ export const siteHeroByCollectionSchema = z.object({
 	articles: siteHeroConfigSchema.default({}),
 	categories: siteHeroConfigSchema.default({}),
 	tags: siteHeroConfigSchema.default({}),
+	authors: siteHeroConfigSchema.default({}),
 	glossar: siteHeroConfigSchema.default({}),
 });
 
@@ -119,6 +121,7 @@ export function normalizeHeroByCollection(raw: unknown): unknown {
 		articles: obj,
 		categories: obj,
 		tags: obj,
+		authors: obj,
 		glossar: obj,
 	};
 }
@@ -194,8 +197,34 @@ export const siteSpacingByCollectionSchema = z.object({
 	articles: siteSpacingCollectionSchema.default({}),
 	categories: siteSpacingCollectionSchema.default({}),
 	tags: siteSpacingCollectionSchema.default({}),
+	authors: siteSpacingCollectionSchema.default({}),
 	glossar: siteSpacingCollectionSchema.default({}),
 });
+
+/** Where authors appear on the article single view. */
+export const authorArticlePlacementSchema = z.enum([
+	"none",
+	"hero",
+	"after",
+	"both",
+]);
+
+export type AuthorArticlePlacement = z.infer<
+	typeof authorArticlePlacementSchema
+>;
+
+export const authorAvatarShapeSchema = z.enum(["round", "square"]);
+
+export type AuthorAvatarShape = z.infer<typeof authorAvatarShapeSchema>;
+
+/** CMS Content → Autoren: article byline + avatar shape. */
+export const siteAuthorsConfigSchema = z.object({
+	/** Hero and/or end of article (profile page always shows round avatar). */
+	articlePlacement: authorArticlePlacementSchema.default("hero"),
+	avatarShape: authorAvatarShapeSchema.default("round"),
+});
+
+export type SiteAuthorsConfig = z.infer<typeof siteAuthorsConfigSchema>;
 
 export type SiteSpacingByCollectionConfig = z.infer<
 	typeof siteSpacingByCollectionSchema
@@ -291,6 +320,7 @@ export const siteContentConfigSchema = z.object({
 	width: siteWidthConfigSchema.default({}),
 	spacing: siteSpacingByCollectionSchema.default({}),
 	media: siteMediaConfigSchema.default({}),
+	authors: siteAuthorsConfigSchema.default({}),
 });
 
 export type SiteContentFileConfig = z.infer<typeof siteContentConfigSchema>;

@@ -1,0 +1,112 @@
+---
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import ArticleListing from "../../components/ArticleListing.astro";
+import { getArticlesByAuthor } from "../../lib/articles";
+import {
+	resolveAuthorAvatar,
+	type AuthorEntry,
+} from "../../lib/authors";
+import { buildAuthorBreadcrumbs } from "../../lib/breadcrumbs";
+import {
+	contentSpacingStyle,
+	resolveContentSpacing,
+} from "../../lib/content-spacing";
+
+export async function getStaticPaths() {
+	const authors = await getCollection("authors");
+	return authors.map((author) => ({
+		params: { slug: author.id },
+		props: { author },
+	}));
+}
+
+const { author } = Astro.props as { author: AuthorEntry };
+const articles = await getArticlesByAuthor(author.id, { sort: "newest" });
+const { Content } = await render(author);
+const avatar = resolveAuthorAvatar(author);
+const breadcrumbs = buildAuthorBreadcrumbs(author);
+const spacingStyle = contentSpacingStyle(resolveContentSpacing("authors"));
+const articleCount = articles.length;
+const articlesHeading =
+	articleCount === 1 ? "Artikel (1)" : `Artikel (${articleCount})`;
+---
+
+<BaseLayout
+	title={author.data.title}
+	description={author.data.description}
+	modifiedDate={author.data.modifiedDate}
+>
+	<main class="page" style={spacingStyle}>
+		<PageHero
+			title={author.data.title}
+			description={author.data.description}
+			breadcrumbs={breadcrumbs}
+			collection="authors"
+		>
+			{
+				avatar && (
+					<div class="author-profile__avatar-wrap" slot="beforeTitle">
+						<Image
+							class="author-profile__avatar"
+							src={avatar}
+							alt=""
+							width={160}
+							height={160}
+						/>
+					</div>
+				)
+			}
+		</PageHero>
+		{
+			author.body?.trim() && (
+				<div class="author-profile__bio cms-md">
+					<Content />
+				</div>
+			)
+		}
+		<section class="author-profile__articles" aria-labelledby="author-articles">
+			<h2 id="author-articles">{articlesHeading}</h2>
+			{
+				articleCount === 0 ? (
+					<p>Keine veröffentlichten Artikel von diesem Autor.</p>
+				) : (
+					<ArticleListing
+						authorId={author.id}
+						count={0}
+						sort="newest"
+						layout="grid"
+						columns={1}
+						gap={3}
+					/>
+				)
+			}
+		</section>
+	</main>
+</BaseLayout>
+
+<style>
+	.author-profile__avatar-wrap {
+		margin: 0 0 0.25rem;
+	}
+
+	.author-profile__avatar {
+		display: block;
+		width: 8rem;
+		height: 8rem;
+		object-fit: cover;
+		border-radius: 50%;
+		border: 1px solid var(--color-border);
+		background: var(--color-surface);
+	}
+
+	.author-profile__bio {
+		margin: 0 0 2rem;
+	}
+
+	.author-profile__articles h2 {
+		margin-top: 0;
+	}
+</style>

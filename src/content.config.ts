@@ -92,6 +92,24 @@ const tags = defineCollection({
 	}),
 });
 
+/** Article authors; profile at `/autoren/<slug>/`. Bio = Markdown body. */
+const authors = defineCollection({
+	loader: glob({ pattern: "*.md", base: "./src/content/authors" }),
+	schema: z.object({
+		title: z.string(),
+		/** Short meta / listing blurb (optional). */
+		description: z.string().optional(),
+		/** Local avatar (`/assets/…`). Preferred over Gravatar when set. */
+		avatar: cmsImagePathSchema,
+		/**
+		 * Gravatar: email or https image URL. Downloaded at build into
+		 * `src/assets/authors/gravatar/<slug>.*` (see sync-author-avatars.mjs).
+		 */
+		gravatarUrl: z.string().trim().optional(),
+		modifiedDate: modifiedDateSchema,
+	}),
+});
+
 /** Hierarchical article categories (optional parent = another category slug). */
 const categories = defineCollection({
 	loader: glob({ pattern: "*.md", base: "./src/content/categories" }),
@@ -129,6 +147,8 @@ const articles = defineCollection({
 			/** Category slugs (hierarchical taxonomy; see `categories` collection). */
 			categories: z.array(z.string()).default([]),
 			tags: z.array(z.string()).default([]),
+			/** Author slugs (0..n); see `authors` collection. */
+			authors: z.array(z.string()).default([]),
 			/**
 			 * Where to show tags on the article page.
 			 * Categories always appear in the hero under the description.
@@ -179,6 +199,7 @@ export const collections = {
 	menus,
 	categories,
 	tags,
+	authors,
 	articles,
 	glossar,
 	blocks,

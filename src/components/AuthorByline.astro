@@ -1,0 +1,111 @@
+---
+import { Image } from "astro:assets";
+import {
+	getAuthorHref,
+	resolveAuthorAvatar,
+	type AuthorEntry,
+} from "../lib/authors";
+import type { AuthorAvatarShape } from "../cms/fields/site-config";
+
+interface Props {
+	authors: AuthorEntry[];
+	/** Avatar shape on article pages (profile page is always round). */
+	avatarShape?: AuthorAvatarShape;
+	/** Compact row for cards (names only when no avatars). */
+	compact?: boolean;
+}
+
+const {
+	authors,
+	avatarShape = "round",
+	compact = false,
+} = Astro.props;
+---
+
+{
+	authors.length > 0 && (
+		<ul
+			class:list={[
+				"author-byline",
+				"list-plain",
+				compact && "author-byline--compact",
+				`author-byline--${avatarShape}`,
+			]}
+			aria-label="Autoren"
+		>
+			{authors.map((author) => {
+				const avatar = resolveAuthorAvatar(author);
+				return (
+					<li class="author-byline__item">
+						<a class="author-byline__link" href={getAuthorHref(author)}>
+							{avatar && (
+								<Image
+									class="author-byline__avatar"
+									src={avatar}
+									alt=""
+									width={compact ? 28 : 40}
+									height={compact ? 28 : 40}
+								/>
+							)}
+							<span class="author-byline__name">{author.data.title}</span>
+						</a>
+					</li>
+				);
+			})}
+		</ul>
+	)
+}
+
+<style>
+	.author-byline {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.75rem 1.25rem;
+		margin: 0;
+		padding: 0;
+	}
+
+	.author-byline--compact {
+		gap: 0.5rem 0.85rem;
+	}
+
+	.author-byline__link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--color-text-muted);
+		text-decoration: none;
+	}
+
+	.author-byline__link:hover,
+	.author-byline__link:focus-visible {
+		color: var(--color-action);
+	}
+
+	.author-byline__avatar {
+		display: block;
+		width: 2.5rem;
+		height: 2.5rem;
+		object-fit: cover;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+	}
+
+	.author-byline--compact .author-byline__avatar {
+		width: 1.75rem;
+		height: 1.75rem;
+	}
+
+	.author-byline--round .author-byline__avatar {
+		border-radius: 50%;
+	}
+
+	.author-byline--square .author-byline__avatar {
+		border-radius: 4px;
+	}
+
+	.author-byline__name {
+		font-size: 0.95em;
+	}
+</style>

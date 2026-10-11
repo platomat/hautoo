@@ -11,13 +11,14 @@ Zurück zur [Sveltia-Übersicht](./README.md). Shared Field-Partials: [CMS Field
 | Artikel | `articles` | umgesetzt (#4) |
 | Kategorien | `categories` | umgesetzt (#64) |
 | Tags | `tags` | umgesetzt (#5) |
+| Autoren | `authors` | umgesetzt (#77) |
 | Glossar | `glossar` | umgesetzt (#6) |
 | Bausteine | `blocks` | umgesetzt |
 | Menüs | `menus` | umgesetzt (#13) |
 
 ## Slug bearbeiten
 
-Bei Ordner-Collections (`pages`, `articles`, `categories`, `tags`, `glossar`, `blocks`, `menus`) legt `slug` in `public/admin/config.yml` den Datei-/Ordnernamen fest (Template `{{slug}}` = slugifizierter Titel bzw. Identifier).
+Bei Ordner-Collections (`pages`, `articles`, `categories`, `tags`, `authors`, `glossar`, `blocks`, `menus`) legt `slug` in `public/admin/config.yml` den Datei-/Ordnernamen fest (Template `{{slug}}` = slugifizierter Titel bzw. Identifier).
 
 | | |
 | --- | --- |
@@ -268,6 +269,35 @@ Beispiel: Baustein `stack-uebersicht` → auf der Startseite `{{block id="stack-
 | `description` | nein | Kurze Erklärung |
 | `modifiedDate` | nein | Letzte Änderung → SEO-Meta im `<head>` |
 | Dateiname | — | Slug (z. B. `astro.md` → `astro`) |
+
+## Collection `authors` (umgesetzt, #77)
+
+| | |
+| --- | --- |
+| Ordner | `src/content/authors/<slug>.md` |
+| Schema | `src/content.config.ts` |
+| Sveltia | Collection `Autoren` |
+| Nutzung | Relation von `articles` (0..n); Übersicht `/autoren/` mit `{{author-listing}}`; Profil `/autoren/<slug>/` |
+| Build | `scripts/sync-author-avatars.mjs` lädt `gravatarUrl` nach `src/assets/authors/gravatar/` |
+
+### Felder
+
+| Feld | Pflicht | Bedeutung |
+| --- | --- | --- |
+| `title` | ja | Name |
+| `description` | nein | Kurzbeschreibung (Meta/Listing) |
+| `avatar` | nein | Lokales Bild (`/assets/…`), Vorrang vor Gravatar |
+| `gravatarUrl` | nein | E-Mail oder https-URL; Download beim Build |
+| `body` | nein | Bio (Markdown) auf der Profilseite |
+| `modifiedDate` | nein | Letzte Änderung |
+
+### Anzeige
+
+| Ort | Steuerung |
+| --- | --- |
+| Artikel-Karten | Embed `show` inkl. `authors` (opt-in) |
+| Artikel-Einzelseite | Content → Autoren: `articlePlacement` (`none` / `hero` / `after` / `both`), `avatarShape` (`round` / `square`) |
+| Profil | immer runder Avatar, Name, Bio, dann „Artikel (N)“ |
 
 ## Collection `articles` (umgesetzt)
 

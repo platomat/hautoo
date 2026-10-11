@@ -9,6 +9,10 @@ dist/
 public/search/*
 !public/search/.gitkeep
 
+# Gravatar downloads (scripts/sync-author-avatars.mjs)
+src/assets/authors/gravatar/*
+!src/assets/authors/gravatar/.gitkeep
+
 # Environment and secrets — never commit real values
 .env
 .env.*

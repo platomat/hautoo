@@ -249,6 +249,7 @@ collections:
           - article-listing
           - category-listing
           - tag-listing
+          - author-listing
           - tag-cloud
           - glossar-listing
           - button
@@ -445,6 +446,16 @@ collections:
         display_fields: [title]
         multiple: true
         required: false
+      - name: authors
+        label: Autoren
+        widget: relation
+        collection: authors
+        value_field: "{{slug}}"
+        search_fields: [title]
+        display_fields: [title]
+        multiple: true
+        required: false
+        hint: "Optional. Keiner, einer oder mehrere Autoren (Profil unter /autoren/<slug>/)."
       - name: tagPlacement
         label: Tags anzeigen
         widget: select
@@ -486,6 +497,7 @@ collections:
           - article-listing
           - category-listing
           - tag-listing
+          - author-listing
           - tag-cloud
           - glossar-listing
           - button
@@ -552,6 +564,50 @@ collections:
           required: false,
         }
       - *field_modified_date
+
+
+  - name: authors
+    label: Autoren
+    label_singular: Autor
+    folder: src/content/authors
+    create: true
+    slug:
+      template: "{{slug}}"
+      editable: true
+      hint: "URL-Teil und Dateiname. Beim Speichern wird der Eintrag umbenannt; Verweise werden angepasst."
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{title}}"
+    hint: "Autorinnen und Autoren für Artikel. Dateiname = Slug. Profil: /autoren/<slug>/. Bio im Markdown-Body."
+    fields:
+      - { name: title, label: Name, widget: string }
+      - {
+          name: description,
+          label: Kurzbeschreibung,
+          widget: text,
+          required: false,
+          hint: "Optional für Meta/Übersicht. Die ausführliche Bio steht im Inhalt darunter.",
+        }
+      - {
+          name: avatar,
+          label: Avatar,
+          widget: image,
+          required: false,
+          hint: "Lokales Bild aus der Mediathek. Hat Vorrang vor Gravatar.",
+        }
+      - {
+          name: gravatarUrl,
+          label: Gravatar (E-Mail oder URL),
+          widget: string,
+          required: false,
+          hint: "E-Mail (MD5 → Gravatar) oder https-Bild-URL. Beim Build nach src/assets/authors/gravatar/ heruntergeladen.",
+        }
+      - *field_modified_date
+      - name: body
+        label: Bio
+        widget: markdown
+        required: false
+        hint: "Kurze Beschreibung (Markdown). Erscheint auf der Autor-Profilseite unter Name und Avatar.",
 
   - name: glossar
     label: Glossar
@@ -644,6 +700,7 @@ collections:
           - article-listing
           - category-listing
           - tag-listing
+          - author-listing
           - tag-cloud
           - glossar-listing
           - button
@@ -1203,6 +1260,41 @@ collections:
                     widget: boolean
                     default: false
                     hint: "1px Linie unter dem Hero-Block."
+              - name: authors
+                label: Autoren
+                widget: object
+                collapsed: false
+                fields:
+                  - name: textAlign
+                    label: Textausrichtung
+                    widget: select
+                    options:
+                      - { label: Links, value: left }
+                      - { label: Zentriert, value: center }
+                      - { label: Rechts, value: right }
+                    default: left
+                    required: true
+                    hint: "Gilt für Brotkrumen, Titel und Beschreibung."
+                  - name: showBreadcrumbs
+                    label: Brotkrumen anzeigen
+                    widget: boolean
+                    default: true
+                  - name: breadcrumbSeparator
+                    label: Brotkrumen-Trenner
+                    widget: select
+                    options:
+                      - { label: "/", value: "/" }
+                      - { label: "•", value: "•" }
+                      - { label: "→", value: "→" }
+                      - { label: "-", value: "-" }
+                    default: "/"
+                    required: true
+                    hint: "Zeichen zwischen den Brotkrumen-Elementen."
+                  - name: borderBottom
+                    label: Trennlinie unten
+                    widget: boolean
+                    default: false
+                    hint: "1px Linie unter dem Hero-Block."
               - name: glossar
                 label: Glossar
                 widget: object
@@ -1326,6 +1418,30 @@ collections:
                 required: false
                 default: ""
                 hint: "Öffentliche Basis-URL inkl. Pfad, z. B. https://media.hautoo.storyofai.net/videos/ — wird mit Dateiname aus dem Video-Embed zusammengesetzt. Leer = nur volle https-URLs im Embed."
+          - name: authors
+            label: Autoren
+            widget: object
+            collapsed: false
+            hint: "Anzeige auf der Artikel-Einzelseite. Profilseiten nutzen immer runde Avatare."
+            fields:
+              - name: articlePlacement
+                label: Autoren auf Artikeln
+                widget: select
+                options:
+                  - { label: Nicht anzeigen, value: none }
+                  - { label: Im Hero, value: hero }
+                  - { label: Am Ende des Artikels, value: after }
+                  - { label: Hero und am Ende, value: both }
+                default: hero
+                required: true
+              - name: avatarShape
+                label: Avatar-Form (Artikel)
+                widget: select
+                options:
+                  - { label: Rund, value: round }
+                  - { label: Eckig, value: square }
+                default: round
+                required: true
           - name: spacing
             label: Abstand
             widget: object
@@ -1366,6 +1482,10 @@ collections:
                 fields: *fields_spacing_collection
               - name: tags
                 label: Tags
+                widget: object
+                fields: *fields_spacing_collection
+              - name: authors
+                label: Autoren
                 widget: object
                 fields: *fields_spacing_collection
               - name: glossar

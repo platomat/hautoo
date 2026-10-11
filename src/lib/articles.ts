@@ -94,6 +94,17 @@ export async function getArticlesByCategory(
 	);
 }
 
+/** Published articles that include an author slug. */
+export async function getArticlesByAuthor(
+	authorId: string,
+	options: ArticleListingOptions = {},
+): Promise<ArticleEntry[]> {
+	const articles = await getPublishedArticles(options);
+	return articles.filter((article) =>
+		(article.data.authors ?? []).includes(authorId),
+	);
+}
+
 /**
  * Neighbors by publish date: older = past (left), newer = future (right).
  * Same-day ties use title (A–Z).

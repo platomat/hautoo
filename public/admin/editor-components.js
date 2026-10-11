@@ -87,6 +87,7 @@
 					{ label: "Intro", value: "intro" },
 					{ label: "Kategorien", value: "categories" },
 					{ label: "Tags", value: "tags" },
+					{ label: "Autoren", value: "authors" },
 					{ label: "Datum", value: "date" },
 					{ label: "Lesezeit", value: "readingTime" },
 				],
@@ -389,6 +390,18 @@
 			gap = 1.25,
 		}) =>
 			`<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Kategorie-Listing · ${count === 0 || count === "0" ? "alle" : count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem</div>`,
+	});
+
+	CMS.registerEditorComponent({
+		id: "author-listing",
+		label: "Autoren-Listing",
+		icon: "group",
+		fields: [],
+		pattern: /^\{\{author-listing\}\}\s*$/m,
+		fromBlock: () => ({}),
+		toBlock: () => "{{author-listing}}",
+		toPreview: () =>
+			'<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Autoren-Listing (alle Autoren mit Avatar und Artikelanzahl)</div>',
 	});
 
 	CMS.registerEditorComponent({

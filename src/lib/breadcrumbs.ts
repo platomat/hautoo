@@ -90,6 +90,17 @@ export function buildTagBreadcrumbs(label: string): BreadcrumbItem[] {
 	];
 }
 
+export function buildAuthorBreadcrumbs(
+	author: CollectionEntry<"authors">,
+): BreadcrumbItem[] {
+	return [
+		HOME,
+		{ label: "Artikel", href: "/artikel/" },
+		{ label: "Autoren", href: "/autoren/" },
+		{ label: author.data.title },
+	];
+}
+
 /** Home → Kategorien → ancestors → current category title. */
 export function buildCategoryBreadcrumbs(
 	category: CategoryEntry,

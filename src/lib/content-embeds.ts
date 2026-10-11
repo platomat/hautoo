@@ -37,13 +37,15 @@ export type ArticleCardField =
 	| "date"
 	| "readingTime"
 	| "categories"
-	| "tags";
+	| "tags"
+	| "authors";
 
 export const ARTICLE_CARD_FIELDS = [
 	"title",
 	"intro",
 	"categories",
 	"tags",
+	"authors",
 	"date",
 	"readingTime",
 ] as const satisfies readonly ArticleCardField[];
@@ -129,7 +131,8 @@ export type ContentSegment =
 	| { type: "contact-email" }
 	| { type: "repodoc"; props: RepoDocEmbedProps }
 	| { type: "video"; props: VideoEmbedProps }
-	| { type: "video-consent-reset" };
+	| { type: "video-consent-reset" }
+	| { type: "author-listing" };
 
 const DEFAULT_SHOW: ArticleCardField[] = [
 	"title",
@@ -200,7 +203,7 @@ const DEFAULT_SPACER: SpacerEmbedProps = {
 
 /** Line must be only the embed (optional attrs). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|tag-cloud|separator|spacer|button|contact-email|repodoc|block|video-consent-reset|video)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|author-listing|tag-cloud|separator|spacer|button|contact-email|repodoc|block|video-consent-reset|video)(?<attrs>[^}]*)\}\}\s*$/gm;
 
 const ARTICLE_SORTS = new Set<ArticleSort>([
 	"newest",
@@ -576,6 +579,8 @@ export async function buildContentSegments(
 			}
 		} else if (name === "video-consent-reset") {
 			segments.push({ type: "video-consent-reset" });
+		} else if (name === "author-listing") {
+			segments.push({ type: "author-listing" });
 		} else if (name === "separator") {
 			segments.push({
 				type: "separator",

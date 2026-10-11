@@ -1,5 +1,6 @@
 ---
 import ArticleListing from "./ArticleListing.astro";
+import AuthorListing from "./AuthorListing.astro";
 import CategoryListing from "./CategoryListing.astro";
 import CmsButton from "./CmsButton.astro";
 import ContactEmail from "./ContactEmail.astro";
@@ -117,6 +118,9 @@ const segments = await buildContentSegments(body);
 		}
 		if (segment.type === "video-consent-reset") {
 			return <VideoConsentReset />;
+		}
+		if (segment.type === "author-listing") {
+			return <AuthorListing />;
 		}
 		return null;
 	})

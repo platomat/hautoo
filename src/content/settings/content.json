@@ -22,6 +22,10 @@
   "media": {
     "videoBaseUrl": "https://media.hautoo.storyofai.net/videos/"
   },
+  "authors": {
+    "articlePlacement": "hero",
+    "avatarShape": "round"
+  },
   "spacing": {
     "pages": {
       "afterHero": 6,
@@ -36,6 +40,10 @@
       "beforeFooter": 6
     },
     "tags": {
+      "afterHero": 6,
+      "beforeFooter": 6
+    },
+    "authors": {
       "afterHero": 6,
       "beforeFooter": 6
     },

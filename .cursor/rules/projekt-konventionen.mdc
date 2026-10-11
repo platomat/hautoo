@@ -49,6 +49,7 @@ Secrets gehören in Umgebungsvariablen der jeweiligen Plattform (z. B. Cloudflar
 - `articles`
 - `categories` (hierarchisch; für Artikel)
 - `tags` (für Artikel)
+- `authors` (für Artikel; Profil `/autoren/<slug>/`)
 - `glossar`
 - `blocks` (Bausteine; Einbinden via `{{block id="slug"}}`)
 - `menus` (Hauptmenü `main`, Footer `footer-legal`, …)

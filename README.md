@@ -9,7 +9,7 @@ Dokumentation und (geplante) Website-Grundlage, um mit **Cursor**, **GitHub** un
 ## Was hier entsteht
 
 - Statische Website mit **Astro**
-- Inhalte über **Sveltia** (`pages`, `articles`, `categories`, `tags`, `glossar`, `menus`, `blocks`)
+- Inhalte über **Sveltia** (`pages`, `articles`, `categories`, `tags`, `authors`, `glossar`, `menus`, `blocks`)
 - Artikel mit Text, Bildern und eingebetteten How-to-Videos (Vimeo/YouTube oder Dateien über Cloudflare R2)
 - Glossar für Begriffe
 - Anleitungen für Menschen, die das nachbauen oder mitarbeiten wollen
@@ -23,7 +23,7 @@ Kurzliste dessen, was auf `main` schon umgesetzt ist (Details und Erläuterungen
 | Bereich | Punkte |
 | --- | --- |
 | **Inhalte** | 22 Screencast-Folgen als Artikel, statische Pages, Features-Seite, Redaktionsregeln in `docs/redaktion/` |
-| **CMS** | Sveltia `/admin/`, Collections inkl. Bausteine (`blocks`), Menüs, **Settings** (JSON: General / Design / Content inkl. **Website-Titel**, **Hero**, **Schrift**, **Inhaltsbreite** und **Abstand**), Entwurfsstatus, globales TOC, Inhaltsbreite (3 Stufen) und Hero/Footer-Abstand mit lokaler Überschreibung, Head/Footer-Code, Worker-OAuth-Zugang |
+| **CMS** | Sveltia `/admin/`, Collections inkl. Bausteine (`blocks`), **Autoren**, Menüs, **Settings** (JSON: General / Design / Content inkl. **Website-Titel**, **Hero**, **Schrift**, **Inhaltsbreite**, **Abstand** und **Autoren-Anzeige**), Entwurfsstatus, globales TOC, Inhaltsbreite (3 Stufen) und Hero/Footer-Abstand mit lokaler Überschreibung, Head/Footer-Code, Worker-OAuth-Zugang |
 | **Glossar & FAQ** | Glossar mit verwandten Artikeln/Tags, Querverlink-Skript und Erstlink-Check, FAQ offen (kein Accordion), Tag-Seiten |
 | **Embeds** | Bausteine, Listings, Tagwolke, Video (YT/Vimeo oder R2-Datei), Trennlinie, Abstandshalter, Button, Kontakt-E-Mail, Repo-Docs; Embed-Check |
 | **SEO** | `seo`-Felder, Open Graph/Twitter inkl. OG-Bild (1200×630), Canonical, Sitemap, Lesezeit, noindex für Impressum/Datenschutz |
