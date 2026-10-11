@@ -297,8 +297,6 @@ const headerStyle = [
 		grid-area: 1 / 1;
 		width: 1.35rem;
 		height: 1.35rem;
-		transform-origin: center center;
-		transition: transform 0.18s ease;
 	}
 
 	.site-header__brand :global(.site-header__logo-mark--stuck) {
@@ -311,23 +309,6 @@ const headerStyle = [
 
 	.site-header.is-stuck :global(.site-header__logo-mark--stuck) {
 		display: block;
-	}
-
-	/* Logo keeps file colors; slight scale only (no recolor). */
-	.site-header__brand:hover :global(.site-header__logo-mark),
-	.site-header__brand:focus-visible :global(.site-header__logo-mark) {
-		transform: scale(1.06);
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.site-header__brand :global(.site-header__logo-mark) {
-			transition: none;
-		}
-
-		.site-header__brand:hover :global(.site-header__logo-mark),
-		.site-header__brand:focus-visible :global(.site-header__logo-mark) {
-			transform: none;
-		}
 	}
 
 	.site-header__actions {

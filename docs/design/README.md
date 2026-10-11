@@ -5,8 +5,7 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 ## Logo
 
 - **Default:** `/assets/logo-mark.svg`, wenn CMS-Logos leer
-- **CMS:** Einstellungen → General → **Logos** (`header` / `headerSticky` / `footer`) aus der Mediathek; Darstellung wie in der Datei (`LogoMark.astro`, #79), keine CSS-Umfärbung
-- **Hover:** nur leichte Skalierung des Marks (`scale(1.06)`); Wortmarke und Logo-Farben bleiben unverändert
+- **CMS:** Einstellungen → General → **Logos** (`header` / `headerSticky` / `footer`) aus der Mediathek; Darstellung wie in der Datei (`LogoMark.astro`, #79), keine CSS-Umfärbung oder Hover-Skalierung
 - **Wortmarke:** aus CMS **Einstellungen → General → Website title** (`settings/general.json`), neben dem Mark im Header
 - **Footer-Copyright-Claim:** CMS General → Footer copyright (`footerCopyright.claim` / `.separator`)
 - **Footer-Mitte:** bei gesetztem `githubRepo` (General) GitHub-Icon; sonst Site-Logo → Startseite
