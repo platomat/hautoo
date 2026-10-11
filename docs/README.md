@@ -46,7 +46,7 @@ Details: [Sprachen und Konventionen](./sprachen-und-konventionen.md)
 
 ## Schnellstart (Überblick)
 
-1. Repo auf GitHub klonen oder forken
+1. Repo auf GitHub klonen, forken oder besser als [Template](https://github.com/platomat/hautoo/generate) anlegen (auch privat; Fork bleibt öffentlich)
 2. `npm install` und `npm run dev` (siehe [Lokale Entwicklung](./entwicklung/README.md))
 3. Mit Cursor öffnen und der KI die Aufgabe beschreiben
 4. Inhalte über Sveltia oder Markdown pflegen

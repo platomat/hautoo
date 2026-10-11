@@ -1,8 +1,8 @@
 ---
 title: 'Folge 020: Bausteine, FAQ und hautoo forken'
-summary: Wiederverwendbare CMS Bausteine statt Copy Paste, Überblick über Glossar und FAQ und dein eigenes Projekt per GitHub Fork starten.
+summary: Wiederverwendbare CMS Bausteine statt Copy Paste, Überblick über Glossar und FAQ und dein eigenes Projekt per Fork oder GitHub-Template starten.
 pubDate: 2026-10-04 23:47:38+00:00
-modifiedDate: 2026-10-07
+modifiedDate: 2026-10-12
 status: published
 categories:
   - screencasts
@@ -17,12 +17,15 @@ seo:
   index_visibility: index
   follow_visibility: follow
   seo_title: 'Folge 020: Bausteine, FAQ und hautoo forken'
-  seo_description: CMS Bausteine statt Copy Paste, Glossar und FAQ im Überblick und hautuu per GitHub Fork als Vorlage. Folge 020 für Wiederverwendung und eigenes Projekt.
+  seo_description: CMS Bausteine, Glossar und FAQ im Überblick. Eigenes Projekt per GitHub Fork oder Template, inkl. privat vs. öffentliche Website.
 ---
 
-Zwischen den Sessions ist hautuu richtig gewachsen: **20 Folgen** als Artikel, ein ausgebautes [**Glossar**](/glossar/), eine lange [**FAQ**](/faq/) mit Querverweisen und eine Navigation, die sich anfühlt wie eine kleine Site statt wie ein Ordner voller Dateien. In dieser Folge geht es um **Bausteine** (wiederverwendbare Inhalte), den Überblick und die Einladung: **[fork](/glossar/fork/)e** das Repo, wenn du Struktur und Features für dein eigenes Projekt nutzen willst.
+Zwischen den Sessions ist hautuu richtig gewachsen: **20 Folgen** als Artikel, ein ausgebautes [**Glossar**](/glossar/), eine lange [**FAQ**](/faq/) mit Querverweisen und eine Navigation, die sich anfühlt wie eine kleine Site statt wie ein Ordner voller Dateien. In dieser Folge geht es um **Bausteine** (wiederverwendbare Inhalte), den Überblick und die Einladung: nutze hautuu als Basis für dein eigenes Projekt, per [**Fork**](/glossar/fork/) oder besser oft per [**Template**](/glossar/template/).
 
-Direkt loslegen: [hautoo auf GitHub forken](https://github.com/platomat/hautoo/fork). Du brauchst dafür ein GitHub-Konto.
+Du brauchst ein GitHub-Konto. Zwei Einstiege:
+
+- [hautoo als Vorlage (Template)](https://github.com/platomat/hautoo/generate) (auch **privates** Repo möglich)
+- [hautoo forken](https://github.com/platomat/hautoo/fork) (Fork bleibt **öffentlich**)
 
 ## Bausteine statt zehnmal das gleiche Bild
 
@@ -61,27 +64,46 @@ Die Funktion heißt offiziell „Link Previews“ (Link-Vorschau) und wird **sch
 
 Früher gab es die Idee experimentell in **Firefox Labs** (eigene Tastenkombination beim Überfahren eines Links). Die heutige Variante ist die Link-Vorschau über Kontextmenü bzw. langes Drücken.
 
-## Fork statt nur klonen
+## Eigenes Projekt: Fork oder Template
 
 {{repodoc path="docs/inhalte/README.md" title="Inhalte der Website" description="Struktur der Collections und Medienablage."}}
 
+Wenn dir **Struktur**, **Bausteine**, **Menüs**, **Artikel** und **Seiten** gefallen, musst du nicht bei null anfangen. [**Klonen**](/glossar/clone/) holt Dateien nur auf die Platte. Für „eigene Site auf Basis von hautuu“ legst du zuerst ein **eigenes** [Repo](/glossar/repository/) unter deinem Account an: per [**Fork**](/glossar/fork/) oder per [**Template**](/glossar/template/).
 
+### Template (empfohlen, wenn du privat willst)
 
-Wenn dir **Struktur**, **Bausteine**, **Menüs**, **Artikel** und **Seiten** gefallen, musst du nicht bei null anfangen:
+GitHub-Vorlage: Du erzeugst ein **neues** Repo und wählst Sichtbarkeit selbst.
 
-1. Auf der Repo-Seite [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) wählen → „Create fork“ (Fork erstellen; eigene Kopie unter deinem Account, nicht im Original schreiben — [**Glossar Fork**](/glossar/fork/), Kurz in [Folge 002](/artikel/folge-002-github-issues/)).
-2. Deinen Fork **klonen**, in [**Cursor**](/glossar/cursor/) öffnen.
-3. Dem Agenten sagen: Inhalte löschen, Farben und Logo ersetzen, Texte anpassen, [Cloudflare](/glossar/cloudflare-pages/) auf **dein** Repo hängen ([Folge 011](/artikel/folge-011-cloudflare-setup/)).
+1. Öffne [hautoo als Vorlage](https://github.com/platomat/hautoo/generate) (**Use this template** / Diese Vorlage verwenden).
+2. Vergib einen Repo-Namen (z. B. `meine-webseite`). Der Name ist nur der GitHub-Ordner, nicht automatisch deine Domain.
+3. Wähle **Private** oder **Public**. Private heißt: Quellcode auf GitHub nicht für alle lesbar.
+4. Repo **klonen**, in [**Cursor**](/glossar/cursor/) öffnen, Inhalte und Design anpassen, [Cloudflare Pages](/glossar/cloudflare-pages/) auf **dein** Repo hängen ([Folge 011](/artikel/folge-011-cloudflare-setup/)).
 
-**Klonen** holt ein Repo auf die Platte. **Forken** legt zuerst deine GitHub-Kopie an. Für „eigene Site auf Basis von hautuu“ ist der Fork der richtige Start.
+### Fork
 
-Hast du ein gutes Feature gebaut, schick einen [**Pull Request**](/glossar/pull-request/) zurück ans Original. Umgekehrt kannst du von hier Updates übernehmen, wenn du magst. Ein „Star“ (Stern auf GitHub) beim Original ist ein kleines Danke, wenn dir das Projekt hilft.
+1. Auf der Repo-Seite [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) → **Create fork** (Fork erstellen). Kurz auch in [Folge 002](/artikel/folge-002-github-issues/).
+2. Fork **klonen**, in Cursor öffnen, wie oben anpassen und hosten.
+
+**Wichtig:** Forkst du das **öffentliche** hautuu-Repo, bleibt dein Fork bei GitHub **öffentlich**. Du kannst ihn später nicht einfach auf privat stellen. Willst du den Code nicht offen auf GitHub, nimm das **Template**.
+
+### Repo privat oder öffentlich ist nicht die Website
+
+Zwei getrennte Dinge:
+
+| Schalter | Bedeutung |
+| --- | --- |
+| Repo **Public** / **Private** auf GitHub | Wer den **Quellcode** und die Markdown-Inhalte auf GitHub lesen darf |
+| Website online (Cloudflare, Domain) | Ob **Besucher** deine Site im Browser erreichen |
+
+Ein **privates** Repo kann eine **öffentliche** Website ausliefern. Ein **öffentliches** Repo heißt nicht zwingend, dass du schon eine fertige Domain freigeschaltet hast. Details: [Glossar Repository](/glossar/repository/), [Glossar Template](/glossar/template/).
+
+Hast du ein gutes Feature gebaut, schick einen [**Pull Request**](/glossar/pull-request/) zurück ans Original (vom Fork aus besonders natürlich). Ein „Star“ (Stern auf GitHub) beim Original ist ein kleines Danke, wenn dir das Projekt hilft.
 
 ## Was du mitnehmen kannst
 
 - **Bausteine** für wiederkehrende Inhalte (Stack, Kontakt, Trenner).
 - **Glossar**, **FAQ** und **Tags** als Lern-Netz; in Firefox Link-Vorschau zum Nachschlagen.
-- **Fork** als Einstieg in dein eigenes Projekt mit gleichem Stack ([Folge 001](/artikel/folge-001-hautuu-intro/) für die grobe Kette).
+- **Template** oder **Fork** als Einstieg in dein eigenes Projekt (Template für privates Repo); Stack-Idee in [Folge 001](/artikel/folge-001-hautuu-intro/).
 - **Bilder** für Hintergründe und Assets: Quellen, WebP und Upload ([Folge 021](/artikel/folge-021-bilder-suchen-nutzen/)).
 
 <!-- Quelle: 2026-10-04--23-47-38--obs-screencast - hautoo - 020 - neue bausteine, neue features, hautoo forken.txt -->

@@ -1,15 +1,21 @@
 ---
 title: Fork
 status: published
-modifiedDate: 2026-10-05
+modifiedDate: 2026-10-12
 relatedTags:
-- github
-definition: Eigene Kopie eines fremden GitHub-Repos unter deinem Account.
+  - github
+definition: Eigene Kopie eines fremden GitHub-Repos unter deinem Account (bei öffentlichem Original meist öffentlich).
 relatedArticles:
-- folge-020-bausteine-fork
+  - folge-020-bausteine-fork
 seo:
   seo_title: Fork · Glossar
-  seo_description: 'Eigene Kopie eines fremden GitHub-Repos unter deinem Account. Ein Fork ist nicht dasselbe wie git clone: Beim Fork legst du zuerst deine Repo-Kopie auf GitHub'
+  seo_description: Eigene Kopie eines fremden GitHub-Repos. Fork ist nicht git clone. Öffentliche Originale bleiben als Fork öffentlich; für privat nutze Template.
 ---
 
-Ein Fork ist nicht dasselbe wie [`git clone`](/glossar/clone/): Beim Fork legst du zuerst **deine** [Repo](/glossar/repository/)-Kopie auf [GitHub](/glossar/github/) an, dann klonst du sie lokal. So startest du z. B. ein eigenes Projekt auf Basis von hautuu, ohne im Original schreiben zu dürfen. Nützliche Verbesserungen schickst du per [**Pull Request**](/glossar/pull-request/) zurück. Schritt für Schritt: [Folge 020](/artikel/folge-020-bausteine-fork/), Kurzüberblick schon in [Folge 002](/artikel/folge-002-github-issues/).
+Ein Fork ist nicht dasselbe wie [`git clone`](/glossar/clone/): Beim Fork legst du zuerst **deine** [Repo](/glossar/repository/)-Kopie auf [GitHub](/glossar/github/) an, dann klonst du sie lokal. So startest du z. B. ein eigenes Projekt auf Basis von hautuu, ohne im Original schreiben zu dürfen. Nützliche Verbesserungen schickst du per [**Pull Request**](/glossar/pull-request/) zurück.
+
+**Einschränkung:** Forkst du ein **öffentliches** Repo, bleibt dein Fork bei GitHub in der Regel **öffentlich**. Ein privates Repo bekommst du so nicht. Dafür gibt es das [**Template**](/glossar/template/) (Vorlage): [hautoo als Vorlage](https://github.com/platomat/hautoo/generate).
+
+**Nicht verwechseln:** Ob das Repo auf GitHub öffentlich oder privat ist, ist etwas anderes als ob deine **Website** online für Besucher sichtbar ist. Die Site steuerst du über Hosting und Domain; das Repo-Sichtbarkeitsschalter steuert nur, wer den Quellcode auf GitHub lesen darf.
+
+Schritt für Schritt: [Folge 020](/artikel/folge-020-bausteine-fork/), Kurzüberblick schon in [Folge 002](/artikel/folge-002-github-issues/).

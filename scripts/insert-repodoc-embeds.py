@@ -164,7 +164,7 @@ INSERTS: dict[str, list[tuple[str, str]]] = {
             '\n\n{{repodoc path="docs/sveltia/collections.md" title="Collections (Sveltia)" description="Bausteine, Pages und alle CMS-Collections."}}\n',
         ),
         (
-            "## Fork statt nur klonen",
+            "## Eigenes Projekt: Fork oder Template",
             '\n{{repodoc path="docs/inhalte/README.md" title="Inhalte der Website" description="Struktur der Collections und Medienablage."}}\n\n',
         ),
     ],

@@ -39,6 +39,15 @@ GitHub speichert Quellcode, Inhalte und die Geschichte aller Änderungen. Issues
 - README und `docs/` sollen Einsteigern den Einstieg erklären
 - Lizenz und Beitragsregeln noch festlegen (siehe offene Fragen)
 
+## Fork vs. Template
+
+| Weg | Link / Aktion | Sichtbarkeit der Kopie |
+| --- | --- | --- |
+| **Template** (Vorlage) | [Use this template](https://github.com/platomat/hautoo/generate) | Public oder Private wählbar |
+| **Fork** | Fork auf der Repo-Seite | Bei öffentlichem Original: Fork bleibt öffentlich |
+
+**Repo privat/öffentlich** steuert nur, wer den Quellcode auf GitHub lesen darf. Ob die **Website** im Internet erreichbar ist, entscheidest du beim Hosting (Cloudflare Pages, Domain). Website-Erklärung: [Folge 020](https://hautoo.storyofai.net/artikel/folge-020-bausteine-fork/).
+
 ## Verknüpfung mit Cloudflare
 
 Go-Live und Anbindung GitHub → Cloudflare Pages: [Cloudflare](../cloudflare/README.md).

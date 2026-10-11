@@ -1,5 +1,5 @@
 ---
 title: GitHub
-modifiedDate: 2026-10-04
-description: GitHub Issues, Branches, Pull Requests und Fork für hautuu. Alle Artikel rund um Repository, Zusammenarbeit und Open Source.
+modifiedDate: 2026-10-12
+description: GitHub Issues, Branches, Pull Requests, Fork und Template für hautuu. Alle Artikel rund um Repository, Zusammenarbeit und Open Source.
 ---

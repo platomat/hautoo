@@ -3,7 +3,7 @@ title: FAQ
 description: Häufige Fragen zu hautuu, Git, Cursor, Cloudflare und dem CMS.
 status: published
 publishDate: 2026-10-04
-modifiedDate: 2026-10-07
+modifiedDate: 2026-10-12
 toc:
   show: true
   title: Inhalt
@@ -45,9 +45,9 @@ Ein öffentliches Lernprojekt: [**Astro**](/glossar/astro/) baut statische Seite
 
 Ja, das ist die Idee. Du brauchst Accounts, etwas Geduld und die Folgen Schritt für Schritt. hautuu zeigt einen Weg, kein fertiger Shop-Baukasten. [Folge 001](/artikel/folge-001-hautuu-intro/), [Über mich](/autoren/wasilij/).
 
-### Wie forke ich hautoo für mein eigenes Projekt?
+### Wie starte ich mein eigenes Projekt von hautuu?
 
-Auf [GitHub](/glossar/github/) beim [Repo](/glossar/repository/) **[Fork](/glossar/fork/)** wählen (deine Kopie unter deinem Account), dann den [Fork](/glossar/fork/) klonen und in Cursor weiterbauen: Inhalte ersetzen, eigenes Hosting anbinden. [Glossar Fork](/glossar/fork/), [Folge 020](/artikel/folge-020-bausteine-fork/).
+Zwei Wege auf [GitHub](/glossar/github/): **[Template](/glossar/template/)** (Vorlage, auch **privates** Repo) über [hautoo als Vorlage](https://github.com/platomat/hautoo/generate), oder **[Fork](/glossar/fork/)** (bleibt bei öffentlichem Original **öffentlich**). Danach klonen, in Cursor Inhalte ersetzen, eigenes Hosting anbinden. [Folge 020](/artikel/folge-020-bausteine-fork/).
 
 ### Brauche ich Programmierkenntnisse?
 
@@ -211,11 +211,15 @@ Der Hauptzweig, den Cloudflare als [Production](/glossar/production/) baut. [Glo
 
 ### Ist mein Code öffentlich?
 
-Bei hautuu ja: **öffentliches** Repo, jeder kann lesen. Schreiben nur mit Berechtigung. [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 013](/artikel/folge-013-sveltia-pat/).
+Bei hautuu ja: **öffentliches** [Repo](/glossar/repository/), jeder kann den Quellcode lesen. Schreiben nur mit Berechtigung. Startest du dein eigenes Projekt per [**Template**](/glossar/template/), kannst du das Repo **privat** machen. Das ist etwas anderes als ob deine **Website** im Internet erreichbar ist (Hosting/Domain). [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 020](/artikel/folge-020-bausteine-fork/).
 
 ### Was ist ein Fork?
 
-Deine Kopie eines fremden Repos unter deinem Account. Nicht verwechseln mit `git clone` allein. [Glossar Fork](/glossar/fork/), [Folge 002](/artikel/folge-002-github-issues/), [Folge 020](/artikel/folge-020-bausteine-fork/).
+Deine Kopie eines fremden Repos unter deinem Account. Nicht verwechseln mit `git clone` allein. Fork eines öffentlichen Repos bleibt öffentlich; für privat nutze das [**Template**](/glossar/template/). [Glossar Fork](/glossar/fork/), [Folge 002](/artikel/folge-002-github-issues/), [Folge 020](/artikel/folge-020-bausteine-fork/).
+
+### Was ist der Unterschied zwischen privatem Repo und öffentlicher Website?
+
+**Repo privat/öffentlich** auf GitHub: Wer den **Code** lesen darf. **Website online**: Ob Besucher deine Seiten unter einer Domain sehen. Beides steuerst du getrennt. [Glossar Repository](/glossar/repository/), [Folge 020](/artikel/folge-020-bausteine-fork/).
 
 ### Was ist `origin`?
 

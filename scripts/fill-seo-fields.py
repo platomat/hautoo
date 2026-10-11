@@ -91,7 +91,7 @@ ARTICLE_SEO: dict[str, dict[str, str]] = {
     },
     "folge-020-bausteine-fork": {
         "seo_title": "Folge 020: Bausteine, FAQ und hautoo forken",
-        "seo_description": "CMS Bausteine statt Copy Paste, Glossar und FAQ im Überblick und hautuu per GitHub Fork als Vorlage. Folge 020 für Wiederverwendung und eigenes Projekt.",
+        "seo_description": "CMS Bausteine, Glossar und FAQ im Überblick. Eigenes Projekt per GitHub Fork oder Template, inkl. privat vs. öffentliche Website.",
     },
 }
 

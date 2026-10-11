@@ -74,6 +74,8 @@ TERM_PATTERNS: list[tuple[str, str]] = [
     ("clone", r"git\s+clone"),
     ("clone", r"Clone"),
     ("fork", r"Fork"),
+    ("template", r"Template"),
+    ("template", r"Vorlage"),
     ("issue", r"Issues?"),
     ("origin", r"\borigin\b"),
     ("main", r"`main`"),
