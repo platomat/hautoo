@@ -8,6 +8,7 @@ toc:
   title: Inhalt
   levels:
   - h2
+  - h3
 background:
   image: olga-kovalski-eAmNjd0Zbts-unsplash.cleaned.webp
   overlay: 73
@@ -32,12 +33,12 @@ layout:
 
 ---
 
-Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo](/glossar/repository/) auf `main`). Details zu Begriffen im [**Glossar**](/glossar/), Antworten in der [**FAQ**](/faq/), Schritt für Schritt in den [**Artikeln**](/artikel/).
+Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo](/glossar/repository/) auf `main`). Details zu Begriffen im [**Glossar**](/glossar/), Antworten in der [**FAQ**](/faq/), Schritt für Schritt in den [**Artikeln**](/artikel/). Markdown und alle Content-Komponenten zum Anschauen: [**Demo**](/features/demo/).
 
 ## Inhalte und Redaktion
 
 - **Screencast-Folgen als Artikel** (001 bis 022): How-tos zu [GitHub](/glossar/github/), [Cursor](/glossar/cursor/), [Cloudflare](/glossar/cloudflare-pages/), [Sveltia](/glossar/sveltia/) und Redaktion, mit Teaser, Tags und Querverweisen. Agenten-Output prüfen: [Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/).
-- **Statische Seiten** (Collection `pages`): Startseite, Artikelübersicht, Tags, Autoren, Glossar, FAQ, Über uns, Impressum, Datenschutz und diese Features-Seite.
+- **Statische Seiten** (Collection `pages`): Startseite, Artikelübersicht, Tags, Autoren, Glossar, FAQ, Über uns, Impressum, Datenschutz, diese Features-Seite und die [Demo](/features/demo/) (Parent: Features).
 - **Redaktionsregeln** im Repo (`docs/redaktion/`) und als [Cursor](/glossar/cursor/)-Regel: Schema, Stil, SEO-Felder, [Bausteine](/glossar/baustein/), Querverlinkung, PR-Checkliste.
 - **Transkript-basierte Folgen**: Speech-to-Text korrigieren, nichts erfinden, Quellkommentar im Artikel ([Folge 015](/artikel/folge-015-transkript-artikel/)).
 
@@ -49,24 +50,45 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 
 ### Collections und Relationen
 
-- **pages:** Statische Seiten inkl. Start, Legal, Übersichten. Optional Parent-Seite; eigene URL.
-- **articles:** Screencast-Folgen und Beiträge. Relationen: 0..n **Kategorien**, **Tags**, **Autoren**; Video-Felder; URL `/artikel/<slug>/`.
-- **categories:** Hierarchische Kategorien. Optional Parent; Relation von Artikeln; URL `/kategorien/<slug>/`.
-- **tags:** Schlagworte. Relation von Artikeln; optional passender Glossar-Slug; URL `/tags/<slug>/`.
-- **authors:** Autorenprofile (Name, Bio, Avatar/Gravatar). Relation von Artikeln; URL `/autoren/<slug>/`.
-- **glossar:** Begriffsseiten. Relationen: `relatedArticles`, `relatedTags`; URL `/glossar/<slug>/`.
-- **menus:** Navigation (`main`, `footer-legal`, …) mit Label und Ziel.
+- **pages:** Statische Seiten inkl. Start, Legal, Übersichten. Optional Parent-Seite; eigene URL ([#3](https://github.com/platomat/hautoo/issues/3)).
+- **articles:** Screencast-Folgen und Beiträge. Relationen: 0..n **Kategorien**, **Tags**, **Autoren**; Video-Felder; URL `/artikel/<slug>/` ([#4](https://github.com/platomat/hautoo/issues/4)).
+- **categories:** Hierarchische Kategorien. Optional Parent; Relation von Artikeln; URL `/kategorien/<slug>/` ([#64](https://github.com/platomat/hautoo/issues/64)).
+- **tags:** Schlagworte. Relation von Artikeln; optional passender Glossar-Slug; URL `/tags/<slug>/` ([#5](https://github.com/platomat/hautoo/issues/5)).
+- **authors:** Autorenprofile (Name, Bio, Avatar/Gravatar). Relation von Artikeln; URL `/autoren/<slug>/` ([#77](https://github.com/platomat/hautoo/issues/77)).
+- **glossar:** Begriffsseiten. Relationen: `relatedArticles`, `relatedTags`; URL `/glossar/<slug>/` ([#6](https://github.com/platomat/hautoo/issues/6)).
+- **menus:** Navigation (`main`, `footer-legal`, …) mit Label und Ziel ([#13](https://github.com/platomat/hautoo/issues/13)).
 - **blocks:** Wiederverwendbare Bausteine ohne eigene URL; Einbinden per Content-Komponente `{{block}}`.
-- **redirects:** Weiterleitungen (#76). Mehrere Quellen → ein Ziel (301/302); Build erzeugt `_redirects`.
-- **settings:** Globale JSON-Einstellungen (**General**, **Design**, **Content**); keine Relationen.
+- **redirects:** Weiterleitungen ([#76](https://github.com/platomat/hautoo/issues/76)). Mehrere Quellen → ein Ziel (301/302); Build erzeugt `_redirects`.
+- **settings:** Globale JSON-Einstellungen (**General**, **Design**, **Content**); keine Relationen ([#45](https://github.com/platomat/hautoo/issues/45)).
 
-### Settings (General / Design / Content)
+### Settings → General
 
-- **Website-Titel**, optionale **Beschreibung**, **Footer-Copyright**, optional **Kontakt-E-Mail** und **GitHub-Repo** (General).
-- **Logos** (Header, optional Sticky, Footer) und **Favicons** (Standard, optional dunkel) aus der Mediathek (#79, #80).
-- **Design:** Farbpalette, Schrift, Sticky Header, Hero-Defaults, Inhaltsbreite und Abstand Hero/Footer pro Collection.
-- **Content:** TOC, Autoren-Anzeige (Platzierung, Avatar-Form), Medien (Video-Basis-URL).
-- Pro Seite/Artikel: lokale Überschreibung von Hero, TOC, Inhaltsbreite/Abstand; optional Head-/Footer-Code.
+- **Website title** und optionale **Description** / Slogan ([#75](https://github.com/platomat/hautoo/issues/75)).
+- **Footer copyright:** Claim und Trenner links; **Show center mark** für das kleine Icon in der Mitte (GitHub-Icon bei gesetztem Repo, sonst Site-Logo).
+- **Contact email** für `{{contact-email}}` (sonst Build-Variable `CONTACT_EMAIL`).
+- **Privacy page:** Relation zur Datenschutz-Seite (u. a. Link im Video-Consent).
+- **GitHub repository** (`owner/name`) für das Footer-Mitte-Icon, wenn Center mark an ist.
+- **Logos** aus der Mediathek: Header, optional Sticky, Footer ([#79](https://github.com/platomat/hautoo/issues/79)).
+- **Favicons** aus der Mediathek: Standard und optional dunkel ([#80](https://github.com/platomat/hautoo/issues/80)).
+
+### Settings → Design
+
+- **Farbpalette** (CSS-Variablen, inkl. Alpha für Glas) ([#70](https://github.com/platomat/hautoo/issues/70)).
+- **Schrift:** Fließtext und Überschriften (Fontsource), Basisgröße, Gewicht, H1–H6 Größe/Transform ([#71](https://github.com/platomat/hautoo/issues/71)).
+- **Header:** Ruhehöhe und Sticky ein/aus sowie kompakte Sticky-Höhe pro Breakpoint ([#44](https://github.com/platomat/hautoo/issues/44)); Anker-Sprünge (TOC) mit `scroll-padding`, damit Überschriften nicht unter der Leiste landen.
+- **Hero-Defaults** pro Collection: Ausrichtung, Brotkrumen, Trenner, Trennlinie unten ([#63](https://github.com/platomat/hautoo/issues/63)).
+- **Inhaltsbreite** Standard / breit / vollbreit für Seiten und Artikel ([#59](https://github.com/platomat/hautoo/issues/59)).
+- **Abstand** unter Hero und vor Footer, pro Collection ([#73](https://github.com/platomat/hautoo/issues/73)).
+
+### Settings → Content
+
+- **Inhaltsverzeichnis (TOC):** an/aus, Ebenen, Titel für Seiten und Artikel ([#51](https://github.com/platomat/hautoo/issues/51)).
+- **Autoren:** Platzierung auf der Artikel-Einzelseite (Hero / Ende / beides / aus) und Avatar-Form ([#77](https://github.com/platomat/hautoo/issues/77)).
+- **Medien:** Video-Basis-URL für selbst gehostete Dateien (z. B. Cloudflare R2).
+
+### Lokale Overrides an Seite und Artikel
+
+- Hero, TOC, Inhaltsbreite und Abstand überschreibbar; optional **Head-Code** und **Footer-Code** (HTML, Highlighting fest auf HTML).
 
 ## Glossar, Taxonomien und Autoren (Seiten)
 
@@ -83,11 +105,11 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 Im Markdown über die Sveltia-Toolbar; Rendering in `CmsContent.astro`.
 
 - **Baustein** (`{{block id="…"}}`): Inhalt aus Collection `blocks` ([Folge 020](/artikel/folge-020-bausteine-fork/)).
-- **Logo** (`{{logo variant="header" width="120" unit="px" align="center"}}`): Site-Logo aus General → Logos mit Breite und Ausrichtung (#79).
-- **Artikel-Listing**: Anzahl, Sortierung, Grid/Liste, Kartenfelder; Filter nach Autoren, Kategorien und Tags (UND/ODER) (#78).
+- **Logo** (`{{logo variant="header" width="120" unit="px" align="center"}}`): Site-Logo aus General → Logos mit Breite und Ausrichtung ([#79](https://github.com/platomat/hautoo/issues/79)).
+- **Artikel-Listing**: Anzahl, Sortierung, Grid/Liste, Kartenfelder an/aus (feste Kartenreihenfolge); Filter nach Autoren, Kategorien und Tags (UND/ODER) ([#78](https://github.com/platomat/hautoo/issues/78)).
 - **Kategorie-Listing**, **Tag-Listing**, **Tagwolke**, **Autoren-Listing**, **Glossar-Listing**.
 - **Trennlinie**, **Abstandshalter**, **Button**, **Kontakt-E-Mail** (`{{contact-email}}` aus CMS oder ENV).
-- **Video:** YouTube/Vimeo (Consent) oder selbst gehostete MP4 über R2.
+- **Video:** YouTube/Vimeo (Consent-Facade, Datenschutz-Link aus General → Privacy page) oder selbst gehostete MP4 über R2; **Video-Freischaltung widerrufen**.
 - **Repo-Dokument** (`{{repodoc path="docs/…"}}`): Link zu Handbuch-Dateien auf [GitHub](/glossar/github/).
 - **Embed-Check** vor dem Build: Embeds nur allein in einer Zeile (`check-content-embeds.py`).
 
@@ -102,8 +124,8 @@ Im Markdown über die Sveltia-Toolbar; Rendering in `CmsContent.astro`.
 
 - **Suche im Header** (MiniSearch): statischer Suchindex beim Build.
 - **Dark Theme** mit [CSS-Variablen](/glossar/css-variable/), responsive Header mit Mobile-Menü.
-- **Farbpalette**, **Schrift**, **Sticky Header**, **Hero-Defaults** redaktionell unter Einstellungen → Design.
-- **Brotkrumen** mit wählbarem Trenner; Start als Haus-Icon; UI-Icons für Permalink und Kategorie.
+- **Farbpalette**, **Schrift**, **Sticky Header**, **Hero**, **Inhaltsbreite** und **Abstand** redaktionell unter Einstellungen → Design (siehe oben).
+- **Brotkrumen** mit wählbarem Trenner; Start als Haus-Icon; UI-Icons für Permalink und Kategorie ([#31](https://github.com/platomat/hautoo/issues/31)).
 - **Breakpoints** und gemeinsame Layout-Hilfsklassen ([docs/design](https://github.com/platomat/hautoo/blob/main/docs/design/README.md)).
 - **Vollbild-Hintergrund** optional mit Overlay und **Bildnachweis**; Nachweise gesammelt im Impressum.
 - **Bilder** neben dem Content (Variante B), Astro-Optimierung inkl. CMS-Pfade unter `/assets/` ([Folge 021](/artikel/folge-021-bilder-suchen-nutzen/)).
