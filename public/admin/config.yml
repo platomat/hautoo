@@ -456,14 +456,15 @@ collections:
           - { label: Keins, value: "" }
           - { label: YouTube, value: youtube }
           - { label: Vimeo, value: vimeo }
+          - { label: Datei (R2 / selbst gehostet), value: file }
         default: ""
         required: false
       - {
           name: videoId,
-          label: Video-ID oder URL,
+          label: Video-ID, URL oder Dateiname,
           widget: string,
           required: false,
-          hint: "YouTube-/Vimeo-ID oder URL.",
+          hint: "YouTube-/Vimeo-ID oder URL. Bei „Datei“: volle https-URL oder Dateiname/Pfad relativ zu Content → Medien → Video-Basis-URL (R2).",
         }
       - name: body
         label: Inhalt
@@ -1257,6 +1258,18 @@ collections:
                   - { label: Breit, value: wide }
                   - { label: Vollbreit, value: full }
                 default: default
+          - name: media
+            label: Medien
+            widget: object
+            collapsed: false
+            hint: "Selbst gehostete Videos (z. B. Cloudflare R2). Dateien liegen nicht im Git-Repo."
+            fields:
+              - name: videoBaseUrl
+                label: Video-Basis-URL
+                widget: string
+                required: false
+                default: ""
+                hint: "Öffentliche Basis-URL inkl. Pfad, z. B. https://media.hautoo.storyofai.net/videos/ — wird mit Dateiname aus dem Video-Embed zusammengesetzt. Leer = nur volle https-URLs im Embed."
           - name: spacing
             label: Abstand
             widget: object

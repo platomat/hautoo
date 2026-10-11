@@ -489,7 +489,7 @@
 
 	CMS.registerEditorComponent({
 		id: "video",
-		label: "Video (YT/Vimeo)",
+		label: "Video",
 		icon: "videocam",
 		fields: [
 			{
@@ -499,14 +499,15 @@
 				options: [
 					{ label: "YouTube", value: "youtube" },
 					{ label: "Vimeo", value: "vimeo" },
+					{ label: "Datei (R2 / selbst gehostet)", value: "file" },
 				],
 				default: "youtube",
 			},
 			{
 				name: "id",
-				label: "Video-ID oder URL",
+				label: "Video-ID, URL oder Dateiname",
 				widget: "string",
-				hint: "YouTube-ID / youtu.be-URL oder Vimeo-ID / Video-URL.",
+				hint: "YouTube/Vimeo: ID oder URL. Datei: volle https-URL, oder Dateiname relativ zur Video-Basis-URL (CMS Content → Medien).",
 			},
 			{
 				name: "title",
@@ -520,27 +521,38 @@
 				label: "Poster (lokal)",
 				widget: "string",
 				required: false,
-				hint: "Optional: Pfad unter /assets/… (kein YouTube-Thumbnail vor Consent).",
+				hint: "Optional: Pfad unter /assets/… (bei YT/Vimeo kein Drittanbieter-Thumbnail vor Consent).",
 			},
 		],
 		pattern: /^\{\{video(?<attrs>[^}]*)\}\}\s*$/m,
 		fromBlock: (match) => {
 			const attrs = parseAttrs(match?.groups?.attrs || "");
+			const provider = attrs.provider === "r2" ? "file" : attrs.provider || "youtube";
 			return {
-				provider: attrs.provider || "youtube",
-				id: attrs.id || attrs.url || "",
+				provider,
+				id: attrs.src || attrs.id || attrs.url || "",
 				title: attrs.title || "Video",
 				poster: attrs.poster || "",
 			};
 		},
 		toBlock: ({ provider = "youtube", id = "", title = "Video", poster = "" }) => {
-			const parts = [`provider="${provider}"`, `id="${id}"`];
+			const parts = [`provider="${provider}"`];
+			if (provider === "file") {
+				parts.push(`src="${id}"`);
+			} else {
+				parts.push(`id="${id}"`);
+			}
 			if (title && title !== "Video") parts.push(`title="${title}"`);
 			if (poster) parts.push(`poster="${poster}"`);
 			return `{{video ${parts.join(" ")}}}`;
 		},
-		toPreview: ({ provider = "youtube", id = "", title = "Video" }) =>
-			`<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem"><strong style="color:#e8eeea">Video</strong> (${provider}) · ${title || id || "?"}<br><span style="font-size:0.8rem">Facade mit Consent, kein Player vor Klick</span></div>`,
+		toPreview: ({ provider = "youtube", id = "", title = "Video" }) => {
+			const note =
+				provider === "file"
+					? "HTML5-Player, Datei von R2/CDN (kein YT/Vimeo-Consent)"
+					: "Facade mit Consent, kein Player vor Klick";
+			return `<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem"><strong style="color:#e8eeea">Video</strong> (${provider}) · ${title || id || "?"}<br><span style="font-size:0.8rem">${note}</span></div>`;
+		},
 	});
 
 	CMS.registerEditorComponent({

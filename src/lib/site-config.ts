@@ -150,3 +150,9 @@ export function resolveTocForCollection(
 function siteTocCollectionFallback(): SiteTocCollectionConfig {
 	return DEFAULT_SITE_TOC_CONFIG.pages;
 }
+
+/** Public R2/media base for `provider="file"` videos (may be empty). */
+export function getVideoBaseUrl(): string {
+	const config = getSiteConfig();
+	return config.content?.media?.videoBaseUrl?.trim() ?? "";
+}

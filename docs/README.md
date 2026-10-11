@@ -29,7 +29,7 @@ Details: [Sprachen und Konventionen](./sprachen-und-konventionen.md)
 
 5. [Cursor (KI)](./cursor/README.md) — Mit dem Assistenten arbeiten
 6. [GitHub](./github/README.md) — Repo, Issues, Pull Requests, Zusammenarbeit
-7. [Cloudflare](./cloudflare/README.md) — Hosting, Domain, Deployments
+7. [Cloudflare](./cloudflare/README.md) — Hosting, Domain, Deployments; [R2-Videos](./cloudflare/r2-videos.md)
 8. [Astro](./astro/README.md) — Statische Website
 9. [Sveltia CMS](./sveltia/README.md) — Inhalte pflegen (Collections)
 10. [CMS Fields (DRY)](./cms-fields/README.md) — Wiederverwendbare Felder (z. B. SEO)

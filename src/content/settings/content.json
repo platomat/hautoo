@@ -19,6 +19,9 @@
     "pages": "default",
     "articles": "default"
   },
+  "media": {
+    "videoBaseUrl": "https://media.hautoo.storyofai.net/videos/"
+  },
   "spacing": {
     "pages": {
       "afterHero": 6,

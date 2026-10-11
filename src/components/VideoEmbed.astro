@@ -1,32 +1,53 @@
 ---
 import {
+	isFileVideoProvider,
+	isThirdPartyVideoProvider,
 	normalizeVideoId,
+	resolveFileVideoSrc,
 	videoEmbedSrc,
 	type VideoProvider,
 } from "../lib/video";
 import { resolveCmsImage } from "../lib/cms-image";
+import { getVideoBaseUrl } from "../lib/site-config";
 
 interface Props {
 	provider?: string;
+	/** YouTube/Vimeo id or URL; for `file` also accepts full URL or object key. */
 	id?: string;
+	/** Alias for file URL/key (`{{video provider="file" src="…" }}`). */
+	src?: string;
 	title?: string;
 	/** Optional local CMS image path (no third-party thumbnail before consent). */
 	poster?: string;
 }
 
-const { provider, id, title = "Video", poster } = Astro.props;
+const { provider, id, src: srcProp, title = "Video", poster } = Astro.props;
 
 const validProvider =
-	provider === "youtube" || provider === "vimeo"
+	isThirdPartyVideoProvider(provider) || isFileVideoProvider(provider)
 		? (provider as VideoProvider)
 		: undefined;
-const normalizedId = validProvider
-	? normalizeVideoId(validProvider, id ?? "")
-	: undefined;
-const src =
-	validProvider && normalizedId
+
+const posterMeta = poster ? resolveCmsImage(poster) : undefined;
+
+let mode: "third-party" | "file" | undefined;
+let iframeSrc: string | undefined;
+let fileSrc: string | undefined;
+
+if (validProvider && isThirdPartyVideoProvider(validProvider)) {
+	const normalizedId = normalizeVideoId(validProvider, id ?? srcProp ?? "");
+	iframeSrc = normalizedId
 		? videoEmbedSrc(validProvider, normalizedId)
 		: undefined;
+	if (iframeSrc) {
+		mode = "third-party";
+	}
+} else if (validProvider === "file") {
+	fileSrc = resolveFileVideoSrc(srcProp ?? id ?? "", getVideoBaseUrl());
+	if (fileSrc) {
+		mode = "file";
+	}
+}
 
 const providerLabel =
 	validProvider === "youtube"
@@ -34,16 +55,32 @@ const providerLabel =
 		: validProvider === "vimeo"
 			? "Vimeo"
 			: "";
-
-const posterMeta = poster ? resolveCmsImage(poster) : undefined;
 ---
 
 {
-	src && (
+	mode === "file" && fileSrc && (
+		<div class="video-embed video-embed--file">
+			<video
+				class="video-embed__player"
+				controls
+				playsinline
+				preload="metadata"
+				title={title}
+				poster={posterMeta?.src}
+			>
+				<source src={fileSrc} type="video/mp4" />
+				<a href={fileSrc}>Video herunterladen / öffnen</a>
+			</video>
+		</div>
+	)
+}
+
+{
+	mode === "third-party" && iframeSrc && (
 		<div
 			class="video-embed"
 			data-video-embed
-			data-video-src={src}
+			data-video-src={iframeSrc}
 			data-video-title={title}
 			data-video-provider={validProvider}
 		>
@@ -75,10 +112,14 @@ const posterMeta = poster ? resolveCmsImage(poster) : undefined;
 	)
 }
 
-<script>
-	import { initVideoEmbeds } from "../scripts/videoEmbed";
-	initVideoEmbeds();
-</script>
+{
+	mode === "third-party" && (
+		<script>
+			import { initVideoEmbeds } from "../scripts/videoEmbed";
+			initVideoEmbeds();
+		</script>
+	)
+}
 
 <style>
 	.video-embed {
@@ -91,12 +132,18 @@ const posterMeta = poster ? resolveCmsImage(poster) : undefined;
 		overflow: hidden;
 	}
 
-	.video-embed iframe {
+	.video-embed iframe,
+	.video-embed__player {
 		position: absolute;
 		inset: 0;
 		width: 100%;
 		height: 100%;
 		border: 0;
+	}
+
+	.video-embed__player {
+		background: #000;
+		object-fit: contain;
 	}
 
 	.video-embed__facade {

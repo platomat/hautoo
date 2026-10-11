@@ -73,6 +73,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Artikel-Listing** im Content: Anzahl, Sortierung, Grid oder Liste, wählbare Kartenfelder inkl. Kategorien (links neben Tags, Default an) und Lesezeit ([Folge 019](/artikel/folge-019-impressum-komponenten/)).
 - **Trennlinie**, **Abstandshalter** (`{{spacer}}` bzw. `{{spacer height="…"}}`, Default 32 px), **Button** (`{{button label="…" href="…"}}`, solid/outline, Palette, Ausrichtung) und **Kontakt-E-Mail** als Embed (`{{contact-email}}` aus CMS oder Build-Variable, nicht im Markdown).
 - **Markdown-Embeds** über die Sveltia-Toolbar; Rendering zentral in `CmsContent.astro`.
+- **Video-Embed:** YouTube/Vimeo (Consent-Facade) oder **selbst gehostete MP4** über Cloudflare R2 (`provider="file"`, Dateien nicht im Repo).
 - **Repo-Docs-Box** (`{{repodoc path="docs/…"}}`): Verlinkung zu Handbuch-Dateien auf [GitHub](/glossar/github/), Toolbar **Repo-Dokument** ([Folge 001](/artikel/folge-001-hautuu-intro/) als Beispiel).
 - **Embed-Check** vor dem Build: `{{repodoc}}` und `{{block}}` nur allein in einer Zeile, nicht mitten im Satz und **nicht zwischen Listenpunkten** (`check-content-embeds.py`).
 

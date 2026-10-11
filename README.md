@@ -10,7 +10,7 @@ Dokumentation und (geplante) Website-Grundlage, um mit **Cursor**, **GitHub** un
 
 - Statische Website mit **Astro**
 - Inhalte über **Sveltia** (`pages`, `articles`, `categories`, `tags`, `glossar`, `menus`, `blocks`)
-- Artikel mit Text, Bildern und eingebetteten How-to-Videos (Vimeo/YouTube)
+- Artikel mit Text, Bildern und eingebetteten How-to-Videos (Vimeo/YouTube oder Dateien über Cloudflare R2)
 - Glossar für Begriffe
 - Anleitungen für Menschen, die das nachbauen oder mitarbeiten wollen
 
@@ -25,7 +25,7 @@ Kurzliste dessen, was auf `main` schon umgesetzt ist (Details und Erläuterungen
 | **Inhalte** | 22 Screencast-Folgen als Artikel, statische Pages, Features-Seite, Redaktionsregeln in `docs/redaktion/` |
 | **CMS** | Sveltia `/admin/`, Collections inkl. Bausteine (`blocks`), Menüs, **Settings** (JSON: General / Design / Content inkl. **Website-Titel**, **Hero**, **Schrift**, **Inhaltsbreite** und **Abstand**), Entwurfsstatus, globales TOC, Inhaltsbreite (3 Stufen) und Hero/Footer-Abstand mit lokaler Überschreibung, Head/Footer-Code, Worker-OAuth-Zugang |
 | **Glossar & FAQ** | Glossar mit verwandten Artikeln/Tags, Querverlink-Skript und Erstlink-Check, FAQ offen (kein Accordion), Tag-Seiten |
-| **Embeds** | Bausteine, Artikel-/Glossar-/Tag-Listings, Tagwolke, Trennlinie, Abstandshalter, Button, Kontakt-E-Mail aus ENV, Repo-Docs-Box; Embed-Check (auch Listen-Regel) |
+| **Embeds** | Bausteine, Listings, Tagwolke, Video (YT/Vimeo oder R2-Datei), Trennlinie, Abstandshalter, Button, Kontakt-E-Mail, Repo-Docs; Embed-Check |
 | **SEO** | `seo`-Felder, Open Graph/Twitter inkl. OG-Bild (1200×630), Canonical, Sitemap, Lesezeit, noindex für Impressum/Datenschutz |
 | **Suche & UI** | MiniSearch im Header, Artikel-Übersicht mit Listing-Embed und Kartenfeldern, Seitenleiste mit Kategorie-Tree und Tags |
 | **Design** | Dark Theme mit CSS-Variablen, Breakpoints, **Sticky Header**, **Hero**, **Schrift** (Fließtext/Überschriften, Basisgröße, H1–H6; Build lädt von Fontsource/jsDelivr, Auslieferung lokal), Inhaltsbreite 3 Stufen, Abstand Hero/Footer pro Collection, UI-Icons (Brotkrumen-Haus, Kategorie, Permalink), externe Links mit Pfeil-Indikator (nicht Header/Footer), Vollbild-Hintergrund, **Bildnachweise** auf dem Impressum |

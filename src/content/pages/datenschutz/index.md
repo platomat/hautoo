@@ -52,6 +52,8 @@ Schriftarten werden **lokal** von dieser Website ausgeliefert (kein Google-Fonts
 
 ## Eingebettete Videos
 
+### YouTube und Vimeo
+
 Einzelne Seiten und Artikel können Videos von **YouTube** (privacy-enhanced / youtube-nocookie) oder **Vimeo** einbinden. **Vor** deiner aktiven Zustimmung wird kein Player geladen und dein Browser stellt **keine** Verbindung zu YouTube oder Vimeo her (Consent-Facade mit lokalem Platzhalter).
 
 Erst wenn du auf „Video laden“ klickst, wird der Player nachgeladen. Dann verbindet sich dein Browser mit den Servern des Anbieters. Dabei können personenbezogene Daten (z. B. IP-Adresse, Cookie-IDs) übermittelt werden, auch in die USA. Die Anbieter können eigene Cookies oder ähnliche Techniken setzen.
@@ -66,6 +68,10 @@ Anbieter:
 
 - Google Ireland Limited / YouTube: [Google Privacy](https://policies.google.com/privacy)
 - Vimeo.com, Inc.: [Vimeo Privacy](https://vimeo.com/privacy)
+
+### Selbst gehostete Videos (Cloudflare R2)
+
+Zusätzlich können Screencasts als Dateien über **Cloudflare R2** (Objekt-Speicher) ausgeliefert werden. Der Player ist ein normales HTML5-`<video>` auf unserer Site; es wird **kein** YouTube-/Vimeo-Player geladen und **kein** zusätzlicher Consent-Schalter wie oben genutzt. Beim Abspielen verbindet sich dein Browser mit dem Medien-Host (Cloudflare), typischerweise unter einer Subdomain dieser Website. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Auslieferung der Inhalte) bzw. Vertrag/Einwilligung je nach Kontext der Seite. Auftragsverarbeitung: Cloudflare.
 
 ## Externe Links
 

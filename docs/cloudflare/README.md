@@ -198,6 +198,10 @@ Fehlende Pfade ohne eigene Datei liefert Pages oft als Startseiten-HTML (HTTP 20
 - [Folge 011: Cloudflare Pages Setup](https://hautoo.storyofai.net/artikel/folge-011-cloudflare-setup/)
 - [Folge 012: Branches und Rollback](https://hautoo.storyofai.net/artikel/folge-012-cloudflare-branches/)
 
+## Videos in R2 (nicht im Repo)
+
+Große MP4s liegen in **Cloudflare R2**, Einbindung über `VideoEmbed` mit `provider="file"`. Anleitung: [R2-Videos](./r2-videos.md).
+
 ## Offizielle Referenzen
 
 - [Astro auf Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)

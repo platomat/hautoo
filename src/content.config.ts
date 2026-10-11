@@ -134,7 +134,9 @@ const articles = defineCollection({
 			 * Categories always appear in the hero under the description.
 			 */
 			tagPlacement: z.enum(["hero", "after", "both"]).default("hero"),
-			videoProvider: z.enum(["youtube", "vimeo"]).optional(),
+			/** youtube / vimeo / file (R2 or other self-hosted MP4). */
+			videoProvider: z.enum(["youtube", "vimeo", "file"]).optional(),
+			/** YT/Vimeo id/URL, or for `file` full URL / key under Content → Medien → videoBaseUrl. */
 			videoId: z.string().optional(),
 			seo: seoSchema.optional(),
 			/**

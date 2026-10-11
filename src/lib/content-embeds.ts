@@ -24,7 +24,11 @@ import {
 } from "./separator";
 import { DEFAULT_SPACER_HEIGHT, clampSpacerHeight } from "./spacer";
 import type { VideoProvider } from "./video";
-import { normalizeVideoId } from "./video";
+import {
+	isFileVideoProvider,
+	isThirdPartyVideoProvider,
+	normalizeVideoId,
+} from "./video";
 
 /** Fields shown on article listing cards (CMS `show="…"`). */
 export type ArticleCardField =
@@ -104,7 +108,10 @@ export type ButtonEmbedProps = {
 
 export type VideoEmbedProps = {
 	provider: VideoProvider;
-	id: string;
+	/** YouTube/Vimeo id; for `file` unused when `src` is set. */
+	id?: string;
+	/** Self-hosted URL or object key (`provider="file"`). */
+	src?: string;
 	title: string;
 	poster?: string;
 };
@@ -463,20 +470,26 @@ export function parseVideoEmbedProps(
 	attrsRaw: string | undefined,
 ): VideoEmbedProps | undefined {
 	const attrs = parseAttrs(attrsRaw ?? "");
-	const provider =
-		attrs.provider === "youtube" || attrs.provider === "vimeo"
-			? attrs.provider
-			: undefined;
-	if (!provider) {
+	const rawProvider = (attrs.provider ?? "").trim();
+	const title = (attrs.title ?? "Video").trim() || "Video";
+	const poster = (attrs.poster ?? "").trim() || undefined;
+
+	if (isFileVideoProvider(rawProvider) || rawProvider === "r2") {
+		const src = (attrs.src ?? attrs.id ?? attrs.url ?? "").trim();
+		if (!src) {
+			return undefined;
+		}
+		return { provider: "file", src, id: src, title, poster };
+	}
+
+	if (!isThirdPartyVideoProvider(rawProvider)) {
 		return undefined;
 	}
-	const id = normalizeVideoId(provider, attrs.id ?? attrs.url ?? "");
+	const id = normalizeVideoId(rawProvider, attrs.id ?? attrs.url ?? "");
 	if (!id) {
 		return undefined;
 	}
-	const title = (attrs.title ?? "Video").trim() || "Video";
-	const poster = (attrs.poster ?? "").trim() || undefined;
-	return { provider, id, title, poster };
+	return { provider: rawProvider, id, title, poster };
 }
 
 function parseBlockId(attrsRaw: string | undefined): string {

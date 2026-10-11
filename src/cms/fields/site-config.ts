@@ -242,11 +242,23 @@ export {
 	type SiteTypographyConfig,
 } from "./site-typography";
 
+/** Self-hosted video base (Cloudflare R2 custom domain), CMS Content → Medien. */
+export const siteMediaConfigSchema = z.object({
+	/**
+	 * Public base URL for `provider="file"` videos (trailing slash optional).
+	 * Example: `https://media.hautoo.storyofai.net/videos/`
+	 */
+	videoBaseUrl: z.string().trim().default(""),
+});
+
+export type SiteMediaConfig = z.infer<typeof siteMediaConfigSchema>;
+
 /** `src/content/settings/content.json` */
 export const siteContentConfigSchema = z.object({
 	toc: siteTocConfigSchema.default({}),
 	width: siteWidthConfigSchema.default({}),
 	spacing: siteSpacingByCollectionSchema.default({}),
+	media: siteMediaConfigSchema.default({}),
 });
 
 export type SiteContentFileConfig = z.infer<typeof siteContentConfigSchema>;
