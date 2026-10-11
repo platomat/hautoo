@@ -10,10 +10,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "predev": "node scripts/sync-site-fonts.mjs && node scripts/sync-author-avatars.mjs && node scripts/build-search-index.mjs",
-    "prebuild": "node scripts/sync-site-fonts.mjs && node scripts/sync-author-avatars.mjs && node scripts/build-search-index.mjs && python3 scripts/check-content-links.py",
+    "predev": "node scripts/sync-site-fonts.mjs && node scripts/sync-author-avatars.mjs && node scripts/build-search-index.mjs && node scripts/build-redirects.mjs",
+    "prebuild": "node scripts/sync-site-fonts.mjs && node scripts/sync-author-avatars.mjs && node scripts/build-search-index.mjs && node scripts/build-redirects.mjs && python3 scripts/check-content-links.py",
     "check:content-links": "python3 scripts/check-content-links.py",
     "build:search": "node scripts/build-search-index.mjs",
+    "build:redirects": "node scripts/build-redirects.mjs",
     "sync:fonts": "node scripts/sync-site-fonts.mjs",
     "sync:avatars": "node scripts/sync-author-avatars.mjs"
   },

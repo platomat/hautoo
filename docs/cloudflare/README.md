@@ -184,6 +184,7 @@ SSL/TLS-Modus der Zone: üblicherweise **Full** (oder **Full (strict)**), konsis
 | Was | Wo |
 | --- | --- |
 | Cache-Header | `public/_headers` → landet in `dist/` (Cloudflare Pages) |
+| Redirects | CMS-Collection **Weiterleitungen** → `scripts/build-redirects.mjs` schreibt `public/_redirects` (prebuild; nicht im Git) |
 | `/_astro/*`, `/fonts/*` | `max-age=31536000, immutable` (fingerprinted bzw. selten geändert) |
 | HTML / Rest | `max-age=0, must-revalidate` |
 | Build-ID | `import.meta.env.BUILD_ID` / `CF_PAGES_COMMIT_SHA` über `src/lib/build-id.ts` |

@@ -194,6 +194,50 @@ const blocks = defineCollection({
 	}),
 });
 
+/**
+ * Manual URL redirects (CMS → `public/_redirects` via build-redirects.mjs).
+ * Multiple sources per entry, one target.
+ */
+const redirects = defineCollection({
+	loader: glob({ pattern: "*.md", base: "./src/content/redirects" }),
+	schema: z.object({
+		title: z.string(),
+		/** Source paths (one or more); each maps to `target`. */
+		sources: z.preprocess((value) => {
+			if (typeof value === "string") {
+				return value
+					.split(/\r?\n/)
+					.map((line) => line.replace(/^\s*[-*]\s+/, "").trim())
+					.filter(Boolean);
+			}
+			if (Array.isArray(value)) {
+				return value
+					.map((item) => {
+						if (item && typeof item === "object") {
+							const obj = item as Record<string, unknown>;
+							return String(
+								obj.source ?? obj.path ?? Object.values(obj)[0] ?? "",
+							).trim();
+						}
+						return String(item ?? "").trim();
+					})
+					.filter(Boolean);
+			}
+			return value;
+		}, z.array(z.string().trim().min(1)).min(1)),
+		/** Single destination path or absolute https URL. */
+		target: z.string().trim().min(1),
+		/** HTTP status; default 301 (moved permanently). */
+		code: z
+			.preprocess(
+				(value) => (value === 302 || value === "302" ? 302 : 301),
+				z.union([z.literal(301), z.literal(302)]),
+			)
+			.default(301),
+		modifiedDate: modifiedDateSchema,
+	}),
+});
+
 export const collections = {
 	pages,
 	menus,
@@ -203,4 +247,5 @@ export const collections = {
 	articles,
 	glossar,
 	blocks,
+	redirects,
 };

@@ -6,6 +6,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { hastExternalLinks } from './src/lib/hast-external-links.ts';
 import { sitemapPageFilter } from './src/lib/sitemap.ts';
+import { loadAstroRedirects } from './scripts/build-redirects.mjs';
 
 const buildId =
 	process.env.CF_PAGES_COMMIT_SHA?.slice(0, 8) ||
@@ -16,6 +17,7 @@ const buildId =
 // https://astro.build/config
 export default defineConfig({
   site: 'https://hautoo.storyofai.net',
+  redirects: loadAstroRedirects(),
   build: {
     // Avoid a render-blocking CSS round-trip (Lighthouse FCP/LCP).
     inlineStylesheets: 'always',

@@ -14,11 +14,12 @@ Zurück zur [Sveltia-Übersicht](./README.md). Shared Field-Partials: [CMS Field
 | Autoren | `authors` | umgesetzt (#77) |
 | Glossar | `glossar` | umgesetzt (#6) |
 | Bausteine | `blocks` | umgesetzt |
+| Weiterleitungen | `redirects` | umgesetzt (#76) |
 | Menüs | `menus` | umgesetzt (#13) |
 
 ## Slug bearbeiten
 
-Bei Ordner-Collections (`pages`, `articles`, `categories`, `tags`, `authors`, `glossar`, `blocks`, `menus`) legt `slug` in `public/admin/config.yml` den Datei-/Ordnernamen fest (Template `{{slug}}` = slugifizierter Titel bzw. Identifier).
+Bei Ordner-Collections (`pages`, `articles`, `categories`, `tags`, `authors`, `glossar`, `blocks`, `redirects`, `menus`) legt `slug` in `public/admin/config.yml` den Datei-/Ordnernamen fest (Template `{{slug}}` = slugifizierter Titel bzw. Identifier).
 
 | | |
 | --- | --- |
@@ -229,6 +230,29 @@ Wiederverwendbare Inhaltsstücke (ähnlich WordPress-Reusable-Blocks). Keine eig
 | Body | ja | Markdown inkl. anderer Embeds; verschachtelte Bausteine mit Zyklusschutz |
 
 Beispiel: Baustein `stack-uebersicht` → auf der Startseite `{{block id="stack-uebersicht"}}`. Änderung am Baustein gilt überall.
+
+## Collection `redirects` (Weiterleitungen, #76)
+
+Manuelle URL-Umleitungen, wenn Inhalte gelöscht oder verschoben wurden. Keine eigene Website-URL.
+
+| | |
+| --- | --- |
+| Ordner | `src/content/redirects/<slug>.md` |
+| Schema | `src/content.config.ts` |
+| Sveltia | Collection `redirects` (Label „Weiterleitungen“) |
+| Build | `scripts/build-redirects.mjs` → `public/_redirects` (Cloudflare Pages); zusätzlich Astro `redirects` in `astro.config.mjs` |
+
+### Felder
+
+| Feld | Pflicht | Bedeutung |
+| --- | --- | --- |
+| `title` | ja | Name nur im CMS |
+| `sources` | ja | Eine oder mehrere Quell-Pfade (Liste); alle zeigen auf `target` |
+| `target` | ja | Ein Ziel-Pfad oder absolute `https`-URL |
+| `code` | nein | `301` (Default) oder `302` |
+| `modifiedDate` | nein | Letzte Änderung |
+
+Beispiel: Quellen `/alter-slug/` und `/noch-alter/` → Ziel `/neuer-slug/` mit 301.
 
 
 ## Collection `categories` (umgesetzt)

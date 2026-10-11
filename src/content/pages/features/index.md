@@ -44,7 +44,8 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 ## CMS und Collections
 
 - **[Sveltia CMS](/glossar/sveltia/)** unter `/admin/`: Inhalte im Browser bearbeiten, Speichern landet als Dateien in [Git](/glossar/git/) ([Glossar CMS](/glossar/cms/), [Folge 013](/artikel/folge-013-sveltia-pat/)).
-- **[Collections](/glossar/collection/)** für Pages, Articles, **Kategorien** (hierarchisch), Tags, **Autoren**, Glossar, Menüs und **Bausteine** (`blocks`) ohne eigene URL.
+- **[Collections](/glossar/collection/)** für Pages, Articles, **Kategorien** (hierarchisch), Tags, **Autoren**, Glossar, Menüs, **Bausteine** (`blocks`) und **Weiterleitungen** (`redirects`, #76) ohne eigene URL.
+- **Weiterleitungen**: CMS-Einträge mit mehreren Quell-Pfaden und einem Ziel (301/302); Build erzeugt Cloudflare `_redirects` und Astro-Redirects.
 - **Autoren-Collection**: Name, Bio (Markdown), lokaler Avatar oder Gravatar-URL (Download beim Build nach `src/assets/authors/gravatar/`). An Artikel 0..n zuweisbar. Byline mit Avatar im Hero und/oder am Artikelende (Einstellungen → Content → Autoren: Platzierung und Form rund/eckig). Übersicht `/autoren/`, Profil `/autoren/<slug>/` mit runden Foto, Bio und Artikelliste („Artikel (N)“).
 - **Settings-Collection** (`settings`): globale Site-Einstellungen als JSON unter `src/content/settings/` (wie cdr-legal). Eigene CMS-Einträge **General**, **Design** und **Content**.
 - **Website-Titel** unter **Einstellungen** → **General** → **Website title**: Markenname für Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`) und `og:site_name`.

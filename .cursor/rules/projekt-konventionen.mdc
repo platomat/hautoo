@@ -52,4 +52,5 @@ Secrets gehören in Umgebungsvariablen der jeweiligen Plattform (z. B. Cloudflar
 - `authors` (für Artikel; Profil `/autoren/<slug>/`)
 - `glossar`
 - `blocks` (Bausteine; Einbinden via `{{block id="slug"}}`)
+- `redirects` (Weiterleitungen; Build → `public/_redirects`)
 - `menus` (Hauptmenü `main`, Footer `footer-legal`, …)
