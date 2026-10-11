@@ -446,16 +446,6 @@ collections:
         display_fields: [title]
         multiple: true
         required: false
-      - name: authors
-        label: Autoren
-        widget: relation
-        collection: authors
-        value_field: "{{slug}}"
-        search_fields: [title]
-        display_fields: [title]
-        multiple: true
-        required: false
-        hint: "Optional. Keiner, einer oder mehrere Autoren (Profil unter /autoren/<slug>/)."
       - name: tagPlacement
         label: Tags anzeigen
         widget: select
@@ -466,6 +456,16 @@ collections:
         default: hero
         required: false
         hint: "Kategorien stehen immer im Hero unter der Beschreibung. Tags wahlweise dort (rechts daneben), nach dem Inhalt (vor der Artikel-Navigation) oder beides."
+      - name: authors
+        label: Autoren
+        widget: relation
+        collection: authors
+        value_field: "{{slug}}"
+        search_fields: [title]
+        display_fields: [title]
+        multiple: true
+        required: false
+        hint: "Optional. Keiner, einer oder mehrere Autoren (Profil unter /autoren/<slug>/)."
       - name: videoProvider
         label: Video-Anbieter
         widget: select
@@ -483,6 +483,15 @@ collections:
           required: false,
           hint: "YouTube-/Vimeo-ID oder URL. Bei „Datei“: volle https-URL oder Dateiname/Pfad relativ zu Content → Medien → Video-Basis-URL (R2).",
         }
+      - name: videoPlacement
+        label: Video anzeigen
+        widget: select
+        options:
+          - { label: Vor dem Inhalt (nach Hero), value: before }
+          - { label: Nach dem Inhalt (vor Tags/Autoren), value: after }
+        default: before
+        required: false
+        hint: "Gilt für das Video-Feld oben (nicht für {{video …}}-Blöcke im Inhalt)."
       - name: body
         label: Inhalt
         widget: markdown

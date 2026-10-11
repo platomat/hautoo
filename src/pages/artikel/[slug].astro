@@ -104,6 +104,12 @@ const TableOfContents = toc.show
 const readingTimeMinutes = estimateReadingTimeMinutes(article.body);
 const readingTimeLabel = formatReadingTime(readingTimeMinutes);
 const breadcrumbs = buildArticleBreadcrumbs(article);
+const videoPlacement = article.data.videoPlacement ?? "before";
+const hasArticleVideo = Boolean(
+	article.data.videoProvider && article.data.videoId?.trim(),
+);
+const showVideoBefore = hasArticleVideo && videoPlacement === "before";
+const showVideoAfter = hasArticleVideo && videoPlacement === "after";
 ---
 
 <BaseLayout
@@ -207,12 +213,25 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 					</figure>
 				)
 			}
-			<VideoEmbed
-				provider={article.data.videoProvider}
-				id={article.data.videoId}
-				title={`Video: ${article.data.title}`}
-			/>
+			{
+				showVideoBefore && (
+					<VideoEmbed
+						provider={article.data.videoProvider}
+						id={article.data.videoId}
+						title={`Video: ${article.data.title}`}
+					/>
+				)
+			}
 			{useEmbeds ? <CmsContent body={article.body} /> : <Content />}
+			{
+				showVideoAfter && (
+					<VideoEmbed
+						provider={article.data.videoProvider}
+						id={article.data.videoId}
+						title={`Video: ${article.data.title}`}
+					/>
+				)
+			}
 			{
 				showTagsAfter && (
 					<ul

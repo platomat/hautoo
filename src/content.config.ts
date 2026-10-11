@@ -158,6 +158,11 @@ const articles = defineCollection({
 			videoProvider: z.enum(["youtube", "vimeo", "file"]).optional(),
 			/** YT/Vimeo id/URL, or for `file` full URL / key under Content → Medien → videoBaseUrl. */
 			videoId: z.string().optional(),
+			/**
+			 * Frontmatter video only (not `{{video …}}` embeds).
+			 * `before` = after hero/TOC/title image; `after` = after body, before tags/authors.
+			 */
+			videoPlacement: z.enum(["before", "after"]).default("before"),
 			seo: seoSchema.optional(),
 			/**
 			 * Width + optional spacing. Omit fields = Content → Breite / Abstand,
