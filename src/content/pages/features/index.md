@@ -49,18 +49,16 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 
 ### Collections und Relationen
 
-| Collection | Inhalt | Relationen / Nutzung |
-| --- | --- | --- |
-| **pages** | Statische Seiten inkl. Start, Legal, Übersichten | Optional Parent-Seite; eigene URL |
-| **articles** | Screencast-Folgen und Beiträge | 0..n **Kategorien**, **Tags**, **Autoren**; Video-Felder; `/artikel/<slug>/` |
-| **categories** | Hierarchische Kategorien | Optional Parent; Relation von Artikeln; `/kategorien/<slug>/` |
-| **tags** | Schlagworte | Relation von Artikeln; optional passender Glossar-Slug; `/tags/<slug>/` |
-| **authors** | Autorenprofile (Name, Bio, Avatar/Gravatar) | Relation von Artikeln; `/autoren/<slug>/` |
-| **glossar** | Begriffsseiten | `relatedArticles`, `relatedTags`; `/glossar/<slug>/` |
-| **menus** | Navigation (`main`, `footer-legal`, …) | Einträge mit Label und Ziel |
-| **blocks** | Wiederverwendbare Bausteine ohne eigene URL | Einbinden per Content-Komponente `{{block}}` |
-| **redirects** | Weiterleitungen (#76) | Mehrere Quellen → ein Ziel (301/302); Build → `_redirects` |
-| **settings** | Globale JSON-Einstellungen | Einträge **General**, **Design**, **Content** (keine Relationen) |
+- **pages:** Statische Seiten inkl. Start, Legal, Übersichten. Optional Parent-Seite; eigene URL.
+- **articles:** Screencast-Folgen und Beiträge. Relationen: 0..n **Kategorien**, **Tags**, **Autoren**; Video-Felder; URL `/artikel/<slug>/`.
+- **categories:** Hierarchische Kategorien. Optional Parent; Relation von Artikeln; URL `/kategorien/<slug>/`.
+- **tags:** Schlagworte. Relation von Artikeln; optional passender Glossar-Slug; URL `/tags/<slug>/`.
+- **authors:** Autorenprofile (Name, Bio, Avatar/Gravatar). Relation von Artikeln; URL `/autoren/<slug>/`.
+- **glossar:** Begriffsseiten. Relationen: `relatedArticles`, `relatedTags`; URL `/glossar/<slug>/`.
+- **menus:** Navigation (`main`, `footer-legal`, …) mit Label und Ziel.
+- **blocks:** Wiederverwendbare Bausteine ohne eigene URL; Einbinden per Content-Komponente `{{block}}`.
+- **redirects:** Weiterleitungen (#76). Mehrere Quellen → ein Ziel (301/302); Build erzeugt `_redirects`.
+- **settings:** Globale JSON-Einstellungen (**General**, **Design**, **Content**); keine Relationen.
 
 ### Settings (General / Design / Content)
 
