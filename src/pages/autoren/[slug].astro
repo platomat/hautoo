@@ -89,17 +89,19 @@ const articlesHeading =
 
 <style>
 	.author-profile__avatar-wrap {
-		margin: 0 0 0.25rem;
+		margin: 2rem 0;
 	}
 
 	.author-profile__avatar {
-		display: block;
+		/* inline-block: follows PageHero text-align (left / center / right) */
+		display: inline-block;
 		width: 8rem;
 		height: 8rem;
 		object-fit: cover;
 		border-radius: 50%;
 		border: 1px solid var(--color-border);
 		background: var(--color-surface);
+		vertical-align: middle;
 	}
 
 	.author-profile__bio {
