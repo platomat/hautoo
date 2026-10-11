@@ -113,7 +113,7 @@ const authors = defineCollection({
 		socialLinks: z.array(authorSocialLinkSchema).default([]),
 		/**
 		 * When true, social links render in the hero after the description.
-		 * When false (default), they render under the bio (unless placed via embed).
+		 * When false (default), no automatic list (place via `{{author-social}}`).
 		 */
 		showSocialInHero: z.boolean().default(false),
 		modifiedDate: modifiedDateSchema,
