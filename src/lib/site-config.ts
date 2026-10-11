@@ -2,6 +2,7 @@ import contentRaw from "../content/settings/content.json" with { type: "json" };
 import designRaw from "../content/settings/design.json" with { type: "json" };
 import generalRaw from "../content/settings/general.json" with { type: "json" };
 import {
+	DEFAULT_SITE_FOOTER_BRAND_CONFIG,
 	DEFAULT_SITE_GENERAL_CONFIG,
 	DEFAULT_SITE_HEADER_CONFIG,
 	DEFAULT_SITE_HERO_CONFIG,
@@ -10,6 +11,7 @@ import {
 	siteConfigSchema,
 	siteContentConfigSchema,
 	siteDesignConfigSchema,
+	siteFooterBrandConfigSchema,
 	siteGeneralConfigSchema,
 	type BreadcrumbSeparator,
 	type EntryHero,
@@ -18,6 +20,7 @@ import {
 	type HeroCollectionKey,
 	type HeroTextAlign,
 	type SiteConfig,
+	type SiteFooterBrandConfig,
 	type SiteHeaderConfig,
 	type SiteHeroConfig,
 	type SiteAuthorsConfig,
@@ -85,6 +88,14 @@ export function getFooterCopyrightConfig(): FooterCopyrightConfig {
 export function getSiteHeaderConfig(): SiteHeaderConfig {
 	const config = getSiteConfig();
 	return config.design?.header ?? DEFAULT_SITE_HEADER_CONFIG;
+}
+
+/** Footer brand strip above the copyright bar (Design → Footer → Brand). */
+export function getFooterBrandConfig(): SiteFooterBrandConfig {
+	const config = getSiteConfig();
+	return siteFooterBrandConfigSchema.parse(
+		config.design?.footer?.brand ?? DEFAULT_SITE_FOOTER_BRAND_CONFIG,
+	);
 }
 
 /** Hero defaults for one collection (Design → Hero → Seiten/Artikel/…). */

@@ -25,6 +25,8 @@ export type ResolvedMenuItem = ResolvedMenuLink & {
 /** Well-known menu ids (filename / collection id). */
 export const MENU_MAIN = "main";
 export const MENU_FOOTER_LEGAL = "footer-legal";
+/** Brand strip above copyright (Design → Footer → Brand → menu slug). */
+export const MENU_FOOTER = "footer";
 
 /** Split and keep only safe CSS class identifiers (WordPress-style input). */
 export function parseCssClasses(value?: string): string[] {

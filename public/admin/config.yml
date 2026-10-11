@@ -811,7 +811,7 @@ collections:
     extension: md
     format: yaml-frontmatter
     summary: "{{title}} ({{slug}})"
-    hint: "Bekannte Slugs: main (Hauptmenü), footer-legal (Copyright-Zeile). Weitere Footer-Menüs später als neue Dateien."
+    hint: "Bekannte Slugs: main (Hauptmenü), footer (Brand-Bereich im Footer), footer-legal (Copyright-Zeile)."
     fields:
       - {
           name: title,
@@ -967,7 +967,7 @@ collections:
             label: Description
             widget: text
             required: false
-            hint: "Kurze Beschreibung oder Slogan der Website. Speichern für spätere Anzeige (z. B. Hero/Meta); aktuell noch nicht auf jeder Seite sichtbar."
+            hint: "Kurze Beschreibung oder Slogan. Im Footer-Brand (Design → Footer), wenn Baustein Beschreibung an ist. Erlaubt einfaches HTML: a, b/strong, em/i, br."
             default: ""
           - name: footerCopyright
             label: Footer copyright
@@ -1326,6 +1326,64 @@ collections:
                 default: 56
                 min: 40
                 max: 600
+          - name: footer
+            label: Footer
+            widget: object
+            collapsed: false
+            hint: "Brand-Bereich oberhalb der Copyright-Zeile (#81). Die untere Copyright-Zeile bleibt unter General → Footer copyright."
+            fields:
+              - name: brand
+                label: Brand
+                widget: object
+                collapsed: false
+                hint: "Logo, Website-Beschreibung und Footer-Menü. Bausteine einzeln an/aus; Reihenfolge per Drag-and-Drop in der Liste."
+                fields:
+                  - name: enabled
+                    label: Brand-Bereich anzeigen
+                    widget: boolean
+                    default: false
+                    hint: "Aus = nur die Copyright-Zeile wie bisher."
+                  - name: direction
+                    label: Layout
+                    widget: select
+                    default: row
+                    options:
+                      - { label: "Nebeneinander (links → rechts)", value: row }
+                      - { label: "Untereinander (oben → unten)", value: stack }
+                  - name: align
+                    label: Ausrichtung
+                    widget: select
+                    default: center
+                    options:
+                      - { label: "Start (oben bzw. links)", value: start }
+                      - { label: "Mitte", value: center }
+                      - { label: "Ende (unten bzw. rechts)", value: end }
+                    hint: "Bei Nebeneinander: vertikale Ausrichtung der Bausteine. Bei Untereinander: horizontale Ausrichtung."
+                  - name: menu
+                    label: Menü-Slug
+                    widget: string
+                    required: false
+                    default: footer
+                    hint: "Slug aus Collection Menüs (Standard: footer). Nicht footer-legal (das bleibt die Copyright-Zeile)."
+                  - name: blocks
+                    label: Bausteine (Reihenfolge)
+                    widget: list
+                    summary: "{{fields.id}} · {{fields.enabled}}"
+                    allow_add: true
+                    hint: "Einträge per Drag-and-Drop sortieren. Doppelte Baustein-Typen werden ignoriert (erster gewinnt)."
+                    fields:
+                      - name: id
+                        label: Baustein
+                        widget: select
+                        default: logo
+                        options:
+                          - { label: Logo, value: logo }
+                          - { label: Beschreibung, value: description }
+                          - { label: Menü, value: menu }
+                      - name: enabled
+                        label: Anzeigen
+                        widget: boolean
+                        default: true
           - name: hero
             label: Hero
             widget: object

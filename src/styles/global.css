@@ -123,6 +123,111 @@ body.has-page-bg .site-nav__sub {
 	flex: 1 0 auto;
 }
 
+/* Footer brand strip above copyright (#81) */
+.site-footer__brand {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.25rem 2rem;
+	padding: 1.5rem 1rem 1.35rem;
+	border-bottom: 1px solid var(--color-border);
+}
+
+.site-footer__brand--row {
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.site-footer__brand--stack {
+	flex-direction: column;
+}
+
+.site-footer__brand--row.site-footer__brand--align-start {
+	align-items: flex-start;
+}
+
+.site-footer__brand--row.site-footer__brand--align-center {
+	align-items: center;
+}
+
+.site-footer__brand--row.site-footer__brand--align-end {
+	align-items: flex-end;
+}
+
+.site-footer__brand--stack.site-footer__brand--align-start {
+	align-items: flex-start;
+	text-align: left;
+}
+
+.site-footer__brand--stack.site-footer__brand--align-center {
+	align-items: center;
+	text-align: center;
+}
+
+.site-footer__brand--stack.site-footer__brand--align-end {
+	align-items: flex-end;
+	text-align: right;
+}
+
+.site-footer__brand-logo {
+	display: inline-flex;
+	line-height: 0;
+	color: var(--color-text);
+	opacity: 0.9;
+	transition: opacity 0.15s ease;
+}
+
+.site-footer__brand-logo:hover,
+.site-footer__brand-logo:focus-visible {
+	opacity: 1;
+}
+
+.site-footer__brand-mark {
+	display: block;
+	width: 2.75rem;
+	height: 2.75rem;
+}
+
+.site-footer__brand-desc {
+	margin: 0;
+	max-width: 28rem;
+	line-height: 1.45;
+}
+
+.site-footer__brand-desc :is(b, strong) {
+	font-weight: var(--font-weight-heading);
+	color: var(--color-text);
+}
+
+.site-footer__brand-menu {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.5rem 1.25rem;
+	margin: 0;
+	padding: 0;
+}
+
+.site-footer__brand--stack.site-footer__brand--align-center .site-footer__brand-menu {
+	justify-content: center;
+}
+
+.site-footer__brand--stack.site-footer__brand--align-end .site-footer__brand-menu {
+	justify-content: flex-end;
+}
+
+@media (max-width: 679px) {
+	.site-footer__brand--row {
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		text-align: center;
+	}
+
+	.site-footer__brand--row .site-footer__brand-menu {
+		justify-content: center;
+	}
+}
+
 /* Footer bar: copyright | GitHub or home logo | legal */
 .site-footer__bar {
 	display: grid;

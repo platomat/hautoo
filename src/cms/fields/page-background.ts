@@ -102,6 +102,62 @@ export function sanitizeAttributionHtml(input: string): string {
 	return parts.join("");
 }
 
+/**
+ * Soft HTML for short CMS blurbs (site description / footer brand).
+ * Allows `<a href>`, `<b>`, `<strong>`, `<em>`, `<i>`, `<br>`.
+ */
+export function sanitizeSoftHtml(input: string): string {
+	const re = /<a\s+([^>]*)>([\s\S]*?)<\/a>/gi;
+	const parts: string[] = [];
+	let lastIndex = 0;
+
+	for (const match of input.matchAll(re)) {
+		const index = match.index ?? 0;
+		parts.push(sanitizeInlineMarkup(input.slice(lastIndex, index)));
+
+		const href = extractHrefAttr(match[1] ?? "");
+		const label = sanitizeInlineMarkup(match[2] ?? "");
+		if (href && isHttpUrl(href)) {
+			parts.push(
+				`<a href="${escapeAttr(href)}" rel="noopener noreferrer" target="_blank">${label}</a>`,
+			);
+		} else {
+			parts.push(label);
+		}
+
+		lastIndex = index + match[0].length;
+	}
+
+	parts.push(sanitizeInlineMarkup(input.slice(lastIndex)));
+	return parts.join("");
+}
+
+/** Keep simple inline tags; escape everything else. */
+function sanitizeInlineMarkup(input: string): string {
+	const re = /<br\s*\/?>|<\/?(?:b|strong|em|i)\s*>/gi;
+	const parts: string[] = [];
+	let lastIndex = 0;
+
+	for (const match of input.matchAll(re)) {
+		const index = match.index ?? 0;
+		parts.push(escapeHtml(input.slice(lastIndex, index)));
+		const raw = match[0].toLowerCase();
+		if (raw.startsWith("<br")) {
+			parts.push("<br>");
+		} else if (raw.startsWith("</")) {
+			const name = raw.match(/^<\/(b|strong|em|i)\s*>/)?.[1];
+			if (name) parts.push(`</${name}>`);
+		} else {
+			const name = raw.match(/^<(b|strong|em|i)\s*>/)?.[1];
+			if (name) parts.push(`<${name}>`);
+		}
+		lastIndex = index + match[0].length;
+	}
+
+	parts.push(escapeHtml(input.slice(lastIndex)));
+	return parts.join("");
+}
+
 function isHttpUrl(value: string): boolean {
 	try {
 		const url = new URL(value);

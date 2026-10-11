@@ -45,7 +45,7 @@ Globale Site-Einstellungen als **JSON-Dateien** (wie cdr-legal), kein Markdown-B
 | Feld | Bedeutung |
 | --- | --- |
 | `websiteTitle` | Markenname: Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`), `og:site_name` |
-| `websiteDescription` | Optional kurze Beschreibung / Slogan (#75); Speichern für spätere Anzeige |
+| `websiteDescription` | Optional kurze Beschreibung / Slogan (#75); Footer-Brand wenn Baustein Beschreibung an (#81) |
 | `footerCopyright.claim` | Optionaler Footer-Zusatz nach dem Website-Titel (Text/URL/HTML mit `<a href>`, wie Bildnachweis) |
 | `footerCopyright.separator` | Trenner Titel↔Claim: `•` / `-` / `—` / `/` (Default `•`) |
 | `footerCopyright.showCenter` | Kleines Icon in der Copyright-Zeile (Mitte). An (Default) = GitHub oder Site-Logo nach bisheriger Regel; aus = nichts |
@@ -102,6 +102,20 @@ Katalog: `src/cms/fields/site-fonts.json`. Sync: `scripts/sync-site-fonts.mjs` �
 | `design.header.heightDesktop` / `Tablet` / `Mobile` | Kompakte Höhe, sobald Sticky durch Scrollen greift (40–600 px; bei `center` nur Mindesthöhe) |
 
 Umsetzung in `SiteHeader.astro` (Klassen `site-header--logo-*` + Custom Properties).
+
+### Einstellungen → Design → Footer → Brand (#81)
+
+Brand-Streifen oberhalb der Copyright-Zeile (Copyright bleibt unter General → Footer copyright).
+
+| Feld | Bedeutung | Default |
+| --- | --- | --- |
+| `design.footer.brand.enabled` | Brand-Bereich an/aus | `false` |
+| `design.footer.brand.direction` | `row` (links→rechts) oder `stack` (oben→unten) | `row` |
+| `design.footer.brand.align` | `start` / `center` / `end` (bei `row` vertikal, bei `stack` horizontal) | `center` |
+| `design.footer.brand.menu` | Menü-Slug (Standard `footer`, nicht `footer-legal`) | `footer` |
+| `design.footer.brand.blocks` | Liste `{ id, enabled }`; Reihenfolge per Drag-and-Drop; `id`: `logo` / `description` / `menu` | Logo, Beschreibung, Menü (je an) |
+
+Logo aus `general.logos.footer` (Fallback Header). Beschreibung = `websiteDescription`. Umsetzung: `SiteFooter.astro`.
 
 ### Einstellungen → Design → Hero (#63)
 
@@ -160,9 +174,10 @@ Navigation und Footer-Links werden **nicht** mehr über Flags an Seiten gesteuer
 | Dateiname / id | Verwendung |
 | --- | --- |
 | `main` | Hauptnavigation im Header |
+| `footer` | Brand-Bereich im Footer (Design → Footer → Brand → Menü-Slug) |
 | `footer-legal` | Rechts neben dem Copyright im Footer |
 
-Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slug; Template dann anbinden.
+Weitere Menüs = neue Datei mit eigenem Slug; in Design → Footer → Brand als `menu` setzen.
 
 ### Felder
 

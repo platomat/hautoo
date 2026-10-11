@@ -1,18 +1,24 @@
 ---
 import LogoMark from "./LogoMark.astro";
-import { getResolvedMenu, MENU_FOOTER_LEGAL } from "../lib/menus";
+import {
+	getResolvedMenu,
+	MENU_FOOTER,
+	MENU_FOOTER_LEGAL,
+} from "../lib/menus";
 import { withBuildId } from "../lib/build-id";
 import {
 	classifyAttribution,
 	sanitizeAttributionHtml,
+	sanitizeSoftHtml,
 } from "../cms/fields/page-background";
 import { getPublicPages } from "../lib/pages";
 import {
+	getFooterBrandConfig,
 	getFooterCopyrightConfig,
 	getSiteConfig,
+	getSiteWebsiteDescription,
 	getSiteWebsiteTitle,
 } from "../lib/site-config";
-
 /** First calendar year of the project (copyright range start). */
 const COPYRIGHT_START_YEAR = 2026;
 const currentYear = new Date().getFullYear();
@@ -47,6 +53,26 @@ const pages = await getPublicPages();
 const legalItems = await getResolvedMenu(MENU_FOOTER_LEGAL, pages);
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
+const brand = getFooterBrandConfig();
+const brandDescriptionRaw = getSiteWebsiteDescription();
+const brandDescriptionHtml = brandDescriptionRaw
+	? sanitizeSoftHtml(brandDescriptionRaw)
+	: "";
+const brandMenuId = brand.menu.trim() || MENU_FOOTER;
+const brandMenuItems = brand.enabled
+	? await getResolvedMenu(brandMenuId, pages)
+	: [];
+
+const brandBlocks = brand.enabled
+	? brand.blocks.filter((block) => {
+			if (!block.enabled) return false;
+			if (block.id === "description") return Boolean(brandDescriptionHtml);
+			if (block.id === "menu") return brandMenuItems.length > 0;
+			return true;
+		})
+	: [];
+const showBrand = brandBlocks.length > 0;
+
 function isCurrent(href: string): boolean {
 	const key = href.replace(/\/$/, "") || "/";
 	return pathname === key;
@@ -54,7 +80,79 @@ function isCurrent(href: string): boolean {
 ---
 
 <footer class="site-footer">
-	{/* Further footer menus can render above the copyright row. */}
+	{
+		showBrand && (
+			<div
+				class:list={[
+					"site-footer__brand",
+					`site-footer__brand--${brand.direction}`,
+					`site-footer__brand--align-${brand.align}`,
+				]}
+			>
+				{brandBlocks.map((block) => {
+					if (block.id === "logo") {
+						return (
+							<a
+								class="site-footer__brand-logo"
+								href="/"
+								title={homeLabel}
+								aria-label={homeLabel}
+							>
+								<LogoMark
+									variant="footer"
+									class="site-footer__brand-mark"
+								/>
+							</a>
+						);
+					}
+					if (block.id === "description") {
+						return (
+							<div
+								class="site-footer__brand-desc text-sm text-muted"
+								set:html={brandDescriptionHtml}
+							/>
+						);
+					}
+					return (
+						<nav
+							class="site-footer__brand-nav"
+							aria-label="Footer"
+						>
+							<ul class="site-footer__brand-menu list-plain text-sm">
+								{brandMenuItems.map((item) => {
+									const current =
+										!item.external && isCurrent(item.href);
+									return (
+										<li>
+											<a
+												href={item.href}
+												class:list={item.cssClasses}
+												aria-current={
+													current ? "page" : undefined
+												}
+												target={
+													item.external
+														? "_blank"
+														: undefined
+												}
+												rel={
+													item.external
+														? "noopener noreferrer"
+														: undefined
+												}
+											>
+												{item.label}
+											</a>
+										</li>
+									);
+								})}
+							</ul>
+						</nav>
+					);
+				})}
+			</div>
+		)
+	}
 	<div class="site-footer__bar">
 		<p class="site-footer__copy text-sm text-muted">
 			<span>© {copyrightYears}</span>

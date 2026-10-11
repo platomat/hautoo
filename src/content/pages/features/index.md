@@ -56,7 +56,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **tags:** Schlagworte. Relation von Artikeln; optional passender Glossar-Slug; URL `/tags/<slug>/` ([#5](https://github.com/platomat/hautoo/issues/5)).
 - **authors:** Autorenprofile (Name, Bio, Avatar/Gravatar; Social-/Web-URLs mit Plattform-Icons und schema.org `sameAs`; Auto-Liste nur im Hero bei `showSocialInHero`, sonst per Embed `{{author-social}}`; optional freier Inhalt mit Embeds statt Auto-Artikel-Listing). Relation von Artikeln; URL `/autoren/<slug>/` ([#77](https://github.com/platomat/hautoo/issues/77), [#85](https://github.com/platomat/hautoo/issues/85), [#86](https://github.com/platomat/hautoo/issues/86)).
 - **glossar:** Begriffsseiten. Relationen: `relatedArticles`, `relatedTags`; URL `/glossar/<slug>/` ([#6](https://github.com/platomat/hautoo/issues/6)).
-- **menus:** Navigation (`main`, `footer-legal`, …) mit Label und Ziel ([#13](https://github.com/platomat/hautoo/issues/13)).
+- **menus:** Navigation (`main`, `footer`, `footer-legal`, …) mit Label und Ziel ([#13](https://github.com/platomat/hautoo/issues/13), [#81](https://github.com/platomat/hautoo/issues/81)).
 - **blocks:** Wiederverwendbare Bausteine ohne eigene URL; Einbinden per Content-Komponente `{{block}}`.
 - **redirects:** Weiterleitungen ([#76](https://github.com/platomat/hautoo/issues/76)). Mehrere Quellen → ein Ziel (301/302); Build erzeugt `_redirects`.
 - **settings:** Globale JSON-Einstellungen (**General**, **Design**, **Content**); keine Relationen ([#45](https://github.com/platomat/hautoo/issues/45)).
@@ -90,10 +90,10 @@ Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Co
 
 ### Settings → General
 
-- **Website title** und optionale **Description** / Slogan ([#75](https://github.com/platomat/hautoo/issues/75)).
+- **Website title** und optionale **Description** / Slogan ([#75](https://github.com/platomat/hautoo/issues/75)); Description auch im Footer-Brand.
 - **Footer copyright:** Claim und Trenner links; **Show center mark** für das kleine Icon in der Mitte (GitHub-Icon bei gesetztem Repo, sonst Site-Logo).
 - **Contact email** für `{{contact-email}}` (sonst Build-Variable `CONTACT_EMAIL`).
-- **Privacy page:** Relation zur Datenschutz-Seite (u. a. Link im Video-Consent).
+- **Privacy page:** Relation zur Datenschutz-Seite (u. a. Link in der Video-Einwilligung).
 - **GitHub repository** (`owner/name`) für das Footer-Mitte-Icon, wenn Center mark an ist.
 - **Logos** aus der Mediathek: Header, optional Sticky, Footer ([#79](https://github.com/platomat/hautoo/issues/79)).
 - **Favicons** aus der Mediathek: Standard und optional dunkel ([#80](https://github.com/platomat/hautoo/issues/80)).
@@ -103,6 +103,7 @@ Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Co
 - **Farbpalette** (CSS-Variablen, inkl. Alpha für Glas; Untermenü-Hintergrund und -Text separat) ([#70](https://github.com/platomat/hautoo/issues/70), [#84](https://github.com/platomat/hautoo/issues/84)).
 - **Schrift:** Fließtext und Überschriften (Fontsource), Basisgröße, Gewicht, H1–H6 Größe/Transform ([#71](https://github.com/platomat/hautoo/issues/71)).
 - **Header:** Logo-Position (links / rechts / mittig mit Menü darunter); Suchlupe immer hinter den Menüpunkten ([#74](https://github.com/platomat/hautoo/issues/74)); Ruhehöhe und Sticky ein/aus sowie kompakte Sticky-Höhe pro Breakpoint ([#44](https://github.com/platomat/hautoo/issues/44)); Anker-Sprünge (TOC) mit `scroll-padding`, damit Überschriften nicht unter der Leiste landen.
+- **Footer-Brand** oberhalb der Copyright-Zeile: Logo, Description und Menü; Layout Nebeneinander/Untereinander; Bausteine einzeln und per Drag-and-Drop sortierbar ([#81](https://github.com/platomat/hautoo/issues/81)).
 - **Hero-Defaults** pro Collection: Ausrichtung, Brotkrumen, Trenner, Trennlinie unten ([#63](https://github.com/platomat/hautoo/issues/63)).
 - **Inhaltsbreite** Standard / breit / vollbreit für Seiten und Artikel ([#59](https://github.com/platomat/hautoo/issues/59)).
 - **Abstand** unter Hero und vor Footer, pro Collection ([#73](https://github.com/platomat/hautoo/issues/73)).

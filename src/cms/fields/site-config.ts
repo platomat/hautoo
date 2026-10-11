@@ -68,6 +68,76 @@ export const footerCopyrightConfigSchema = z.object({
 
 export type FooterCopyrightConfig = z.infer<typeof footerCopyrightConfigSchema>;
 
+/** Footer brand block ids (CMS Design → Footer → Brand; list order = DnD). */
+export const FOOTER_BRAND_BLOCK_IDS = ["logo", "description", "menu"] as const;
+
+export type FooterBrandBlockId = (typeof FOOTER_BRAND_BLOCK_IDS)[number];
+
+export const footerBrandBlockIdSchema = z.enum(FOOTER_BRAND_BLOCK_IDS);
+
+export const footerBrandBlockSchema = z.object({
+	id: footerBrandBlockIdSchema,
+	/** When false, this block is skipped even if the brand section is on. */
+	enabled: z.boolean().default(true),
+});
+
+export type FooterBrandBlock = z.infer<typeof footerBrandBlockSchema>;
+
+export const DEFAULT_FOOTER_BRAND_BLOCKS: FooterBrandBlock[] = [
+	{ id: "logo", enabled: true },
+	{ id: "description", enabled: true },
+	{ id: "menu", enabled: true },
+];
+
+function normalizeFooterBrandBlocks(raw: unknown): FooterBrandBlock[] {
+	const list = Array.isArray(raw) ? raw : [];
+	const seen = new Set<FooterBrandBlockId>();
+	const ordered: FooterBrandBlock[] = [];
+	for (const item of list) {
+		const parsed = footerBrandBlockSchema.safeParse(item);
+		if (!parsed.success || seen.has(parsed.data.id)) continue;
+		seen.add(parsed.data.id);
+		ordered.push(parsed.data);
+	}
+	return ordered.length > 0 ? ordered : DEFAULT_FOOTER_BRAND_BLOCKS.map((b) => ({ ...b }));
+}
+
+/** Row = left→right; stack = top→bottom (#81). */
+export const footerBrandDirectionSchema = z.enum(["row", "stack"]);
+
+export type FooterBrandDirection = z.infer<typeof footerBrandDirectionSchema>;
+
+/**
+ * Cross-axis alignment: row → vertical (top/center/bottom);
+ * stack → horizontal (left/center/right).
+ */
+export const footerBrandAlignSchema = z.enum(["start", "center", "end"]);
+
+export type FooterBrandAlign = z.infer<typeof footerBrandAlignSchema>;
+
+/** Brand strip above the copyright bar (Design → Footer → Brand). */
+export const siteFooterBrandConfigSchema = z.object({
+	/** Master switch for the brand strip. */
+	enabled: z.boolean().default(false),
+	direction: footerBrandDirectionSchema.default("row"),
+	align: footerBrandAlignSchema.default("center"),
+	/** Menu collection slug (default `footer`); not `footer-legal`. */
+	menu: z.string().trim().default("footer"),
+	/** Ordered blocks (Sveltia list = drag-and-drop). */
+	blocks: z.preprocess(
+		normalizeFooterBrandBlocks,
+		z.array(footerBrandBlockSchema),
+	).default(DEFAULT_FOOTER_BRAND_BLOCKS),
+});
+
+export type SiteFooterBrandConfig = z.infer<typeof siteFooterBrandConfigSchema>;
+
+export const siteFooterConfigSchema = z.object({
+	brand: siteFooterBrandConfigSchema.default({}),
+});
+
+export type SiteFooterConfig = z.infer<typeof siteFooterConfigSchema>;
+
 /** Hero block defaults for one collection (CMS Design → Hero → …). */
 export const siteHeroConfigSchema = z.object({
 	/** Alignment for breadcrumbs, title, and description. */
@@ -341,6 +411,8 @@ export const siteDesignConfigSchema = z.object({
 	colors: siteColorsConfigSchema.default({}),
 	typography: siteTypographyConfigSchema.default({}),
 	header: siteHeaderConfigSchema.default({}),
+	/** Brand strip above copyright (#81). */
+	footer: siteFooterConfigSchema.default({}),
 	hero: z.preprocess(
 		normalizeHeroByCollection,
 		siteHeroByCollectionSchema.default({}),
@@ -395,6 +467,9 @@ export const DEFAULT_SITE_GENERAL_CONFIG: SiteGeneralConfig =
 
 export const DEFAULT_SITE_HEADER_CONFIG: SiteHeaderConfig =
 	siteHeaderConfigSchema.parse({});
+
+export const DEFAULT_SITE_FOOTER_BRAND_CONFIG: SiteFooterBrandConfig =
+	siteFooterBrandConfigSchema.parse({});
 
 export const DEFAULT_SITE_HERO_CONFIG: SiteHeroConfig =
 	siteHeroConfigSchema.parse({});
