@@ -30,8 +30,11 @@ const claimHtml =
 const showClaim = Boolean(claimRaw);
 const claimSeparator = footerCopyright.separator;
 
-const githubRepo = getSiteConfig().general?.githubRepo?.trim() ?? "";
-const showGithub = Boolean(githubRepo);
+const general = getSiteConfig().general;
+const showFooterCenter = general?.showFooterCenter !== false;
+const githubRepo = general?.githubRepo?.trim() ?? "";
+const showGithub = showFooterCenter && Boolean(githubRepo);
+const showHomeLogo = showFooterCenter && !showGithub;
 const repoUrl = showGithub
 	? `https://github.com/${githubRepo.replace(/^\/+|\/+$/g, "")}/`
 	: "";
@@ -107,7 +110,7 @@ function isCurrent(href: string): boolean {
 						decoding="async"
 					/>
 				</a>
-			) : (
+			) : showHomeLogo ? (
 				<a
 					class="site-footer__center site-footer__home"
 					href="/"
@@ -116,6 +119,8 @@ function isCurrent(href: string): boolean {
 				>
 					<LogoMark variant="footer" class="site-footer__home-mark" />
 				</a>
+			) : (
+				<span class="site-footer__center" aria-hidden="true" />
 			)
 		}
 		{

@@ -939,8 +939,14 @@ collections:
             label: GitHub repository
             widget: string
             required: false
-            hint: "Optional owner/name für das Footer-Icon (z. B. platomat/hautoo). Leer = Site-Logo verlinkt auf die Startseite (typisch für Forks)."
+            hint: "Optional owner/name für das Footer-Icon (z. B. platomat/hautoo). Leer = Site-Logo verlinkt auf die Startseite (typisch für Forks). Wirkt nur, wenn „Show footer center mark“ an ist."
             default: ""
+          - name: showFooterCenter
+            label: Show footer center mark
+            widget: boolean
+            required: false
+            default: true
+            hint: "Kleines Icon in der Mitte der Copyright-Zeile. An = GitHub-Icon bei gesetztem Repo, sonst Site-Logo zur Startseite. Aus = nichts in der Mitte."
           - name: logos
             label: Logos
             widget: object
@@ -961,7 +967,7 @@ collections:
                 label: Footer
                 widget: image
                 required: false
-                hint: "Mitte im Footer, wenn kein GitHub-Repo gesetzt ist. Leer = gleiches wie Header."
+                hint: "Mitte im Footer, wenn Center-Mark an und kein GitHub-Repo gesetzt ist. Leer = gleiches wie Header."
           - name: favicons
             label: Favicons
             widget: object

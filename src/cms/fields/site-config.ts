@@ -285,6 +285,11 @@ export const siteGeneralConfigSchema = z.object({
 	 * Set for hautoo (`platomat/hautoo`); leave empty on forks → site logo → `/`.
 	 */
 	githubRepo: z.string().trim().default(""),
+	/**
+	 * Show the small mark in the copyright footer center.
+	 * When true: GitHub icon if `githubRepo` is set, otherwise site logo → `/`.
+	 */
+	showFooterCenter: z.boolean().default(true),
 	/** Header / sticky / footer logos from the media library. */
 	logos: siteLogosConfigSchema.default({}),
 	/** Browser tab icons (default + optional dark color-scheme). */

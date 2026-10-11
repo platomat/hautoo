@@ -48,7 +48,8 @@ Globale Site-Einstellungen als **JSON-Dateien** (wie cdr-legal), kein Markdown-B
 | `websiteDescription` | Optional kurze Beschreibung / Slogan (#75); Speichern für spätere Anzeige |
 | `footerCopyright.claim` | Optionaler Footer-Zusatz nach dem Website-Titel (Text/URL/HTML mit `<a href>`, wie Bildnachweis) |
 | `footerCopyright.separator` | Trenner Titel↔Claim: `•` / `-` / `—` / `/` (Default `•`) |
-| `githubRepo` | Optional `owner/name` für Footer-Mitte (GitHub-Icon). Leer = Site-Logo → Startseite (Forks) |
+| `githubRepo` | Optional `owner/name` für Footer-Mitte (GitHub-Icon). Leer = Site-Logo → Startseite (Forks). Nur wenn `showFooterCenter` an. |
+| `showFooterCenter` | Kleines Icon in der Copyright-Zeile (Mitte). An (Default) = GitHub oder Site-Logo nach bisheriger Regel; aus = nichts. |
 | `logos.header` | Optional Header-Logo aus Mediathek; leer = `/assets/logo-mark.svg`. SVG wird inline eingebettet, Farben wie in der Datei (#79) |
 | `logos.headerSticky` | Optional Logo im sticky Header; leer = Header-Logo |
 | `logos.footer` | Optional Footer-Logo (ohne GitHub-Repo); leer = Header-Logo |
