@@ -96,14 +96,18 @@ const providerLabel =
 						decoding="async"
 					/>
 				)}
-				<div class="video-embed__panel">
-					<p class="video-embed__notice text-sm">
+				<div class="video-embed__panel flex-row flex-align-center stack-on-mobile">
+					<p class="video-embed__notice text-sm min-w-0">
 						Zum Abspielen wird der Player von <strong>{providerLabel}</strong>{" "}
 						geladen. Dabei verbindet sich dein Browser mit deren Servern; es
 						können Cookies und ähnliche Techniken gesetzt werden. Details:{" "}
 						<a href="/datenschutz/#eingebettete-videos">Datenschutz</a>.
 					</p>
-					<button type="button" class="video-embed__load" data-video-load>
+					<button
+						type="button"
+						class="video-embed__load flex-shrink-0 ms-auto"
+						data-video-load
+					>
 						Video von {providerLabel} laden
 					</button>
 				</div>
@@ -167,10 +171,6 @@ const providerLabel =
 	.video-embed__panel {
 		position: relative;
 		z-index: 1;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 0.75rem;
 		width: 100%;
 		padding: 1rem 1.1rem;
 		background: var(--color-surface-glass);
@@ -179,7 +179,6 @@ const providerLabel =
 
 	.video-embed__notice {
 		margin: 0;
-		max-width: 40rem;
 	}
 
 	.video-embed__load {
