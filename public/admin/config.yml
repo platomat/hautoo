@@ -238,7 +238,7 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Kategorie-Listing“, „Tag-Listing“, „Tagwolke“, „Glossar-Listing“, „Baustein“, „Button“, „Trennlinie“, „Abstandshalter“, „Kontakt-E-Mail“, „Video“, „Video-Freischaltung widerrufen“ und „Repo-Dokument“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Kategorie-Listing“, „Tag-Listing“, „Tagwolke“, „Autoren-Listing“, „Glossar-Listing“, „Baustein“, „Button“, „Trennlinie“, „Abstandshalter“, „Kontakt-E-Mail“, „Video“, „Video-Freischaltung widerrufen“ und „Repo-Dokument“ über die Toolbar einfügen (wie Bilder)."
         pattern:
           - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
           - "Keine H1 (# …) im Inhalt. Die Überschrift kommt aus dem Hero (Feld Titel)."
@@ -496,7 +496,7 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Kategorie-Listing“, „Tag-Listing“, „Tagwolke“, „Glossar-Listing“, „Baustein“, „Button“, „Trennlinie“, „Abstandshalter“, „Kontakt-E-Mail“, „Video“, „Video-Freischaltung widerrufen“ und „Repo-Dokument“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Kategorie-Listing“, „Tag-Listing“, „Tagwolke“, „Autoren-Listing“, „Glossar-Listing“, „Baustein“, „Button“, „Trennlinie“, „Abstandshalter“, „Kontakt-E-Mail“, „Video“, „Video-Freischaltung widerrufen“ und „Repo-Dokument“ über die Toolbar einfügen (wie Bilder)."
         pattern:
           - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
           - "Keine H1 (# …) im Inhalt. Die Überschrift kommt aus dem Hero (Feld Titel)."
