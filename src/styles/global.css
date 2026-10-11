@@ -131,7 +131,6 @@ body.has-page-bg .site-nav__sub {
 .site-footer__center:hover,
 .site-footer__center:focus-visible {
 	opacity: 1;
-	color: var(--color-action);
 }
 
 .site-footer__github img {
@@ -144,6 +143,24 @@ body.has-page-bg .site-nav__sub {
 	display: block;
 	width: 1.75rem;
 	height: 1.75rem;
+	transform-origin: center center;
+	transition: transform 0.18s ease;
+}
+
+.site-footer__home:hover .site-footer__home-mark,
+.site-footer__home:focus-visible .site-footer__home-mark {
+	transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.site-footer__home-mark {
+		transition: none;
+	}
+
+	.site-footer__home:hover .site-footer__home-mark,
+	.site-footer__home:focus-visible .site-footer__home-mark {
+		transform: none;
+	}
 }
 
 .site-footer__legal {
