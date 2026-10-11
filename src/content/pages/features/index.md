@@ -37,15 +37,15 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 ## Inhalte und Redaktion
 
 - **Screencast-Folgen als Artikel** (001 bis 022): How-tos zu [GitHub](/glossar/github/), [Cursor](/glossar/cursor/), [Cloudflare](/glossar/cloudflare-pages/), [Sveltia](/glossar/sveltia/) und Redaktion, mit Teaser, Tags und Querverweisen. Agenten-Output prüfen: [Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/).
-- **Statische Seiten** ([Collection](/glossar/collection/) `pages`): Startseite, Artikelübersicht, Tags, Glossar, FAQ, Über uns, Impressum, Datenschutz und diese Features-Seite.
+- **Statische Seiten** ([Collection](/glossar/collection/) `pages`): Startseite, Artikelübersicht, Tags, Autoren, Glossar, FAQ, Über uns, Impressum, Datenschutz und diese Features-Seite.
 - **Redaktionsregeln** im Repo (`docs/redaktion/`) und als [Cursor](/glossar/cursor/)-Regel: Schema, Stil, SEO-Felder, [Bausteine](/glossar/baustein/), Querverlinkung, PR-Checkliste.
 - **Transkript-basierte Folgen**: Speech-to-Text korrigieren, nichts erfinden, Quellkommentar im Artikel ([Folge 015](/artikel/folge-015-transkript-artikel/)).
 
 ## CMS und Collections
 
 - **[Sveltia CMS](/glossar/sveltia/)** unter `/admin/`: Inhalte im Browser bearbeiten, Speichern landet als Dateien in [Git](/glossar/git/) ([Glossar CMS](/glossar/cms/), [Folge 013](/artikel/folge-013-sveltia-pat/)).
-- **[Collections](/glossar/collection/)** für Pages, Articles, **Kategorien** (hierarchisch), Tags, **Autoren** (#77), Glossar, Menüs und **Bausteine** (`blocks`) ohne eigene URL.
-- **Autoren**: Name, Bio, lokaler Avatar oder Gravatar (Download beim Build); Zuweisung an Artikel (0..n); Byline im Hero und/oder am Artikelende (Content → Autoren); Profil unter `/autoren/<slug>/` mit Artikelliste.
+- **[Collections](/glossar/collection/)** für Pages, Articles, **Kategorien** (hierarchisch), Tags, **Autoren**, Glossar, Menüs und **Bausteine** (`blocks`) ohne eigene URL.
+- **Autoren-Collection**: Name, Bio (Markdown), lokaler Avatar oder Gravatar-URL (Download beim Build nach `src/assets/authors/gravatar/`). An Artikel 0..n zuweisbar. Byline mit Avatar im Hero und/oder am Artikelende (Einstellungen → Content → Autoren: Platzierung und Form rund/eckig). Übersicht `/autoren/`, Profil `/autoren/<slug>/` mit runden Foto, Bio und Artikelliste („Artikel (N)“).
 - **Settings-Collection** (`settings`): globale Site-Einstellungen als JSON unter `src/content/settings/` (wie cdr-legal). Eigene CMS-Einträge **General**, **Design** und **Content**.
 - **Website-Titel** unter **Einstellungen** → **General** → **Website title**: Markenname für Header-Wortmarke, Footer-Zeile, Browser-Titel-Suffix (`Seite · …`) und `og:site_name`.
 - **Website-Beschreibung** unter **Einstellungen** → **General** → **Description**: optionale Kurzbeschreibung oder Slogan (`websiteDescription`); Speichern für spätere Anzeige.
@@ -55,7 +55,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Entwurfsstatus** (`draft`, `published`, `future`, `trash`) für Pages, Artikel und Glossar.
 - **Inhaltsverzeichnis** global unter **Einstellungen** → **Content** → **Inhaltsverzeichnis (TOC)** (Seiten/Artikel: an/aus, Ebenen, Titel) und optional pro Eintrag überschreibbar.
 - **Inhaltsbreite** in drei Stufen (Standard, breit, vollbreit): global unter Content → Breite und pro Seite/Artikel unter **Inhaltsbreite** (`layout.contentWidth`).
-- **Inhaltsabstand** zum Hero und Footer (rem): global unter Content → Abstand pro Collection (Seiten, Artikel, Kategorien, Tags, Glossar); lokal unter Inhaltsbreite überschreibbar (`layout.afterHero` / `layout.beforeFooter`).
+- **Inhaltsabstand** zum Hero und Footer (rem): global unter Content → Abstand pro Collection (Seiten, Artikel, Kategorien, Tags, Autoren, Glossar); lokal unter Inhaltsbreite überschreibbar (`layout.afterHero` / `layout.beforeFooter`).
 - **Seiten-Header und Footer-Code** für kleine HTML- oder [CSS](/glossar/css/)-Snippets nur auf einer Seite.
 - **Zugang über [Cloudflare Worker](/glossar/cloudflare-worker/)** mit [OAuth](/glossar/oauth/) statt nur [PAT](/glossar/pat/) ([Folge 014](/artikel/folge-014-sveltia-worker/)).
 
@@ -68,12 +68,14 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Kategorie-Seiten** unter `/kategorien/<slug>/` mit Parent-Brotkrumen, Unterkategorien und Artikel-Grid.
 - **Tag-Position pro Artikel** (`tagPlacement`): Tags im Hero (rechts neben den Kategorien), nach dem Inhalt (vor der Artikel-Navigation) oder beides. Kategorien stehen immer im Hero unter der Beschreibung.
 - **Tag-Seiten** mit Artikel-Grid und Link zum passenden Glossar-Eintrag, wenn der Slug passt.
-- **Tag-Wolke** und **Listing-Embeds** für Glossar, Tags und Kategorien im Seiten- oder Artikeltext.
+- **Autoren-Seiten** unter `/autoren/<slug>/` (runder Avatar, Name, Bio, Artikel mit Anzahl in der Überschrift) und Übersicht mit `{{author-listing}}`.
+- **Tag-Wolke** und **Listing-Embeds** für Glossar, Tags, Kategorien und Autoren im Seiten- oder Artikeltext.
 
 ## Bausteine und Embeds
 
 - **Wiederverwendbare Bausteine** (`{{block id="…"}}`): z. B. Stack-Grafik (`stack-uebersicht`) auf Startseite und in passenden Folgen ([Folge 020](/artikel/folge-020-bausteine-fork/)).
-- **Artikel-Listing** im Content: Anzahl, Sortierung, Grid oder Liste, wählbare Kartenfelder inkl. Kategorien (links neben Tags, Default an) und Lesezeit ([Folge 019](/artikel/folge-019-impressum-komponenten/)).
+- **Artikel-Listing** im Content: Anzahl, Sortierung, Grid oder Liste, wählbare Kartenfelder inkl. Kategorien, Tags, optional **Autoren**, Datum und Lesezeit ([Folge 019](/artikel/folge-019-impressum-komponenten/)).
+- **Autoren-Listing** (`{{author-listing}}`): alle Autoren mit Avatar und Artikelanzahl.
 - **Trennlinie**, **Abstandshalter** (`{{spacer}}` bzw. `{{spacer height="…"}}`, Default 32 px), **Button** (`{{button label="…" href="…"}}`, solid/outline, Palette, Ausrichtung) und **Kontakt-E-Mail** als Embed (`{{contact-email}}` aus CMS oder Build-Variable, nicht im Markdown).
 - **Markdown-Embeds** über die Sveltia-Toolbar; Rendering zentral in `CmsContent.astro`.
 - **Video-Embed:** YouTube/Vimeo (Consent-Facade) oder **selbst gehostete MP4** über Cloudflare R2 (`provider="file"`, Dateien nicht im Repo).
