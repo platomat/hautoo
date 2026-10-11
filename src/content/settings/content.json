@@ -1,40 +1,44 @@
 {
-	"toc": {
-		"pages": {
-			"enabled": false,
-			"levels": ["h2"],
-			"title": "Inhalt"
-		},
-		"articles": {
-			"enabled": false,
-			"levels": ["h2"],
-			"title": "Inhalt"
-		}
-	},
-	"width": {
-		"pages": "default",
-		"articles": "default"
-	},
-	"spacing": {
-		"pages": {
-			"afterHero": 2.5,
-			"beforeFooter": 4
-		},
-		"articles": {
-			"afterHero": 2.5,
-			"beforeFooter": 4
-		},
-		"categories": {
-			"afterHero": 2.5,
-			"beforeFooter": 4
-		},
-		"tags": {
-			"afterHero": 2.5,
-			"beforeFooter": 4
-		},
-		"glossar": {
-			"afterHero": 2.5,
-			"beforeFooter": 4
-		}
-	}
+  "toc": {
+    "pages": {
+      "enabled": false,
+      "levels": [
+        "h2"
+      ],
+      "title": "Inhalt"
+    },
+    "articles": {
+      "enabled": false,
+      "levels": [
+        "h2"
+      ],
+      "title": "Inhalt"
+    }
+  },
+  "width": {
+    "pages": "default",
+    "articles": "default"
+  },
+  "spacing": {
+    "pages": {
+      "afterHero": 6,
+      "beforeFooter": 6
+    },
+    "articles": {
+      "afterHero": 6,
+      "beforeFooter": 6
+    },
+    "categories": {
+      "afterHero": 6,
+      "beforeFooter": 6
+    },
+    "tags": {
+      "afterHero": 6,
+      "beforeFooter": 6
+    },
+    "glossar": {
+      "afterHero": 6,
+      "beforeFooter": 6
+    }
+  }
 }
