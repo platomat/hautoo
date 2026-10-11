@@ -243,6 +243,7 @@ collections:
           - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
           - "Keine H1 (# …) im Inhalt. Die Überschrift kommt aus dem Hero (Feld Titel)."
         editor_components:
+          - block
           - image
           - code-block
           - article-listing
@@ -250,7 +251,6 @@ collections:
           - tag-listing
           - tag-cloud
           - glossar-listing
-          - block
           - button
           - separator
           - spacer
@@ -480,6 +480,7 @@ collections:
           - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
           - "Keine H1 (# …) im Inhalt. Die Überschrift kommt aus dem Hero (Feld Titel)."
         editor_components:
+          - block
           - image
           - code-block
           - article-listing
@@ -487,7 +488,6 @@ collections:
           - tag-listing
           - tag-cloud
           - glossar-listing
-          - block
           - button
           - separator
           - spacer
@@ -638,6 +638,7 @@ collections:
           - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
           - "Keine H1 (# …) im Inhalt. Die Seitenüberschrift kommt aus dem Hero, nicht aus dem Baustein."
         editor_components:
+          - block
           - image
           - code-block
           - article-listing
@@ -645,7 +646,6 @@ collections:
           - tag-listing
           - tag-cloud
           - glossar-listing
-          - block
           - button
           - separator
           - spacer
