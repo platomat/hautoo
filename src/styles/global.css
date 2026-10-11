@@ -31,6 +31,29 @@ html {
 	overflow-x: clip;
 }
 
+/*
+ * Sticky header must not cover in-page targets (TOC, #hash).
+ * Use Ruhehöhe (min) so the taller rest bar never clips; compact sticky gets a bit more gap.
+ * Only when sticky is on for that breakpoint (:has).
+ */
+@media (min-width: 1024px) {
+	html:has(.site-header--sticky-desktop) {
+		scroll-padding-top: calc(var(--header-min-h-desktop, 64px) + 0.75rem);
+	}
+}
+
+@media (max-width: 1023px) and (min-width: 680px) {
+	html:has(.site-header--sticky-tablet) {
+		scroll-padding-top: calc(var(--header-min-h-tablet, 64px) + 0.75rem);
+	}
+}
+
+@media (max-width: 679px) {
+	html:has(.site-header--sticky-mobile) {
+		scroll-padding-top: calc(var(--header-min-h-mobile, 56px) + 0.75rem);
+	}
+}
+
 body {
 	margin: 0;
 	min-height: 100vh;

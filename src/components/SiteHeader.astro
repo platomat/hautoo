@@ -29,6 +29,11 @@ const headerStyle = [
 ---
 
 {/*
+  Height tokens on :root for scroll-padding (TOC/hash anchors under sticky bar).
+*/}
+<style is:global set:html={`:root { ${headerStyle} }`} />
+
+{/*
   Sentinel above the sticky header: when it leaves the viewport, the bar is stuck
   and switches from Ruhehöhe (minHeight) to sticky height.
 */}
