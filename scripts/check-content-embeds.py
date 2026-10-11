@@ -14,8 +14,8 @@ SCAN_DIRS = ("articles", "authors", "glossar", "pages", "tags")
 # Keep in sync with EMBED_LINE names in src/lib/content-embeds.ts
 _EMBED_NAMES = (
     r"article-listing|glossar-listing|tag-listing|category-listing|author-listing|"
-    r"tag-cloud|separator|spacer|button-group|button|contact-email|logo|repodoc|"
-    r"block|video|video-consent-reset"
+    r"author-social|tag-cloud|separator|spacer|button-group|button|contact-email|"
+    r"logo|repodoc|block|video|video-consent-reset"
 )
 EMBED_LINE = re.compile(
     rf"^\s*(\{{\{{(?:{_EMBED_NAMES})\b[^}}]*\}}\}})\s*$",

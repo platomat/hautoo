@@ -488,6 +488,42 @@ CMS.registerEditorComponent({
 	});
 
 CMS.registerEditorComponent({
+		id: "author-social",
+		label: "Autor Social-Links",
+		icon: "share",
+		fields: [
+			{
+				name: "author",
+				label: "Autor",
+				widget: "relation",
+				collection: "authors",
+				value_field: "{{slug}}",
+				search_fields: ["title", "{{slug}}"],
+				display_fields: ["title"],
+				required: false,
+				hint: "Leer = auf dem Autorenprofil die Socials dieses Autors. Sonst Slug wählen (z. B. auf Seiten/Artikeln).",
+			},
+		],
+		pattern: /^\{\{author-social(?:\s+author="([^"]*)")?\}\}\s*$/m,
+		fromBlock: (match) => ({
+			author: match[1] || "",
+		}),
+		toBlock: (data) => {
+			const author = String(data.author || "").trim();
+			return author
+				? `{{author-social author="${author}"}}`
+				: "{{author-social}}";
+		},
+		toPreview: (data) => {
+			const author = String(data.author || "").trim();
+			const who = author
+				? `Autor <code>${author}</code>`
+				: "aktueller Autor (Profil) bzw. leer ohne Kontext";
+			return `<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Social-Links mit Plattform-Icons (${who})</div>`;
+		},
+	});
+
+CMS.registerEditorComponent({
 		id: "glossar-listing",
 		label: "Glossar-Listing",
 		icon: "menu_book",

@@ -323,7 +323,7 @@ Beispiel: Quellen `/alter-slug/` und `/noch-alter/` → Ziel `/neuer-slug/` mit 
 | `avatar` | nein | Lokales Bild (`/assets/…`), Vorrang vor Gravatar |
 | `gravatarUrl` | nein | E-Mail oder https-URL; Download beim Build |
 | `bio` | nein | Bio (Markdown) unter Name/Avatar ([#85](https://github.com/platomat/hautoo/issues/85)) |
-| `socialLinks` | nein | Liste `{ platform, url, label? }` (Webseite, YouTube, …; mehrfach möglich). Profil-Links + JSON-LD `sameAs` ([#86](https://github.com/platomat/hautoo/issues/86)) |
+| `socialLinks` | nein | Liste `{ platform, url, label? }` (Webseite, YouTube, …; mehrfach möglich). Profil-Links mit Icons + JSON-LD `sameAs`; Embed `{{author-social}}` ([#86](https://github.com/platomat/hautoo/issues/86)) |
 | `body` | nein | Freier Inhalt mit Embeds; wenn gesetzt, ersetzt das automatische Artikel-Listing ([#85](https://github.com/platomat/hautoo/issues/85)) |
 | `modifiedDate` | nein | Letzte Änderung |
 
@@ -333,7 +333,7 @@ Beispiel: Quellen `/alter-slug/` und `/noch-alter/` → Ziel `/neuer-slug/` mit 
 | --- | --- |
 | Artikel-Karten | Embed `show` inkl. `displayAuthors` (opt-in) |
 | Artikel-Einzelseite | Content → Autoren: `articlePlacement` (`none` / `hero` / `after` / `both`), `avatarShape` (`round` / `square`) |
-| Profil | Avatar, Name, Bio, Social-Links; dann `body` (CmsContent) oder Fallback „Artikel (N)“ mit Auto-Listing; `Person` JSON-LD mit `sameAs` |
+| Profil | Avatar, Name, Bio, Social-Links (Icons; Standard unter Bio, oder per `{{author-social}}` im Inhalt); dann `body` (CmsContent) oder Fallback „Artikel (N)“ mit Auto-Listing; `Person` JSON-LD mit `sameAs` |
 
 ## Collection `articles` (umgesetzt)
 

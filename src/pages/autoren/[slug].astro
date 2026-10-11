@@ -34,6 +34,9 @@ const spacingStyle = contentSpacingStyle(resolveContentSpacing("authors"));
 const bio = author.data.bio?.trim() || "";
 const socialLinks = author.data.socialLinks ?? [];
 const hasBody = Boolean(author.body?.trim());
+const contentHasAuthorSocial = /\{\{\s*author-social\b/.test(
+	`${bio}\n${author.body ?? ""}`,
+);
 const articleCount = articles.length;
 const articlesHeading =
 	articleCount === 1 ? "Artikel (1)" : `Artikel (${articleCount})`;
@@ -98,15 +101,15 @@ if (sameAs.length > 0) personJsonLd.sameAs = sameAs;
 		{
 			bio && (
 				<div class="author-profile__bio">
-					<CmsContent body={bio} />
+					<CmsContent body={bio} defaultAuthorId={author.id} />
 				</div>
 			)
 		}
-		<AuthorSocialLinks links={socialLinks} />
+		{!contentHasAuthorSocial && <AuthorSocialLinks links={socialLinks} />}
 		{
 			hasBody ? (
 				<div class="author-profile__content">
-					<CmsContent body={author.body} />
+					<CmsContent body={author.body} defaultAuthorId={author.id} />
 				</div>
 			) : (
 				<section

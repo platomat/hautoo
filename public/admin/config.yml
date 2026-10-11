@@ -238,7 +238,7 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Kategorie-Listing“, „Tag-Listing“, „Tagwolke“, „Autoren-Listing“, „Glossar-Listing“, „Baustein“, „Button“, „Button-Gruppe“, „Trennlinie“, „Abstandshalter“, „Kontakt-E-Mail“, „Video“, „Video-Freischaltung widerrufen“ und „Repo-Dokument“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Kategorie-Listing“, „Tag-Listing“, „Tagwolke“, „Autoren-Listing“, „Autor Social-Links“, „Glossar-Listing“, „Baustein“, „Button“, „Button-Gruppe“, „Trennlinie“, „Abstandshalter“, „Kontakt-E-Mail“, „Video“, „Video-Freischaltung widerrufen“ und „Repo-Dokument“ über die Toolbar einfügen (wie Bilder)."
         pattern:
           - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
           - "Keine H1 (# …) im Inhalt. Die Überschrift kommt aus dem Hero (Feld Titel)."
@@ -251,6 +251,7 @@ collections:
           - tag-listing
           - tag-cloud
           - author-listing
+          - author-social
           - glossar-listing
           - button
           - button-group
@@ -499,7 +500,7 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Kategorie-Listing“, „Tag-Listing“, „Tagwolke“, „Autoren-Listing“, „Glossar-Listing“, „Baustein“, „Button“, „Button-Gruppe“, „Trennlinie“, „Abstandshalter“, „Kontakt-E-Mail“, „Video“, „Video-Freischaltung widerrufen“ und „Repo-Dokument“ über die Toolbar einfügen (wie Bilder)."
+        hint: "Kein H1: Titel kommt aus dem Hero. Blöcke „Artikel-Listing“, „Kategorie-Listing“, „Tag-Listing“, „Tagwolke“, „Autoren-Listing“, „Autor Social-Links“, „Glossar-Listing“, „Baustein“, „Button“, „Button-Gruppe“, „Trennlinie“, „Abstandshalter“, „Kontakt-E-Mail“, „Video“, „Video-Freischaltung widerrufen“ und „Repo-Dokument“ über die Toolbar einfügen (wie Bilder)."
         pattern:
           - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
           - "Keine H1 (# …) im Inhalt. Die Überschrift kommt aus dem Hero (Feld Titel)."
@@ -512,6 +513,7 @@ collections:
           - tag-listing
           - tag-cloud
           - author-listing
+          - author-social
           - glossar-listing
           - button
           - button-group
@@ -628,7 +630,7 @@ collections:
         widget: list
         required: false
         collapsed: true
-        hint: "Beliebig viele Einträge (auch dieselbe Plattform mehrfach). URLs erscheinen auf dem Profil und als schema.org sameAs."
+        hint: "Beliebig viele Einträge (auch dieselbe Plattform mehrfach). Auf dem Profil mit Plattform-Icons; schema.org sameAs. Platzierung im Inhalt: Embed „Autor Social-Links“."
         summary: "{{fields.platform}}: {{fields.url}}"
         fields:
           - name: platform
@@ -660,7 +662,7 @@ collections:
         label: Inhalt
         widget: markdown
         required: false
-        hint: "Optionaler freier Inhalt mit Embeds (Artikel-Listing, Buttons, …). Wenn gesetzt, ersetzt das automatische Artikel-Listing auf dem Profil. Für eigene Artikel: Artikel-Listing mit Filter Autoren = dieser Autor."
+        hint: "Optionaler freier Inhalt mit Embeds (Artikel-Listing, Autor Social-Links, Buttons, …). Wenn gesetzt, ersetzt das automatische Artikel-Listing auf dem Profil. Social-Links: Embed „Autor Social-Links“ (ohne Autor = dieser Profilautor). Für eigene Artikel: Artikel-Listing mit Filter Autoren = dieser Autor."
         pattern:
           - "/^(?![\\s\\S]*(^|\\n)#(?!#)\\s)/"
           - "Keine H1 (# …) im Inhalt. Die Überschrift kommt aus dem Hero (Feld Name)."
@@ -673,6 +675,7 @@ collections:
           - tag-listing
           - tag-cloud
           - author-listing
+          - author-social
           - glossar-listing
           - button
           - button-group
@@ -777,6 +780,7 @@ collections:
           - tag-listing
           - tag-cloud
           - author-listing
+          - author-social
           - glossar-listing
           - button
           - button-group

@@ -1,0 +1,121 @@
+---
+import type { AuthorSocialPlatform } from "../cms/fields/author-social";
+
+interface Props {
+	platform: AuthorSocialPlatform;
+	class?: string;
+	/** CSS length; default 1em. */
+	size?: string | number;
+}
+
+const { platform, class: className, size = "1em" } = Astro.props;
+const sizeCss = typeof size === "number" ? `${size}px` : size;
+---
+
+<svg
+	class:list={["author-social-icon", `author-social-icon--${platform}`, className]}
+	xmlns="http://www.w3.org/2000/svg"
+	viewBox="0 0 24 24"
+	width={sizeCss}
+	height={sizeCss}
+	fill="none"
+	stroke="currentColor"
+	stroke-width="2"
+	stroke-linecap="round"
+	stroke-linejoin="round"
+	aria-hidden="true"
+	focusable="false"
+>
+	{
+		platform === "website" && (
+			<>
+				<circle cx="12" cy="12" r="9" />
+				<path d="M3 12h18" />
+				<path d="M12 3a14 14 0 0 1 0 18" />
+				<path d="M12 3a14 14 0 0 0 0 18" />
+			</>
+		)
+	}
+	{
+		platform === "youtube" && (
+			<>
+				<path d="M22.5 7.5a2.7 2.7 0 0 0-1.9-1.9C18.8 5.2 12 5.2 12 5.2s-6.8 0-8.6.4A2.7 2.7 0 0 0 1.5 7.5 28 28 0 0 0 1.1 12a28 28 0 0 0 .4 4.5 2.7 2.7 0 0 0 1.9 1.9c1.8.4 8.6.4 8.6.4s6.8 0 8.6-.4a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22.9 12a28 28 0 0 0-.4-4.5z" />
+				<path d="M10 9.8v4.4L15 12z" fill="currentColor" stroke="none" />
+			</>
+		)
+	}
+	{
+		platform === "facebook" && (
+			<path d="M14 8h2V5h-2c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.2l.5-3H13V9c0-.6.4-1 1-1z" />
+		)
+	}
+	{
+		platform === "instagram" && (
+			<>
+				<rect x="3" y="3" width="18" height="18" rx="5" />
+				<circle cx="12" cy="12" r="4" />
+				<circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+			</>
+		)
+	}
+	{
+		platform === "pinterest" && (
+			<>
+				<circle cx="12" cy="12" r="9" />
+				<path d="M10.5 18.5 12 12.5" />
+				<path d="M12.8 10.2a2.2 2.2 0 1 1-1.6 3.7" />
+			</>
+		)
+	}
+	{
+		platform === "linkedin" && (
+			<>
+				<path d="M6.5 9.5v9" />
+				<circle cx="6.5" cy="6" r="1.2" fill="currentColor" stroke="none" />
+				<path d="M10.5 18.5v-5.2c0-1.4.9-2.3 2.2-2.3 1.2 0 1.8.8 1.8 2.3v5.2" />
+				<path d="M10.5 11.2V18.5" />
+				<path d="M16.5 18.5v-5.5c0-2.4 1.5-3.5 3.5-3.5v0" />
+			</>
+		)
+	}
+	{
+		platform === "tiktok" && (
+			<path d="M14 5v8.2a3.3 3.3 0 1 1-2.4-3.2V7.8A6 6 0 0 0 17 9.5V7.2A4.5 4.5 0 0 1 14 5z" />
+		)
+	}
+	{
+		platform === "x" && (
+			<path d="M4.5 4.5 19.5 19.5M19.5 4.5 12 12M4.5 19.5 9.5 14.5" />
+		)
+	}
+	{
+		platform === "mastodon" && (
+			<>
+				<path d="M6 9.5c0-3.5 2.2-5 6-5s6 1.5 6 5v4.5c0 2.2-1.2 3.5-3.5 3.5H12" />
+				<path d="M8.5 10.5v4" />
+				<path d="M12 10.5v4" />
+				<path d="M15.5 10.5v2.8c0 1.2-.7 1.7-1.7 1.7" />
+			</>
+		)
+	}
+	{
+		platform === "github" && (
+			<path d="M9.5 19c-4 1.5-4-2-5.5-2m12 3.5v-3.2a3 3 0 0 0-.8-2.3c2.7-.3 5.5-1.3 5.5-6A4.4 4.4 0 0 0 19 5.3 4.1 4.1 0 0 0 18.9 2s-1.3-.4-4.2 1.5a14.4 14.4 0 0 0-7.4 0C4.4 1.6 3.1 2 3.1 2A4.1 4.1 0 0 0 3 5.3 4.4 4.4 0 0 0 1.8 8.5c0 4.7 2.8 5.7 5.5 6a3 3 0 0 0-.8 2.2V20.5" />
+		)
+	}
+	{
+		platform === "other" && (
+			<>
+				<path d="M10 13a5 5 0 0 0 7.54.54l2-2a5 5 0 0 0-7.07-7.07l-1.25 1.25" />
+				<path d="M14 11a5 5 0 0 0-7.54-.54l-2 2a5 5 0 0 0 7.07 7.07l1.25-1.25" />
+			</>
+		)
+	}
+</svg>
+
+<style>
+	.author-social-icon {
+		display: block;
+		flex-shrink: 0;
+	}
+</style>

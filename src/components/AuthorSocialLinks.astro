@@ -3,13 +3,31 @@ import {
 	authorSocialLinkLabel,
 	type AuthorSocialLink,
 } from "../cms/fields/author-social";
+import { getAuthorById } from "../lib/authors";
+import AuthorSocialIcon from "./AuthorSocialIcon.astro";
 
 interface Props {
-	links: AuthorSocialLink[];
+	/** Explicit links (profile page / resolved). */
+	links?: AuthorSocialLink[];
+	/** Author slug; used when `links` omitted. */
+	authorId?: string;
+	/** Fallback author when embed has no `author=` (current profile). */
+	defaultAuthorId?: string;
 }
 
-const { links } = Astro.props;
-const items = links.filter((link) => link.url?.trim());
+const { links: linksProp, authorId, defaultAuthorId } = Astro.props;
+
+let items: AuthorSocialLink[] = [];
+if (linksProp) {
+	items = linksProp;
+} else {
+	const id = (authorId || defaultAuthorId || "").trim();
+	if (id) {
+		const author = await getAuthorById(id);
+		items = author?.data.socialLinks ?? [];
+	}
+}
+items = items.filter((link) => link.url?.trim());
 ---
 
 {
@@ -19,11 +37,13 @@ const items = links.filter((link) => link.url?.trim());
 				{items.map((link) => (
 					<li>
 						<a
+							class="author-social__link"
 							href={link.url.trim()}
 							target="_blank"
 							rel="noopener noreferrer me"
 						>
-							{authorSocialLinkLabel(link)}
+							<AuthorSocialIcon platform={link.platform} size="1.1em" />
+							<span>{authorSocialLinkLabel(link)}</span>
 						</a>
 					</li>
 				))}
@@ -40,8 +60,15 @@ const items = links.filter((link) => link.url?.trim());
 	.author-social__list {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.5rem 1.25rem;
+		gap: 0.65rem 1.25rem;
 		margin: 0;
 		padding: 0;
+	}
+
+	.author-social__link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		line-height: 1.2;
 	}
 </style>

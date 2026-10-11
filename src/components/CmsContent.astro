@@ -1,6 +1,7 @@
 ---
 import ArticleListing from "./ArticleListing.astro";
 import AuthorListing from "./AuthorListing.astro";
+import AuthorSocialLinks from "./AuthorSocialLinks.astro";
 import CategoryListing from "./CategoryListing.astro";
 import CmsButton from "./CmsButton.astro";
 import CmsButtonGroup from "./CmsButtonGroup.astro";
@@ -18,9 +19,11 @@ import { buildContentSegments } from "../lib/content-embeds";
 
 interface Props {
 	body: string | undefined;
+	/** Current author profile slug for `{{author-social}}` without `author=`. */
+	defaultAuthorId?: string;
 }
 
-const { body } = Astro.props;
+const { body, defaultAuthorId } = Astro.props;
 const segments = await buildContentSegments(body);
 ---
 
@@ -147,6 +150,14 @@ const segments = await buildContentSegments(body);
 		}
 		if (segment.type === "author-listing") {
 			return <AuthorListing />;
+		}
+		if (segment.type === "author-social") {
+			return (
+				<AuthorSocialLinks
+					authorId={segment.props.author || undefined}
+					defaultAuthorId={defaultAuthorId}
+				/>
+			);
 		}
 		return null;
 	})

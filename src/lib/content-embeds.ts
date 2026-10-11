@@ -162,6 +162,11 @@ export type LogoEmbedProps = {
 	align: LogoEmbedAlign;
 };
 
+export type AuthorSocialEmbedProps = {
+	/** Author slug; empty = use CmsContent defaultAuthorId (current profile). */
+	author: string;
+};
+
 export type ContentSegment =
 	| { type: "html"; html: string }
 	| { type: "article-listing"; props: ArticleListingEmbedProps }
@@ -178,7 +183,8 @@ export type ContentSegment =
 	| { type: "repodoc"; props: RepoDocEmbedProps }
 	| { type: "video"; props: VideoEmbedProps }
 	| { type: "video-consent-reset" }
-	| { type: "author-listing" };
+	| { type: "author-listing" }
+	| { type: "author-social"; props: AuthorSocialEmbedProps };
 
 const DEFAULT_SHOW: ArticleCardField[] = [
 	"displayTitle",
@@ -262,7 +268,7 @@ const DEFAULT_SPACER: SpacerEmbedProps = {
 
 /** Line must be only the embed (optional attrs). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|author-listing|tag-cloud|separator|spacer|button-group|button|contact-email|logo|repodoc|block|video-consent-reset|video)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|author-listing|author-social|tag-cloud|separator|spacer|button-group|button|contact-email|logo|repodoc|block|video-consent-reset|video)(?<attrs>[^}]*)\}\}\s*$/gm;
 
 const LOGO_VARIANTS = new Set<LogoEmbedVariant>(["header", "sticky", "footer"]);
 const LOGO_ALIGNS = new Set<LogoEmbedAlign>(["left", "center", "right"]);
@@ -651,6 +657,13 @@ function parseBlockId(attrsRaw: string | undefined): string {
 	return (attrs.id ?? attrs.slug ?? "").trim();
 }
 
+function parseAuthorSocialProps(attrsRaw: string | undefined): AuthorSocialEmbedProps {
+	const attrs = parseAttrs(attrsRaw ?? "");
+	return {
+		author: (attrs.author ?? attrs.id ?? attrs.slug ?? "").trim(),
+	};
+}
+
 /**
  * Split CMS Markdown on embed placeholders and render Markdown parts to HTML.
  * `{{block id="slug"}}` expands nested public block bodies (cycle-safe).
@@ -715,6 +728,11 @@ export async function buildContentSegments(
 			segments.push({ type: "video-consent-reset" });
 		} else if (name === "author-listing") {
 			segments.push({ type: "author-listing" });
+		} else if (name === "author-social") {
+			segments.push({
+				type: "author-social",
+				props: parseAuthorSocialProps(attrs),
+			});
 		} else if (name === "separator") {
 			segments.push({
 				type: "separator",

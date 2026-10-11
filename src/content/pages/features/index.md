@@ -54,7 +54,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **articles:** Screencast-Folgen und Beiträge. Relationen: 0..n **Kategorien**, **Tags**, **Autoren**; Video-Felder; URL `/artikel/<slug>/` ([#4](https://github.com/platomat/hautoo/issues/4)).
 - **categories:** Hierarchische Kategorien. Optional Parent; Relation von Artikeln; URL `/kategorien/<slug>/` ([#64](https://github.com/platomat/hautoo/issues/64)).
 - **tags:** Schlagworte. Relation von Artikeln; optional passender Glossar-Slug; URL `/tags/<slug>/` ([#5](https://github.com/platomat/hautoo/issues/5)).
-- **authors:** Autorenprofile (Name, Bio, Avatar/Gravatar; Social-/Web-URLs mit schema.org `sameAs`; optional freier Inhalt mit Embeds statt Auto-Artikel-Listing). Relation von Artikeln; URL `/autoren/<slug>/` ([#77](https://github.com/platomat/hautoo/issues/77), [#85](https://github.com/platomat/hautoo/issues/85), [#86](https://github.com/platomat/hautoo/issues/86)).
+- **authors:** Autorenprofile (Name, Bio, Avatar/Gravatar; Social-/Web-URLs mit Plattform-Icons und schema.org `sameAs`; Embed `{{author-social}}`; optional freier Inhalt mit Embeds statt Auto-Artikel-Listing). Relation von Artikeln; URL `/autoren/<slug>/` ([#77](https://github.com/platomat/hautoo/issues/77), [#85](https://github.com/platomat/hautoo/issues/85), [#86](https://github.com/platomat/hautoo/issues/86)).
 - **glossar:** Begriffsseiten. Relationen: `relatedArticles`, `relatedTags`; URL `/glossar/<slug>/` ([#6](https://github.com/platomat/hautoo/issues/6)).
 - **menus:** Navigation (`main`, `footer-legal`, …) mit Label und Ziel ([#13](https://github.com/platomat/hautoo/issues/13)).
 - **blocks:** Wiederverwendbare Bausteine ohne eigene URL; Einbinden per Content-Komponente `{{block}}`.
@@ -124,7 +124,7 @@ Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Co
 - **FAQ** als eine lange Seite mit Themengruppen (H2), offen durchsuchbar (kein Accordion).
 - **Kategorie-Seiten** mit Parent-Brotkrumen, Unterkategorien und Artikel-Grid.
 - **Tag-Seiten** mit Artikel-Grid; Link zum Glossar, wenn der Slug passt. Am Artikel: `tagPlacement` (Hero, nach Inhalt oder beides); Kategorien immer im Hero.
-- **Autoren-Seiten** (Avatar, Bio, Artikelliste) und Übersicht `/autoren/`.
+- **Autoren-Seiten** (Avatar, Bio, Social-Links mit Icons, Artikelliste) und Übersicht `/autoren/`. Embed `{{author-social}}` (optional `author="slug"`; leer = Profilautor).
 - **Artikel-Übersicht** `/artikel/` mit Seitenleiste (Kategorie-Tree, genutzte Tags); auf Desktop sticky, wenn die Leiste in den Viewport passt.
 
 ## SEO und Auffindbarkeit
