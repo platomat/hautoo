@@ -24,6 +24,10 @@ items:
   - label: Features
     linkType: page
     page: features
+    children:
+      - label: Demo
+        linkType: page
+        page: demo
   - label: Über uns
     linkType: page
     page: ueber-uns

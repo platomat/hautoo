@@ -1,0 +1,149 @@
+---
+title: Demo
+description: Übersicht aller Markdown-Elemente und Content-Komponenten von hautuu.
+status: published
+modifiedDate: 2026-10-11
+parent: features
+toc:
+  show: true
+  title: Inhalt
+  levels:
+  - h2
+  - h3
+hero:
+  showBreadcrumbs: true
+  borderBottom: true
+background:
+  image: /assets/alex-gruber-ATMEDyTPQG4-unsplash.webp
+  overlay: 78
+  attribution: Photo by <a href="https://unsplash.com/@alexgruber?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alex Gruber</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+seo:
+  seo_title: Demo · Markdown und Komponenten
+  seo_description: Demo-Seite mit Überschriften, Text, Links, Bildern und allen CMS-Content-Komponenten von hautuu.
+  index_visibility: index
+  follow_visibility: follow
+  noarchive: false
+  noimageindex: false
+  nosnippet: false
+  max_snippet_enabled: true
+  max_snippet: -1
+  max_video_preview_enabled: true
+  max_video_preview: -1
+  max_image_preview_enabled: true
+  max_image_preview: large
+layout:
+  contentWidth: wide
+
+---
+
+Diese Seite zeigt **Markdown** und die **Content-Komponenten** aus der Sveltia-Toolbar. Parent ist [Features](/features/); URL: `/features/demo/`.
+
+## Markdown: Text und Inline
+
+Normaler Absatz mit **fett**, *kursiv*, ***beidem*** und `inline code`. Interner Link zum [Glossar](/glossar/), externer Link zu [GitHub](https://github.com/platomat/hautoo/).
+
+> Blockzitat: so sieht ein Zitat im Fließtext aus.
+
+### Aufzählungen
+
+- Ungeordnet Punkt eins
+- Punkt zwei mit [Link](/artikel/)
+- Punkt drei
+
+1. Geordnet erster Schritt
+2. Zweiter Schritt
+3. Dritter Schritt
+
+### Codeblock
+
+```js
+const greeting = "Hallo hautuu";
+console.log(greeting);
+```
+
+### Tabelle (Markdown)
+
+| Spalte A | Spalte B |
+| --- | --- |
+| Zeile 1 | Wert |
+| Zeile 2 | Wert |
+
+## Überschriften H2 bis H6
+
+### H3 Unterabschnitt
+
+#### H4 Unterabschnitt
+
+##### H5 Unterabschnitt
+
+###### H6 Unterabschnitt
+
+Text unter H6.
+
+## Bild
+
+![Stack-Übersicht - Bausteine im Überblick](/assets/stack-uebersicht-invert.webp)
+
+## Buttons
+
+{{button label="Solid Aktion" href="/features/" style="solid" color="action" align="left"}}
+
+{{button label="Outline" href="/artikel/" style="outline" color="action" align="left"}}
+
+{{button label="Extern" href="https://github.com/platomat/hautoo/" target="_blank" style="solid" color="action" align="left"}}
+
+## Logo
+
+{{logo variant="header" width="120" unit="px" align="left"}}
+
+## Trennlinie und Abstand
+
+{{separator height="1" width="100" color="border"}}
+
+{{spacer height="24"}}
+
+## Kontakt-E-Mail
+
+{{contact-email}}
+
+## Repo-Dokument
+
+{{repodoc path="docs/github/README.md" title="GitHub" description="Kurzüberblick zur Doku im Repo."}}
+
+## Baustein
+
+{{block id="stack-uebersicht"}}
+
+## Listings
+
+### Artikel-Listing
+
+{{article-listing count="2" sort="newest" layout="grid" columns="2" gap="1.25" show="title,intro,categories,tags,date,readingTime"}}
+
+### Kategorie-Listing
+
+{{category-listing count="4" sort="title-asc" layout="grid" columns="2" gap="1.25"}}
+
+### Tag-Listing
+
+{{tag-listing count="8" sort="title-asc" layout="list" columns="2" gap="1"}}
+
+### Tagwolke
+
+{{tag-cloud}}
+
+### Autoren-Listing
+
+{{author-listing}}
+
+### Glossar-Listing
+
+{{glossar-listing count="4" sort="title-asc" layout="grid" columns="2" gap="1.25"}}
+
+## Video
+
+Consent-Facade (YouTube-Beispiel, Big Buck Bunny):
+
+{{video provider="youtube" id="aqz-KE-bpKQ" title="Demo-Video"}}
+
+{{video-consent-reset}}
