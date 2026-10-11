@@ -33,10 +33,13 @@ const breadcrumbs = buildAuthorBreadcrumbs(author);
 const spacingStyle = contentSpacingStyle(resolveContentSpacing("authors"));
 const bio = author.data.bio?.trim() || "";
 const socialLinks = author.data.socialLinks ?? [];
+const showSocialInHero = author.data.showSocialInHero === true;
 const hasBody = Boolean(author.body?.trim());
 const contentHasAuthorSocial = /\{\{\s*author-social\b/.test(
 	`${bio}\n${author.body ?? ""}`,
 );
+const autoSocialLinks =
+	!contentHasAuthorSocial && socialLinks.some((link) => link.url?.trim());
 const articleCount = articles.length;
 const articlesHeading =
 	articleCount === 1 ? "Artikel (1)" : `Artikel (${articleCount})`;
@@ -97,6 +100,15 @@ if (sameAs.length > 0) personJsonLd.sameAs = sameAs;
 					</div>
 				)
 			}
+			{
+				autoSocialLinks && showSocialInHero && (
+					<AuthorSocialLinks
+						slot="below"
+						links={socialLinks}
+						inHero
+					/>
+				)
+			}
 		</PageHero>
 		{
 			bio && (
@@ -105,7 +117,11 @@ if (sameAs.length > 0) personJsonLd.sameAs = sameAs;
 				</div>
 			)
 		}
-		{!contentHasAuthorSocial && <AuthorSocialLinks links={socialLinks} />}
+		{
+			autoSocialLinks && !showSocialInHero && (
+				<AuthorSocialLinks links={socialLinks} />
+			)
+		}
 		{
 			hasBody ? (
 				<div class="author-profile__content">

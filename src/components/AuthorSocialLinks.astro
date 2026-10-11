@@ -13,9 +13,12 @@ interface Props {
 	authorId?: string;
 	/** Fallback author when embed has no `author=` (current profile). */
 	defaultAuthorId?: string;
+	/** Tighter spacing when rendered inside PageHero. */
+	inHero?: boolean;
 }
 
-const { links: linksProp, authorId, defaultAuthorId } = Astro.props;
+const { links: linksProp, authorId, defaultAuthorId, inHero = false } =
+	Astro.props;
 
 let items: AuthorSocialLink[] = [];
 if (linksProp) {
@@ -32,7 +35,10 @@ items = items.filter((link) => link.url?.trim());
 
 {
 	items.length > 0 && (
-		<nav class="author-social" aria-label="Web und Social Media">
+		<nav
+			class:list={["author-social", inHero && "author-social--hero"]}
+			aria-label="Web und Social Media"
+		>
 			<ul class="author-social__list list-plain">
 				{items.map((link) => (
 					<li>
@@ -55,6 +61,10 @@ items = items.filter((link) => link.url?.trim());
 <style>
 	.author-social {
 		margin: 0 0 2rem;
+	}
+
+	.author-social--hero {
+		margin: 0.85rem 0 0;
 	}
 
 	.author-social__list {

@@ -111,6 +111,11 @@ const authors = defineCollection({
 		bio: z.string().optional(),
 		/** Web / social profile URLs (repeatable; sameAs in Person JSON-LD). */
 		socialLinks: z.array(authorSocialLinkSchema).default([]),
+		/**
+		 * When true, social links render in the hero after the description.
+		 * When false (default), they render under the bio (unless placed via embed).
+		 */
+		showSocialInHero: z.boolean().default(false),
 		modifiedDate: modifiedDateSchema,
 	}),
 });
