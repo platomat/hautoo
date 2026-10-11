@@ -507,7 +507,8 @@
 				name: "id",
 				label: "Video-ID, URL oder Dateiname",
 				widget: "string",
-				hint: "YouTube/Vimeo: ID oder URL. Datei: volle https-URL, oder Dateiname relativ zur Video-Basis-URL (CMS Content → Medien).",
+				required: false,
+				hint: "YouTube/Vimeo: ID oder URL. Datei: volle https-URL, oder Dateiname relativ zur Video-Basis-URL (CMS Content → Medien). Leer = Block wird beim Speichern entfernt.",
 			},
 			{
 				name: "title",
@@ -537,11 +538,13 @@
 			};
 		},
 		toBlock: ({ provider = "youtube", id = "", title = "Video", poster = "" }) => {
+			const ref = String(id || "").trim();
+			if (!ref) return "";
 			const parts = [`provider="${provider}"`];
 			if (provider === "file") {
-				parts.push(`src="${id}"`);
+				parts.push(`src="${ref}"`);
 			} else {
-				parts.push(`id="${id}"`);
+				parts.push(`id="${ref}"`);
 			}
 			if (title && title !== "Video") parts.push(`title="${title}"`);
 			if (poster) parts.push(`poster="${poster}"`);
