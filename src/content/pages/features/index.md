@@ -54,7 +54,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **articles:** Screencast-Folgen und Beiträge. Relationen: 0..n **Kategorien**, **Tags**, **Autoren**; Video-Felder; URL `/artikel/<slug>/` ([#4](https://github.com/platomat/hautoo/issues/4)).
 - **categories:** Hierarchische Kategorien. Optional Parent; Relation von Artikeln; URL `/kategorien/<slug>/` ([#64](https://github.com/platomat/hautoo/issues/64)).
 - **tags:** Schlagworte. Relation von Artikeln; optional passender Glossar-Slug; URL `/tags/<slug>/` ([#5](https://github.com/platomat/hautoo/issues/5)).
-- **authors:** Autorenprofile (Name, Bio, Avatar/Gravatar; Social-/Web-URLs mit Plattform-Icons und schema.org `sameAs`; Auto-Liste nur im Hero bei `showSocialInHero`, sonst per Embed `{{author-social}}`; optional freier Inhalt mit Embeds statt Auto-Artikel-Listing). Relation von Artikeln; URL `/autoren/<slug>/` ([#77](https://github.com/platomat/hautoo/issues/77), [#85](https://github.com/platomat/hautoo/issues/85), [#86](https://github.com/platomat/hautoo/issues/86)).
+- **authors:** Autorenprofile (Name, Bio, Avatar/Gravatar; Social-/Web-URLs mit **Plattform-Icons**, optional im Hero; JSON-LD `Person` mit **`sameAs`**; Embed `{{author-social}}`; **freier Inhalt** mit Embeds statt Auto-Artikel-Listing). Relation von Artikeln; URL `/autoren/<slug>/` ([#77](https://github.com/platomat/hautoo/issues/77), [#85](https://github.com/platomat/hautoo/issues/85), [#86](https://github.com/platomat/hautoo/issues/86)).
 - **glossar:** Begriffsseiten. Relationen: `relatedArticles`, `relatedTags`; URL `/glossar/<slug>/` ([#6](https://github.com/platomat/hautoo/issues/6)).
 - **menus:** Navigation (`main`, `footer`, `footer-legal`, …) mit Label und Ziel ([#13](https://github.com/platomat/hautoo/issues/13), [#81](https://github.com/platomat/hautoo/issues/81)).
 - **blocks:** Wiederverwendbare Bausteine ohne eigene URL; Einbinden per Content-Komponente `{{block}}`.
@@ -71,6 +71,7 @@ Im Markdown über die Sveltia-Toolbar einfügbar; Speichern als `{{…}}`-Zeile;
 - **Tag-Listing** (`{{tag-listing …}}`): Genutzte Tags als Wolke, Liste oder Grid; Sortierung nach Titel oder Häufigkeit.
 - **Tagwolke** (`{{tag-cloud}}`): Kurzform für Tag-Listing im Layout Wolke.
 - **Autoren-Listing** (`{{author-listing}}`): Alle Autoren mit Avatar und Artikelanzahl (z. B. auf `/autoren/`).
+- **Autor Social-Links** (`{{author-social}}`): Social-/Web-Links mit Plattform-Icons; optional `author="slug"`, sonst Profilautor ([#86](https://github.com/platomat/hautoo/issues/86)).
 - **Glossar-Listing** (`{{glossar-listing …}}`): Glossar-Einträge als Liste oder Grid; Anzahl und Sortierung wählbar.
 - **Button** (`{{button …}}`): Einzelner Aktionslink mit Stil (ausgefüllt/Kontur), Farbe, Ziel und Ausrichtung inkl. voller Breite.
 - **Button-Gruppe** (`{{button-group …}}`): Mehrere Buttons in einer Gruppe; Layout nebeneinander (mit/ohne Umbruch), mobil untereinander oder immer gestapelt; Ausrichtung der Gruppe; optional volle Breite auf Mobile ([#83](https://github.com/platomat/hautoo/issues/83)).
@@ -102,8 +103,8 @@ Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Co
 
 - **Farbpalette** (CSS-Variablen, inkl. Alpha für Glas; Untermenü-Hintergrund und -Text separat) ([#70](https://github.com/platomat/hautoo/issues/70), [#84](https://github.com/platomat/hautoo/issues/84)).
 - **Schrift:** Fließtext und Überschriften (Fontsource), Basisgröße, Gewicht, H1–H6 Größe/Transform ([#71](https://github.com/platomat/hautoo/issues/71)).
-- **Header:** Logo-Position (links / rechts / mittig mit Menü darunter); Suchlupe immer hinter den Menüpunkten ([#74](https://github.com/platomat/hautoo/issues/74)); Ruhehöhe und Sticky ein/aus sowie kompakte Sticky-Höhe pro Breakpoint ([#44](https://github.com/platomat/hautoo/issues/44)); Anker-Sprünge (TOC) mit `scroll-padding`, damit Überschriften nicht unter der Leiste landen.
-- **Footer-Brand** oberhalb der Copyright-Zeile: Logo, Description und Menü; Layout Nebeneinander/Untereinander; Menü-Links neben- oder untereinander; Breiten für Brand, Copyright-Zeile und Header wie Inhaltsbreite ([#81](https://github.com/platomat/hautoo/issues/81)).
+- **Header:** Logo-Position links / rechts / **mittig** (Menü darunter) ([#74](https://github.com/platomat/hautoo/issues/74)); Suchlupe hinter den Menüpunkten; Inhaltsbreite der Header-Zeile (Standard/breit/vollbreit); Ruhehöhe und Sticky ein/aus sowie kompakte Sticky-Höhe pro Breakpoint ([#44](https://github.com/platomat/hautoo/issues/44)); Anker-Sprünge (TOC) mit `scroll-padding`.
+- **Footer-Brand** oberhalb der Copyright-Zeile ([#81](https://github.com/platomat/hautoo/issues/81)): Logo (Größe einstellbar), Description und Menü; Bausteine einzeln und per Drag-and-Drop; Layout Nebeneinander/Untereinander; Menü-Links neben- oder untereinander; Shell-Breiten für Brand und Copyright-Zeile; Hintergrund mit Verlauf von transparent zur Chrome-Farbe (ohne oberen Rand).
 - **Hero-Defaults** pro Collection: Ausrichtung, Brotkrumen, Trenner, Trennlinie unten ([#63](https://github.com/platomat/hautoo/issues/63)).
 - **Inhaltsbreite** Standard / breit / vollbreit für Seiten und Artikel ([#59](https://github.com/platomat/hautoo/issues/59)).
 - **Abstand** unter Hero und vor Footer, pro Collection ([#73](https://github.com/platomat/hautoo/issues/73)).
@@ -125,7 +126,7 @@ Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Co
 - **FAQ** als eine lange Seite mit Themengruppen (H2), offen durchsuchbar (kein Accordion).
 - **Kategorie-Seiten** mit Parent-Brotkrumen, Unterkategorien und Artikel-Grid.
 - **Tag-Seiten** mit Artikel-Grid; Link zum Glossar, wenn der Slug passt. Am Artikel: `tagPlacement` (Hero, nach Inhalt oder beides); Kategorien immer im Hero.
-- **Autoren-Seiten** (Avatar, Bio, Social-Links mit Icons, Artikelliste) und Übersicht `/autoren/`. Embed `{{author-social}}` (optional `author="slug"`; leer = Profilautor).
+- **Autoren-Seiten** (Avatar, Bio, Social-Links mit Icons / optional im Hero, freier Inhalt mit Embeds oder Auto-Artikelliste) und Übersicht `/autoren/`. Embed `{{author-social}}`; JSON-LD `Person` inkl. `sameAs`.
 - **Artikel-Übersicht** `/artikel/` mit Seitenleiste (Kategorie-Tree, genutzte Tags); auf Desktop sticky, wenn die Leiste in den Viewport passt.
 
 ## SEO und Auffindbarkeit
