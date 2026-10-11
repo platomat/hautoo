@@ -5,6 +5,7 @@
     "claim": "One of <a href=\"https://platomat.com/\">PlatoMat</a>",
     "separator": "•"
   },
+  "privacyPage": "datenschutz",
   "githubRepo": "platomat/hautoo",
   "logos": {
     "header": "/assets/logo-mark.svg"

@@ -8,6 +8,7 @@ import {
 	type VideoProvider,
 } from "../lib/video";
 import { resolveCmsImage } from "../lib/cms-image";
+import { getPrivacyPageHref } from "../lib/privacy-page";
 import { getVideoBaseUrl } from "../lib/site-config";
 
 interface Props {
@@ -22,6 +23,7 @@ interface Props {
 }
 
 const { provider, id, src: srcProp, title = "Video", poster } = Astro.props;
+const privacyHref = await getPrivacyPageHref("eingebettete-videos");
 
 const validProvider =
 	isThirdPartyVideoProvider(provider) || isFileVideoProvider(provider)
@@ -101,7 +103,13 @@ const providerLabel =
 						Zum Abspielen wird der Player von <strong>{providerLabel}</strong>{" "}
 						geladen. Dabei verbindet sich dein Browser mit deren Servern; es
 						können Cookies und ähnliche Techniken gesetzt werden. Details:{" "}
-						<a href="/datenschutz/#eingebettete-videos">Datenschutz</a>.
+						{
+							privacyHref ? (
+								<a href={privacyHref}>Datenschutz</a>
+							) : (
+								"Datenschutz"
+							)
+						}.
 					</p>
 					<button
 						type="button"

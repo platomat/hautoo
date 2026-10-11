@@ -137,7 +137,7 @@ Im CMS über die Markdown-Toolbar einfügen (wie Bilder):
 | **Kontakt-E-Mail** | `{{contact-email}}` | Adresse aus CMS `general.contactEmail` (falls gesetzt), sonst `CONTACT_EMAIL`; nicht im Markdown speichern |
 | **Logo** | `{{logo variant="header" width="120" unit="px" align="center"}}` | Site-Logo aus General → Logos (`header` / `sticky` / `footer`); Breite px oder %; Ausrichtung links/zentriert/rechts |
 | **Repo-Dokument** | `{{repodoc path="docs/github/README.md" title="GitHub" description="Kurzer Satz"}}` | `path` = existierende Datei unter `docs/`; Link zu GitHub `main`; optional `title` / `description` |
-| **Video** | `{{video provider="youtube" id="…" }}` oder `provider="file" src="datei.mp4"` | YT/Vimeo: Facade + Consent. **file**/R2: HTML5-`<video>`, Basis-URL unter Content → Medien (`videoBaseUrl`); optionales Poster per Medienauswahl; siehe [R2-Videos](../cloudflare/r2-videos.md) |
+| **Video** | `{{video provider="youtube" id="…" }}` oder `provider="file" src="datei.mp4"` | YT/Vimeo: Facade + Consent; Datenschutz-Link aus General → **Privacy page** (`privacyPage`, Anker `#eingebettete-videos`). **file**/R2: HTML5-`<video>`, Basis-URL unter Content → Medien (`videoBaseUrl`); optionales Poster per Medienauswahl; siehe [R2-Videos](../cloudflare/r2-videos.md) |
 | **Video-Freischaltung widerrufen** | `{{video-consent-reset}}` | Button zum Widerruf (Datenschutz) |
 
 Registrierung: `public/admin/editor-components.js`. Rendering: `ArticleListing.astro` / `GlossarListing.astro` / `TagListing.astro` / `CategoryListing.astro` / `Separator.astro` / `Spacer.astro` / `CmsButton.astro` / `ContactEmail.astro` / `RepoDocLink.astro` / `VideoEmbed.astro` / `VideoConsentReset.astro`; Bausteine werden in `content-embeds.ts` expandiert.

@@ -276,6 +276,11 @@ export const siteGeneralConfigSchema = z.object({
 	 */
 	contactEmail: z.string().trim().default(""),
 	/**
+	 * Optional pages collection slug for the privacy policy (WordPress-style).
+	 * Used e.g. by the video consent facade link.
+	 */
+	privacyPage: z.string().trim().default(""),
+	/**
 	 * Optional public GitHub repo (`owner/name`) for the footer center icon.
 	 * Set for hautoo (`platomat/hautoo`); leave empty on forks → site logo → `/`.
 	 */

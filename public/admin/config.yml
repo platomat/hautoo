@@ -925,6 +925,16 @@ collections:
             required: false
             hint: "Optional für {{contact-email}} (Impressum/Datenschutz). Überschreibt CONTACT_EMAIL beim Build. Steht im öffentlichen Repo; leer lassen und ENV nutzen, wenn die Adresse nicht in Git soll."
             default: ""
+          - name: privacyPage
+            label: Privacy page
+            widget: relation
+            collection: pages
+            value_field: "{{slug}}"
+            search_fields: [title]
+            display_fields: [title]
+            required: false
+            hint: "Datenschutz-Seite (wie WordPress Privacy Policy). Wird u. a. im Video-Consent-Hinweis verlinkt. Leer = kein Link."
+            default: ""
           - name: githubRepo
             label: GitHub repository
             widget: string

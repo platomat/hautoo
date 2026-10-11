@@ -55,6 +55,7 @@ Globale Site-Einstellungen als **JSON-Dateien** (wie cdr-legal), kein Markdown-B
 | `favicons.default` | Optional Favicon aus Mediathek; leer = `/assets/favicon.svg` (#80) |
 | `favicons.dark` | Optional Favicon für `prefers-color-scheme: dark`; leer = gleiches wie default |
 | `contactEmail` | Optional für `{{contact-email}}`. Überschreibt `CONTACT_EMAIL` beim Build; leer = ENV. Wert ist öffentlich in Git. |
+| `privacyPage` | Optional Seiten-Slug (Relation `pages`) für die Datenschutz-Seite (wie WordPress Privacy Policy). Leer = kein Link; genutzt u. a. vom Video-Consent. |
 
 ### Einstellungen → Design → Farbpalette (#70)
 
