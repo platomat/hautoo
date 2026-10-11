@@ -45,6 +45,12 @@ export function getSiteWebsiteTitle(): string {
 	);
 }
 
+/** Optional site description / slogan from CMS General (#75). */
+export function getSiteWebsiteDescription(): string {
+	const config = getSiteConfig();
+	return config.general?.websiteDescription?.trim() ?? "";
+}
+
 export function getSiteHeaderConfig(): SiteHeaderConfig {
 	const config = getSiteConfig();
 	return config.design?.header ?? DEFAULT_SITE_HEADER_CONFIG;

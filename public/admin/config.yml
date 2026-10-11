@@ -748,6 +748,12 @@ collections:
             required: true
             hint: "Markenname in Header, Browser-Titel-Suffix und og:site_name."
             default: hautuu
+          - name: websiteDescription
+            label: Description
+            widget: text
+            required: false
+            hint: "Kurze Beschreibung oder Slogan der Website. Speichern für spätere Anzeige (z. B. Hero/Meta); aktuell noch nicht auf jeder Seite sichtbar."
+            default: ""
           - name: contactEmail
             label: Contact email
             widget: string
