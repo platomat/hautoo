@@ -74,7 +74,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 ## Bausteine und Embeds
 
 - **Wiederverwendbare Bausteine** (`{{block id="…"}}`): z. B. Stack-Grafik (`stack-uebersicht`) auf Startseite und in passenden Folgen ([Folge 020](/artikel/folge-020-bausteine-fork/)).
-- **Artikel-Listing** im Content: Anzahl, Sortierung, Grid oder Liste, wählbare Kartenfelder inkl. Kategorien, Tags, optional **Autoren**, Datum und Lesezeit ([Folge 019](/artikel/folge-019-impressum-komponenten/)).
+- **Artikel-Listing** im Content: Anzahl, Sortierung, Grid oder Liste, wählbare Kartenfelder inkl. Kategorien, Tags, optional **Autoren**, Datum und Lesezeit; optional Filter nach Autoren, Kategorien und Tags (UND/ODER) ([Folge 019](/artikel/folge-019-impressum-komponenten/), #78).
 - **Autoren-Listing** (`{{author-listing}}`): alle Autoren mit Avatar und Artikelanzahl.
 - **Trennlinie**, **Abstandshalter** (`{{spacer}}` bzw. `{{spacer height="…"}}`, Default 32 px), **Button** (`{{button label="…" href="…"}}`, solid/outline, Palette, Ausrichtung) und **Kontakt-E-Mail** als Embed (`{{contact-email}}` aus CMS oder Build-Variable, nicht im Markdown).
 - **Markdown-Embeds** über die Sveltia-Toolbar; Rendering zentral in `CmsContent.astro`.

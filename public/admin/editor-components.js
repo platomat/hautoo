@@ -93,11 +93,63 @@
 				],
 				hint: "Kategorien links neben Tags; darunter Datum und Lesezeit.",
 			},
+			{
+				name: "authors",
+				label: "Nur Autoren",
+				widget: "relation",
+				collection: "authors",
+				value_field: "{{slug}}",
+				search_fields: ["title"],
+				display_fields: ["title"],
+				multiple: true,
+				required: false,
+				hint: "Leer = alle. Mehrere: Artikel mit mindestens einem dieser Autoren.",
+			},
+			{
+				name: "categories",
+				label: "Nur Kategorien",
+				widget: "relation",
+				collection: "categories",
+				value_field: "{{slug}}",
+				search_fields: ["title"],
+				display_fields: ["title"],
+				multiple: true,
+				required: false,
+				hint: "Leer = alle. Mehrere: Artikel mit mindestens einer dieser Kategorien.",
+			},
+			{
+				name: "tags",
+				label: "Nur Tags",
+				widget: "relation",
+				collection: "tags",
+				value_field: "{{slug}}",
+				search_fields: ["title"],
+				display_fields: ["title"],
+				multiple: true,
+				required: false,
+				hint: "Leer = alle. Mehrere: Artikel mit mindestens einem dieser Tags.",
+			},
+			{
+				name: "match",
+				label: "Filter-Verknüpfung",
+				widget: "select",
+				default: "all",
+				options: [
+					{ label: "Alle Bedingungen (UND)", value: "all" },
+					{ label: "Eine Bedingung (ODER)", value: "any" },
+				],
+				hint: "Nur wenn mehrere Filterarten gesetzt sind (Autoren und/oder Kategorien und/oder Tags).",
+			},
 		],
 		pattern: /^\{\{article-listing(?<attrs>[^}]*)\}\}\s*$/m,
 		fromBlock: (match) => {
 			const attrs = parseAttrs(match?.groups?.attrs || "");
 			const showDefault = "title,intro,categories,tags,date,readingTime";
+			const splitList = (raw) =>
+				(raw || "")
+					.split(",")
+					.map((s) => s.trim())
+					.filter(Boolean);
 			return {
 				count: attrs.count !== undefined && attrs.count !== "" ? attrs.count : "3",
 				sort: attrs.sort || "newest",
@@ -105,6 +157,10 @@
 				columns: attrs.columns || "3",
 				gap: attrs.gap || "1.25",
 				show: (attrs.show || showDefault).split(",").filter(Boolean),
+				authors: splitList(attrs.authors),
+				categories: splitList(attrs.categories),
+				tags: splitList(attrs.tags),
+				match: attrs.match === "any" ? "any" : "all",
 			};
 		},
 		toBlock: ({
@@ -114,9 +170,35 @@
 			columns = 3,
 			gap = 1.25,
 			show = ["title", "intro", "categories", "tags", "date", "readingTime"],
+			authors = [],
+			categories = [],
+			tags = [],
+			match = "all",
 		}) => {
 			const showAttr = Array.isArray(show) ? show.join(",") : String(show || "");
-			return `{{article-listing count="${count}" sort="${sort}" layout="${layout}" columns="${columns}" gap="${gap}" show="${showAttr}"}}`;
+			const listAttr = (value) =>
+				(Array.isArray(value) ? value : String(value || "").split(","))
+					.map((s) => String(s).trim())
+					.filter(Boolean)
+					.join(",");
+			const authorsAttr = listAttr(authors);
+			const categoriesAttr = listAttr(categories);
+			const tagsAttr = listAttr(tags);
+			const parts = [
+				`count="${count}"`,
+				`sort="${sort}"`,
+				`layout="${layout}"`,
+				`columns="${columns}"`,
+				`gap="${gap}"`,
+				`show="${showAttr}"`,
+			];
+			if (authorsAttr) parts.push(`authors="${authorsAttr}"`);
+			if (categoriesAttr) parts.push(`categories="${categoriesAttr}"`);
+			if (tagsAttr) parts.push(`tags="${tagsAttr}"`);
+			if ((authorsAttr || categoriesAttr || tagsAttr) && match === "any") {
+				parts.push(`match="any"`);
+			}
+			return `{{article-listing ${parts.join(" ")}}}`;
 		},
 		toPreview: ({
 			count = 3,
@@ -125,9 +207,31 @@
 			columns = 3,
 			gap = 1.25,
 			show = ["title", "intro", "categories", "tags", "date", "readingTime"],
+			authors = [],
+			categories = [],
+			tags = [],
+			match = "all",
 		}) => {
 			const showLabel = Array.isArray(show) ? show.join(", ") : String(show || "");
-			return `<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Artikel-Listing · ${count === 0 || count === "0" ? "alle" : count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem · ${showLabel}</div>`;
+			const listLabel = (value) =>
+				(Array.isArray(value) ? value : String(value || "").split(","))
+					.map((s) => String(s).trim())
+					.filter(Boolean)
+					.join(", ");
+			const filterBits = [];
+			const authorsLabel = listLabel(authors);
+			const categoriesLabel = listLabel(categories);
+			const tagsLabel = listLabel(tags);
+			if (authorsLabel) filterBits.push(`Autoren ${authorsLabel}`);
+			if (categoriesLabel) filterBits.push(`Kategorien ${categoriesLabel}`);
+			if (tagsLabel) filterBits.push(`Tags ${tagsLabel}`);
+			if (filterBits.length > 1) {
+				filterBits.push(match === "any" ? "ODER" : "UND");
+			}
+			const filterSuffix = filterBits.length
+				? ` · Filter: ${filterBits.join(" · ")}`
+				: "";
+			return `<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Artikel-Listing · ${count === 0 || count === "0" ? "alle" : count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem · ${showLabel}${filterSuffix}</div>`;
 		},
 	});
 

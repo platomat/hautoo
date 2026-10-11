@@ -124,7 +124,7 @@ Im CMS über die Markdown-Toolbar einfügen (wie Bilder):
 
 | CMS-Block | Gespeicherter Marker | Optionen |
 | --- | --- | --- |
-| **Artikel-Listing** | `{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25" show="title,intro,categories,tags,date,readingTime"}}` | Anzahl (`0` = alle), Sortierung, Layout (`grid` / `list`), Spalten, Abstand, Kartenfelder (`title` / `intro` / `categories` / `tags` / `authors` / `date` / `readingTime`; Autoren opt-in) |
+| **Artikel-Listing** | `{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25" show="title,intro,categories,tags,date,readingTime"}}` | Anzahl (`0` = alle), Sortierung, Layout (`grid` / `list`), Spalten, Abstand, Kartenfelder (`title` / `intro` / `categories` / `tags` / `authors` / `date` / `readingTime`; Autoren opt-in). Optional Filter: `authors`, `categories`, `tags` (kommagetrennte Slugs; innerhalb einer Art reicht ein Treffer). Mehrere Filterarten: `match="all"` (UND, Default) oder `match="any"` (ODER). Artikel-Prev/Next bleibt siteweit chronologisch. |
 | **Autoren-Listing** | `{{author-listing}}` | Alle Autoren mit Avatar und Artikelanzahl (Seite `/autoren/`) |
 | **Glossar-Listing** | `{{glossar-listing count="0" sort="title-asc" layout="list" columns="2" gap="1.5"}}` | Anzahl (`0` = alle), Sortierung (`title-asc` / `title-desc` / `newest` / `oldest`), Layout (`list` / `grid`), Spalten 1–4 (nur Grid), Abstand in rem |
 | **Tag-Listing** | `{{tag-listing count="0" sort="title-asc" layout="cloud" columns="3" gap="1.25"}}` | Anzahl (`0` = alle genutzten), Sortierung (`title-asc` / `title-desc` / `most-used`), Layout (`cloud` / `list` / `grid`), Spalten 1–4 (nur Grid), Abstand in rem |

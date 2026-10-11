@@ -4,11 +4,10 @@ import Icon from "./Icon.astro";
 import {
 	formatArticleDate,
 	getArticleHref,
-	getArticlesByAuthor,
-	getArticlesByCategory,
 	getArticlesByIds,
-	getArticlesByTag,
+	getFilteredArticles,
 	getPublishedArticles,
+	type ArticleFilterMatch,
 	type ArticleSort,
 } from "../lib/articles";
 import {
@@ -43,10 +42,21 @@ interface Props {
 	articleIds?: string[];
 	/** Only articles with this tag (`count === 0` → all matches). */
 	tagId?: string;
+	/** Tag slugs (any of these). Combined with `tagId` if both set. */
+	tagIds?: string[];
 	/** Only articles with this category (`count === 0` → all matches). */
 	categoryId?: string;
+	/** Category slugs (any of these). Combined with `categoryId` if both set. */
+	categoryIds?: string[];
 	/** Only articles with this author (`count === 0` → all matches). */
 	authorId?: string;
+	/** Author slugs (any of these). Combined with `authorId` if both set. */
+	authorIds?: string[];
+	/**
+	 * Between filter groups: `all` (default) or `any`.
+	 * Within a group, one matching slug is enough.
+	 */
+	match?: ArticleFilterMatch;
 	/** Less vertical margin (e.g. glossar related block). */
 	compact?: boolean;
 }
@@ -60,10 +70,37 @@ const {
 	show: showProp,
 	articleIds,
 	tagId,
+	tagIds: tagIdsProp,
 	categoryId,
+	categoryIds: categoryIdsProp,
 	authorId,
+	authorIds: authorIdsProp,
+	match = "all",
 	compact = false,
 } = Astro.props;
+
+function mergeIds(
+	list: string[] | undefined,
+	single: string | undefined,
+): string[] {
+	const seen = new Set<string>();
+	const out: string[] = [];
+	for (const raw of [...(list ?? []), ...(single ? [single] : [])]) {
+		const id = raw.trim();
+		if (!id || seen.has(id)) continue;
+		seen.add(id);
+		out.push(id);
+	}
+	return out;
+}
+
+const resolvedAuthorIds = mergeIds(authorIdsProp, authorId);
+const resolvedCategoryIds = mergeIds(categoryIdsProp, categoryId);
+const resolvedTagIds = mergeIds(tagIdsProp, tagId);
+const hasFilters =
+	resolvedAuthorIds.length > 0 ||
+	resolvedCategoryIds.length > 0 ||
+	resolvedTagIds.length > 0;
 
 const showFields = new Set(
 	typeof showProp === "string"
@@ -85,28 +122,24 @@ const showAuthors = showFields.has("authors");
 const showTaxonomies = showCategories || showTags;
 const showMeta = showDate || showReadingTime || showTaxonomies || showAuthors;
 
-/** `count === 0` → all published articles (or all with tag/category/author filter). */
+/** `count === 0` → all published articles (or all matching filters). */
+const listingLimit = count === 0 ? undefined : count;
 const articles = articleIds?.length
 	? await getArticlesByIds(articleIds)
-	: authorId
-		? await getArticlesByAuthor(authorId, {
+	: hasFilters
+		? await getFilteredArticles(
+				{
+					authorIds: resolvedAuthorIds,
+					categoryIds: resolvedCategoryIds,
+					tagIds: resolvedTagIds,
+					match,
+				},
+				{ sort, limit: listingLimit },
+			)
+		: await getPublishedArticles({
 				sort,
-				limit: count === 0 ? undefined : count,
-			})
-		: categoryId
-			? await getArticlesByCategory(categoryId, {
-					sort,
-					limit: count === 0 ? undefined : count,
-				})
-			: tagId
-				? await getArticlesByTag(tagId, {
-						sort,
-						limit: count === 0 ? undefined : count,
-					})
-				: await getPublishedArticles({
-						sort,
-						limit: count === 0 ? undefined : count,
-					});
+				limit: listingLimit,
+			});
 const [tags, categories, authors] = await Promise.all([
 	getCollection("tags"),
 	getCollection("categories"),

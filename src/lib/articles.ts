@@ -11,6 +11,58 @@ export type ArticleListingOptions = {
 	sort?: ArticleSort;
 };
 
+/** Between filter groups (authors / categories / tags). Within a group: any slug matches. */
+export type ArticleFilterMatch = "all" | "any";
+
+export type ArticleFilters = {
+	authorIds?: string[];
+	categoryIds?: string[];
+	tagIds?: string[];
+	/** Default `all`: every non-empty group must match. `any`: at least one group. */
+	match?: ArticleFilterMatch;
+};
+
+function normalizeIdList(ids: string[] | undefined): string[] {
+	if (!ids?.length) return [];
+	const seen = new Set<string>();
+	const out: string[] = [];
+	for (const raw of ids) {
+		const id = raw.trim();
+		if (!id || seen.has(id)) continue;
+		seen.add(id);
+		out.push(id);
+	}
+	return out;
+}
+
+function listIntersects(haystack: string[] | undefined, needles: string[]): boolean {
+	if (needles.length === 0) return true;
+	const set = new Set(haystack ?? []);
+	return needles.some((id) => set.has(id));
+}
+
+/** Whether a published article matches optional author/category/tag filters. */
+export function articleMatchesFilters(
+	article: ArticleEntry,
+	filters: ArticleFilters = {},
+): boolean {
+	const authorIds = normalizeIdList(filters.authorIds);
+	const categoryIds = normalizeIdList(filters.categoryIds);
+	const tagIds = normalizeIdList(filters.tagIds);
+	const checks: boolean[] = [];
+	if (authorIds.length > 0) {
+		checks.push(listIntersects(article.data.authors, authorIds));
+	}
+	if (categoryIds.length > 0) {
+		checks.push(listIntersects(article.data.categories, categoryIds));
+	}
+	if (tagIds.length > 0) {
+		checks.push(listIntersects(article.data.tags, tagIds));
+	}
+	if (checks.length === 0) return true;
+	return filters.match === "any" ? checks.some(Boolean) : checks.every(Boolean);
+}
+
 function compareByTitle(a: ArticleEntry, b: ArticleEntry): number {
 	return a.data.title.localeCompare(b.data.title, "de", { sensitivity: "base" });
 }
@@ -57,6 +109,22 @@ export async function getPublishedArticles(
 	return sorted;
 }
 
+/** Published articles after optional taxonomy/author filters (filter, then limit). */
+export async function getFilteredArticles(
+	filters: ArticleFilters = {},
+	options: ArticleListingOptions = {},
+): Promise<ArticleEntry[]> {
+	const { sort = "newest", limit } = options;
+	const articles = await getPublishedArticles({ sort });
+	const filtered = articles.filter((article) =>
+		articleMatchesFilters(article, filters),
+	);
+	if (typeof limit === "number" && Number.isFinite(limit) && limit >= 0) {
+		return filtered.slice(0, limit);
+	}
+	return filtered;
+}
+
 export function getArticleHref(article: ArticleEntry): string {
 	return `/artikel/${article.id}/`;
 }
@@ -79,8 +147,7 @@ export async function getArticlesByTag(
 	tagId: string,
 	options: ArticleListingOptions = {},
 ): Promise<ArticleEntry[]> {
-	const articles = await getPublishedArticles(options);
-	return articles.filter((article) => (article.data.tags ?? []).includes(tagId));
+	return getFilteredArticles({ tagIds: [tagId] }, options);
 }
 
 /** Published articles that include a category slug. */
@@ -88,10 +155,7 @@ export async function getArticlesByCategory(
 	categoryId: string,
 	options: ArticleListingOptions = {},
 ): Promise<ArticleEntry[]> {
-	const articles = await getPublishedArticles(options);
-	return articles.filter((article) =>
-		(article.data.categories ?? []).includes(categoryId),
-	);
+	return getFilteredArticles({ categoryIds: [categoryId] }, options);
 }
 
 /** Published articles that include an author slug. */
@@ -99,10 +163,7 @@ export async function getArticlesByAuthor(
 	authorId: string,
 	options: ArticleListingOptions = {},
 ): Promise<ArticleEntry[]> {
-	const articles = await getPublishedArticles(options);
-	return articles.filter((article) =>
-		(article.data.authors ?? []).includes(authorId),
-	);
+	return getFilteredArticles({ authorIds: [authorId] }, options);
 }
 
 /**

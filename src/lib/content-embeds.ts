@@ -50,6 +50,8 @@ export const ARTICLE_CARD_FIELDS = [
 	"readingTime",
 ] as const satisfies readonly ArticleCardField[];
 
+export type ArticleListingFilterMatch = "all" | "any";
+
 export type ArticleListingEmbedProps = {
 	count: number;
 	sort: ArticleSort;
@@ -59,6 +61,17 @@ export type ArticleListingEmbedProps = {
 	gap: number;
 	/** Which card fields to render. */
 	show: ArticleCardField[];
+	/** Author slugs (any of these). Empty = no author filter. */
+	authors: string[];
+	/** Category slugs (any of these). Empty = no category filter. */
+	categories: string[];
+	/** Tag slugs (any of these). Empty = no tag filter. */
+	tags: string[];
+	/**
+	 * Between filter groups: `all` = every non-empty group must match;
+	 * `any` = at least one group. Within a group, one matching slug is enough.
+	 */
+	match: ArticleListingFilterMatch;
 };
 
 export type GlossarListingEmbedProps = {
@@ -150,6 +163,10 @@ const DEFAULT_LISTING: ArticleListingEmbedProps = {
 	columns: 3,
 	gap: 1.25,
 	show: DEFAULT_SHOW,
+	authors: [],
+	categories: [],
+	tags: [],
+	match: "all",
 };
 
 const ARTICLE_CARD_FIELD_SET = new Set<string>(ARTICLE_CARD_FIELDS);
@@ -342,6 +359,20 @@ function parseAttrs(raw: string): Record<string, string> {
 	return out;
 }
 
+/** Comma-separated slugs from embed attrs (`authors="a,b"`). */
+export function parseSlugList(raw: string | undefined): string[] {
+	if (!raw?.trim()) return [];
+	const seen = new Set<string>();
+	const out: string[] = [];
+	for (const part of raw.split(",")) {
+		const id = part.trim();
+		if (!id || seen.has(id)) continue;
+		seen.add(id);
+		out.push(id);
+	}
+	return out;
+}
+
 function clampInt(
 	value: string | undefined,
 	fallback: number,
@@ -376,6 +407,10 @@ export function parseArticleListingProps(
 		? (attrs.sort as ArticleSort)
 		: DEFAULT_LISTING.sort;
 	const layout = attrs.layout === "list" ? "list" : "grid";
+	const match =
+		attrs.match === "any" || attrs.match === "all"
+			? attrs.match
+			: DEFAULT_LISTING.match;
 	return {
 		/** `0` = all published articles (no limit). */
 		count: clampInt(attrs.count, DEFAULT_LISTING.count, 0, 48),
@@ -384,6 +419,10 @@ export function parseArticleListingProps(
 		columns: clampInt(attrs.columns, DEFAULT_LISTING.columns, 1, 4),
 		gap: clampRem(attrs.gap, DEFAULT_LISTING.gap, 0, 8),
 		show: parseArticleCardShow(attrs.show),
+		authors: parseSlugList(attrs.authors),
+		categories: parseSlugList(attrs.categories),
+		tags: parseSlugList(attrs.tags),
+		match,
 	};
 }
 
