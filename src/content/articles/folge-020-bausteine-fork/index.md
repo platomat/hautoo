@@ -11,6 +11,8 @@ tags:
 - cursor
 - sveltia
 - astro
+authors:
+  - wasilij
 seo:
   index_visibility: index
   follow_visibility: follow

@@ -11,6 +11,8 @@ tags:
 - sveltia
 - github
 - cloudflare
+authors:
+  - wasilij
 seo:
   index_visibility: index
   follow_visibility: follow

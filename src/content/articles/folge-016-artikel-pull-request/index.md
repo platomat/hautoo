@@ -12,6 +12,8 @@ tags:
 - github
 - cloudflare
 - astro
+authors:
+  - wasilij
 seo:
   index_visibility: index
   follow_visibility: follow

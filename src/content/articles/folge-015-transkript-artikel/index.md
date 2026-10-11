@@ -10,6 +10,8 @@ tags:
 - cursor
 - github
 - astro
+authors:
+  - wasilij
 seo:
   index_visibility: index
   follow_visibility: follow

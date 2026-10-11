@@ -11,6 +11,8 @@ tags:
 - cursor
 - css
 - design
+authors:
+  - wasilij
 seo:
   index_visibility: index
   follow_visibility: follow

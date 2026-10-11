@@ -9,6 +9,8 @@ tags:
 - cursor
 - cloudflare
 - ci
+authors:
+  - wasilij
 seo:
   index_visibility: index
   follow_visibility: follow

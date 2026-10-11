@@ -11,6 +11,8 @@ tags:
 - github
 - ssh
 - cursor
+authors:
+  - wasilij
 seo:
   index_visibility: index
   follow_visibility: follow

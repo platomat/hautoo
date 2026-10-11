@@ -9,6 +9,8 @@ categories:
   - screencasts
 tags:
 - github
+authors:
+  - wasilij
 seo:
   index_visibility: index
   follow_visibility: follow

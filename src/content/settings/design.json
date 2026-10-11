@@ -87,10 +87,10 @@
       "borderBottom": false
     },
     "authors": {
-      "textAlign": "left",
+      "textAlign": "center",
       "showBreadcrumbs": true,
       "breadcrumbSeparator": "/",
-      "borderBottom": false
+      "borderBottom": true
     },
     "glossar": {
       "textAlign": "left",

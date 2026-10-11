@@ -10,6 +10,8 @@ tags:
 - design
 - astro
 - sveltia
+authors:
+  - wasilij
 seo:
   index_visibility: index
   follow_visibility: follow

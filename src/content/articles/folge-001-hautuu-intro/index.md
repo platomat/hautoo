@@ -2,22 +2,22 @@
 title: 'Folge 001: Leeres Repo, voller Plan, so startet hautuu'
 summary: Du legst GitHub an, holst das Projekt auf den Rechner und sagst Cursor in normaler Sprache, worum es geht. Kein Zauber, nur der Ablauf, den du danach immer wieder brauchst.
 pubDate: 2026-10-03 01:04:26+00:00
-modifiedDate: 2026-10-07
 status: published
+modifiedDate: 2026-10-07
 categories:
   - screencasts
 tags:
-- github
-- cursor
-- astro
-- cloudflare
+  - github
+  - cursor
+  - astro
+  - cloudflare
 authors:
-  - wasilij-pfeifer
+  - wasilij
 seo:
-  index_visibility: index
-  follow_visibility: follow
   seo_title: 'Folge 001: Leeres Repo, voller Plan, so startet hautuu'
   seo_description: Du legst GitHub an, holst das Projekt lokal und erklärst Cursor dein Ziel in normaler Sprache. Folge 001 zeigt den Einstiegsablauf für hautuu.
+  index_visibility: index
+  follow_visibility: follow
 ---
 
 Willkommen in Folge eins. Hier musst du noch nicht alles verstehen, du brauchst nur ein Bild im Kopf: **Wo liegt die Wahrheit**, und **wo bastelst du dran rum**?
