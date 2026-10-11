@@ -8,6 +8,7 @@ Wie die Website **aussehen und wirken** soll. Umsetzung in CSS/Astro folgt diese
 - **Statikdatei:** `public/img/logo-mark.svg` (Quelle für Header, README und Content-Einbettungen)
 - **Header:** `LogoMark.astro` lädt die Public-SVG inline; Ink = `currentColor`, Accent = Aktionsfarbe; bei Hover/Focus/Active komplett Aktionsfarbe
 - **Wortmarke:** aus CMS **Einstellungen → General → Website title** (`settings/general.json`), neben dem Mark im Header und in der Footer-Zeile
+- **Footer-Mitte:** bei gesetztem `githubRepo` (General) GitHub-Icon; sonst Logo-Mark → Startseite
 - **Favicon:** `public/img/favicon.svg` (Ink dunkel bei hellem System, hell bei dunklem; Accent bleibt grün), Fallback `favicon.ico`
 
 ## Prinzipien

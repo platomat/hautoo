@@ -193,6 +193,11 @@ export const siteGeneralConfigSchema = z.object({
 	 * When set, overrides env `CONTACT_EMAIL` at build time (value is public in Git).
 	 */
 	contactEmail: z.string().trim().default(""),
+	/**
+	 * Optional public GitHub repo (`owner/name`) for the footer center icon.
+	 * Set for hautoo (`platomat/hautoo`); leave empty on forks → site logo → `/`.
+	 */
+	githubRepo: z.string().trim().default(""),
 });
 
 export type SiteGeneralConfig = z.infer<typeof siteGeneralConfigSchema>;

@@ -2,7 +2,7 @@
 import { getResolvedMenu, MENU_FOOTER_LEGAL } from "../lib/menus";
 import { withBuildId } from "../lib/build-id";
 import { getPublicPages } from "../lib/pages";
-import { getSiteWebsiteTitle } from "../lib/site-config";
+import { getSiteConfig, getSiteWebsiteTitle } from "../lib/site-config";
 
 /** First calendar year of the project (copyright range start). */
 const COPYRIGHT_START_YEAR = 2026;
@@ -13,8 +13,15 @@ const copyrightYears =
 		: String(COPYRIGHT_START_YEAR);
 
 const websiteTitle = await getSiteWebsiteTitle();
-const REPO_URL = "https://github.com/platomat/hautoo/";
-const REPO_TITLE = `${websiteTitle} auf GitHub (platomat/hautoo)`;
+const githubRepo = getSiteConfig().general?.githubRepo?.trim() ?? "";
+const showGithub = Boolean(githubRepo);
+const repoUrl = showGithub
+	? `https://github.com/${githubRepo.replace(/^\/+|\/+$/g, "")}/`
+	: "";
+const repoTitle = showGithub
+	? `${websiteTitle} auf GitHub (${githubRepo.replace(/^\/+|\/+$/g, "")})`
+	: "";
+const homeLabel = `${websiteTitle} Startseite`;
 
 const pages = await getPublicPages();
 const legalItems = await getResolvedMenu(MENU_FOOTER_LEGAL, pages);
@@ -34,22 +41,35 @@ function isCurrent(href: string): boolean {
 			{" "}
 			<span>{websiteTitle} ∙ One of <a href="https://platomat.com/">PlatoMat</a></span>
 		</p>
-		<a
-			class="site-footer__github"
-			href={REPO_URL}
-			title={REPO_TITLE}
-			aria-label={REPO_TITLE}
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			<img
-				src={withBuildId("/img/github.svg")}
-				alt=""
-				width="28"
-				height="28"
-				decoding="async"
-			/>
-		</a>
+		{
+			showGithub ? (
+				<a
+					class="site-footer__center site-footer__github"
+					href={repoUrl}
+					title={repoTitle}
+					aria-label={repoTitle}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<img
+						src={withBuildId("/img/github.svg")}
+						alt=""
+						width="28"
+						height="28"
+						decoding="async"
+					/>
+				</a>
+			) : (
+				<a
+					class="site-footer__center site-footer__home"
+					href="/"
+					title={homeLabel}
+					aria-label={homeLabel}
+				>
+					<span class="site-footer__home-mark" aria-hidden="true" />
+				</a>
+			)
+		}
 		{
 			legalItems.length > 0 ? (
 				<nav class="site-footer__legal" aria-label="Rechtliches">

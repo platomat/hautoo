@@ -754,6 +754,12 @@ collections:
             required: false
             hint: "Optional für {{contact-email}} (Impressum/Datenschutz). Überschreibt CONTACT_EMAIL beim Build. Steht im öffentlichen Repo; leer lassen und ENV nutzen, wenn die Adresse nicht in Git soll."
             default: ""
+          - name: githubRepo
+            label: GitHub repository
+            widget: string
+            required: false
+            hint: "Optional owner/name für das Footer-Icon (z. B. platomat/hautoo). Leer = Site-Logo verlinkt auf die Startseite (typisch für Forks)."
+            default: ""
       - name: design
         label: Design
         file: src/content/settings/design.json
