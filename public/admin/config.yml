@@ -720,57 +720,6 @@ collections:
           - video-consent-reset
           - repodoc
 
-  # Redirects: each entry = one target, one or more source paths → public/_redirects at build.
-  - name: redirects
-    label: Weiterleitungen
-    label_singular: Weiterleitung
-    folder: src/content/redirects
-    create: true
-    slug:
-      template: "{{slug}}"
-      editable: true
-      hint: "Nur Dateiname im CMS; öffentliche URLs stehen in Quellen und Ziel."
-    extension: md
-    format: yaml-frontmatter
-    summary: "{{title}} → {{target}}"
-    hint: "Manuelle URL-Umleitungen (gelöscht/verschoben). Mehrere Quellen, ein Ziel. Beim Build → Cloudflare _redirects (301/302)."
-    fields:
-      - {
-          name: title,
-          label: Titel,
-          widget: string,
-          hint: "Nur im CMS (z. B. „Alter Artikel-Slug“).",
-        }
-      - name: sources
-        label: Quellen
-        widget: list
-        summary: "{{fields.source}}"
-        min: 1
-        allow_add: true
-        hint: "Eine oder mehrere Quell-Pfade (z. B. /alter-pfad/). Jede Quelle leitet auf das gleiche Ziel um."
-        field:
-          {
-            name: source,
-            label: Quelle,
-            widget: string,
-            hint: "Pfad ab / (ohne Domain).",
-          }
-      - {
-          name: target,
-          label: Ziel,
-          widget: string,
-          hint: "Ein Ziel-Pfad (/neuer-pfad/) oder absolute https-URL.",
-        }
-      - name: code
-        label: Statuscode
-        widget: select
-        default: 301
-        options:
-          - { label: "301 dauerhaft (empfohlen)", value: 301 }
-          - { label: "302 vorübergehend", value: 302 }
-        hint: "301 wenn Inhalt dauerhaft umgezogen ist."
-      - *field_modified_date
-
   # Menus: filename = slot id (main, footer-legal, …). Navigation is not driven by page flags.
   - name: menus
     label: Menüs
@@ -868,6 +817,56 @@ collections:
                   hint: "Optional am <a>-Link. Mehrere Klassen mit Leerzeichen.",
                 }
 
+# Redirects: each entry = one target, one or more source paths → public/_redirects at build.
+  - name: redirects
+    label: Weiterleitungen
+    label_singular: Weiterleitung
+    folder: src/content/redirects
+    create: true
+    slug:
+      template: "{{slug}}"
+      editable: true
+      hint: "Nur Dateiname im CMS; öffentliche URLs stehen in Quellen und Ziel."
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{title}} → {{target}}"
+    hint: "Manuelle URL-Umleitungen (gelöscht/verschoben). Mehrere Quellen, ein Ziel. Beim Build → Cloudflare _redirects (301/302)."
+    fields:
+      - {
+          name: title,
+          label: Titel,
+          widget: string,
+          hint: "Nur im CMS (z. B. „Alter Artikel-Slug“).",
+        }
+      - name: sources
+        label: Quellen
+        widget: list
+        summary: "{{fields.source}}"
+        min: 1
+        allow_add: true
+        hint: "Eine oder mehrere Quell-Pfade (z. B. /alter-pfad/). Jede Quelle leitet auf das gleiche Ziel um."
+        field:
+          {
+            name: source,
+            label: Quelle,
+            widget: string,
+            hint: "Pfad ab / (ohne Domain).",
+          }
+      - {
+          name: target,
+          label: Ziel,
+          widget: string,
+          hint: "Ein Ziel-Pfad (/neuer-pfad/) oder absolute https-URL.",
+        }
+      - name: code
+        label: Statuscode
+        widget: select
+        default: 301
+        options:
+          - { label: "301 dauerhaft (empfohlen)", value: 301 }
+          - { label: "302 vorübergehend", value: 302 }
+        hint: "301 wenn Inhalt dauerhaft umgezogen ist."
+      - *field_modified_date
 
   # Global settings (JSON files, like cdr-legal). Separate CMS entries per area.
   - name: settings
