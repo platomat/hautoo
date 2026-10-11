@@ -318,6 +318,13 @@ export const siteColorsConfigSchema = z.object({
 	actionHover: cssHexColor.default("#56d9a0"),
 	actionMuted: cssHexColor.default("#1a3d2e"),
 	danger: cssHexColor.default("#e57373"),
+	/**
+	 * Nav flyout / accordion panel. Defaults to solid surface so entries stay
+	 * readable when header chrome uses translucent glass over page backgrounds.
+	 */
+	submenuBg: cssHexColor.default("#1a211e"),
+	/** Default link color inside the submenu panel. */
+	submenuText: cssHexColor.default("#e8eeea"),
 });
 
 export type SiteColorsConfig = z.infer<typeof siteColorsConfigSchema>;

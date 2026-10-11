@@ -10,7 +10,9 @@
     "action": "#3dcf8e",
     "actionHover": "#56d9a0",
     "actionMuted": "#1a3d2e",
-    "danger": "#e57373"
+    "danger": "#e57373",
+    "submenuBg": "#1a211e",
+    "submenuText": "#e8eeea"
   },
   "typography": {
     "bodyFont": "ubuntu",

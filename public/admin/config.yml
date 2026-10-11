@@ -1065,6 +1065,19 @@ collections:
                 allowInput: true
                 default: "#e57373"
                 hint: "Fehler und destruktive Hinweise."
+              - name: submenuBg
+                label: Untermenü Hintergrund (submenu-bg)
+                widget: color
+                enableAlpha: true
+                allowInput: true
+                default: "#1a211e"
+                hint: "Hintergrund der Nav-Untermenüs (Desktop-Flyout und Mobile-Akkordeon). Standard: solide Fläche, damit Einträge über Glas-Header/Seiten-BG lesbar bleiben."
+              - name: submenuText
+                label: Untermenü Text (submenu-text)
+                widget: color
+                allowInput: true
+                default: "#e8eeea"
+                hint: "Textfarbe der Links im Untermenü (Hover bleibt Aktionsfarbe)."
           - name: typography
             label: Schrift
             widget: object

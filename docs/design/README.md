@@ -73,8 +73,10 @@ Redaktionell unter **Einstellungen → Design → Farbpalette** (`src/content/se
 | `--color-action-hover` | `actionHover` | `#56d9a0` | Hover-Zustand der Aktion |
 | `--color-action-muted` | `actionMuted` | `#1a3d2e` | dezenter Aktions-Hintergrund (z. B. Chip, Hover-Fläche) |
 | `--color-danger` | `danger` | `#e57373` | Fehler, destruktive Hinweise |
+| `--color-submenu-bg` | `submenuBg` (Alpha möglich) | `#1a211e` | Hintergrund Nav-Untermenü (Flyout / Akkordeon) |
+| `--color-submenu-text` | `submenuText` | `#e8eeea` | Textfarbe der Links im Untermenü |
 
-Wenn eine Seite/ein Artikel ein Hintergrundbild hat (`body.has-page-bg`), nutzen Header, Footer und Nav-Panels `--color-surface-glass` plus leichtes `backdrop-filter`, damit das Bild durchscheint.
+Wenn eine Seite/ein Artikel ein Hintergrundbild hat (`body.has-page-bg`), nutzen Header und Footer `--color-surface-glass` plus leichtes `backdrop-filter`. Das Nav-Untermenü nutzt eigene Farben (`submenuBg` / `submenuText`), damit Einträge über Glas lesbar bleiben ([#84](https://github.com/platomat/hautoo/issues/84)).
 
 ### Kurzüberblick
 

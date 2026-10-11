@@ -73,6 +73,8 @@ Globale Site-Einstellungen als **JSON-Dateien** (wie cdr-legal), kein Markdown-B
 | `design.colors.actionHover` | `--color-action-hover` | Hover der Aktion |
 | `design.colors.actionMuted` | `--color-action-muted` | Gedämpfter Aktions-Hintergrund |
 | `design.colors.danger` | `--color-danger` | Fehler / destruktiv |
+| `design.colors.submenuBg` | `--color-submenu-bg` | Untermenü-Hintergrund (Alpha möglich; [#84](https://github.com/platomat/hautoo/issues/84)) |
+| `design.colors.submenuText` | `--color-submenu-text` | Untermenü-Text |
 
 Umsetzung: `src/lib/site-colors.ts`, Inline-`:root` in `BaseLayout.astro`. Defaults wie bisher in `global.css`.
 

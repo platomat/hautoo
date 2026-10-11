@@ -110,5 +110,14 @@ export function buildSiteColorRootCss(
 		: hexToRgbaCss(colors.surface || DEFAULT_SITE_COLORS.surface, SURFACE_GLASS_ALPHA);
 	lines.push(`--color-surface-glass: ${glassCss};`);
 
+	const submenuBg = hexToRgbaCss(
+		colors.submenuBg?.trim() || DEFAULT_SITE_COLORS.submenuBg,
+	);
+	const submenuText = hexToRgbaCss(
+		colors.submenuText?.trim() || DEFAULT_SITE_COLORS.submenuText,
+	);
+	lines.push(`--color-submenu-bg: ${submenuBg};`);
+	lines.push(`--color-submenu-text: ${submenuText};`);
+
 	return `:root {\n\t${lines.join("\n\t")}\n}`;
 }
