@@ -6,7 +6,7 @@ modifiedDate: 2026-10-12
 bio: Ich bin Wasilij, **Der Sprechende Schnurbart**. Ich bin Software-Entwickler und bastle an Webseiten seit 2003. Mit **hautuu** zeige ich, wie man mit KI schnell eine Website erstellt, auch ohne Vorkenntnisse.
 socialLinks:
   - platform: website
-    url: https://wasilij.de/
+    url: https://platomat.com/
     label: Meine Webseite
 showSocialInHero: true
 ---
