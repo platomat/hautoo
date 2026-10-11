@@ -286,15 +286,18 @@ const headerStyle = [
 	}
 
 	/*
-	  Centered logo uses two rows from tablet up — sticky px heights would clip
-	  the nav row, so they become min-height only.
+	  Centered logo = two rows from tablet up. Single-row CMS heights would clip
+	  or leave no air; grow with content and add vertical padding.
 	*/
 	@media (min-width: 680px) {
+		.site-header--logo-center .site-header__inner,
 		.site-header--logo-center.site-header--sticky-desktop .site-header__inner,
 		.site-header--logo-center.site-header--sticky-desktop.is-stuck .site-header__inner,
 		.site-header--logo-center.site-header--sticky-tablet .site-header__inner,
 		.site-header--logo-center.site-header--sticky-tablet.is-stuck .site-header__inner {
+			min-height: 0;
 			height: auto;
+			padding-block: 0.75rem;
 		}
 	}
 </style>
@@ -386,8 +389,7 @@ const headerStyle = [
 				"nav nav nav";
 			align-items: center;
 			column-gap: 1rem;
-			row-gap: 0.35rem;
-			height: auto;
+			row-gap: 0.5rem;
 		}
 
 		.site-header--logo-center .site-header__brand {
