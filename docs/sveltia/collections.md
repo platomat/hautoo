@@ -14,12 +14,12 @@ Zurück zur [Sveltia-Übersicht](./README.md). Shared Field-Partials: [CMS Field
 | Autoren | `authors` | umgesetzt (#77) |
 | Glossar | `glossar` | umgesetzt (#6) |
 | Bausteine | `blocks` | umgesetzt |
-| Weiterleitungen | `redirects` | umgesetzt (#76) |
 | Menüs | `menus` | umgesetzt (#13) |
+| Weiterleitungen | `redirects` | umgesetzt (#76) |
 
 ## Slug bearbeiten
 
-Bei Ordner-Collections (`pages`, `articles`, `categories`, `tags`, `authors`, `glossar`, `blocks`, `redirects`, `menus`) legt `slug` in `public/admin/config.yml` den Datei-/Ordnernamen fest (Template `{{slug}}` = slugifizierter Titel bzw. Identifier).
+Bei Ordner-Collections (`pages`, `articles`, `categories`, `tags`, `authors`, `glossar`, `blocks`, `menus`, `redirects`) legt `slug` in `public/admin/config.yml` den Datei-/Ordnernamen fest (Template `{{slug}}` = slugifizierter Titel bzw. Identifier).
 
 | | |
 | --- | --- |
