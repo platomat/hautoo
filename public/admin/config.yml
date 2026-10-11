@@ -623,6 +623,39 @@ collections:
         widget: markdown
         required: false
         hint: "Kurze Beschreibung (Markdown). Erscheint auf der Profilseite unter Name und Avatar."
+      - name: socialLinks
+        label: Social / Web
+        widget: list
+        required: false
+        collapsed: true
+        hint: "Beliebig viele Einträge (auch dieselbe Plattform mehrfach). URLs erscheinen auf dem Profil und als schema.org sameAs."
+        summary: "{{fields.platform}}: {{fields.url}}"
+        fields:
+          - name: platform
+            label: Plattform
+            widget: select
+            default: website
+            options:
+              - { label: Webseite, value: website }
+              - { label: YouTube, value: youtube }
+              - { label: Facebook, value: facebook }
+              - { label: Instagram, value: instagram }
+              - { label: Pinterest, value: pinterest }
+              - { label: LinkedIn, value: linkedin }
+              - { label: TikTok, value: tiktok }
+              - { label: X, value: x }
+              - { label: Mastodon, value: mastodon }
+              - { label: GitHub, value: github }
+              - { label: Sonstiges, value: other }
+          - name: url
+            label: URL
+            widget: string
+            hint: "Vollständige Adresse mit https://"
+          - name: label
+            label: Anzeigename
+            widget: string
+            required: false
+            hint: "Optional, z. B. eigener Text bei Webseite oder Sonstiges. Leer = Plattformname."
       - name: body
         label: Inhalt
         widget: markdown

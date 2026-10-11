@@ -54,7 +54,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **articles:** Screencast-Folgen und Beiträge. Relationen: 0..n **Kategorien**, **Tags**, **Autoren**; Video-Felder; URL `/artikel/<slug>/` ([#4](https://github.com/platomat/hautoo/issues/4)).
 - **categories:** Hierarchische Kategorien. Optional Parent; Relation von Artikeln; URL `/kategorien/<slug>/` ([#64](https://github.com/platomat/hautoo/issues/64)).
 - **tags:** Schlagworte. Relation von Artikeln; optional passender Glossar-Slug; URL `/tags/<slug>/` ([#5](https://github.com/platomat/hautoo/issues/5)).
-- **authors:** Autorenprofile (Name, Bio, Avatar/Gravatar; optional freier Inhalt mit Embeds statt Auto-Artikel-Listing). Relation von Artikeln; URL `/autoren/<slug>/` ([#77](https://github.com/platomat/hautoo/issues/77), [#85](https://github.com/platomat/hautoo/issues/85)).
+- **authors:** Autorenprofile (Name, Bio, Avatar/Gravatar; Social-/Web-URLs mit schema.org `sameAs`; optional freier Inhalt mit Embeds statt Auto-Artikel-Listing). Relation von Artikeln; URL `/autoren/<slug>/` ([#77](https://github.com/platomat/hautoo/issues/77), [#85](https://github.com/platomat/hautoo/issues/85), [#86](https://github.com/platomat/hautoo/issues/86)).
 - **glossar:** Begriffsseiten. Relationen: `relatedArticles`, `relatedTags`; URL `/glossar/<slug>/` ([#6](https://github.com/platomat/hautoo/issues/6)).
 - **menus:** Navigation (`main`, `footer-legal`, …) mit Label und Ziel ([#13](https://github.com/platomat/hautoo/issues/13)).
 - **blocks:** Wiederverwendbare Bausteine ohne eigene URL; Einbinden per Content-Komponente `{{block}}`.
@@ -131,6 +131,7 @@ Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Co
 
 - **SEO-Objekt** pro Page und Artikel: Tab-Titel, Meta-Description, Robots ([Folge 004](/artikel/folge-004-collection-pages/)).
 - **Open Graph und Twitter Cards**: Titel, Beschreibung, Canonical, optional OG-Bild aus dem Seitenhintergrund (1200×630).
+- **JSON-LD Person** auf Autor-Profilen inkl. `sameAs` aus Social-/Web-URLs ([#86](https://github.com/platomat/hautoo/issues/86)).
 - **Lesezeit** in Artikel-Meta und auf Listing-Karten.
 - **Sitemap** ohne Impressum, Datenschutz und `/admin`; Legal-Seiten mit **noindex**.
 

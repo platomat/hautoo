@@ -1,0 +1,47 @@
+---
+import {
+	authorSocialLinkLabel,
+	type AuthorSocialLink,
+} from "../cms/fields/author-social";
+
+interface Props {
+	links: AuthorSocialLink[];
+}
+
+const { links } = Astro.props;
+const items = links.filter((link) => link.url?.trim());
+---
+
+{
+	items.length > 0 && (
+		<nav class="author-social" aria-label="Web und Social Media">
+			<ul class="author-social__list list-plain">
+				{items.map((link) => (
+					<li>
+						<a
+							href={link.url.trim()}
+							target="_blank"
+							rel="noopener noreferrer me"
+						>
+							{authorSocialLinkLabel(link)}
+						</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+	)
+}
+
+<style>
+	.author-social {
+		margin: 0 0 2rem;
+	}
+
+	.author-social__list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1.25rem;
+		margin: 0;
+		padding: 0;
+	}
+</style>

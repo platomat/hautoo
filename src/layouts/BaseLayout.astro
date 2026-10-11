@@ -36,6 +36,8 @@ interface Props {
 	headCode?: string;
 	/** Raw HTML before `</body>` (pages CMS `footerCode`). */
 	footerCode?: string;
+	/** Optional Schema.org JSON-LD object or graph. */
+	jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const siteName = await getSiteWebsiteTitle();
@@ -54,9 +56,14 @@ const {
 	backgroundOverlay,
 	headCode,
 	footerCode,
+	jsonLd,
 } = Astro.props;
 const headCodeHtml = headCode?.trim() || undefined;
 const footerCodeHtml = footerCode?.trim() || undefined;
+const jsonLdScript =
+	jsonLd !== undefined
+		? JSON.stringify(jsonLd).replace(/</g, "\\u003c")
+		: undefined;
 const seo = resolveSeo(seoProp);
 
 const documentTitle = seo.seo_title?.trim() || title;
@@ -174,6 +181,14 @@ const faviconLinks = getFaviconLinks();
 			))
 		}
 		{headCodeHtml && <Fragment set:html={headCodeHtml} />}
+		{
+			jsonLdScript && (
+				<script
+					type="application/ld+json"
+					set:html={jsonLdScript}
+				/>
+			)
+		}
 		{/* After bundled CSS: Design → Farbpalette / Schrift must win over global.css. */}
 		<style is:inline set:html={siteColorRootCss} />
 		<style is:inline set:html={siteTypographyRootCss} />

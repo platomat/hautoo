@@ -1,5 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import { authorSocialLinkSchema } from "./cms/fields/author-social";
 import { modifiedDateSchema } from "./cms/fields/dates";
 import { menuSchema } from "./cms/fields/menu";
 import {
@@ -108,6 +109,8 @@ const authors = defineCollection({
 		gravatarUrl: z.string().trim().optional(),
 		/** Profile bio (Markdown); shown under name/avatar. */
 		bio: z.string().optional(),
+		/** Web / social profile URLs (repeatable; sameAs in Person JSON-LD). */
+		socialLinks: z.array(authorSocialLinkSchema).default([]),
 		modifiedDate: modifiedDateSchema,
 	}),
 });

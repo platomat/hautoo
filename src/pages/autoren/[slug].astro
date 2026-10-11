@@ -1,12 +1,14 @@
 ---
-import { Image } from "astro:assets";
+import { getImage, Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import ArticleListing from "../../components/ArticleListing.astro";
+import AuthorSocialLinks from "../../components/AuthorSocialLinks.astro";
 import CmsContent from "../../components/CmsContent.astro";
 import { getArticlesByAuthor } from "../../lib/articles";
 import {
+	getAuthorHref,
 	resolveAuthorAvatar,
 	type AuthorEntry,
 } from "../../lib/authors";
@@ -30,16 +32,47 @@ const avatar = resolveAuthorAvatar(author);
 const breadcrumbs = buildAuthorBreadcrumbs(author);
 const spacingStyle = contentSpacingStyle(resolveContentSpacing("authors"));
 const bio = author.data.bio?.trim() || "";
+const socialLinks = author.data.socialLinks ?? [];
 const hasBody = Boolean(author.body?.trim());
 const articleCount = articles.length;
 const articlesHeading =
 	articleCount === 1 ? "Artikel (1)" : `Artikel (${articleCount})`;
+
+const sameAs = socialLinks
+	.map((link) => link.url.trim())
+	.filter(Boolean);
+const profileUrl = Astro.site
+	? new URL(getAuthorHref(author), Astro.site).href
+	: undefined;
+let imageUrl: string | undefined;
+if (avatar && Astro.site) {
+	const optimized = await getImage({
+		src: avatar,
+		width: 400,
+		height: 400,
+		fit: "cover",
+		format: "jpg",
+	});
+	imageUrl = new URL(optimized.src, Astro.site).href;
+}
+const personJsonLd: Record<string, unknown> = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: author.data.title,
+};
+if (author.data.description?.trim()) {
+	personJsonLd.description = author.data.description.trim();
+}
+if (profileUrl) personJsonLd.url = profileUrl;
+if (imageUrl) personJsonLd.image = imageUrl;
+if (sameAs.length > 0) personJsonLd.sameAs = sameAs;
 ---
 
 <BaseLayout
 	title={author.data.title}
 	description={author.data.description}
 	modifiedDate={author.data.modifiedDate}
+	jsonLd={personJsonLd}
 >
 	<main class="page" style={spacingStyle}>
 		<PageHero
@@ -69,6 +102,7 @@ const articlesHeading =
 				</div>
 			)
 		}
+		<AuthorSocialLinks links={socialLinks} />
 		{
 			hasBody ? (
 				<div class="author-profile__content">
