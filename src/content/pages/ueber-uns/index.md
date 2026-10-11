@@ -29,11 +29,11 @@ seo:
 
 ## Repository
 
-Quellcode, Inhalte und Dokumentation liegen öffentlich auf [GitHub](/glossar/github/):
-
-[github.com/platomat/hautoo](https://github.com/platomat/hautoo/)
+Quellcode, Inhalte und Dokumentation liegen öffentlich auf [GitHub](/glossar/github/): [github.com/platomat/hautoo](https://github.com/platomat/hautoo/)
 
 Dort findest du auch [Issues](/glossar/issue/), den [Build](/glossar/build/)-Verlauf und die technische Doku unter [`docs/`](https://github.com/platomat/hautoo/tree/main/docs).
+
+{{button label="hautoo als Vorlage benutzen" href="https://github.com/platomat/hautoo/generate" target="_blank"}}
 
 ## Infos auf der Website
 

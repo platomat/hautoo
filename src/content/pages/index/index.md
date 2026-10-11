@@ -36,6 +36,8 @@ Schön, dass du da bist.
 
 Diese Website entsteht mit [Cursor](/glossar/cursor/), wird über [**GitHub**](/glossar/github/) versioniert und auf [Cloudflare](/glossar/cloudflare-pages/) ausgeliefert. Quellcode und Inhalte liegen im öffentlichen [Repository](/glossar/repository/): [github.com/platomat/hautoo](https://github.com/platomat/hautoo/).
 
+{{button label="hautoo als Vorlage benutzen" href="https://github.com/platomat/hautoo/generate" target="_blank"}}
+
 ## Was hier entsteht
 
 - Statische Website mit [**Astro**](/glossar/astro/)
