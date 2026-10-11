@@ -125,13 +125,12 @@ body.has-page-bg .site-nav__sub {
 
 /* Footer brand strip above copyright (#81) */
 .site-footer--has-brand {
-	border-top: none;
 	/* Chrome lives on brand gradient + solid bar; outer stays clear. */
 	background: transparent;
 }
 
 .site-footer__brand {
-	/* No top edge: fade from page into chrome. */
+	/* No top edge: fade from page into chrome (copyright keeps its own border). */
 	background: linear-gradient(
 		to bottom,
 		transparent 0%,
@@ -272,6 +271,23 @@ body.has-page-bg .site-nav__sub {
 /* Footer bar: copyright | GitHub or home logo | legal */
 .site-footer__bar {
 	background: var(--color-chrome);
+}
+
+/*
+ * Copyright top border:
+ * - full = browser width (on .site-footer when no brand, else on .site-footer__bar)
+ * - shell = only as wide as the content shell (.site-footer__bar-inner)
+ */
+.site-footer--bar-border-full:not(.site-footer--has-brand) {
+	border-top: 1px solid var(--color-border);
+}
+
+.site-footer--has-brand .site-footer__bar--border-full {
+	border-top: 1px solid var(--color-border);
+}
+
+.site-footer--bar-border-shell .site-footer__bar-inner {
+	border-top: 1px solid var(--color-border);
 }
 
 .site-footer__bar-inner {

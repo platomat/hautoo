@@ -1433,6 +1433,14 @@ collections:
                       - { label: Breit, value: wide }
                       - { label: Vollbreit, value: full }
                     hint: "Maximale Breite der Copyright-Zeile (42 / 64 / 80 rem)."
+                  - name: borderWidth
+                    label: Border-Breite
+                    widget: select
+                    default: full
+                    options:
+                      - { label: Volle Browserbreite, value: full }
+                      - { label: Wie Inhaltsbreite der Zeile, value: shell }
+                    hint: "Oberer Rand der Copyright-Zeile: über die ganze Viewport-Breite oder nur so breit wie die Zeile (Shell)."
           - name: hero
             label: Hero
             widget: object

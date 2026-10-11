@@ -82,6 +82,8 @@ const brandLogoSize = Math.min(160, Math.max(24, brand.logoSize || 44));
 const brandStyle = showBrand
 	? `--footer-brand-logo-size: ${brandLogoSize}px`
 	: undefined;
+const barBorderWidth =
+	footerBar.borderWidth === "shell" ? "shell" : "full";
 
 function isCurrent(href: string): boolean {
 	const key = href.replace(/\/$/, "") || "/";
@@ -90,7 +92,11 @@ function isCurrent(href: string): boolean {
 ---
 
 <footer
-	class:list={["site-footer", showBrand && "site-footer--has-brand"]}
+	class:list={[
+		"site-footer",
+		showBrand && "site-footer--has-brand",
+		`site-footer--bar-border-${barBorderWidth}`,
+	]}
 	style={brandStyle}
 >
 	{
@@ -177,7 +183,12 @@ function isCurrent(href: string): boolean {
 			</div>
 		)
 	}
-	<div class="site-footer__bar">
+	<div
+		class:list={[
+			"site-footer__bar",
+			`site-footer__bar--border-${barBorderWidth}`,
+		]}
+	>
 		<div class:list={["shell-inner", barShellClass, "site-footer__bar-inner"]}>
 			<p class="site-footer__copy text-sm text-muted">
 				<span>© {copyrightYears}</span>
@@ -280,12 +291,10 @@ function isCurrent(href: string): boolean {
 	.site-footer {
 		margin-top: auto;
 		background: var(--color-chrome);
-		border-top: 1px solid var(--color-border);
 	}
 
-	/* Brand strip: no top border; chrome via gradient (see global.css). */
+	/* Brand strip: no top border on outer footer; chrome via gradient (global.css). */
 	.site-footer--has-brand {
 		background: transparent;
-		border-top: none;
 	}
 </style>

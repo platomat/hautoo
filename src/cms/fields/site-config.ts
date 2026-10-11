@@ -150,10 +150,21 @@ export const siteFooterBrandConfigSchema = z.object({
 
 export type SiteFooterBrandConfig = z.infer<typeof siteFooterBrandConfigSchema>;
 
+/**
+ * Top border of the copyright row: full viewport or only the content shell.
+ */
+export const footerBarBorderWidthSchema = z.enum(["full", "shell"]);
+
+export type FooterBarBorderWidth = z.infer<typeof footerBarBorderWidthSchema>;
+
 /** Copyright row under the brand strip. */
 export const siteFooterBarConfigSchema = z.object({
 	/** Inner shell max-width (default / wide / full). */
 	contentWidth: contentWidthSchema.default("wide"),
+	/**
+	 * Top border span: `full` = browser width (classic), `shell` = content width.
+	 */
+	borderWidth: footerBarBorderWidthSchema.default("full"),
 });
 
 export type SiteFooterBarConfig = z.infer<typeof siteFooterBarConfigSchema>;

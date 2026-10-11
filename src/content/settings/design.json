@@ -90,7 +90,8 @@
       "logoSize": 44
     },
     "bar": {
-      "contentWidth": "wide"
+      "contentWidth": "wide",
+      "borderWidth": "full"
     }
   },
   "hero": {

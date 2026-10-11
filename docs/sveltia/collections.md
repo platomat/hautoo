@@ -119,6 +119,7 @@ Brand-Streifen oberhalb der Copyright-Zeile (Copyright bleibt unter General → 
 | `design.footer.brand.menu` | Menü-Slug (Standard `footer`, nicht `footer-legal`) | `footer` |
 | `design.footer.brand.blocks` | Liste `{ id, enabled }`; Reihenfolge per Drag-and-Drop; `id`: `logo` / `description` / `menu` | Logo, Beschreibung, Menü (je an) |
 | `design.footer.bar.contentWidth` | Shell-Breite der Copyright-Zeile | `wide` |
+| `design.footer.bar.borderWidth` | Oberer Rand: `full` (Browserbreite) oder `shell` (wie Inhaltsbreite) | `full` |
 
 Logo aus `general.logos.footer` (Fallback Header). Beschreibung = `websiteDescription`. Umsetzung: `SiteFooter.astro` / `SiteHeader.astro` (Header-`contentWidth`).
 
