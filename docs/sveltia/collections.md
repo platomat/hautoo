@@ -122,23 +122,23 @@ Lokale Überschreibung an **Seiten** und **Artikeln**: Objekt `hero` mit `textAl
 
 Eintrag ohne `toc.show` nutzt den globalen Default. Lokales `toc.show: true` / `false` überschreibt. Fehlende `toc.levels` / `toc.title` fallen auf die globalen Werte zurück (`resolveTocForCollection` in `site-config.ts`).
 
-### Einstellungen → Content → Breite (#59)
+### Einstellungen → Design → Inhaltsbreite (#59)
 
 | Feld | Bedeutung |
 | --- | --- |
-| `content.width.pages` | Default-Inhaltsbreite für Seiten (`default` / `wide` / `full`) |
-| `content.width.articles` | dasselbe für Artikel |
+| `design.width.pages` | Default-Inhaltsbreite für Seiten (`default` / `wide` / `full`) |
+| `design.width.articles` | dasselbe für Artikel |
 
 Pro Eintrag optional `layout.contentWidth` (gleiche Werte). Leer = globaler Default; ohne Feld und mit Listing-Embed → automatisch `wide` (`resolveContentWidth`). CSS: Lesespalte 42rem, breit 64rem, vollbreit 80rem.
 
-### Einstellungen → Content → Abstand (#73)
+### Einstellungen → Design → Abstand (#73)
 
 | Feld | Bedeutung |
 | --- | --- |
-| `content.spacing.<collection>.afterHero` | Abstand unter dem Hero (rem), Default 2.5 |
-| `content.spacing.<collection>.beforeFooter` | Unterer Seitenabstand vor Footer (rem), Default 4 |
+| `design.spacing.<collection>.afterHero` | Abstand unter dem Hero (rem), Default 2.5 |
+| `design.spacing.<collection>.beforeFooter` | Unterer Seitenabstand vor Footer (rem), Default 4 |
 
-Collections: `pages`, `articles`, `categories`, `tags`, `glossar`. Pro Seite/Artikel optional `layout.afterHero` / `layout.beforeFooter` (Gruppe Inhaltsbreite). Resolve: `resolveContentSpacing` → CSS-Variablen am `.page`.
+Collections: `pages`, `articles`, `categories`, `tags`, `authors`, `glossar`. Pro Seite/Artikel optional `layout.afterHero` / `layout.beforeFooter` (Gruppe Inhaltsbreite). Resolve: `resolveContentSpacing` → CSS-Variablen am `.page`.
 
 ## Collection `menus` (umgesetzt)
 
@@ -204,9 +204,9 @@ Weitere Menüs (z. B. zusätzliche Footer-Zeilen) = neue Datei mit eigenem Slu
 | `toc.show` | nein | TOC an/aus; leer = globaler Default (`content.toc.pages`) |
 | `toc.levels` | nein | `h2` / `h3` / `h4`; leer = global |
 | `toc.title` | nein | TOC-Überschrift; leer = global |
-| `layout.contentWidth` | nein | `default` / `wide` / `full`; leer = global (`content.width.pages`) |
-| `layout.afterHero` | nein | Abstand unter Hero (rem); leer = `content.spacing.pages` |
-| `layout.beforeFooter` | nein | Abstand vor Footer (rem); leer = `content.spacing.pages` |
+| `layout.contentWidth` | nein | `default` / `wide` / `full`; leer = global (`design.width.pages`) |
+| `layout.afterHero` | nein | Abstand unter Hero (rem); leer = `design.spacing.pages` |
+| `layout.beforeFooter` | nein | Abstand vor Footer (rem); leer = `design.spacing.pages` |
 | `headCode` | nein | HTML-Fragmente vor `</head>` (`<style>` / `<script>` gemischt möglich; Highlighting fest HTML) |
 | `footerCode` | nein | HTML-Fragmente vor `</body>` (Highlighting fest HTML) |
 | Body | ja | Markdown-Inhalt |
@@ -361,9 +361,9 @@ Beispiel: Quellen `/alter-slug/` und `/noch-alter/` → Ziel `/neuer-slug/` mit 
 | `toc.show` | nein | TOC an/aus; leer = globaler Default (`content.toc.articles`) |
 | `toc.levels` | nein | `h2` / `h3` / `h4`; leer = global |
 | `toc.title` | nein | TOC-Überschrift; leer = global |
-| `layout.contentWidth` | nein | `default` / `wide` / `full`; leer = global (`content.width.articles`) |
-| `layout.afterHero` | nein | Abstand unter Hero (rem); leer = `content.spacing.articles` |
-| `layout.beforeFooter` | nein | Abstand vor Footer (rem); leer = `content.spacing.articles` |
+| `layout.contentWidth` | nein | `default` / `wide` / `full`; leer = global (`design.width.articles`) |
+| `layout.afterHero` | nein | Abstand unter Hero (rem); leer = `design.spacing.articles` |
+| `layout.beforeFooter` | nein | Abstand vor Footer (rem); leer = `design.spacing.articles` |
 | `seo` | ja (CMS) | SEO-Partial |
 | Body | ja | Markdown |
 

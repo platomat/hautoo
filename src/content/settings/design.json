@@ -98,5 +98,35 @@
       "breadcrumbSeparator": "/",
       "borderBottom": false
     }
+  },
+  "width": {
+    "pages": "default",
+    "articles": "default"
+  },
+  "spacing": {
+    "pages": {
+      "afterHero": 6,
+      "beforeFooter": 6
+    },
+    "articles": {
+      "afterHero": 6,
+      "beforeFooter": 6
+    },
+    "categories": {
+      "afterHero": 6,
+      "beforeFooter": 6
+    },
+    "tags": {
+      "afterHero": 6,
+      "beforeFooter": 6
+    },
+    "authors": {
+      "afterHero": 6,
+      "beforeFooter": 6
+    },
+    "glossar": {
+      "afterHero": 6,
+      "beforeFooter": 6
+    }
   }
 }

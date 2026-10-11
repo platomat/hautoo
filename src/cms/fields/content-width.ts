@@ -17,7 +17,7 @@ export const entrySpacingRemSchema = z.coerce.number().min(0).max(12).optional()
 export const entryLayoutSchema = z
 	.object({
 		contentWidth: contentWidthSchema.optional(),
-		/** Gap below hero before TOC/body (rem). Omit = global Content → Abstand. */
+		/** Gap below hero before TOC/body (rem). Omit = global Design → Abstand. */
 		afterHero: entrySpacingRemSchema,
 		/** Bottom padding of `.page` before footer (rem). Omit = global. */
 		beforeFooter: entrySpacingRemSchema,

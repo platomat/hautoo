@@ -33,9 +33,16 @@ export type { HeroCollectionKey };
  * Loaded via direct import — not an Astro content collection.
  */
 export function getSiteConfig(): SiteConfig {
+	const contentObj = contentRaw as Record<string, unknown>;
+	const designObj = designRaw as Record<string, unknown>;
+	// width/spacing live under Design; fall back to legacy Content JSON keys.
 	return siteConfigSchema.parse({
 		general: siteGeneralConfigSchema.parse(generalRaw),
-		design: siteDesignConfigSchema.parse(designRaw),
+		design: siteDesignConfigSchema.parse({
+			...designObj,
+			width: designObj.width ?? contentObj.width,
+			spacing: designObj.spacing ?? contentObj.spacing,
+		}),
 		content: siteContentConfigSchema.parse(contentRaw),
 	});
 }

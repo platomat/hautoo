@@ -206,7 +206,7 @@ collections:
         collapsed: true
         required: true
         default: {}
-        hint: "Breite und Abstände. Felder leer = Defaults unter Einstellungen → Content → Breite / Abstand."
+        hint: "Breite und Abstände. Felder leer = Defaults unter Einstellungen → Design → Inhaltsbreite / Abstand."
         fields:
           - name: contentWidth
             label: Spaltenbreite
@@ -216,7 +216,7 @@ collections:
               - { label: Standard (Lesespalte), value: default }
               - { label: Breit, value: wide }
               - { label: Vollbreit, value: full }
-            hint: "Leer = globale Config (Content → Breite). Listing-Embeds wählen ohne gesetztes Feld automatisch „Breit“."
+            hint: "Leer = globale Config (Design → Inhaltsbreite). Listing-Embeds wählen ohne gesetztes Feld automatisch „Breit“."
           - name: afterHero
             label: Abstand unter Hero (rem)
             widget: number
@@ -225,7 +225,7 @@ collections:
             max: 12
             step: 0.25
             required: false
-            hint: "Leer = Content → Abstand für diese Collection. Abstand zwischen Hero und TOC/Inhalt."
+            hint: "Leer = Design → Abstand für diese Collection. Abstand zwischen Hero und TOC/Inhalt."
           - name: beforeFooter
             label: Abstand vor Footer (rem)
             widget: number
@@ -234,7 +234,7 @@ collections:
             max: 12
             step: 0.25
             required: false
-            hint: "Leer = Content → Abstand für diese Collection. Unterer Innenabstand der Seite vor dem Footer."
+            hint: "Leer = Design → Abstand für diese Collection. Unterer Innenabstand der Seite vor dem Footer."
       - name: body
         label: Inhalt
         widget: markdown
@@ -1442,6 +1442,79 @@ collections:
                     default: false
                     hint: "1px Linie unter dem Hero-Block."
 
+          - name: width
+            label: Inhaltsbreite
+            widget: object
+            collapsed: false
+            hint: "Default-Breite, wenn Seite/Artikel kein eigenes Feld setzt und kein Listing-Embed die Breite auf „breit“ hebt."
+            fields:
+              - name: pages
+                label: Seiten (Standard)
+                widget: select
+                options:
+                  - { label: Standard (Lesespalte), value: default }
+                  - { label: Breit, value: wide }
+                  - { label: Vollbreit, value: full }
+                default: default
+              - name: articles
+                label: Artikel (Standard)
+                widget: select
+                options:
+                  - { label: Standard (Lesespalte), value: default }
+                  - { label: Breit, value: wide }
+                  - { label: Vollbreit, value: full }
+                default: default
+          - name: spacing
+            label: Abstand
+            widget: object
+            collapsed: false
+            hint: "Vertikaler Abstand unter dem Hero und vor dem Footer, pro Collection. Einzelne Seiten/Artikel überschreiben unter Inhaltsbreite."
+            fields:
+              - name: pages
+                label: Seiten
+                widget: object
+                fields: &fields_spacing_collection
+                  - name: afterHero
+                    label: Unter Hero (rem)
+                    widget: number
+                    value_type: float
+                    min: 0
+                    max: 12
+                    step: 0.25
+                    default: 2.5
+                    required: true
+                    hint: "Abstand zwischen Hero und TOC/Inhalt."
+                  - name: beforeFooter
+                    label: Vor Footer (rem)
+                    widget: number
+                    value_type: float
+                    min: 0
+                    max: 12
+                    step: 0.25
+                    default: 4
+                    required: true
+                    hint: "Unterer Innenabstand der Seite vor dem Footer."
+              - name: articles
+                label: Artikel
+                widget: object
+                fields: *fields_spacing_collection
+              - name: categories
+                label: Kategorien
+                widget: object
+                fields: *fields_spacing_collection
+              - name: tags
+                label: Tags
+                widget: object
+                fields: *fields_spacing_collection
+              - name: authors
+                label: Autoren
+                widget: object
+                fields: *fields_spacing_collection
+              - name: glossar
+                label: Glossar
+                widget: object
+                fields: *fields_spacing_collection
+
       - name: content
         label: Content
         file: src/content/settings/content.json
@@ -1495,28 +1568,6 @@ collections:
                     label: TOC-Titel
                     widget: string
                     default: Inhalt
-          - name: width
-            label: Inhaltsbreite
-            widget: object
-            collapsed: false
-            hint: "Default-Breite, wenn Seite/Artikel kein eigenes Feld setzt und kein Listing-Embed die Breite auf „breit“ hebt."
-            fields:
-              - name: pages
-                label: Seiten (Standard)
-                widget: select
-                options:
-                  - { label: Standard (Lesespalte), value: default }
-                  - { label: Breit, value: wide }
-                  - { label: Vollbreit, value: full }
-                default: default
-              - name: articles
-                label: Artikel (Standard)
-                widget: select
-                options:
-                  - { label: Standard (Lesespalte), value: default }
-                  - { label: Breit, value: wide }
-                  - { label: Vollbreit, value: full }
-                default: default
           - name: media
             label: Medien
             widget: object
@@ -1553,53 +1604,3 @@ collections:
                   - { label: Eckig, value: square }
                 default: round
                 required: true
-          - name: spacing
-            label: Abstand
-            widget: object
-            collapsed: false
-            hint: "Vertikaler Abstand unter dem Hero und vor dem Footer, pro Collection. Einzelne Seiten/Artikel überschreiben unter Inhaltsbreite."
-            fields:
-              - name: pages
-                label: Seiten
-                widget: object
-                fields: &fields_spacing_collection
-                  - name: afterHero
-                    label: Unter Hero (rem)
-                    widget: number
-                    value_type: float
-                    min: 0
-                    max: 12
-                    step: 0.25
-                    default: 2.5
-                    required: true
-                    hint: "Abstand zwischen Hero und TOC/Inhalt."
-                  - name: beforeFooter
-                    label: Vor Footer (rem)
-                    widget: number
-                    value_type: float
-                    min: 0
-                    max: 12
-                    step: 0.25
-                    default: 4
-                    required: true
-                    hint: "Unterer Innenabstand der Seite vor dem Footer."
-              - name: articles
-                label: Artikel
-                widget: object
-                fields: *fields_spacing_collection
-              - name: categories
-                label: Kategorien
-                widget: object
-                fields: *fields_spacing_collection
-              - name: tags
-                label: Tags
-                widget: object
-                fields: *fields_spacing_collection
-              - name: authors
-                label: Autoren
-                widget: object
-                fields: *fields_spacing_collection
-              - name: glossar
-                label: Glossar
-                widget: object
-                fields: *fields_spacing_collection

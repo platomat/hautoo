@@ -170,11 +170,11 @@ Globale Defaults unter **Einstellungen → Content → TOC** (Seiten / Artikel: 
 
 ### Inhaltsbreite
 
-Drei Stufen über CMS **Content → Breite** (Default) und pro Seite/Artikel `layout.contentWidth`: **Standard** (42rem), **Breit** (64rem), **Vollbreit** (80rem). Ohne lokales Feld und mit Listing-Embed wird automatisch breit gewählt.
+Drei Stufen über CMS **Design → Inhaltsbreite** (Default) und pro Seite/Artikel `layout.contentWidth`: **Standard** (42rem), **Breit** (64rem), **Vollbreit** (80rem). Ohne lokales Feld und mit Listing-Embed wird automatisch breit gewählt.
 
 ### Inhaltsabstand (Hero / Footer)
 
-Global unter **Content → Abstand** pro Collection (`afterHero`, `beforeFooter` in rem). Seiten und Artikel überschreiben in der Gruppe **Inhaltsbreite**. CSS: `--page-space-after-hero` (`.page-hero` margin-bottom), `--page-space-before-footer` (`.page` padding-bottom).
+Global unter **Design → Abstand** pro Collection (`afterHero`, `beforeFooter` in rem). Seiten und Artikel überschreiben in der Gruppe **Inhaltsbreite**. CSS: `--page-space-after-hero` (`.page-hero` margin-bottom), `--page-space-before-footer` (`.page` padding-bottom).
 
 ### Mobile-Navigation (Burger)
 

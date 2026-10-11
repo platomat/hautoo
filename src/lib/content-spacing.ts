@@ -17,7 +17,7 @@ export type EntryLayoutSpacing = {
 export type ResolvedContentSpacing = SiteSpacingCollectionConfig;
 
 /**
- * Merge entry `layout` spacing with Content → Abstand for that collection.
+ * Merge entry `layout` spacing with Design → Abstand for that collection.
  * Missing local values → collection defaults.
  */
 export function resolveContentSpacing(
@@ -26,7 +26,7 @@ export function resolveContentSpacing(
 ): ResolvedContentSpacing {
 	const config = getSiteConfig();
 	const globalForCollection =
-		config.content?.spacing?.[collection] ?? DEFAULT_SITE_SPACING_COLLECTION;
+		config.design?.spacing?.[collection] ?? DEFAULT_SITE_SPACING_COLLECTION;
 	const local = entry?.layout;
 	return {
 		afterHero:

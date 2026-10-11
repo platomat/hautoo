@@ -64,7 +64,7 @@ const pages = defineCollection({
 			 */
 			background: entryBackgroundSchema,
 			/**
-			 * Width + optional spacing. Omit fields = Content → Breite / Abstand,
+			 * Width + optional spacing. Omit fields = Design → Inhaltsbreite / Abstand,
 			 * or auto `wide` when the body has listing embeds.
 			 */
 			layout: entryLayoutSchema,
@@ -165,7 +165,7 @@ const articles = defineCollection({
 			videoPlacement: z.enum(["before", "after"]).default("before"),
 			seo: seoSchema.optional(),
 			/**
-			 * Width + optional spacing. Omit fields = Content → Breite / Abstand,
+			 * Width + optional spacing. Omit fields = Design → Inhaltsbreite / Abstand,
 			 * or auto `wide` when the body has listing embeds.
 			 */
 			layout: entryLayoutSchema,

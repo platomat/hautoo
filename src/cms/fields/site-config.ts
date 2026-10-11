@@ -192,7 +192,7 @@ export type SiteSpacingCollectionConfig = z.infer<
 	typeof siteSpacingCollectionSchema
 >;
 
-/** Per-collection content spacing (CMS Content → Abstand; same keys as Design → Hero). */
+/** Per-collection spacing (CMS Design → Abstand; same keys as Design → Hero). */
 export const siteSpacingByCollectionSchema = z.object({
 	pages: siteSpacingCollectionSchema.default({}),
 	articles: siteSpacingCollectionSchema.default({}),
@@ -326,6 +326,10 @@ export const siteDesignConfigSchema = z.object({
 		normalizeHeroByCollection,
 		siteHeroByCollectionSchema.default({}),
 	),
+	/** Default content column width (pages/articles). */
+	width: siteWidthConfigSchema.default({}),
+	/** Vertical gaps after hero / before footer per collection. */
+	spacing: siteSpacingByCollectionSchema.default({}),
 });
 
 export type SiteDesignConfig = z.infer<typeof siteDesignConfigSchema>;
@@ -352,8 +356,6 @@ export type SiteMediaConfig = z.infer<typeof siteMediaConfigSchema>;
 /** `src/content/settings/content.json` */
 export const siteContentConfigSchema = z.object({
 	toc: siteTocConfigSchema.default({}),
-	width: siteWidthConfigSchema.default({}),
-	spacing: siteSpacingByCollectionSchema.default({}),
 	media: siteMediaConfigSchema.default({}),
 	authors: siteAuthorsConfigSchema.default({}),
 });

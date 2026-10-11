@@ -181,7 +181,7 @@ body.is-nav-locked {
 .page {
 	max-width: var(--content-max-width);
 	margin: 0 auto;
-	/* --page-space-*: Content → Abstand / Eintrags-Override (layout). */
+	/* --page-space-*: Design → Abstand / Eintrags-Override (layout). */
 	padding: 2.5rem var(--shell-padding-inline)
 		var(--page-space-before-footer, 4rem);
 }

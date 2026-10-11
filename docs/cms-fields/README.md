@@ -6,13 +6,13 @@ Wiederverwendbare Feldgruppen für Sveltia und Astro.
 
 | Seite | Ort |
 | --- | --- |
-| Sveltia | Anchor `&field_entry_layout`; globale Defaults unter Config → Content → Breite / Abstand |
+| Sveltia | Anchor `&field_entry_layout`; globale Defaults unter Config → Design → Inhaltsbreite / Abstand |
 | Astro | `src/cms/fields/content-width.ts` (`entryLayoutSchema`), Resolve `src/lib/content-width.ts` / `src/lib/content-spacing.ts` |
 | Collections | `pages`, `articles` (Taxonomien nur globaler Abstand) |
 
 Breite: `layout.contentWidth` = `default` (42rem) · `wide` (64rem) · `full` (80rem). Leer = globaler Default; ohne Feld und mit Listing-Embed → `wide`.
 
-Abstand (rem, 0–12): `layout.afterHero` / `layout.beforeFooter`. Leer = Content → Abstand für die jeweilige Collection. CSS-Variablen `--page-space-after-hero` / `--page-space-before-footer` am `.page`.
+Abstand (rem, 0–12): `layout.afterHero` / `layout.beforeFooter`. Leer = Design → Abstand für die jeweilige Collection. CSS-Variablen `--page-space-after-hero` / `--page-space-before-footer` am `.page`.
 
 ## Status (`status`)
 
@@ -75,7 +75,7 @@ Auf **Seiten** und **Artikeln** folgen nach dem Änderungsdatum collapsible Obje
 | **Hero überschreiben** | `hero` | `textAlign`, `showBreadcrumbs`, `borderBottom` (Keys wie Design → Hero); leer = Collection-Default |
 | **TOC überschreiben** | `toc` | `show`, `title`, `levels`; leer = globaler Default |
 | **Seitenhintergrund einstellen** | `background` | `image`, `overlay`, `attribution` |
-| **Inhaltsbreite** | `layout` | `contentWidth`, `afterHero`, `beforeFooter`; leer = Content → Breite / Abstand |
+| **Inhaltsbreite** | `layout` | `contentWidth`, `afterHero`, `beforeFooter`; leer = Design → Inhaltsbreite / Abstand |
 
 Listen-Vorschau: Collection-Option `thumbnail: background.image` (Sveltia erkennt nested Images nicht automatisch).
 

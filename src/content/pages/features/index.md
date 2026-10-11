@@ -64,8 +64,8 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 
 - **Website-Titel**, optionale **Beschreibung**, **Footer-Copyright**, optional **Kontakt-E-Mail** und **GitHub-Repo** (General).
 - **Logos** (Header, optional Sticky, Footer) und **Favicons** (Standard, optional dunkel) aus der Mediathek (#79, #80).
-- **Design:** Farbpalette, Schrift, Sticky Header, Hero-Defaults pro Collection.
-- **Content:** TOC, Inhaltsbreite, Abstand Hero/Footer, Autoren-Anzeige (Platzierung, Avatar-Form).
+- **Design:** Farbpalette, Schrift, Sticky Header, Hero-Defaults, Inhaltsbreite und Abstand Hero/Footer pro Collection.
+- **Content:** TOC, Autoren-Anzeige (Platzierung, Avatar-Form), Medien (Video-Basis-URL).
 - Pro Seite/Artikel: lokale Überschreibung von Hero, TOC, Inhaltsbreite/Abstand; optional Head-/Footer-Code.
 
 ## Glossar, Taxonomien und Autoren (Seiten)
