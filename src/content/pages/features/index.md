@@ -85,7 +85,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 - **Open Graph und Twitter Cards**: Titel, Beschreibung, Canonical, optional OG-Bild aus dem Seitenhintergrund (1200×630).
 - **Lesezeit** in Artikel-Meta und auf der Karte im Listing.
 - **Sitemap** ohne Impressum, Datenschutz und `/admin`; Legal-Seiten mit **noindex**.
-- **Artikel-Übersicht** (`/artikel/`): Listing-Embed mit SEO-Feldern und konfigurierbaren Kartenfeldern (Titel, Teaser, Kategorien, Tags, Datum, Lesezeit); **Seitenleiste** mit hierarchischem Kategorie-Tree (`CategoriesTree`) und genutzten Tags.
+- **Artikel-Übersicht** (`/artikel/`): Listing-Embed mit SEO-Feldern und konfigurierbaren Kartenfeldern (Titel, Teaser, Kategorien, Tags, Datum, Lesezeit); **Seitenleiste** mit hierarchischem Kategorie-Tree (`CategoriesTree`) und genutzten Tags; auf Desktop sticky, wenn die Leiste in den Viewport passt.
 
 ## Design und Nutzung
 

@@ -20,6 +20,7 @@ const showTags = tags.length > 0;
 	(showCategories || showTags) && (
 		<aside
 			class="article-sidebar"
+			data-article-sidebar
 			aria-label={
 				showCategories && showTags
 					? "Kategorien und Tags"
@@ -81,6 +82,14 @@ const showTags = tags.length > 0;
 		border-inline-start: 1px solid var(--color-border);
 	}
 
+	@media (min-width: 1024px) {
+		.article-sidebar--sticky {
+			position: sticky;
+			top: var(--article-sidebar-sticky-top, 5rem);
+			align-self: flex-start;
+		}
+	}
+
 	.article-sidebar__section--divided {
 		margin-top: 1.15rem;
 		padding-top: 1.15rem;
@@ -126,3 +135,7 @@ const showTags = tags.length > 0;
 		}
 	}
 </style>
+
+<script>
+	import "../scripts/article-sidebar-sticky";
+</script>
