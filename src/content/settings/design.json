@@ -54,6 +54,7 @@
   },
   "header": {
     "logoPosition": "left",
+    "contentWidth": "wide",
     "minHeightDesktop": 64,
     "minHeightTablet": 64,
     "minHeightMobile": 56,
@@ -62,14 +63,16 @@
     "stickyMobile": true,
     "heightDesktop": 48,
     "heightTablet": 48,
-    "heightMobile": 40,
-    "contentWidth": "wide"
+    "heightMobile": 40
   },
   "footer": {
     "brand": {
       "enabled": true,
-      "direction": "row",
+      "direction": "stack",
       "align": "center",
+      "menuLayout": "row",
+      "contentWidth": "wide",
+      "logoSize": 44,
       "menu": "footer",
       "blocks": [
         {
@@ -84,14 +87,11 @@
           "id": "menu",
           "enabled": true
         }
-      ],
-      "menuLayout": "row",
-      "contentWidth": "wide",
-      "logoSize": 44
+      ]
     },
     "bar": {
       "contentWidth": "wide",
-      "borderWidth": "full"
+      "borderWidth": "shell"
     }
   },
   "hero": {
