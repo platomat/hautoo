@@ -409,9 +409,9 @@ Ja für `npm install`, `npm run dev` und `npm run build` lokal. Empfohlen: Versi
 
 Lädt die Pakete (Abhängigkeiten) aus `package.json` nach `node_modules`. [Glossar npm](/glossar/npm/), [Folge 018](/artikel/folge-018-node-npm/).
 
-### Wann muss ich `npm install` ausführen?
+### Muss ich jedes Mal npm install ausführen?
 
-Nach dem ersten [Clone](/glossar/clone/), auf einem neuen Rechner oder wenn `package.json` (oder das Lockfile) sich geändert hat. Nicht vor jedem `npm run dev`. Der Cursor-Agent weist dich meist darauf hin oder erledigt es. Cloudflare beim Build ebenfalls. [Folge 002](/artikel/folge-002-github-issues/), [Folge 018](/artikel/folge-018-node-npm/).
+Nein. Für die lokale Vorschau reicht in der Regel **`npm run dev`**, sobald `node_modules` einmal da ist. **`npm install`** nur bei Klon, geändertem `package.json` / `package-lock.json`, fehlendem `node_modules`, Node-Wechsel oder Fehlern wie „Cannot find module“. Nicht bei normalen Textänderungen oder wenn du den Dev-Server nur neu startest. Checkliste: [Folge 018](/artikel/folge-018-node-npm/). Cloudflare führt beim Build im Prinzip dasselbe wie `npm install` aus ([Folge 002](/artikel/folge-002-github-issues/)). Der Cursor-Agent weist dich bei Dependency-Änderungen meist darauf hin oder führt den Befehl selbst aus.
 
 ### Was ist der Unterschied zwischen `npm run dev` und `npm run build`?
 
