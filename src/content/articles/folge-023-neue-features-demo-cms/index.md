@@ -20,7 +20,7 @@ seo:
   seo_description: hautuu Features und Demo, Video-Consent, Autoren Gravatar, Einstellungen General Design Content, Breadcrumb, Sticky Header, Footer Drag-and-Drop. Folge 023.
 ---
 
-Viel passiert in [GitHub](/glossar/github/)-[Issues](/glossar/issue/) und [Milestones](/glossar/milestone/): bei hautuu sind in einem [Meilenstein](/glossar/milestone/) dutzende Tickets erledigt (rund 39 abgeschlossene Issues). Wichtiger für dich: **was die Site heute kann**. Dafür gibt es die [**Features-Seite**](/features/) und zum Vorschauen die [**Demo**](/features/demo/) (Parent: Features). Agenten-Output prüfst du wie in [Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/).
+Viel passiert in [GitHub](/glossar/github/)-[Issues](/glossar/issue/) und [Milestones](/glossar/milestone/): bei hautuu sind in einem Meilenstein dutzende Tickets erledigt (rund 39 abgeschlossene Issues). Wichtiger für dich: **was die Site heute kann**. Dafür gibt es die [**Features-Seite**](/features/) und zum Vorschauen die [**Demo**](/features/demo/) (eine Unterseite von Features). Agenten-Output prüfst du wie in [Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/).
 
 ## Demo: Markdown und Toolbar
 
