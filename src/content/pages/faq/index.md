@@ -47,7 +47,7 @@ Ja, das ist die Idee. Du brauchst Accounts, etwas Geduld und die Folgen Schritt 
 
 ### Wie starte ich mein eigenes Projekt von hautuu?
 
-Zwei Wege auf [GitHub](/glossar/github/): **[Template](/glossar/template/)** (Vorlage, auch **privates** Repo) über [hautoo als Vorlage](https://github.com/platomat/hautoo/generate), oder **[Fork](/glossar/fork/)** (bleibt bei öffentlichem Original **öffentlich**). Danach klonen, in Cursor Inhalte ersetzen, eigenes Hosting anbinden. [Folge 020](/artikel/folge-020-bausteine-fork/).
+Zwei Wege auf [GitHub](/glossar/github/): **[Template](/glossar/template/)** (Vorlage, auch **privates** Repo) über [hautoo als Vorlage](https://github.com/platomat/hautoo/generate), oder **[Fork](/glossar/fork/)** (bleibt bei öffentlichem Original **öffentlich**). Danach **dein** Repo klonen, in Cursor Inhalte ersetzen, eigenes Hosting anbinden. Updates vom Original nur per [Pull](/glossar/pull/) oder Merge, wenn bei hautoo wieder etwas geändert wurde. Schritt für Schritt privat: [Folge 024](/artikel/folge-024-github-template-privat/), Überblick: [Folge 020](/artikel/folge-020-bausteine-fork/).
 
 ### Brauche ich Programmierkenntnisse?
 
@@ -115,11 +115,11 @@ Ja, für Git, [Build](/glossar/build/)s in der Cloud und Downloads wie `npm inst
 
 ### Brauche ich Chrome für das CMS?
 
-Für [Sveltia](/glossar/sveltia/) online wird **Chrome/Chromium** empfohlen; Firefox klappt fürs [Backend](/glossar/backend/) oft nicht. Lokal: [Lokales Repository](/glossar/lokales-repository/) und [`npm run dev`](/glossar/npm/). [Folge 013](/artikel/folge-013-sveltia-pat/), [Folge 024](/artikel/folge-024-github-template-privat/).
+Für [Sveltia](/glossar/sveltia/) online wird **Chrome/Chromium** empfohlen; Firefox klappt fürs [Backend](/glossar/backend/) oft nicht. Lokal: Chromium (oder Chrome), [Lokales Repository](/glossar/lokales-repository/) und [`npm run dev`](/glossar/npm/); bis der [Worker](/glossar/cloudflare-worker/) für dein neues Repo steht, ist lokales Ändern oft der schnellere Weg. [Folge 013](/artikel/folge-013-sveltia-pat/), [Folge 024](/artikel/folge-024-github-template-privat/).
 
 ### Was ist Lokales Repository beim CMS-Login?
 
-Du wählst den **Projektordner** auf dem Rechner statt nur GitHub online. So bearbeitest du Inhalte unter `/admin/` lokal, bevor der [Worker](/glossar/cloudflare-worker/) für ein neues Repo läuft. [Glossar Lokales Repository](/glossar/lokales-repository/), [Folge 024](/artikel/folge-024-github-template-privat/).
+Du wählst den **Projektordner** auf dem Rechner statt nur GitHub online. So bearbeitest du Inhalte unter `/admin/` lokal, bevor der Worker für ein neues Repo läuft. [Glossar Lokales Repository](/glossar/lokales-repository/), [Folge 024](/artikel/folge-024-github-template-privat/).
 
 ### Ist hautuu nur eine Demo oder „echt“ live?
 
@@ -492,6 +492,10 @@ Collection **Weiterleitungen** im CMS: Quellpfade vom Root (`/ueber-uns/`), ein 
 ### Was ist Gravatar beim Autor-Avatar?
 
 Optional **Gravatar (E-Mail oder URL)** in der Collection **Autoren**; lokales Feld **Avatar** hat Vorrang. Zentraler Dienst unter gravatar.com, Datenschutz beachten. [Glossar Gravatar](/glossar/gravatar/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was räume ich nach dem Template-Start auf?
+
+Menü **Hauptmenü** aufräumen (z. B. **Glossar**, **Features**, **Demo** entfernen), [MIT-Lizenz](/glossar/mit-lizenz/)-Vorlagen-Seiten und -Artikel löschen, eigene Kategorien und Tags anlegen. [Folge 024](/artikel/folge-024-github-template-privat/).
 
 ### Wie passe ich Design und Abstände an?
 

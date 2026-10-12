@@ -17,7 +17,7 @@ background:
     Photo by <a href="https://unsplash.com/@kovalskihelga?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Olga Kovalski</a> on <a href="https://unsplash.com/photos/an-old-brick-building-with-a-tree-in-the-foreground-eAmNjd0Zbts?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 seo:
   seo_title: Features von hautuu
-  seo_description: 'Was auf hautoo.storyofai.net steht: 23 Folgen, Sveltia CMS mit Collections und Content-Komponenten, Demo-Seite, Hero, Inhaltsbreite, Sticky Header, Glossar, SEO und Cloudflare Deploy.'
+  seo_description: 'Was auf hautoo.storyofai.net steht: 24 Folgen, Sveltia CMS mit Collections und Content-Komponenten, Demo-Seite, Hero, Inhaltsbreite, Sticky Header, Glossar, SEO und Cloudflare Deploy.'
   index_visibility: index
   follow_visibility: follow
   noarchive: false
@@ -38,7 +38,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 
 ## Inhalte und Redaktion
 
-- **Screencast-Folgen als Artikel** (001 bis 023): How-tos zu [GitHub](/glossar/github/), [Cursor](/glossar/cursor/), [Cloudflare](/glossar/cloudflare-pages/), [Sveltia](/glossar/sveltia/) und Redaktion, mit Teaser, Tags und Querverweisen. Agenten-Output prüfen: [Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/). Demo und Einstellungen: [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+- **Screencast-Folgen als Artikel** (001 bis 024): How-tos zu [GitHub](/glossar/github/), [Cursor](/glossar/cursor/), [Cloudflare](/glossar/cloudflare-pages/), [Sveltia](/glossar/sveltia/) und Redaktion, mit Teaser, Tags und Querverweisen. Agenten-Output prüfen: [Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/). Demo und Einstellungen: [Folge 023](/artikel/folge-023-neue-features-demo-cms/). Eigenes Repo per Template privat: [Folge 024](/artikel/folge-024-github-template-privat/).
 - **Statische Seiten** (Collection `pages`): Startseite, Artikelübersicht, Tags, Autoren, Glossar, FAQ, Über mich (Autorprofil), Impressum, Datenschutz, diese Features-Seite und die [Demo](/features/demo/) (Parent: Features).
 - **Redaktionsregeln** im Repo (`docs/redaktion/`) und als [Cursor](/glossar/cursor/)-Regel: Schema, Stil, SEO-Felder, [Bausteine](/glossar/baustein/), Querverlinkung, PR-Checkliste.
 - **Transkript-basierte Folgen**: Speech-to-Text korrigieren, nichts erfinden, Quellkommentar im Artikel ([Folge 015](/artikel/folge-015-transkript-artikel/)).

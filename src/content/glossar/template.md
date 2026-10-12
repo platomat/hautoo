@@ -19,4 +19,4 @@ Das ist etwas anderes als ein [**Fork**](/glossar/fork/): Ein Fork einer öffent
 
 **Wichtig:** Repo **privat** heißt nur: Code und Inhalte auf GitHub sind nicht für alle lesbar. Ob deine **Website** im Internet erreichbar ist, entscheidest du beim Hosting (z. B. [Cloudflare Pages](/glossar/cloudflare-pages/)), nicht allein an diesem Schalter.
 
-hautuu als Vorlage: [github.com/platomat/hautoo/generate](https://github.com/platomat/hautoo/generate). Schritt für Schritt: [Folge 020](/artikel/folge-020-bausteine-fork/).
+hautuu als Vorlage: [github.com/platomat/hautoo/generate](https://github.com/platomat/hautoo/generate). Privat starten und aufräumen: [Folge 024](/artikel/folge-024-github-template-privat/). Überblick Fork vs. Template: [Folge 020](/artikel/folge-020-bausteine-fork/).

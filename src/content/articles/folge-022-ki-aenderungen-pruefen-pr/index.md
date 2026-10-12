@@ -61,7 +61,7 @@ Damit du (oder [Fork](/glossar/fork/)-Nutzer) sehen, **was die Site schon kann**
 - **Suche** im Header (Glossar und Inhalte finden, z. B. „Was ist [CSS](/glossar/css/)?“).
 - Angepasstes **Logo** mit Pfad-Animation und Transparenz-Effekt (Tablet/Mobil mitgedacht).
 
-Wenn du nur Inhalte und Farben tauschen willst: [Fork](/glossar/fork/) oder [Template](/glossar/template/) ([Folge 020](/artikel/folge-020-bausteine-fork/)). Demo und Einstellungen im Detail: [Folge 023](/artikel/folge-023-neue-features-demo-cms/). Bilder schlank halten: [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/).
+Eigenes Projekt: [Template](/glossar/template/) privat ([Folge 024](/artikel/folge-024-github-template-privat/)) oder [Fork](/glossar/fork/) ([Folge 020](/artikel/folge-020-bausteine-fork/)). Demo und Einstellungen: [Folge 023](/artikel/folge-023-neue-features-demo-cms/). Bilder schlank halten: [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/).
 
 ## Kurz merken
 
