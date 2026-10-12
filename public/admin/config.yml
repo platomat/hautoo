@@ -663,7 +663,7 @@ collections:
         widget: boolean
         required: false
         default: false
-        hint: "An: nach der Kurzbeschreibung im Hero. Aus: keine automatische Liste (per Embed „Autor Social-Links“ z. B. am Anfang des Inhalts setzen)."
+        hint: "An: Social-Links nach der Kurzbeschreibung im Hero. Unabhängig vom Embed „Autor Social-Links“ im Inhalt (beides möglich)."
       - name: body
         label: Inhalt
         widget: markdown

@@ -355,7 +355,7 @@ Beispiel: Quellen `/alter-slug/` und `/noch-alter/` → Ziel `/neuer-slug/` mit 
 | --- | --- |
 | Artikel-Karten | Embed `show` inkl. `displayAuthors` (opt-in) |
 | Artikel-Einzelseite | Content → Autoren: `articlePlacement` (`none` / `hero` / `after` / `both`), `avatarShape` (`round` / `square`) |
-| Profil | Avatar, Name, Bio; Social-Links im Hero nur bei `showSocialInHero`, sonst per `{{author-social}}`; dann `body` (CmsContent) oder Fallback „Artikel (N)“ mit Auto-Listing; `Person` JSON-LD mit `sameAs` |
+| Profil | Avatar, Name, Bio; Social-Links im Hero bei `showSocialInHero` (unabhängig von `{{author-social}}` im Inhalt); dann `body` (CmsContent) oder Fallback „Artikel (N)“ mit Auto-Listing; `Person` JSON-LD mit `sameAs` |
 
 ## Collection `articles` (umgesetzt)
 

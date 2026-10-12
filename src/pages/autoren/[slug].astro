@@ -35,12 +35,8 @@ const bio = author.data.bio?.trim() || "";
 const socialLinks = author.data.socialLinks ?? [];
 const showSocialInHero = author.data.showSocialInHero === true;
 const hasBody = Boolean(author.body?.trim());
-const contentHasAuthorSocial = /\{\{\s*author-social\b/.test(
-	`${bio}\n${author.body ?? ""}`,
-);
 const showAutoSocialInHero =
 	showSocialInHero &&
-	!contentHasAuthorSocial &&
 	socialLinks.some((link) => link.url?.trim());
 const articleCount = articles.length;
 const articlesHeading =
