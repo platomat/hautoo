@@ -499,7 +499,7 @@ Menü **Hauptmenü** aufräumen (z. B. **Glossar**, **Features**, **Demo** entfe
 
 ### Wie passe ich Design und Abstände an?
 
-Im CMS unter **Einstellungen** → **Design** (Farben, Header, Footer, [Hero](/glossar/hero/), Inhaltsbreite, Abstände in [rem](/glossar/rem/)) oder Issues an den Agenten. [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 003](/artikel/folge-003-erstes-design/), [Folge 005](/artikel/folge-005-astro-toolbar/).
+Im CMS unter **Einstellungen** → **Design** (Farben, [Header](/glossar/header/), [Footer](/glossar/footer/), [Hero](/glossar/hero/), Inhaltsbreite, Abstände in [rem](/glossar/rem/)) oder Issues an den Agenten. [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 003](/artikel/folge-003-erstes-design/), [Folge 005](/artikel/folge-005-astro-toolbar/).
 
 ### Was ist der Hero?
 

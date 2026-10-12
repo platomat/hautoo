@@ -57,7 +57,7 @@ OAuth läuft? Alten Token bei GitHub **revoken**, weniger Schlüssel im Umlauf.
 
 ## Menüs selbst bauen
 
-[Collection](/glossar/collection/) **menus**: z. B. `main`, Footer legal. Einträge mit Label, Link zur **Seite** oder freie **URL**, optional **Untermenü** (eine Ebene).
+[Collection](/glossar/collection/) **menus**: z. B. `main`, [Footer](/glossar/footer/) legal. Einträge mit Label, Link zur **Seite** oder freie **URL**, optional **Untermenü** (eine Ebene).
 
 Speichern im CMS → [Commit](/glossar/commit/) „Update menu …“ → [Cloudflare](/glossar/cloudflare-pages/) baut. Manchmal dauert der Hook einen Moment, unter Pages nach dem [Deployment](/glossar/deploy/) schauen („Retry“ (Erneut versuchen) baut denselben Commit nochmal, ersetzt keinen fehlenden [Build](/glossar/build/)).
 

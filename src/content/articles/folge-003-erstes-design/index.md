@@ -51,7 +51,7 @@ Schreib sie in Doku und `.cursor/rules/` (siehe `docs/cursor/README.md`):
 
 {{repodoc path="docs/design/README.md" title="Design & Erscheinungsbild" description="CSS-Variablen, Breakpoints und Layout-Regeln im Repo."}}
 
-Per [Issue](/glossar/issue/) kamen **Pages** (Start, Über uns, Impressum …; [Collections](/glossar/collection/): [Folge 004](/artikel/folge-004-collection-pages/)). Der **Footer** kriegt Copyright mit dynamischem Jahr (`2026` oder `2026 bis 2027`), Domain, Signatur.
+Per [Issue](/glossar/issue/) kamen **Pages** (Start, Über uns, Impressum …; [Collections](/glossar/collection/): [Folge 004](/artikel/folge-004-collection-pages/)). Der **[Footer](/glossar/footer/)** kriegt Copyright mit dynamischem Jahr (`2026` oder `2026 bis 2027`), Domain, Signatur.
 
 **Impressum** und **Datenschutz** nicht ins Hauptmenü, unten rechts. Copyright links. Auf dem Handy: untereinander, zentriert.
 

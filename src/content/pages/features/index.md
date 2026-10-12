@@ -78,7 +78,7 @@ Im Markdown über die Sveltia-Toolbar einfügbar; Speichern als `{{…}}`-Zeile;
 - **Trennlinie** (`{{separator …}}`): Horizontale Linie mit Höhe, Breite und Design-Token-Farbe.
 - **Abstandshalter** (`{{spacer …}}`): Vertikaler Leerraum in Pixeln ohne sichtbare Linie.
 - **Kontakt-E-Mail** (`{{contact-email}}`): Adresse aus General → Contact email oder Build-Variable `CONTACT_EMAIL`, obfuscated im Markup.
-- **Logo** (`{{logo …}}`): Site-Logo aus General → Logos (Header/Sticky/Footer) mit Breite und Ausrichtung ([#79](https://github.com/platomat/hautoo/issues/79)).
+- **Logo** (`{{logo …}}`): Site-Logo aus General → Logos ([Header](/glossar/header/)/Sticky/Footer) mit Breite und Ausrichtung ([#79](https://github.com/platomat/hautoo/issues/79)).
 - **Video** (`{{video …}}`): YouTube/Vimeo mit Consent-Facade (Datenschutz-Link aus Privacy page); nach Freigabe füllt der Player die 16:9-Box. Alternativ selbst gehostete MP4 über R2.
 - **Video-Freischaltung widerrufen** (`{{video-consent-reset}}`): Button, der die gespeicherte Video-Einwilligung im Browser löscht.
 - **Repo-Dokument** (`{{repodoc …}}`): Hinweisbox mit Link zu einer Datei unter `docs/` auf GitHub (`main`).
@@ -91,7 +91,7 @@ Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Co
 
 ### Settings → General
 
-- **Website title** und optionale **Description** / Slogan ([#75](https://github.com/platomat/hautoo/issues/75)); Description auch im Footer-Brand.
+- **Website title** und optionale **Description** / Slogan ([#75](https://github.com/platomat/hautoo/issues/75)); Description auch im [Footer](/glossar/footer/)-Brand.
 - **Footer copyright:** Claim und Trenner links; **Show center mark** für das kleine Icon in der Mitte (GitHub-Icon bei gesetztem Repo, sonst Site-Logo).
 - **Contact email** für `{{contact-email}}` (sonst Build-Variable `CONTACT_EMAIL`).
 - **Privacy page:** Relation zur Datenschutz-Seite (u. a. Link in der Video-Einwilligung).
@@ -141,7 +141,7 @@ Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Co
 
 - **Suche im Header** (MiniSearch): statischer Suchindex beim Build.
 - **Dark Theme** mit [CSS-Variablen](/glossar/css-variable/), responsive Header mit Mobile-Menü.
-- **Farbpalette**, **Schrift**, **Sticky Header**, **Hero**, **Inhaltsbreite** und **Abstand** redaktionell unter Einstellungen → Design (siehe oben).
+- **Farbpalette**, **Schrift**, **[Sticky Header](/glossar/sticky-header/)**, **Hero**, **Inhaltsbreite** und **Abstand** redaktionell unter Einstellungen → Design (siehe oben).
 - **Brotkrumen** mit wählbarem Trenner; Start als Haus-Icon; UI-Icons für Permalink und Kategorie ([#31](https://github.com/platomat/hautoo/issues/31)).
 - **Breakpoints** und gemeinsame Layout-Hilfsklassen ([docs/design](https://github.com/platomat/hautoo/blob/main/docs/design/README.md)).
 - **Vollbild-Hintergrund** optional mit Overlay und **Bildnachweis**; Nachweise gesammelt im Impressum.
