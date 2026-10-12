@@ -2,7 +2,7 @@
 /**
  * Small UI icons (stroke, currentColor). Used in breadcrumbs, taxonomies, permalinks.
  */
-export type IconName = "home" | "permalink" | "category";
+export type IconName = "home" | "permalink" | "category" | "person";
 
 interface Props {
 	name: IconName;
@@ -49,6 +49,14 @@ const sizeCss = typeof size === "number" ? `${size}px` : size;
 	{
 		name === "category" && (
 			<path d="M3 7a2 2 0 0 1 2-2h3.5l2 2H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" />
+		)
+	}
+	{
+		name === "person" && (
+			<>
+				<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+				<circle cx="12" cy="7" r="4" />
+			</>
 		)
 	}
 </svg>
