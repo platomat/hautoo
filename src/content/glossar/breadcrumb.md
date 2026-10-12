@@ -12,6 +12,6 @@ seo:
   seo_description: Brotkrumen-Navigation auf hautuu im Hero, optional pro Seite. Zeigt Hierarchie wie Kategorien unter Werkzeuge.
 ---
 
-**Breadcrumb** (Brotkrumen-Navigation) zeigt, **wo** du auf der Site bist: z. B. [Features](/features/) → [Demo](/features/demo/) oder [Kategorien](/kategorien/) → Werkzeuge → Deploy & Hosting.
+**Breadcrumb** (Brotkrumen-Navigation) zeigt, **wo** du auf der Site bist: z. B. [Features](/features/) → [Demo](/features/demo/) oder [Kategorien](/kategorien/) → Werkzeuge → [Deploy](/glossar/deploy/) & Hosting.
 
-Auf hautuu steuert du das im **Hero** (Seitenkopf): global unter **Einstellungen** → **Design** → **Hero** mit **Brotkrumen anzeigen** und **Brotkrumen-Trenner** (`/`, `•`, `→`, `-` in `public/admin/config.yml`). Pro Seite **Hero überschreiben** → **Brotkrumen anzeigen**. Mehr: [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+Auf hautuu steuert du das im [**Hero**](/glossar/hero/) (Seitenkopf): global unter **Einstellungen** → **Design** → **Hero** mit **Brotkrumen anzeigen** und **Brotkrumen-Trenner** (`/`, `•`, `→`, `-` in `public/admin/config.yml`). Pro Seite **Hero überschreiben** → **Brotkrumen anzeigen**. Mehr: [Folge 023](/artikel/folge-023-neue-features-demo-cms/).

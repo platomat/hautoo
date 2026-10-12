@@ -24,7 +24,7 @@ Viel passiert in [GitHub](/glossar/github/)-[Issues](/glossar/issue/) und [Miles
 
 ## Demo: Markdown und Toolbar
 
-Die Demo ist eine normale **Seite** (`pages`). Du siehst **Markdown** (Listen, Codeblock, Tabelle) und die Toolbar-Komponenten:
+Die Demo ist eine normale **Seite** (`pages`). Du siehst **[Markdown](/glossar/markdown/)** (Listen, Codeblock, Tabelle) und die Toolbar-[Komponenten](/glossar/komponente/):
 
 - **Button** / **Button-Gruppe**<br>Stil ausgefüllt oder Kontur, Farbe z. B. primär oder „danger“, Ziel-URL, optional volle Breite auf Mobile
 - **Logo**<br>Site-Logo mit Breite und Ausrichtung
@@ -38,16 +38,16 @@ Die Demo ist eine normale **Seite** (`pages`). Du siehst **Markdown** (Listen, C
 
 **Tabellen im Inhalt:** kein eigener Toolbar-Button. Die Beispiel-Tabelle steht in der Markdown-Datei der Demo im Repo: [src/content/pages/demo/index.md](https://github.com/platomat/hautoo/blob/main/src/content/pages/demo/index.md) (Abschnitt mit der Pipe-Tabelle). Dort kannst du nachsehen, wie die Syntax aussieht.
 
-**Überschriften:** `h1` blendet das CMS aus (Titel steht im Hero); im Inhalt nur `h2`–`h6`. Größen und Schrift unter **Einstellungen** → **Design** → **Schrift**.
+**Überschriften:** `h1` blendet das [CMS](/glossar/cms/) aus (Titel steht im [Hero](/glossar/hero/)); im Inhalt nur `h2`–`h6`. Größen und Schrift unter **Einstellungen** → **Design** → **Schrift**.
 
 ## Video: Consent, Widerruf, selbst gehostete Dateien
 
-**YouTube / Vimeo** im Embed `{{video …}}`: Zuerst nur eine **Facade** (Platzhalter), **kein** Player und **keine** Verbindung zu Google/Vimeo. Besucher klicken **„Video von YouTube laden“** bzw. **„Video von Vimeo laden“** (Text in `VideoEmbed.astro`). Die Einwilligung gilt **site-weit** im Browser (`localStorage`, Schlüssel `hautuu-video-consent`): beim nächsten Video musst du nicht jedes Mal neu zustimmen.
+**YouTube / Vimeo** im Embed `{{video …}}`: Zuerst nur eine **Facade** (Platzhalter), **kein** Player und **keine** Verbindung zu Google/Vimeo. Besucher klicken **„Video von YouTube laden“** bzw. **„Video von Vimeo laden“** (Text in `VideoEmbed.astro`). Die Einwilligung ([Consent](/glossar/consent/)) gilt **site-weit** im Browser ([`localStorage`](/glossar/localstorage/), Schlüssel `hautuu-video-consent`): beim nächsten Video musst du nicht jedes Mal neu zustimmen.
 
 - **Privacy page** unter **Einstellungen** → **General**: Relation zur Datenschutz-Seite. Der Hinweis im Player verlinkt dorthin (Anker `eingebettete-videos`), auch wenn deine Seite anders heißt als „Datenschutz“.
 - **Widerruf:** Embed **Video-Freischaltung widerrufen** (`{{video-consent-reset}}`) auf der Datenschutz-Seite oder wo du willst. Danach sind Player wieder gesperrt, bis erneut geladen wird.
 
-**Selbst gehostete MP4** (`provider="file"`): kein YouTube/Vimeo-Consent-Schalter; Auslieferung z. B. über Cloudflare R2. In **Einstellungen** → **Content** → **Medien** → **Video-Basis-URL** (`videoBaseUrl`) die öffentliche Basis-URL setzen, damit große Dateien **nicht** in die Mediathek / ins [Git](/glossar/git/)-Repo wandern.
+**Selbst gehostete MP4** (`provider="file"`): kein YouTube/Vimeo-Consent-Schalter; Auslieferung z. B. über [Cloudflare R2](/glossar/cloudflare-r2/). In **Einstellungen** → **Content** → **Medien** → **Video-Basis-URL** (`videoBaseUrl`) die öffentliche Basis-URL setzen, damit große Dateien **nicht** in die Mediathek / ins [Git](/glossar/git/)-Repo wandern.
 
 Große Screencast-Dateien landen in einem **R2-Bucket** (Objektspeicher), nicht in GitHub. Du verbindest optional eine Subdomain (z. B. `https://media…/videos/`), trägst die Basis-URL einmal im CMS ein und bindest im Artikel z. B. `{{video provider="file" src="folge-001.mp4"}}` ein. Poster-Bilder bleiben klein in der Mediathek. YouTube/Vimeo laufen parallel mit Consent.
 
@@ -60,7 +60,7 @@ Große Screencast-Dateien landen in einem **R2-Bucket** (Objektspeicher), nicht 
 - **Seiten** / **Artikel**<br>Inhalt, Hero/TOC/Breite überschreiben, Hintergrund, Bildnachweis
 - **Kategorien**<br>Hierarchisch (Parent wie bei [WordPress](/glossar/wordpress/)), URLs `/kategorien/…`, Tree in der Artikel-Sidebar ([Glossar Kategorie](/glossar/kategorie/))
 - **Tags**<br>Schlagworte; am Artikel **Tags anzeigen** (Im Hero / Nach dem Inhalt / Hero und nach dem Inhalt)
-- **Autoren**<br>Mehrere pro Artikel; Profil unter `/autoren/<slug>/`
+- **Autoren**<br>Mehrere pro Artikel; Profil unter `/autoren/<slug>/` (der [Slug](/glossar/slug/) ist der Ordnername, z. B. `wasilij`)
 - **Glossar**<br>optional (Lern-Site)
 - **Bausteine**<br>z. B. Kontaktanschrift für Impressum + Datenschutz
 - **Menüs**<br>`main`, `footer` (Brand), `footer-legal` (Copyright-Zeile)
@@ -71,13 +71,13 @@ Große Screencast-Dateien landen in einem **R2-Bucket** (Objektspeicher), nicht 
 
 ## Autoren: Profil, Avatar, Gravatar, Social
 
-Collection **Autoren** (`public/admin/config.yml`):
+[Collection](/glossar/collection/) **Autoren** (`public/admin/config.yml`):
 
 - **Name**<br>Anzeigename
 - **Kurzbeschreibung**<br>Kurztext; erscheint im Hero der Profilseite
 - **Bio**<br>Längerer Markdown-Text unter dem Hero
 - **Avatar**<br>Bild aus der Mediathek (**hat Vorrang** vor Gravatar)
-- **Gravatar (E-Mail oder URL)**<br>E-Mail für [Gravatar](/glossar/gravatar/) oder direkte `https`-URL; Build kann nach `src/assets/authors/gravatar/` laden
+- **Gravatar (E-Mail oder URL)**<br>E-Mail für [Gravatar](/glossar/gravatar/) oder direkte `https`-URL; [Build](/glossar/build/) kann nach `src/assets/authors/gravatar/` laden
 - **Social / Web**<br>Plattform (Webseite, YouTube, …) + **URL** + optional **Anzeigename**
 - **Social-Links im Hero**<br>An: Icons nach der Kurzbeschreibung. Aus: nur per Embed **Autor Social-Links** im Inhalt
 - **Inhalt**<br>Freier Body auf der Profilseite (Embeds erlaubt)
@@ -109,14 +109,14 @@ Datei `src/content/settings/general.json`. CMS-Labels (Auszug):
 - **Contact email** (optional; steht im öffentlichen Repo, wenn gesetzt → besser **CONTACT_EMAIL** als [Umgebungsvariable](/glossar/env/), [Folge 019](/artikel/folge-019-impressum-komponenten/))
 - **Privacy page** (Datenschutz-Seite für Video-Hinweis)
 - **GitHub repository** (`owner/name`, nur mit Show center mark)
-- **Logos** → **Header** (oben, „Ruhe“), **Sticky Header** (nach Scrollen, kompaktere Leiste), **Footer** (Mitte/Brand; leer = Fallback wie Header)
-- **Favicons** → **Favicon** und **Favicon (dunkel)** für helles/dunkles Browser-Theme (nicht dasselbe wie die drei Logo-Slots, aber gleiche Idee: hell vs. dunkel sichtbar)
+- **Logos** → **Header** (oben, „Ruhe“), [**Sticky Header**](/glossar/sticky-header/) (nach Scrollen, kompaktere Leiste), **Footer** (Mitte/Brand; leer = Fallback wie Header)
+- **Favicons** → [**Favicon**](/glossar/favicon/) und **Favicon (dunkel)** für helles/dunkles Browser-Theme (nicht dasselbe wie die drei Logo-Slots, aber gleiche Idee: hell vs. dunkel sichtbar)
 
 ## Einstellungen → Design
 
 Datei `src/content/settings/design.json`.
 
-**Farbpalette:** CSS-Farben inkl. Submenü-Hintergrund und -Text (Lesbarkeit bei transparenten Flächen).
+**Farbpalette:** [CSS](/glossar/css/)-Farben inkl. Submenü-Hintergrund und -Text (Lesbarkeit bei transparenten Flächen).
 
 **Schrift:** Webfonts (z. B. Roboto, Open Sans, Merriweather, Ubuntu), Basisgröße, Gewicht, **H1–H6** (Familie, Größe, Stärke, **text-transform**: uppercase/lowercase/capitalize).
 
@@ -143,13 +143,13 @@ Datei `src/content/settings/design.json`.
 **Inhaltsbreite** und **Abstand** je Collection:
 
 - Breite: Standard / Breit / Vollbreit (Artikel einzeln unter **Inhaltsbreite** am Eintrag)
-- **Unter Hero (rem)** und **Vor Footer (rem)** (z. B. 6 rem vor Footer für Luft); pro Seite/Artikel unter Layout-Felder **Abstand unter Hero (rem)** / **Abstand vor Footer (rem)** überschreibbar
+- **Unter Hero ([rem](/glossar/rem/))** und **Vor Footer (rem)** (z. B. 6 rem vor Footer für Luft); pro Seite/Artikel unter Layout-Felder **Abstand unter Hero (rem)** / **Abstand vor Footer (rem)** überschreibbar
 
 ## Einstellungen → Content
 
 Datei `src/content/settings/content.json`.
 
-**Inhaltsverzeichnis (TOC):** für **Seiten** und **Artikel** jeweils **Standardmäßig anzeigen**, **Ebenen** (`h2`, `h3`, `h4`), **TOC-Titel**. Pro Seite **TOC überschreiben** (wie bei Features/Demo/FAQ oft nur `h2`). Leer = globale Defaults.
+[**Inhaltsverzeichnis (TOC)**](/glossar/inhaltsverzeichnis/): für **Seiten** und **Artikel** jeweils **Standardmäßig anzeigen**, **Ebenen** (`h2`, `h3`, `h4`), **TOC-Titel**. Pro Seite **TOC überschreiben** (wie bei Features/Demo/FAQ oft nur `h2`). Leer = globale Defaults.
 
 **Medien:** **Video-Basis-URL** (siehe Video oben).
 
@@ -167,15 +167,15 @@ An jeder **Seite**: Status, Datum, Parent, **Hero überschreiben**, **TOC übers
 
 ## Lokal testen
 
-Im Projektordner [`npm run dev`](/glossar/npm/) ([Folge 018](/artikel/folge-018-node-npm/)). Nur **ein** Dev-Server (Port-Konflikt, wenn Cursor schon einen startet). **Einstellungen** → **Design** live im Browser prüfen, dann speichern und optional [pushen](/glossar/push/).
+Im Projektordner [`npm run dev`](/glossar/npm/) ([Folge 018](/artikel/folge-018-node-npm/)). Nur **ein** Dev-Server (Port-Konflikt, wenn [Cursor](/glossar/cursor/) schon einen startet). **Einstellungen** → **Design** live im Browser prüfen, dann speichern und optional [pushen](/glossar/push/).
 
-Eigenes Projekt ohne [MIT-Lizenz](/glossar/mit-lizenz/)-Inhalte der Vorlage: [Folge 024](/artikel/folge-024-github-template-privat/) (**Template** statt [Fork](/glossar/fork/), privat).
+Eigenes Projekt ohne [MIT-Lizenz](/glossar/mit-lizenz/)-Inhalte der [Vorlage](/glossar/template/): [Folge 024](/artikel/folge-024-github-template-privat/) (**Template** statt [Fork](/glossar/fork/), privat).
 
 ## Kurz merken
 
 - **Demo** zeigt Toolbar + Markdown; **Features** erklärt.
 - **Video:** Consent für YouTube/Vimeo, **Privacy page**, Widerruf-Embed; R2 über **Video-Basis-URL**.
 - **General / Design / Content** steuern fast alles Sichtbare; Footer-Brand per **Drag-and-Drop**.
-- **Autoren** + optional [Gravatar](/glossar/gravatar/); Geheimnisse in **ENV**.
+- **Autoren** + optional Gravatar; Geheimnisse in **ENV**.
 
 <!-- Quelle: 2026-10-12--01-55-51--obs-screencast - hautoo - 023 - neue features.txt -->

@@ -7,6 +7,7 @@ relatedTags:
 definition: GitHub-Vorlage, aus der du ein neues Repository erzeugst (auch privat möglich).
 relatedArticles:
   - folge-020-bausteine-fork
+  - folge-024-github-template-privat
 seo:
   seo_title: Template · Glossar
   seo_description: GitHub-Vorlage für ein neues Repository. Anders als ein Fork darfst du die Kopie privat machen. hautuu per Use this template starten.
