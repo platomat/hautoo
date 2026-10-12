@@ -115,7 +115,11 @@ Ja, für Git, [Build](/glossar/build/)s in der Cloud und Downloads wie `npm inst
 
 ### Brauche ich Chrome für das CMS?
 
-Für [Sveltia](/glossar/sveltia/) online wird **Chrome/Chromium** empfohlen; Firefox klappt fürs [Backend](/glossar/backend/) oft nicht. [Folge 013](/artikel/folge-013-sveltia-pat/).
+Für [Sveltia](/glossar/sveltia/) online wird **Chrome/Chromium** empfohlen; Firefox klappt fürs [Backend](/glossar/backend/) oft nicht. Lokal: [Lokales Repository](/glossar/lokales-repository/) und [`npm run dev`](/glossar/npm/). [Folge 013](/artikel/folge-013-sveltia-pat/), [Folge 024](/artikel/folge-024-github-template-privat/).
+
+### Was ist Lokales Repository beim CMS-Login?
+
+Du wählst den **Projektordner** auf dem Rechner statt nur GitHub online. So bearbeitest du Inhalte unter `/admin/` lokal, bevor der [Worker](/glossar/cloudflare-worker/) für ein neues Repo läuft. [Glossar Lokales Repository](/glossar/lokales-repository/), [Folge 024](/artikel/folge-024-github-template-privat/).
 
 ### Ist hautuu nur eine Demo oder „echt“ live?
 
@@ -451,7 +455,7 @@ Stichworte zu Artikeln, keine tiefe Kategorie-Hierarchie. [Folge 004](/artikel/f
 
 ### Was ist das Artikel-Listing?
 
-[**Komponente**](/glossar/komponente/) im Seiteninhalt: Anzahl, Sortierung, Grid. [Folge 019](/artikel/folge-019-impressum-komponenten/), [Folge 016](/artikel/folge-016-artikel-pull-request/).
+[**Komponente**](/glossar/komponente/) im Seiteninhalt (`{{article-listing …}}`): Anzahl, Sortierung, Kartenfelder, optional **Filter** nach Autor, Kategorie oder Tag. **UND:** alle gewählten Filter müssen passen. **ODER:** ein Filter reicht. Relative Pfade (`/kategorien/news/`) funktionieren lokal und live. [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 019](/artikel/folge-019-impressum-komponenten/).
 
 ### Was ist die Trennlinien-Komponente?
 
@@ -520,6 +524,22 @@ Datenschutz: ohne Klick lädt hautuu **keinen** YouTube-/Vimeo-Player. Nach Zust
 ### Was ist ein Slug?
 
 Der **Kurzname** in URL und Ordner, z. B. `wasilij` in `/autoren/wasilij/`. Feld **Slug** im CMS. [Glossar Slug](/glossar/slug/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Wie funktioniert die Suche auf der Website?
+
+**Sitesuche** im Header durchsucht den beim [Build](/glossar/build/) erzeugten Index (MiniSearch), meist per **Strg+K**. [Glossar Sitesuche](/glossar/sitesuche/), [Features](/features/#design-und-nutzung), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was ist die Mediathek im CMS?
+
+Die **Galerie** für Bilder (Logo, Favicon, Avatar, …) unter `src/assets/`. Keine großen Videos fürs [Repo](/glossar/repository/): dafür [Cloudflare R2](/glossar/cloudflare-r2/). [Glossar Mediathek](/glossar/mediathek/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was bedeutet Inhaltsbreite (Standard, breit, vollbreit)?
+
+Steuert, wie breit Text und Layout laufen (Lesespalte vs. volle Breite). Global unter **Einstellungen** → **Design**, pro Artikel oder Seite überschreibbar. [Glossar Inhaltsbreite](/glossar/inhaltsbreite/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was ist ein Repo-Dokument in der Toolbar?
+
+Embed **Repo-Dokument** verlinkt eine Datei unter `docs/` auf GitHub als Hinweisbox im Inhalt. [Glossar Repo-Dokument](/glossar/repo-dokument/), [Demo](/features/demo/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
 
 ### Was sind Breakpoints?
 

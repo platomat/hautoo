@@ -31,7 +31,7 @@ Die Demo ist eine normale **Seite** (`pages`). Du siehst **[Markdown](/glossar/m
 - **Trennlinie**<br>Höhe, Breite, Farbe (Standard-Randfarbe)
 - **Abstandshalter**<br>Höhe in Pixel
 - **Kontakt-E-Mail**<br>`{{contact-email}}` für Impressum/README-Links ohne Klartext im [Repo](/glossar/repository/)
-- **Repo-Dokument**<br>Hinweisbox zu Dateien unter `docs/`
+- [**Repo-Dokument**](/glossar/repo-dokument/)<br>Hinweisbox zu Dateien unter `docs/`
 - **Baustein**<br>Wiederverwendbarer Text ([Folge 020](/artikel/folge-020-bausteine-fork/))
 - **Listings**<br>Artikel, Kategorien, Tags, Autoren, Glossar; Tagwolke
 - **Video** / **Video-Freischaltung widerrufen**<br>siehe Abschnitt Video unten
@@ -47,7 +47,7 @@ Die Demo ist eine normale **Seite** (`pages`). Du siehst **[Markdown](/glossar/m
 - **Privacy page** unter **Einstellungen** → **General**: Relation zur Datenschutz-Seite. Der Hinweis im Player verlinkt dorthin (Anker `eingebettete-videos`), auch wenn deine Seite anders heißt als „Datenschutz“.
 - **Widerruf:** Embed **Video-Freischaltung widerrufen** (`{{video-consent-reset}}`) auf der Datenschutz-Seite oder wo du willst. Danach sind Player wieder gesperrt, bis erneut geladen wird.
 
-**Selbst gehostete MP4** (`provider="file"`): kein YouTube/Vimeo-Consent-Schalter; Auslieferung z. B. über [Cloudflare R2](/glossar/cloudflare-r2/). In **Einstellungen** → **Content** → **Medien** → **Video-Basis-URL** (`videoBaseUrl`) die öffentliche Basis-URL setzen, damit große Dateien **nicht** in die Mediathek / ins [Git](/glossar/git/)-Repo wandern.
+**Selbst gehostete MP4** (`provider="file"`): kein YouTube/Vimeo-Consent-Schalter; Auslieferung z. B. über [Cloudflare R2](/glossar/cloudflare-r2/). In **Einstellungen** → **Content** → **Medien** → **Video-Basis-URL** (`videoBaseUrl`) die öffentliche Basis-URL setzen, damit große Dateien **nicht** in die [Mediathek](/glossar/mediathek/) / ins [Git](/glossar/git/)-Repo wandern.
 
 Große Screencast-Dateien landen in einem **R2-Bucket** (Objektspeicher), nicht in GitHub. Du verbindest optional eine Subdomain (z. B. `https://media…/videos/`), trägst die Basis-URL einmal im CMS ein und bindest im Artikel z. B. `{{video provider="file" src="folge-001.mp4"}}` ein. Poster-Bilder bleiben klein in der Mediathek. YouTube/Vimeo laufen parallel mit Consent.
 
@@ -93,7 +93,7 @@ Große Screencast-Dateien landen in einem **R2-Bucket** (Objektspeicher), nicht 
 
 ## Brotkrumen, Suche, Artikel-Meta
 
-- **Suche** im Header (MiniSearch, siehe [Features](/features/#design-und-nutzung)).
+- [**Sitesuche**](/glossar/sitesuche/) im Header (siehe [Features](/features/#design-und-nutzung)).
 - [**Breadcrumb**](/glossar/breadcrumb/) im Hero: Pfad z. B. Features → Demo oder Kategorien → Werkzeuge → Deploy & Hosting.
 - Global pro Collection unter **Einstellungen** → **Design** → **Hero**: **Brotkrumen anzeigen**, **Brotkrumen-Trenner** (`/`, `•`, `→`, `-`).
 - Pro Seite/Artikel: **Hero überschreiben** → **Brotkrumen anzeigen** (leer = Default). **Trennlinie unten** global oder individuell je Eintrag überschreiben.
@@ -140,7 +140,7 @@ Datei `src/content/settings/design.json`.
 
 **Hero** (pro Collection: Seiten, Artikel, Kategorien, Tags, Autoren, Glossar): **Textausrichtung**, **Brotkrumen anzeigen**, **Brotkrumen-Trenner**, **Trennlinie unten**.
 
-**Inhaltsbreite** und **Abstand** je Collection:
+[**Inhaltsbreite**](/glossar/inhaltsbreite/) und **Abstand** je Collection:
 
 - Breite: Standard / Breit / Vollbreit (Artikel einzeln unter **Inhaltsbreite** am Eintrag)
 - **Unter Hero ([rem](/glossar/rem/))** und **Vor Footer (rem)** (z. B. 6 rem vor Footer für Luft); pro Seite/Artikel unter Layout-Felder **Abstand unter Hero (rem)** / **Abstand vor Footer (rem)** überschreibbar
