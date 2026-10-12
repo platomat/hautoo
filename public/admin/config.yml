@@ -1394,11 +1394,15 @@ collections:
                     max: 160
                     hint: "Größe des Brand-Logos in der Footer-Brand-Zeile (Default 44)."
                   - name: menu
-                    label: Menü-Slug
-                    widget: string
+                    label: Menü
+                    widget: relation
+                    collection: menus
+                    value_field: "{{slug}}"
+                    search_fields: [title]
+                    display_fields: ["{{title}} ({{slug}})"]
                     required: false
                     default: footer
-                    hint: "Slug aus Collection Menüs (Standard: footer). Nicht footer-legal (das bleibt die Copyright-Zeile)."
+                    hint: "Menü aus der Collection Menüs (Standard: footer). Nicht footer-legal (das bleibt die Copyright-Zeile)."
                   - name: blocks
                     label: Bausteine (Reihenfolge)
                     widget: list
