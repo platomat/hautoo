@@ -484,7 +484,7 @@ Collection **Weiterleitungen** im CMS: Quellpfade vom Root (`/ueber-uns/`), ein 
 <<<<<<< HEAD
 ### Was räume ich nach dem Template-Start auf?
 
-Menü **Hauptmenü** aufräumen (z. B. Features, Demo, Glossar entfernen), MIT-Seiten und -Artikel löschen, eigene Kategorien und Tags anlegen. [Folge 024](/artikel/folge-024-github-template-privat/).
+Menü **Hauptmenü** aufräumen (z. B. Features, Demo, Glossar entfernen), [MIT-Lizenz](/glossar/mit-lizenz/)-Vorlagen-Seiten und -Artikel löschen, eigene Kategorien und Tags anlegen. [Folge 024](/artikel/folge-024-github-template-privat/).
 =======
 ### Was ist Gravatar beim Autor-Avatar?
 

@@ -39,7 +39,7 @@ Du bekommst eine **Kopie** unter deinem Account, unabhängig vom Original. Updat
 
 ## Menü und MIT-Inhalte entfernen
 
-hautoo bringt Lern-Inhalte mit: Folgen, Glossar, Features, Demo. Für deine Site brauchst du das meist nicht.
+hautoo bringt unter der [MIT-Lizenz](/glossar/mit-lizenz/) mitgelieferte Lern-Inhalte: Folgen, Glossar, Features, Demo. Für deine Site brauchst du das meist nicht.
 
 **Hauptmenü** (`main`):
 
