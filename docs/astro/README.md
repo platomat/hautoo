@@ -48,7 +48,7 @@ Vorgaben zu dunklem Theme, Farbpalette (Aktionsgrün), Schrift (Design → Schri
 - **Build-Minify:** Vite/Astro minifiziert CSS und JS im Produktions-Build (`astro build`); kein Extra-Plugin nötig.
 - **CSS inline:** `build.inlineStylesheets: 'always'` (kein extra render-blocking Stylesheet-Request).
 - **Fonts:** Design → Schrift; Sync von Fontsource/jsDelivr nach `public/fonts/` beim Build, Preload in `BaseLayout` (keine CDN-Anfrage beim Besuch).
-- **Videos:** `VideoEmbed` mit Consent-Facade (kein YT/Vimeo vor Klick); localStorage `hautuu-video-consent`; Embed `{{video …}}` und Artikel-Frontmatter `videoProvider`/`videoId`.
+- **Videos:** `VideoEmbed` mit Consent-Facade (kein YT/Vimeo vor Klick); localStorage `hautuu-video-consent`; Embed `{{video …}}` und Artikel-Frontmatter `videoProvider`/`videoId`. Geschützt: `MemberVideo` / `{{member-video …}}` (Worker + Code), siehe `docs/cloudflare/r2-member-videos.md`.
 - Installation und Scripts: [Lokale Entwicklung](../entwicklung/README.md)
 - **Medien:** Bilder neben Content-Einträgen (`src/content/...`), damit Astro sie optimieren kann — siehe [Medien — Variante B](../sveltia/medien-variante-b.md) und [Inhalte](../inhalte/README.md). CMS-Markdown-Bilder bekommen via `hast-cms-assets` WebP-srcset; erstes Rasterbild eager + `fetchpriority=high` (LCP).
 - **Design:** dunkles Theme und wählbare Schrift (lokal) — siehe [Design](../design/README.md)

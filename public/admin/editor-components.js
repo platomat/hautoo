@@ -844,6 +844,55 @@ CMS.registerEditorComponent({
 	});
 
 	CMS.registerEditorComponent({
+		id: "member-video",
+		label: "Member-Video (Code)",
+		icon: "lock",
+		fields: [
+			{
+				name: "src",
+				label: "Objekt-Key / Dateiname",
+				widget: "string",
+				required: false,
+				hint: "Key im privaten R2-Bucket (nicht die öffentliche media-URL), z. B. folge-010.mp4. Freischaltung über Video-Access-Worker.",
+			},
+			{
+				name: "title",
+				label: "Titel (Barrierefreiheit)",
+				widget: "string",
+				required: false,
+				default: "Video",
+			},
+			{
+				name: "poster",
+				label: "Poster",
+				widget: "image",
+				required: false,
+				choose_url: false,
+				hint: "Optional: Vorschaubild aus der Mediathek.",
+			},
+		],
+		pattern: /^\{\{member-video(?<attrs>[^}]*)\}\}\s*$/m,
+		fromBlock: (match) => {
+			const attrs = parseAttrs(match?.groups?.attrs || "");
+			return {
+				src: attrs.src || attrs.id || attrs.key || "",
+				title: attrs.title || "Video",
+				poster: attrs.poster || "",
+			};
+		},
+		toBlock: ({ src = "", title = "Video", poster = "" }) => {
+			const key = String(src || "").trim();
+			if (!key) return "";
+			const parts = [`src="${key}"`];
+			if (title && title !== "Video") parts.push(`title="${title}"`);
+			if (poster) parts.push(`poster="${poster}"`);
+			return `{{member-video ${parts.join(" ")}}}`;
+		},
+		toPreview: ({ src = "", title = "Video" }) =>
+			`<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem"><strong style="color:#e8eeea">Member-Video</strong> · ${title || src || "?"}<br><span style="font-size:0.8rem">Privates R2 + Zugangscode (Worker)</span></div>`,
+	});
+
+	CMS.registerEditorComponent({
 		id: "video-consent-reset",
 		label: "Video-Freischaltung widerrufen",
 		icon: "cookie",

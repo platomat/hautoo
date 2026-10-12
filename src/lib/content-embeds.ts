@@ -6,6 +6,7 @@ import { hastCmsAssets } from "./hast-cms-assets";
 import { hastExternalLinks } from "./hast-external-links";
 import type { CategorySort } from "./categories";
 import type { TagSort } from "./tags";
+import type { MemberVideoEmbedProps } from "./member-video";
 import { parseRepoDocProps, type RepoDocEmbedProps } from "./repodoc";
 import {
 	parseButtonGroupItems,
@@ -151,6 +152,8 @@ export type VideoEmbedProps = {
 	poster?: string;
 };
 
+export type { MemberVideoEmbedProps } from "./member-video";
+
 export type LogoEmbedVariant = "header" | "sticky" | "footer";
 export type LogoEmbedAlign = "left" | "center" | "right";
 export type LogoEmbedUnit = "px" | "%";
@@ -182,6 +185,7 @@ export type ContentSegment =
 	| { type: "logo"; props: LogoEmbedProps }
 	| { type: "repodoc"; props: RepoDocEmbedProps }
 	| { type: "video"; props: VideoEmbedProps }
+	| { type: "member-video"; props: MemberVideoEmbedProps }
 	| { type: "video-consent-reset" }
 	| { type: "author-listing" }
 	| { type: "author-social"; props: AuthorSocialEmbedProps };
@@ -268,7 +272,7 @@ const DEFAULT_SPACER: SpacerEmbedProps = {
 
 /** Line must be only the embed (optional attrs). */
 const EMBED_LINE =
-	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|author-listing|author-social|tag-cloud|separator|spacer|button-group|button|contact-email|logo|repodoc|block|video-consent-reset|video)(?<attrs>[^}]*)\}\}\s*$/gm;
+	/^\{\{(?<name>article-listing|glossar-listing|tag-listing|category-listing|author-listing|author-social|tag-cloud|separator|spacer|button-group|button|contact-email|logo|repodoc|block|video-consent-reset|member-video|video)(?<attrs>[^}]*)\}\}\s*$/gm;
 
 const LOGO_VARIANTS = new Set<LogoEmbedVariant>(["header", "sticky", "footer"]);
 const LOGO_ALIGNS = new Set<LogoEmbedAlign>(["left", "center", "right"]);
@@ -652,6 +656,19 @@ export function parseVideoEmbedProps(
 	return { provider: rawProvider, id, title, poster };
 }
 
+export function parseMemberVideoEmbedProps(
+	attrsRaw: string | undefined,
+): MemberVideoEmbedProps | undefined {
+	const attrs = parseAttrs(attrsRaw ?? "");
+	const src = (attrs.src ?? attrs.id ?? attrs.key ?? "").trim().replace(/^\/+/, "");
+	if (!src) {
+		return undefined;
+	}
+	const title = (attrs.title ?? "Video").trim() || "Video";
+	const poster = (attrs.poster ?? "").trim() || undefined;
+	return { src, title, poster };
+}
+
 function parseBlockId(attrsRaw: string | undefined): string {
 	const attrs = parseAttrs(attrsRaw ?? "");
 	return (attrs.id ?? attrs.slug ?? "").trim();
@@ -723,6 +740,11 @@ export async function buildContentSegments(
 			const props = parseVideoEmbedProps(attrs);
 			if (props) {
 				segments.push({ type: "video", props });
+			}
+		} else if (name === "member-video") {
+			const props = parseMemberVideoEmbedProps(attrs);
+			if (props) {
+				segments.push({ type: "member-video", props });
 			}
 		} else if (name === "video-consent-reset") {
 			segments.push({ type: "video-consent-reset" });

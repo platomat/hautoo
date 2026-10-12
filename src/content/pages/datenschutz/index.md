@@ -74,6 +74,10 @@ Anbieter:
 
 Zusätzlich können Screencasts als Dateien über **Cloudflare R2** (Objekt-Speicher) ausgeliefert werden. Der Player ist ein normales HTML5-`<video>` auf unserer Site; es wird **kein** YouTube-/Vimeo-Player geladen und **kein** zusätzlicher Consent-Schalter wie oben genutzt. Beim Abspielen verbindet sich dein Browser mit dem Medien-Host (Cloudflare), typischerweise unter einer Subdomain dieser Website. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Auslieferung der Inhalte) bzw. Vertrag/Einwilligung je nach Kontext der Seite. Auftragsverarbeitung: Cloudflare.
 
+### Geschützte Member-Videos (Zugangscode)
+
+Manche Videos sind nur mit persönlichem Zugangscode abrufbar. Nach Eingabe eines gültigen Codes speichern wir in deinem Browser ein **Session-Token** in der **localStorage** (Schlüssel `hautuu-member-video-token`, optional Ablauf `hautuu-member-video-expires`), damit du nicht bei jedem Video erneut den Code eingeben musst. Der Klartext-Code wird nicht dauerhaft gespeichert. Zum Abspielen verbindet sich dein Browser mit unserem Video-Access-Worker bei Cloudflare; die Dateien liegen in einem privaten R2-Bucket und sind ohne gültige Freischaltung nicht öffentlich streambar. Du kannst den Zugang auf der Seite über „Zugang zurücksetzen“ oder durch Löschen der Website-Daten im Browser beenden. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertrag/Mitgliedschaft) bzw. lit. f DSGVO, je nach Angebot. Auftragsverarbeitung: Cloudflare.
+
 ## Externe Links
 
 Links zu anderen Websites (z. B. [GitHub](/glossar/github/), Unsplash) führen zu Angeboten Dritter. Für deren Datenschutz gelten die jeweiligen Erklärungen der Anbieter. Beim Folgen eines Links verlassen Sie unsere Website.
@@ -88,7 +92,7 @@ Die Daten werden gelöscht, wenn die Konversation erledigt ist und keine gesetzl
 
 Für den öffentlichen Teil der Website setzen wir **keine** eigenen Cookies zu Analyse- oder Werbezwecken.
 
-Für die Video-Freischaltung nutzen wir **localStorage** (`hautuu-video-consent`), damit du nicht auf jeder Seite erneut zustimmen musst. Das ist kein Cookie; du kannst den Eintrag über den Button unter „Eingebettete Videos“ oder über die Browser-Einstellungen für diese Website löschen.
+Für die YouTube/Vimeo-Freischaltung nutzen wir **localStorage** (`hautuu-video-consent`), damit du nicht auf jeder Seite erneut zustimmen musst. Für Member-Videos speichern wir das Session-Token unter `hautuu-member-video-token`. Beides sind keine Cookies; du kannst die Einträge über die jeweiligen Buttons auf der Seite oder über die Browser-Einstellungen für diese Website löschen.
 
 Hoster und, **nach** deiner Video-Zustimmung, die Anbieter YouTube bzw. Vimeo können eigene Cookies oder ähnliche Techniken verwenden. Siehe deren Hinweise und den Abschnitt zu eingebetteten Videos.
 

@@ -487,6 +487,11 @@ export const siteMediaConfigSchema = z.object({
 	 * Example: `https://media.hautoo.storyofai.net/videos/`
 	 */
 	videoBaseUrl: z.string().trim().default(""),
+	/**
+	 * Cloudflare Worker base URL for gated MemberVideo (no trailing slash).
+	 * Example: `https://hautoo-video-access.example.workers.dev`
+	 */
+	videoAccessWorkerUrl: z.string().trim().default(""),
 });
 
 export type SiteMediaConfig = z.infer<typeof siteMediaConfigSchema>;

@@ -13,6 +13,7 @@ import Spacer from "./Spacer.astro";
 import TagCloud from "./TagCloud.astro";
 import TagListing from "./TagListing.astro";
 import RepoDocLink from "./RepoDocLink.astro";
+import MemberVideo from "./MemberVideo.astro";
 import VideoConsentReset from "./VideoConsentReset.astro";
 import VideoEmbed from "./VideoEmbed.astro";
 import { buildContentSegments } from "../lib/content-embeds";
@@ -139,6 +140,15 @@ const segments = await buildContentSegments(body);
 				<VideoEmbed
 					provider={segment.props.provider}
 					id={segment.props.id}
+					src={segment.props.src}
+					title={segment.props.title}
+					poster={segment.props.poster}
+				/>
+			);
+		}
+		if (segment.type === "member-video") {
+			return (
+				<MemberVideo
 					src={segment.props.src}
 					title={segment.props.title}
 					poster={segment.props.poster}

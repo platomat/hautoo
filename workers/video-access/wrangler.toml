@@ -1,0 +1,22 @@
+# Cloudflare Worker: gated R2 video streaming (access codes in KV).
+# Deploy from this folder: npx wrangler deploy
+# Secrets/bindings: see README.md (never commit real codes or SIGNING_SECRET).
+
+name = "hautoo-video-access"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+
+# Bind after creating resources (names are examples — adjust in dashboard / here):
+# [[r2_buckets]]
+# binding = "VIDEOS"
+# bucket_name = "hautoo-videos-private"
+#
+# [[kv_namespaces]]
+# binding = "ACCESS_CODES"
+# id = "<kv-namespace-id>"
+
+[vars]
+# Comma-separated browser origins allowed to call /unlock and /sign
+ALLOWED_ORIGINS = "https://hautoo.storyofai.net,http://localhost:4321"
+# Optional key prefix inside the bucket (no leading slash)
+VIDEO_KEY_PREFIX = ""

@@ -39,7 +39,7 @@ Ein Artikel soll typischerweise enthalten:
 2. **Bilder** — zur Veranschaulichung; Ablage **neben dem Content-Eintrag** (siehe unten)
 3. **How-to-Video** — **YouTube**, **Vimeo** oder **selbst gehostete MP4** (Cloudflare R2), nie große Videodateien im Git-Repo
 
-Einbindung über `VideoEmbed` / CMS-Block `{{video …}}`. R2-Setup und Felder: [R2-Videos](../cloudflare/r2-videos.md). Collections: [articles](../sveltia/collections.md#collection-articles-umgesetzt).
+Einbindung über `VideoEmbed` / CMS-Block `{{video …}}`. R2-Setup und Felder: [R2-Videos](../cloudflare/r2-videos.md). Geschützt: `{{member-video …}}` / [Member-Videos](../cloudflare/r2-member-videos.md). Collections: [articles](../sveltia/collections.md#collection-articles-umgesetzt).
 
 **Bausteine in Artikeln:** Wie auf CMS-Seiten per Zeile `{{block id="<slug>"}}` (Toolbar „Baustein“ in Sveltia). Der Inhalt kommt aus `src/content/blocks/<slug>.md` — eine Quelle, gleiche Darstellung überall (z. B. `stack-uebersicht` in Folgen zum Gesamt-Stack). Einführung: [Folge 020](/artikel/folge-020-bausteine-fork/). Siehe [Collections — blocks](../sveltia/collections.md#collection-blocks-bausteine).
 

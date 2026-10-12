@@ -1,0 +1,4 @@
+# Copy to .dev.vars (gitignored) for local `wrangler dev`.
+# Production: wrangler secret put SIGNING_SECRET
+
+SIGNING_SECRET=replace-with-long-random-string

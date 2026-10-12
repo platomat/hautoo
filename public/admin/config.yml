@@ -1810,6 +1810,12 @@ collections:
                 required: false
                 default: ""
                 hint: "Öffentliche Basis-URL inkl. Pfad, z. B. https://media.hautoo.storyofai.net/videos/ — wird mit Dateiname aus dem Video-Embed zusammengesetzt. Leer = nur volle https-URLs im Embed."
+              - name: videoAccessWorkerUrl
+                label: Video-Access-Worker-URL
+                widget: string
+                required: false
+                default: ""
+                hint: "Basis-URL des Workers für geschützte Member-Videos (ohne Slash am Ende), z. B. https://hautoo-video-access.example.workers.dev. Leer = Member-Video-Embeds zeigen Hinweis."
           - name: authors
             label: Autoren
             widget: object

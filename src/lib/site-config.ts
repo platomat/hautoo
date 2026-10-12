@@ -216,6 +216,12 @@ export function getVideoBaseUrl(): string {
 	return config.content?.media?.videoBaseUrl?.trim() ?? "";
 }
 
+/** Worker base URL for gated MemberVideo (may be empty until deployed). */
+export function getVideoAccessWorkerUrl(): string {
+	const config = getSiteConfig();
+	return config.content?.media?.videoAccessWorkerUrl?.trim().replace(/\/+$/, "") ?? "";
+}
+
 /** Content → Autoren: article byline placement + avatar shape. */
 export function getAuthorsDisplayConfig(): SiteAuthorsConfig {
 	const config = getSiteConfig();

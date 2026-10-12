@@ -203,6 +203,8 @@ Fehlende Pfade ohne eigene Datei liefert Pages oft als Startseiten-HTML (HTTP 20
 
 Große MP4s liegen in **Cloudflare R2**, Einbindung über `VideoEmbed` mit `provider="file"`. Anleitung: [R2-Videos](./r2-videos.md).
 
+Geschützt mit Zugangscode (privates R2 + Worker): [Member-Videos](./r2-member-videos.md), Code unter `workers/video-access/`.
+
 ## Offizielle Referenzen
 
 - [Astro auf Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)

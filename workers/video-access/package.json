@@ -1,0 +1,15 @@
+{
+  "name": "hautoo-video-access",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "hash-code": "node scripts/hash-code.mjs"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20251105.0",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.45.3"
+  }
+}

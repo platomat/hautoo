@@ -123,9 +123,14 @@ Kurz in der Datenschutzerklärung ergänzen, falls noch nicht klar: Screencasts 
 - [ ] Datenschutz-Text bei Bedarf angepasst
 - [ ] Große Dateien **nicht** unter `src/content/` oder `public/` committed
 
+## Geschützte Variante
+
+Videos nur mit persönlichem Code: privater Bucket + Worker. Siehe [Member-Videos](./r2-member-videos.md).
+
 ## Referenzen
 
 - [Cloudflare R2](https://developers.cloudflare.com/r2/)
 - [R2 Custom Domains](https://developers.cloudflare.com/r2/buckets/public-buckets/)
 - Site-Hosting: [Cloudflare README](./README.md)
 - CMS-Embeds: [CMS Fields](../cms-fields/README.md)
+- Member-Videos: [r2-member-videos.md](./r2-member-videos.md)
