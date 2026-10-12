@@ -33,7 +33,7 @@ Magst du Struktur und Features von hautuu, willst aber **deine** Texte und **kei
 4. **Private** wählen. **Public** würde den Quellcode für alle lesbar machen.
 5. **Create repository** (Repository erstellen).
 
-Du bekommst eine **Kopie** unter deinem Account, unabhängig vom Original. Updates vom Original holst du später per [Pull](/glossar/pull/) oder gezieltem Merge, nicht automatisch. Aber nur, wenn Wasilij bei hautoo auch wieder was geändert hat.
+Du bekommst eine **Kopie** unter deinem Account, unabhängig vom [**Upstream**](/glossar/upstream/) (Original-Repo). Updates von dort holst du später per [Pull](/glossar/pull/) oder gezieltem [Merge](/glossar/merge/), nicht automatisch. Aber nur, wenn im Upstream auch wieder etwas geändert wurde.
 
 {{repodoc path="docs/github/README.md" title="GitHub (hautuu)" description="Fork vs. Template, generate-Link."}}
 
@@ -46,14 +46,12 @@ hautoo bringt unter der [MIT-Lizenz](/glossar/mit-lizenz/) mitgelieferte Lern-In
 1. Im CMS **Menüs** → **Hauptmenü** (oder wie dein `main`-Menü heißt).
 2. Einträge löschen, die du nicht willst, z. B. Links zu **Glossar**, **Features**, **Demo**.
 
-**Inhalte:**
+**Inhalte** (typisch in [Sveltia](/glossar/sveltia/)-[Collections](/glossar/collection/)):
 
-| Collection | Typisch löschen / ersetzen |
-| --- | --- |
-| **Glossar** | Alle Einträge markieren und löschen (wenn du kein Glossar willst) |
-| **Seiten** | z. B. `Features`, `Demo` |
-| **Artikel** | Screencast-Folgen |
-| **Tags** / **Kategorien** | hautuu-Themen, danach eigene anlegen |
+- **Glossar**<br>Alle Einträge markieren und löschen, wenn du kein Glossar willst
+- **Seiten**<br>z. B. `Features`, `Demo` (Ordner-[Slug](/glossar/slug/) im CMS)
+- **Artikel**<br>Screencast-Folgen
+- **Tags** / **Kategorien**<br>hautuu-Themen, danach eigene anlegen
 
 Footer-Menüs (`footer`, `footer-legal`) genauso prüfen. Bausteine wie Kontaktanschrift kannst du behalten und anpassen ([Folge 020](/artikel/folge-020-bausteine-fork/)).
 
