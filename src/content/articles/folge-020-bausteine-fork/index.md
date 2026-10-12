@@ -103,7 +103,7 @@ Hast du ein gutes Feature gebaut, schick einen [**Pull Request**](/glossar/pull-
 
 - **Bausteine** für wiederkehrende Inhalte (Stack, Kontakt, Trenner).
 - **Glossar**, **FAQ** und **Tags** als Lern-Netz; in Firefox Link-Vorschau zum Nachschlagen.
-- **Template** oder **Fork** als Einstieg in dein eigenes Projekt (Template für privates Repo); Stack-Idee in [Folge 001](/artikel/folge-001-hautuu-intro/).
+- **Template** oder **Fork** als Einstieg in dein eigenes Projekt (Template für privates Repo); Menü und Inhalte nach dem Kopieren: [Folge 024](/artikel/folge-024-github-template-privat/). Stack-Idee in [Folge 001](/artikel/folge-001-hautuu-intro/).
 - **Bilder** für Hintergründe und Assets: Quellen, WebP und Upload ([Folge 021](/artikel/folge-021-bilder-suchen-nutzen/)).
 
 <!-- Quelle: 2026-10-04--23-47-38--obs-screencast - hautoo - 020 - neue bausteine, neue features, hautoo forken.txt -->
