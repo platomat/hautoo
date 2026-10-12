@@ -62,7 +62,7 @@ Titel, Logos und Texte stehen schon viel im CMS unter **Einstellungen** → **Ge
 1. **Dein** Repo **klonen**, in [**Cursor**](/glossar/cursor/) öffnen ([Folge 001](/artikel/folge-001-hautuu-intro/)).
 2. [`npm install`](/glossar/npm/) und [`npm run dev`](/glossar/npm/) ([Folge 018](/artikel/folge-018-node-npm/)).
 3. **Sveltia** unter `/admin/`: Browser **Chromium** oder **Chrome** (Firefox nutzt eine andere Engine und passt oft nicht zum lokalen CMS, siehe [Folge 013](/artikel/folge-013-sveltia-pat/)).
-4. Beim Login **Lokales Repository** (local repository) wählen und den Projektordner angeben, wenn danach gefragt wird.
+4. Beim Login [**Lokales Repository**](/glossar/lokales-repository/) (local repository) wählen und den Projektordner angeben, wenn danach gefragt wird.
 
 So kannst du z. B. unter **Einstellungen** → **Design** → **Content** die **Avatar**-Form von rund auf eckig stellen, Texte ändern, **Speichern** → [Commit](/glossar/commit/) landet in [Git](/glossar/git/), nach [Push](/glossar/push/) baut [Cloudflare Pages](/glossar/cloudflare-pages/) ([Folge 011](/artikel/folge-011-cloudflare-setup/)). Bis der Worker für dein neues Repo steht, ist lokales Ändern der schnellere Weg.
 
