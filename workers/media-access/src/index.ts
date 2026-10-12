@@ -10,12 +10,12 @@
  */
 
 export interface Env {
-  VIDEOS: R2Bucket;
+  MEDIA: R2Bucket;
   ACCESS_CODES: KVNamespace;
   SIGNING_SECRET: string;
   ALLOWED_ORIGINS: string;
   /** Optional prefix prepended to object keys (e.g. "members/") */
-  VIDEO_KEY_PREFIX?: string;
+  MEDIA_KEY_PREFIX?: string;
   /** Session TTL seconds (default 30 days) */
   SESSION_TTL_SECONDS?: string;
   /** Play URL TTL seconds (default 2 hours) */
@@ -120,7 +120,7 @@ async function handleSign(request: Request, env: Env): Promise<Response> {
   if (!requireOrigin(env, request)) {
     return json({ error: 'origin_not_allowed' }, 403);
   }
-  if (!env.SIGNING_SECRET || !env.ACCESS_CODES || !env.VIDEOS) {
+  if (!env.SIGNING_SECRET || !env.ACCESS_CODES || !env.MEDIA) {
     return json({ error: 'misconfigured' }, 500);
   }
 
@@ -156,7 +156,7 @@ async function handleSign(request: Request, env: Env): Promise<Response> {
   }
 
   // Existence check (cheap HEAD-like)
-  const head = await env.VIDEOS.head(objectKey);
+  const head = await env.MEDIA.head(objectKey);
   if (!head) {
     return json({ error: 'not_found' }, 404);
   }
@@ -173,7 +173,7 @@ async function handleSign(request: Request, env: Env): Promise<Response> {
 }
 
 async function handlePlay(request: Request, env: Env, url: URL): Promise<Response> {
-  if (!env.SIGNING_SECRET || !env.VIDEOS) {
+  if (!env.SIGNING_SECRET || !env.MEDIA) {
     return new Response('misconfigured', { status: 500 });
   }
 
@@ -198,7 +198,7 @@ async function handlePlay(request: Request, env: Env, url: URL): Promise<Respons
   }
 
   const range = request.headers.get('Range') ?? undefined;
-  const object = await env.VIDEOS.get(key, range ? { range: parseRangeHeader(range) } : undefined);
+  const object = await env.MEDIA.get(key, range ? { range: parseRangeHeader(range) } : undefined);
   if (!object) {
     return new Response('not found', { status: 404 });
   }
@@ -230,7 +230,7 @@ function resolveObjectKey(env: Env, raw: string): string | null {
   const trimmed = raw.trim().replace(/^\/+/, '');
   if (!trimmed || trimmed.length > MAX_KEY_LEN || trimmed.includes('..')) return null;
   if (!KEY_RE.test(trimmed)) return null;
-  const prefix = (env.VIDEO_KEY_PREFIX ?? '').replace(/^\/+|\/+$/g, '');
+  const prefix = (env.MEDIA_KEY_PREFIX ?? '').replace(/^\/+|\/+$/g, '');
   if (!prefix) return trimmed;
   if (trimmed.startsWith(`${prefix}/`)) return trimmed;
   return `${prefix}/${trimmed}`;

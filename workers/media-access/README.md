@@ -13,39 +13,19 @@ Gehört in **dieses Repo** unter `workers/media-access/` (kein zweites Repo nöt
 
 Codes: **pro Person ein eigener Code**. KV speichert nur den **SHA-256-Hash**, nie Klartext. Wer welchen Code hat, steht nicht automatisch im System: sinnvolles `label` in KV plus eigene interne Liste (siehe [r2-member-videos.md](../../docs/cloudflare/r2-member-videos.md)).
 
-## Cloudflare einrichten
+## Einrichtung (ausführlich)
 
-1. **R2-Bucket** (privat, ohne öffentliche Domain), z. B. `hautoo-videos-private`
-2. **KV-Namespace**, z. B. `hautoo-member-media-codes`
-3. In `wrangler.toml` Bindings aktivieren:
+Schritt-für-Schritt inkl. **was KV ist**, Namespace anlegen, Einträge setzen, Secret und Deploy:
 
-```toml
-[[r2_buckets]]
-binding = "VIDEOS"
-bucket_name = "hautoo-videos-private"
+→ [docs/cloudflare/r2-member-videos.md](../../docs/cloudflare/r2-member-videos.md)
 
-[[kv_namespaces]]
-binding = "ACCESS_CODES"
-id = "<deine-kv-namespace-id>"
-```
+Kurz:
 
-4. `ALLOWED_ORIGINS` auf die Site-Origins setzen (inkl. lokales Dev bei Bedarf)
-5. Secret: `npx wrangler secret put SIGNING_SECRET` (langer Zufallsstring)
-6. Deploy: `npm install && npm run deploy` aus diesem Ordner
-
-Worker-URL z. B. `https://hautoo-member-media-access.<account>.workers.dev` oder eigene Route. In Site-Config: `media.videoAccessWorkerUrl`.
-
-## Code anlegen
-
-```bash
-npm run hash-code -- --generate
-```
-
-- Klartext nur an die Person weitergeben (nicht committen)
-- KV: Key = Hex-Hash, Value z. B. `{"active":true,"label":"anna-mueller","createdAt":"2026-04-09"}`
-- `label` = deine Zuordnung (Name, Ticket, Kanal); ohne Label und ohne eigene Liste ist der Empfänger später nicht rekonstruierbar
-
-Sperren: Value auf `{"active":false}` setzen oder Key löschen. Bestehende Sessions scheitern beim nächsten `/sign`.
+1. Privates R2 (ohne Public Domain) + KV-Namespace
+2. Bindings in `wrangler.toml` (`MEDIA`, `ACCESS_CODES` + Namespace-ID)
+3. `npx wrangler secret put SIGNING_SECRET` → `npm run deploy`
+4. Site-Config: `media.videoAccessWorkerUrl`
+5. `npm run hash-code -- --generate` → Hash + JSON mit `label` in KV (Klartext nur an die Person)
 
 ## Lokal
 

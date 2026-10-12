@@ -7,16 +7,16 @@ main = "src/index.ts"
 compatibility_date = "2024-11-01"
 
 # Bind after creating resources (names are examples — adjust in dashboard / here):
-# [[r2_buckets]]
-# binding = "VIDEOS"
-# bucket_name = "hautoo-videos-private"
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "hautoo-member-media"
 #
-# [[kv_namespaces]]
-# binding = "ACCESS_CODES"
-# id = "<kv-namespace-id>"
+[[kv_namespaces]]
+binding = "ACCESS_CODES"
+id = "3a05c3390d2d4fcfb13a30215ef92ddd"
 
 [vars]
 # Comma-separated browser origins allowed to call /unlock and /sign
 ALLOWED_ORIGINS = "https://hautoo.storyofai.net,http://localhost:4321"
 # Optional key prefix inside the bucket (no leading slash)
-VIDEO_KEY_PREFIX = ""
+MEDIA_KEY_PREFIX = ""
