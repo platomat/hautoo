@@ -221,6 +221,10 @@ Deine Kopie eines fremden Repos unter deinem Account. Nicht verwechseln mit `git
 
 **Repo privat/öffentlich** auf GitHub: Wer den **Code** lesen darf. **Website online**: Ob Besucher deine Seiten unter einer Domain sehen. Beides steuerst du getrennt. [Glossar Repository](/glossar/repository/), [Folge 020](/artikel/folge-020-bausteine-fork/).
 
+### Was ist Upstream?
+
+Das **Original-Repo**, aus dem deine Kopie stammt (z. B. [platomat/hautoo](https://github.com/platomat/hautoo) nach **Use this template**). Updates kommen **nicht automatisch**; du holst sie per [Pull](/glossar/pull/) oder [Merge](/glossar/merge/). [Glossar Upstream](/glossar/upstream/), [Folge 024](/artikel/folge-024-github-template-privat/), [Folge 020](/artikel/folge-020-bausteine-fork/).
+
 ### Was ist `origin`?
 
 Der Standardname für dein Remote auf GitHub. [Glossar Origin](/glossar/origin/), [Folge 001](/artikel/folge-001-hautuu-intro/).
@@ -439,7 +443,7 @@ Im [**CMS**](/glossar/cms/) unter `/admin/` oder [Markdown](/glossar/markdown/) 
 
 ### Wie binde ich ein Video ein?
 
-Artikel-Felder `videoProvider` (YouTube/Vimeo) und `videoId` im CMS; in den Folgen oft noch Platzhalter. [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 016](/artikel/folge-016-artikel-pull-request/).
+Toolbar **Video** oder Frontmatter `videoProvider` / `videoId`. **YouTube/Vimeo:** erst [Consent](/glossar/consent/)-Facade, Klick lädt den Player. **Eigene MP4:** `provider="file"` und [Cloudflare R2](/glossar/cloudflare-r2/) mit **Video-Basis-URL**. [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 001](/artikel/folge-001-hautuu-intro/).
 
 ### Was sind Tags?
 
@@ -491,7 +495,35 @@ Menü **Hauptmenü** aufräumen (z. B. **Glossar**, **Features**, **Demo** entfe
 
 ### Wie passe ich Design und Abstände an?
 
-Im CMS unter **Einstellungen** → **Design** (Farben, Header, Footer, Hero, Inhaltsbreite) oder Issues an den Agenten. [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 003](/artikel/folge-003-erstes-design/), [Folge 005](/artikel/folge-005-astro-toolbar/).
+Im CMS unter **Einstellungen** → **Design** (Farben, Header, Footer, [Hero](/glossar/hero/), Inhaltsbreite, Abstände in [rem](/glossar/rem/)) oder Issues an den Agenten. [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 003](/artikel/folge-003-erstes-design/), [Folge 005](/artikel/folge-005-astro-toolbar/).
+
+### Was ist der Hero?
+
+Der sichtbare **Seitenkopf** mit Titel, optional Brotkrumen, Tags oder Autoren. Global unter **Einstellungen** → **Design** → **Hero**; pro Seite **Hero überschreiben**. [Glossar Hero](/glossar/hero/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was ist ein Favicon?
+
+Das **kleine Tab-Icon** im Browser. Unter **Einstellungen** → **General** → **Favicons**, optional hell und dunkel. [Glossar Favicon](/glossar/favicon/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was bedeutet sticky beim Header?
+
+Der **Header bleibt beim Scrollen oben** (sticky), oft mit schmalerer **Sticky Header**-Zeile. Ein/Aus pro Geräteklasse unter **Design** → **Header**. [Glossar Sticky Header](/glossar/sticky-header/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was ist das Inhaltsverzeichnis (TOC)?
+
+Sprungliste der **Überschriften** im Artikel oder auf der Seite. **Einstellungen** → **Content**; pro Eintrag **TOC überschreiben**. [Glossar Inhaltsverzeichnis](/glossar/inhaltsverzeichnis/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Warum muss ich YouTube-Videos erst freischalten?
+
+Datenschutz: ohne Klick lädt hautuu **keinen** YouTube-/Vimeo-Player. Nach Zustimmung kann der Browser die Wahl in [`localStorage`](/glossar/localstorage/) merken. Widerruf per Embed **Video-Freischaltung widerrufen**. [Glossar Consent](/glossar/consent/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was ist Cloudflare R2 bei Videos?
+
+**Objektspeicher** für große MP4s statt Git-Repo. Bucket bei Cloudflare, **Video-Basis-URL** im CMS, Embed `provider="file"`. [Glossar Cloudflare R2](/glossar/cloudflare-r2/), Repo-Doku `docs/cloudflare/r2-videos.md`, [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was ist ein Slug?
+
+Der **Kurzname** in URL und Ordner, z. B. `wasilij` in `/autoren/wasilij/`. Feld **Slug** im CMS. [Glossar Slug](/glossar/slug/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
 
 ### Was sind Breakpoints?
 
