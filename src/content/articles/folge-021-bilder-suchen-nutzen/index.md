@@ -25,12 +25,10 @@ Schöne Fotos machen eine Site lebendig. Gleichzeitig sind **schwere Dateien** d
 
 Beliebte **Stock**-Seiten mit gratis Downloads (Stand der Plattform-Regeln, immer die aktuelle **Lizenz** auf der Seite lesen):
 
-| Quelle | Kurz |
-| --- | --- |
-| [Pixabay](https://pixabay.com/service/license/) | Kostenlose Nutzung laut [Pixabay License](https://pixabay.com/service/license/); **gesponserte** Treffer oben/unten sind oft **kostenpflichtig** (Filter nutzen, nicht blind klicken). |
-| [Unsplash](https://unsplash.com/license) | [Unsplash License](https://unsplash.com/license): frei für viele private und kommerzielle Nutzungen; **Unsplash+** (Schloss-Symbol) ist **nicht** der gratis Download. Namensnennung ist **erwünscht**, aber laut [Hilfe](https://help.unsplash.com/en/articles/2612337-do-i-have-to-give-credit-to-a-contributor-when-i-use-their-image) nicht zwingend. |
-| [Pexels](https://www.pexels.com/license/) | [Pexels License](https://www.pexels.com/license/): ähnlich Stock-Nutzung ohne Account-Pflicht für viele Motive. |
-| [Freepik](https://www.freepik.com/legal/terms-of-use) | Viele Motive nur mit „Attribution“ (Namensnennung) oder im „Premium“-Abo; Filter „Free“ (Kostenlos) / „License“ (Lizenz) und „AI generated“ (KI-generiert) bewusst setzen. |
+- **[Pixabay](https://pixabay.com/service/license/)**<br>Kostenlose Nutzung laut [Pixabay License](https://pixabay.com/service/license/); **gesponserte** Treffer oben/unten sind oft **kostenpflichtig** (Filter nutzen, nicht blind klicken).
+- **[Unsplash](https://unsplash.com/license)**<br>[Unsplash License](https://unsplash.com/license): frei für viele private und kommerzielle Nutzungen; **Unsplash+** (Schloss-Symbol) ist **nicht** der gratis Download. Namensnennung ist **erwünscht**, laut [Hilfe](https://help.unsplash.com/en/articles/2612337-do-i-have-to-give-credit-to-a-contributor-when-i-use-their-image) nicht zwingend.
+- **[Pexels](https://www.pexels.com/license/)**<br>[Pexels License](https://www.pexels.com/license/): ähnlich Stock-Nutzung ohne Account-Pflicht für viele Motive.
+- **[Freepik](https://www.freepik.com/legal/terms-of-use)**<br>Viele Motive nur mit „Attribution“ (Namensnennung) oder im „Premium“-Abo; Filter „Free“ (Kostenlos) / „License“ (Lizenz) und „AI generated“ (KI-generiert) bewusst setzen.
 
 **Praxis:** Motiv gefällt dem Kunden, du merkst erst beim Download: kostet. Deshalb vorher Lizenz und Preislabel checken. KI-generierte Bilder kannst du oft per Filter ausblenden, wenn du echte Fotos willst.
 
@@ -69,6 +67,6 @@ In PageSpeed Insights ([Google](https://pagespeed.web.dev/)) kann unter „Bild�
 - **Assets** global oder **neben dem Artikel**; Nachweis im [CMS](/glossar/cms/)-Feld.
 - [Astro](/glossar/astro/) optimiert weiter, ersetzt aber kein schlankes Original.
 
-Nächster Schritt im Projektalltag: Agenten-Änderungen in [Cursor](/glossar/cursor/) und im [Pull Request](/glossar/pull-request/) prüfen ([Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/)). Meilensteine und offene [Issues](/glossar/issue/) (SEO, Performance) wie gewohnt über [GitHub](/glossar/github/) pflegen ([Folge 002](/artikel/folge-002-github-issues/)). PR-Konflikte kann der Agent oft allein lösen, wenn du die Nummer nennst ([Folge 016](/artikel/folge-016-artikel-pull-request/)).
+Nächster Schritt im Projektalltag: Agenten-Änderungen in [Cursor](/glossar/cursor/) und im [Pull Request](/glossar/pull-request/) prüfen ([Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/)). [Meilensteine](/glossar/milestone/) und offene [Issues](/glossar/issue/) (SEO, Performance) wie gewohnt über [GitHub](/glossar/github/) pflegen ([Folge 002](/artikel/folge-002-github-issues/)). PR-Konflikte kann der Agent oft allein lösen, wenn du die Nummer nennst ([Folge 016](/artikel/folge-016-artikel-pull-request/)).
 
 <!-- Quelle: transkript-021_6a6c.txt (Screencast hautoo - 021 - bilder suchen, anpassen, verwenden) -->

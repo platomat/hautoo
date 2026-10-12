@@ -69,12 +69,15 @@ def main() -> int:
     print("Content link check OK.")
     embed_script = ROOT / "scripts" / "check-content-embeds.py"
     hints_script = ROOT / "scripts" / "check-content-no-video-hints.py"
+    tables_script = ROOT / "scripts" / "check-content-no-article-tables.py"
     rc = 0
     if embed_script.is_file():
         rc = subprocess.run([sys.executable, str(embed_script)], check=False).returncode
     if rc == 0 and hints_script.is_file():
         rc = subprocess.run([sys.executable, str(hints_script)], check=False).returncode
     glossar_warn = ROOT / "scripts" / "check-glossar-first-links.py"
+    if tables_script.is_file():
+        subprocess.run([sys.executable, str(tables_script)], check=False)
     if glossar_warn.is_file():
         subprocess.run([sys.executable, str(glossar_warn)], check=False)
     return rc

@@ -475,7 +475,7 @@ Fertige Videos transkribieren lassen, Texte an den [**Cloud Agent**](/glossar/cl
 
 ### Wo sehe ich alle Site-Features?
 
-Seite [/features/](/features/), zum Anklicken die [Demo](/features/demo/) und Kurzliste im [README](https://github.com/platomat/hautoo/blob/main/README.md). [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/).
+Seite [/features/](/features/), zum Vorschauen die [Demo](/features/demo/) und Kurzliste im [README](https://github.com/platomat/hautoo/blob/main/README.md). [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/).
 
 ### Wie leite ich alte URLs auf eine neue Seite um?
 
