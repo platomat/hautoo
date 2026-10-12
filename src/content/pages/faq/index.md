@@ -515,7 +515,7 @@ Sprungliste der **Überschriften** im Artikel oder auf der Seite. **Einstellunge
 
 ### Warum muss ich YouTube-Videos erst freischalten?
 
-Datenschutz: ohne Klick lädt hautuu **keinen** YouTube-/Vimeo-Player. Nach Zustimmung kann der Browser die Wahl in [`localStorage`](/glossar/localstorage/) merken. Widerruf per Embed **Video-Freischaltung widerrufen**. [Glossar Consent](/glossar/consent/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+Datenschutz: ohne Klick lädt hautuu **keinen** YouTube-/Vimeo-Player. Nach Zustimmung kann der Browser die Wahl in `localStorage` merken (kein Cookie; Erklärung unter **Rechtliches** weiter unten). Widerruf per Embed **Video-Freischaltung widerrufen**. [Glossar Consent](/glossar/consent/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
 
 ### Was ist Cloudflare R2 bei Videos?
 
@@ -576,6 +576,18 @@ Feld **Bildnachweis** (`background.attribution`) im CMS; gesammelte Credits auf 
 ### KI-generierte Rechtstexte ungeprüft übernehmen?
 
 Nein. Unpassende Abschnitte raus, Inhalt an dein Setup anpassen. [Folge 019](/artikel/folge-019-impressum-komponenten/).
+
+### Was ist ein Cookie?
+
+Ein **Cookie** ist ein kleiner Texteintrag, den eine Website im Browser speichern kann. Bei vielen Seitenaufrufen sendet der Browser das Cookie **mit der Anfrage** an den Server ([MDN: HTTP-Cookies](https://developer.mozilla.org/de/docs/Web/HTTP/Guides/Cookies)). In Datenschutzerklärungen erwähnst du Cookies, wenn du sie nutzt. [Glossar Cookie](/glossar/cookie/).
+
+### Was ist localStorage?
+
+**localStorage** ist ein **Speicher nur im Browser** auf dem Gerät des Besuchers. Die Daten bleiben für diese Domain gespeichert, werden aber **nicht** bei jedem Seitenaufruf automatisch an den Server geschickt ([MDN: Window.localStorage](https://developer.mozilla.org/de/docs/Web/API/Window/localStorage)). [Glossar localStorage](/glossar/localstorage/).
+
+### Was ist der Unterschied zwischen Cookie und localStorage?
+
+**Cookies** können der Server bei passenden Anfragen **mitlesen** (z. B. Login), oft mit **Ablaufdatum** und strengen Größenlimits. **localStorage** bleibt **clientseitig**: JavaScript der Seite liest und schreibt dort, typisch für UI-Einstellungen. Beides betrifft **Datenschutz**, wenn personenbezogene oder verhaltensbezogene Daten drinstehen. **hautuu:** die site-weite **Video-Freigabe** (YouTube/Vimeo) liegt in `localStorage` unter `hautuu-video-consent`, **nicht** in einem Cookie (`src/lib/video-consent.ts`). Kurz erklärt in den beiden Fragen direkt darüber; Video-Kontext: [Consent](/glossar/consent/).
 
 ---
 
