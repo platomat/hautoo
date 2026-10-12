@@ -53,7 +53,7 @@ hautoo bringt unter der [MIT-Lizenz](/glossar/mit-lizenz/) mitgelieferte Lern-In
 - **Artikel**<br>Screencast-Folgen
 - **Tags** / **Kategorien**<br>hautuu-Themen, danach eigene anlegen
 
-Footer-Menüs (`footer`, `footer-legal`) genauso prüfen. Bausteine wie Kontaktanschrift kannst du behalten und anpassen ([Folge 020](/artikel/folge-020-bausteine-fork/)).
+[Footer](/glossar/footer/)-Menüs (`footer`, `footer-legal`) genauso prüfen. Bausteine wie Kontaktanschrift kannst du behalten und anpassen ([Folge 020](/artikel/folge-020-bausteine-fork/)).
 
 Titel, Logos und Texte stehen schon viel im CMS unter **Einstellungen** → **General** ([Folge 023](/artikel/folge-023-neue-features-demo-cms/)). **Kontakt-E-Mail** nicht ins öffentliche Repo committen: [Umgebungsvariable](/glossar/env/) `CONTACT_EMAIL` oder leer lassen ([Folge 019](/artikel/folge-019-impressum-komponenten/)).
 
