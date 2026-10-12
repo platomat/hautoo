@@ -6,7 +6,6 @@ publishDate: 2026-10-04
 modifiedDate: 2026-10-11
 parent: features
 hero:
-  showBreadcrumbs: true
   borderBottom: false
 toc:
   show: true
