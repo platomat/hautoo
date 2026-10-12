@@ -19,7 +19,7 @@ seo:
   seo_description: GitHub Use this template mit Private, kein öffentlicher Fork. Menü und Inhalte aufräumen, Sveltia lokal mit Chromium. Folge 024 für eigene Sites auf platomat/hautoo.
 ---
 
-Du magst Struktur und Features von hautuu, willst aber **deine** Texte und **keinen** öffentlichen Quellcode auf [GitHub](/glossar/github/). Dann reicht ein [**Fork**](/glossar/fork/) oft nicht: Der bleibt bei öffentlichem Original **öffentlich**. Besser: [**Template**](/glossar/template/) mit **Private** (privat). Was die Site kann, hast du in [Folge 023](/artikel/folge-023-neue-features-demo-cms/) gesehen; hier geht es um **dein** Repo und das Aufräumen.
+Magst du Struktur und Features von hautuu, willst aber **deine** Texte und **keinen** öffentlichen Quellcode auf [GitHub](/glossar/github/)? Dann reicht ein [**Fork**](/glossar/fork/) oft nicht: Der bleibt bei öffentlichem Original **öffentlich**. Besser: [**Template**](/glossar/template/) mit **Private** (privat). Was die Site kann, hast du in [Folge 023](/artikel/folge-023-neue-features-demo-cms/) gesehen; hier geht es um **dein** Repo und das Aufräumen.
 
 ## Warum kein Fork?
 
@@ -33,7 +33,7 @@ Du magst Struktur und Features von hautuu, willst aber **deine** Texte und **kei
 4. **Private** wählen. **Public** würde den Quellcode für alle lesbar machen.
 5. **Create repository** (Repository erstellen).
 
-Du bekommst eine **Kopie** unter deinem Account, unabhängig vom Original. Updates vom Original holst du später per [Pull](/glossar/pull/) oder gezieltem Merge, nicht automatisch.
+Du bekommst eine **Kopie** unter deinem Account, unabhängig vom Original. Updates vom Original holst du später per [Pull](/glossar/pull/) oder gezieltem Merge, nicht automatisch. Aber nur, wenn Wasilij bei hautoo auch wieder was geändert hat.
 
 {{repodoc path="docs/github/README.md" title="GitHub (hautuu)" description="Fork vs. Template, generate-Link."}}
 
@@ -44,7 +44,7 @@ hautoo bringt unter der [MIT-Lizenz](/glossar/mit-lizenz/) mitgelieferte Lern-In
 **Hauptmenü** (`main`):
 
 1. Im CMS **Menüs** → **Hauptmenü** (oder wie dein `main`-Menü heißt).
-2. Einträge löschen, die du nicht willst, z. B. Links zu **Artikel**, **Glossar**, **Features**, **Demo**.
+2. Einträge löschen, die du nicht willst, z. B. Links zu **Glossar**, **Features**, **Demo**.
 
 **Inhalte:**
 
@@ -61,12 +61,12 @@ Titel, Logos und Texte stehen schon viel im CMS unter **Einstellungen** → **Ge
 
 ## Lokal arbeiten und CMS testen
 
-1. Repo **klonen**, in [**Cursor**](/glossar/cursor/) öffnen ([Folge 001](/artikel/folge-001-hautuu-intro/)).
+1. **Dein** Repo **klonen**, in [**Cursor**](/glossar/cursor/) öffnen ([Folge 001](/artikel/folge-001-hautuu-intro/)).
 2. [`npm install`](/glossar/npm/) und [`npm run dev`](/glossar/npm/) ([Folge 018](/artikel/folge-018-node-npm/)).
 3. **Sveltia** unter `/admin/`: Browser **Chromium** oder **Chrome** (Firefox nutzt eine andere Engine und passt oft nicht zum lokalen CMS, siehe [Folge 013](/artikel/folge-013-sveltia-pat/)).
 4. Beim Login **Lokales Repository** (local repository) wählen und den Projektordner angeben, wenn danach gefragt wird.
 
-So kannst du z. B. unter **Einstellungen** → **Design** → **Content** die **Avatar**-Form von rund auf eckig stellen, Texte ändern, **Speichern** → [Commit](/glossar/commit/) landet in [Git](/glossar/git/), nach [Push](/glossar/push/) baut [Cloudflare Pages](/glossar/cloudflare-pages/) ([Folge 011](/artikel/folge-011-cloudflare-setup/)). Bis der Worker für dein neues Repo steht, ist lokales Testen der sichere Weg.
+So kannst du z. B. unter **Einstellungen** → **Design** → **Content** die **Avatar**-Form von rund auf eckig stellen, Texte ändern, **Speichern** → [Commit](/glossar/commit/) landet in [Git](/glossar/git/), nach [Push](/glossar/push/) baut [Cloudflare Pages](/glossar/cloudflare-pages/) ([Folge 011](/artikel/folge-011-cloudflare-setup/)). Bis der Worker für dein neues Repo steht, ist lokales Ändern der schnellere Weg.
 
 ## Kurz merken
 
