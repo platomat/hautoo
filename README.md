@@ -79,3 +79,9 @@ Details: [docs/entwicklung](./docs/entwicklung/README.md)
 ## Status
 
 Astro-Site mit Sveltia-CMS, Glossar, FAQ, 22 Folgen-Artikeln und Cloudflare-Deploy ist live unter [hautoo.storyofai.net](https://hautoo.storyofai.net). Details: [Features](https://hautoo.storyofai.net/features/).
+
+## Lizenz
+
+Jeder darf hautuu frei verwenden, modifizieren und weitergeben, privat und kommerziell. Einzige Bedingung: die Quelle nennen (z. B. dieses Repository oder [hautoo.storyofai.net](https://hautoo.storyofai.net)).
+
+Das entspricht im Kern einer freizügigen Lizenz mit Namensnennung (ähnlich MIT bzw. CC BY für Inhalte). Medien Dritter (Unsplash, Videos, …) behalten ihre eigenen Rechte.
