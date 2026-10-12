@@ -481,6 +481,10 @@ Seite [/features/](/features/), zum Anklicken die [Demo](/features/demo/) und Ku
 
 Collection **Weiterleitungen** im CMS: Quellpfade vom Root (`/ueber-uns/`), ein Ziel (`/autoren/wasilij/`), Status **301**. Build erzeugt `_redirects` für [Cloudflare Pages](/glossar/cloudflare-pages/). [Glossar Weiterleitung](/glossar/weiterleitung/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
 
+### Was ist Gravatar beim Autor-Avatar?
+
+Optional **Gravatar (E-Mail oder URL)** in der Collection **Autoren**; lokales Feld **Avatar** hat Vorrang. Zentraler Dienst unter gravatar.com, Datenschutz beachten. [Glossar Gravatar](/glossar/gravatar/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
 ### Wie passe ich Design und Abstände an?
 
 Im CMS unter **Einstellungen** → **Design** (Farben, Header, Footer, Hero, Inhaltsbreite) oder Issues an den Agenten. [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 003](/artikel/folge-003-erstes-design/), [Folge 005](/artikel/folge-005-astro-toolbar/).

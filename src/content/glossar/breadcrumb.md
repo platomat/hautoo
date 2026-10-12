@@ -14,4 +14,4 @@ seo:
 
 **Breadcrumb** (Brotkrumen-Navigation) zeigt, **wo** du auf der Site bist: z. B. [Features](/features/) → [Demo](/features/demo/) oder [Kategorien](/kategorien/) → Werkzeuge → Deploy & Hosting.
 
-Auf hautuu steuert du das im **Hero** (Seitenkopf): global unter **Einstellungen** → **Design** → **Hero**, pro Seite unter **Hero** im CMS. Trennzeichen (Punkt, Pfeil, …) und Icons sind einstellbar. Mehr: [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+Auf hautuu steuert du das im **Hero** (Seitenkopf): global unter **Einstellungen** → **Design** → **Hero** mit **Brotkrumen anzeigen** und **Brotkrumen-Trenner** (`/`, `•`, `→`, `-` in `public/admin/config.yml`). Pro Seite **Hero überschreiben** → **Brotkrumen anzeigen**. Mehr: [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
