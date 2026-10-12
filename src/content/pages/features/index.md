@@ -2,6 +2,7 @@
 title: Features
 description: Überblick über die umgesetzten Funktionen von hautuu auf der Website und im Repo.
 status: published
+publishDate: 2026-10-06
 modifiedDate: 2026-10-11
 toc:
   show: true

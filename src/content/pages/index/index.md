@@ -2,6 +2,7 @@
 title: Start
 description: 'hautuu: thematische Website mit Cursor, GitHub und Cloudflare.'
 status: published
+publishDate: 2026-10-04
 modifiedDate: 2026-10-10
 hero:
   showBreadcrumbs: false

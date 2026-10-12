@@ -2,7 +2,7 @@
 title: Glossar
 description: Kurze Erklärungen zu Begriffen rund um hautuu und den Stack.
 status: published
-publishDate: 2026-10-04
+publishDate: 2026-10-05
 background:
   image: /assets/pavel-marianov-8nAb6Rt4CEs-unsplash.webp
   overlay: 66

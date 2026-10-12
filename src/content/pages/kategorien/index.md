@@ -2,7 +2,7 @@
 title: Kategorien
 description: Artikel-Kategorien auf hautuu. Hierarchisch geordnet, wie in WordPress.
 status: published
-publishDate: 2026-10-10
+publishDate: 2026-10-11
 modifiedDate: 2026-10-10
 background:
   image: /assets/casey-horner-mLPjQs-YK5g-unsplash.webp

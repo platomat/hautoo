@@ -2,6 +2,7 @@
 title: Impressum
 description: Angaben gemäß § 5 DDG — Betreiber und Kontakt.
 status: published
+publishDate: 2026-10-02
 modifiedDate: 2026-10-04
 seo:
   seo_title: Impressum

@@ -2,6 +2,7 @@
 title: Datenschutz
 description: Informationen zur Verarbeitung personenbezogener Daten auf hautuu.
 status: published
+publishDate: 2026-10-01
 modifiedDate: 2026-10-05
 seo:
   seo_title: Datenschutz

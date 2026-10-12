@@ -2,6 +2,7 @@
 title: Artikel
 description: Beiträge und How-tos von hautuu.
 status: published
+publishDate: 2026-10-03
 modifiedDate: 2026-10-04
 background:
   image: /assets/alex-gruber-ATMEDyTPQG4-unsplash.webp

@@ -2,6 +2,7 @@
 title: Demo
 description: Übersicht aller Markdown-Elemente und Content-Komponenten von hautuu.
 status: published
+publishDate: 2026-10-04
 modifiedDate: 2026-10-11
 parent: features
 hero:

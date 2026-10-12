@@ -2,6 +2,7 @@
 title: Autoren
 description: Autoren der Artikel auf hautuu.
 status: published
+publishDate: 2026-10-08
 modifiedDate: 2026-10-11
 hero:
   showBreadcrumbs: false

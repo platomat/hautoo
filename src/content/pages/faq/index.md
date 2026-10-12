@@ -2,7 +2,7 @@
 title: FAQ
 description: Häufige Fragen zu hautuu, Git, Cursor, Cloudflare und dem CMS.
 status: published
-publishDate: 2026-10-04
+publishDate: 2026-10-08
 modifiedDate: 2026-10-12
 toc:
   show: true
