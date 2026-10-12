@@ -115,7 +115,11 @@ Ja, für Git, [Build](/glossar/build/)s in der Cloud und Downloads wie `npm inst
 
 ### Brauche ich Chrome für das CMS?
 
-Für [Sveltia](/glossar/sveltia/) online wird **Chrome/Chromium** empfohlen; Firefox klappt fürs [Backend](/glossar/backend/) oft nicht. [Folge 013](/artikel/folge-013-sveltia-pat/).
+Für [Sveltia](/glossar/sveltia/) online wird **Chrome/Chromium** empfohlen; Firefox klappt fürs [Backend](/glossar/backend/) oft nicht. Lokal: [Lokales Repository](/glossar/lokales-repository/) und [`npm run dev`](/glossar/npm/). [Folge 013](/artikel/folge-013-sveltia-pat/), [Folge 024](/artikel/folge-024-github-template-privat/).
+
+### Was ist Lokales Repository beim CMS-Login?
+
+Du wählst den **Projektordner** auf dem Rechner statt nur GitHub online. So bearbeitest du Inhalte unter `/admin/` lokal, bevor der [Worker](/glossar/cloudflare-worker/) für ein neues Repo läuft. [Glossar Lokales Repository](/glossar/lokales-repository/), [Folge 024](/artikel/folge-024-github-template-privat/).
 
 ### Ist hautuu nur eine Demo oder „echt“ live?
 
@@ -220,6 +224,10 @@ Deine Kopie eines fremden Repos unter deinem Account. Nicht verwechseln mit `git
 ### Was ist der Unterschied zwischen privatem Repo und öffentlicher Website?
 
 **Repo privat/öffentlich** auf GitHub: Wer den **Code** lesen darf. **Website online**: Ob Besucher deine Seiten unter einer Domain sehen. Beides steuerst du getrennt. [Glossar Repository](/glossar/repository/), [Folge 020](/artikel/folge-020-bausteine-fork/).
+
+### Was ist Upstream?
+
+Das **Original-Repo**, aus dem deine Kopie stammt (z. B. [platomat/hautoo](https://github.com/platomat/hautoo) nach **Use this template**). Updates kommen **nicht automatisch**; du holst sie per [Pull](/glossar/pull/) oder [Merge](/glossar/merge/). [Glossar Upstream](/glossar/upstream/), [Folge 024](/artikel/folge-024-github-template-privat/), [Folge 020](/artikel/folge-020-bausteine-fork/).
 
 ### Was ist `origin`?
 
@@ -439,7 +447,7 @@ Im [**CMS**](/glossar/cms/) unter `/admin/` oder [Markdown](/glossar/markdown/) 
 
 ### Wie binde ich ein Video ein?
 
-Artikel-Felder `videoProvider` (YouTube/Vimeo) und `videoId` im CMS; in den Folgen oft noch Platzhalter. [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 016](/artikel/folge-016-artikel-pull-request/).
+Toolbar **Video** oder Frontmatter `videoProvider` / `videoId`. **YouTube/Vimeo:** erst [Consent](/glossar/consent/)-Facade, Klick lädt den Player. **Eigene MP4:** `provider="file"` und [Cloudflare R2](/glossar/cloudflare-r2/) mit **Video-Basis-URL**. [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 001](/artikel/folge-001-hautuu-intro/).
 
 ### Was sind Tags?
 
@@ -447,7 +455,7 @@ Stichworte zu Artikeln, keine tiefe Kategorie-Hierarchie. [Folge 004](/artikel/f
 
 ### Was ist das Artikel-Listing?
 
-[**Komponente**](/glossar/komponente/) im Seiteninhalt: Anzahl, Sortierung, Grid. [Folge 019](/artikel/folge-019-impressum-komponenten/), [Folge 016](/artikel/folge-016-artikel-pull-request/).
+[**Komponente**](/glossar/komponente/) im Seiteninhalt (`{{article-listing …}}`): Anzahl, Sortierung, Kartenfelder, optional **Filter** nach Autor, Kategorie oder Tag. **UND:** alle gewählten Filter müssen passen. **ODER:** ein Filter reicht. Relative Pfade (`/kategorien/news/`) funktionieren lokal und live. [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 019](/artikel/folge-019-impressum-komponenten/).
 
 ### Was ist die Trennlinien-Komponente?
 
@@ -475,11 +483,63 @@ Fertige Videos transkribieren lassen, Texte an den [**Cloud Agent**](/glossar/cl
 
 ### Wo sehe ich alle Site-Features?
 
-Seite [/features/](/features/) und Kurzliste im [README](https://github.com/platomat/hautoo/blob/main/README.md). [Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/), [Folge 020](/artikel/folge-020-bausteine-fork/).
+Seite [/features/](/features/), zum Vorschauen die [Demo](/features/demo/) und Kurzliste im [README](https://github.com/platomat/hautoo/blob/main/README.md). [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/).
+
+### Wie leite ich alte URLs auf eine neue Seite um?
+
+Collection **Weiterleitungen** im CMS: Quellpfade vom Root (`/ueber-uns/`), ein Ziel (`/autoren/wasilij/`), Status **301**. Build erzeugt `_redirects` für [Cloudflare Pages](/glossar/cloudflare-pages/). [Glossar Weiterleitung](/glossar/weiterleitung/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was ist Gravatar beim Autor-Avatar?
+
+Optional **Gravatar (E-Mail oder URL)** in der Collection **Autoren**; lokales Feld **Avatar** hat Vorrang. Zentraler Dienst unter gravatar.com, Datenschutz beachten. [Glossar Gravatar](/glossar/gravatar/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
 
 ### Wie passe ich Design und Abstände an?
 
-Issues an den Agenten, bestehende [CSS](/glossar/css/)-Klassen nutzen. [Folge 003](/artikel/folge-003-erstes-design/), [Folge 005](/artikel/folge-005-astro-toolbar/).
+Im CMS unter **Einstellungen** → **Design** (Farben, Header, Footer, [Hero](/glossar/hero/), Inhaltsbreite, Abstände in [rem](/glossar/rem/)) oder Issues an den Agenten. [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 003](/artikel/folge-003-erstes-design/), [Folge 005](/artikel/folge-005-astro-toolbar/).
+
+### Was ist der Hero?
+
+Der sichtbare **Seitenkopf** mit Titel, optional Brotkrumen, Tags oder Autoren. Global unter **Einstellungen** → **Design** → **Hero**; pro Seite **Hero überschreiben**. [Glossar Hero](/glossar/hero/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was ist ein Favicon?
+
+Das **kleine Tab-Icon** im Browser. Unter **Einstellungen** → **General** → **Favicons**, optional hell und dunkel. [Glossar Favicon](/glossar/favicon/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was bedeutet sticky beim Header?
+
+Der **Header bleibt beim Scrollen oben** (sticky), oft mit schmalerer **Sticky Header**-Zeile. Ein/Aus pro Geräteklasse unter **Design** → **Header**. [Glossar Sticky Header](/glossar/sticky-header/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was ist das Inhaltsverzeichnis (TOC)?
+
+Sprungliste der **Überschriften** im Artikel oder auf der Seite. **Einstellungen** → **Content**; pro Eintrag **TOC überschreiben**. [Glossar Inhaltsverzeichnis](/glossar/inhaltsverzeichnis/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Warum muss ich YouTube-Videos erst freischalten?
+
+Datenschutz: ohne Klick lädt hautuu **keinen** YouTube-/Vimeo-Player. Nach Zustimmung kann der Browser die Wahl in `localStorage` merken (kein Cookie; Erklärung unter **Rechtliches** weiter unten). Widerruf per Embed **Video-Freischaltung widerrufen**. [Glossar Consent](/glossar/consent/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was ist Cloudflare R2 bei Videos?
+
+**Objektspeicher** für große MP4s statt Git-Repo. Bucket bei Cloudflare, **Video-Basis-URL** im CMS, Embed `provider="file"`. [Glossar Cloudflare R2](/glossar/cloudflare-r2/), Repo-Doku `docs/cloudflare/r2-videos.md`, [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was ist ein Slug?
+
+Der **Kurzname** in URL und Ordner, z. B. `wasilij` in `/autoren/wasilij/`. Feld **Slug** im CMS. [Glossar Slug](/glossar/slug/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Wie funktioniert die Suche auf der Website?
+
+**Sitesuche** im Header durchsucht den beim [Build](/glossar/build/) erzeugten Index (MiniSearch), meist per **Strg+K**. [Glossar Sitesuche](/glossar/sitesuche/), [Features](/features/#design-und-nutzung), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was ist die Mediathek im CMS?
+
+Die **Galerie** für Bilder (Logo, Favicon, Avatar, …) unter `src/assets/`. Keine großen Videos fürs [Repo](/glossar/repository/): dafür [Cloudflare R2](/glossar/cloudflare-r2/). [Glossar Mediathek](/glossar/mediathek/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was bedeutet Inhaltsbreite (Standard, breit, vollbreit)?
+
+Steuert, wie breit Text und Layout laufen (Lesespalte vs. volle Breite). Global unter **Einstellungen** → **Design**, pro Artikel oder Seite überschreibbar. [Glossar Inhaltsbreite](/glossar/inhaltsbreite/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
+
+### Was ist ein Repo-Dokument in der Toolbar?
+
+Embed **Repo-Dokument** verlinkt eine Datei unter `docs/` auf GitHub als Hinweisbox im Inhalt. [Glossar Repo-Dokument](/glossar/repo-dokument/), [Demo](/features/demo/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
 
 ### Was sind Breakpoints?
 
@@ -516,6 +576,18 @@ Feld **Bildnachweis** (`background.attribution`) im CMS; gesammelte Credits auf 
 ### KI-generierte Rechtstexte ungeprüft übernehmen?
 
 Nein. Unpassende Abschnitte raus, Inhalt an dein Setup anpassen. [Folge 019](/artikel/folge-019-impressum-komponenten/).
+
+### Was ist ein Cookie?
+
+Ein **Cookie** ist ein kleiner Texteintrag, den eine Website im Browser speichern kann. Bei vielen Seitenaufrufen sendet der Browser das Cookie **mit der Anfrage** an den Server ([MDN: HTTP-Cookies](https://developer.mozilla.org/de/docs/Web/HTTP/Guides/Cookies)). In Datenschutzerklärungen erwähnst du Cookies, wenn du sie nutzt. [Glossar Cookie](/glossar/cookie/).
+
+### Was ist localStorage?
+
+**localStorage** ist ein **Speicher nur im Browser** auf dem Gerät des Besuchers. Die Daten bleiben für diese Domain gespeichert, werden aber **nicht** bei jedem Seitenaufruf automatisch an den Server geschickt ([MDN: Window.localStorage](https://developer.mozilla.org/de/docs/Web/API/Window/localStorage)). [Glossar localStorage](/glossar/localstorage/).
+
+### Was ist der Unterschied zwischen Cookie und localStorage?
+
+**Cookies** können der Server bei passenden Anfragen **mitlesen** (z. B. Login), oft mit **Ablaufdatum** und strengen Größenlimits. **localStorage** bleibt **clientseitig**: JavaScript der Seite liest und schreibt dort, typisch für UI-Einstellungen. Beides betrifft **Datenschutz**, wenn personenbezogene oder verhaltensbezogene Daten drinstehen. **hautuu:** die site-weite **Video-Freigabe** (YouTube/Vimeo) liegt in `localStorage` unter `hautuu-video-consent`, **nicht** in einem Cookie (`src/lib/video-consent.ts`). Kurz erklärt in den beiden Fragen direkt darüber; Video-Kontext: [Consent](/glossar/consent/).
 
 ---
 

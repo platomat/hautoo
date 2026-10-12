@@ -42,6 +42,7 @@ Mit **Screencast-Transkript** oder ohne:
 - **Gedankenstriche** (`—`, `–`) **sparsam**: in **Titeln, Teasern und FAQ-Fragen keine**; im Fließtext nur vereinzelt. Stattdessen Punkt, Komma, Doppelpunkt, Klammern oder Umformulierung (siehe auch [.cursor/rules/deutsche-prosa.mdc](../../.cursor/rules/deutsche-prosa.mdc)).
 - Prosa auf **Deutsch**; Code, Slugs, Pfade auf **Englisch** wie im Rest des Projekts.
 - **UI-Wortlaut:** Englische Menü- und Button-Texte nicht fett, sondern „Original“ (Deutsch) beim ersten Vorkommen pro Datei; deutsche Betonung weiter **fett**. Tabelle und Regeln: [ui-wortlaut.md](./ui-wortlaut.md); Unsicheres nach `tmp/ui-unverified.txt`.
+- **Tabellen in Artikeln:** Kleine **Mini-Tabellen** (typisch **zwei Spalten**, kurze Zellen) sind erlaubt, z. B. Modus vs. Zweck oder Breakpoints. **Große oder breite** Tabellen (mehr als drei Spalten oder lange Fließtext-Zellen) auf Tablet/Mobil schlecht lesbar: als Liste mit `- **Label**<br>Kurzbeschreibung …` umbauen. Optional Warnung im Build: `scripts/check-content-no-article-tables.py` (kein Abbruch).
 - **Ohne Video-Hinweise:** Artikel, Seiten und Glossar müssen **ohne Screencast/Video** verständlich sein. Keine Meta-Verweise wie „im Video“, „im Screencast“, „im Transkript“ im sichtbaren Text (Quellkommentare `<!-- … -->` sind ok). Ausnahme: Sicherheitshinweise wie „nicht im Video zeigen“ (Folge 013). Prüfung: `scripts/check-content-no-video-hints.py` (läuft mit `check-content-links.py` / `prebuild`).
 
 ### Begriffe (Laien vs. Entwickler-Doku)

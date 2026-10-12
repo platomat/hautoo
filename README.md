@@ -22,7 +22,7 @@ Kurzliste dessen, was auf `main` schon umgesetzt ist (Details und Erläuterungen
 
 | Bereich | Punkte |
 | --- | --- |
-| **Inhalte** | 22 Screencast-Folgen als Artikel, statische Pages, Features-Seite, Redaktionsregeln in `docs/redaktion/` |
+| **Inhalte** | 23 Screencast-Folgen als Artikel, statische Pages, Features-Seite inkl. [Demo](https://hautoo.storyofai.net/features/demo/), Redaktionsregeln in `docs/redaktion/` |
 | **CMS / Collections** | Sveltia `/admin/`; Pages, Articles (+ Kategorien/Tags/Autoren), Glossar, Menüs, Bausteine, Weiterleitungen, Settings (General/Design/Content inkl. Logos, Favicons, Hero, Schrift, Breite, Abstand); Entwurfsstatus; Worker-OAuth |
 | **Glossar & FAQ** | Glossar mit verwandten Artikeln/Tags, Querverlink-Skript und Erstlink-Check, FAQ offen (kein Accordion), Tag- und Autoren-Seiten |
 | **Content-Komponenten** | Bausteine, Listings (Filter UND/ODER), Tagwolke, Logo-Embed, Video (YT/Vimeo oder R2), Trennlinie, Abstandshalter, Button, Button-Gruppe, Kontakt-E-Mail, Repo-Docs; Embed-Check |

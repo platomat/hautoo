@@ -76,7 +76,9 @@ TERM_PATTERNS: list[tuple[str, str]] = [
     ("fork", r"Fork"),
     ("template", r"Template"),
     ("template", r"Vorlage"),
-    ("issue", r"Issues?"),
+    ("milestone", r"Milestones?"),
+    ("milestone", r"Meilensteine?"),
+    ("issue", r"\bIssues?\b"),
     ("origin", r"\borigin\b"),
     ("main", r"`main`"),
     ("main", r"\bmain\b"),
@@ -269,6 +271,27 @@ def count_glossar_links_in_body(body: str) -> int:
     return len(re.findall(r"\]\(/glossar/[^)]+\)", body))
 
 
+GLOSSAR_LINK_RE = re.compile(r"\[([^\]]+)\]\(/glossar/([^/)]+)/\)")
+
+
+def linked_slugs_from_body(body: str) -> set[str]:
+    return {m.group(2) for m in GLOSSAR_LINK_RE.finditer(body)}
+
+
+def dedupe_glossar_links_per_slug(body: str) -> str:
+    """Keep the first glossar link per slug per file; later synonyms stay plain text."""
+    seen: set[str] = set()
+
+    def repl(m: re.Match[str]) -> str:
+        text, slug = m.group(1), m.group(2)
+        if slug in seen:
+            return text
+        seen.add(slug)
+        return m.group(0)
+
+    return GLOSSAR_LINK_RE.sub(repl, body)
+
+
 def content_markdown_files() -> list[Path]:
     paths: list[Path] = []
     for path in sorted(GLOSSAR_DIR.glob("*.md")):
@@ -296,7 +319,9 @@ def process_file(path: Path) -> int:
     parts = split_file(text)
     slug = current_slug_for(path)
     before = count_glossar_links_in_body(parts.body)
-    new_body, _ = link_body_multipass(parts.body, slug, set())
+    seeded = linked_slugs_from_body(parts.body)
+    new_body, _ = link_body_multipass(parts.body, slug, seeded)
+    new_body = dedupe_glossar_links_per_slug(new_body)
     after = count_glossar_links_in_body(new_body)
     delta = after - before
     if new_body != parts.body:
