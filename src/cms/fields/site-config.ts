@@ -248,14 +248,23 @@ export function normalizeHeroByCollection(raw: unknown): unknown {
 }
 
 /**
+ * Optional CMS override bool (select: null / true / false).
+ * null or omit → use collection/global default at resolve time.
+ */
+const optionalOverrideBool = z.preprocess(
+	(value) => (value === null || value === "" ? undefined : value),
+	z.boolean().optional(),
+);
+
+/**
  * Per-entry hero overrides (CMS object `hero`).
  * Omit object or fields = Design → Hero for that collection.
  */
 export const entryHeroSchema = z
 	.object({
 		textAlign: heroTextAlignSchema.optional(),
-		showBreadcrumbs: z.boolean().optional(),
-		borderBottom: z.boolean().optional(),
+		showBreadcrumbs: optionalOverrideBool,
+		borderBottom: optionalOverrideBool,
 	})
 	.optional();
 
@@ -265,7 +274,7 @@ export type EntryHero = z.infer<typeof entryHeroSchema>;
 export const entryTocSchema = z
 	.object({
 		/** Omit = global Content → TOC → enabled for this collection. */
-		show: z.boolean().optional(),
+		show: optionalOverrideBool,
 		levels: z.array(tocLevelSchema).optional(),
 		title: z.string().optional(),
 	})

@@ -120,9 +120,8 @@ collections:
         label: Hero überschreiben
         widget: object
         collapsed: true
-        required: true
-        default: {}
-        hint: "Felder leer = Defaults unter Einstellungen → Design → Hero. Nur ausgefüllte Werte überschreiben lokal."
+        required: false
+        hint: "Nur setzen, wenn du die Defaults unter Einstellungen → Design → Hero überschreiben willst. Unberührt = nicht in der YAML."
         fields:
           - name: textAlign
             label: Textausrichtung
@@ -135,28 +134,42 @@ collections:
             hint: "Leer = Collection-Default. Gilt für Brotkrumen, Titel und Beschreibung."
           - name: showBreadcrumbs
             label: Brotkrumen anzeigen
-            widget: boolean
+            widget: select
             required: false
-            hint: "Leer lassen = Collection-Default. An/Aus überschreibt die globale Vorgabe."
+            default: null
+            options:
+              - { label: Wie global, value: null }
+              - { label: An, value: true }
+              - { label: Aus, value: false }
+            hint: "Wie global = Design → Hero. An/Aus nur bei bewusster Überschreibung."
           - name: borderBottom
             label: Trennlinie unten
-            widget: boolean
+            widget: select
             required: false
-            hint: "Leer lassen = Collection-Default. An = 1px Linie unter dem Hero."
+            default: null
+            options:
+              - { label: Wie global, value: null }
+              - { label: An, value: true }
+              - { label: Aus, value: false }
+            hint: "Wie global = Design → Hero. An = 1px Linie unter dem Hero."
       - &field_entry_toc
         name: toc
         label: TOC überschreiben
         widget: object
         collapsed: true
-        required: true
-        default: {}
-        hint: "Felder leer = globale Config unter Einstellungen → Content → TOC. Nur ausgefüllte Werte überschreiben lokal."
+        required: false
+        hint: "Nur setzen zum Überschreiben von Einstellungen → Content → TOC. Unberührt = nicht in der YAML."
         fields:
           - name: show
             label: Anzeigen
-            widget: boolean
+            widget: select
             required: false
-            hint: "Leer lassen = globaler Default. An/Aus überschreibt für diesen Eintrag."
+            default: null
+            options:
+              - { label: Wie global, value: null }
+              - { label: An, value: true }
+              - { label: Aus, value: false }
+            hint: "Wie global = Content → TOC für diese Collection. An/Aus nur bei bewusster Überschreibung."
           - name: title
             label: Titel
             widget: string
@@ -177,8 +190,7 @@ collections:
         label: Seitenhintergrund einstellen
         widget: object
         collapsed: true
-        required: true
-        default: {}
+        required: false
         hint: "Optional. Vollflächig hinter der sichtbaren Seite (Viewport). Ohne Bild kein Hintergrund. Header und Footer bleiben darüber."
         fields:
           - name: image
@@ -191,9 +203,8 @@ collections:
             value_type: int
             min: 0
             max: 100
-            default: 40
             required: false
-            hint: "Schwarzes Overlay über dem Hintergrundbild. 0 = keine Abdunkelung, 100 = fast schwarz."
+            hint: "Nur bei Hintergrundbild. Leer = 40. 0 = keine Abdunkelung, 100 = fast schwarz."
           - name: attribution
             label: Bildnachweis
             widget: text
@@ -204,9 +215,8 @@ collections:
         label: Inhaltsbreite
         widget: object
         collapsed: true
-        required: true
-        default: {}
-        hint: "Breite und Abstände. Felder leer = Defaults unter Einstellungen → Design → Inhaltsbreite / Abstand."
+        required: false
+        hint: "Nur setzen zum Überschreiben. Felder leer = Defaults unter Einstellungen → Design → Inhaltsbreite / Abstand."
         fields:
           - name: contentWidth
             label: Spaltenbreite

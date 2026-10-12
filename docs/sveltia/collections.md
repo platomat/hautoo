@@ -134,7 +134,7 @@ Pro Collection eigene Defaults (Reihenfolge wie in der CMS-Leiste: Seiten, Artik
 | `hero.<collection>.breadcrumbSeparator` | Trenner zwischen Elementen: `/` · `•` · `→` · `-` | `/` |
 | `hero.<collection>.borderBottom` | 1px Linie unter dem Hero | `false` |
 
-Lokale Überschreibung an **Seiten** und **Artikeln**: Objekt `hero` mit `textAlign`, `showBreadcrumbs`, `borderBottom` (Feld leer/omit = Default der jeweiligen Collection). Umsetzung: `PageHero.astro` (`hero`-Prop), Pfade in `src/lib/breadcrumbs.ts`.
+Lokale Überschreibung an **Seiten** und **Artikeln**: Objekt `hero` mit `textAlign`, `showBreadcrumbs`, `borderBottom`. Boolean-Overrides im CMS als Select „Wie global“ (`null`) / An / Aus; unberührt bleibt das Feld dank `omit_empty_optional_fields` aus der YAML. Umsetzung: `PageHero.astro`, `src/lib/breadcrumbs.ts`.
 
 ### Einstellungen → Content → TOC (#51)
 

@@ -72,10 +72,10 @@ Auf **Seiten** und **Artikeln** folgen nach dem Änderungsdatum collapsible Obje
 
 | CMS-Gruppe | Frontmatter | Felder |
 | --- | --- | --- |
-| **Hero überschreiben** | `hero` | `textAlign`, `showBreadcrumbs`, `borderBottom` (Keys wie Design → Hero); leer = Collection-Default |
-| **TOC überschreiben** | `toc` | `show`, `title`, `levels`; leer = globaler Default |
-| **Seitenhintergrund einstellen** | `background` | `image`, `overlay`, `attribution` |
-| **Inhaltsbreite** | `layout` | `contentWidth`, `afterHero`, `beforeFooter`; leer = Design → Inhaltsbreite / Abstand |
+| **Hero überschreiben** | `hero` | `textAlign`, `showBreadcrumbs`, `borderBottom`; Boolean-Overrides als Select (`null` / An / Aus). Unberührt + `omit_empty_optional_fields` = nicht in der YAML |
+| **TOC überschreiben** | `toc` | `show` (Select wie Hero), `title`, `levels`; unberührt = globaler Default |
+| **Seitenhintergrund einstellen** | `background` | `image`, `overlay` (ohne CMS-Default; leer → 40 im Render), `attribution` |
+| **Inhaltsbreite** | `layout` | `contentWidth`, `afterHero`, `beforeFooter`; unberührt = Design → Inhaltsbreite / Abstand |
 
 Listen-Vorschau: Collection-Option `thumbnail: background.image` (Sveltia erkennt nested Images nicht automatisch).
 
