@@ -475,11 +475,15 @@ Fertige Videos transkribieren lassen, Texte an den [**Cloud Agent**](/glossar/cl
 
 ### Wo sehe ich alle Site-Features?
 
-Seite [/features/](/features/) und Kurzliste im [README](https://github.com/platomat/hautoo/blob/main/README.md). [Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/), [Folge 020](/artikel/folge-020-bausteine-fork/).
+Seite [/features/](/features/), zum Anklicken die [Demo](/features/demo/) und Kurzliste im [README](https://github.com/platomat/hautoo/blob/main/README.md). [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/).
+
+### Wie leite ich alte URLs auf eine neue Seite um?
+
+Collection **Weiterleitungen** im CMS: Quellpfade vom Root (`/ueber-uns/`), ein Ziel (`/autoren/wasilij/`), Status **301**. Build erzeugt `_redirects` für [Cloudflare Pages](/glossar/cloudflare-pages/). [Glossar Weiterleitung](/glossar/weiterleitung/), [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
 
 ### Wie passe ich Design und Abstände an?
 
-Issues an den Agenten, bestehende [CSS](/glossar/css/)-Klassen nutzen. [Folge 003](/artikel/folge-003-erstes-design/), [Folge 005](/artikel/folge-005-astro-toolbar/).
+Im CMS unter **Einstellungen** → **Design** (Farben, Header, Footer, Hero, Inhaltsbreite) oder Issues an den Agenten. [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 003](/artikel/folge-003-erstes-design/), [Folge 005](/artikel/folge-005-astro-toolbar/).
 
 ### Was sind Breakpoints?
 

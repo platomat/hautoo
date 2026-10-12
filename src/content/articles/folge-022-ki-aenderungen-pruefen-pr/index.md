@@ -56,12 +56,12 @@ Wenn du den PR **akzeptierst** ([**Merge**](/glossar/merge/), siehe [Folge 016](
 
 Damit du (oder [Fork](/glossar/fork/)-Nutzer) sehen, **was die Site schon kann**: [Features auf hautoo](https://hautoo.storyofai.net/features/) und die Kurzliste im [README](https://github.com/platomat/hautoo/blob/main/README.md). Neu dazu gekommen u. a.:
 
-- **Konfiguration** im [CMS](/glossar/cms/) (Collection `config`, Datei `src/content/config/site.yaml`): **Design** (z. B. **Sticky Header**, Höhen pro Mobil/Tablet/Desktop) und **Content** (globales **Inhaltsverzeichnis**, pro Seite/Artikel überschreibbar).
-- **Features-Seite** live unter `/features/`, Quelle im Repo: `src/content/pages/features/index.md`.
+- **Einstellungen** im [CMS](/glossar/cms/) (`src/content/settings/`: **General**, **Design**, **Content**): Farben, Schrift, Header/Footer, Hero, Inhaltsbreite, Abstand, TOC, Autoren-Anzeige.
+- **Features-Seite** und **Demo** (`/features/`, `/features/demo/`), dazu Collections **Kategorien**, **Autoren**, **Weiterleitungen**. Tour: [Folge 023](/artikel/folge-023-neue-features-demo-cms/).
 - **Suche** im Header (Glossar und Inhalte finden, z. B. „Was ist [CSS](/glossar/css/)?“).
 - Angepasstes **Logo** mit Pfad-Animation und Transparenz-Effekt (Tablet/Mobil mitgedacht).
 
-Wenn du nur Inhalte und Farben tauschen willst: [Fork](/glossar/fork/) und eigene Texte ([Folge 020](/artikel/folge-020-bausteine-fork/)). Bilder schlank halten: [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/).
+Wenn du nur Inhalte und Farben tauschen willst: [Fork](/glossar/fork/) oder [Template](/glossar/template/) ([Folge 020](/artikel/folge-020-bausteine-fork/)). Demo und Einstellungen im Detail: [Folge 023](/artikel/folge-023-neue-features-demo-cms/). Bilder schlank halten: [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/).
 
 ## Kurz merken
 
