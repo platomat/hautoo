@@ -21,4 +21,4 @@ seo:
 
 ## Corporate Design (Design)
 
-**Corporate Design** ist die **sichtbare Seite** der Marke: Layout, Komponenten, Abstände, Footer — die Umsetzung von [CI](/glossar/ci/) (**Corporate Identity**) im Interface. Im Projekt: [CSS](/glossar/css/), [Breakpoints](/glossar/breakpoint/) und redaktionelle Bausteine ([Folge 003](/artikel/folge-003-erstes-design/), [Folge 019](/artikel/folge-019-impressum-komponenten/)).
+**Corporate Design** ist die **sichtbare Seite** der Marke: Layout, Komponenten, Abstände, [Footer](/glossar/footer/) — die Umsetzung von [CI](/glossar/ci/) (**Corporate Identity**) im Interface. Im Projekt: [CSS](/glossar/css/), [Breakpoints](/glossar/breakpoint/) und redaktionelle Bausteine ([Folge 003](/artikel/folge-003-erstes-design/), [Folge 019](/artikel/folge-019-impressum-komponenten/)).

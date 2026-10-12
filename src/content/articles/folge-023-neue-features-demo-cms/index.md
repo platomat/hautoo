@@ -93,7 +93,7 @@ Große Screencast-Dateien landen in einem **R2-Bucket** (Objektspeicher), nicht 
 
 ## Brotkrumen, Suche, Artikel-Meta
 
-- [**Sitesuche**](/glossar/sitesuche/) im Header (siehe [Features](/features/#design-und-nutzung)).
+- [**Sitesuche**](/glossar/sitesuche/) im [Header](/glossar/header/) (siehe [Features](/features/#design-und-nutzung)).
 - [**Breadcrumb**](/glossar/breadcrumb/) im Hero: Pfad z. B. Features → Demo oder Kategorien → Werkzeuge → Deploy & Hosting.
 - Global pro Collection unter **Einstellungen** → **Design** → **Hero**: **Brotkrumen anzeigen**, **Brotkrumen-Trenner** (`/`, `•`, `→`, `-`).
 - Pro Seite/Artikel: **Hero überschreiben** → **Brotkrumen anzeigen** (leer = Default). **Trennlinie unten** global oder individuell je Eintrag überschreiben.
@@ -103,7 +103,7 @@ Große Screencast-Dateien landen in einem **R2-Bucket** (Objektspeicher), nicht 
 
 Datei `src/content/settings/general.json`. CMS-Labels (Auszug):
 
-- **Website title** (Seitentitel im Header, Titel-Suffix, Footer)
+- **Website title** (Seitentitel im Header, Titel-Suffix, [Footer](/glossar/footer/))
 - **Description** (Slogan; HTML erlaubt, z. B. fett oder Links)
 - **Footer copyright** → **Claim**, **Separator** (Trenner zwischen Titel und Claim), **Show center mark** (Mitte: GitHub-Icon wenn **GitHub repository** gesetzt, sonst Site-Logo zur Startseite)
 - **Contact email** (optional; steht im öffentlichen Repo, wenn gesetzt → besser **CONTACT_EMAIL** als [Umgebungsvariable](/glossar/env/), [Folge 019](/artikel/folge-019-impressum-komponenten/))

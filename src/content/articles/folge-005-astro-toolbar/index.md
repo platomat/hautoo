@@ -41,7 +41,7 @@ Im Projekt:
 - **Tablet:** unter 1024 px  
 - **Mobil:** unter 680 px  
 
-Einmal gesagt, gilt’s fürs Menü, den Footer, was auch immer. Test: Entwicklertools, Breite ziehen. Unter [**680 px**](/glossar/breakpoint/) fühlt sich das Layout anders an.
+Einmal gesagt, gilt’s fürs Menü, den [Footer](/glossar/footer/), was auch immer. Test: Entwicklertools, Breite ziehen. Unter [**680 px**](/glossar/breakpoint/) fühlt sich das Layout anders an.
 
 ## Klartext statt Fachchinesisch
 

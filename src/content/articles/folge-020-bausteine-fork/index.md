@@ -41,7 +41,7 @@ Weitere Bausteine sind z. B. **Kontakt-E-Mail** (`{{contact-email}}`) für Imp
 
 ## Seiten feintunen
 
-Bei **Seiten** kannst du optional **Header-Code** und **Footer-Code** setzen: kleine HTML- oder Style-Snippets nur für diese eine Seite, ohne das globale Layout für alle anzufassen. **SEO**-Felder liegen im [CMS](/glossar/cms/) weiter unten, damit der Alltags-Content oben bleibt. Titel und Descriptions für alle Seiten kannst du später gezielt mit dem Agenten ausfüllen lassen.
+Bei **Seiten** kannst du optional **[Header](/glossar/header/)-Code** und **[Footer](/glossar/footer/)-Code** setzen: kleine HTML- oder Style-Snippets nur für diese eine Seite, ohne das globale Layout für alle anzufassen. **SEO**-Felder liegen im [CMS](/glossar/cms/) weiter unten, damit der Alltags-Content oben bleibt. Titel und Descriptions für alle Seiten kannst du später gezielt mit dem Agenten ausfüllen lassen.
 
 ## FAQ mit Inhaltsverzeichnis
 

@@ -20,7 +20,7 @@ seo:
   seo_description: Rechtstexte mit dem Agenten, Kontakt per Secret, Bildnachweise für Hintergründe auf dem Impressum, Separator und Listing im CMS. Folge 019 zu Legal und Komponenten.
 ---
 
-Impressum und Datenschutz für einen in **Deutschland** betriebenen Auftritt, gehostet auf [**Cloudflare**](/glossar/cloudflare-pages/), mit den Tools aus dem Projekt: das kann der Agent ausformulieren, du prüfst Inhalt und Ton. Footer-Platzierung und erste Seiten: [Folge 003](/artikel/folge-003-erstes-design/). **Kontakt-E-Mail** gehört nicht als Klartext ins öffentliche [Repo](/glossar/repository/) (Baustein `{{contact-email}}`, siehe [Folge 020](/artikel/folge-020-bausteine-fork/)).
+Impressum und Datenschutz für einen in **Deutschland** betriebenen Auftritt, gehostet auf [**Cloudflare**](/glossar/cloudflare-pages/), mit den Tools aus dem Projekt: das kann der Agent ausformulieren, du prüfst Inhalt und Ton. [Footer](/glossar/footer/)-Platzierung und erste Seiten: [Folge 003](/artikel/folge-003-erstes-design/). **Kontakt-E-Mail** gehört nicht als Klartext ins öffentliche [Repo](/glossar/repository/) (Baustein `{{contact-email}}`, siehe [Folge 020](/artikel/folge-020-bausteine-fork/)).
 
 {{repodoc path="docs/cms-fields/README.md" title="CMS field partials (DRY)" description="Embeds, Kontakt-E-Mail und SEO-Felder."}}
 
