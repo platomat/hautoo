@@ -489,7 +489,7 @@ export const siteMediaConfigSchema = z.object({
 	videoBaseUrl: z.string().trim().default(""),
 	/**
 	 * Cloudflare Worker base URL for gated MemberVideo (no trailing slash).
-	 * Example: `https://hautoo-video-access.example.workers.dev`
+	 * Example: `https://hautoo-member-media-access.<account>.workers.dev`
 	 */
 	videoAccessWorkerUrl: z.string().trim().default(""),
 });

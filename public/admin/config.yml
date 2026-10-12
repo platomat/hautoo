@@ -1815,7 +1815,7 @@ collections:
                 widget: string
                 required: false
                 default: ""
-                hint: "Basis-URL des Workers für geschützte Member-Videos (ohne Slash am Ende), z. B. https://hautoo-video-access.example.workers.dev. Leer = Member-Video-Embeds zeigen Hinweis."
+                hint: "Basis-URL des Workers hautoo-member-media-access (ohne Slash am Ende), z. B. https://hautoo-member-media-access.<account>.workers.dev. Leer = Member-Video-Embeds zeigen Hinweis."
           - name: authors
             label: Autoren
             widget: object

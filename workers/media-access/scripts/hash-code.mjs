@@ -8,7 +8,8 @@
  *
  * Put in KV (Workers dashboard or wrangler):
  *   Key:   <hex from this script>
- *   Value: {"active":true,"label":"kunde-42","createdAt":"2026-04-09"}
+ *   Value: {"active":true,"label":"anna-mueller","createdAt":"2026-04-09"}
+ *   (`label` = deine interne Zuordnung Person/Kanal; Klartext nicht in KV)
  *
  * Never commit plaintext codes. Give the plaintext only to the recipient.
  */

@@ -14,7 +14,8 @@ Privates R2  ←  Worker (unlock / sign / play)  ←  MemberVideo im Browser
 
 | Was | Wo |
 | --- | --- |
-| Worker | `workers/video-access/` (gleiches Repo, eigenes Deploy) |
+| Worker-Name | `hautoo-member-media-access` (Cloudflare) |
+| Worker-Code | `workers/media-access/` (gleiches Repo, eigenes Deploy) |
 | Komponente | `src/components/MemberVideo.astro` |
 | Embed | `{{member-video src="datei.mp4" title="…" }}` |
 | CMS | Toolbar **Member-Video (Code)** |
@@ -23,21 +24,37 @@ Privates R2  ←  Worker (unlock / sign / play)  ←  MemberVideo im Browser
 
 Ein Token gilt **site-weit für alle Member-Videos** im Browser. Jede Person bekommt einen **eigenen** Code (Hash in KV).
 
+## Wer hat welchen Code?
+
+Der Worker speichert **keine** Personenliste und **keinen** Klartext-Code. In KV liegt nur:
+
+- **Key:** SHA-256-Hash des Codes  
+- **Value:** z. B. `{"active":true,"label":"anna-mueller","createdAt":"2026-04-09"}`
+
+`label` ist frei wählbar (interne Notiz, Kundenkürzel, E-Mail-Kürzel). Darüber kannst du später sperren oder zuordnen, **ohne** den Klartext in KV zu halten.
+
+Zusätzlich brauchst du intern eine eigene Übersicht (Tabelle, Passwortmanager-Notiz, CRM), mindestens:
+
+| Person / Kanal | Klartext-Code (nur bei dir / beim Empfänger) | KV-label | ausgegeben am |
+| --- | --- | --- | --- |
+
+Den Klartext nach dem Versand idealerweise nur noch beim Empfänger belassen und bei dir nur Hash + Label + Person notieren. Ohne solche Liste kannst du aus KV allein nicht rekonstruieren, wem welcher Code gehört (außer du hast `label` sinnvoll gesetzt).
+
 ## Warum Worker im gleichen Repo?
 
-Ein Ordner `workers/video-access/` reicht: gemeinsames Git, getrennte Deployments (Pages vs. Worker). Zweites Repo nur nötig, wenn andere Rechte/Teams den Worker getrennt versionieren sollen. Standard hier: **ein Repo**.
+Ein Ordner `workers/media-access/` reicht: gemeinsames Git, getrennte Deployments (Pages vs. Worker). Zweites Repo nur nötig, wenn andere Rechte/Teams den Worker getrennt versionieren sollen. Standard hier: **ein Repo**.
 
 ## Setup (Kurz)
 
 1. Privaten R2-Bucket anlegen (keine öffentliche Custom Domain).
 2. KV-Namespace für Code-Hashes.
-3. Bindings + `ALLOWED_ORIGINS` in `workers/video-access/wrangler.toml`.
+3. Bindings + `ALLOWED_ORIGINS` in `workers/media-access/wrangler.toml`.
 4. `npx wrangler secret put SIGNING_SECRET`
-5. `npm install && npm run deploy` im Worker-Ordner.
-6. Worker-URL in `content.media.videoAccessWorkerUrl` setzen.
-7. Codes: `npm run hash-code -- --generate` → Klartext an User, Hash in KV.
+5. `npm install && npm run deploy` im Worker-Ordner (Script-Name: `hautoo-member-media-access`).
+6. Worker-URL in `content.media.videoAccessWorkerUrl` setzen (z. B. `https://hautoo-member-media-access.<account>.workers.dev`).
+7. Codes: `npm run hash-code -- --generate` → Klartext an User, Hash + sinnvolles `label` in KV.
 
-Details: [workers/video-access/README.md](../../workers/video-access/README.md).
+Details: [workers/media-access/README.md](../../workers/media-access/README.md).
 
 ## Einbinden
 
@@ -62,8 +79,9 @@ Kurz auf der Datenschutzerklärung: Freischaltung speichert ein Session-Token in
 
 ## Checkliste
 
-- [ ] Privater Bucket + KV + Worker deployed, Secret gesetzt
+- [ ] Privater Bucket + KV + Worker `hautoo-member-media-access` deployed, Secret gesetzt
 - [ ] `videoAccessWorkerUrl` in Content → Medien
-- [ ] Test-Code in KV, Klartext nicht committed
+- [ ] Test-Code in KV mit `label`, Klartext nicht committed
+- [ ] Interne Zuordnung Person ↔ Label (ggf. Klartext) geführt
 - [ ] Embed im Artikel, Freischaltung + zweites Video ohne erneute Code-Eingabe
 - [ ] Datenschutz-Absatz geprüft

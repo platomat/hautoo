@@ -1,5 +1,5 @@
 /**
- * Gated video access Worker.
+ * Gated member media access Worker (videos now; other private R2 objects later).
  *
  * POST /unlock  { code } → { token, expiresAt }
  * POST /sign    { token, key } → { url, expiresAt }  (short-lived /play URL)
@@ -62,7 +62,7 @@ export default {
         return withCors(await handlePlay(request, env, url), cors);
       }
       if (url.pathname === '/' || url.pathname === '/health') {
-        return withCors(json({ ok: true, service: 'hautoo-video-access' }), cors);
+        return withCors(json({ ok: true, service: 'hautoo-member-media-access' }), cors);
       }
       return withCors(json({ error: 'not_found' }, 404), cors);
     } catch (err) {
