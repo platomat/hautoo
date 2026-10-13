@@ -55,7 +55,7 @@ Live-Überblick: [**Features**](/features/).
 
 {{spacer}}
 
-{{separator height="1" width="100"}}
+{{separator height="1" width="100" mark="logo"}}
 
 {{spacer}}
 
@@ -67,7 +67,7 @@ Live-Überblick: [**Features**](/features/).
 
 {{spacer}}
 
-{{separator height="1" width="100"}}
+{{separator height="1" width="100" mark="logo"}}
 
 {{spacer}}
 
@@ -75,6 +75,4 @@ Live-Überblick: [**Features**](/features/).
 
 {{tag-listing count="0" sort="title-asc" layout="cloud" columns="3" gap="1.25"}}
 
-{{separator height="1" width="100"}}
-
-{{logo variant="header" width="120" unit="px" align="left"}}
+{{separator height="1" width="100" mark="logo"}}
