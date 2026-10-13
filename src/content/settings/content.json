@@ -22,5 +22,34 @@
   "authors": {
     "articlePlacement": "hero",
     "avatarShape": "round"
+  },
+  "footer": {
+    "brand": {
+      "enabled": true,
+      "direction": "stack",
+      "align": "center",
+      "menuLayout": "row",
+      "contentWidth": "wide",
+      "logoSize": 44,
+      "menu": "footer",
+      "blocks": [
+        {
+          "id": "logo",
+          "enabled": true
+        },
+        {
+          "id": "description",
+          "enabled": true
+        },
+        {
+          "id": "menu",
+          "enabled": true
+        }
+      ]
+    },
+    "bar": {
+      "contentWidth": "wide",
+      "borderWidth": "shell"
+    }
   }
 }

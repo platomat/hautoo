@@ -50,19 +50,23 @@ export function getSiteConfig(): SiteConfig {
 		showCenter:
 			footerCopyrightRaw.showCenter ?? generalObj.showFooterCenter ?? true,
 	};
-	// contentWidth/spacing live under Design; fall back to legacy keys.
+	// contentWidth/spacing under Design; footer under Content (legacy: design.footer).
+	const { footer: legacyDesignFooter, ...designWithoutFooter } = designObj;
 	return siteConfigSchema.parse({
 		general: siteGeneralConfigSchema.parse({
 			...generalObj,
 			footerCopyright,
 		}),
 		design: siteDesignConfigSchema.parse({
-			...designObj,
+			...designWithoutFooter,
 			contentWidth:
 				designObj.contentWidth ?? designObj.width ?? contentObj.width,
 			spacing: designObj.spacing ?? contentObj.spacing,
 		}),
-		content: siteContentConfigSchema.parse(contentRaw),
+		content: siteContentConfigSchema.parse({
+			...contentObj,
+			footer: contentObj.footer ?? legacyDesignFooter,
+		}),
 	});
 }
 
@@ -94,19 +98,19 @@ export function getSiteHeaderConfig(): SiteHeaderConfig {
 	return config.design?.header ?? DEFAULT_SITE_HEADER_CONFIG;
 }
 
-/** Footer brand strip above the copyright bar (Design → Footer → Brand). */
+/** Footer brand strip above the copyright bar (Content → Footer → Brand). */
 export function getFooterBrandConfig(): SiteFooterBrandConfig {
 	const config = getSiteConfig();
 	return siteFooterBrandConfigSchema.parse(
-		config.design?.footer?.brand ?? DEFAULT_SITE_FOOTER_BRAND_CONFIG,
+		config.content?.footer?.brand ?? DEFAULT_SITE_FOOTER_BRAND_CONFIG,
 	);
 }
 
-/** Copyright row shell width (Design → Footer → Bar). */
+/** Copyright row shell width (Content → Footer → Bar). */
 export function getFooterBarConfig(): SiteFooterBarConfig {
 	const config = getSiteConfig();
 	return siteFooterBarConfigSchema.parse(
-		config.design?.footer?.bar ?? DEFAULT_SITE_FOOTER_BAR_CONFIG,
+		config.content?.footer?.bar ?? DEFAULT_SITE_FOOTER_BAR_CONFIG,
 	);
 }
 

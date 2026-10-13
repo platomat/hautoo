@@ -479,8 +479,6 @@ export const siteDesignConfigSchema = z.preprocess(
 		),
 		/** Default content column width (pages/articles). */
 		contentWidth: siteWidthConfigSchema.default({}),
-		/** Brand strip above copyright (#81). */
-		footer: siteFooterConfigSchema.default({}),
 		/** Vertical gaps after hero / before footer per collection. */
 		spacing: siteSpacingByCollectionSchema.default({}),
 	}),
@@ -517,6 +515,8 @@ export const siteContentConfigSchema = z.object({
 	toc: siteTocConfigSchema.default({}),
 	media: siteMediaConfigSchema.default({}),
 	authors: siteAuthorsConfigSchema.default({}),
+	/** Brand strip above copyright (#81); CMS Content → Footer. */
+	footer: siteFooterConfigSchema.default({}),
 });
 
 export type SiteContentFileConfig = z.infer<typeof siteContentConfigSchema>;

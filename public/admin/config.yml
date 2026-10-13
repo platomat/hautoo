@@ -1612,6 +1612,102 @@ collections:
                 label: Glossar
                 widget: object
                 fields: *fields_spacing_collection
+
+      - name: content
+        label: Content
+        file: src/content/settings/content.json
+        format: json
+        fields:
+          - name: toc
+            label: Inhaltsverzeichnis (TOC)
+            widget: object
+            collapsed: false
+            hint: "Globale TOC-Defaults. Einzelne Seiten/Artikel überschreiben mit ihren TOC-Feldern."
+            fields:
+              - name: pages
+                label: Seiten
+                widget: object
+                fields:
+                  - name: enabled
+                    label: Standardmäßig anzeigen
+                    widget: boolean
+                    default: false
+                  - name: levels
+                    label: Ebenen
+                    widget: select
+                    multiple: true
+                    options:
+                      - { label: h2, value: h2 }
+                      - { label: h3, value: h3 }
+                      - { label: h4, value: h4 }
+                    default: [h2]
+                  - name: title
+                    label: TOC-Titel
+                    widget: string
+                    default: Inhalt
+              - name: articles
+                label: Artikel
+                widget: object
+                fields:
+                  - name: enabled
+                    label: Standardmäßig anzeigen
+                    widget: boolean
+                    default: false
+                  - name: levels
+                    label: Ebenen
+                    widget: select
+                    multiple: true
+                    options:
+                      - { label: h2, value: h2 }
+                      - { label: h3, value: h3 }
+                      - { label: h4, value: h4 }
+                    default: [h2]
+                  - name: title
+                    label: TOC-Titel
+                    widget: string
+                    default: Inhalt
+          - name: media
+            label: Medien
+            widget: object
+            collapsed: false
+            hint: "Selbst gehostete Videos (z. B. Cloudflare R2). Dateien liegen nicht im Git-Repo."
+            fields:
+              - name: videoBaseUrl
+                label: Video-Basis-URL
+                widget: string
+                required: false
+                default: ""
+                hint: "Öffentliche Basis-URL inkl. Pfad, z. B. https://media.hautoo.storyofai.net/videos/ — wird mit Dateiname aus dem Video-Embed zusammengesetzt. Leer = nur volle https-URLs im Embed."
+              - name: videoAccessWorkerUrl
+                label: Video-Access-Worker-URL
+                widget: string
+                required: false
+                default: ""
+                hint: "Basis-URL des Workers hautoo-member-media-access (ohne Slash am Ende), z. B. https://hautoo-member-media-access.<account>.workers.dev. Leer = Member-Video-Embeds zeigen Hinweis."
+          - name: authors
+            label: Autoren
+            widget: object
+            collapsed: false
+            hint: "Anzeige auf der Artikel-Einzelseite. Profilseiten nutzen immer runde Avatare."
+            fields:
+              - name: articlePlacement
+                label: Autoren auf Artikeln
+                widget: select
+                options:
+                  - { label: Nicht anzeigen, value: none }
+                  - { label: Im Hero, value: hero }
+                  - { label: Am Ende des Artikels, value: after }
+                  - { label: Hero und am Ende, value: both }
+                default: hero
+                required: true
+              - name: avatarShape
+                label: Avatar-Form (Artikel)
+                widget: select
+                options:
+                  - { label: Rund, value: round }
+                  - { label: Eckig, value: square }
+                default: round
+                required: true
           - name: footer
             label: Footer
             widget: object
@@ -1723,98 +1819,3 @@ collections:
                       - { label: Wie Inhaltsbreite der Zeile, value: shell }
                     hint: "Oberer Rand der Copyright-Zeile: über die ganze Viewport-Breite oder nur so breit wie die Zeile (Shell)."
 
-      - name: content
-        label: Content
-        file: src/content/settings/content.json
-        format: json
-        fields:
-          - name: toc
-            label: Inhaltsverzeichnis (TOC)
-            widget: object
-            collapsed: false
-            hint: "Globale TOC-Defaults. Einzelne Seiten/Artikel überschreiben mit ihren TOC-Feldern."
-            fields:
-              - name: pages
-                label: Seiten
-                widget: object
-                fields:
-                  - name: enabled
-                    label: Standardmäßig anzeigen
-                    widget: boolean
-                    default: false
-                  - name: levels
-                    label: Ebenen
-                    widget: select
-                    multiple: true
-                    options:
-                      - { label: h2, value: h2 }
-                      - { label: h3, value: h3 }
-                      - { label: h4, value: h4 }
-                    default: [h2]
-                  - name: title
-                    label: TOC-Titel
-                    widget: string
-                    default: Inhalt
-              - name: articles
-                label: Artikel
-                widget: object
-                fields:
-                  - name: enabled
-                    label: Standardmäßig anzeigen
-                    widget: boolean
-                    default: false
-                  - name: levels
-                    label: Ebenen
-                    widget: select
-                    multiple: true
-                    options:
-                      - { label: h2, value: h2 }
-                      - { label: h3, value: h3 }
-                      - { label: h4, value: h4 }
-                    default: [h2]
-                  - name: title
-                    label: TOC-Titel
-                    widget: string
-                    default: Inhalt
-          - name: media
-            label: Medien
-            widget: object
-            collapsed: false
-            hint: "Selbst gehostete Videos (z. B. Cloudflare R2). Dateien liegen nicht im Git-Repo."
-            fields:
-              - name: videoBaseUrl
-                label: Video-Basis-URL
-                widget: string
-                required: false
-                default: ""
-                hint: "Öffentliche Basis-URL inkl. Pfad, z. B. https://media.hautoo.storyofai.net/videos/ — wird mit Dateiname aus dem Video-Embed zusammengesetzt. Leer = nur volle https-URLs im Embed."
-              - name: videoAccessWorkerUrl
-                label: Video-Access-Worker-URL
-                widget: string
-                required: false
-                default: ""
-                hint: "Basis-URL des Workers hautoo-member-media-access (ohne Slash am Ende), z. B. https://hautoo-member-media-access.<account>.workers.dev. Leer = Member-Video-Embeds zeigen Hinweis."
-          - name: authors
-            label: Autoren
-            widget: object
-            collapsed: false
-            hint: "Anzeige auf der Artikel-Einzelseite. Profilseiten nutzen immer runde Avatare."
-            fields:
-              - name: articlePlacement
-                label: Autoren auf Artikeln
-                widget: select
-                options:
-                  - { label: Nicht anzeigen, value: none }
-                  - { label: Im Hero, value: hero }
-                  - { label: Am Ende des Artikels, value: after }
-                  - { label: Hero und am Ende, value: both }
-                default: hero
-                required: true
-              - name: avatarShape
-                label: Avatar-Form (Artikel)
-                widget: select
-                options:
-                  - { label: Rund, value: round }
-                  - { label: Eckig, value: square }
-                default: round
-                required: true

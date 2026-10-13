@@ -104,22 +104,22 @@ Katalog: `src/cms/fields/site-fonts.json`. Sync: `scripts/sync-site-fonts.mjs` �
 
 Umsetzung in `SiteHeader.astro` (Klassen `site-header--logo-*` + Custom Properties).
 
-### Einstellungen → Design → Footer → Brand (#81)
+### Einstellungen → Content → Footer → Brand (#81)
 
 Brand-Streifen oberhalb der Copyright-Zeile (Copyright bleibt unter General → Footer copyright).
 
 | Feld | Bedeutung | Default |
 | --- | --- | --- |
-| `design.footer.brand.enabled` | Brand-Bereich an/aus | `false` |
-| `design.footer.brand.direction` | `row` (links→rechts) oder `stack` (oben→unten) | `row` |
-| `design.footer.brand.align` | `start` / `center` / `end` (bei `row` vertikal, bei `stack` horizontal) | `center` |
-| `design.footer.brand.menuLayout` | Menü-Links `row` (nebeneinander) oder `stack` (untereinander) | `row` |
-| `design.footer.brand.contentWidth` | Shell-Breite `default` / `wide` / `full` | `wide` |
-| `design.footer.brand.logoSize` | Brand-Logo in px (24–160) | `44` |
-| `design.footer.brand.menu` | Menü per Relation zur Collection `menus` (Standard `footer`, nicht `footer-legal`) | `footer` |
-| `design.footer.brand.blocks` | Liste `{ id, enabled }`; Reihenfolge per Drag-and-Drop; `id`: `logo` / `description` / `menu` | Logo, Beschreibung, Menü (je an) |
-| `design.footer.bar.contentWidth` | Shell-Breite der Copyright-Zeile | `wide` |
-| `design.footer.bar.borderWidth` | Oberer Rand: `full` (Browserbreite) oder `shell` (wie Inhaltsbreite) | `full` |
+| `content.footer.brand.enabled` | Brand-Bereich an/aus | `false` |
+| `content.footer.brand.direction` | `row` (links→rechts) oder `stack` (oben→unten) | `row` |
+| `content.footer.brand.align` | `start` / `center` / `end` (bei `row` vertikal, bei `stack` horizontal) | `center` |
+| `content.footer.brand.menuLayout` | Menü-Links `row` (nebeneinander) oder `stack` (untereinander) | `row` |
+| `content.footer.brand.contentWidth` | Shell-Breite `default` / `wide` / `full` | `wide` |
+| `content.footer.brand.logoSize` | Brand-Logo in px (24–160) | `44` |
+| `content.footer.brand.menu` | Menü per Relation zur Collection `menus` (Standard `footer`, nicht `footer-legal`) | `footer` |
+| `content.footer.brand.blocks` | Liste `{ id, enabled }`; Reihenfolge per Drag-and-Drop; `id`: `logo` / `description` / `menu` | Logo, Beschreibung, Menü (je an) |
+| `content.footer.bar.contentWidth` | Shell-Breite der Copyright-Zeile | `wide` |
+| `content.footer.bar.borderWidth` | Oberer Rand: `full` (Browserbreite) oder `shell` (wie Inhaltsbreite) | `full` |
 
 Logo aus `general.logos.footer` (Fallback Header). Beschreibung = `websiteDescription`. Umsetzung: `SiteFooter.astro` / `SiteHeader.astro` (Header-`contentWidth`).
 
@@ -180,10 +180,10 @@ Navigation und Footer-Links werden **nicht** mehr über Flags an Seiten gesteuer
 | Dateiname / id | Verwendung |
 | --- | --- |
 | `main` | Hauptnavigation im Header |
-| `footer` | Brand-Bereich im Footer (Design → Footer → Brand → Menü-Slug) |
+| `footer` | Brand-Bereich im Footer (Content → Footer → Brand → Menü-Slug) |
 | `footer-legal` | Rechts neben dem Copyright im Footer |
 
-Weitere Menüs = neue Datei mit eigenem Slug; in Design → Footer → Brand als `menu` setzen.
+Weitere Menüs = neue Datei mit eigenem Slug; in Content → Footer → Brand als `menu` setzen.
 
 ### Felder
 
