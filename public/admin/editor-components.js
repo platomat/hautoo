@@ -136,6 +136,18 @@
 				hint: "Nur an/aus per Checkbox (`display*`). Feste Kartenreihenfolge: Vorschaubild, Titel, Intro, Kategorien | Tags, Autoren, Datum · Lesezeit. Vorschaubild = Titelbild, sonst Seitenhintergrund.",
 			},
 			{
+				name: "imageStyle",
+				label: "Bilddarstellung",
+				widget: "select",
+				default: "cover",
+				options: [
+					{ label: "Groß (volle Breite)", value: "cover" },
+					{ label: "Randlos (große Kante)", value: "bleed" },
+					{ label: "Klein links", value: "aside" },
+				],
+				hint: "Nur wirksam, wenn „Vorschaubild“ unter Feldern an ist. Groß = 16:9 oben; Randlos = ohne Innenabstand an der Karte; Klein links = Bild links, Text rechts (Mobile: wieder gestapelt).",
+			},
+			{
 				/**
 				 * Distinct from card `show` values (`displayAuthors`, …) and from embed
 				 * filter attrs written as `authors=` / `categories=` / `tags=`.
@@ -197,6 +209,10 @@
 					.map((s) => s.trim())
 					.filter(Boolean);
 			const showParsed = normalizeArticleCardShow(attrs.show || showDefault);
+			const imageStyle =
+				attrs.imageStyle === "bleed" || attrs.imageStyle === "aside"
+					? attrs.imageStyle
+					: "cover";
 			return {
 				count: attrs.count !== undefined && attrs.count !== "" ? attrs.count : "3",
 				sort: attrs.sort || "newest",
@@ -204,6 +220,7 @@
 				columns: attrs.columns || "3",
 				gap: attrs.gap || "1.25",
 				show: showParsed.length > 0 ? showParsed : showDefault.split(","),
+				imageStyle,
 				filterAuthors: splitList(attrs.authors),
 				filterCategories: splitList(attrs.categories),
 				filterTags: splitList(attrs.tags),
@@ -217,6 +234,7 @@
 			columns = 3,
 			gap = 1.25,
 			show = ARTICLE_CARD_SHOW_DEFAULT,
+			imageStyle = "cover",
 			filterAuthors = [],
 			filterCategories = [],
 			filterTags = [],
@@ -244,6 +262,9 @@
 				`gap="${gap}"`,
 				`show="${showAttr}"`,
 			];
+			if (imageStyle && imageStyle !== "cover") {
+				parts.push(`imageStyle="${imageStyle}"`);
+			}
 			if (authorsAttr) parts.push(`authors="${authorsAttr}"`);
 			if (categoriesAttr) parts.push(`categories="${categoriesAttr}"`);
 			if (tagsAttr) parts.push(`tags="${tagsAttr}"`);
@@ -259,6 +280,7 @@
 			columns = 3,
 			gap = 1.25,
 			show = ARTICLE_CARD_SHOW_DEFAULT,
+			imageStyle = "cover",
 			filterAuthors = [],
 			filterCategories = [],
 			filterTags = [],
@@ -288,7 +310,16 @@
 			const filterSuffix = filterBits.length
 				? ` · Filter: ${filterBits.join(" · ")}`
 				: "";
-			return `<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Artikel-Listing · ${count === 0 || count === "0" ? "alle" : count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem · ${showLabel}${filterSuffix}</div>`;
+			const imageLabels = {
+				cover: "Bild groß",
+				bleed: "Bild randlos",
+				aside: "Bild klein links",
+			};
+			const hasImage = showNormalized.includes("displayImage");
+			const imageSuffix = hasImage
+				? ` · ${imageLabels[imageStyle] || imageStyle}`
+				: "";
+			return `<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Artikel-Listing · ${count === 0 || count === "0" ? "alle" : count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem · ${showLabel}${imageSuffix}${filterSuffix}</div>`;
 		},
 	});
 

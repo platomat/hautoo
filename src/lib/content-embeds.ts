@@ -79,6 +79,9 @@ const ARTICLE_CARD_FIELD_SET = new Set<string>(ARTICLE_CARD_FIELDS);
 
 export type ArticleListingFilterMatch = "all" | "any";
 
+/** How `displayImage` sits on the card (ignored when image is off). */
+export type ArticleListingImageStyle = "cover" | "bleed" | "aside";
+
 export type ArticleListingEmbedProps = {
 	count: number;
 	sort: ArticleSort;
@@ -88,6 +91,8 @@ export type ArticleListingEmbedProps = {
 	gap: number;
 	/** Which card fields to render. */
 	show: ArticleCardField[];
+	/** Preview image layout when `displayImage` is on. */
+	imageStyle: ArticleListingImageStyle;
 	/** Author slugs (any of these). Empty = no author filter. */
 	authors: string[];
 	/** Category slugs (any of these). Empty = no category filter. */
@@ -214,6 +219,12 @@ const DEFAULT_SHOW: ArticleCardField[] = [
 	"displayReadingTime",
 ];
 
+const ARTICLE_IMAGE_STYLES = new Set<ArticleListingImageStyle>([
+	"cover",
+	"bleed",
+	"aside",
+]);
+
 const DEFAULT_LISTING: ArticleListingEmbedProps = {
 	count: 3,
 	sort: "newest",
@@ -221,11 +232,19 @@ const DEFAULT_LISTING: ArticleListingEmbedProps = {
 	columns: 3,
 	gap: 1.25,
 	show: DEFAULT_SHOW,
+	imageStyle: "cover",
 	authors: [],
 	categories: [],
 	tags: [],
 	match: "all",
 };
+
+export function parseArticleListingImageStyle(
+	raw: string | undefined,
+): ArticleListingImageStyle {
+	const value = (raw ?? "").trim() as ArticleListingImageStyle;
+	return ARTICLE_IMAGE_STYLES.has(value) ? value : DEFAULT_LISTING.imageStyle;
+}
 
 /** Normalize CMS/array/`show=` tokens to canonical card fields. */
 export function normalizeArticleCardShowList(
@@ -516,6 +535,7 @@ export function parseArticleListingProps(
 		columns: clampInt(attrs.columns, DEFAULT_LISTING.columns, 1, 4),
 		gap: clampRem(attrs.gap, DEFAULT_LISTING.gap, 0, 8),
 		show: parseArticleCardShow(attrs.show),
+		imageStyle: parseArticleListingImageStyle(attrs.imageStyle),
 		authors: parseSlugList(attrs.authors),
 		categories: parseSlugList(attrs.categories),
 		tags: parseSlugList(attrs.tags),
