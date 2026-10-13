@@ -643,11 +643,55 @@ CMS.registerEditorComponent({
 		id: "contact-email",
 		label: "Kontakt-E-Mail",
 		icon: "mail",
-		fields: [],
-		pattern: /^\{\{contact-email\}\}\s*$/m,
-		toBlock: () => "{{contact-email}}",
-		toPreview: () =>
-			'<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Kontakt-E-Mail (CMS General → Contact email, sonst CONTACT_EMAIL)</div>',
+		fields: [
+			{
+				name: "layout",
+				label: "Darstellung",
+				widget: "select",
+				default: "block",
+				options: [
+					{
+						label: "Eigenständig (eigene Zeile)",
+						value: "block",
+					},
+					{
+						label: "An Text davor anschließen",
+						value: "run-after",
+					},
+					{
+						label: "An Text danach anschließen",
+						value: "run-before",
+					},
+					{
+						label: "Zwischen Text davor und danach",
+						value: "run-between",
+					},
+				],
+				hint: "Embed bleibt im Markdown eine eigene Zeile. „Anschließen“ setzt die E-Mail im Satzfluss an den Nachbartext (Absatz davor und/oder danach).",
+			},
+		],
+		pattern: /^\{\{contact-email(?<attrs>[^}]*)\}\}\s*$/m,
+		fromBlock: (match) => {
+			const attrs = parseAttrs(match?.groups?.attrs || "");
+			const layout = attrs.layout || "block";
+			return { layout };
+		},
+		toBlock: ({ layout = "block" }) => {
+			if (!layout || layout === "block") {
+				return "{{contact-email}}";
+			}
+			return `{{contact-email layout="${layout}"}}`;
+		},
+		toPreview: ({ layout = "block" }) => {
+			const labels = {
+				block: "eigenständig",
+				"run-after": "schließt an Text davor an",
+				"run-before": "schließt an Text danach an",
+				"run-between": "zwischen zwei Textteilen",
+			};
+			const mode = labels[layout] || layout;
+			return `<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Kontakt-E-Mail · ${mode} (General → Contact email, sonst CONTACT_EMAIL)</div>`;
+		},
 	});
 
 	CMS.registerEditorComponent({

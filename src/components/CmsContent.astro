@@ -6,6 +6,7 @@ import CategoryListing from "./CategoryListing.astro";
 import CmsButton from "./CmsButton.astro";
 import CmsButtonGroup from "./CmsButtonGroup.astro";
 import CmsLogo from "./CmsLogo.astro";
+import CmsContactEmailFlow from "./CmsContactEmailFlow.astro";
 import ContactEmail from "./ContactEmail.astro";
 import GlossarListing from "./GlossarListing.astro";
 import Separator from "./Separator.astro";
@@ -85,8 +86,21 @@ const segments = await buildContentSegments(body);
 		if (segment.type === "tag-cloud") {
 			return <TagCloud />;
 		}
+		if (segment.type === "contact-email-flow") {
+			return (
+				<CmsContactEmailFlow
+					layout={segment.layout}
+					htmlBefore={segment.htmlBefore}
+					htmlAfter={segment.htmlAfter}
+				/>
+			);
+		}
 		if (segment.type === "contact-email") {
-			return <ContactEmail />;
+			return (
+				<div class="cms-md cms-contact-email cms-contact-email--block">
+					<ContactEmail />
+				</div>
+			);
 		}
 		if (segment.type === "logo") {
 			return (

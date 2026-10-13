@@ -37,6 +37,18 @@ import {
 	isThirdPartyVideoProvider,
 	normalizeVideoId,
 } from "./video";
+import {
+	mergeContactEmailLayoutSegments,
+	parseContactEmailEmbedProps,
+	type ContactEmailEmbedProps,
+	type ContactEmailFlowSegment,
+} from "./contact-email-embed";
+
+export type {
+	ContactEmailEmbedProps,
+	ContactEmailFlowSegment,
+	ContactEmailLayout,
+} from "./contact-email-embed";
 
 /**
  * Fields shown on article listing cards (CMS `show="…"`).
@@ -181,7 +193,8 @@ export type ContentSegment =
 	| { type: "spacer"; props: SpacerEmbedProps }
 	| { type: "button"; props: ButtonEmbedProps }
 	| { type: "button-group"; props: ButtonGroupEmbedProps }
-	| { type: "contact-email" }
+	| { type: "contact-email"; props: ContactEmailEmbedProps }
+	| ContactEmailFlowSegment
 	| { type: "logo"; props: LogoEmbedProps }
 	| { type: "repodoc"; props: RepoDocEmbedProps }
 	| { type: "video"; props: VideoEmbedProps }
@@ -725,7 +738,10 @@ export async function buildContentSegments(
 				props: parseCategoryListingProps(attrs),
 			});
 		} else if (name === "contact-email") {
-			segments.push({ type: "contact-email" });
+			segments.push({
+				type: "contact-email",
+				props: parseContactEmailEmbedProps(parseAttrs(attrs)),
+			});
 		} else if (name === "logo") {
 			segments.push({
 				type: "logo",
@@ -810,5 +826,5 @@ export async function buildContentSegments(
 		}
 	}
 
-	return segments;
+	return mergeContactEmailLayoutSegments(segments);
 }

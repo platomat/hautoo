@@ -1,0 +1,61 @@
+---
+import ContactEmail from "./ContactEmail.astro";
+import type { ContactEmailLayout } from "../lib/contact-email-embed";
+
+interface Props {
+	layout: ContactEmailLayout;
+	htmlBefore?: string;
+	htmlAfter?: string;
+}
+
+const { layout, htmlBefore, htmlAfter } = Astro.props;
+---
+
+<div class={`cms-md cms-contact-flow cms-contact-flow--${layout}`}>
+	{
+		htmlBefore ? (
+			<div class="cms-contact-flow__before" set:html={htmlBefore} />
+		) : null
+	}
+	<span class="cms-contact-flow__email">
+		<ContactEmail />
+	</span>
+	{
+		htmlAfter ? (
+			<div class="cms-contact-flow__after" set:html={htmlAfter} />
+		) : null
+	}
+</div>
+
+<style>
+	.cms-contact-flow__email {
+		display: inline;
+	}
+
+	.cms-contact-flow--run-after .cms-contact-flow__before,
+	.cms-contact-flow--run-before .cms-contact-flow__after,
+	.cms-contact-flow--run-between .cms-contact-flow__before,
+	.cms-contact-flow--run-between .cms-contact-flow__after {
+		display: contents;
+	}
+
+	.cms-contact-flow--run-after > *:has(+ .cms-contact-flow__email) {
+		display: inline;
+		margin-bottom: 0;
+	}
+
+	.cms-contact-flow--run-before > .cms-contact-flow__email + * {
+		display: inline;
+		margin-top: 0;
+	}
+
+	.cms-contact-flow--run-between > *:has(+ .cms-contact-flow__email) {
+		display: inline;
+		margin-bottom: 0;
+	}
+
+	.cms-contact-flow--run-between > .cms-contact-flow__email + * {
+		display: inline;
+		margin-top: 0;
+	}
+</style>
