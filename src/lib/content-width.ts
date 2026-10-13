@@ -29,7 +29,6 @@ export async function resolveContentWidth(
 		return "wide";
 	}
 	const config = getSiteConfig();
-	const globalDefault = config.design?.width?.[collection];
-	const parsed = contentWidthSchema.safeParse(globalDefault);
+	const globalDefault = config.design?.contentWidth?.[collection];	const parsed = contentWidthSchema.safeParse(globalDefault);
 	return parsed.success ? parsed.data : "default";
 }

@@ -453,22 +453,38 @@ export const siteColorsConfigSchema = z.object({
 
 export type SiteColorsConfig = z.infer<typeof siteColorsConfigSchema>;
 
+/** Migrate legacy `design.width` → `design.contentWidth`. */
+function normalizeDesignContentWidth(raw: unknown): unknown {
+	if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
+		return raw;
+	}
+	const obj = { ...(raw as Record<string, unknown>) };
+	if (obj.contentWidth == null && obj.width != null) {
+		obj.contentWidth = obj.width;
+	}
+	delete obj.width;
+	return obj;
+}
+
 /** `src/content/settings/design.json` */
-export const siteDesignConfigSchema = z.object({
-	colors: siteColorsConfigSchema.default({}),
-	typography: siteTypographyConfigSchema.default({}),
-	header: siteHeaderConfigSchema.default({}),
-	/** Brand strip above copyright (#81). */
-	footer: siteFooterConfigSchema.default({}),
-	hero: z.preprocess(
-		normalizeHeroByCollection,
-		siteHeroByCollectionSchema.default({}),
-	),
-	/** Default content column width (pages/articles). */
-	width: siteWidthConfigSchema.default({}),
-	/** Vertical gaps after hero / before footer per collection. */
-	spacing: siteSpacingByCollectionSchema.default({}),
-});
+export const siteDesignConfigSchema = z.preprocess(
+	normalizeDesignContentWidth,
+	z.object({
+		colors: siteColorsConfigSchema.default({}),
+		typography: siteTypographyConfigSchema.default({}),
+		header: siteHeaderConfigSchema.default({}),
+		hero: z.preprocess(
+			normalizeHeroByCollection,
+			siteHeroByCollectionSchema.default({}),
+		),
+		/** Default content column width (pages/articles). */
+		contentWidth: siteWidthConfigSchema.default({}),
+		/** Brand strip above copyright (#81). */
+		footer: siteFooterConfigSchema.default({}),
+		/** Vertical gaps after hero / before footer per collection. */
+		spacing: siteSpacingByCollectionSchema.default({}),
+	}),
+);
 
 export type SiteDesignConfig = z.infer<typeof siteDesignConfigSchema>;
 

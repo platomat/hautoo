@@ -150,8 +150,8 @@ Eintrag ohne `toc.show` nutzt den globalen Default. Lokales `toc.show: true` / `
 
 | Feld | Bedeutung |
 | --- | --- |
-| `design.width.pages` | Default-Inhaltsbreite für Seiten (`default` / `wide` / `full`) |
-| `design.width.articles` | dasselbe für Artikel |
+| `design.contentWidth.pages` | Default-Inhaltsbreite für Seiten (`default` / `wide` / `full`) |
+| `design.contentWidth.articles` | dasselbe für Artikel |
 
 Pro Eintrag optional `layout.contentWidth` (gleiche Werte). Leer = globaler Default; ohne Feld und mit Listing-Embed → automatisch `wide` (`resolveContentWidth`). CSS: Lesespalte 42rem, breit 64rem, vollbreit 80rem.
 
@@ -229,7 +229,7 @@ Weitere Menüs = neue Datei mit eigenem Slug; in Design → Footer → Brand als
 | `toc.show` | nein | TOC an/aus; leer = globaler Default (`content.toc.pages`) |
 | `toc.levels` | nein | `h2` / `h3` / `h4`; leer = global |
 | `toc.title` | nein | TOC-Überschrift; leer = global |
-| `layout.contentWidth` | nein | `default` / `wide` / `full`; leer = global (`design.width.pages`) |
+| `layout.contentWidth` | nein | `default` / `wide` / `full`; leer = global (`design.contentWidth.pages`) |
 | `layout.afterHero` | nein | Abstand unter Hero (rem); leer = `design.spacing.pages` |
 | `layout.beforeFooter` | nein | Abstand vor Footer (rem); leer = `design.spacing.pages` |
 | `headCode` | nein | HTML-Fragmente vor `</head>` (`<style>` / `<script>` gemischt möglich; Highlighting fest HTML) |
@@ -389,7 +389,7 @@ Beispiel: Quellen `/alter-slug/` und `/noch-alter/` → Ziel `/neuer-slug/` mit 
 | `toc.show` | nein | TOC an/aus; leer = globaler Default (`content.toc.articles`) |
 | `toc.levels` | nein | `h2` / `h3` / `h4`; leer = global |
 | `toc.title` | nein | TOC-Überschrift; leer = global |
-| `layout.contentWidth` | nein | `default` / `wide` / `full`; leer = global (`design.width.articles`) |
+| `layout.contentWidth` | nein | `default` / `wide` / `full`; leer = global (`design.contentWidth.articles`) |
 | `layout.afterHero` | nein | Abstand unter Hero (rem); leer = `design.spacing.articles` |
 | `layout.beforeFooter` | nein | Abstand vor Footer (rem); leer = `design.spacing.articles` |
 | `seo` | ja (CMS) | SEO-Partial |

@@ -50,7 +50,7 @@ export function getSiteConfig(): SiteConfig {
 		showCenter:
 			footerCopyrightRaw.showCenter ?? generalObj.showFooterCenter ?? true,
 	};
-	// width/spacing live under Design; fall back to legacy Content JSON keys.
+	// contentWidth/spacing live under Design; fall back to legacy keys.
 	return siteConfigSchema.parse({
 		general: siteGeneralConfigSchema.parse({
 			...generalObj,
@@ -58,7 +58,8 @@ export function getSiteConfig(): SiteConfig {
 		}),
 		design: siteDesignConfigSchema.parse({
 			...designObj,
-			width: designObj.width ?? contentObj.width,
+			contentWidth:
+				designObj.contentWidth ?? designObj.width ?? contentObj.width,
 			spacing: designObj.spacing ?? contentObj.spacing,
 		}),
 		content: siteContentConfigSchema.parse(contentRaw),

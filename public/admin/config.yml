@@ -1349,116 +1349,6 @@ collections:
                 default: 56
                 min: 40
                 max: 600
-          - name: footer
-            label: Footer
-            widget: object
-            collapsed: false
-            hint: "Brand oberhalb der Copyright-Zeile (#81); Breiten wie Inhaltsbreite. Copyright-Inhalt weiter unter General → Footer copyright."
-            fields:
-              - name: brand
-                label: Brand
-                widget: object
-                collapsed: false
-                hint: "Logo, Website-Beschreibung und Footer-Menü. Bausteine einzeln an/aus; Reihenfolge per Drag-and-Drop in der Liste."
-                fields:
-                  - name: enabled
-                    label: Brand-Bereich anzeigen
-                    widget: boolean
-                    default: false
-                    hint: "Aus = nur die Copyright-Zeile wie bisher."
-                  - name: direction
-                    label: Layout
-                    widget: select
-                    default: row
-                    options:
-                      - { label: "Nebeneinander (links → rechts)", value: row }
-                      - { label: "Untereinander (oben → unten)", value: stack }
-                  - name: align
-                    label: Ausrichtung
-                    widget: select
-                    default: center
-                    options:
-                      - { label: "Start (oben bzw. links)", value: start }
-                      - { label: "Mitte", value: center }
-                      - { label: "Ende (unten bzw. rechts)", value: end }
-                    hint: "Bei Nebeneinander: vertikale Ausrichtung der Bausteine. Bei Untereinander: horizontale Ausrichtung."
-                  - name: menuLayout
-                    label: Menü-Einträge
-                    widget: select
-                    default: row
-                    options:
-                      - { label: Nebeneinander, value: row }
-                      - { label: Untereinander, value: stack }
-                    hint: "Anordnung der Links im Footer-Menü (Baustein Menü)."
-                  - name: contentWidth
-                    label: Inhaltsbreite
-                    widget: select
-                    default: wide
-                    options:
-                      - { label: Standard (Lesespalte), value: default }
-                      - { label: Breit, value: wide }
-                      - { label: Vollbreit, value: full }
-                    hint: "Maximale Breite der Brand-Zeile (42 / 64 / 80 rem)."
-                  - name: logoSize
-                    label: Logo-Größe (px)
-                    widget: number
-                    value_type: int
-                    default: 44
-                    min: 24
-                    max: 160
-                    hint: "Größe des Brand-Logos in der Footer-Brand-Zeile (Default 44)."
-                  - name: menu
-                    label: Menü
-                    widget: relation
-                    collection: menus
-                    value_field: "{{slug}}"
-                    search_fields: [title]
-                    display_fields: ["{{title}} ({{slug}})"]
-                    required: false
-                    default: footer
-                    hint: "Menü aus der Collection Menüs (Standard: footer). Nicht footer-legal (das bleibt die Copyright-Zeile)."
-                  - name: blocks
-                    label: Bausteine (Reihenfolge)
-                    widget: list
-                    summary: "{{fields.id}} · {{fields.enabled}}"
-                    allow_add: true
-                    hint: "Einträge per Drag-and-Drop sortieren. Doppelte Baustein-Typen werden ignoriert (erster gewinnt)."
-                    fields:
-                      - name: id
-                        label: Baustein
-                        widget: select
-                        default: logo
-                        options:
-                          - { label: Logo, value: logo }
-                          - { label: Beschreibung, value: description }
-                          - { label: Menü, value: menu }
-                      - name: enabled
-                        label: Anzeigen
-                        widget: boolean
-                        default: true
-              - name: bar
-                label: Copyright-Zeile
-                widget: object
-                collapsed: false
-                hint: "Untere Zeile (©, Mitte, Rechtliches). Inhalt weiter unter General → Footer copyright."
-                fields:
-                  - name: contentWidth
-                    label: Inhaltsbreite
-                    widget: select
-                    default: wide
-                    options:
-                      - { label: Standard (Lesespalte), value: default }
-                      - { label: Breit, value: wide }
-                      - { label: Vollbreit, value: full }
-                    hint: "Maximale Breite der Copyright-Zeile (42 / 64 / 80 rem)."
-                  - name: borderWidth
-                    label: Border-Breite
-                    widget: select
-                    default: full
-                    options:
-                      - { label: Volle Browserbreite, value: full }
-                      - { label: Wie Inhaltsbreite der Zeile, value: shell }
-                    hint: "Oberer Rand der Copyright-Zeile: über die ganze Viewport-Breite oder nur so breit wie die Zeile (Shell)."
           - name: hero
             label: Hero
             widget: object
@@ -1676,7 +1566,7 @@ collections:
                     default: false
                     hint: "1px Linie unter dem Hero-Block."
 
-          - name: width
+          - name: contentWidth
             label: Inhaltsbreite
             widget: object
             collapsed: false
@@ -1698,6 +1588,116 @@ collections:
                   - { label: Breit, value: wide }
                   - { label: Vollbreit, value: full }
                 default: default
+          - name: footer
+            label: Footer
+            widget: object
+            collapsed: false
+            hint: "Brand oberhalb der Copyright-Zeile (#81); Breiten wie Inhaltsbreite. Copyright-Inhalt weiter unter General → Footer copyright."
+            fields:
+              - name: brand
+                label: Brand
+                widget: object
+                collapsed: false
+                hint: "Logo, Website-Beschreibung und Footer-Menü. Bausteine einzeln an/aus; Reihenfolge per Drag-and-Drop in der Liste."
+                fields:
+                  - name: enabled
+                    label: Brand-Bereich anzeigen
+                    widget: boolean
+                    default: false
+                    hint: "Aus = nur die Copyright-Zeile wie bisher."
+                  - name: direction
+                    label: Layout
+                    widget: select
+                    default: row
+                    options:
+                      - { label: "Nebeneinander (links → rechts)", value: row }
+                      - { label: "Untereinander (oben → unten)", value: stack }
+                  - name: align
+                    label: Ausrichtung
+                    widget: select
+                    default: center
+                    options:
+                      - { label: "Start (oben bzw. links)", value: start }
+                      - { label: "Mitte", value: center }
+                      - { label: "Ende (unten bzw. rechts)", value: end }
+                    hint: "Bei Nebeneinander: vertikale Ausrichtung der Bausteine. Bei Untereinander: horizontale Ausrichtung."
+                  - name: menuLayout
+                    label: Menü-Einträge
+                    widget: select
+                    default: row
+                    options:
+                      - { label: Nebeneinander, value: row }
+                      - { label: Untereinander, value: stack }
+                    hint: "Anordnung der Links im Footer-Menü (Baustein Menü)."
+                  - name: contentWidth
+                    label: Inhaltsbreite
+                    widget: select
+                    default: wide
+                    options:
+                      - { label: Standard (Lesespalte), value: default }
+                      - { label: Breit, value: wide }
+                      - { label: Vollbreit, value: full }
+                    hint: "Maximale Breite der Brand-Zeile (42 / 64 / 80 rem)."
+                  - name: logoSize
+                    label: Logo-Größe (px)
+                    widget: number
+                    value_type: int
+                    default: 44
+                    min: 24
+                    max: 160
+                    hint: "Größe des Brand-Logos in der Footer-Brand-Zeile (Default 44)."
+                  - name: menu
+                    label: Menü
+                    widget: relation
+                    collection: menus
+                    value_field: "{{slug}}"
+                    search_fields: [title]
+                    display_fields: ["{{title}} ({{slug}})"]
+                    required: false
+                    default: footer
+                    hint: "Menü aus der Collection Menüs (Standard: footer). Nicht footer-legal (das bleibt die Copyright-Zeile)."
+                  - name: blocks
+                    label: Bausteine (Reihenfolge)
+                    widget: list
+                    summary: "{{fields.id}} · {{fields.enabled}}"
+                    allow_add: true
+                    hint: "Einträge per Drag-and-Drop sortieren. Doppelte Baustein-Typen werden ignoriert (erster gewinnt)."
+                    fields:
+                      - name: id
+                        label: Baustein
+                        widget: select
+                        default: logo
+                        options:
+                          - { label: Logo, value: logo }
+                          - { label: Beschreibung, value: description }
+                          - { label: Menü, value: menu }
+                      - name: enabled
+                        label: Anzeigen
+                        widget: boolean
+                        default: true
+              - name: bar
+                label: Copyright-Zeile
+                widget: object
+                collapsed: false
+                hint: "Untere Zeile (©, Mitte, Rechtliches). Inhalt weiter unter General → Footer copyright."
+                fields:
+                  - name: contentWidth
+                    label: Inhaltsbreite
+                    widget: select
+                    default: wide
+                    options:
+                      - { label: Standard (Lesespalte), value: default }
+                      - { label: Breit, value: wide }
+                      - { label: Vollbreit, value: full }
+                    hint: "Maximale Breite der Copyright-Zeile (42 / 64 / 80 rem)."
+                  - name: borderWidth
+                    label: Border-Breite
+                    widget: select
+                    default: full
+                    options:
+                      - { label: Volle Browserbreite, value: full }
+                      - { label: Wie Inhaltsbreite der Zeile, value: shell }
+                    hint: "Oberer Rand der Copyright-Zeile: über die ganze Viewport-Breite oder nur so breit wie die Zeile (Shell)."
           - name: spacing
             label: Abstand
             widget: object
