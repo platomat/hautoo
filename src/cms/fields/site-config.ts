@@ -167,6 +167,8 @@ export const siteFooterBarConfigSchema = z.object({
 	 * Top border span: `full` = browser width (classic), `shell` = content width.
 	 */
 	borderWidth: footerBarBorderWidthSchema.default("full"),
+	/** Legal menu slug (default `footer-legal`); like Brand → Menü (#96). */
+	menu: z.string().trim().default("footer-legal"),
 });
 
 export type SiteFooterBarConfig = z.infer<typeof siteFooterBarConfigSchema>;

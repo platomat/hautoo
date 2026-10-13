@@ -53,11 +53,12 @@ const repoTitle = showGithub
 const homeLabel = `${websiteTitle} Startseite`;
 
 const pages = await getPublicPages();
-const legalItems = await getResolvedMenu(MENU_FOOTER_LEGAL, pages);
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 const brand = getFooterBrandConfig();
 const footerBar = getFooterBarConfig();
+const legalMenuId = footerBar.menu.trim() || MENU_FOOTER_LEGAL;
+const legalItems = await getResolvedMenu(legalMenuId, pages);
 const brandShellClass = shellWidthClass(brand.contentWidth);
 const barShellClass = shellWidthClass(footerBar.contentWidth);
 const brandDescriptionRaw = getSiteWebsiteDescription();

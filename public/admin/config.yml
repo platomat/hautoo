@@ -1828,7 +1828,7 @@ collections:
                     display_fields: ["{{title}} ({{slug}})"]
                     required: false
                     default: footer
-                    hint: "Menü aus der Collection Menüs (Standard: footer). Nicht footer-legal (das bleibt die Copyright-Zeile)."
+                    hint: "Menü aus der Collection Menüs (Standard: footer). Legal-Links der Copyright-Zeile: Content → Footer → Copyright-Zeile → Legal-Menü."
                   - name: blocks
                     label: Bausteine (Reihenfolge)
                     widget: list
@@ -1871,4 +1871,14 @@ collections:
                       - { label: Volle Browserbreite, value: full }
                       - { label: Wie Inhaltsbreite der Zeile, value: shell }
                     hint: "Oberer Rand der Copyright-Zeile: über die ganze Viewport-Breite oder nur so breit wie die Zeile (Shell)."
+                  - name: menu
+                    label: Legal-Menü
+                    widget: relation
+                    collection: menus
+                    value_field: "{{slug}}"
+                    search_fields: [title]
+                    display_fields: ["{{title}} ({{slug}})"]
+                    required: false
+                    default: footer-legal
+                    hint: "Menü rechts in der Copyright-Zeile (Standard: footer-legal). Wie Brand → Menü und Header → Menü."
 
