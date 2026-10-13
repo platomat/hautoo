@@ -622,8 +622,10 @@ CMS.registerEditorComponent({
 				widget: "relation",
 				collection: "blocks",
 				value_field: "{{slug}}",
-				search_fields: ["title"],
-				display_fields: ["title"],
+				search_fields: ["title", "{{slug}}"],
+				display_fields: ["{{title}} ({{slug}})"],
+				/** Always dropdown (default UI is radio/checkbox while few blocks exist). */
+				dropdown_threshold: 0,
 				hint: "Wiederverwendbarer Inhalt aus der Collection „Bausteine“. Dateiname = id.",
 			},
 		],
