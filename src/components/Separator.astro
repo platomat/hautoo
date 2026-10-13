@@ -1,10 +1,25 @@
 ---
+/**
+ * Content embed: horizontal rule, optional site logo or favicon on the line.
+ */
+import { Image } from "astro:assets";
+import LogoMark from "./LogoMark.astro";
 import {
 	DEFAULT_SEPARATOR_COLOR,
+	DEFAULT_SEPARATOR_MARK,
+	DEFAULT_SEPARATOR_MARK_ALIGN,
+	DEFAULT_SEPARATOR_MARK_SIZE,
+	MAX_SEPARATOR_MARK_SIZE,
+	MIN_SEPARATOR_MARK_SIZE,
 	resolveSeparatorColor,
+	resolveSeparatorMark,
+	resolveSeparatorMarkAlign,
 	SEPARATOR_COLOR_CSS,
 	type SeparatorColor,
+	type SeparatorMark,
+	type SeparatorMarkAlign,
 } from "../lib/separator";
+import { resolveFaviconMeta } from "../lib/site-favicon";
 
 interface Props {
 	/** Line thickness in px. */
@@ -13,22 +28,90 @@ interface Props {
 	width?: number;
 	/** Design-token color (default: border, current line color). */
 	color?: SeparatorColor | string;
+	/** Optional mark: none / logo / favicon. */
+	mark?: SeparatorMark | string;
+	/** Mark position on the line (default: center). */
+	markAlign?: SeparatorMarkAlign | string;
+	/** Mark width in px (default: 24). */
+	markSize?: number;
 }
 
 const {
 	height = 1,
 	width = 100,
 	color = DEFAULT_SEPARATOR_COLOR,
+	mark: markRaw = DEFAULT_SEPARATOR_MARK,
+	markAlign: markAlignRaw = DEFAULT_SEPARATOR_MARK_ALIGN,
+	markSize: markSizeRaw = DEFAULT_SEPARATOR_MARK_SIZE,
 } = Astro.props;
+
 const heightPx = Math.min(24, Math.max(1, height));
 const widthPct = Math.min(100, Math.max(1, width));
 const colorKey = resolveSeparatorColor(
 	typeof color === "string" ? color : DEFAULT_SEPARATOR_COLOR,
 );
 const colorCss = SEPARATOR_COLOR_CSS[colorKey];
+const mark = resolveSeparatorMark(
+	typeof markRaw === "string" ? markRaw : DEFAULT_SEPARATOR_MARK,
+);
+const markAlign = resolveSeparatorMarkAlign(
+	typeof markAlignRaw === "string"
+		? markAlignRaw
+		: DEFAULT_SEPARATOR_MARK_ALIGN,
+);
+const markSize = Math.min(
+	MAX_SEPARATOR_MARK_SIZE,
+	Math.max(
+		MIN_SEPARATOR_MARK_SIZE,
+		Number.isFinite(markSizeRaw)
+			? markSizeRaw
+			: DEFAULT_SEPARATOR_MARK_SIZE,
+	),
+);
+
+const faviconMeta = mark === "favicon" ? resolveFaviconMeta() : undefined;
+const showLogo = mark === "logo";
+const showFavicon = mark === "favicon" && Boolean(faviconMeta);
+const withMark = showLogo || showFavicon;
+
+const lineStyle = `--separator-height: ${heightPx}px; --separator-width: ${widthPct}%; --separator-color: ${colorCss}`;
+const markStyle = withMark
+	? `${lineStyle}; --separator-mark-size: ${markSize}px`
+	: lineStyle;
 ---
 
-<hr
-	class="separator"
-	style={`--separator-height: ${heightPx}px; --separator-width: ${widthPct}%; --separator-color: ${colorCss}`}
-/>
+{
+	withMark ? (
+		<div
+			class:list={[
+				"separator",
+				"separator--with-mark",
+				`separator--mark-${markAlign}`,
+			]}
+			role="separator"
+			style={markStyle}
+		>
+			{markAlign !== "left" && (
+				<span class="separator__rule" aria-hidden="true" />
+			)}
+			<span class="separator__mark">
+				{showLogo ? (
+					<LogoMark variant="header" class="separator__mark-inner" />
+				) : faviconMeta ? (
+					<Image
+						src={faviconMeta}
+						alt=""
+						width={faviconMeta.width}
+						height={faviconMeta.height}
+						class="separator__mark-inner"
+					/>
+				) : null}
+			</span>
+			{markAlign !== "right" && (
+				<span class="separator__rule" aria-hidden="true" />
+			)}
+		</div>
+	) : (
+		<hr class="separator" style={lineStyle} />
+	)
+}

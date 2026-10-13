@@ -1,3 +1,4 @@
+import type { ImageMetadata } from "astro";
 import { resolveCmsImage } from "./cms-image";
 import { getSiteConfig } from "./site-config";
 
@@ -9,6 +10,18 @@ export type FaviconLink = {
 
 /** Media-library fallback when CMS favicon fields are empty. */
 const DEFAULT_CMS_PATH = "/assets/favicon.svg";
+
+/**
+ * Default favicon as Astro ImageMetadata (CMS or `/assets/favicon.svg`).
+ * Used by `{{separator mark="favicon"}}`.
+ */
+export function resolveFaviconMeta(): ImageMetadata | undefined {
+	const favicons = getSiteConfig().general?.favicons;
+	return (
+		resolveCmsImage(favicons?.default) ??
+		resolveCmsImage(DEFAULT_CMS_PATH)
+	);
+}
 
 function mimeForPath(path: string): string | undefined {
 	const lower = path.toLowerCase().split("?")[0] ?? "";

@@ -1061,6 +1061,40 @@ CMS.registerEditorComponent({
 				],
 				hint: "Design-Token aus der Palette. Standard = aktuelle Linienfarbe (border).",
 			},
+			{
+				name: "mark",
+				label: "Markierung",
+				widget: "select",
+				default: "none",
+				options: [
+					{ label: "Keine (nur Linie)", value: "none" },
+					{ label: "Logo (General → Logos)", value: "logo" },
+					{ label: "Favicon (General → Favicons)", value: "favicon" },
+				],
+				hint: "Optional Logo oder Favicon aus den Einstellungen auf der Linie (#97).",
+			},
+			{
+				name: "markAlign",
+				label: "Markierung: Position",
+				widget: "select",
+				default: "center",
+				options: [
+					{ label: "Links", value: "left" },
+					{ label: "Mitte", value: "center" },
+					{ label: "Rechts", value: "right" },
+				],
+				hint: "Nur wirksam bei Markierung Logo oder Favicon. Standard: Mitte.",
+			},
+			{
+				name: "markSize",
+				label: "Markierung: Größe (px)",
+				widget: "number",
+				value_type: "int",
+				default: 24,
+				min: 8,
+				max: 120,
+				hint: "Breite von Logo/Favicon in Pixeln. Standard 24.",
+			},
 		],
 		pattern: /^\{\{separator(?<attrs>[^}]*)\}\}\s*$/m,
 		fromBlock: (match) => {
@@ -1069,16 +1103,54 @@ CMS.registerEditorComponent({
 				height: attrs.height || "1",
 				width: (attrs.width || "100").replace(/%$/, ""),
 				color: attrs.color || "border",
+				mark: attrs.mark || "none",
+				markAlign: attrs.markAlign || attrs["mark-align"] || "center",
+				markSize: attrs.markSize || attrs["mark-size"] || "24",
 			};
 		},
-		toBlock: ({ height = 1, width = 100, color = "border" }) => {
+		toBlock: ({
+			height = 1,
+			width = 100,
+			color = "border",
+			mark = "none",
+			markAlign = "center",
+			markSize = 24,
+		}) => {
 			const parts = [`height="${height}"`, `width="${width}"`];
 			if (color && color !== "border") parts.push(`color="${color}"`);
+			if (mark && mark !== "none") {
+				parts.push(`mark="${mark}"`);
+				if (markAlign && markAlign !== "center") {
+					parts.push(`markAlign="${markAlign}"`);
+				}
+				if (String(markSize) !== "24") {
+					parts.push(`markSize="${markSize}"`);
+				}
+			}
 			return `{{separator ${parts.join(" ")}}}`;
 		},
-		toPreview: ({ height = 1, width = 100, color = "border" }) => {
+		toPreview: ({
+			height = 1,
+			width = 100,
+			color = "border",
+			mark = "none",
+			markAlign = "center",
+			markSize = 24,
+		}) => {
 			const bg = SEPARATOR_COLORS[color] || SEPARATOR_COLORS.border;
-			return `<hr style="display:block;border:0;background:${bg};opacity:.65;height:${height}px;width:${width}%;margin:1.25rem auto">`;
+			if (!mark || mark === "none") {
+				return `<hr style="display:block;border:0;background:${bg};opacity:.65;height:${height}px;width:${width}%;margin:1.25rem auto">`;
+			}
+			const label = mark === "favicon" ? "Favicon" : "Logo";
+			const rule = `<span style="flex:1;height:${height}px;background:${bg};opacity:.65"></span>`;
+			const badge = `<span style="flex:0 0 auto;font-size:11px;opacity:.85;padding:0 4px;width:${markSize}px;text-align:center">${label}</span>`;
+			const row =
+				markAlign === "left"
+					? `${badge}${rule}`
+					: markAlign === "right"
+						? `${rule}${badge}`
+						: `${rule}${badge}${rule}`;
+			return `<div style="display:flex;align-items:center;gap:8px;width:${width}%;margin:1.25rem auto">${row}</div>`;
 		},
 	});
 

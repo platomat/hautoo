@@ -237,7 +237,7 @@ Beliebig kombinieren, statt Flex-CSS in jeder Komponente neu zu schreiben:
 | `.page--width-full` | vollbreite Spalte (`--content-full-max-width`, 80rem); CMS-Feld `layout.contentWidth` |
 | `.page-layout` / `.page-layout__main` | Flex-Zeile Inhalt/Sidebar (mit `.stack-on-tablet`) |
 | `.hero` / `.page-hero` | Titelblock überall (`PageHero.astro`: `h1` + optionale Beschreibung, Abstand zum Inhalt) |
-| `.separator` | Dezente Trennlinie (`Separator.astro` / CMS `{{separator height width color}}`; Default-Farbe `border`) |
+| `.separator` | Dezente Trennlinie (`Separator.astro` / CMS `{{separator height width color mark …}}`; Default-Farbe `border`; mit `mark=logo\|favicon` Flex-Zeile + `.separator__rule` / `.separator__mark`) |
 | `.spacer` | Vertikaler Leerraum (`Spacer.astro` / CMS `{{spacer height}}`; Default 32 px, Max. 600) |
 | `.cms-button` | CMS-Button (`CmsButton.astro` / `{{button label href …}}`; solid/outline, Palette wie Trennlinie, Ausrichtung inkl. volle Breite) |
 | `.cms-button-group` | Button-Gruppe (`CmsButtonGroup.astro` / `{{button-group items …}}`; Layout row / row-nowrap / stack-mobile / stack; Align left/center/right; optional `--full-mobile` unter 680px; nutzt `.cms-button__link`) |

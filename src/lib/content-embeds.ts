@@ -27,8 +27,17 @@ import {
 } from "./button";
 import {
 	DEFAULT_SEPARATOR_COLOR,
+	DEFAULT_SEPARATOR_MARK,
+	DEFAULT_SEPARATOR_MARK_ALIGN,
+	DEFAULT_SEPARATOR_MARK_SIZE,
+	MAX_SEPARATOR_MARK_SIZE,
+	MIN_SEPARATOR_MARK_SIZE,
 	resolveSeparatorColor,
+	resolveSeparatorMark,
+	resolveSeparatorMarkAlign,
 	type SeparatorColor,
+	type SeparatorMark,
+	type SeparatorMarkAlign,
 } from "./separator";
 import { DEFAULT_SPACER_HEIGHT, clampSpacerHeight } from "./spacer";
 import type { VideoProvider } from "./video";
@@ -148,6 +157,12 @@ export type SeparatorEmbedProps = {
 	width: number;
 	/** Design-token color (default border). */
 	color: SeparatorColor;
+	/** Optional logo or favicon on the line (`none` = plain hr). */
+	mark: SeparatorMark;
+	/** Mark position: left / center / right. */
+	markAlign: SeparatorMarkAlign;
+	/** Mark width in px. */
+	markSize: number;
 };
 
 export type SpacerEmbedProps = {
@@ -327,6 +342,9 @@ const DEFAULT_SEPARATOR: SeparatorEmbedProps = {
 	height: 1,
 	width: 100,
 	color: DEFAULT_SEPARATOR_COLOR,
+	mark: DEFAULT_SEPARATOR_MARK,
+	markAlign: DEFAULT_SEPARATOR_MARK_ALIGN,
+	markSize: DEFAULT_SEPARATOR_MARK_SIZE,
 };
 
 const DEFAULT_SPACER: SpacerEmbedProps = {
@@ -645,6 +663,16 @@ export function parseSeparatorProps(
 			100,
 		),
 		color: resolveSeparatorColor(attrs.color),
+		mark: resolveSeparatorMark(attrs.mark),
+		markAlign: resolveSeparatorMarkAlign(
+			attrs.markAlign ?? attrs["mark-align"],
+		),
+		markSize: clampInt(
+			attrs.markSize ?? attrs["mark-size"],
+			DEFAULT_SEPARATOR.markSize,
+			MIN_SEPARATOR_MARK_SIZE,
+			MAX_SEPARATOR_MARK_SIZE,
+		),
 	};
 }
 

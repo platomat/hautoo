@@ -55,3 +55,44 @@ export function resolveSeparatorColor(
 	}
 	return DEFAULT_SEPARATOR_COLOR;
 }
+
+/** Optional mark on the separator line (`{{separator mark="…"}}`). */
+export const SEPARATOR_MARK_KEYS = ["none", "logo", "favicon"] as const;
+
+export type SeparatorMark = (typeof SEPARATOR_MARK_KEYS)[number];
+
+export const DEFAULT_SEPARATOR_MARK: SeparatorMark = "none";
+
+const SEPARATOR_MARK_SET = new Set<string>(SEPARATOR_MARK_KEYS);
+
+export function resolveSeparatorMark(raw: string | undefined): SeparatorMark {
+	const key = (raw ?? "").trim().toLowerCase();
+	if (SEPARATOR_MARK_SET.has(key)) {
+		return key as SeparatorMark;
+	}
+	return DEFAULT_SEPARATOR_MARK;
+}
+
+/** Horizontal position of the mark on the line. */
+export const SEPARATOR_MARK_ALIGN_KEYS = ["left", "center", "right"] as const;
+
+export type SeparatorMarkAlign = (typeof SEPARATOR_MARK_ALIGN_KEYS)[number];
+
+export const DEFAULT_SEPARATOR_MARK_ALIGN: SeparatorMarkAlign = "center";
+
+const SEPARATOR_MARK_ALIGN_SET = new Set<string>(SEPARATOR_MARK_ALIGN_KEYS);
+
+export function resolveSeparatorMarkAlign(
+	raw: string | undefined,
+): SeparatorMarkAlign {
+	const key = (raw ?? "").trim().toLowerCase();
+	if (SEPARATOR_MARK_ALIGN_SET.has(key)) {
+		return key as SeparatorMarkAlign;
+	}
+	return DEFAULT_SEPARATOR_MARK_ALIGN;
+}
+
+/** Default / clamp for `markSize` (px). */
+export const DEFAULT_SEPARATOR_MARK_SIZE = 24;
+export const MIN_SEPARATOR_MARK_SIZE = 8;
+export const MAX_SEPARATOR_MARK_SIZE = 120;

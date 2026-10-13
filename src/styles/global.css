@@ -569,6 +569,44 @@ body.is-nav-locked {
 	opacity: 0.65;
 }
 
+/* Separator with logo/favicon mark (`{{separator mark="logo|favicon"}}`) */
+.separator--with-mark {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	height: auto;
+	background: none;
+	opacity: 1;
+}
+
+.separator__rule {
+	flex: 1 1 0;
+	min-width: 0;
+	height: var(--separator-height, 1px);
+	background: var(--separator-color, var(--color-border));
+	opacity: 0.65;
+}
+
+.separator--mark-left .separator__rule,
+.separator--mark-right .separator__rule {
+	flex: 1 1 auto;
+}
+
+.separator__mark {
+	flex: 0 0 auto;
+	width: var(--separator-mark-size, 24px);
+	max-width: 40%;
+	line-height: 0;
+}
+
+.separator__mark .separator__mark-inner,
+.separator__mark .logo-mark,
+.separator__mark img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
 /* CMS content spacer embed (`{{spacer height="…"}}`) */
 .spacer {
 	display: block;

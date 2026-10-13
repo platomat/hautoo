@@ -76,7 +76,7 @@ Im Markdown über die Sveltia-Toolbar einfügbar; Speichern als `{{…}}`-Zeile;
 - **Glossar-Listing** (`{{glossar-listing …}}`): Glossar-Einträge als Liste oder Grid; Anzahl und Sortierung wählbar.
 - **Button** (`{{button …}}`): Einzelner Aktionslink mit Stil (ausgefüllt/Kontur), Farbe, Ziel und Ausrichtung inkl. voller Breite.
 - **Button-Gruppe** (`{{button-group …}}`): Mehrere Buttons in einer Gruppe; Layout nebeneinander (mit/ohne Umbruch), mobil untereinander oder immer gestapelt; Ausrichtung der Gruppe; optional volle Breite auf Mobile ([#83](https://github.com/platomat/hautoo/issues/83)).
-- **Trennlinie** (`{{separator …}}`): Horizontale Linie mit Höhe, Breite und Design-Token-Farbe.
+- **Trennlinie** (`{{separator …}}`): Horizontale Linie mit Höhe, Breite und Design-Token-Farbe; optional Logo oder Favicon aus den Einstellungen auf der Linie (Position links/mitte/rechts, Größe in px, Default 24) ([#97](https://github.com/platomat/hautoo/issues/97)).
 - **Abstandshalter** (`{{spacer …}}`): Vertikaler Leerraum in Pixeln ohne sichtbare Linie.
 - **Kontakt-E-Mail** (`{{contact-email}}`): Adresse aus General → Contact email oder Build-Variable `CONTACT_EMAIL`, obfuscated im Markup.
 - **Logo** (`{{logo …}}`): Site-Logo aus General → Logos (Header/Sticky/Footer) mit Breite und Ausrichtung ([#79](https://github.com/platomat/hautoo/issues/79)).

@@ -115,6 +115,30 @@ Mit voller Breite auf Mobile (`fullWidthMobile="true"`):
 
 {{spacer height="24"}}
 
+## Trennlinie mit Logo (links)
+
+{{separator mark="logo" markAlign="left" markSize="24"}}
+
+## Trennlinie mit Logo (mittig)
+
+{{separator mark="logo" markAlign="center" markSize="24"}}
+
+## Trennlinie mit Logo (rechts)
+
+{{separator mark="logo" markAlign="right" markSize="24"}}
+
+## Trennlinie mit Favicon (links)
+
+{{separator mark="favicon" markAlign="left" markSize="24"}}
+
+## Trennlinie mit Favicon (mittig)
+
+{{separator mark="favicon" markAlign="center" markSize="24"}}
+
+## Trennlinie mit Favicon (rechts)
+
+{{separator mark="favicon" markAlign="right" markSize="24"}}
+
 ## Kontakt-E-Mail
 
 {{contact-email}}
