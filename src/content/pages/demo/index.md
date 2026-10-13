@@ -39,7 +39,7 @@ Diese Seite zeigt **Markdown** und die **Content-Komponenten** aus der Sveltia-T
 
 ## Markdown: Text und Inline
 
-Normaler Absatz mit **fett**, *kursiv*, ***beidem*** und `inline code`. Interner Link zum [Glossar](/glossar/), externer Link zu [GitHub](https://github.com/platomat/hautoo/).
+Normaler Absatz mit **fett**, _kursiv_, **_beidem_** und `inline code`. Interner Link zum [Glossar](/glossar/), externer Link zu [GitHub](https://github.com/platomat/hautoo/).
 
 > Blockzitat: so sieht ein Zitat im Fließtext aus.
 
@@ -85,17 +85,17 @@ Text unter H6.
 
 ## Buttons
 
-{{button label="Solid Aktion" href="/features/" style="solid" color="action" align="left"}}
+{{button label="Solid Aktion" href="/features/"}}
 
-{{button label="Outline" href="/artikel/" style="outline" color="action" align="left"}}
+{{button label="Outline" href="/artikel/" style="outline"}}
 
-{{button label="Extern" href="https://github.com/platomat/hautoo/" target="_blank" style="solid" color="action" align="left"}}
+{{button label="Extern" href="https://github.com/platomat/hautoo/" target="_blank"}}
 
 ### Button-Gruppe
 
 Nebeneinander, auf schmalen Viewports untereinander (`layout="stack-mobile"`):
 
-{{button-group items="Mehr erfahren|/features/|solid|action|_self||Artikel|/artikel/|outline|action|_self||GitHub|https://github.com/platomat/hautoo/|outline|border|_blank" layout="stack-mobile" align="left"}}
+{{button-group items="Mehr erfahren|/features/|solid|action|_self||Artikel|/artikel/|outline|action|_self||GitHub|https://github.com/platomat/hautoo/|outline|border|_blank"}}
 
 Immer untereinander, zentriert:
 
@@ -103,7 +103,7 @@ Immer untereinander, zentriert:
 
 Mit voller Breite auf Mobile (`fullWidthMobile="true"`):
 
-{{button-group items="Primär|/features/|solid|action|_self||Sekundär|/faq/|outline|action|_self" layout="stack-mobile" align="left" fullWidthMobile="true"}}
+{{button-group items="Primär|/features/|solid|action|_self||Sekundär|/faq/|outline|action|_self" fullWidthMobile="true"}}
 
 ## Logo
 
@@ -111,33 +111,37 @@ Mit voller Breite auf Mobile (`fullWidthMobile="true"`):
 
 ## Trennlinie und Abstand
 
-{{separator height="1" width="100" color="border"}}
+{{separator height="1" width="100"}}
 
 {{spacer height="24"}}
 
 ## Trennlinie mit Logo (links)
 
-{{separator mark="logo" markAlign="left" markSize="24"}}
+{{separator height="1" width="100" mark="logo" markAlign="left" markSize="42"}}
 
 ## Trennlinie mit Logo (mittig)
 
-{{separator mark="logo" markAlign="center" markSize="24"}}
+{{separator height="1" width="100" mark="logo" markSize="42"}}
+
+## Trennlinie mit Logo (mittig, kurz & dick)
+
+{{separator height="3" width="66" mark="logo" markSize="42"}}
 
 ## Trennlinie mit Logo (rechts)
 
-{{separator mark="logo" markAlign="right" markSize="24"}}
+{{separator height="1" width="100" mark="logo" markAlign="right" markSize="42"}}
 
 ## Trennlinie mit Favicon (links)
 
-{{separator mark="favicon" markAlign="left" markSize="24"}}
+{{separator height="1" width="100" mark="favicon" markAlign="left"}}
 
 ## Trennlinie mit Favicon (mittig)
 
-{{separator mark="favicon" markAlign="center" markSize="24"}}
+{{separator height="1" width="100" mark="favicon"}}
 
 ## Trennlinie mit Favicon (rechts)
 
-{{separator mark="favicon" markAlign="right" markSize="24"}}
+{{separator height="1" width="100" mark="favicon" markAlign="right"}}
 
 ## Kontakt-E-Mail
 
@@ -186,5 +190,3 @@ Consent-Facade (YouTube-Beispiel, Big Buck Bunny):
 ### Video-Freischaltung widerrufen
 
 Nach dem Abspielen speichert der Browser die Einwilligung lokal (`localStorage`). Mit dem Button darunter kannst du sie wieder löschen; danach erscheint die Consent-Facade erneut.
-
-{{video-consent-reset}}
