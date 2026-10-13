@@ -260,14 +260,7 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 									{showMeta && (
 										<div class="article-listing__meta text-sm text-muted">
 											{(hasCategories || hasTags) && (
-												<div
-													class:list={[
-														"article-listing__taxonomies",
-														hasCategories &&
-															hasTags &&
-															"article-listing__taxonomies--split",
-													]}
-												>
+												<div class="article-listing__taxonomies">
 													{hasCategories && (
 														<p class="article-listing__categories">
 															{articleCategories.map((cat, index) => (
