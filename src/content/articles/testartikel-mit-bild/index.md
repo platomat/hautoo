@@ -1,5 +1,6 @@
 ---
 title: TestArtikel mit Bild
+summary: Das ist ein TestArtikel mit Bild. Das ist ein TestArtikel mit Bild. Das ist ein TestArtikel mit Bild.
 pubDate: 2026-10-13
 status: published
 heroImage: /assets/pavel-marianov-8nAb6Rt4CEs-unsplash.webp
@@ -9,7 +10,7 @@ tags:
   - design
 tagPlacement: hero
 authors:
-  - wasilij
+  - testautor
 seo:
   index_visibility: index
   follow_visibility: follow

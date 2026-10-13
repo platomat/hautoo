@@ -61,7 +61,7 @@ Live-Überblick: [**Features**](/features/).
 
 ## Neuste Artikel
 
-{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25" show="displayTitle,displayIntro,displayCategories,displayTags,displayDate,displayReadingTime"}}
+{{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25" show="displayTitle,displayIntro,displayCategories,displayTags,displayDate,displayReadingTime" authors="wasilij"}}
 
 {{button label="Alle Artikel" href="/artikel/" style="outline"}}
 
