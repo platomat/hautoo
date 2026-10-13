@@ -14,7 +14,6 @@ tags:
 tagPlacement: hero
 authors:
   - wasilij
-videoPlacement: before
 seo:
   seo_title: 'Folge 001: Leeres Repo, voller Plan, so startet hautuu'
   seo_description: Du legst GitHub an, holst das Projekt lokal und erklärst Cursor dein Ziel in normaler Sprache. Folge 001 zeigt den Einstiegsablauf für hautuu.
@@ -33,7 +32,9 @@ seo:
 
 Willkommen in Folge eins. Hier musst du noch nicht alles verstehen, du brauchst nur ein Bild im Kopf: **Wo liegt die Wahrheit**, und **wo bastelst du dran rum**?
 
-{{member-video src="videos/folge-001-intro.mp4"}}
+{{member-video src="videos/folge-001-intro.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
 
 Die Wahrheit liegt bei [**GitHub**](/glossar/github/) (Server in der Cloud). Bei dir auf der Platte ist eine Kopie, an der du mit [**Cursor**](/glossar/cursor/) arbeitest. Später baut [**Astro**](/glossar/astro/) daraus statische HTML-Seiten ([**Frontend**](/glossar/frontend/)), und [**Cloudflare**](/glossar/cloudflare-pages/) stellt sie ins Netz. Mehr Details kommen Stück für Stück, heute die grobe **Richtung**.
 

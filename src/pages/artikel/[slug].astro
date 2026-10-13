@@ -7,7 +7,6 @@ import CmsContent from "../../components/CmsContent.astro";
 import Icon from "../../components/Icon.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
-import VideoEmbed from "../../components/VideoEmbed.astro";
 import {
 	formatArticleDate,
 	getAdjacentArticles,
@@ -104,12 +103,6 @@ const TableOfContents = toc.show
 const readingTimeMinutes = estimateReadingTimeMinutes(article.body);
 const readingTimeLabel = formatReadingTime(readingTimeMinutes);
 const breadcrumbs = buildArticleBreadcrumbs(article);
-const videoPlacement = article.data.videoPlacement ?? "before";
-const hasArticleVideo = Boolean(
-	article.data.videoProvider && article.data.videoId?.trim(),
-);
-const showVideoBefore = hasArticleVideo && videoPlacement === "before";
-const showVideoAfter = hasArticleVideo && videoPlacement === "after";
 ---
 
 <BaseLayout
@@ -213,25 +206,7 @@ const showVideoAfter = hasArticleVideo && videoPlacement === "after";
 					</figure>
 				)
 			}
-			{
-				showVideoBefore && (
-					<VideoEmbed
-						provider={article.data.videoProvider}
-						id={article.data.videoId}
-						title={`Video: ${article.data.title}`}
-					/>
-				)
-			}
 			{useEmbeds ? <CmsContent body={article.body} /> : <Content />}
-			{
-				showVideoAfter && (
-					<VideoEmbed
-						provider={article.data.videoProvider}
-						id={article.data.videoId}
-						title={`Video: ${article.data.title}`}
-					/>
-				)
-			}
 			{
 				showTagsAfter && (
 					<ul

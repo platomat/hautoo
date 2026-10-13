@@ -90,16 +90,9 @@ Mit gesetzter Basis-URL wird daraus die volle Medien-URL. Alternativ volle URL:
 
 Alias `provider="r2"` wird wie `file` behandelt.
 
-### B) Hero-Video am Artikel
+### B) Im Artikel-Inhalt
 
-CMS-Felder am Artikel:
-
-| Feld | Wert |
-| --- | --- |
-| Video-Anbieter | Datei (R2 / selbst gehostet) |
-| Video-ID, URL oder Dateiname | Dateiname oder volle URL |
-
-Darstellung: dieselbe `VideoEmbed`-Komponente über dem Body.
+Toolbar **Video** bzw. Marker `{{video provider="file" src="…" }}` an der gewünschten Stelle im Body (z. B. ganz oben). Dieselbe `VideoEmbed`-Komponente wie bei YouTube/Vimeo-Embeds.
 
 ## Verhalten auf der Website
 

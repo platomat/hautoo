@@ -13,7 +13,7 @@ alwaysApply: false
 ## Kurzfassung für Agenten
 
 - Transkripte: Fehler sinngemäß korrigieren, **nichts erfinden**; externe Fakten nur **verifiziert**, mit Quelle.
-- Artikel: `Folge nnn: <Titel>`, Slug `folge-nnn-<kurz>`, pubDate aus Aufnahmezeit, summary mit Nutzen, wenige bestehende Tags, Video leer, Quellkommentar am Ende.
+- Artikel: `Folge nnn: <Titel>`, Slug `folge-nnn-<kurz>`, pubDate aus Aufnahmezeit, summary mit Nutzen, wenige bestehende Tags, Video nur per Content-Embed (sonst weglassen), Quellkommentar am Ende.
 - Stil: knackig, Du-Form, laienverständlich; **keine Gedankenstriche** in Titel, Teaser, FAQ-Fragen; im Fließtext sparsam (siehe `deutsche-prosa.mdc`).
 - **UI-Wortlaut:** Englische Oberflächen-Labels als „EN“ (Deutsch) statt **fett**; deutsche UI/Hervorhebung **fett** — [docs/redaktion/ui-wortlaut.md](../../docs/redaktion/ui-wortlaut.md).
 - **Keine Video-/Screencast-Meta-Hinweise** im sichtbaren Text (Artikel/Pages/Glossar); Transkript nur im `<!-- Quelle: … -->`-Kommentar. Check: `check-content-no-video-hints.py`.

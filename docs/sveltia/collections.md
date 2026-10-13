@@ -383,9 +383,6 @@ Beispiel: Quellen `/alter-slug/` und `/noch-alter/` → Ziel `/neuer-slug/` mit 
 | `categories` | nein | Relation zu `categories` (mehrere; Hierarchie über Parent); Anzeige immer im Hero unter der Beschreibung |
 | `tags` | nein | Relation zu `tags` (mehrere) |
 | `tagPlacement` | nein | Wo Tags erscheinen: `hero` (neben Kategorien), `after` (nach Inhalt, vor Navigation), `both` (Default: `hero`) |
-| `videoProvider` | nein | `youtube` / `vimeo` / `file` (Facade mit Consent bzw. HTML5) |
-| `videoId` | nein | ID oder URL; alternativ Body-Embed `{{video …}}` |
-| `videoPlacement` | nein | Frontmatter-Video: `before` (nach Hero, Default) oder `after` (nach Inhalt, vor Tags/Autoren) |
 | `toc.show` | nein | TOC an/aus; leer = globaler Default (`content.toc.articles`) |
 | `toc.levels` | nein | `h2` / `h3` / `h4`; leer = global |
 | `toc.title` | nein | TOC-Überschrift; leer = global |

@@ -482,32 +482,6 @@ collections:
         multiple: true
         required: false
         hint: "Optional. Keiner, einer oder mehrere Autoren (Profil unter /autoren/<slug>/)."
-      - name: videoProvider
-        label: Video-Anbieter
-        widget: select
-        options:
-          - { label: Keins, value: "" }
-          - { label: YouTube, value: youtube }
-          - { label: Vimeo, value: vimeo }
-          - { label: Datei (R2 / selbst gehostet), value: file }
-        default: ""
-        required: false
-      - {
-          name: videoId,
-          label: Video-ID, URL oder Dateiname,
-          widget: string,
-          required: false,
-          hint: "YouTube-/Vimeo-ID oder URL. Bei „Datei“: volle https-URL oder Dateiname/Pfad relativ zu Content → Medien → Video-Basis-URL (R2).",
-        }
-      - name: videoPlacement
-        label: Video anzeigen
-        widget: select
-        options:
-          - { label: Vor dem Inhalt (nach Hero), value: before }
-          - { label: Nach dem Inhalt (vor Tags/Autoren), value: after }
-        default: before
-        required: false
-        hint: "Gilt für das Video-Feld oben (nicht für {{video …}}-Blöcke im Inhalt)."
       - name: body
         label: Inhalt
         widget: markdown

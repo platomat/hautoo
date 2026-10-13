@@ -29,7 +29,7 @@ Mit **Screencast-Transkript** oder ohne:
 | **categories** | Vorhandene Kategorien aus `src/content/categories/` **bevorzugen**; wenige pro Artikel; Hierarchie über Parent an der Kategorie |
 | **tags** | Vorhandene Tags aus `src/content/tags/` **bevorzugen**, **wenige** (typisch 3–5), thematisch passend |
 | **seo** | `seo_title`, `seo_description`, `index_visibility`, `follow_visibility`, … (siehe Abschnitt SEO-Felder) |
-| **Video** | Frontmatter `videoProvider` / `videoId` / `videoPlacement` (`before` nach Hero oder `after` nach Inhalt) **oder** Body-Embed `{{video provider="youtube" id="…" }}` (frei im Text). Leer lassen, bis ein echtes Video da ist. Player erst nach Consent (Facade); optionales lokales `poster` unter `/assets/…` |
+| **Video** | Nur im Inhalt per Toolbar: `{{video …}}` (YouTube/Vimeo/Datei) oder `{{member-video …}}`. Position selbst wählen (z. B. ganz oben = wie früher „vor dem Inhalt“). Leer lassen, bis ein echtes Video da ist. YT/Vimeo erst nach Consent; optionales lokales `poster` unter `/assets/…` |
 | **Quelle** | Am Ende des Body ein HTML-Kommentar mit Original-Transkriptdateiname, z. B. `<!-- Quelle: 2026-10-04--23-47-38--obs-screencast - … -->` |
 | **modifiedDate** | Bei inhaltlicher Änderung setzen |
 
@@ -145,7 +145,7 @@ Hilfsskript (Bulk, einmalig): `scripts/fill-seo-fields.py` (manuell anpassen, ni
 
 ## Checkliste vor dem Pull Request
 
-- [ ] **Schema:** Titel `Folge nnn: …`, Slug `folge-nnn-<kurz>`, pubDate, summary, categories, tags, Video leer, Quellkommentar
+- [ ] **Schema:** Titel `Folge nnn: …`, Slug `folge-nnn-<kurz>`, pubDate, summary, categories, tags, Video nur per Embed (sonst weglassen), Quellkommentar
 - [ ] **SEO:** Meta-Titel und Description (bzw. Tag-`description`, Glossar-`seo`) gesetzt oder aktualisiert; Länge und Stil wie oben; Impressum/Datenschutz **noindex**
 - [ ] **Stil:** Du-Form, laienverständlich, keine Striche in Titel/Teaser/FAQ-Fragen
 - [ ] **Glossar:** neue/angepasste Einträge, relatedTags, Querverweise

@@ -447,7 +447,7 @@ Im [**CMS**](/glossar/cms/) unter `/admin/` oder [Markdown](/glossar/markdown/) 
 
 ### Wie binde ich ein Video ein?
 
-Toolbar **Video** oder Frontmatter `videoProvider` / `videoId`. **YouTube/Vimeo:** erst [Consent](/glossar/consent/)-Facade, Klick lädt den Player. **Eigene MP4:** `provider="file"` und [Cloudflare R2](/glossar/cloudflare-r2/) mit **Video-Basis-URL**. [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 001](/artikel/folge-001-hautuu-intro/).
+Toolbar **Video** bzw. `{{video …}}` im Inhalt (Position frei wählbar). **YouTube/Vimeo:** erst [Consent](/glossar/consent/)-Facade, Klick lädt den Player. **Eigene MP4:** `provider="file"` und [Cloudflare R2](/glossar/cloudflare-r2/) mit **Video-Basis-URL**. Geschützt: `{{member-video …}}`. [Folge 023](/artikel/folge-023-neue-features-demo-cms/), [Folge 001](/artikel/folge-001-hautuu-intro/).
 
 ### Was sind Tags?
 

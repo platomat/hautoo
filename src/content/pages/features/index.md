@@ -52,7 +52,7 @@ Hier siehst du, **was im Projekt schon gebaut ist** (Stand: öffentliches [Repo]
 ### Collections und Relationen
 
 - **pages:** Statische Seiten inkl. Start, Legal, Übersichten. Optional Parent-Seite; eigene URL ([#3](https://github.com/platomat/hautoo/issues/3)).
-- **articles:** Screencast-Folgen und Beiträge. Relationen: 0..n **Kategorien**, **Tags**, **Autoren**; Video-Felder; URL `/artikel/<slug>/` ([#4](https://github.com/platomat/hautoo/issues/4)).
+- **articles:** Screencast-Folgen und Beiträge. Relationen: 0..n **Kategorien**, **Tags**, **Autoren**; Videos nur per Content-Embed (`{{video …}}` / `{{member-video …}}`); URL `/artikel/<slug>/` ([#4](https://github.com/platomat/hautoo/issues/4)).
 - **categories:** Hierarchische Kategorien. Optional Parent; Relation von Artikeln; URL `/kategorien/<slug>/` ([#64](https://github.com/platomat/hautoo/issues/64)).
 - **tags:** Schlagworte. Relation von Artikeln; optional passender Glossar-Slug; URL `/tags/<slug>/` ([#5](https://github.com/platomat/hautoo/issues/5)).
 - **authors:** Autorenprofile (Name, Bio, Avatar/Gravatar; Social-/Web-URLs mit **Plattform-Icons**, optional im Hero; JSON-LD `Person` mit **`sameAs`**; Embed `{{author-social}}`; **freier Inhalt** mit Embeds statt Auto-Artikel-Listing). Relation von Artikeln; URL `/autoren/<slug>/` ([#77](https://github.com/platomat/hautoo/issues/77), [#85](https://github.com/platomat/hautoo/issues/85), [#86](https://github.com/platomat/hautoo/issues/86)).
