@@ -222,3 +222,5 @@ Consent-Facade (YouTube-Beispiel, Big Buck Bunny):
 ### Video-Freischaltung widerrufen
 
 Nach dem Abspielen speichert der Browser die Einwilligung lokal (`localStorage`). Mit dem Button darunter kannst du sie wieder löschen; danach erscheint die Consent-Facade erneut.
+
+{{video-consent-reset}}

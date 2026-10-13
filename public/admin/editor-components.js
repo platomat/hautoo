@@ -873,6 +873,18 @@ CMS.registerEditorComponent({
 	});
 
 	CMS.registerEditorComponent({
+		id: "video-consent-reset",
+		label: "Video-Freischaltung widerrufen",
+		icon: "cookie",
+		fields: [],
+		pattern: /^\{\{video-consent-reset\}\}\s*$/m,
+		fromBlock: () => ({}),
+		toBlock: () => "{{video-consent-reset}}",
+		toPreview: () =>
+			'<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Button: Video-Freischaltung widerrufen</div>',
+	});
+
+	CMS.registerEditorComponent({
 		id: "video",
 		label: "Video",
 		icon: "videocam",
@@ -994,17 +1006,6 @@ CMS.registerEditorComponent({
 			`<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem"><strong style="color:#e8eeea">Member-Video</strong> · ${title || src || "?"}<br><span style="font-size:0.8rem">Privates R2 + Zugangscode (Worker)</span></div>`,
 	});
 
-	CMS.registerEditorComponent({
-		id: "video-consent-reset",
-		label: "Video-Freischaltung widerrufen",
-		icon: "cookie",
-		fields: [],
-		pattern: /^\{\{video-consent-reset\}\}\s*$/m,
-		fromBlock: () => ({}),
-		toBlock: () => "{{video-consent-reset}}",
-		toPreview: () =>
-			'<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Button: Video-Freischaltung widerrufen</div>',
-	});
 
 	const SEPARATOR_COLORS = {
 		border: "#2e3833",
