@@ -55,6 +55,7 @@ export type {
  * `display*` names stay distinct from filter attrs (`authors=`, `tags=`, …).
  */
 export type ArticleCardField =
+	| "displayImage"
 	| "displayTitle"
 	| "displayIntro"
 	| "displayCategories"
@@ -64,6 +65,7 @@ export type ArticleCardField =
 	| "displayReadingTime";
 
 export const ARTICLE_CARD_FIELDS = [
+	"displayImage",
 	"displayTitle",
 	"displayIntro",
 	"displayCategories",

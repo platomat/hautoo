@@ -20,6 +20,7 @@
 
 	/** Canonical card-field order (FE layout is fixed; CMS is checkbox-only). */
 	const ARTICLE_CARD_SHOW_ORDER = [
+		"displayImage",
 		"displayTitle",
 		"displayIntro",
 		"displayCategories",
@@ -123,6 +124,7 @@
 					"displayReadingTime",
 				],
 				options: [
+					{ label: "Vorschaubild", value: "displayImage" },
 					{ label: "Titel", value: "displayTitle" },
 					{ label: "Intro", value: "displayIntro" },
 					{ label: "Kategorien", value: "displayCategories" },
@@ -131,7 +133,7 @@
 					{ label: "Datum", value: "displayDate" },
 					{ label: "Lesezeit", value: "displayReadingTime" },
 				],
-				hint: "Nur an/aus per Checkbox (`display*`). Feste Kartenreihenfolge: Titel, Intro, Kategorien | Tags, Autoren, Datum · Lesezeit.",
+				hint: "Nur an/aus per Checkbox (`display*`). Feste Kartenreihenfolge: Vorschaubild, Titel, Intro, Kategorien | Tags, Autoren, Datum · Lesezeit. Vorschaubild = Titelbild, sonst Seitenhintergrund.",
 			},
 			{
 				/**
