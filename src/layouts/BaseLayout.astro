@@ -12,6 +12,7 @@ import {
 	type Seo,
 } from "../cms/fields/seo";
 import { getBuildId } from "../lib/build-id";
+import { buildSiteBorderRadiusRootCss } from "../lib/site-border-radius";
 import { buildSiteColorRootCss } from "../lib/site-colors";
 import { getSiteWebsiteTitle } from "../lib/site-config";
 import { getFaviconLinks } from "../lib/site-favicon";
@@ -43,6 +44,7 @@ interface Props {
 const siteName = await getSiteWebsiteTitle();
 const siteColorRootCss = buildSiteColorRootCss();
 const siteTypographyRootCss = buildSiteTypographyRootCss();
+const siteBorderRadiusRootCss = buildSiteBorderRadiusRootCss();
 const fontPreloadHrefs = getFontPreloadHrefs();
 
 const {
@@ -189,9 +191,10 @@ const faviconLinks = getFaviconLinks();
 				/>
 			)
 		}
-		{/* After bundled CSS: Design → Farbpalette / Schrift must win over global.css. */}
+		{/* After bundled CSS: Design → Farbpalette / Schrift / Ecken must win over global.css. */}
 		<style is:inline set:html={siteColorRootCss} />
 		<style is:inline set:html={siteTypographyRootCss} />
+		<style is:inline set:html={siteBorderRadiusRootCss} />
 	</head>
 	<body class:list={{ "has-page-bg": hasPageBackground }}>
 		{

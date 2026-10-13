@@ -762,6 +762,21 @@ body.is-nav-locked {
 
 .page img {
 	display: block;
+	border-radius: var(--radius-image, 0px);
+}
+
+/* Header/Footer logos and video posters: not content-image radius */
+.page .logo-mark img,
+.page .site-header img,
+.page .site-footer img,
+.page .video-embed__poster,
+.page .member-video__poster {
+	border-radius: 0;
+}
+
+/* Design → Ecken abrunden → Videos (VideoEmbed + MemberVideo share .video-embed) */
+.page .video-embed {
+	border-radius: var(--radius-video, 0px);
 }
 
 h1,

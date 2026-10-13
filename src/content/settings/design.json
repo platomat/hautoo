@@ -132,5 +132,9 @@
       "afterHero": 6,
       "beforeFooter": 6
     }
+  },
+  "borderRadius": {
+    "image": 6,
+    "video": 6
   }
 }

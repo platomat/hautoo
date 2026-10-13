@@ -164,6 +164,15 @@ Pro Eintrag optional `layout.contentWidth` (gleiche Werte). Leer = globaler Defa
 
 Collections: `pages`, `articles`, `categories`, `tags`, `authors`, `glossar`. Pro Seite/Artikel optional `layout.afterHero` / `layout.beforeFooter` (Gruppe Inhaltsbreite). Resolve: `resolveContentSpacing` → CSS-Variablen am `.page`.
 
+### Einstellungen → Design → Ecken abrunden
+
+| Feld | Bedeutung |
+| --- | --- |
+| `design.borderRadius.image` | Border-Radius für Inhalts-Bilder (px, 0–64), CSS `--radius-image` |
+| `design.borderRadius.video` | Border-Radius für Video-Embeds (px, 0–64), CSS `--radius-video`; gilt auch für Member-Video (`.video-embed`) |
+
+Inline `:root` in `BaseLayout` (`src/lib/site-border-radius.ts`). Logos, Avatare und Video-Poster sind ausgenommen bzw. behalten eigene Formen.
+
 ## Collection `menus` (umgesetzt)
 
 Navigation und Footer-Links werden **nicht** mehr über Flags an Seiten gesteuert, sondern über eigene Menü-Dateien.

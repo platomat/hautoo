@@ -1613,6 +1613,31 @@ collections:
                 widget: object
                 fields: *fields_spacing_collection
 
+          - name: borderRadius
+            label: Ecken abrunden
+            widget: object
+            collapsed: false
+            hint: "Radius in Pixeln für Medien im Inhalt. Bilder und Videos getrennt. 0 = eckig."
+            fields:
+              - name: image
+                label: Bilder (px)
+                widget: number
+                value_type: int
+                min: 0
+                max: 64
+                default: 0
+                required: true
+                hint: "Markdown-/CMS-Bilder im Inhalt (nicht Logo, Avatar, Favicon)."
+              - name: video
+                label: Videos (px)
+                widget: number
+                value_type: int
+                min: 0
+                max: 64
+                default: 0
+                required: true
+                hint: "Video-Embed und Member-Video (16:9-Box inkl. Facade)."
+
       - name: content
         label: Content
         file: src/content/settings/content.json

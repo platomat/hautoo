@@ -80,7 +80,7 @@ Im Markdown über die Sveltia-Toolbar einfügbar; Speichern als `{{…}}`-Zeile;
 - **Abstandshalter** (`{{spacer …}}`): Vertikaler Leerraum in Pixeln ohne sichtbare Linie.
 - **Kontakt-E-Mail** (`{{contact-email}}`): Adresse aus General → Contact email oder Build-Variable `CONTACT_EMAIL`, obfuscated im Markup.
 - **Logo** (`{{logo …}}`): Site-Logo aus General → Logos (Header/Sticky/Footer) mit Breite und Ausrichtung ([#79](https://github.com/platomat/hautoo/issues/79)).
-- **Video** (`{{video …}}`): YouTube/Vimeo mit Consent-Facade (Datenschutz-Link aus Privacy page); nach Freigabe füllt der Player die 16:9-Box. Alternativ selbst gehostete MP4 über R2.
+- **Video** (`{{video …}}`): YouTube/Vimeo mit Consent-Facade (Datenschutz-Link aus Privacy page); nach Freigabe füllt der Player die 16:9-Box. Alternativ selbst gehostete MP4 über R2. Ecken-Radius aus Design → Ecken abrunden → Videos (gilt auch für `{{member-video …}}`).
 - **Video-Freischaltung widerrufen** (`{{video-consent-reset}}`): Button, der die gespeicherte Video-Einwilligung im Browser löscht.
 - **Repo-Dokument** (`{{repodoc …}}`): Hinweisbox mit Link zu einer Datei unter `docs/` auf GitHub (`main`).
 
@@ -109,6 +109,7 @@ Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Co
 - **Hero-Defaults** pro Collection: Ausrichtung, Brotkrumen, Trenner, Trennlinie unten ([#63](https://github.com/platomat/hautoo/issues/63)).
 - **Inhaltsbreite** Standard / breit / vollbreit für Seiten und Artikel ([#59](https://github.com/platomat/hautoo/issues/59)).
 - **Abstand** unter Hero und vor Footer, pro Collection ([#73](https://github.com/platomat/hautoo/issues/73)).
+- **Ecken abrunden:** Radius in Pixeln getrennt für Inhalts-Bilder und Videos (inkl. Member-Video).
 
 ### Settings → Content
 

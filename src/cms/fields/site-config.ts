@@ -466,6 +466,19 @@ function normalizeDesignContentWidth(raw: unknown): unknown {
 	return obj;
 }
 
+/**
+ * Corner radius for content media (CMS Design → Ecken abrunden).
+ * Applied as `--radius-image` / `--radius-video` (px).
+ */
+export const siteBorderRadiusConfigSchema = z.object({
+	/** Markdown / CMS content images. */
+	image: z.coerce.number().int().min(0).max(64).default(0),
+	/** `VideoEmbed` and (hautoo) `MemberVideo` containers. */
+	video: z.coerce.number().int().min(0).max(64).default(0),
+});
+
+export type SiteBorderRadiusConfig = z.infer<typeof siteBorderRadiusConfigSchema>;
+
 /** `src/content/settings/design.json` */
 export const siteDesignConfigSchema = z.preprocess(
 	normalizeDesignContentWidth,
@@ -481,6 +494,8 @@ export const siteDesignConfigSchema = z.preprocess(
 		contentWidth: siteWidthConfigSchema.default({}),
 		/** Vertical gaps after hero / before footer per collection. */
 		spacing: siteSpacingByCollectionSchema.default({}),
+		/** Border radius for content images and video embeds. */
+		borderRadius: siteBorderRadiusConfigSchema.default({}),
 	}),
 );
 

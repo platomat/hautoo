@@ -190,6 +190,17 @@ Drei Stufen über CMS **Design → Inhaltsbreite** (Default) und pro Seite/Artik
 
 Global unter **Design → Inhaltsabstand** pro Collection (`afterHero`, `beforeFooter` in rem). Seiten und Artikel überschreiben in der Gruppe **Inhaltsbreite**. CSS: `--page-space-after-hero` (`.page-hero` margin-bottom), `--page-space-before-footer` (`.page` padding-bottom).
 
+### Ecken abrunden (Bilder / Videos)
+
+Unter **Design → Ecken abrunden** zwei Werte in Pixeln (0–64, Default 0 = eckig):
+
+| CMS-Feld | CSS | Anwendung |
+| --- | --- | --- |
+| `borderRadius.image` | `--radius-image` | Inhalts-Bilder (Markdown/CMS); nicht Logo, Avatar, Favicon |
+| `borderRadius.video` | `--radius-video` | `.video-embed` (Consent-Video und Member-Video) |
+
+`:root` kommt aus `src/lib/site-border-radius.ts` in `BaseLayout`.
+
 ### Mobile-Navigation (Burger)
 
 Unter **680px** (`max-width: 679px`):
