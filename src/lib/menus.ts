@@ -46,6 +46,19 @@ export async function getMenuEntry(
 	return menus.find((menu) => menu.id === id);
 }
 
+function resolveUrlLink(
+	label: string,
+	hrefRaw: string | undefined,
+	cssClasses: string[],
+): ResolvedMenuLink | null {
+	const href = hrefRaw?.trim();
+	if (!href) {
+		return null;
+	}
+	const external = /^https?:\/\//i.test(href);
+	return { label, href, external, cssClasses };
+}
+
 function resolveLeafHref(
 	item: MenuLeaf,
 	pagesById: Map<string, PageEntry>,
@@ -56,30 +69,27 @@ function resolveLeafHref(
 	}
 
 	const cssClasses = parseCssClasses(item.cssClass);
+	const pageId = item.page?.trim();
+	const urlHref = item.url?.trim();
 
 	if (item.linkType === "url") {
-		const href = item.url?.trim();
-		if (!href) {
-			return null;
-		}
-		const external = /^https?:\/\//i.test(href);
-		return { label, href, external, cssClasses };
+		return resolveUrlLink(label, urlHref, cssClasses);
 	}
 
-	const pageId = item.page?.trim();
-	if (!pageId) {
-		return null;
+	if (pageId) {
+		const page = pagesById.get(pageId);
+		if (page && isPagePublic(page)) {
+			return {
+				label,
+				href: getPageHref(page, pagesById),
+				external: false,
+				cssClasses,
+			};
+		}
 	}
-	const page = pagesById.get(pageId);
-	if (!page || !isPagePublic(page)) {
-		return null;
-	}
-	return {
-		label,
-		href: getPageHref(page, pagesById),
-		external: false,
-		cssClasses,
-	};
+
+	// CMS default linkType is `page`; if no usable page is set, still show a URL.
+	return resolveUrlLink(label, urlHref, cssClasses);
 }
 
 /** Resolve menu items to hrefs; drop broken page links. */
