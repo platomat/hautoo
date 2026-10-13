@@ -952,40 +952,11 @@ collections:
             hint: "Markenname in Header, Browser-Titel-Suffix und og:site_name."
             default: hautuu
           - name: websiteDescription
-            label: Description
+            label: Website description
             widget: text
             required: false
-            hint: "Kurze Beschreibung oder Slogan. Im Footer-Brand (Design → Footer), wenn Baustein Beschreibung an ist. Erlaubt einfaches HTML: a, b/strong, em/i, br."
+            hint: "Kurze Beschreibung oder Slogan. Im Footer-Brand (Content → Footer), wenn Baustein Beschreibung an ist. Erlaubt einfaches HTML: a, b/strong, em/i, br."
             default: ""
-          - name: footerCopyright
-            label: Footer copyright
-            widget: object
-            collapsed: false
-            hint: "Copyright-Zeile im Footer: links Claim, Mitte optional Mark/Icon."
-            fields:
-              - name: claim
-                label: Claim
-                widget: text
-                required: false
-                default: ""
-                hint: "Text, reine URL oder HTML mit <a href> (wie Bildnachweis). Leer = nur © und Website-Titel."
-              - name: separator
-                label: Separator
-                widget: select
-                options:
-                  - { label: "•", value: "•" }
-                  - { label: "-", value: "-" }
-                  - { label: "—", value: "—" }
-                  - { label: "/", value: "/" }
-                default: "•"
-                required: true
-                hint: "Zeichen zwischen Website-Titel und Claim."
-              - name: showCenter
-                label: Show center mark
-                widget: boolean
-                required: false
-                default: true
-                hint: "Kleines Icon in der Mitte der Zeile. An = GitHub-Icon bei gesetztem Repo, sonst Site-Logo zur Startseite. Aus = nichts in der Mitte."
           - name: contactEmail
             label: Contact email
             widget: string
@@ -1001,12 +972,6 @@ collections:
             display_fields: [title]
             required: false
             hint: "Datenschutz-Seite (wie WordPress Privacy Policy). Wird u. a. im Video-Consent-Hinweis verlinkt. Leer = kein Link."
-            default: ""
-          - name: githubRepo
-            label: GitHub repository
-            widget: string
-            required: false
-            hint: "Optional owner/name für das Footer-Icon (z. B. platomat/hautoo). Leer = Site-Logo verlinkt auf die Startseite (typisch für Forks). Wirkt nur, wenn Footer copyright → Show center mark an ist."
             default: ""
           - name: logos
             label: Logos
@@ -1045,6 +1010,41 @@ collections:
                 widget: image
                 required: false
                 hint: "Optional für prefers-color-scheme: dark. Leer = gleiches wie Favicon (Standard-SVG passt sich selbst an)."
+          - name: footerCopyright
+            label: Footer copyright
+            widget: object
+            collapsed: false
+            hint: "Copyright-Zeile im Footer: links Claim, Mitte optional Mark/Icon."
+            fields:
+              - name: claim
+                label: Claim
+                widget: text
+                required: false
+                default: ""
+                hint: "Text, reine URL oder HTML mit <a href> (wie Bildnachweis). Leer = nur © und Website-Titel."
+              - name: separator
+                label: Separator
+                widget: select
+                options:
+                  - { label: "•", value: "•" }
+                  - { label: "-", value: "-" }
+                  - { label: "—", value: "—" }
+                  - { label: "/", value: "/" }
+                default: "•"
+                required: true
+                hint: "Zeichen zwischen Website-Titel und Claim."
+              - name: showCenter
+                label: Show center mark
+                widget: boolean
+                required: false
+                default: true
+                hint: "Kleines Icon in der Mitte der Zeile. An = GitHub-Icon bei gesetztem Repo, sonst Site-Logo zur Startseite. Aus = nichts in der Mitte."
+          - name: githubRepo
+            label: GitHub repository
+            widget: string
+            required: false
+            hint: "Optional owner/name für das Footer-Icon (z. B. platomat/hautoo). Leer = Site-Logo verlinkt auf die Startseite (typisch für Forks). Wirkt nur, wenn Footer copyright → Show center mark an ist."
+            default: ""
       - name: design
         label: Design
         file: src/content/settings/design.json
