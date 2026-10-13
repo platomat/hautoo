@@ -480,33 +480,44 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 		max-width: 6.5rem;
 	}
 
-	/* side bleed: flush to card padding edge */
-	.article-listing--image-left-bleed.article-listing--grid .article-listing__item {
-		padding-left: 0;
+	/*
+	 * side bleed: image flush to top, bottom and outer side of the card;
+	 * text column keeps its own padding.
+	 */
+	.article-listing--image-left-bleed.article-listing--grid .article-listing__item,
+	.article-listing--image-right-bleed.article-listing--grid .article-listing__item {
+		padding: 0;
+	}
+
+	.article-listing--image-left-bleed.article-listing--grid .article-listing__layout,
+	.article-listing--image-right-bleed.article-listing--grid .article-listing__layout {
+		gap: 0;
+	}
+
+	.article-listing--image-left-bleed.article-listing--grid .article-listing__media,
+	.article-listing--image-right-bleed.article-listing--grid .article-listing__media {
+		align-self: stretch;
+		height: auto;
+		min-height: 5.5rem;
+		aspect-ratio: auto;
+		width: 6rem;
+		max-width: 6rem;
 	}
 
 	.article-listing--image-left-bleed.article-listing--grid .article-listing__media {
 		border-radius: 5px 0 0 5px;
-		align-self: stretch;
-		height: auto;
-		min-height: 5.5rem;
-		aspect-ratio: auto;
-		width: 5.5rem;
-		max-width: 5.5rem;
-	}
-
-	.article-listing--image-right-bleed.article-listing--grid .article-listing__item {
-		padding-right: 0;
 	}
 
 	.article-listing--image-right-bleed.article-listing--grid .article-listing__media {
 		border-radius: 0 5px 5px 0;
-		align-self: stretch;
-		height: auto;
-		min-height: 5.5rem;
-		aspect-ratio: auto;
-		width: 5.5rem;
-		max-width: 5.5rem;
+	}
+
+	.article-listing--image-left-bleed.article-listing--grid .article-listing__body {
+		padding: 1.1rem 1.15rem 1.1rem 0.85rem;
+	}
+
+	.article-listing--image-right-bleed.article-listing--grid .article-listing__body {
+		padding: 1.1rem 0.85rem 1.1rem 1.15rem;
 	}
 
 	@media (max-width: 679px) {
@@ -531,16 +542,22 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 
 		.article-listing--image-left-bleed.article-listing--grid .article-listing__item,
 		.article-listing--image-right-bleed.article-listing--grid .article-listing__item {
-			padding-left: 1.15rem;
-			padding-right: 1.15rem;
-			padding-top: 0;
+			padding: 0;
+		}
+
+		.article-listing--image-left-bleed.article-listing--grid .article-listing__layout,
+		.article-listing--image-right-bleed.article-listing--grid .article-listing__layout {
+			gap: 0;
 		}
 
 		.article-listing--image-left-bleed.article-listing--grid .article-listing__media,
 		.article-listing--image-right-bleed.article-listing--grid .article-listing__media {
-			margin: 0 -1.15rem;
-			width: calc(100% + 2.3rem);
 			border-radius: 5px 5px 0 0;
+		}
+
+		.article-listing--image-left-bleed.article-listing--grid .article-listing__body,
+		.article-listing--image-right-bleed.article-listing--grid .article-listing__body {
+			padding: 0.85rem 1.15rem 1.1rem;
 		}
 	}
 
