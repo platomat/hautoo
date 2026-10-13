@@ -188,7 +188,7 @@ Drei Stufen über CMS **Design → Inhaltsbreite** (Default) und pro Seite/Artik
 
 ### Inhaltsabstand (Hero / Footer)
 
-Global unter **Design → Abstand** pro Collection (`afterHero`, `beforeFooter` in rem). Seiten und Artikel überschreiben in der Gruppe **Inhaltsbreite**. CSS: `--page-space-after-hero` (`.page-hero` margin-bottom), `--page-space-before-footer` (`.page` padding-bottom).
+Global unter **Design → Inhaltsabstand** pro Collection (`afterHero`, `beforeFooter` in rem). Seiten und Artikel überschreiben in der Gruppe **Inhaltsbreite**. CSS: `--page-space-after-hero` (`.page-hero` margin-bottom), `--page-space-before-footer` (`.page` padding-bottom).
 
 ### Mobile-Navigation (Burger)
 

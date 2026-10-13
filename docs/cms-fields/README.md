@@ -6,13 +6,13 @@ Wiederverwendbare Feldgruppen für Sveltia und Astro.
 
 | Seite | Ort |
 | --- | --- |
-| Sveltia | Anchor `&field_entry_layout`; globale Defaults unter Config → Design → Inhaltsbreite / Abstand |
+| Sveltia | Anchor `&field_entry_layout`; globale Defaults unter Config → Design → Inhaltsbreite / Inhaltsabstand |
 | Astro | `src/cms/fields/content-width.ts` (`entryLayoutSchema`), Resolve `src/lib/content-width.ts` / `src/lib/content-spacing.ts` |
 | Collections | `pages`, `articles` (Taxonomien nur globaler Abstand) |
 
 Breite: `layout.contentWidth` = `default` (42rem) · `wide` (64rem) · `full` (80rem). Leer = globaler Default; ohne Feld und mit Listing-Embed → `wide`.
 
-Abstand (rem, 0–12): `layout.afterHero` / `layout.beforeFooter`. Leer = Design → Abstand für die jeweilige Collection. CSS-Variablen `--page-space-after-hero` / `--page-space-before-footer` am `.page`.
+Abstand (rem, 0–12): `layout.afterHero` / `layout.beforeFooter`. Leer = Design → Inhaltsabstand für die jeweilige Collection. CSS-Variablen `--page-space-after-hero` / `--page-space-before-footer` am `.page`.
 
 ## Status (`status`)
 
@@ -75,7 +75,7 @@ Auf **Seiten** und **Artikeln** folgen nach dem Änderungsdatum collapsible Obje
 | **Hero überschreiben** | `hero` | `textAlign`, `showBreadcrumbs`, `borderBottom`; Boolean-Overrides als Select (`null` / An / Aus). Unberührt + `omit_empty_optional_fields` = nicht in der YAML |
 | **TOC überschreiben** | `toc` | `show` (Select wie Hero), `title`, `levels`; unberührt = globaler Default |
 | **Seitenhintergrund einstellen** | `background` | `image`, `overlay` (ohne CMS-Default; leer → 40 im Render), `attribution` |
-| **Inhaltsbreite** | `layout` | `contentWidth`, `afterHero`, `beforeFooter`; unberührt = Design → Inhaltsbreite / Abstand |
+| **Inhaltsbreite** | `layout` | `contentWidth`, `afterHero`, `beforeFooter`; unberührt = Design → Inhaltsbreite / Inhaltsabstand |
 
 Listen-Vorschau: Collection-Option `thumbnail: background.image` (Sveltia erkennt nested Images nicht automatisch).
 

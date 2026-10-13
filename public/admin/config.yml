@@ -1563,10 +1563,10 @@ collections:
                   - { label: Vollbreit, value: full }
                 default: default
           - name: spacing
-            label: Abstand
+            label: Inhaltsabstand
             widget: object
             collapsed: false
-            hint: "Vertikaler Abstand unter dem Hero und vor dem Footer, pro Collection. Einzelne Seiten/Artikel überschreiben unter Inhaltsbreite."
+            hint: "Vertikaler Abstand unter dem Hero und vor dem Footer, pro Collection. Einzelne Seiten/Artikel überschreiben in der Gruppe Inhaltsbreite."
             fields:
               - name: pages
                 label: Seiten
@@ -1612,12 +1612,6 @@ collections:
                 label: Glossar
                 widget: object
                 fields: *fields_spacing_collection
-
-      - name: content
-        label: Content
-        file: src/content/settings/content.json
-        format: json
-        fields:
           - name: footer
             label: Footer
             widget: object
@@ -1728,6 +1722,12 @@ collections:
                       - { label: Volle Browserbreite, value: full }
                       - { label: Wie Inhaltsbreite der Zeile, value: shell }
                     hint: "Oberer Rand der Copyright-Zeile: über die ganze Viewport-Breite oder nur so breit wie die Zeile (Shell)."
+
+      - name: content
+        label: Content
+        file: src/content/settings/content.json
+        format: json
+        fields:
           - name: toc
             label: Inhaltsverzeichnis (TOC)
             widget: object

@@ -155,7 +155,7 @@ Eintrag ohne `toc.show` nutzt den globalen Default. Lokales `toc.show: true` / `
 
 Pro Eintrag optional `layout.contentWidth` (gleiche Werte). Leer = globaler Default; ohne Feld und mit Listing-Embed → automatisch `wide` (`resolveContentWidth`). CSS: Lesespalte 42rem, breit 64rem, vollbreit 80rem.
 
-### Einstellungen → Design → Abstand (#73)
+### Einstellungen → Design → Inhaltsabstand (#73)
 
 | Feld | Bedeutung |
 | --- | --- |
