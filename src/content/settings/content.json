@@ -17,7 +17,7 @@
   },
   "media": {
     "videoBaseUrl": "https://media.hautoo.storyofai.net/videos/",
-    "videoAccessWorkerUrl": ""
+    "videoAccessWorkerUrl": "https://member-media-access.hautoo.storyofai.net"
   },
   "authors": {
     "articlePlacement": "hero",

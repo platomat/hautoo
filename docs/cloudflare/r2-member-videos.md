@@ -16,15 +16,17 @@ Privates R2  ←  Worker (unlock / sign / play)  ←  MemberVideo im Browser
               KV: sha256(code) → { active, label }
 ```
 
-| Was | Wo |
-| --- | --- |
-| Worker-Name | `hautoo-member-media-access` (Cloudflare) |
-| Worker-Code | `workers/media-access/` (gleiches Repo, eigenes Deploy) |
-| Komponente | `src/components/MemberVideo.astro` |
-| Embed | `{{member-video src="datei.mp4" title="…" }}` |
-| CMS | Toolbar **Member-Video (Code)** |
-| Worker-URL | Content → Medien → `videoAccessWorkerUrl` |
-| Session | `localStorage`: `hautuu-member-video-token` (Session-Token, nicht der Klartext-Code) |
+
+| Was         | Wo                                                                                              |
+| ----------- | ----------------------------------------------------------------------------------------------- |
+| Worker-Name | `hautoo-member-media-access` (Cloudflare)                                                       |
+| Worker-Code | `workers/media-access/` (gleiches Repo, eigenes Deploy)                                         |
+| Komponente  | `src/components/MemberVideo.astro`                                                              |
+| Embed       | `{{member-video src="datei.mp4" title="…" }}`                                                   |
+| CMS         | Toolbar / Einfügen-Menü **Member-Video (Code)** (Whitelist `editor_components` in `config.yml`) |
+| Worker-URL  | Content → Medien → `videoAccessWorkerUrl`                                                       |
+| Session     | `localStorage`: `hautuu-member-video-token` (Session-Token, nicht der Klartext-Code)            |
+
 
 Ein Token gilt **site-weit für alle Member-Videos** im Browser. Jede Person bekommt einen **eigenen** Code (Hash in KV).
 
@@ -32,18 +34,22 @@ Ein Token gilt **site-weit für alle Member-Videos** im Browser. Jede Person bek
 
 **Workers KV** ist ein einfacher Key-Value-Speicher bei Cloudflare (kein SQL). Der Worker fragt beim Freischalten: „Gibt es diesen Hash?“
 
-| | Bedeutung |
-| --- | --- |
-| **Namespace** | Eine benannte „Schublade“ für alle Zugangscodes (einmal anlegen) |
-| **Key** | SHA-256-Hash des Codes (64 Hex-Zeichen), **nicht** der Klartext |
-| **Value** | JSON-Metadaten, z. B. ob der Code aktiv ist und für wen (`label`) |
+
+|               | Bedeutung                                                         |
+| ------------- | ----------------------------------------------------------------- |
+| **Namespace** | Eine benannte „Schublade“ für alle Zugangscodes (einmal anlegen)  |
+| **Key**       | SHA-256-Hash des Codes (64 Hex-Zeichen), **nicht** der Klartext   |
+| **Value**     | JSON-Metadaten, z. B. ob der Code aktiv ist und für wen (`label`) |
+
 
 Beispiel-Eintrag:
 
-| Feld | Beispiel |
-| --- | --- |
-| Key | `a3f2…` (Ausgabe von `npm run hash-code`) |
+
+| Feld  | Beispiel                                                          |
+| ----- | ----------------------------------------------------------------- |
+| Key   | `a3f2…` (Ausgabe von `npm run hash-code`)                         |
 | Value | `{"active":true,"label":"anna-mueller","createdAt":"2026-04-09"}` |
+
 
 Ohne Eintrag in KV ist jeder Code ungültig. Du legst Einträge manuell an (Dashboard oder CLI), nachdem du einen Code generiert hast.
 
@@ -55,8 +61,10 @@ Der Worker speichert **keine** Personenliste und **keinen** Klartext-Code. In KV
 
 Zusätzlich brauchst du intern eine eigene Übersicht (Tabelle, Passwortmanager-Notiz), mindestens:
 
+
 | Person / Kanal | Klartext-Code (nur bei dir / beim Empfänger) | KV-label | ausgegeben am |
-| --- | --- | --- | --- |
+| -------------- | -------------------------------------------- | -------- | ------------- |
+
 
 Den Klartext nach dem Versand idealerweise nur noch beim Empfänger belassen und bei dir nur Hash + Label + Person notieren. Ohne solche Liste und ohne sinnvolles `label` kannst du aus KV allein nicht rekonstruieren, wem welcher Code gehört.
 
@@ -64,50 +72,62 @@ Den Klartext nach dem Versand idealerweise nur noch beim Empfänger belassen und
 
 Ein Ordner `workers/media-access/` reicht: gemeinsames Git, getrennte Deployments (Pages vs. Worker). Zweites Repo nur nötig, wenn andere Rechte/Teams den Worker getrennt versionieren sollen. Standard hier: **ein Repo**.
 
+## Setup: Reihenfolge im Überblick
+
+
+| Schritt | Wo                      | Kurz                                             |
+| ------- | ----------------------- | ------------------------------------------------ |
+| 1       | Cloudflare Dashboard    | Privaten R2-Bucket anlegen                       |
+| 2       | Cloudflare Dashboard    | KV-Namespace anlegen, ID kopieren                |
+| 3       | Lokal: Editor           | `wrangler.toml` mit Bucket-Name + KV-ID füllen   |
+| 4       | Lokal: Terminal         | `npm install` → `wrangler login` → Secret setzen |
+| 5       | Lokal: Terminal         | Worker deployen                                  |
+| 6       | CMS oder `content.json` | Worker-URL eintragen                             |
+| 7       | Terminal + Dashboard    | Code erzeugen, Hash in KV legen                  |
+| 8       | Dashboard R2 + CMS      | Video hochladen, Embed setzen, testen            |
+
+
 ## Voraussetzungen
 
-1. Cloudflare-Account (gleiche Umgebung wie Pages für `hautoo`).
-2. Lokal: Node.js, Repo ausgecheckt, im Ordner `workers/media-access/` arbeiten können.
-3. Einmalig: bei Cloudflare eingeloggt (`npx wrangler login`) oder API-Token mit Rechten für Workers, KV und R2.
-4. MP4s für den privaten Bucket (nicht in Git committen).
+- Cloudflare-Account (gleiche Umgebung wie Pages für `hautoo`)
+- Repo lokal ausgecheckt, Node.js installiert
+- MP4s bereit (nicht in Git committen)
+
+`wrangler login` machst du erst in **Schritt 4**, nicht vorher.
 
 ## Schritt 1: Privaten R2-Bucket anlegen
 
+**Wo:** Cloudflare Dashboard (Browser), nicht im Terminal.
+
 Das ist **nicht** derselbe Bucket wie die öffentlichen Videos unter `media.hautoo…`. Member-Dateien dürfen **keine** öffentliche Custom Domain haben.
 
-1. [Cloudflare Dashboard](https://dash.cloudflare.com/) → **R2** → **Create bucket**.
-2. Name z. B. `hautoo-member-media` (nur intern).
+1. [dash.cloudflare.com](https://dash.cloudflare.com/) → **R2** → **Create bucket**.
+2. Name z. B. `hautoo-member-media` (nur intern; exakt so später in `wrangler.toml`).
 3. **Keine** Custom Domain / kein Public Access für diesen Bucket.
-4. Optional: Test-Datei hochladen, z. B. Objekt-Key `mitglieder/test.mp4`.
+4. Optional schon jetzt eine Test-Datei hochladen: Ordner `videos/`, Datei z. B. `folge-001.mp4` → Objekt-Key `videos/folge-001.mp4`.
 
-Der Objekt-Key (Pfad im Bucket) ist später genau der `src` im Embed `{{member-video src="mitglieder/test.mp4" …}}`.
+Fertig mit Schritt 1, wenn der Bucket existiert und du den Namen notiert hast.
 
 ## Schritt 2: KV-Namespace anlegen
 
-Hier liegen die erlaubten Codes (als Hash).
+**Wo:** Cloudflare Dashboard (Browser). Hier liegen später die erlaubten Codes als Hash.
 
-### Im Dashboard
-
-1. Dashboard → **Workers & Pages** → links **KV** (manchmal unter **Storage & databases** → **KV**).
+1. Dashboard → **Workers & Pages** → links **KV** (manchmal **Storage & databases** → **KV**).
 2. **Create a namespace**.
 3. Name z. B. `hautoo-member-media-codes` → anlegen.
-4. Den Namespace öffnen. Oben oder unter Settings die **Namespace ID** kopieren (lange Hex-ID). Die brauchst du in `wrangler.toml`.
+4. Namespace öffnen → **Namespace ID** kopieren (lange Hex-ID, nicht der Anzeigename).
 
-Noch **keine** Keys anlegen. Codes kommen in Schritt 7.
+Noch **keine** Keys/Einträge anlegen. Codes kommen in Schritt 7.
 
-### Alternativ per CLI (im Ordner `workers/media-access/`)
-
-```bash
-npx wrangler kv namespace create hautoo-member-media-codes
-```
-
-Die Ausgabe enthält die `id`. Diese ID in `wrangler.toml` eintragen (siehe Schritt 3).
+Fertig mit Schritt 2, wenn du die Namespace-ID in der Zwischenablage oder Notiz hast.
 
 ## Schritt 3: Worker binden (`wrangler.toml`)
 
-Datei: `workers/media-access/wrangler.toml`.
+**Wo:** lokal im Editor, Datei `workers/media-access/wrangler.toml`.
 
-Die Bindings sind zunächst auskommentiert. Aktiviere sie und setze echte Namen/IDs:
+### 3a. Werte eintragen
+
+Bucket-Name aus Schritt 1 und KV-ID aus Schritt 2 einsetzen. Die `binding`-Namen (`MEDIA`, `ACCESS_CODES`) nicht umbenennen.
 
 ```toml
 name = "hautoo-member-media-access"
@@ -127,71 +147,127 @@ ALLOWED_ORIGINS = "https://hautoo.storyofai.net,http://localhost:4321"
 MEDIA_KEY_PREFIX = ""
 ```
 
-| Einstellung | Bedeutung |
-| --- | --- |
-| `binding = "MEDIA"` | Name im Worker-Code (`env.MEDIA`). Nicht ändern, außer du änderst auch den Code. |
-| `bucket_name` | Exakter R2-Bucket-Name aus Schritt 1. |
-| `binding = "ACCESS_CODES"` | Name im Worker-Code (`env.ACCESS_CODES`). Nicht ändern. |
-| `id` | KV-Namespace-ID aus Schritt 2 (nicht der Anzeigename). |
-| `ALLOWED_ORIGINS` | Kommagetrennt: Origins, die `/unlock` und `/sign` aufrufen dürfen. Site-URL und lokales Astro. |
-| `MEDIA_KEY_PREFIX` | Optional. Wenn alle Member-Objekte unter z. B. `members/` liegen, hier `members` setzen; sonst leer lassen. |
 
-`binding`-Namen (`MEDIA`, `ACCESS_CODES`) müssen so bleiben, wie der Worker sie erwartet. Bucket-Name und KV-`id` sind deine echten Cloudflare-Ressourcen.
+| Einstellung        | Was du einträgst                                          |
+| ------------------ | --------------------------------------------------------- |
+| `bucket_name`      | Exakter R2-Name aus Schritt 1                             |
+| `id`               | KV-Namespace-ID aus Schritt 2                             |
+| `ALLOWED_ORIGINS`  | Site-URL und lokal `http://localhost:4321`, kommagetrennt |
+| `MEDIA_KEY_PREFIX` | **leer lassen** (`""`), siehe 3b                          |
 
-### Darf die KV-ID ins öffentliche Repo?
 
-**Ja.** Die Namespace-ID in `wrangler.toml` zu committen ist üblich und unkritisch. Sie ist nur ein Zeiger („welcher Namespace“), kein Zugangsschlüssel.
+### 3b. `MEDIA_KEY_PREFIX`: leer lassen
 
-| Ins Repo ok | Nie ins Repo |
-| --- | --- |
-| KV-Namespace-ID, Bucket-Name, Worker-Name, `ALLOWED_ORIGINS` | Klartext-Codes, `SIGNING_SECRET`, `.dev.vars`, API-Tokens |
+Bei Ordnern wie `videos/` und später `pdfs/` bleibt das Prefix leer. Im Embed steht der **volle** Objekt-Key:
 
-Wer die ID kennt, kann KV **nicht** lesen oder ändern. Dafür braucht man deine Cloudflare-Login-Session bzw. ein API-Token mit Rechten. Die eigentlichen Codes stehen nur als Hash hinter der Authentifizierung bei Cloudflare; ohne Account-Zugriff bleibt die Schublade zu.
+```markdown
+{{member-video src="videos/folge-001.mp4" title="Folge 001"}}
+```
 
-`SIGNING_SECRET` kommt separat (Schritt 4) und landet **nicht** in Git.
+
+| Bucket-Objekt          | Embed `src`                      | Prefix |
+| ---------------------- | -------------------------------- | ------ |
+| `videos/folge-001.mp4` | `videos/folge-001.mp4`           | leer   |
+| `pdfs/handout.pdf`     | (später; Key `pdfs/handout.pdf`) | leer   |
+
+
+Nur wenn wirklich alles unter einem einzigen Ordner liegt und du den Ordner im Embed weglassen willst, wäre z. B. `MEDIA_KEY_PREFIX = "videos"` sinnvoll. Bei gemischten Ordnern: Prefix leer.
+
+### 3c. Darf die KV-ID ins öffentliche Repo?
+
+**Ja.** Namespace-ID und Bucket-Name in `wrangler.toml` zu committen ist üblich. Das ist kein Zugangsschlüssel.
+
+
+| Ins Repo ok                                        | Nie ins Repo                                              |
+| -------------------------------------------------- | --------------------------------------------------------- |
+| KV-ID, Bucket-Name, Worker-Name, `ALLOWED_ORIGINS` | Klartext-Codes, `SIGNING_SECRET`, `.dev.vars`, API-Tokens |
+
+
+Wer die ID kennt, kann KV nicht lesen. Dafür braucht man deinen Cloudflare-Login bzw. ein API-Token. `SIGNING_SECRET` kommt in Schritt 4 und landet nicht in Git.
+
+Fertig mit Schritt 3, wenn `wrangler.toml` gespeichert ist und die echten IDs/Namen enthält.
 
 ## Schritt 4: Signing-Secret setzen
 
 Der Worker signiert Session-Tokens und kurzlebige Play-URLs. Ohne Secret startet er nicht sinnvoll.
 
-Im Ordner `workers/media-access/`:
+Alles läuft **lokal in deinem Terminal** (nicht im Cloudflare-Dashboard). Reihenfolge:
+
+### 4a. In den Worker-Ordner wechseln und Abhängigkeiten installieren
 
 ```bash
+cd /pfad/zu/hautoo/workers/media-access
 npm install
+```
+
+(`npm install` holt u. a. Wrangler. Einmal reicht, bis sich `package.json` ändert.)
+
+### 4b. Bei Cloudflare einloggen (nur einmal nötig)
+
+```bash
+npx wrangler login
+```
+
+Es öffnet sich der Browser. Mit dem Cloudflare-Account anmelden, der den R2-/KV-Account hat, und den Zugriff erlauben. Danach bist du auf diesem Rechner für Wrangler angemeldet (Session lokal gespeichert). Bei späteren Befehlen brauchst du `login` nicht jedes Mal neu.
+
+### 4c. Secret erzeugen und hochladen
+
+Zufallsstring erzeugen (beliebiges Terminal):
+
+```bash
+openssl rand -hex 32
+```
+
+Die ausgegebene Hex-Zeile kopieren. Dann im Worker-Ordner:
+
+```bash
 npx wrangler secret put SIGNING_SECRET
 ```
 
-Wenn Wrangler nach dem Wert fragt: langen Zufallsstring einfügen (z. B. Ausgabe von `openssl rand -hex 32`), Enter. Der Wert landet **nur** bei Cloudflare, nicht in Git.
+Wrangler fragt nach dem Wert: kopierten String einfügen, Enter. Das Secret liegt danach **nur bei Cloudflare** für den Worker `hautoo-member-media-access`, nicht in Git und nicht dauerhaft in einer Repo-Datei.
 
-Lokal zum Testen: `.dev.vars.example` nach `.dev.vars` kopieren und dort `SIGNING_SECRET=…` setzen (Datei ist gitignored).
+### Optional: lokaler Worker-Dev
+
+Nur wenn du später `npm run dev` lokal nutzt: `.dev.vars.example` nach `.dev.vars` kopieren und dort ein Secret eintragen (gitignored). Für den produktiven Deploy reicht Schritt 4c.
 
 ## Schritt 5: Worker deployen
 
-Im Ordner `workers/media-access/`:
+**Wo:** lokal im Terminal, Ordner `workers/media-access/` (du bist nach Schritt 4 schon eingeloggt).
+
+### 5a. Deploy
 
 ```bash
+cd /pfad/zu/hautoo/workers/media-access
 npm run deploy
 ```
 
-Erwartete URL in etwa:
+Wrangler baut den Worker und lädt ihn zu Cloudflare hoch. Am Ende erscheint die Worker-URL, etwa:
 
 ```text
 https://hautoo-member-media-access.<dein-subdomain>.workers.dev
 ```
 
-Kurz prüfen (Browser oder curl):
+Diese URL kopieren (brauchst du in Schritt 6).
+
+### 5b. Kurz prüfen
+
+Im Browser oder per curl die Health-URL öffnen:
 
 ```text
 https://hautoo-member-media-access.<…>.workers.dev/health
 ```
 
-Antwort sollte JSON mit `"ok": true` sein.
+Erwartung: JSON mit `"ok": true`.
 
-Optional später: eigene Route/Custom Domain für den Worker. Für den Start reicht `*.workers.dev`.
+Für den Start reicht `*.workers.dev`. Eigene Domain für den Worker ist optional und später möglich.
 
 ## Schritt 6: Worker-URL in der Site-Config
 
-CMS: **Konfiguration → Content → Medien → Video-Access-Worker-URL**
+**Wo:** CMS oder Datei im Repo. Die Site muss die Worker-URL kennen, sonst können Member-Videos nicht freischalten.
+
+### 6a. Eintragen
+
+Entweder CMS: **Konfiguration → Content → Medien → Video-Access-Worker-URL**
 
 Oder Datei `src/content/settings/content.json`:
 
@@ -202,21 +278,26 @@ Oder Datei `src/content/settings/content.json`:
 }
 ```
 
-Ohne Slash am Ende. Leer lassen: Member-Video-Embeds zeigen nur einen Konfigurationshinweis.
+Ohne Slash am Ende. Wert = URL aus Schritt 5a.
 
-Nach Deploy der Site (Pages) ist die URL für Besucher aktiv.
+### 6b. Site deployen
+
+Damit Besucher die Config sehen: Änderung committen/pushen bzw. Pages-Build auslösen (wie üblich bei hautoo). Lokal zum Testen reicht die lokale Config + `astro dev`.
+
+Leer lassen: Member-Video-Embeds zeigen nur einen Hinweis „nicht konfiguriert“.
 
 ## Schritt 7: Zugangscode erzeugen und in KV legen
 
-### 7a. Code generieren
+**Wo:** zuerst Terminal (Code erzeugen), dann Dashboard (Eintrag speichern).
 
-Im Ordner `workers/media-access/`:
+### 7a. Code generieren (Terminal)
 
 ```bash
+cd /pfad/zu/hautoo/workers/media-access
 npm run hash-code -- --generate
 ```
 
-Beispielausgabe (Werte sind erfunden):
+Beispielausgabe (Werte erfunden):
 
 ```text
 Plaintext (give to user, do not commit):
@@ -229,24 +310,18 @@ KV value:
   {"active":true,"label":"","createdAt":"2026-04-09"}
 ```
 
-- **Plaintext:** nur an die Person (E-Mail, DM). Nicht committen, nicht in öffentliche Issues.
-- **KV key:** in den Namespace eintragen.
-- **KV value:** `label` vorher setzen, z. B. `"label":"anna-mueller"`.
+- **Plaintext:** nur an die Person. Nicht committen, nicht in öffentliche Issues.
+- **KV key** und **KV value:** als Nächstes ins Dashboard (7b). Bei Value vorher `"label":"anna-mueller"` o. Ä. setzen.
 
-### 7b. Eintrag im Dashboard anlegen
+### 7b. Eintrag im KV-Dashboard anlegen
 
-1. Dashboard → **KV** → Namespace `hautoo-member-media-codes`.
-2. **Add entry** (oder Equivalent).
-3. **Key:** den Hex-Hash aus der Script-Ausgabe komplett einfügen (kein Leerzeichen, alles klein wie ausgegeben).
-4. **Value:** JSON, z. B.:
-
-```json
-{"active":true,"label":"anna-mueller","createdAt":"2026-04-09"}
-```
-
+1. Dashboard → **KV** → Namespace aus Schritt 2 → KV Pairs.
+2. **Add entry**.
+3. **Key:** Hex-Hash aus 7a komplett (keine Leerzeichen).
+4. **Value:** JSON, z. B. `{"active":true,"label":"anna-mueller","createdAt":"2026-04-09"}`.
 5. Speichern.
 
-### 7c. Alternativ per CLI
+### 7c. Optional: per CLI statt Dashboard
 
 ```bash
 npx wrangler kv key put \
@@ -255,51 +330,56 @@ npx wrangler kv key put \
   '{"active":true,"label":"anna-mueller","createdAt":"2026-04-09"}'
 ```
 
-(`wrangler kv key put` / Namespace-Flags können je nach Wrangler-Version leicht abweichen; Hilfe: `npx wrangler kv key put --help`.)
+Flags können je nach Wrangler-Version leicht abweichen: `npx wrangler kv key put --help`.
 
 ### Code sperren
 
-- Value auf `{"active":false,"label":"anna-mueller","createdAt":"2026-04-09"}` setzen, oder
-- den Key löschen.
-
-Bestehende Browser-Sessions scheitern beim nächsten `/sign` (nächstes Video laden).
+Value auf `"active":false` setzen oder den Key löschen. Bestehende Browser-Sessions scheitern beim nächsten Video-Laden (`/sign`).
 
 ## Schritt 8: Video hochladen und einbinden
 
-1. MP4 in den **privaten** Bucket legen (Dashboard R2 → Upload). Objekt-Key notieren, z. B. `mitglieder/folge-010.mp4`.
-2. Im Artikel (CMS-Toolbar **Member-Video (Code)** oder Markdown):
+**Wo:** R2-Dashboard (Upload), dann CMS/Markdown (Embed), dann Browser (Test).
+
+### 8a. MP4 in den privaten Bucket
+
+Dashboard → **R2** → Bucket aus Schritt 1 → Upload. Ziel z. B. Ordner `videos/`, Dateiname `folge-001.mp4`. Objekt-Key notieren: `videos/folge-001.mp4`.
+
+### 8b. Embed im Artikel
+
+CMS-Toolbar **Member-Video (Code)** oder Markdown (`MEDIA_KEY_PREFIX` leer):
 
 ```markdown
-{{member-video src="mitglieder/folge-010.mp4" title="Folge 010" poster="/assets/poster.webp"}}
+{{member-video src="videos/folge-001.mp4" title="Folge 001" poster="/assets/poster.webp"}}
 ```
 
-`src` = Objekt-Key im privaten Bucket, **nicht** die öffentliche `media.`-URL.
+`src` = voller Objekt-Key im privaten Bucket (inkl. Ordner), nicht die öffentliche `media.`-URL.
 
-3. Seite öffnen → Zugangscode eingeben → Video sollte spielen.
-4. Zweites Member-Video auf einer anderen Seite: ohne erneute Code-Eingabe (gleicher Browser, Token in `localStorage`).
+### 8c. Testen
 
-## Lokal entwickeln (optional)
+1. Seite öffnen → Zugangscode aus Schritt 7 eingeben → Video spielt.
+2. Zweites Member-Video (andere Seite): ohne erneute Code-Eingabe im gleichen Browser.
 
-```bash
-cd workers/media-access
-cp .dev.vars.example .dev.vars
-# SIGNING_SECRET in .dev.vars setzen; Bindings in wrangler.toml wie oben
-npm install
-npm run dev
-```
+## Lokal entwickeln (optional, nicht für den ersten Live-Test nötig)
 
-In der lokalen Site-Config `videoAccessWorkerUrl` auf `http://127.0.0.1:8787` (oder den von Wrangler angezeigten Port) setzen. `ALLOWED_ORIGINS` muss `http://localhost:4321` enthalten.
+Nur wenn du den Worker lokal debuggen willst:
 
-Für lokales KV/R2: Wrangler kann Remote-Bindings nutzen oder lokale Simulation; siehe aktuelle Wrangler-Doku. Für den ersten produktiven Test reicht oft Deploy + Dashboard-KV.
+1. `cd workers/media-access`
+2. `.dev.vars.example` → `.dev.vars`, darin `SIGNING_SECRET=…`
+3. `npm run dev` (Port oft `8787`)
+4. In der lokalen Site-Config `videoAccessWorkerUrl` auf `http://127.0.0.1:8787` setzen; `ALLOWED_ORIGINS` enthält `http://localhost:4321`
+
+Für den ersten produktiven Durchlauf reichen Schritte 1–8 mit Deploy + Dashboard-KV.
 
 ## Abgrenzung zu öffentlichen Videos
 
-| | Öffentlich (`file`) | Member |
-| --- | --- | --- |
-| Bucket | öffentlich / Custom Domain | privat, kein Public Access |
-| Embed | `{{video provider="file" …}}` | `{{member-video …}}` |
-| Config | `videoBaseUrl` | `videoAccessWorkerUrl` |
-| Zugang | jeder mit URL | persönlicher Code in KV |
+
+|        | Öffentlich (`file`)           | Member                     |
+| ------ | ----------------------------- | -------------------------- |
+| Bucket | öffentlich / Custom Domain    | privat, kein Public Access |
+| Embed  | `{{video provider="file" …}}` | `{{member-video …}}`       |
+| Config | `videoBaseUrl`                | `videoAccessWorkerUrl`     |
+| Zugang | jeder mit URL                 | persönlicher Code in KV    |
+
 
 ## Datenschutz
 
@@ -324,3 +404,4 @@ Kurz auf der Datenschutzerklärung: Freischaltung speichert ein Session-Token in
 - Öffentliche R2-Videos: [r2-videos.md](./r2-videos.md)
 - Cloudflare KV: [developers.cloudflare.com/kv](https://developers.cloudflare.com/kv/)
 - Wrangler: [developers.cloudflare.com/workers/wrangler](https://developers.cloudflare.com/workers/wrangler/)
+

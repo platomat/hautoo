@@ -853,7 +853,7 @@ CMS.registerEditorComponent({
 				label: "Objekt-Key / Dateiname",
 				widget: "string",
 				required: false,
-				hint: "Key im privaten R2-Bucket (nicht die öffentliche media-URL), z. B. folge-010.mp4. Freischaltung über Video-Access-Worker.",
+				hint: "Key im privaten R2-Bucket (nicht die öffentliche media-URL), z. B. videos/folge-001.mp4. Freischaltung über Worker hautoo-member-media-access.",
 			},
 			{
 				name: "title",

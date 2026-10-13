@@ -11,16 +11,29 @@ tags:
   - cursor
   - astro
   - cloudflare
+tagPlacement: hero
 authors:
   - wasilij
+videoPlacement: before
 seo:
   seo_title: 'Folge 001: Leeres Repo, voller Plan, so startet hautuu'
   seo_description: Du legst GitHub an, holst das Projekt lokal und erklärst Cursor dein Ziel in normaler Sprache. Folge 001 zeigt den Einstiegsablauf für hautuu.
   index_visibility: index
   follow_visibility: follow
+  noarchive: false
+  noimageindex: false
+  nosnippet: false
+  max_snippet_enabled: true
+  max_snippet: -1
+  max_video_preview_enabled: true
+  max_video_preview: -1
+  max_image_preview_enabled: true
+  max_image_preview: large
 ---
 
 Willkommen in Folge eins. Hier musst du noch nicht alles verstehen, du brauchst nur ein Bild im Kopf: **Wo liegt die Wahrheit**, und **wo bastelst du dran rum**?
+
+{{member-video src="videos/folge-001-intro.mp4"}}
 
 Die Wahrheit liegt bei [**GitHub**](/glossar/github/) (Server in der Cloud). Bei dir auf der Platte ist eine Kopie, an der du mit [**Cursor**](/glossar/cursor/) arbeitest. Später baut [**Astro**](/glossar/astro/) daraus statische HTML-Seiten ([**Frontend**](/glossar/frontend/)), und [**Cloudflare**](/glossar/cloudflare-pages/) stellt sie ins Netz. Mehr Details kommen Stück für Stück, heute die grobe **Richtung**.
 
@@ -48,17 +61,16 @@ Kurz die Wörter:
 
 Bei einem **privaten** Repo verweigert GitHub oft den Zugriff, bis [SSH-Keys](/glossar/ssh-key/) eingerichtet sind ([Folge 017](/artikel/folge-017-github-ssh/)).
 
-Der versteckte Ordner `.git` (unter Linux z. B. **Strg+H** für versteckte Dateien) ist das Tagebuch des Projekts, inklusive Adresse von **[origin](/glossar/origin/)**.
+Der versteckte Ordner `.git` (unter Linux z. B. **Strg+H** für versteckte Dateien) ist das Tagebuch des Projekts, inklusive Adresse von [**origin**](/glossar/origin/).
 
 ## Cursor: Ordner auf, Agent an
 
 {{repodoc path="docs/cursor/README.md" title="Cursor (KI)" description="IDE, Agenten und typische Workflows im Projekt."}}
 
-
 „File“ (Datei) → „Open Folder“ (Ordner öffnen) (macOS auch „Open…“), dein geklonter Ordner. In dieser [IDE](/glossar/ide/) startest du typischerweise so:
 
 - `docs/` für Dokumentation.
-- Dem [**Agenten**](/glossar/cursor-modi/) erzählen, was das Projekt ist ([Ask](/glossar/cursor-modi/), Agent, Plan: [Folge 008](/artikel/folge-008-cursor-modi/)): Lern-Website mit **KI**, **GitHub**, **[Cloudflare](/glossar/cloudflare-pages/)**; statische Astro-Seiten; Artikel mit Bildern und eingebetteten Videos (YouTube/Vimeo); Glossar; später [**CMS**](/glossar/cms/) ([**Sveltia**](/glossar/sveltia/). Redaktion im Browser, speichert trotzdem in [Git](/glossar/git/); Setup in [Folge 013](/artikel/folge-013-sveltia-pat/)).
+- Dem [**Agenten**](/glossar/cursor-modi/) erzählen, was das Projekt ist ([Ask](/glossar/cursor-modi/), Agent, Plan: [Folge 008](/artikel/folge-008-cursor-modi/)): Lern-Website mit **KI**, **GitHub**, [**Cloudflare**](/glossar/cloudflare-pages/); statische Astro-Seiten; Artikel mit Bildern und eingebetteten Videos (YouTube/Vimeo); Glossar; später [**CMS**](/glossar/cms/) ([**Sveltia**](/glossar/sveltia/). Redaktion im Browser, speichert trotzdem in [Git](/glossar/git/); Setup in [Folge 013](/artikel/folge-013-sveltia-pat/)).
 - Regeln aufschreiben: Texte/Doku auf Deutsch, Code auf Englisch, Commits/[Issues](/glossar/issue/) auf Deutsch, **keine Secrets** ins öffentliche Repo (auch gelöschte Dateien bleiben in der [**History**](/glossar/git-history/)). Wie du mit [Issues](/artikel/folge-002-github-issues/) arbeitest, kommt in Folge 002.
 
 Repo umbenannt? URL auf GitHub ändert sich, lokal Remote in `.git/config` anpassen. „Save Workspace As…“ (Arbeitsbereich speichern) legt eine `.code-workspace`-Datei an, damit [Cursor](/glossar/cursor/) und Chats denselben [Workspace](/glossar/workspace/) wiedererkennen ([VS Code: Workspaces](https://code.visualstudio.com/docs/editor/workspaces)).
@@ -71,6 +83,6 @@ Nur für dich: z. B. `.code-workspace` in **`.gitignore`**, dann wandert die D
 
 ## Merksatz
 
-**GitHub** = zentrale Wahrheit. **Lokal** = Werkstatt. **[Astro](/glossar/astro/)** = Bäckerei für HTML. **Cloudflare** = Schaufenster im Internet ([Folge 011](/artikel/folge-011-cloudflare-setup/) zeigt die Einrichtung). Den Rest füllen wir in den nächsten Schritten auf.
+**GitHub** = zentrale Wahrheit. **Lokal** = Werkstatt. [**Astro**](/glossar/astro/) = Bäckerei für HTML. **Cloudflare** = Schaufenster im Internet ([Folge 011](/artikel/folge-011-cloudflare-setup/) zeigt die Einrichtung). Den Rest füllen wir in den nächsten Schritten auf.
 
 <!-- Quelle: 2026-10-03--01-04-26--obs-screencast - hautoo - intro.txt -->

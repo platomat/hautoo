@@ -270,6 +270,7 @@ collections:
           - contact-email
           - logo
           - video
+          - member-video
           - video-consent-reset
           - repodoc
       - &field_seo
@@ -532,6 +533,7 @@ collections:
           - contact-email
           - logo
           - video
+          - member-video
           - video-consent-reset
           - repodoc
       - *field_seo
@@ -700,6 +702,7 @@ collections:
           - contact-email
           - logo
           - video
+          - member-video
           - video-consent-reset
           - repodoc
 
@@ -805,6 +808,7 @@ collections:
           - contact-email
           - logo
           - video
+          - member-video
           - video-consent-reset
           - repodoc
 
