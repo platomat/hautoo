@@ -143,12 +143,14 @@
 				options: [
 					{ label: "Oben · mit Rand", value: "top-cover" },
 					{ label: "Oben · randlos", value: "top-bleed" },
+					{ label: "Unten · mit Rand", value: "bottom-cover" },
+					{ label: "Unten · randlos", value: "bottom-bleed" },
 					{ label: "Links · mit Rand", value: "left-cover" },
 					{ label: "Links · randlos", value: "left-bleed" },
 					{ label: "Rechts · mit Rand", value: "right-cover" },
 					{ label: "Rechts · randlos", value: "right-bleed" },
 				],
-				hint: "Nur wirksam, wenn „Vorschaubild“ an ist. Oben = volle Breite; Links/Rechts = Bild seitlich, Titel und Meta daneben. Randlos = Bild bis an den Kartenrand.",
+				hint: "Nur wirksam, wenn „Vorschaubild“ an ist. Oben/Unten = volle Breite; Links/Rechts = Bild seitlich, Titel und Meta daneben. Randlos = Bild bis an den Kartenrand.",
 			},
 			{
 				/**
@@ -216,6 +218,8 @@
 			const allowedImage = {
 				"top-cover": 1,
 				"top-bleed": 1,
+				"bottom-cover": 1,
+				"bottom-bleed": 1,
 				"left-cover": 1,
 				"left-bleed": 1,
 				"right-cover": 1,
@@ -326,6 +330,8 @@
 			const imageLabels = {
 				"top-cover": "Bild oben",
 				"top-bleed": "Bild oben randlos",
+				"bottom-cover": "Bild unten",
+				"bottom-bleed": "Bild unten randlos",
 				"left-cover": "Bild links",
 				"left-bleed": "Bild links randlos",
 				"right-cover": "Bild rechts",

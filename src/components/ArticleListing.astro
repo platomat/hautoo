@@ -436,7 +436,13 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 		object-fit: cover;
 	}
 
-	/* top-bleed: full width to card edges */
+	/* bottom: image after body (column-reverse) */
+	.article-listing--image-bottom-cover .article-listing__layout,
+	.article-listing--image-bottom-bleed .article-listing__layout {
+		flex-direction: column-reverse;
+	}
+
+	/* top/bottom bleed: full width to card edges */
 	.article-listing--image-top-bleed.article-listing--grid .article-listing__item {
 		padding-top: 0;
 	}
@@ -446,6 +452,17 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 		width: calc(100% + 2.3rem);
 		max-width: none;
 		border-radius: 5px 5px 0 0;
+	}
+
+	.article-listing--image-bottom-bleed.article-listing--grid .article-listing__item {
+		padding-bottom: 0;
+	}
+
+	.article-listing--image-bottom-bleed.article-listing--grid .article-listing__media {
+		margin: 0 -1.15rem;
+		width: calc(100% + 2.3rem);
+		max-width: none;
+		border-radius: 0 0 5px 5px;
 	}
 
 	/* left / right: image column, body (title + meta) beside it */

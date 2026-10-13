@@ -81,11 +81,13 @@ export type ArticleListingFilterMatch = "all" | "any";
 
 /**
  * How `displayImage` sits on the card (ignored when image is off).
- * Position × inset: top/left/right × cover/bleed.
+ * Position × inset: top/bottom/left/right × cover/bleed.
  */
 export type ArticleListingImageStyle =
 	| "top-cover"
 	| "top-bleed"
+	| "bottom-cover"
+	| "bottom-bleed"
 	| "left-cover"
 	| "left-bleed"
 	| "right-cover"
@@ -231,6 +233,8 @@ const DEFAULT_SHOW: ArticleCardField[] = [
 const ARTICLE_IMAGE_STYLES = new Set<ArticleListingImageStyle>([
 	"top-cover",
 	"top-bleed",
+	"bottom-cover",
+	"bottom-bleed",
 	"left-cover",
 	"left-bleed",
 	"right-cover",
