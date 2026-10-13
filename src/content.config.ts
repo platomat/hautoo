@@ -116,6 +116,11 @@ const authors = defineCollection({
 		 * When false (default), no automatic list (place via `{{author-social}}`).
 		 */
 		showSocialInHero: z.boolean().default(false),
+		/**
+		 * Full-viewport background (same shape as pages/articles, #93).
+		 * Resolved via resolveCmsImage (`/assets/…` or entry-relative).
+		 */
+		background: entryBackgroundSchema,
 		modifiedDate: modifiedDateSchema,
 	}),
 });

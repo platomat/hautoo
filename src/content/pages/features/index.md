@@ -146,7 +146,7 @@ Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Co
 - **Farbpalette**, **Schrift**, **Sticky Header**, **Hero**, **Inhaltsbreite** und **Abstand** redaktionell unter Einstellungen → Design (siehe oben).
 - **Brotkrumen** mit wählbarem Trenner; Start als Haus-Icon; UI-Icons für Permalink und Kategorie ([#31](https://github.com/platomat/hautoo/issues/31)).
 - **Breakpoints** und gemeinsame Layout-Hilfsklassen ([docs/design](https://github.com/platomat/hautoo/blob/main/docs/design/README.md)).
-- **Vollbild-Hintergrund** optional mit Overlay und **Bildnachweis**; Nachweise gesammelt im Impressum.
+- **Vollbild-Hintergrund** optional mit Overlay und **Bildnachweis** für Seiten, Artikel und Autoren-Profile ([#93](https://github.com/platomat/hautoo/issues/93), [#94](https://github.com/platomat/hautoo/issues/94)); Nachweise gesammelt im Impressum.
 - **Bilder** neben dem Content (Variante B), Astro-Optimierung inkl. CMS-Pfade unter `/assets/` ([Folge 021](/artikel/folge-021-bilder-suchen-nutzen/)).
 - **Externe Links** öffnen in neuem Tab mit Pfeil-Indikator (nicht Header/Footer).
 - **Artikel-Navigation** (älter/neuer); Listing-Seiten oft Breite **breit**.

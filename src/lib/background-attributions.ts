@@ -1,9 +1,11 @@
+import { getCollection } from "astro:content";
 import {
 	classifyAttribution,
 	sanitizeAttributionHtml,
 	type AttributionKind,
 } from "../cms/fields/page-background";
 import { getArticleHref, getPublishedArticles } from "./articles";
+import { getAuthorHref } from "./authors";
 import { getPageHref, getPublicPages, indexPagesById } from "./pages";
 
 export type BackgroundAttributionItem = {
@@ -19,7 +21,7 @@ export type BackgroundAttributionItem = {
 };
 
 /**
- * Collect background attributions from all public pages and articles.
+ * Collect background attributions from public pages, articles, and authors.
  * Sorted by used-on title, then credit.
  */
 export async function collectBackgroundAttributions(): Promise<
@@ -28,6 +30,7 @@ export async function collectBackgroundAttributions(): Promise<
 	const pages = await getPublicPages();
 	const pagesById = indexPagesById(pages);
 	const articles = await getPublishedArticles();
+	const authors = await getCollection("authors");
 	const items: BackgroundAttributionItem[] = [];
 
 	for (const page of pages) {
@@ -46,6 +49,17 @@ export async function collectBackgroundAttributions(): Promise<
 			article.data.background?.attribution,
 			article.data.title,
 			getArticleHref(article),
+		);
+		if (item) {
+			items.push(item);
+		}
+	}
+
+	for (const author of authors) {
+		const item = toItem(
+			author.data.background?.attribution,
+			author.data.title,
+			getAuthorHref(author),
 		);
 		if (item) {
 			items.push(item);

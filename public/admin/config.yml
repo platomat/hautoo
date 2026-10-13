@@ -650,6 +650,7 @@ collections:
         required: false
         default: false
         hint: "An: Social-Links nach der Kurzbeschreibung im Hero. Unabhängig vom Embed „Autor Social-Links“ im Inhalt (beides möglich)."
+      - *field_entry_background
       - name: body
         label: Inhalt
         widget: markdown

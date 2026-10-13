@@ -14,6 +14,7 @@ import {
 } from "../../lib/authors";
 import { buildAuthorBreadcrumbs } from "../../lib/breadcrumbs";
 import { contentWidthClass } from "../../cms/fields/content-width";
+import { resolveCmsImage } from "../../lib/cms-image";
 import {
 	contentSpacingStyle,
 	resolveContentSpacing,
@@ -40,6 +41,7 @@ const hasBody = Boolean(author.body?.trim());
 const widthClass = contentWidthClass(
 	await resolveContentWidth("authors", undefined, author.body),
 );
+const backgroundImage = resolveCmsImage(author.data.background?.image);
 const showAutoSocialInHero =
 	showSocialInHero &&
 	socialLinks.some((link) => link.url?.trim());
@@ -81,6 +83,8 @@ if (sameAs.length > 0) personJsonLd.sameAs = sameAs;
 	title={author.data.title}
 	description={author.data.description}
 	modifiedDate={author.data.modifiedDate}
+	backgroundImage={backgroundImage}
+	backgroundOverlay={author.data.background?.overlay}
 	jsonLd={personJsonLd}
 >
 	<main class:list={["page", widthClass]} style={spacingStyle}>
