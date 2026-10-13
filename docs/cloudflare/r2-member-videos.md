@@ -218,26 +218,20 @@ CMS: **Content → Medien → Video-Access-Worker-URL** oder `content.json` → 
 
 ## Schritt 7: Zugangscode in D1 legen
 
-### 7a. Code erzeugen
+### 7a. Code erzeugen und in D1 legen
+
+Empfohlen (ein Befehl: Hash + INSERT remote):
 
 ```bash
 cd /pfad/zu/hautoo/workers/media-access
-npm run hash-code -- --generate --content "*" --label "Anna Müller"
+npm run hash-code -- --generate --content "*" --label "Anna Müller" --insert
 ```
 
 Andere `content`-Beispiele: `--content "*.mp4"` oder `--content "videos/folge-001-intro.mp4"`.
 
-Ausgabe: Klartext (nur an die Person) + `code_hash` + fertiges `INSERT`-SQL.
+Ausgabe: Klartext (nur an die Person notieren/weitergeben) + `code_hash`. Mit `--insert` schreibt Wrangler die Zeile direkt in D1 `hautoo` (Standard: `--remote`). Lokal testen: zusätzlich `--local`.
 
-### 7b. SQL ausführen
-
-Dashboard → **D1** → `hautoo` → **Console** / Execute, das `INSERT` einfügen.
-
-Oder CLI:
-
-```bash
-npx wrangler d1 execute hautoo --remote --command "INSERT INTO member_media_access (code_hash, content, label, active, created_at) VALUES ('…', '*', 'Anna Müller', 1, '2026-04-09');"
-```
+Ohne `--insert` zeigt das Script nur das SQL (zum manuellen Ausführen im Dashboard).
 
 ### Code sperren
 
@@ -282,7 +276,7 @@ Session-Token in **localStorage**; Abruf über Worker/Cloudflare/D1. Absatz unte
 - [ ] `SIGNING_SECRET`
 - [ ] Worker deployed, `/health` ok
 - [ ] `videoAccessWorkerUrl` gesetzt
-- [ ] Code gehasht, Zeile in D1 mit `label` + `content`
+- [ ] Code mit `hash-code --generate … --insert` angelegt (`label` + `content`)
 - [ ] Embed getestet (inkl. `content`-Einschränkung falls gesetzt)
 
 ## Referenzen

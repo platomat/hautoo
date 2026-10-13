@@ -15,7 +15,7 @@ bucket_name = "hautoo-member-media"
 [[d1_databases]]
 binding = "DB"
 database_name = "hautoo"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "8fe69fc0-93ed-4b27-abf6-d98949818205"
 migrations_dir = "migrations"
 
 [vars]

@@ -30,7 +30,7 @@ Kurz:
 2. `npx wrangler d1 migrations apply hautoo --remote`
 3. `npx wrangler secret put SIGNING_SECRET` → `npm run deploy`
 4. Site: `media.videoAccessWorkerUrl`
-5. `npm run hash-code -- --generate --content "*" --label "Name"` → INSERT in D1
+5. `npm run hash-code -- --generate --content "*" --label "Name" --insert` (legt Zeile in D1 an)
 
 ## Lokal
 
