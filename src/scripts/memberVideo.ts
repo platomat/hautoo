@@ -103,6 +103,10 @@ async function signAndPlay(root: HTMLElement, token: string): Promise<boolean> {
 				setStatus(root, "Zugang abgelaufen. Bitte Code erneut eingeben.", true);
 				return false;
 			}
+			if (res.status === 403) {
+				setStatus(root, "Kein Zugriff auf dieses Video mit deinem Code.", true);
+				return false;
+			}
 			if (res.status === 404) {
 				setStatus(root, "Video nicht gefunden.", true);
 				return false;

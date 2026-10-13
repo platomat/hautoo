@@ -5,13 +5,13 @@
  * POST /sign    { token, key } → { url, expiresAt }  (short-lived /play URL)
  * GET  /play?key=&exp=&sig=  → Range-capable stream from private R2
  *
- * Access codes: KV key = sha256(normalized code), value = JSON metadata.
- * Never store plaintext codes in KV or this repo.
+ * Access codes live in D1 (`hautoo`.member_media_access): SHA-256 hash + content patterns.
+ * Never store plaintext codes in D1 or this repo.
  */
 
 export interface Env {
   MEDIA: R2Bucket;
-  ACCESS_CODES: KVNamespace;
+  DB: D1Database;
   SIGNING_SECRET: string;
   ALLOWED_ORIGINS: string;
   /** Optional prefix prepended to object keys (e.g. "members/") */
@@ -22,14 +22,15 @@ export interface Env {
   PLAY_TTL_SECONDS?: string;
 }
 
-interface CodeRecord {
-  active?: boolean;
-  label?: string;
-  createdAt?: string;
+interface AccessRow {
+  code_hash: string;
+  content: string;
+  label: string;
+  active: number;
 }
 
 interface SessionPayload {
-  /** SHA-256 hex of the access code (KV key) */
+  /** SHA-256 hex of the access code */
   h: string;
   /** Unix expiry (seconds) */
   exp: number;
@@ -58,7 +59,6 @@ export default {
         return withCors(await handleSign(request, env), cors);
       }
       if (url.pathname === '/play' && request.method === 'GET') {
-        // Streaming: CORS for video element / fetch; no JSON body
         return withCors(await handlePlay(request, env, url), cors);
       }
       if (url.pathname === '/' || url.pathname === '/health') {
@@ -76,7 +76,7 @@ async function handleUnlock(request: Request, env: Env): Promise<Response> {
   if (!requireOrigin(env, request)) {
     return json({ error: 'origin_not_allowed' }, 403);
   }
-  if (!env.SIGNING_SECRET || !env.ACCESS_CODES) {
+  if (!env.SIGNING_SECRET || !env.DB) {
     return json({ error: 'misconfigured' }, 500);
   }
 
@@ -93,19 +93,8 @@ async function handleUnlock(request: Request, env: Env): Promise<Response> {
   }
 
   const hash = await sha256Hex(code);
-  const raw = await env.ACCESS_CODES.get(hash);
-  if (!raw) {
-    return json({ error: 'invalid_code' }, 401);
-  }
-
-  let record: CodeRecord = {};
-  try {
-    record = JSON.parse(raw) as CodeRecord;
-  } catch {
-    // Plain "1" or similar still counts as active
-    record = { active: true };
-  }
-  if (record.active === false) {
+  const row = await getActiveAccess(env.DB, hash);
+  if (!row) {
     return json({ error: 'invalid_code' }, 401);
   }
 
@@ -120,7 +109,7 @@ async function handleSign(request: Request, env: Env): Promise<Response> {
   if (!requireOrigin(env, request)) {
     return json({ error: 'origin_not_allowed' }, 403);
   }
-  if (!env.SIGNING_SECRET || !env.ACCESS_CODES || !env.MEDIA) {
+  if (!env.SIGNING_SECRET || !env.DB || !env.MEDIA) {
     return json({ error: 'misconfigured' }, 500);
   }
 
@@ -136,18 +125,9 @@ async function handleSign(request: Request, env: Env): Promise<Response> {
     return json({ error: 'unauthorized' }, 401);
   }
 
-  // Revocation: code must still exist and be active
-  const raw = await env.ACCESS_CODES.get(session.h);
-  if (!raw) {
+  const row = await getActiveAccess(env.DB, session.h);
+  if (!row) {
     return json({ error: 'unauthorized' }, 401);
-  }
-  try {
-    const record = JSON.parse(raw) as CodeRecord;
-    if (record.active === false) {
-      return json({ error: 'unauthorized' }, 401);
-    }
-  } catch {
-    /* ok */
   }
 
   const objectKey = resolveObjectKey(env, body.key ?? '');
@@ -155,7 +135,10 @@ async function handleSign(request: Request, env: Env): Promise<Response> {
     return json({ error: 'invalid_key' }, 400);
   }
 
-  // Existence check (cheap HEAD-like)
+  if (!contentAllowsKey(row.content, objectKey)) {
+    return json({ error: 'forbidden' }, 403);
+  }
+
   const head = await env.MEDIA.head(objectKey);
   if (!head) {
     return json({ error: 'not_found' }, 404);
@@ -226,6 +209,47 @@ async function handlePlay(request: Request, env: Env, url: URL): Promise<Respons
   return new Response(object.body, { status: 200, headers });
 }
 
+async function getActiveAccess(db: D1Database, codeHash: string): Promise<AccessRow | null> {
+  const row = await db
+    .prepare(
+      `SELECT code_hash, content, label, active
+       FROM member_media_access
+       WHERE code_hash = ? AND active = 1
+       LIMIT 1`,
+    )
+    .bind(codeHash)
+    .first<AccessRow>();
+  return row ?? null;
+}
+
+/**
+ * content column: comma-separated patterns.
+ * - `*` → all keys
+ * - `*.mp4` / `*.pdf` → extension match (case-insensitive)
+ * - `videos/folge-001.mp4` → exact object key
+ */
+export function contentAllowsKey(contentSpec: string, objectKey: string): boolean {
+  const key = objectKey.trim();
+  if (!key) return false;
+  const patterns = contentSpec
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (patterns.length === 0) return false;
+
+  const keyLower = key.toLowerCase();
+  for (const pattern of patterns) {
+    if (pattern === '*') return true;
+    if (pattern.startsWith('*.') && pattern.length > 2) {
+      const suffix = pattern.slice(1).toLowerCase(); // ".mp4"
+      if (keyLower.endsWith(suffix)) return true;
+      continue;
+    }
+    if (pattern === key || pattern.toLowerCase() === keyLower) return true;
+  }
+  return false;
+}
+
 function resolveObjectKey(env: Env, raw: string): string | null {
   const trimmed = raw.trim().replace(/^\/+/, '');
   if (!trimmed || trimmed.length > MAX_KEY_LEN || trimmed.includes('..')) return null;
@@ -290,7 +314,6 @@ async function signPlay(secret: string, key: string, exp: number): Promise<strin
 }
 
 function parseRangeHeader(range: string): R2Range | undefined {
-  // bytes=start-end | bytes=start-
   const m = /^bytes=(\d+)-(\d+)?$/.exec(range.trim());
   if (!m) return undefined;
   const start = Number(m[1]);
@@ -305,6 +328,7 @@ function guessContentType(key: string): string {
   const lower = key.toLowerCase();
   if (lower.endsWith('.webm')) return 'video/webm';
   if (lower.endsWith('.ogg') || lower.endsWith('.ogv')) return 'video/ogg';
+  if (lower.endsWith('.pdf')) return 'application/pdf';
   return 'video/mp4';
 }
 
@@ -327,11 +351,7 @@ function corsHeaders(env: Env, origin: string | null): Headers {
 
 function requireOrigin(env: Env, request: Request): boolean {
   const origin = request.headers.get('Origin');
-  if (!origin) {
-    // Same-origin navigation / curl without Origin: allow for unlock/sign only from known tooling?
-    // Browser always sends Origin for cross-origin POST. Require Origin for API.
-    return false;
-  }
+  if (!origin) return false;
   return parseOrigins(env.ALLOWED_ORIGINS).includes(origin);
 }
 

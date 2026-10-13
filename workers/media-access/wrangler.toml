@@ -1,4 +1,4 @@
-# Cloudflare Worker: gated private R2 media (access codes in KV).
+# Cloudflare Worker: gated private R2 media (access codes in D1).
 # Deploy from this folder: npx wrangler deploy
 # Secrets/bindings: see README.md (never commit real codes or SIGNING_SECRET).
 
@@ -6,14 +6,17 @@ name = "hautoo-member-media-access"
 main = "src/index.ts"
 compatibility_date = "2024-11-01"
 
-# Bind after creating resources (names are examples — adjust in dashboard / here):
 [[r2_buckets]]
 binding = "MEDIA"
 bucket_name = "hautoo-member-media"
-#
-[[kv_namespaces]]
-binding = "ACCESS_CODES"
-id = "3a05c3390d2d4fcfb13a30215ef92ddd"
+
+# Create once: npx wrangler d1 create hautoo
+# Then paste database_id here and run: npx wrangler d1 migrations apply hautoo --remote
+[[d1_databases]]
+binding = "DB"
+database_name = "hautoo"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+migrations_dir = "migrations"
 
 [vars]
 # Comma-separated browser origins allowed to call /unlock and /sign

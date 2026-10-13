@@ -1,50 +1,50 @@
 # Worker: hautoo-member-media-access
 
-Geschützte Medien aus einem **privaten** R2-Bucket (zuerst Videos; später ggf. andere Formate). Zugang nur mit persönlichem Code (Hash in KV). Die Website (Astro/Pages) bleibt öffentlich; ohne gültigen Code gibt es keinen Stream.
+Geschützte Medien aus einem **privaten** R2-Bucket. Zugang mit persönlichem Code (Hash in **D1** `hautoo.member_media_access`). Die Website bleibt öffentlich; ohne gültigen Code kein Stream.
 
-Gehört in **dieses Repo** unter `workers/media-access/` (kein zweites Repo nötig). Cloudflare-Script-Name: **`hautoo-member-media-access`**. Secrets liegen nur bei Cloudflare, nicht in Git.
+Ordner: `workers/media-access/`. Cloudflare-Script: **`hautoo-member-media-access`**.
 
 ## Ablauf
 
-1. Besucher gibt Code ein → `POST /unlock` → Session-Token (HMAC, TTL ca. 30 Tage)
-2. Browser speichert Token in `localStorage` (ein Token für alle Member-Videos)
-3. Vor dem Abspielen → `POST /sign` mit Token + Objekt-Key → kurzlebige `/play`-URL (ca. 2 h)
-4. `<video>` lädt von `GET /play?...` (Range/Seek, privates R2)
+1. `POST /unlock` `{ code }` → Session-Token (HMAC, ~30 Tage)
+2. Token in `localStorage` (site-weit)
+3. `POST /sign` `{ token, key }` → kurzlebige `/play`-URL, nur wenn Spalte `content` den Objekt-Key erlaubt
+4. `GET /play` → Range-Stream aus privatem R2
 
-Codes: **pro Person ein eigener Code**. KV speichert nur den **SHA-256-Hash**, nie Klartext. Wer welchen Code hat, steht nicht automatisch im System: sinnvolles `label` in KV plus eigene interne Liste (siehe [r2-member-videos.md](../../docs/cloudflare/r2-member-videos.md)).
+## Content-Muster (`content`)
 
-## Einrichtung (ausführlich)
+| Wert | Wirkung |
+| --- | --- |
+| `*` | alles |
+| `*.mp4` / `*.pdf` | nach Dateiendung |
+| `videos/foo.mp4` | genau ein Key |
+| `*.mp4,videos/a.pdf` | kommagetrennt, ODER |
 
-Schritt-für-Schritt inkl. **was KV ist**, Namespace anlegen, Einträge setzen, Secret und Deploy:
+## Einrichtung
 
-→ [docs/cloudflare/r2-member-videos.md](../../docs/cloudflare/r2-member-videos.md)
+Ausführlich: [docs/cloudflare/r2-member-videos.md](../../docs/cloudflare/r2-member-videos.md)
 
 Kurz:
 
-1. Privates R2 (ohne Public Domain) + KV-Namespace
-2. Bindings in `wrangler.toml` (`MEDIA`, `ACCESS_CODES` + Namespace-ID)
+1. Privates R2 + `npx wrangler d1 create hautoo` → ID in `wrangler.toml`
+2. `npx wrangler d1 migrations apply hautoo --remote`
 3. `npx wrangler secret put SIGNING_SECRET` → `npm run deploy`
-4. Site-Config: `media.videoAccessWorkerUrl`
-5. `npm run hash-code -- --generate` → Hash + JSON mit `label` in KV (Klartext nur an die Person)
+4. Site: `media.videoAccessWorkerUrl`
+5. `npm run hash-code -- --generate --content "*" --label "Name"` → INSERT in D1
 
 ## Lokal
 
 ```bash
 cp .dev.vars.example .dev.vars
-# SIGNING_SECRET setzen; Bindings in wrangler.toml
 npm install
+npx wrangler d1 migrations apply hautoo --local
 npm run dev
 ```
 
-Astro: `videoAccessWorkerUrl` auf `http://127.0.0.1:8787` (oder Wrangler-Port).
+## Sicherheit
 
-## Sicherheit (öffentlich lesbares Repo)
-
-| Öffentlich sichtbar | Nicht öffentlich |
+| Öffentlich | Nicht öffentlich |
 | --- | --- |
-| Worker-Quellcode, Doku, Embed-Markup | Klartext-Codes, `SIGNING_SECRET`, `.dev.vars` |
-| Worker-URL in Site-Config | Private R2-Objekte ohne gültige Signatur |
+| Worker-Code, Doku, D1-ID, Bucket-Name | Klartext-Codes, `SIGNING_SECRET`, `.dev.vars` |
 
-Wer die Doku kennt, kann den Worker aufrufen, aber **ohne gültigen Code** weder Token noch Stream bekommen. Kurze `/play`-URLs sind absichtlich teilbar bis Ablauf; Session-Token nicht in die URL legen.
-
-Öffentliche R2-Videos (`VideoEmbed` / `provider: file`) nutzen weiter `videoBaseUrl`. Member-Videos nutzen **nur** diesen Worker und den privaten Bucket.
+`label` in D1 geht nicht an den Browser.

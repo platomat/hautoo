@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "hash-code": "node scripts/hash-code.mjs"
+    "hash-code": "node scripts/hash-code.mjs",
+    "d1:migrate:local": "wrangler d1 migrations apply hautoo --local",
+    "d1:migrate:remote": "wrangler d1 migrations apply hautoo --remote"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20261006.1",
