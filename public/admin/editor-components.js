@@ -139,13 +139,16 @@
 				name: "imageStyle",
 				label: "Bilddarstellung",
 				widget: "select",
-				default: "cover",
+				default: "top-cover",
 				options: [
-					{ label: "Groß (volle Breite)", value: "cover" },
-					{ label: "Randlos (große Kante)", value: "bleed" },
-					{ label: "Klein links", value: "aside" },
+					{ label: "Oben · mit Rand", value: "top-cover" },
+					{ label: "Oben · randlos", value: "top-bleed" },
+					{ label: "Links · mit Rand", value: "left-cover" },
+					{ label: "Links · randlos", value: "left-bleed" },
+					{ label: "Rechts · mit Rand", value: "right-cover" },
+					{ label: "Rechts · randlos", value: "right-bleed" },
 				],
-				hint: "Nur wirksam, wenn „Vorschaubild“ unter Feldern an ist. Groß = 16:9 oben; Randlos = ohne Innenabstand an der Karte; Klein links = Bild links, Text rechts (Mobile: wieder gestapelt).",
+				hint: "Nur wirksam, wenn „Vorschaubild“ an ist. Oben = volle Breite; Links/Rechts = Bild seitlich, Titel und Meta daneben. Randlos = Bild bis an den Kartenrand.",
 			},
 			{
 				/**
@@ -209,10 +212,20 @@
 					.map((s) => s.trim())
 					.filter(Boolean);
 			const showParsed = normalizeArticleCardShow(attrs.show || showDefault);
+			const legacyImage = { cover: "top-cover", bleed: "top-bleed", aside: "left-cover" };
+			const allowedImage = {
+				"top-cover": 1,
+				"top-bleed": 1,
+				"left-cover": 1,
+				"left-bleed": 1,
+				"right-cover": 1,
+				"right-bleed": 1,
+			};
+			const rawImage = attrs.imageStyle || "top-cover";
 			const imageStyle =
-				attrs.imageStyle === "bleed" || attrs.imageStyle === "aside"
-					? attrs.imageStyle
-					: "cover";
+				allowedImage[rawImage]
+					? rawImage
+					: legacyImage[rawImage] || "top-cover";
 			return {
 				count: attrs.count !== undefined && attrs.count !== "" ? attrs.count : "3",
 				sort: attrs.sort || "newest",
@@ -234,7 +247,7 @@
 			columns = 3,
 			gap = 1.25,
 			show = ARTICLE_CARD_SHOW_DEFAULT,
-			imageStyle = "cover",
+			imageStyle = "top-cover",
 			filterAuthors = [],
 			filterCategories = [],
 			filterTags = [],
@@ -262,7 +275,7 @@
 				`gap="${gap}"`,
 				`show="${showAttr}"`,
 			];
-			if (imageStyle && imageStyle !== "cover") {
+			if (imageStyle && imageStyle !== "top-cover") {
 				parts.push(`imageStyle="${imageStyle}"`);
 			}
 			if (authorsAttr) parts.push(`authors="${authorsAttr}"`);
@@ -280,7 +293,7 @@
 			columns = 3,
 			gap = 1.25,
 			show = ARTICLE_CARD_SHOW_DEFAULT,
-			imageStyle = "cover",
+			imageStyle = "top-cover",
 			filterAuthors = [],
 			filterCategories = [],
 			filterTags = [],
@@ -311,9 +324,12 @@
 				? ` · Filter: ${filterBits.join(" · ")}`
 				: "";
 			const imageLabels = {
-				cover: "Bild groß",
-				bleed: "Bild randlos",
-				aside: "Bild klein links",
+				"top-cover": "Bild oben",
+				"top-bleed": "Bild oben randlos",
+				"left-cover": "Bild links",
+				"left-bleed": "Bild links randlos",
+				"right-cover": "Bild rechts",
+				"right-bleed": "Bild rechts randlos",
 			};
 			const hasImage = showNormalized.includes("displayImage");
 			const imageSuffix = hasImage

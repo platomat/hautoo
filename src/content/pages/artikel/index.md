@@ -28,4 +28,4 @@ seo:
 
 Hier findest du Beiträge und How-tos rund um hautuu: [Cursor](/glossar/cursor/), [GitHub](/glossar/github/), [Cloudflare](/glossar/cloudflare-pages/) und den Stack dahinter.
 
-{{article-listing count="0" sort="oldest" layout="grid" columns="1" gap="3" show="displayTitle,displayIntro,displayCategories,displayTags,displayDate,displayReadingTime"}}
+{{article-listing count="0" sort="oldest" layout="grid" columns="1" gap="3" show="displayImage,displayTitle,displayIntro,displayCategories,displayTags,displayDate,displayReadingTime" imageStyle="left-cover"}}

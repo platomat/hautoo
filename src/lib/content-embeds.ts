@@ -79,8 +79,17 @@ const ARTICLE_CARD_FIELD_SET = new Set<string>(ARTICLE_CARD_FIELDS);
 
 export type ArticleListingFilterMatch = "all" | "any";
 
-/** How `displayImage` sits on the card (ignored when image is off). */
-export type ArticleListingImageStyle = "cover" | "bleed" | "aside";
+/**
+ * How `displayImage` sits on the card (ignored when image is off).
+ * Position × inset: top/left/right × cover/bleed.
+ */
+export type ArticleListingImageStyle =
+	| "top-cover"
+	| "top-bleed"
+	| "left-cover"
+	| "left-bleed"
+	| "right-cover"
+	| "right-bleed";
 
 export type ArticleListingEmbedProps = {
 	count: number;
@@ -220,10 +229,20 @@ const DEFAULT_SHOW: ArticleCardField[] = [
 ];
 
 const ARTICLE_IMAGE_STYLES = new Set<ArticleListingImageStyle>([
-	"cover",
-	"bleed",
-	"aside",
+	"top-cover",
+	"top-bleed",
+	"left-cover",
+	"left-bleed",
+	"right-cover",
+	"right-bleed",
 ]);
+
+/** Legacy short names from the first imageStyle rollout. */
+const LEGACY_IMAGE_STYLE: Record<string, ArticleListingImageStyle> = {
+	cover: "top-cover",
+	bleed: "top-bleed",
+	aside: "left-cover",
+};
 
 const DEFAULT_LISTING: ArticleListingEmbedProps = {
 	count: 3,
@@ -232,7 +251,7 @@ const DEFAULT_LISTING: ArticleListingEmbedProps = {
 	columns: 3,
 	gap: 1.25,
 	show: DEFAULT_SHOW,
-	imageStyle: "cover",
+	imageStyle: "top-cover",
 	authors: [],
 	categories: [],
 	tags: [],
@@ -242,8 +261,14 @@ const DEFAULT_LISTING: ArticleListingEmbedProps = {
 export function parseArticleListingImageStyle(
 	raw: string | undefined,
 ): ArticleListingImageStyle {
-	const value = (raw ?? "").trim() as ArticleListingImageStyle;
-	return ARTICLE_IMAGE_STYLES.has(value) ? value : DEFAULT_LISTING.imageStyle;
+	const value = (raw ?? "").trim();
+	if (!value) {
+		return DEFAULT_LISTING.imageStyle;
+	}
+	if (ARTICLE_IMAGE_STYLES.has(value as ArticleListingImageStyle)) {
+		return value as ArticleListingImageStyle;
+	}
+	return LEGACY_IMAGE_STYLE[value] ?? DEFAULT_LISTING.imageStyle;
 }
 
 /** Normalize CMS/array/`show=` tokens to canonical card fields. */

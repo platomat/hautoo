@@ -74,7 +74,7 @@ const {
 	columns = 3,
 	gap = 1.25,
 	show: showProp,
-	imageStyle: imageStyleProp = "cover",
+	imageStyle: imageStyleProp = "top-cover",
 	articleIds,
 	tagId,
 	tagIds: tagIdsProp,
@@ -219,11 +219,17 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 					const hasTags = showTags && articleTags.length > 0;
 					const hasAuthors = showAuthors && articleAuthors.length > 0;
 					const previewImage = showImage ? previewImageFor(article) : undefined;
+					const href = getArticleHref(article);
 					return (
 						<li class="article-listing__item">
-							<a class="article-listing__link" href={getArticleHref(article)}>
+							<div class="article-listing__layout">
 								{previewImage && (
-									<span class="article-listing__media">
+									<a
+										class="article-listing__media"
+										href={href}
+										tabindex={-1}
+										aria-hidden="true"
+									>
 										<Image
 											class="article-listing__image"
 											src={previewImage}
@@ -231,91 +237,97 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 											widths={[320, 480, 640]}
 											sizes="(max-width: 679px) 100vw, (max-width: 1023px) 50vw, 33vw"
 										/>
-									</span>
+									</a>
 								)}
-								<span class="article-listing__copy">
-									{showTitle && (
-										<h2 class="article-listing__title">{article.data.title}</h2>
-									)}
-									{showIntro && article.data.summary && (
-										<p class="article-listing__summary text-sm text-muted">
-											{article.data.summary}
-										</p>
-									)}
-									{!showTitle && !showIntro && (
-										<span class="visually-hidden">{article.data.title}</span>
-									)}
-								</span>
-							</a>
-							{showMeta && (
-								<div class="article-listing__meta text-sm text-muted">
-									{(hasCategories || hasTags) && (
-										<div
-											class:list={[
-												"article-listing__taxonomies",
-												hasCategories &&
-													hasTags &&
-													"article-listing__taxonomies--split",
-											]}
-										>
-											{hasCategories && (
-												<p class="article-listing__categories">
-													{articleCategories.map((cat, index) => (
+								<div class="article-listing__body">
+									<a class="article-listing__link" href={href}>
+										<span class="article-listing__copy">
+											{showTitle && (
+												<h2 class="article-listing__title">
+													{article.data.title}
+												</h2>
+											)}
+											{showIntro && article.data.summary && (
+												<p class="article-listing__summary text-sm text-muted">
+													{article.data.summary}
+												</p>
+											)}
+											{!showTitle && !showIntro && (
+												<span class="visually-hidden">{article.data.title}</span>
+											)}
+										</span>
+									</a>
+									{showMeta && (
+										<div class="article-listing__meta text-sm text-muted">
+											{(hasCategories || hasTags) && (
+												<div
+													class:list={[
+														"article-listing__taxonomies",
+														hasCategories &&
+															hasTags &&
+															"article-listing__taxonomies--split",
+													]}
+												>
+													{hasCategories && (
+														<p class="article-listing__categories">
+															{articleCategories.map((cat, index) => (
+																<>
+																	{index > 0 && " "}
+																	<a
+																		class="article-categories__link"
+																		href={getCategoryHref(cat)}
+																	>
+																		<Icon
+																			name="category"
+																			class="article-categories__icon"
+																		/>
+																		{cat.data.title}
+																	</a>
+																</>
+															))}
+														</p>
+													)}
+													{hasTags && (
+														<p class="article-listing__tags">
+															{articleTags.map((tag, index) => (
+																<>
+																	{index > 0 && " "}
+																	<a href={getTagHref(tag)}>
+																		{formatTagHashtag(tag)}
+																	</a>
+																</>
+															))}
+														</p>
+													)}
+												</div>
+											)}
+											{hasAuthors && (
+												<p class="article-listing__authors">
+													{articleAuthors.map((author, index) => (
 														<>
-															{index > 0 && " "}
-															<a
-																class="article-categories__link"
-																href={getCategoryHref(cat)}
-															>
-																<Icon
-																	name="category"
-																	class="article-categories__icon"
-																/>
-																{cat.data.title}
+															{index > 0 && ", "}
+															<a href={getAuthorHref(author)}>
+																{author.data.title}
 															</a>
 														</>
 													))}
 												</p>
 											)}
-											{hasTags && (
-												<p class="article-listing__tags">
-													{articleTags.map((tag, index) => (
-														<>
-															{index > 0 && " "}
-															<a href={getTagHref(tag)}>
-																{formatTagHashtag(tag)}
-															</a>
-														</>
-													))}
+											{(showDate || showReadingTime) && (
+												<p class="article-listing__meta-row">
+													{showDate && (
+														<time datetime={article.data.pubDate.toISOString()}>
+															{formatArticleDate(article.data.pubDate)}
+														</time>
+													)}
+													{showDate && showReadingTime && " · "}
+													{showReadingTime && <span>{readingLabel}</span>}
 												</p>
 											)}
 										</div>
 									)}
-									{hasAuthors && (
-										<p class="article-listing__authors">
-											{articleAuthors.map((author, index) => (
-												<>
-													{index > 0 && ", "}
-													<a href={getAuthorHref(author)}>
-														{author.data.title}
-													</a>
-												</>
-											))}
-										</p>
-									)}
-									{(showDate || showReadingTime) && (
-										<p class="article-listing__meta-row">
-											{showDate && (
-												<time datetime={article.data.pubDate.toISOString()}>
-													{formatArticleDate(article.data.pubDate)}
-												</time>
-											)}
-											{showDate && showReadingTime && " · "}
-											{showReadingTime && <span>{readingLabel}</span>}
-										</p>
-									)}
 								</div>
-							)}
+							</div>
 						</li>
 					);
 				})}
@@ -353,7 +365,6 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 	.article-listing--grid .article-listing__item {
 		display: flex;
 		flex-direction: column;
-		gap: 0.75rem;
 		padding: 1.1rem 1.15rem;
 		background: var(--color-surface-glass);
 		border: 1px solid var(--color-border);
@@ -370,13 +381,27 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 		}
 	}
 
-	.article-listing__link {
+	.article-listing__layout {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: 0.75rem;
+		flex: 1 1 auto;
+		min-width: 0;
+		height: 100%;
+	}
+
+	.article-listing__body {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+
+	.article-listing__link {
+		display: block;
 		color: inherit;
 		text-decoration: none;
-		flex: 1 1 auto;
 		min-width: 0;
 	}
 
@@ -393,7 +418,6 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 
 	.article-listing__media {
 		display: block;
-		margin: 0 0 0.15rem;
 		overflow: hidden;
 		border-radius: var(--radius-image, 0px);
 		aspect-ratio: 16 / 9;
@@ -405,65 +429,119 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 		max-width: 14rem;
 	}
 
-	/* Full-bleed image: edge to card border, no side inset */
-	.article-listing--image-bleed.article-listing--grid .article-listing__item {
-		padding-top: 0;
-	}
-
-	.article-listing--image-bleed.article-listing--grid .article-listing__media {
-		margin: 0 -1.15rem 0.15rem;
-		width: calc(100% + 2.3rem);
-		max-width: none;
-		border-radius: 5px 5px 0 0;
-	}
-
-	.article-listing--image-bleed.article-listing--list .article-listing__media {
-		margin-inline: 0;
-		max-width: none;
-		width: 100%;
-		border-radius: var(--radius-image, 0px);
-	}
-
-	/* Small image left, text right */
-	.article-listing--image-aside .article-listing__link {
-		flex-direction: row;
-		align-items: flex-start;
-		gap: 0.85rem;
-	}
-
-	.article-listing--image-aside .article-listing__media {
-		width: 5.5rem;
-		max-width: 5.5rem;
-		aspect-ratio: 1;
-		margin: 0;
-	}
-
-	.article-listing--image-aside.article-listing--list .article-listing__media {
-		width: 6.5rem;
-		max-width: 6.5rem;
-	}
-
-	.article-listing--image-aside .article-listing__copy {
-		flex: 1 1 auto;
-	}
-
-	@media (max-width: 679px) {
-		.article-listing--image-aside.article-listing--grid .article-listing__link {
-			flex-direction: column;
-		}
-
-		.article-listing--image-aside.article-listing--grid .article-listing__media {
-			width: 100%;
-			max-width: none;
-			aspect-ratio: 16 / 9;
-		}
-	}
-
 	.article-listing__image {
 		display: block;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+	}
+
+	/* top-bleed: full width to card edges */
+	.article-listing--image-top-bleed.article-listing--grid .article-listing__item {
+		padding-top: 0;
+	}
+
+	.article-listing--image-top-bleed.article-listing--grid .article-listing__media {
+		margin: 0 -1.15rem;
+		width: calc(100% + 2.3rem);
+		max-width: none;
+		border-radius: 5px 5px 0 0;
+	}
+
+	/* left / right: image column, body (title + meta) beside it */
+	.article-listing--image-left-cover .article-listing__layout,
+	.article-listing--image-left-bleed .article-listing__layout,
+	.article-listing--image-right-cover .article-listing__layout,
+	.article-listing--image-right-bleed .article-listing__layout {
+		flex-direction: row;
+		align-items: stretch;
+		gap: 0.85rem;
+	}
+
+	.article-listing--image-right-cover .article-listing__layout,
+	.article-listing--image-right-bleed .article-listing__layout {
+		flex-direction: row-reverse;
+	}
+
+	.article-listing--image-left-cover .article-listing__media,
+	.article-listing--image-left-bleed .article-listing__media,
+	.article-listing--image-right-cover .article-listing__media,
+	.article-listing--image-right-bleed .article-listing__media {
+		width: 5.5rem;
+		max-width: 5.5rem;
+		aspect-ratio: 1;
+	}
+
+	.article-listing--image-left-cover.article-listing--list .article-listing__media,
+	.article-listing--image-left-bleed.article-listing--list .article-listing__media,
+	.article-listing--image-right-cover.article-listing--list .article-listing__media,
+	.article-listing--image-right-bleed.article-listing--list .article-listing__media {
+		width: 6.5rem;
+		max-width: 6.5rem;
+	}
+
+	/* side bleed: flush to card padding edge */
+	.article-listing--image-left-bleed.article-listing--grid .article-listing__item {
+		padding-left: 0;
+	}
+
+	.article-listing--image-left-bleed.article-listing--grid .article-listing__media {
+		border-radius: 5px 0 0 5px;
+		align-self: stretch;
+		height: auto;
+		min-height: 5.5rem;
+		aspect-ratio: auto;
+		width: 5.5rem;
+		max-width: 5.5rem;
+	}
+
+	.article-listing--image-right-bleed.article-listing--grid .article-listing__item {
+		padding-right: 0;
+	}
+
+	.article-listing--image-right-bleed.article-listing--grid .article-listing__media {
+		border-radius: 0 5px 5px 0;
+		align-self: stretch;
+		height: auto;
+		min-height: 5.5rem;
+		aspect-ratio: auto;
+		width: 5.5rem;
+		max-width: 5.5rem;
+	}
+
+	@media (max-width: 679px) {
+		.article-listing--image-left-cover.article-listing--grid .article-listing__layout,
+		.article-listing--image-left-bleed.article-listing--grid .article-listing__layout,
+		.article-listing--image-right-cover.article-listing--grid .article-listing__layout,
+		.article-listing--image-right-bleed.article-listing--grid .article-listing__layout {
+			flex-direction: column;
+		}
+
+		.article-listing--image-left-cover.article-listing--grid .article-listing__media,
+		.article-listing--image-left-bleed.article-listing--grid .article-listing__media,
+		.article-listing--image-right-cover.article-listing--grid .article-listing__media,
+		.article-listing--image-right-bleed.article-listing--grid .article-listing__media {
+			width: 100%;
+			max-width: none;
+			aspect-ratio: 16 / 9;
+			height: auto;
+			min-height: 0;
+			border-radius: var(--radius-image, 0px);
+		}
+
+		.article-listing--image-left-bleed.article-listing--grid .article-listing__item,
+		.article-listing--image-right-bleed.article-listing--grid .article-listing__item {
+			padding-left: 1.15rem;
+			padding-right: 1.15rem;
+			padding-top: 0;
+		}
+
+		.article-listing--image-left-bleed.article-listing--grid .article-listing__media,
+		.article-listing--image-right-bleed.article-listing--grid .article-listing__media {
+			margin: 0 -1.15rem;
+			width: calc(100% + 2.3rem);
+			border-radius: 5px 5px 0 0;
+		}
 	}
 
 	.article-listing__title {
@@ -489,10 +567,6 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 0.35rem;
-	}
-
-	.article-listing--list .article-listing__meta {
-		margin-top: 0.35rem;
 	}
 
 	.article-listing--grid .article-listing__meta {
