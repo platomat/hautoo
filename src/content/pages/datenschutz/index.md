@@ -26,7 +26,7 @@ seo:
 
 E-Mail:
 
-{{contact-email}}
+{{contact-email layout="run-after"}}
 
 ## Überblick
 
@@ -61,7 +61,7 @@ Erst wenn du auf „Video laden“ klickst, wird der Player nachgeladen. Dann ve
 
 Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Du kannst die Einwilligung jederzeit widerrufen (Button unten oder indem du die Website-Daten für diese Domain in deinem Browser löschst). Bis zur erneuten Zustimmung werden die Player wieder nicht geladen.
 
-{{video-consent-reset}}
+
 
 Die Entscheidung speichern wir in deinem Browser unter dem Schlüssel `hautuu-video-consent` in der **localStorage** (kein First-Party-Cookie nur für diesen Schalter).
 

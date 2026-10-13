@@ -28,7 +28,7 @@ seo:
 
 E-Mail:
 
-{{contact-email}}
+{{contact-email layout="run-after"}}
 
 ## Verantwortlichkeit
 
