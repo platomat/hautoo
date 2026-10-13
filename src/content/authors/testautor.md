@@ -1,6 +1,7 @@
 ---
 title: TestAutor
 description: Das ist der TestAutor.
+avatar: /assets/dummy-person-scaled.webp
 bio: Keine Bio, nix vegan.
 showSocialInHero: false
 ---
