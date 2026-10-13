@@ -32,6 +32,11 @@ const { layout, htmlBefore, htmlAfter } = Astro.props;
 		display: inline;
 	}
 
+	/*
+	 * Hoist Markdown wrappers so their blocks join the parent flow.
+	 * (A previous rule set display:inline on the wrapper itself and
+	 * overrode contents — then the inner <p> stayed block / full width.)
+	 */
 	.cms-contact-flow--run-after .cms-contact-flow__before,
 	.cms-contact-flow--run-before .cms-contact-flow__after,
 	.cms-contact-flow--run-between .cms-contact-flow__before,
@@ -39,23 +44,25 @@ const { layout, htmlBefore, htmlAfter } = Astro.props;
 		display: contents;
 	}
 
-	.cms-contact-flow--run-after > *:has(+ .cms-contact-flow__email) {
+	.cms-contact-flow--run-after :global(.cms-contact-flow__before > :last-child),
+	.cms-contact-flow--run-between :global(.cms-contact-flow__before > :last-child) {
 		display: inline;
 		margin-bottom: 0;
 	}
 
-	.cms-contact-flow--run-before > .cms-contact-flow__email + * {
+	.cms-contact-flow--run-before :global(.cms-contact-flow__after > :first-child),
+	.cms-contact-flow--run-between :global(.cms-contact-flow__after > :first-child) {
 		display: inline;
 		margin-top: 0;
 	}
 
-	.cms-contact-flow--run-between > *:has(+ .cms-contact-flow__email) {
-		display: inline;
-		margin-bottom: 0;
+	.cms-contact-flow--run-after .cms-contact-flow__email,
+	.cms-contact-flow--run-between .cms-contact-flow__email {
+		margin-inline-start: 0.35em;
 	}
 
-	.cms-contact-flow--run-between > .cms-contact-flow__email + * {
-		display: inline;
-		margin-top: 0;
+	.cms-contact-flow--run-before .cms-contact-flow__email,
+	.cms-contact-flow--run-between .cms-contact-flow__email {
+		margin-inline-end: 0.35em;
 	}
 </style>
