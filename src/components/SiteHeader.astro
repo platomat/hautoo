@@ -8,8 +8,9 @@ import { shellWidthClass } from "../cms/fields/content-width";
 import { getSiteHeaderConfig, getSiteWebsiteTitle } from "../lib/site-config";
 
 const pages = await getPublicPages();
-const menuItems = await getResolvedMenu(MENU_MAIN, pages);
 const headerConfig = await getSiteHeaderConfig();
+const headerMenuId = headerConfig.menu.trim() || MENU_MAIN;
+const menuItems = await getResolvedMenu(headerMenuId, pages);
 const websiteTitle = await getSiteWebsiteTitle();
 const useStickyLogo = stickyLogoDiffers();
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";

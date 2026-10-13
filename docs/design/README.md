@@ -145,6 +145,7 @@ Footer-Copyright-Zeile: ab Mobile untereinander und zentriert (Utilities `stack-
 | --- | --- | --- |
 | `logoPosition` | `left` | Logo links / rechts, oder `center` (Menü ab Tablet unter dem Logo) ([#74](https://github.com/platomat/hautoo/issues/74)). Suchlupe immer hinter den Menüpunkten. |
 | `contentWidth` | `wide` | Innenbreite wie Inhalt: `default` / `wide` / `full` (42 / 64 / 80 rem) |
+| `menu` | `main` | Menü-Slug für die Hauptnavigation (Collection Menüs), wie Footer Brand → Menü ([#91](https://github.com/platomat/hautoo/issues/91)) |
 | Ruhehöhe Desktop/Tablet/Mobile | 64 / 64 / 56 | Höhe am Seitenanfang; ohne Sticky Mindesthöhe |
 | Sticky pro Breakpoint | an | Sticky ein/aus (Desktop ≥1024, Tablet 680–1023, Mobile <680) |
 | Sticky-Höhe | 64 / 64 / 56 | Kompakte Höhe nach Scrollen; bei `logoPosition: center` wächst die Leiste mit Inhalt (+ Padding, zwei Zeilen) |

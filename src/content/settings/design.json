@@ -55,6 +55,7 @@
   "header": {
     "logoPosition": "left",
     "contentWidth": "wide",
+    "menu": "main",
     "minHeightDesktop": 64,
     "minHeightTablet": 64,
     "minHeightMobile": 56,

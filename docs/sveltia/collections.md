@@ -90,12 +90,13 @@ Umsetzung: `src/lib/site-colors.ts`, Inline-`:root` in `BaseLayout.astro`. Defau
 
 Katalog: `src/cms/fields/site-fonts.json`. Sync: `scripts/sync-site-fonts.mjs` → `public/fonts/` + `src/styles/fonts.generated.css`. CSS-Variablen: `src/lib/site-typography.ts`.
 
-### Einstellungen → Design → Header (#44)
+### Einstellungen → Design → Header (#44, #91)
 
 | Feld | Bedeutung |
 | --- | --- |
 | `design.header.logoPosition` | `left` / `right` / `center` (Menü darunter ab Tablet) ([#74](https://github.com/platomat/hautoo/issues/74)); Suchlupe immer hinter den Menüpunkten |
 | `design.header.contentWidth` | Shell-Breite `default` / `wide` / `full` (42 / 64 / 80 rem; Default `wide`) |
+| `design.header.menu` | Menü-Slug aus Collection `menus` für die Hauptnavigation (Default `main`), analog Footer Brand → Menü ([#91](https://github.com/platomat/hautoo/issues/91)) |
 | `design.header.minHeightDesktop` / `Tablet` / `Mobile` | Ruhehöhe am Seitenanfang; ohne Sticky Mindesthöhe (40–600 px; Default 64 / 64 / 56) |
 | `design.header.stickyDesktop` | Sticky ab Desktop (≥ 1024px) |
 | `design.header.stickyTablet` | Sticky auf Tablet (680–1023px) |

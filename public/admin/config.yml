@@ -1267,6 +1267,16 @@ collections:
                   - { label: Breit, value: wide }
                   - { label: Vollbreit, value: full }
                 hint: "Maximale Breite der Header-Innenzeile (wie Inhaltsbreite: 42 / 64 / 80 rem). Default Breit."
+              - name: menu
+                label: Menü
+                widget: relation
+                collection: menus
+                value_field: "{{slug}}"
+                search_fields: [title]
+                display_fields: ["{{title}} ({{slug}})"]
+                required: false
+                default: main
+                hint: "Menü aus der Collection Menüs für die Hauptnavigation (Standard: main). Wie Footer Brand → Menü."
               - name: minHeightDesktop
                 label: Ruhehöhe Desktop (px)
                 widget: number

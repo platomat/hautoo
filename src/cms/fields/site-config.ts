@@ -21,6 +21,8 @@ export const siteHeaderConfigSchema = z.object({
 	 * Default `wide` matches previous hard-coded header shell.
 	 */
 	contentWidth: contentWidthSchema.default("wide"),
+	/** Menu collection slug for the main nav (default `main`); like Footer Brand → Menü (#91). */
+	menu: z.string().trim().default("main"),
 	/** Resting bar height at page top; also min-height when sticky is off. */
 	minHeightDesktop: headerHeight.default(64),
 	minHeightTablet: headerHeight.default(64),
