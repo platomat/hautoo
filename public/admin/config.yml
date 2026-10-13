@@ -1562,6 +1562,62 @@ collections:
                   - { label: Breit, value: wide }
                   - { label: Vollbreit, value: full }
                 default: default
+          - name: spacing
+            label: Abstand
+            widget: object
+            collapsed: false
+            hint: "Vertikaler Abstand unter dem Hero und vor dem Footer, pro Collection. Einzelne Seiten/Artikel überschreiben unter Inhaltsbreite."
+            fields:
+              - name: pages
+                label: Seiten
+                widget: object
+                fields: &fields_spacing_collection
+                  - name: afterHero
+                    label: Unter Hero (rem)
+                    widget: number
+                    value_type: float
+                    min: 0
+                    max: 12
+                    step: 0.25
+                    default: 2.5
+                    required: true
+                    hint: "Abstand zwischen Hero und TOC/Inhalt."
+                  - name: beforeFooter
+                    label: Vor Footer (rem)
+                    widget: number
+                    value_type: float
+                    min: 0
+                    max: 12
+                    step: 0.25
+                    default: 4
+                    required: true
+                    hint: "Unterer Innenabstand der Seite vor dem Footer."
+              - name: articles
+                label: Artikel
+                widget: object
+                fields: *fields_spacing_collection
+              - name: categories
+                label: Kategorien
+                widget: object
+                fields: *fields_spacing_collection
+              - name: tags
+                label: Tags
+                widget: object
+                fields: *fields_spacing_collection
+              - name: authors
+                label: Autoren
+                widget: object
+                fields: *fields_spacing_collection
+              - name: glossar
+                label: Glossar
+                widget: object
+                fields: *fields_spacing_collection
+
+      - name: content
+        label: Content
+        file: src/content/settings/content.json
+        format: json
+        fields:
           - name: footer
             label: Footer
             widget: object
@@ -1672,62 +1728,6 @@ collections:
                       - { label: Volle Browserbreite, value: full }
                       - { label: Wie Inhaltsbreite der Zeile, value: shell }
                     hint: "Oberer Rand der Copyright-Zeile: über die ganze Viewport-Breite oder nur so breit wie die Zeile (Shell)."
-          - name: spacing
-            label: Abstand
-            widget: object
-            collapsed: false
-            hint: "Vertikaler Abstand unter dem Hero und vor dem Footer, pro Collection. Einzelne Seiten/Artikel überschreiben unter Inhaltsbreite."
-            fields:
-              - name: pages
-                label: Seiten
-                widget: object
-                fields: &fields_spacing_collection
-                  - name: afterHero
-                    label: Unter Hero (rem)
-                    widget: number
-                    value_type: float
-                    min: 0
-                    max: 12
-                    step: 0.25
-                    default: 2.5
-                    required: true
-                    hint: "Abstand zwischen Hero und TOC/Inhalt."
-                  - name: beforeFooter
-                    label: Vor Footer (rem)
-                    widget: number
-                    value_type: float
-                    min: 0
-                    max: 12
-                    step: 0.25
-                    default: 4
-                    required: true
-                    hint: "Unterer Innenabstand der Seite vor dem Footer."
-              - name: articles
-                label: Artikel
-                widget: object
-                fields: *fields_spacing_collection
-              - name: categories
-                label: Kategorien
-                widget: object
-                fields: *fields_spacing_collection
-              - name: tags
-                label: Tags
-                widget: object
-                fields: *fields_spacing_collection
-              - name: authors
-                label: Autoren
-                widget: object
-                fields: *fields_spacing_collection
-              - name: glossar
-                label: Glossar
-                widget: object
-                fields: *fields_spacing_collection
-
-      - name: content
-        label: Content
-        file: src/content/settings/content.json
-        format: json
-        fields:
           - name: toc
             label: Inhaltsverzeichnis (TOC)
             widget: object
