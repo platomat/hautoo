@@ -146,14 +146,18 @@ Lokale Überschreibung an **Seiten** und **Artikeln**: Objekt `hero` mit `textAl
 
 Eintrag ohne `toc.show` nutzt den globalen Default. Lokales `toc.show: true` / `false` überschreibt. Fehlende `toc.levels` / `toc.title` fallen auf die globalen Werte zurück (`resolveTocForCollection` in `site-config.ts`).
 
-### Einstellungen → Design → Inhaltsbreite (#59)
+### Einstellungen → Design → Inhaltsbreite (#59, #90)
 
 | Feld | Bedeutung |
 | --- | --- |
 | `design.contentWidth.pages` | Default-Inhaltsbreite für Seiten (`default` / `wide` / `full`) |
 | `design.contentWidth.articles` | dasselbe für Artikel |
+| `design.contentWidth.categories` | Kategorie-Einzelseiten (`/kategorien/<slug>/`) |
+| `design.contentWidth.tags` | Tag-Einzelseiten (`/tags/<slug>/`) |
+| `design.contentWidth.authors` | Autoren-Profile (`/autoren/<slug>/`) |
+| `design.contentWidth.glossar` | Glossar-Einträge (`/glossar/<slug>/`) |
 
-Pro Eintrag optional `layout.contentWidth` (gleiche Werte). Leer = globaler Default; ohne Feld und mit Listing-Embed → automatisch `wide` (`resolveContentWidth`). CSS: Lesespalte 42rem, breit 64rem, vollbreit 80rem.
+Pro Seite/Artikel optional `layout.contentWidth` (gleiche Werte). Leer = globaler Default; ohne Feld und mit Listing-Embed → automatisch `wide` (`resolveContentWidth`). Kategorien/Tags/Autoren/Glossar nutzen nur den Collection-Default (Autoren/Glossar: zusätzlich auto-wide bei Listing-Embeds im Body). CSS: Lesespalte 42rem, breit 64rem, vollbreit 80rem.
 
 ### Einstellungen → Design → Inhaltsabstand (#73)
 

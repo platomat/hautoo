@@ -105,7 +105,11 @@
   },
   "contentWidth": {
     "pages": "default",
-    "articles": "default"
+    "articles": "default",
+    "categories": "default",
+    "tags": "default",
+    "authors": "default",
+    "glossar": "default"
   },
   "spacing": {
     "pages": {

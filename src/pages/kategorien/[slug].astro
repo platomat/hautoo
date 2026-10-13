@@ -9,10 +9,12 @@ import {
 	getCategoryChildren,
 	getCategoryHref,
 } from "../../lib/categories";
+import { contentWidthClass } from "../../cms/fields/content-width";
 import {
 	contentSpacingStyle,
 	resolveContentSpacing,
 } from "../../lib/content-spacing";
+import { resolveContentWidth } from "../../lib/content-width";
 
 export async function getStaticPaths() {
 	const categories = await getCollection("categories");
@@ -28,6 +30,9 @@ const articles = await getArticlesByCategory(category.id, { sort: "newest" });
 const children = getCategoryChildren(category.id, allCategories);
 const breadcrumbs = buildCategoryBreadcrumbs(category, allCategories);
 const spacingStyle = contentSpacingStyle(resolveContentSpacing("categories"));
+const widthClass = contentWidthClass(
+	await resolveContentWidth("categories"),
+);
 ---
 
 <BaseLayout
@@ -35,7 +40,7 @@ const spacingStyle = contentSpacingStyle(resolveContentSpacing("categories"));
 	description={category.data.description}
 	modifiedDate={category.data.modifiedDate}
 >
-	<main class="page" style={spacingStyle}>
+	<main class:list={["page", widthClass]} style={spacingStyle}>
 		<PageHero
 			title={category.data.title}
 			description={category.data.description}

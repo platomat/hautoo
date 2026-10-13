@@ -7,10 +7,12 @@ import { getArticlesByTag } from "../../lib/articles";
 import { buildTagBreadcrumbs } from "../../lib/breadcrumbs";
 import { getGlossarForTag, getGlossarHref } from "../../lib/glossar";
 import { formatTagHashtag } from "../../lib/tags";
+import { contentWidthClass } from "../../cms/fields/content-width";
 import {
 	contentSpacingStyle,
 	resolveContentSpacing,
 } from "../../lib/content-spacing";
+import { resolveContentWidth } from "../../lib/content-width";
 
 export async function getStaticPaths() {
 	const tags = await getCollection("tags");
@@ -26,6 +28,7 @@ const hashtag = formatTagHashtag(tag);
 const glossarEntry = await getGlossarForTag(tag.id);
 const breadcrumbs = buildTagBreadcrumbs(hashtag);
 const spacingStyle = contentSpacingStyle(resolveContentSpacing("tags"));
+const widthClass = contentWidthClass(await resolveContentWidth("tags"));
 ---
 
 <BaseLayout
@@ -33,7 +36,7 @@ const spacingStyle = contentSpacingStyle(resolveContentSpacing("tags"));
 	description={tag.data.description}
 	modifiedDate={tag.data.modifiedDate}
 >
-	<main class="page" style={spacingStyle}>
+	<main class:list={["page", widthClass]} style={spacingStyle}>
 		<PageHero
 			title={hashtag}
 			description={tag.data.description}

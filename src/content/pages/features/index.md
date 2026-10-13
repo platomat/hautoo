@@ -107,7 +107,7 @@ Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Co
 - **Header:** Logo-Position links / rechts / **mittig** (Menü darunter) ([#74](https://github.com/platomat/hautoo/issues/74)); Suchlupe hinter den Menüpunkten; Inhaltsbreite der Header-Zeile (Standard/breit/vollbreit); Ruhehöhe und Sticky ein/aus sowie kompakte Sticky-Höhe pro Breakpoint ([#44](https://github.com/platomat/hautoo/issues/44)); Anker-Sprünge (TOC) mit `scroll-padding`.
 - **Footer-Brand** oberhalb der Copyright-Zeile ([#81](https://github.com/platomat/hautoo/issues/81)): Logo (Größe einstellbar), Description und Menü; Bausteine einzeln und per Drag-and-Drop; Layout Nebeneinander/Untereinander; Menü-Links neben- oder untereinander; Shell-Breiten für Brand und Copyright-Zeile; Hintergrund mit Verlauf von transparent zur Chrome-Farbe (ohne oberen Rand).
 - **Hero-Defaults** pro Collection: Ausrichtung, Brotkrumen, Trenner, Trennlinie unten ([#63](https://github.com/platomat/hautoo/issues/63)).
-- **Inhaltsbreite** Standard / breit / vollbreit für Seiten und Artikel ([#59](https://github.com/platomat/hautoo/issues/59)).
+- **Inhaltsbreite** Standard / breit / vollbreit für Seiten, Artikel sowie Kategorien, Tags, Autoren und Glossar ([#59](https://github.com/platomat/hautoo/issues/59), [#90](https://github.com/platomat/hautoo/issues/90)).
 - **Abstand** unter Hero und vor Footer, pro Collection ([#73](https://github.com/platomat/hautoo/issues/73)).
 - **Ecken abrunden:** Radius in Pixeln getrennt für Inhalts-Bilder und Videos (inkl. Member-Video).
 

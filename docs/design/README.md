@@ -184,7 +184,7 @@ Globale Defaults unter **Einstellungen → Content → TOC** (Seiten / Artikel: 
 
 ### Inhaltsbreite
 
-Drei Stufen über CMS **Design → Inhaltsbreite** (Default) und pro Seite/Artikel `layout.contentWidth`: **Standard** (42rem), **Breit** (64rem), **Vollbreit** (80rem). Ohne lokales Feld und mit Listing-Embed wird automatisch breit gewählt.
+Drei Stufen über CMS **Design → Inhaltsbreite** (Default) und pro Seite/Artikel `layout.contentWidth`: **Standard** (42rem), **Breit** (64rem), **Vollbreit** (80rem). Ohne lokales Feld und mit Listing-Embed wird automatisch breit gewählt. Zusätzlich Defaults für **Kategorien, Tags, Autoren, Glossar** (#90).
 
 ### Inhaltsabstand (Hero / Footer)
 

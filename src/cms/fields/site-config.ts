@@ -299,13 +299,22 @@ export const siteTocConfigSchema = z.object({
 
 export type SiteTocConfig = z.infer<typeof siteTocConfigSchema>;
 
-/** Default content column when entry omits `layout.contentWidth` (and no listing auto-wide). */
+/**
+ * Default content column when entry omits `layout.contentWidth`
+ * (and no listing auto-wide). Same collection keys as Design → Inhaltsabstand (#90).
+ */
 export const siteWidthConfigSchema = z.object({
 	pages: contentWidthSchema.default("default"),
 	articles: contentWidthSchema.default("default"),
+	categories: contentWidthSchema.default("default"),
+	tags: contentWidthSchema.default("default"),
+	authors: contentWidthSchema.default("default"),
+	glossar: contentWidthSchema.default("default"),
 });
 
 export type SiteWidthConfig = z.infer<typeof siteWidthConfigSchema>;
+
+export type ContentWidthCollectionKey = keyof SiteWidthConfig;
 
 /** Vertical gap after hero / before footer (rem), matching previous CSS defaults. */
 export const siteSpacingRemSchema = z.coerce.number().min(0).max(12);

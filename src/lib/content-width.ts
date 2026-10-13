@@ -3,8 +3,11 @@ import {
 	type ContentWidth,
 	type EntryLayout,
 } from "../cms/fields/content-width";
+import type { ContentWidthCollectionKey } from "../cms/fields/site-config";
 import { contentNeedsWideLayout } from "./content-embeds";
 import { getSiteConfig } from "./site-config";
+
+export type { ContentWidthCollectionKey };
 
 export type EntryWidthFields = {
 	layout?: EntryLayout;
@@ -13,22 +16,23 @@ export type EntryWidthFields = {
 };
 
 /**
- * Resolve content column width for a page or article.
+ * Resolve content column width for a collection view.
  * Explicit layout/frontmatter wins. Else listing embeds → wide. Else global default.
  */
 export async function resolveContentWidth(
-	collection: "pages" | "articles",
-	entry: EntryWidthFields,
-	body: string | undefined,
+	collection: ContentWidthCollectionKey,
+	entry?: EntryWidthFields,
+	body?: string | undefined,
 ): Promise<ContentWidth> {
-	const local = entry.layout?.contentWidth ?? entry.contentWidth;
+	const local = entry?.layout?.contentWidth ?? entry?.contentWidth;
 	if (local) {
 		return local;
 	}
-	if (await contentNeedsWideLayout(body)) {
+	if (body && (await contentNeedsWideLayout(body))) {
 		return "wide";
 	}
 	const config = getSiteConfig();
-	const globalDefault = config.design?.contentWidth?.[collection];	const parsed = contentWidthSchema.safeParse(globalDefault);
+	const globalDefault = config.design?.contentWidth?.[collection];
+	const parsed = contentWidthSchema.safeParse(globalDefault);
 	return parsed.success ? parsed.data : "default";
 }

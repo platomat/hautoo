@@ -13,10 +13,12 @@ import {
 	type AuthorEntry,
 } from "../../lib/authors";
 import { buildAuthorBreadcrumbs } from "../../lib/breadcrumbs";
+import { contentWidthClass } from "../../cms/fields/content-width";
 import {
 	contentSpacingStyle,
 	resolveContentSpacing,
 } from "../../lib/content-spacing";
+import { resolveContentWidth } from "../../lib/content-width";
 
 export async function getStaticPaths() {
 	const authors = await getCollection("authors");
@@ -35,6 +37,9 @@ const bio = author.data.bio?.trim() || "";
 const socialLinks = author.data.socialLinks ?? [];
 const showSocialInHero = author.data.showSocialInHero === true;
 const hasBody = Boolean(author.body?.trim());
+const widthClass = contentWidthClass(
+	await resolveContentWidth("authors", undefined, author.body),
+);
 const showAutoSocialInHero =
 	showSocialInHero &&
 	socialLinks.some((link) => link.url?.trim());
@@ -78,7 +83,7 @@ if (sameAs.length > 0) personJsonLd.sameAs = sameAs;
 	modifiedDate={author.data.modifiedDate}
 	jsonLd={personJsonLd}
 >
-	<main class="page" style={spacingStyle}>
+	<main class:list={["page", widthClass]} style={spacingStyle}>
 		<PageHero
 			title={author.data.title}
 			description={author.data.description}

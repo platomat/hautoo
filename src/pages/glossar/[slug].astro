@@ -12,10 +12,12 @@ import {
 	getGlossarHref,
 	getGlossarRelatedTags,
 } from "../../lib/glossar";
+import { contentWidthClass } from "../../cms/fields/content-width";
 import {
 	contentSpacingStyle,
 	resolveContentSpacing,
 } from "../../lib/content-spacing";
+import { resolveContentWidth } from "../../lib/content-width";
 
 export async function getStaticPaths() {
 	const entries = await getGlossarEntries();
@@ -33,6 +35,9 @@ const relatedTags = await getGlossarRelatedTags(entry);
 const relatedTagIds = relatedTags.map(({ tag }) => tag.id);
 const breadcrumbs = buildGlossarBreadcrumbs(entry);
 const spacingStyle = contentSpacingStyle(resolveContentSpacing("glossar"));
+const widthClass = contentWidthClass(
+	await resolveContentWidth("glossar", undefined, entry.body),
+);
 ---
 
 <BaseLayout
@@ -41,7 +46,7 @@ const spacingStyle = contentSpacingStyle(resolveContentSpacing("glossar"));
 	seo={entry.data.seo}
 	modifiedDate={entry.data.modifiedDate}
 >
-	<main class="page" style={spacingStyle}>
+	<main class:list={["page", widthClass]} style={spacingStyle}>
 		<article>
 			<PageHero
 				title={entry.data.title}

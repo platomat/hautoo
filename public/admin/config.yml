@@ -1544,12 +1544,12 @@ collections:
             label: Inhaltsbreite
             widget: object
             collapsed: false
-            hint: "Default-Breite, wenn Seite/Artikel kein eigenes Feld setzt und kein Listing-Embed die Breite auf „breit“ hebt."
+            hint: "Default-Breite pro Collection. Seite/Artikel: lokales Feld oder Listing-Embed kann „breit“ setzen. Kategorien, Tags, Autoren, Glossar: nur dieser Default."
             fields:
               - name: pages
                 label: Seiten (Standard)
                 widget: select
-                options:
+                options: &content_width_options
                   - { label: Standard (Lesespalte), value: default }
                   - { label: Breit, value: wide }
                   - { label: Vollbreit, value: full }
@@ -1557,10 +1557,27 @@ collections:
               - name: articles
                 label: Artikel (Standard)
                 widget: select
-                options:
-                  - { label: Standard (Lesespalte), value: default }
-                  - { label: Breit, value: wide }
-                  - { label: Vollbreit, value: full }
+                options: *content_width_options
+                default: default
+              - name: categories
+                label: Kategorien (Standard)
+                widget: select
+                options: *content_width_options
+                default: default
+              - name: tags
+                label: Tags (Standard)
+                widget: select
+                options: *content_width_options
+                default: default
+              - name: authors
+                label: Autoren (Standard)
+                widget: select
+                options: *content_width_options
+                default: default
+              - name: glossar
+                label: Glossar (Standard)
+                widget: select
+                options: *content_width_options
                 default: default
           - name: spacing
             label: Inhaltsabstand
