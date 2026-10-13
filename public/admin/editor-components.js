@@ -911,7 +911,8 @@ CMS.registerEditorComponent({
 				hint: "Optional: Vorschaubild aus der Mediathek (bei YT/Vimeo kein Drittanbieter-Thumbnail vor Consent).",
 			},
 		],
-		pattern: /^\{\{video(?<attrs>[^}]*)\}\}\s*$/m,
+		// `(?!-)`: do not steal `{{video-consent-reset}}` (same idea as button vs button-group).
+		pattern: /^\{\{video(?!-)(?<attrs>[^}]*)\}\}\s*$/m,
 		fromBlock: (match) => {
 			const attrs = parseAttrs(match?.groups?.attrs || "");
 			const provider = attrs.provider === "r2" ? "file" : attrs.provider || "youtube";
