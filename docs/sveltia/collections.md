@@ -392,6 +392,7 @@ Beispiel: Quellen `/alter-slug/` und `/noch-alter/` → Ziel `/neuer-slug/` mit 
 | `status` | ja | `draft` / `published` / `future` / `trash` |
 | `modifiedDate` | nein | Letzte Änderung → SEO-Meta im `<head>` |
 | `heroImage` | nein | Titelbild: eintragsrelativ (Variante B) oder `/assets/…` aus der Mediathek |
+| `showHeroImage` | nein | Titelbild auf der Einzelseite anzeigen (Default `true`); Listings nutzen das Bild weiter als Vorschau ([#98](https://github.com/platomat/hautoo/issues/98)) |
 | `background.image` | nein | Vollflächiger Viewport-Hintergrund |
 | `background.overlay` | nein | Abdunkelung 0–100 % |
 | `background.attribution` | nein | Bildnachweis (Text, reine URL oder HTML von Stock-Plattformen) → Impressum |

@@ -154,6 +154,11 @@ const articles = defineCollection({
 			 * Resolved via `resolveCmsImage` (Astro `image()` cannot load `/assets/`).
 			 */
 			heroImage: cmsImagePathSchema,
+			/**
+			 * Show `heroImage` on the article single page. Listings still use it as
+			 * card preview when set (default true; #98).
+			 */
+			showHeroImage: z.boolean().default(true),
 			/** Hero overrides; omit = Design → Hero → Artikel. */
 			hero: entryHeroSchema,
 			/** TOC overrides; omit = Content → TOC → Artikel. */

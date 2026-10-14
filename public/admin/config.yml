@@ -439,6 +439,14 @@ collections:
           required: false,
           hint: "Upload landet neben index.md (Variante B). Bilder aus der Mediathek (/assets/…) gehen auch.",
         }
+      - {
+          name: showHeroImage,
+          label: Titelbild auf Artikel-Seite,
+          widget: boolean,
+          default: true,
+          required: false,
+          hint: "An = Bild unter dem Hero auf der Einzelseite. Aus = nur Vorschaubild in Listings (z. B. wenn auf der Seite ein Video steht).",
+        }
       - *field_entry_hero
       - *field_entry_toc
       - *field_entry_background

@@ -195,16 +195,17 @@ const breadcrumbs = buildArticleBreadcrumbs(article);
 				/>
 			)}
 			{
-				heroImage && (
-					<figure class="article-hero-image">
-						<Image
-							src={heroImage}
-							alt={article.data.title}
-							widths={[640, 960]}
-							sizes="(max-width: 679px) 100vw, 42rem"
-						/>
-					</figure>
-				)
+				heroImage &&
+					article.data.showHeroImage && (
+						<figure class="article-hero-image">
+							<Image
+								src={heroImage}
+								alt={article.data.title}
+								widths={[640, 960]}
+								sizes="(max-width: 679px) 100vw, 42rem"
+							/>
+						</figure>
+					)
 			}
 			{useEmbeds ? <CmsContent body={article.body} /> : <Content />}
 			{
