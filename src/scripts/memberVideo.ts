@@ -57,11 +57,13 @@ function setStatus(root: HTMLElement, message: string, isError = false) {
 function showPlayer(root: HTMLElement, playUrl: string) {
 	const gate = root.querySelector<HTMLElement>("[data-member-gate]");
 	const wrap = root.querySelector<HTMLElement>("[data-member-player-wrap]");
+	const toolbar = root.querySelector<HTMLElement>("[data-member-toolbar]");
 	const video = root.querySelector<HTMLVideoElement>("[data-member-player]");
 	if (!video || !wrap) return;
 
-	gate?.setAttribute("hidden", "");
+	if (gate) gate.hidden = true;
 	wrap.hidden = false;
+	if (toolbar) toolbar.hidden = false;
 	video.src = playUrl;
 	void video.play().catch(() => {
 		/* user gesture / autoplay policies */
@@ -71,13 +73,15 @@ function showPlayer(root: HTMLElement, playUrl: string) {
 function showGate(root: HTMLElement) {
 	const gate = root.querySelector<HTMLElement>("[data-member-gate]");
 	const wrap = root.querySelector<HTMLElement>("[data-member-player-wrap]");
+	const toolbar = root.querySelector<HTMLElement>("[data-member-toolbar]");
 	const video = root.querySelector<HTMLVideoElement>("[data-member-player]");
 	if (video) {
 		video.removeAttribute("src");
 		video.load();
 	}
 	if (wrap) wrap.hidden = true;
-	gate?.removeAttribute("hidden");
+	if (toolbar) toolbar.hidden = true;
+	if (gate) gate.hidden = false;
 }
 
 async function signAndPlay(root: HTMLElement, token: string): Promise<boolean> {

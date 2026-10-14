@@ -89,10 +89,39 @@ export function hexToRgbaCss(hex: string, alphaFallback?: number): string {
 	return `rgba(${parsed.r}, ${parsed.g}, ${parsed.b}, ${aRounded})`;
 }
 
+/** Resolved glass CSS color (CMS `surfaceGlass` or surface + default alpha). */
+export function resolveSurfaceGlassCss(
+	colors: SiteColorsConfig = getSiteColorsConfig(),
+): string {
+	const glassRaw = colors.surfaceGlass?.trim();
+	if (glassRaw) {
+		return hexToRgbaCss(glassRaw);
+	}
+	return hexToRgbaCss(
+		colors.surface || DEFAULT_SITE_COLORS.surface,
+		SURFACE_GLASS_ALPHA,
+	);
+}
+
+/**
+ * True when Design → surfaceGlass has alpha < 1 (or glass is derived with default alpha).
+ * Used for `body.has-chrome-glass` so Header/Footer stay translucent without a page BG image.
+ */
+export function isSurfaceGlassTranslucent(
+	colors: SiteColorsConfig = getSiteColorsConfig(),
+): boolean {
+	const glassRaw = colors.surfaceGlass?.trim();
+	if (glassRaw) {
+		const parsed = parseCssHex(glassRaw);
+		return parsed ? parsed.a < 1 : false;
+	}
+	return SURFACE_GLASS_ALPHA < 1;
+}
+
 /**
  * Inline `:root` overrides from Design → Farbpalette.
  * `surface-glass` from `surfaceGlass` (8-digit hex) or derived from `surface`.
- * `--color-chrome` stays `var(--color-surface)` in global.css.
+ * `--color-chrome` stays `var(--color-surface)` in global.css unless `has-chrome-glass`.
  */
 export function buildSiteColorRootCss(
 	colors: SiteColorsConfig = getSiteColorsConfig(),
@@ -104,11 +133,7 @@ export function buildSiteColorRootCss(
 		lines.push(`${CSS_VAR_BY_KEY[key]}: ${normalized};`);
 	}
 
-	const glassRaw = colors.surfaceGlass?.trim();
-	const glassCss = glassRaw
-		? hexToRgbaCss(glassRaw)
-		: hexToRgbaCss(colors.surface || DEFAULT_SITE_COLORS.surface, SURFACE_GLASS_ALPHA);
-	lines.push(`--color-surface-glass: ${glassCss};`);
+	lines.push(`--color-surface-glass: ${resolveSurfaceGlassCss(colors)};`);
 
 	const submenuBg = hexToRgbaCss(
 		colors.submenuBg?.trim() || DEFAULT_SITE_COLORS.submenuBg,

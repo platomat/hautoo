@@ -6,7 +6,7 @@
 	 * --color-* and --font-* come from Design settings (inline in BaseLayout).
 	 * Do not set them here: bundled CSS loads after those tags and would win.
 	 */
-	/* Header / footer / nav panels (switches to surface-glass with page BG) */
+	/* Header / footer / nav panels (switches to surface-glass with has-chrome-glass) */
 	--color-chrome: var(--color-surface);
 	--content-max-width: 42rem;
 	--content-wide-max-width: 64rem;
@@ -86,23 +86,23 @@ body.has-page-bg .site-footer {
 	z-index: 1;
 }
 
-/* Translucent chrome so the page background shows through (~50%) */
-body.has-page-bg {
+/* Translucent chrome when Design → surfaceGlass has alpha (content scrolls under sticky header) */
+body.has-chrome-glass {
 	--color-chrome: var(--color-surface-glass);
 }
 
 /* Blur only full chrome bars / floating panels — not the inline desktop nav
    (extra backdrop-filter there looked like a dark blob behind the links). */
-body.has-page-bg .site-header,
-body.has-page-bg .site-footer,
-body.has-page-bg .site-nav__sub {
+body.has-chrome-glass .site-header,
+body.has-chrome-glass .site-footer,
+body.has-chrome-glass .site-nav__sub {
 	backdrop-filter: blur(10px);
 	-webkit-backdrop-filter: blur(10px);
 }
 
 @media (max-width: 679px) {
 	/* Mobile panel must stay readable over page BG (glass alone is too thin). */
-	body.has-page-bg .site-nav {
+	body.has-chrome-glass .site-nav {
 		background: var(--color-surface);
 		backdrop-filter: none;
 		-webkit-backdrop-filter: none;
@@ -110,10 +110,10 @@ body.has-page-bg .site-nav__sub {
 }
 
 @media (prefers-reduced-motion: reduce) {
-	body.has-page-bg .site-header,
-	body.has-page-bg .site-footer,
-	body.has-page-bg .site-nav,
-	body.has-page-bg .site-nav__sub {
+	body.has-chrome-glass .site-header,
+	body.has-chrome-glass .site-footer,
+	body.has-chrome-glass .site-nav,
+	body.has-chrome-glass .site-nav__sub {
 		backdrop-filter: none;
 		-webkit-backdrop-filter: none;
 	}

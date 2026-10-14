@@ -63,9 +63,9 @@ Redaktionell unter **Einstellungen → Design → Farbpalette** (`src/content/se
 | Variable | CMS-Feld | Default | Rolle |
 | --- | --- | --- | --- |
 | `--color-bg` | `bg` | `#0f1412` | Seitenhintergrund |
-| `--color-surface` | `surface` | `#1a211e` | Solide Flächen (Header/Footer ohne Seiten-BG, Panels) |
-| `--color-surface-glass` | `surfaceGlass` (mit Alpha) | `#1a211ee6` | Halbtransparent über Hintergrundbildern |
-| `--color-chrome` | (abgeleitet) | `var(--color-surface)` | Header/Footer/Nav; bei Seiten-BG → `surface-glass` |
+| `--color-surface` | `surface` | `#1a211e` | Solide Flächen (Panels; Chrome ohne Glas-Alpha) |
+| `--color-surface-glass` | `surfaceGlass` (mit Alpha) | `#1a211ee6` | Halbtransparent (Header/Footer, Overlays) |
+| `--color-chrome` | (abgeleitet) | `var(--color-surface)` | Header/Footer/Nav; bei Glas-Alpha → `surface-glass` |
 | `--color-surface-raised` | `surfaceRaised` | `#232b27` | leicht angehoben (z. B. Code, Zitat) |
 | `--color-border` | `border` | `#2e3833` | Linien, Trenner |
 | `--color-text` | `text` | `#e8eeea` | Haupttext |
@@ -77,7 +77,7 @@ Redaktionell unter **Einstellungen → Design → Farbpalette** (`src/content/se
 | `--color-submenu-bg` | `submenuBg` (Alpha möglich) | `#1a211e` | Hintergrund Nav-Untermenü (Flyout / Akkordeon) |
 | `--color-submenu-text` | `submenuText` | `#e8eeea` | Textfarbe der Links im Untermenü |
 
-Wenn eine Seite/ein Artikel ein Hintergrundbild hat (`body.has-page-bg`), nutzen Header und Footer `--color-surface-glass` plus leichtes `backdrop-filter`. Das Nav-Untermenü nutzt eigene Farben (`submenuBg` / `submenuText`), damit Einträge über Glas lesbar bleiben ([#84](https://github.com/platomat/hautoo/issues/84)).
+Wenn Design → `surfaceGlass` Alpha < 1 hat (`body.has-chrome-glass`), nutzen Header und Footer `--color-surface-glass` plus leichtes `backdrop-filter` (auch ohne Seiten-Hintergrundbild, damit Inhalt unter dem Sticky-Header durchscheint). Seiten-BG setzt zusätzlich `body.has-page-bg` (Stacking). Das Nav-Untermenü nutzt eigene Farben (`submenuBg` / `submenuText`), damit Einträge über Glas lesbar bleiben ([#84](https://github.com/platomat/hautoo/issues/84)).
 
 ### Kurzüberblick
 

@@ -13,7 +13,10 @@ import {
 } from "../cms/fields/seo";
 import { getBuildId } from "../lib/build-id";
 import { buildSiteBorderRadiusRootCss } from "../lib/site-border-radius";
-import { buildSiteColorRootCss } from "../lib/site-colors";
+import {
+	buildSiteColorRootCss,
+	isSurfaceGlassTranslucent,
+} from "../lib/site-colors";
 import { getSiteWebsiteTitle } from "../lib/site-config";
 import { getFaviconLinks } from "../lib/site-favicon";
 import {
@@ -76,6 +79,7 @@ const metaDescription =
 const robots = buildRobotsContent(seo);
 const buildId = getBuildId();
 const hasPageBackground = Boolean(backgroundImage);
+const hasChromeGlass = isSurfaceGlassTranslucent();
 const modifiedMeta = modifiedDate
 	? formatModifiedDateMeta(modifiedDate)
 	: undefined;
@@ -196,7 +200,12 @@ const faviconLinks = getFaviconLinks();
 		<style is:inline set:html={siteTypographyRootCss} />
 		<style is:inline set:html={siteBorderRadiusRootCss} />
 	</head>
-	<body class:list={{ "has-page-bg": hasPageBackground }}>
+	<body
+		class:list={{
+			"has-page-bg": hasPageBackground,
+			"has-chrome-glass": hasChromeGlass,
+		}}
+	>
 		{
 			hasPageBackground && (
 				<PageBackground image={backgroundImage} overlay={backgroundOverlay} />

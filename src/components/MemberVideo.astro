@@ -25,61 +25,65 @@ const configured = Boolean(workerUrl && key);
 			data-video-key={key}
 			data-video-title={title}
 		>
-			<div class="member-video__gate" data-member-gate>
-				{posterMeta && (
-					<img
-						class="member-video__poster"
-						src={posterMeta.src}
-						alt=""
-						width={posterMeta.width}
-						height={posterMeta.height}
-						loading="lazy"
-						decoding="async"
-					/>
-				)}
-				<div class="member-video__panel">
-					<p class="member-video__lead text-sm">
-						Dieses Video ist mit Zugangscode geschützt. Nach der Freischaltung
-						bleibst du in diesem Browser angemeldet (localStorage), bis der Zugang
-						abläuft oder du ihn zurücksetzt.
-					</p>
-					<form class="member-video__form flex-row flex-align-center stack-on-mobile" data-member-form>
-						<label class="member-video__label min-w-0">
-							<span class="visually-hidden">Zugangscode</span>
-							<input
-								class="member-video__input"
-								type="text"
-								name="code"
-								autocomplete="off"
-								autocapitalize="characters"
-								spellcheck="false"
-								placeholder="Zugangscode"
-								required
-								minlength="6"
-								data-member-code
-							/>
-						</label>
-						<button type="submit" class="member-video__submit flex-shrink-0">
-							Freischalten
-						</button>
-					</form>
-					<p class="member-video__status text-sm" data-member-status hidden></p>
-					<button type="button" class="member-video__reset text-sm" data-member-reset>
-						Zugang zurücksetzen
-					</button>
+			<div class="member-video__stage">
+				<div class="member-video__gate" data-member-gate>
+					{posterMeta && (
+						<img
+							class="member-video__poster"
+							src={posterMeta.src}
+							alt=""
+							width={posterMeta.width}
+							height={posterMeta.height}
+							loading="lazy"
+							decoding="async"
+						/>
+					)}
+					<div class="member-video__panel">
+						<p class="member-video__lead text-sm">
+							Dieses Video ist mit Zugangscode geschützt. Nach der Freischaltung
+							bleibst du in diesem Browser angemeldet (localStorage), bis der Zugang
+							abläuft oder du ihn zurücksetzt.
+						</p>
+						<form class="member-video__form flex-row flex-align-center stack-on-mobile" data-member-form>
+							<label class="member-video__label min-w-0">
+								<span class="visually-hidden">Zugangscode</span>
+								<input
+									class="member-video__input"
+									type="text"
+									name="code"
+									autocomplete="off"
+									autocapitalize="characters"
+									spellcheck="false"
+									placeholder="Zugangscode"
+									required
+									minlength="6"
+									data-member-code
+								/>
+							</label>
+							<button type="submit" class="member-video__submit flex-shrink-0">
+								Freischalten
+							</button>
+						</form>
+						<p class="member-video__status text-sm" data-member-status hidden></p>
+					</div>
+				</div>
+				<div class="member-video__player-wrap" data-member-player-wrap hidden>
+					<video
+						class="video-embed__player"
+						controls
+						playsinline
+						preload="metadata"
+						crossorigin="anonymous"
+						title={title}
+						poster={posterMeta?.src}
+						data-member-player
+					></video>
 				</div>
 			</div>
-			<div class="member-video__player-wrap" data-member-player-wrap hidden>
-				<video
-					class="video-embed__player"
-					controls
-					playsinline
-					preload="metadata"
-					crossorigin="anonymous"
-					title={title}
-					poster={posterMeta?.src}
-					data-member-player
-				></video>
+			<div class="member-video__toolbar" data-member-toolbar hidden>
+				<button type="button" class="member-video__reset text-sm" data-member-reset>
+					Zugang zurücksetzen
+				</button>
 			</div>
 		</div>
 	) : (
@@ -101,10 +105,13 @@ const configured = Boolean(workerUrl && key);
 
 <style>
 	.member-video {
+		margin: 1.5rem 0;
+	}
+
+	.member-video__stage {
 		position: relative;
 		width: 100%;
 		aspect-ratio: 16 / 9;
-		margin: 1.5rem 0;
 		background: var(--color-surface);
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-video, 0px);
@@ -118,6 +125,13 @@ const configured = Boolean(workerUrl && key);
 		align-items: flex-end;
 		justify-content: center;
 		background: var(--color-surface-raised);
+	}
+
+	/* Class display:flex must not override the hidden attribute. */
+	.member-video__gate[hidden],
+	.member-video__player-wrap[hidden],
+	.member-video__toolbar[hidden] {
+		display: none !important;
 	}
 
 	.member-video__poster {
@@ -210,9 +224,15 @@ const configured = Boolean(workerUrl && key);
 		color: var(--color-danger, #b33);
 	}
 
+	.member-video__toolbar {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 0.5rem;
+	}
+
 	.member-video__reset {
 		appearance: none;
-		margin: 0.5rem 0 0;
+		margin: 0;
 		padding: 0;
 		border: 0;
 		background: none;
