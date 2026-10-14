@@ -20,6 +20,13 @@ seo:
 
 Der Agent hat wieder Dateien angefasst. Die Frage ist nicht „Hat er was gemacht?“, sondern **passt das zu deinem Projekt**? Dafür brauchst du keine [Git](/glossar/git/)-Befehlszeile, wenn du nicht willst: [Cursor](/glossar/cursor/) und [GitHub](/glossar/github/) zeigen dir [**Diffs**](/glossar/diff/) und Listen. Diese Folge ordnet **lokal committen**, [**Pull Request**](/glossar/pull-request/) lesen, [**Code Review**](/glossar/code-review/) und **Live-Deployments** ein. Große PRs mit Preview: [Folge 016](/artikel/folge-016-artikel-pull-request/). Push-Regel: [Folge 001](/artikel/folge-001-hautuu-intro/), [Folge 006](/artikel/folge-006-git-push-pull/).
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--022--cursor--ki-aenderungen-pruefen-pr-features.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Was wurde geändert? (Cursor)
 
 In der [IDE](/glossar/ide/) links **Explorer** (Dateien), daneben „Source Control“ (Quellcode-Verwaltung). Dort siehst du geänderte Dateien, z. B. `.gitignore` mit dem genauen Zusatz. Optional: pro Datei **Timeline** (Zeitachse) für die Historie **dieser einen** Datei (welcher [Commit](/glossar/commit/) wann). Die kleine **Outline** neben dem Code ist eher für Funktionen im File, für Git-Überblick reicht meist Source Control.

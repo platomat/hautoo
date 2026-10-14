@@ -22,6 +22,13 @@ seo:
 
 Öffentliche [Repos](/glossar/repository/) siehst du ohne Login. „Private“ (private Repositories) Projekte wie dein echtes hautuu-Repo verweigern [`git clone`](/glossar/clone/) mit „Permission denied“ (Zugriff verweigert), bis GitHub deinen Rechner kennt. Grundlagen zu [Clone](/glossar/clone/) und [Push](/glossar/push/)/[Pull](/glossar/pull/): [Folge 001](/artikel/folge-001-hautuu-intro/) und [Folge 006](/artikel/folge-006-git-push-pull/). Dafür nutzt du einen [**SSH-Key**](/glossar/ssh-key/) statt Passwort in der URL.
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--017--github--ssh-keys.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Ordner `.ssh`
 
 Im **Home-Verzeichnis deines Rechners** liegt (oft versteckt) `.ssh`. Im Dateimanager: versteckte Dateien anzeigen (z. B. Strg+H). Im [Terminal](/glossar/terminal/):

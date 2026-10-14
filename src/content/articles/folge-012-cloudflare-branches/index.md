@@ -21,6 +21,13 @@ seo:
 
 [**main**](/glossar/main/) ist, was die Welt sieht. Trotzdem willst du rumprobieren, ohne die Startseite live zu verbiegen. Pages an [GitHub](/glossar/github/) koppeln ging in [Folge 011](/artikel/folge-011-cloudflare-setup/).
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--012--cloudflare--branches-rollbacks.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Branch lokal
 
 ```text

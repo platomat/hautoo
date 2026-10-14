@@ -21,6 +21,13 @@ seo:
 
 Du nimmst den Screencast auf, z. B. mit [OBS Studio](/glossar/obs/). Eine **Speech-to-Text**-Software kann zwar live mithören, hier reichen die **fertigen Video-Dateien**: Du gibst ihr die Aufnahmen, sie erzeugt Rohtext. Die Transkripte landen beim [**Cloud Agent**](/glossar/cloud-agent/) in [Cursor](/glossar/cursor/), der daraus die Artikel schreibt. Deine Aufgabe an ihn: aus jedem Video **einen Artikel**, Beispielinhalt weg, Platzhalter fürs spätere Video, alles als [**Pull Request**](/glossar/pull-request/), damit du vor dem Live-Gang drüber schauen kannst.
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--015--inhalt--artikel--transkript.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Was die Site schon kann
 
 Zwischen den Sessions ist viel passiert: **Menüs** als [Collection](/glossar/collection/), **Artikel** in einer Übersicht, **Seiten** mit optionalem **Hintergrundbild** und Lesbarkeits-Overlay (Motiv suchen und optimieren: [Folge 021](/artikel/folge-021-bilder-suchen-nutzen/)). Im [CMS](/glossar/cms/) fügst du Blöcke ein, z. B. ein **Artikel-Listing** (Anzahl und Sortierung einstellbar). Später kommen wiederverwendbare **Bausteine** für Grafiken und Snippets dazu ([Folge 020](/artikel/folge-020-bausteine-fork/)). Credits für Bilder von **Unsplash** mit Attribution sind vorgesehen. Status **veröffentlicht** vs. Entwurf steuert, was live geht.

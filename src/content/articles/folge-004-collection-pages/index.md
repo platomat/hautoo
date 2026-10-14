@@ -21,6 +21,13 @@ seo:
 
 Keine [Datenbank](/glossar/datenbank/), kein [WordPress](/glossar/wordpress/)-Monster: **Pages** sind normale [Markdown](/glossar/markdown/)-Dateien unter `src/content/pages/`. [**Collections**](/glossar/collection/) sind die Typen: Pages, Articles, Menüs, Tags, Glossar, **Bausteine** (`blocks`). Warum [Issues](/glossar/issue/) dafür sinnvoll sind: [Folge 002](/artikel/folge-002-github-issues/). Bausteine im Alltag: [Folge 020](/artikel/folge-020-bausteine-fork/).
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--004--collection--pages.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Was `config.yml` macht
 
 In `public/admin/config.yml` steht in **YAML** (strukturierte Textdatei), was Redakteure im [CMS](/glossar/cms/) sehen: Titel, Beschreibung, Body, …

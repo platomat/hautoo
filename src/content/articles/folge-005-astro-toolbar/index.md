@@ -22,6 +22,13 @@ seo:
 
 Kurze Folge, viel Praxis.
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--005--astro-bar-breakpoints-css-fachchinesisch.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Die Astro-Dev-Leiste
 
 Mit [`npm run dev`](/glossar/npm/) klebt oft die **[Astro](/glossar/astro/)-Dev-Toolbar** am Rand, nur bei dir, nicht live. Installation von [Node](/glossar/nodejs/)/[npm](/glossar/npm/): [Folge 018](/artikel/folge-018-node-npm/). [**Astro**](/glossar/astro/) ist das Framework, das [Markdown](/glossar/markdown/) und [Komponenten](/glossar/komponente/) zu fertigem HTML für dein [**Frontend**](/glossar/frontend/) backt.

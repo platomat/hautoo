@@ -21,6 +21,13 @@ seo:
 
 Schöne Fotos machen eine Site lebendig. Gleichzeitig sind **schwere Dateien** der häufigste Bremsklotz bei **Page Speed** (Ladezeit und mobile Nutzung). In dieser Folge: **wo** du legale Bilder findest, **wie** du sie vor dem Upload verkleinerst und **wo** sie in hautuu landen. Hintergründe und Nachweise kennst du schon aus [Folge 003](/artikel/folge-003-erstes-design/) und [Folge 019](/artikel/folge-019-impressum-komponenten/). Bausteine und Medienordner: [Folge 020](/artikel/folge-020-bausteine-fork/).
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--021--bilder-suchen-anpassen-verwenden.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Kostenlose Bildquellen (und die Fallen)
 
 Beliebte **Stock**-Seiten mit gratis Downloads (Stand der Plattform-Regeln, immer die aktuelle **Lizenz** auf der Seite lesen):

@@ -22,6 +22,13 @@ seo:
 
 Viel passiert in [GitHub](/glossar/github/)-[Issues](/glossar/issue/) und [Milestones](/glossar/milestone/): bei hautuu sind in einem Meilenstein dutzende Tickets erledigt (rund 39 abgeschlossene Issues). Wichtiger für dich: **was die Site heute kann**. Dafür gibt es die [**Features-Seite**](/features/) und zum Vorschauen die [**Demo**](/features/demo/) (eine Unterseite von Features). Agenten-Output prüfst du wie in [Folge 022](/artikel/folge-022-ki-aenderungen-pruefen-pr/).
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--023--webseite--neue-features.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Demo: Markdown und Toolbar
 
 Die Demo ist eine normale **Seite** (`pages`). Du siehst **[Markdown](/glossar/markdown/)** (Listen, Codeblock, Tabelle) und die Toolbar-[Komponenten](/glossar/komponente/):

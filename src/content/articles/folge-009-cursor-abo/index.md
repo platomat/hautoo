@@ -20,6 +20,13 @@ seo:
 
 KI frisst Rechenzeit. In **[Cursor](/glossar/cursor/)** im „Account“ (Konto) siehst du die Verbrauchs-Balken (unter „Spending“ (Ausgaben)): „Composer“ (Composer-Modus) / „Auto“ (Automatik) frisst das Hauptkontingent, stärkere Modelle den zweiten Balken.
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--009--cursor--account-usage-grok-bot.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Die Balken verstehen
 
 - Verschiedene Pläne (z. B. Stufen um 20 $/60 $; aktuelle Preise auf cursor.com prüfen).

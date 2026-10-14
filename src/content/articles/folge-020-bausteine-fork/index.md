@@ -22,6 +22,13 @@ seo:
 
 Zwischen den Sessions ist hautuu richtig gewachsen: **20 Folgen** als Artikel, ein ausgebautes [**Glossar**](/glossar/), eine lange [**FAQ**](/faq/) mit Querverweisen und eine Navigation, die sich anfühlt wie eine kleine Site statt wie ein Ordner voller Dateien. In dieser Folge geht es um **Bausteine** (wiederverwendbare Inhalte), den Überblick und die Einladung: nutze hautuu als Basis für dein eigenes Projekt, per [**Fork**](/glossar/fork/) oder besser oft per [**Template**](/glossar/template/).
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--020--neue-bausteine-neue-features-hautoo-forken.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 Du brauchst ein GitHub-Konto. Zwei Einstiege:
 
 - [hautoo als Vorlage (Template)](https://github.com/platomat/hautoo/generate) (auch **privates** Repo möglich)

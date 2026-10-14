@@ -21,6 +21,13 @@ seo:
 
 [Git](/glossar/git/) klingt erst nach Kauderwelsch. Wird aber easy, wenn du eine Idee akzeptierst: [**GitHub**](/glossar/github/) ist der Boss, dein Rechner ist die Werkstatt.
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--006--github--repository-pushes-pulls.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Nochmal klonen
 
 Der Ordnername auf der Festplatte ist Git egal, zählt nur `.git` drin.

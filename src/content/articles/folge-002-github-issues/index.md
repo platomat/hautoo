@@ -23,6 +23,13 @@ seo:
 
 [GitHub](/glossar/github/) ist nicht nur Datei-Ablage, es ist dein **Projektbüro**. Im Repo legst du ein neues [**Issue**](/glossar/issue/) an (Bug, Idee, Feature), wählst optional „Milestone“ ([Meilenstein](/glossar/milestone/)) und „Labels“ (Labels, z. B. Documentation) und speicherst, dann ist es dein Ticket.
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--002--github--issues.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Forks und Pull Requests (kurz)
 
 Du kannst fremde Projekte [**forken**](/glossar/fork/), eine Kopie unter deinem Account. Änderst du was Nützliches, schickst du einen [**Pull Request**](/glossar/pull-request/) (PR) an den Originalautor. Der entscheidet, ob er’s übernimmt. hautuu selbst als Vorlage [fork](/glossar/fork/)en: [Folge 020](/artikel/folge-020-bausteine-fork/). Allein im eigenen Repo? Dann sind Issues trotzdem Gold wert.

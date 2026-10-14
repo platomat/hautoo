@@ -22,6 +22,13 @@ seo:
 
 [**CMS**](/glossar/cms/) = Content-Management, bei hautuu **[Sveltia](/glossar/sveltia/)**: Redaktion im Browser, Inhalt landet als Dateien in [Git](/glossar/git/). Keine [WordPress](/glossar/wordpress/)-Datenbank.
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--013--sveltia--variante-pat.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Lokal: `/admin` ohne Login
 
 - `npm run dev`, dann im Browser `http://localhost:4321/admin/` (Port steht im [Terminal](/glossar/terminal/), Standard bei Astro oft **4321**).

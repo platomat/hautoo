@@ -22,6 +22,13 @@ seo:
 
 Jetzt wird’s hübsch. **Design** heißt hier: Dateien und Regeln, die der Agent pflegt, und du siehst das mit [`npm run dev`](/glossar/npm/) quasi live mit.
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--003--webseite--erstes-design.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Ubuntu einbinden (ohne Font-Drama)
 
 1. Auf [fonts.google.com](https://fonts.google.com) **Ubuntu** wählen, hier **300** (Light) für Text, **500** (Medium) für Überschriften (600 gab’s in der Familie nicht).

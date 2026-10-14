@@ -22,6 +22,13 @@ seo:
 
 [**Cursor**](/glossar/cursor/) ist mehr als Chat, eine [**IDE**](/glossar/ide/) mit **Agenten**, die Dateien lesen und schreiben.
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--008--cursor--plan-agent-ask.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Chat-Oberfläche vs. IDE
 
 Manchmal startet [Cursor](/glossar/cursor/) chat-lastig. Für hautuu willst du den **[IDE](/glossar/ide/)**-Modus: Dateien, [Terminal](/glossar/terminal/), Agentenleiste. Button „IDE“ (IDE-Modus) schaltet um.

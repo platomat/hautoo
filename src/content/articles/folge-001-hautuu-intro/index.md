@@ -32,9 +32,14 @@ seo:
 
 Willkommen in Folge eins. Hier musst du noch nicht alles verstehen, du brauchst nur ein Bild im Kopf: **Wo liegt die Wahrheit**, und **wo bastelst du dran rum**?
 
-{{member-video src="videos/folge-001-intro.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--001--intro.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
 
 {{block id="memberaccessmedia-info-after"}}
+
+
+## Wo liegt die Wahrheit?
 
 Die Wahrheit liegt bei [**GitHub**](/glossar/github/) (Server in der Cloud). Bei dir auf der Platte ist eine Kopie, an der du mit [**Cursor**](/glossar/cursor/) arbeitest. Später baut [**Astro**](/glossar/astro/) daraus statische HTML-Seiten ([**Frontend**](/glossar/frontend/)), und [**Cloudflare**](/glossar/cloudflare-pages/) stellt sie ins Netz. Mehr Details kommen Stück für Stück, heute die grobe **Richtung**.
 

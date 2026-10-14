@@ -20,6 +20,13 @@ seo:
 
 Ein Chat für alles wird schnell Matsch.
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--010--cursor--chats.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Inspector und Fixer
 
 Gleicher Trick wie mit zwei Spezial-Agenten in einer [VM](/glossar/vm/), nur in der [IDE](/glossar/ide/) [**Cursor**](/glossar/cursor/):

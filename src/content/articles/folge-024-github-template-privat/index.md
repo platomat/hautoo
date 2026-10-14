@@ -21,6 +21,13 @@ seo:
 
 Magst du Struktur und Features von hautuu, willst aber **deine** Texte und **keinen** öffentlichen Quellcode auf [GitHub](/glossar/github/)? Dann reicht ein [**Fork**](/glossar/fork/) oft nicht: Der bleibt bei öffentlichem Original **öffentlich**. Besser: [**Template**](/glossar/template/) mit **Private** (privat). Was die Site kann, hast du in [Folge 023](/artikel/folge-023-neue-features-demo-cms/) gesehen; hier geht es um **dein** Repo und das Aufräumen.
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--024--github--template.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Warum kein Fork?
 
 [platomat/hautoo](https://github.com/platomat/hautoo) ist **öffentlich**, damit du lernen und die Vorlage nutzen kannst. Darum liegen dort keine privaten E-Mails oder Secrets in den Settings. Ein **Fork** deines Accounts bleibt bei GitHub **public**, wenn das Original public ist. Du kannst ihn später nicht einfach auf privat drehen. Für „nur ich sehe den Code“ nimm **Use this template** (Diese Vorlage verwenden).

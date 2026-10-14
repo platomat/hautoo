@@ -23,6 +23,13 @@ seo:
 
 Der Agent hat über Nacht gearbeitet (Ablauf in [Folge 015](/artikel/folge-015-transkript-artikel/)): Mail von [**Cloudflare**](/glossar/cloudflare-pages/), dass ein **Zweig** gebaut wurde (z. B. ein [Branch](/glossar/branch/) wie `cursor/screencast-articles-e016`, Name variiert). Nicht auf **[main](/glossar/main/)** gepusht, sondern eigener [**Branch**](/glossar/branch/) mit vielen neuen Artikeln, nachgeschärftem Ton und automatischen „Checks“ (Prüfungen).
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--016--inhalt--artikel--transkript--resultat.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Pull Request lesen
 
 Auf [GitHub](/glossar/github/) deinen [**Pull Request**](/glossar/pull-request/) öffnen (Branch des Agents, z. B. `cursor/screencast-articles-…`):

@@ -22,6 +22,13 @@ seo:
 
 Das [Repo](/glossar/repository/) enthält Quellcode und `package.json`, aber nicht den ganzen **`node_modules`**-Berg. In deiner lokalen [IDE](/glossar/ide/) ([Entwicklungsumgebung](/glossar/ide/)) brauchst du [**Node.js**](/glossar/nodejs/) (für hautuu empfohlen: **Version 22**) und [npm](/glossar/npm/), damit `npm run dev` und `npm run build` laufen.
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--018--werkzeuge--nvm-npm-node.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 {{repodoc path="docs/astro/README.md" title="Astro" description="Framework, Build-Befehle und Ausgabeordner."}}
 
 {{repodoc path="docs/entwicklung/README.md" title="Lokale Entwicklung" description="Node, npm und Dev-Server im Projekt."}}

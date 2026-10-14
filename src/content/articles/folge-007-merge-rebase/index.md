@@ -20,6 +20,13 @@ seo:
 
 Kurzer Nachtrag zum Experiment mit zwei Projektordnern ([Folge 006](/artikel/folge-006-git-push-pull/)).
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--007--github--merge-rebase.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Was dich im Tool verwirrt
 
 Nach einem [**Merge**](/glossar/merge/) kann der Graph so aussehen, als hättest du nur noch ein paar [Commits](/glossar/commit/). Die vielen Schritte davor stecken **im Merge-Commit** drin. Auf [**GitHub**](/glossar/github/) im Repo Tab „Commits“ (Commit-Verlauf) (oder Startseite des Repos mit Commit-Liste) siehst du die Einzelteile weiter, oft ein langer Stapel.

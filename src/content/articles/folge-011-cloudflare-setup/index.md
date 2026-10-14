@@ -22,6 +22,13 @@ seo:
 
 Bisher: lokal und [GitHub](/glossar/github/). Jetzt wird’s öffentlich: [**Cloudflare Pages**](/glossar/cloudflare-pages/) baut und hostet die fertige Site.
 
+{{block id="memberaccessmedia-info-before"}}
+
+{{member-video src="videos/hautoo--folge--011--cloudflare--setup.mp4" poster="/assets/hautoo-member-video-poster.webp"}}
+
+{{block id="memberaccessmedia-info-after"}}
+
+
 ## Begriffe ohne Panik
 
 - „Workers & Pages“ (Workers und Pages) unter „Compute“ (Bereich Compute). „Pages“ (statische Websites) = statische Sites aus [Git](/glossar/git/) (dein [**Frontend**](/glossar/frontend/)), passt zu [**Astro**](/glossar/astro/). [**Workers**](/glossar/cloudflare-worker/) = Extra-Logik am Edge (später z. B. [CMS](/glossar/cms/)-Login; [OAuth](/glossar/oauth/)-Brücke: [Folge 014](/artikel/folge-014-sveltia-worker/)).
