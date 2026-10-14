@@ -66,8 +66,9 @@ export default {
       }
       return withCors(json({ error: 'not_found' }, 404), cors);
     } catch (err) {
-      console.error(err);
-      return withCors(json({ error: 'server_error' }, 500), cors);
+      const message = err instanceof Error ? err.message : String(err);
+      console.error('unhandled', url.pathname, message, err);
+      return withCors(json({ error: 'server_error', stage: url.pathname }, 500), cors);
     }
   },
 };
@@ -135,13 +136,19 @@ async function handleSign(request: Request, env: Env): Promise<Response> {
     return json({ error: 'invalid_key' }, 400);
   }
 
-  if (!contentAllowsKey(row.content, objectKey)) {
+  if (!contentAllowsKey(row.content ?? '', objectKey)) {
     return json({ error: 'forbidden' }, 403);
   }
 
-  const head = await env.MEDIA.head(objectKey);
-  if (!head) {
-    return json({ error: 'not_found' }, 404);
+  // Existence check: missing → 404; R2 binding/API failures must not become opaque server_error.
+  try {
+    const head = await env.MEDIA.head(objectKey);
+    if (!head) {
+      return json({ error: 'not_found' }, 404);
+    }
+  } catch (err) {
+    console.error('MEDIA.head failed', objectKey, err);
+    return json({ error: 'storage_unavailable' }, 503);
   }
 
   const playTtl = Number(env.PLAY_TTL_SECONDS) || PLAY_DEFAULT_TTL;
@@ -231,7 +238,7 @@ async function getActiveAccess(db: D1Database, codeHash: string): Promise<Access
 export function contentAllowsKey(contentSpec: string, objectKey: string): boolean {
   const key = objectKey.trim();
   if (!key) return false;
-  const patterns = contentSpec
+  const patterns = String(contentSpec ?? '')
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean);
