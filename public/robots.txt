@@ -4,3 +4,7 @@ Allow: /
 Disallow: /admin/
 
 Sitemap: https://hautoo.storyofai.net/sitemap-index.xml
+
+# LLM / agent discovery (generated at build from published, indexable collections)
+# https://hautoo.storyofai.net/llms.txt
+# https://hautoo.storyofai.net/agents.txt

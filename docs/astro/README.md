@@ -44,6 +44,7 @@ Vorgaben zu dunklem Theme, Farbpalette (Aktionsgrün), Schrift (Design → Schri
 - Astro 7 (statisch), Site-URL: `https://hautoo.storyofai.net`
 - Integrationen: `@astrojs/mdx`, `@astrojs/sitemap` (Filter: kein `/admin/`, kein `noindex` laut SEO-Feld; Link im `<head>` auf `sitemap-index.xml`)
 - **robots.txt:** `public/robots.txt` (Sitemap-Hinweis, `/admin/` disallowed). Ohne Datei liefert Cloudflare fehlende Pfade oft als Startseiten-HTML aus.
+- **`llms.txt` / `agents.txt`:** Astro-Endpoints (`src/pages/llms.txt.ts`, `agents.txt.ts`) aus veröffentlichten, indexierbaren Collections ([#99](https://github.com/platomat/hautoo/issues/99)); Logik in `src/lib/agent-indexes.ts`.
 - **Suche:** MiniSearch (wie storyofai.net); Index `public/search/de.json` wird bei `predev` / `prebuild` / `npm run build:search` erzeugt (Build-Artefakt, nicht im Git); UI im Header (`SiteSearch.astro`, Ctrl/⌘K)
 - **Build-Minify:** Vite/Astro minifiziert CSS und JS im Produktions-Build (`astro build`); kein Extra-Plugin nötig.
 - **CSS inline:** `build.inlineStylesheets: 'always'` (kein extra render-blocking Stylesheet-Request).

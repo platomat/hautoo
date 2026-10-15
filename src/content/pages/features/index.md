@@ -139,6 +139,7 @@ Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Co
 - **JSON-LD Person** auf Autor-Profilen inkl. `sameAs` aus Social-/Web-URLs ([#86](https://github.com/platomat/hautoo/issues/86)).
 - **Lesezeit** in Artikel-Meta und auf Listing-Karten.
 - **Sitemap** ohne Impressum, Datenschutz und `/admin`; Legal-Seiten mit **noindex**.
+- **`llms.txt`** und **`agents.txt`**: automatisch und deterministisch aus veröffentlichten, indexierbaren Collection-Einträgen ([#99](https://github.com/platomat/hautoo/issues/99)); Hinweise auch in `robots.txt`.
 
 ## Design und Nutzung
 
