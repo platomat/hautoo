@@ -3,7 +3,7 @@ title: FAQ
 description: Häufige Fragen zu hautuu, Git, Cursor, Cloudflare und dem CMS.
 status: published
 publishDate: 2026-10-08
-modifiedDate: 2026-10-12
+modifiedDate: 2026-10-16
 toc:
   show: true
   title: Inhalt
@@ -300,6 +300,14 @@ Baut nach Git-[Push](/glossar/push/) (`npm run build`, Output `dist`) und hostet
 ### Brauche ich FTP für hautuu?
 
 Nein. Du brauchst keinen [FTP](/glossar/ftp/)-Zugang zum Hochladen von Dateien. Du [committest](/glossar/commit/) und pushst zu GitHub; [Cloudflare Pages](/glossar/cloudflare-pages/) holt den Stand und baut. Details im Glossar-Eintrag „[FTP](/glossar/ftp/)“, Kontext [Folge 012](/artikel/folge-012-cloudflare-branches/).
+
+### Funktioniert der Build auch auf normalem Hosting ohne Cloudflare Pages?
+
+Ja, für die **Website selbst** weitgehend. [Astro](/glossar/astro/) erzeugt rein statisches HTML, CSS und JS im Ordner `dist/` ([**Build**](/glossar/build/)). Den kannst du lokal oder bei Cloudflare bauen und auf Apache, Nginx, Netlify, S3 mit CDN oder ähnliches hochladen.
+
+Einschränkungen: Die Dateien `_redirects` und `_headers` sind Cloudflare-Format; woanders setzt du Weiterleitungen und Cache-Header selbst (z. B. `.htaccess` oder Nginx). Schöne URLs wie `/artikel/folge-001/` brauchen eine `index.html`-Auflösung im Ordner. Die `404.html` greift nur, wenn der Hoster sie als Fehlerseite kennt. **Member-Video** (R2-[Worker](/glossar/cloudflare-worker/)) und der CMS-[OAuth](/glossar/oauth/)-Worker stecken **nicht** in `dist/`; ohne sie fehlen Freischaltung und ggf. CMS-Login online. In `astro.config` steht die Site-URL: absolute Links in Sitemap und `llms.txt` zeigen auf diese Domain; bei anderer Domain anpassen und neu bauen.
+
+Kurz: Seiten und Artikel als Statik: ja. Cloudflare-only-Bausteine: separat behalten oder ersetzen. [Folge 011](/artikel/folge-011-cloudflare-setup/).
 
 ### Was ist eine Preview-URL?
 
