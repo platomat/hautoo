@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Fail when {{repodoc}} or {{block}} splits a sentence, a list, or lacks paragraph spacing."""
+"""Fail when embeds lack paragraph spacing, sit mid-list, or split a following sentence.
+
+Short lines without terminal punctuation (slogans, TODO, …) before an embed are fine
+as long as a blank line separates them from the embed.
+"""
 
 from __future__ import annotations
 
@@ -65,14 +69,7 @@ def scan_body(rel: Path, body: str) -> list[str]:
         if next_idx < len(lines) and next_idx == i + 1:
             issues.append(f"{rel}: line {i + 1}: missing blank line after embed")
 
-        if prev_idx >= 0:
-            prev = lines[prev_idx].strip()
-            if prev and not HEADING.match(prev) and not EMBED_LINE.match(prev):
-                if not re.search(r"[.!?:]$", prev):
-                    issues.append(
-                        f"{rel}: line {i + 1}: embed after unfinished line "
-                        f"`{prev[:60]}`"
-                    )
+        # No check that the previous paragraph ends with .!?: — slogans / TODO / claims OK.
 
         if next_idx < len(lines):
             nxt = lines[next_idx].strip()
