@@ -66,6 +66,16 @@ Nein, du kannst auch dieses Projekt als Vorlage nehmen und weiter daran basteln 
 
 {{spacer}}
 
+## Allgemeines zu KI
+
+Wer zum Thema KI mehr wissen will, kann sich bei [Story of AI](https://storyofai.net/de/) einlesen, die Geschichte in der Timeline betrachten oder mit den GeekOfWeek rumspielen.
+
+{{spacer}}
+
+{{separator height="1" width="100" mark="logo"}}
+
+{{spacer}}
+
 ## Neuste Artikel
 
 {{article-listing count="3" sort="newest" layout="grid" columns="3" gap="1.25" show="displayTitle,displayIntro,displayCategories,displayTags,displayDate,displayReadingTime" authors="wasilij"}}
