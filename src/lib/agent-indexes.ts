@@ -217,7 +217,7 @@ export function buildLlmsTxt(options: AgentIndexBuildOptions): string {
 		"",
 		`> ${summary}`,
 		"",
-		"Automatisch aus veröffentlichten, indexierbaren Collection-Einträgen erzeugt. Unveröffentlichte und noindex-URLs fehlen. Details: jeweilige Seiten-URL.",
+		"Übersicht der Seiten, Artikel, Glossar-Einträge, Kategorien, Tags und Autoren dieser Website.",
 	];
 
 	if (origin) {
@@ -253,7 +253,7 @@ export function buildAgentsTxt(options: AgentIndexBuildOptions): string {
 	const lines: string[] = [
 		"# agents.txt",
 		`# Site: ${siteName}`,
-		"# Content inventory for AI agents (published + indexable collection URLs).",
+		"# URL inventory: pages, articles, glossary, categories, tags, authors.",
 		"# Curated markdown overview: /llms.txt",
 	];
 	if (origin) {
