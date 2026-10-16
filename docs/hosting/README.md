@@ -91,6 +91,10 @@ Astro trägt Redirects zusätzlich in `astro.config` ein (lokal/`preview`). Für
 - Nach dem Speichern im CMS: **Build + Deploy** muss irgendwo laufen (GitHub Action, Hoster-Hook, lokal `npm run build` und Upload). Bei Cloudflare Pages triggert der Push den Build; bei reinem `dist/`-Upload musst du den Ablauf selbst festlegen.
 - OAuth über den Cloudflare-Worker ist optional und an Cloudflare gebunden. Für portables Hosting reicht PAT ([Sveltia-Zugang](../sveltia/zugang-cloudflare.md)).
 
+## Dist-Bridge (Pull-Deploy)
+
+Wenn Cloudflare (oder CI) baut und der **Fremdhost** das Artefakt selbst holen soll: öffentliches Hilfsrepo [hautoo-dist-brigde](https://github.com/platomat/hautoo-dist-brigde) (Dist-Brücke). Ablauf: `dist/` als ZIP ablegen, auf dem Server `php bin/dist-bridge.php` (feste ZIP-URL, Token nur per ENV/lokaler Config, kein Secret im Git).
+
 ## Checkliste Fremdhosting
 
 1. Bauen: `SITE=https://www.beispiel.de npm run build` (oder `SITE` in CI/.env)
