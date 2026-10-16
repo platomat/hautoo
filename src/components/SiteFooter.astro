@@ -33,12 +33,12 @@ const claimKind = claimRaw ? classifyAttribution(claimRaw) : null;
 const claimHtml = claimKind === "html" ? sanitizeSoftHtml(claimRaw) : "";
 const showClaim = Boolean(claimRaw);
 const claimSeparator = footerCopyright.separator;
-const showFooterCenter = footerCopyright.showCenter !== false;
+const showCenterLogo = footerCopyright.showCenterLogo !== false;
 
 const general = getSiteConfig().general;
 const githubRepo = general?.githubRepo?.trim() ?? "";
-const showGithub = showFooterCenter && Boolean(githubRepo);
-const showHomeLogo = showFooterCenter && !showGithub;
+const showGithub = showCenterLogo && Boolean(githubRepo);
+const showHomeLogo = showCenterLogo && !showGithub;
 const repoUrl = showGithub
 	? `https://github.com/${githubRepo.replace(/^\/+|\/+$/g, "")}/`
 	: "";

@@ -1073,17 +1073,17 @@ collections:
                 default: "•"
                 required: true
                 hint: "Zeichen zwischen Website-Titel und Claim."
-              - name: showCenter
-                label: Show center mark
+              - name: showCenterLogo
+                label: Show center logo
                 widget: boolean
                 required: false
                 default: true
-                hint: "Kleines Icon in der Mitte der Zeile. An = GitHub-Icon bei gesetztem Repo, sonst Site-Logo zur Startseite. Aus = nichts in der Mitte."
+                hint: "Logo/Icon in der Mitte der Copyright-Zeile. An = GitHub-Icon bei gesetztem Repo, sonst Site-Logo zur Startseite. Aus = nichts in der Mitte."
           - name: githubRepo
             label: GitHub repository
             widget: string
             required: false
-            hint: "Optional owner/name für das Footer-Icon (z. B. platomat/hautoo). Leer = Site-Logo verlinkt auf die Startseite (typisch für Forks). Wirkt nur, wenn Footer copyright → Show center mark an ist."
+            hint: "Optional owner/name für das Footer-Icon (z. B. platomat/hautoo). Leer = Site-Logo verlinkt auf die Startseite (typisch für Forks). Wirkt nur, wenn Footer copyright → Show center logo an ist."
             default: ""
       - name: design
         label: Design

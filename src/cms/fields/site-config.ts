@@ -79,10 +79,10 @@ export const footerCopyrightConfigSchema = z.object({
 	/** Character between site name and claim. */
 	separator: footerCopyrightSeparatorSchema.default("•"),
 	/**
-	 * Small mark in the copyright row center.
-	 * When true: GitHub icon if `githubRepo` is set, otherwise site logo → `/`.
+	 * Center mark in the copyright row (GitHub icon or site logo).
+	 * When true: GitHub if `githubRepo` is set, otherwise site logo → `/`.
 	 */
-	showCenter: z.boolean().default(true),
+	showCenterLogo: z.boolean().default(true),
 });
 
 export type FooterCopyrightConfig = z.infer<typeof footerCopyrightConfigSchema>;

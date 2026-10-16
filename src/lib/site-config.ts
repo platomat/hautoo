@@ -46,11 +46,16 @@ export function getSiteConfig(): SiteConfig {
 	const generalObj = generalRaw as Record<string, unknown>;
 	const footerCopyrightRaw =
 		(generalObj.footerCopyright as Record<string, unknown> | undefined) ?? {};
-	// Legacy top-level showFooterCenter → footerCopyright.showCenter.
+	// Legacy: showFooterCenter / showCenter → showCenterLogo.
+	const { showCenter: legacyShowCenter, ...footerCopyrightRest } =
+		footerCopyrightRaw;
 	const footerCopyright = {
-		...footerCopyrightRaw,
-		showCenter:
-			footerCopyrightRaw.showCenter ?? generalObj.showFooterCenter ?? true,
+		...footerCopyrightRest,
+		showCenterLogo:
+			footerCopyrightRaw.showCenterLogo ??
+			legacyShowCenter ??
+			generalObj.showFooterCenter ??
+			true,
 	};
 	// contentWidth/spacing under Design; footer under Content (legacy: design.footer).
 	const { footer: legacyDesignFooter, ...designWithoutFooter } = designObj;
