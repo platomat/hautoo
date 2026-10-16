@@ -2,6 +2,13 @@ import { z } from "astro/zod";
 import { contentWidthSchema } from "./content-width";
 import { cmsImagePathSchema } from "./page-background";
 import { siteTypographyConfigSchema } from "./site-typography";
+import {
+	DEFAULT_SEPARATOR_MARK_ALIGN,
+	DEFAULT_SEPARATOR_MARK_SIZE,
+	MAX_SEPARATOR_MARK_SIZE,
+	MIN_SEPARATOR_MARK_SIZE,
+	SEPARATOR_MARK_ALIGN_KEYS,
+} from "../../lib/separator";
 
 const headerHeight = z.coerce.number().int().min(40).max(600);
 
@@ -180,6 +187,27 @@ export const siteFooterConfigSchema = z.object({
 
 export type SiteFooterConfig = z.infer<typeof siteFooterConfigSchema>;
 
+/**
+ * Bottom rule under the hero: plain line or line with logo/favicon (like Separator).
+ * Legacy YAML `true` / `false` maps to `line` / `none`.
+ */
+export const heroBorderBottomSchema = z.enum([
+	"none",
+	"line",
+	"logo",
+	"favicon",
+]);
+
+export type HeroBorderBottom = z.infer<typeof heroBorderBottomSchema>;
+
+function coerceHeroBorderBottom(value: unknown): unknown {
+	if (value === true) return "line";
+	if (value === false) return "none";
+	return value;
+}
+
+const heroBorderMarkAlignSchema = z.enum(SEPARATOR_MARK_ALIGN_KEYS);
+
 /** Hero block defaults for one collection (CMS Design → Hero → …). */
 export const siteHeroConfigSchema = z.object({
 	/** Alignment for breadcrumbs, title, and description. */
@@ -188,8 +216,22 @@ export const siteHeroConfigSchema = z.object({
 	showBreadcrumbs: z.boolean().default(true),
 	/** Character between breadcrumb crumbs. */
 	breadcrumbSeparator: breadcrumbSeparatorSchema.default("/"),
-	/** 1px border under the hero block. */
-	borderBottom: z.boolean().default(false),
+	/** Bottom rule: none / line / logo / favicon (legacy bool → line/none). */
+	borderBottom: z.preprocess(
+		coerceHeroBorderBottom,
+		heroBorderBottomSchema.default("none"),
+	),
+	/** Mark position when borderBottom is logo or favicon. */
+	borderMarkAlign: heroBorderMarkAlignSchema.default(
+		DEFAULT_SEPARATOR_MARK_ALIGN,
+	),
+	/** Mark size in px when borderBottom is logo or favicon. */
+	borderMarkSize: z.coerce
+		.number()
+		.int()
+		.min(MIN_SEPARATOR_MARK_SIZE)
+		.max(MAX_SEPARATOR_MARK_SIZE)
+		.default(DEFAULT_SEPARATOR_MARK_SIZE),
 });
 
 export type SiteHeroConfig = z.infer<typeof siteHeroConfigSchema>;
@@ -264,11 +306,34 @@ const optionalOverrideBool = z.preprocess(
  * Per-entry hero overrides (CMS object `hero`).
  * Omit object or fields = Design → Hero for that collection.
  */
+/** Optional entry override for hero bottom rule (null = use Design → Hero). */
+const optionalHeroBorderBottom = z.preprocess((value) => {
+	if (value === null || value === "") return undefined;
+	return coerceHeroBorderBottom(value);
+}, heroBorderBottomSchema.optional());
+
+const optionalHeroBorderMarkAlign = z.preprocess((value) => {
+	if (value === null || value === "") return undefined;
+	return value;
+}, heroBorderMarkAlignSchema.optional());
+
+const optionalHeroBorderMarkSize = z.preprocess((value) => {
+	if (value === null || value === "") return undefined;
+	return value;
+}, z.coerce
+	.number()
+	.int()
+	.min(MIN_SEPARATOR_MARK_SIZE)
+	.max(MAX_SEPARATOR_MARK_SIZE)
+	.optional());
+
 export const entryHeroSchema = z
 	.object({
 		textAlign: heroTextAlignSchema.optional(),
 		showBreadcrumbs: optionalOverrideBool,
-		borderBottom: optionalOverrideBool,
+		borderBottom: optionalHeroBorderBottom,
+		borderMarkAlign: optionalHeroBorderMarkAlign,
+		borderMarkSize: optionalHeroBorderMarkSize,
 	})
 	.optional();
 

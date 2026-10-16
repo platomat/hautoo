@@ -149,9 +149,30 @@ collections:
             default: null
             options:
               - { label: Wie global, value: null }
-              - { label: An, value: true }
-              - { label: Aus, value: false }
-            hint: "Wie global = Design → Hero. An = 1px Linie unter dem Hero."
+              - { label: Aus, value: none }
+              - { label: Linie, value: line }
+              - { label: Linie mit Logo, value: logo }
+              - { label: Linie mit Favicon, value: favicon }
+            hint: "Wie global = Design → Hero. Logo/Favicon wie beim Trennlinien-Embed."
+          - name: borderMarkAlign
+            label: Markierung Position
+            widget: select
+            required: false
+            default: null
+            options:
+              - { label: Wie global, value: null }
+              - { label: Links, value: left }
+              - { label: Mitte, value: center }
+              - { label: Rechts, value: right }
+            hint: "Nur bei Logo oder Favicon. Wie global = Design → Hero."
+          - name: borderMarkSize
+            label: Markierung Größe (px)
+            widget: number
+            value_type: int
+            required: false
+            min: 8
+            max: 120
+            hint: "Nur bei Logo oder Favicon. Leer = Design → Hero (Standard 24)."
       - &field_entry_toc
         name: toc
         label: TOC überschreiben
@@ -1381,9 +1402,34 @@ collections:
                     hint: "Zeichen zwischen den Brotkrumen-Elementen."
                   - name: borderBottom
                     label: Trennlinie unten
-                    widget: boolean
-                    default: false
-                    hint: "1px Linie unter dem Hero-Block."
+                    widget: select
+                    options:
+                      - { label: Aus, value: none }
+                      - { label: Linie, value: line }
+                      - { label: Linie mit Logo, value: logo }
+                      - { label: Linie mit Favicon, value: favicon }
+                    default: none
+                    required: true
+                    hint: "Unter dem Hero: keine Linie, einfache Linie, oder Linie mit Logo/Favicon (wie Trennlinien-Embed)."
+                  - name: borderMarkAlign
+                    label: Markierung Position
+                    widget: select
+                    options:
+                      - { label: Links, value: left }
+                      - { label: Mitte, value: center }
+                      - { label: Rechts, value: right }
+                    default: center
+                    required: true
+                    hint: "Nur bei Logo oder Favicon. Standard: Mitte."
+                  - name: borderMarkSize
+                    label: Markierung Größe (px)
+                    widget: number
+                    value_type: int
+                    default: 24
+                    min: 8
+                    max: 120
+                    required: true
+                    hint: "Breite von Logo/Favicon in Pixeln. Standard 24."
               - name: articles
                 label: Artikel
                 widget: object
@@ -1416,9 +1462,34 @@ collections:
                     hint: "Zeichen zwischen den Brotkrumen-Elementen."
                   - name: borderBottom
                     label: Trennlinie unten
-                    widget: boolean
-                    default: false
-                    hint: "1px Linie unter dem Hero-Block."
+                    widget: select
+                    options:
+                      - { label: Aus, value: none }
+                      - { label: Linie, value: line }
+                      - { label: Linie mit Logo, value: logo }
+                      - { label: Linie mit Favicon, value: favicon }
+                    default: none
+                    required: true
+                    hint: "Unter dem Hero: keine Linie, einfache Linie, oder Linie mit Logo/Favicon (wie Trennlinien-Embed)."
+                  - name: borderMarkAlign
+                    label: Markierung Position
+                    widget: select
+                    options:
+                      - { label: Links, value: left }
+                      - { label: Mitte, value: center }
+                      - { label: Rechts, value: right }
+                    default: center
+                    required: true
+                    hint: "Nur bei Logo oder Favicon. Standard: Mitte."
+                  - name: borderMarkSize
+                    label: Markierung Größe (px)
+                    widget: number
+                    value_type: int
+                    default: 24
+                    min: 8
+                    max: 120
+                    required: true
+                    hint: "Breite von Logo/Favicon in Pixeln. Standard 24."
               - name: categories
                 label: Kategorien
                 widget: object
@@ -1451,9 +1522,34 @@ collections:
                     hint: "Zeichen zwischen den Brotkrumen-Elementen."
                   - name: borderBottom
                     label: Trennlinie unten
-                    widget: boolean
-                    default: false
-                    hint: "1px Linie unter dem Hero-Block."
+                    widget: select
+                    options:
+                      - { label: Aus, value: none }
+                      - { label: Linie, value: line }
+                      - { label: Linie mit Logo, value: logo }
+                      - { label: Linie mit Favicon, value: favicon }
+                    default: none
+                    required: true
+                    hint: "Unter dem Hero: keine Linie, einfache Linie, oder Linie mit Logo/Favicon (wie Trennlinien-Embed)."
+                  - name: borderMarkAlign
+                    label: Markierung Position
+                    widget: select
+                    options:
+                      - { label: Links, value: left }
+                      - { label: Mitte, value: center }
+                      - { label: Rechts, value: right }
+                    default: center
+                    required: true
+                    hint: "Nur bei Logo oder Favicon. Standard: Mitte."
+                  - name: borderMarkSize
+                    label: Markierung Größe (px)
+                    widget: number
+                    value_type: int
+                    default: 24
+                    min: 8
+                    max: 120
+                    required: true
+                    hint: "Breite von Logo/Favicon in Pixeln. Standard 24."
               - name: tags
                 label: Tags
                 widget: object
@@ -1486,9 +1582,34 @@ collections:
                     hint: "Zeichen zwischen den Brotkrumen-Elementen."
                   - name: borderBottom
                     label: Trennlinie unten
-                    widget: boolean
-                    default: false
-                    hint: "1px Linie unter dem Hero-Block."
+                    widget: select
+                    options:
+                      - { label: Aus, value: none }
+                      - { label: Linie, value: line }
+                      - { label: Linie mit Logo, value: logo }
+                      - { label: Linie mit Favicon, value: favicon }
+                    default: none
+                    required: true
+                    hint: "Unter dem Hero: keine Linie, einfache Linie, oder Linie mit Logo/Favicon (wie Trennlinien-Embed)."
+                  - name: borderMarkAlign
+                    label: Markierung Position
+                    widget: select
+                    options:
+                      - { label: Links, value: left }
+                      - { label: Mitte, value: center }
+                      - { label: Rechts, value: right }
+                    default: center
+                    required: true
+                    hint: "Nur bei Logo oder Favicon. Standard: Mitte."
+                  - name: borderMarkSize
+                    label: Markierung Größe (px)
+                    widget: number
+                    value_type: int
+                    default: 24
+                    min: 8
+                    max: 120
+                    required: true
+                    hint: "Breite von Logo/Favicon in Pixeln. Standard 24."
               - name: authors
                 label: Autoren
                 widget: object
@@ -1521,9 +1642,34 @@ collections:
                     hint: "Zeichen zwischen den Brotkrumen-Elementen."
                   - name: borderBottom
                     label: Trennlinie unten
-                    widget: boolean
-                    default: false
-                    hint: "1px Linie unter dem Hero-Block."
+                    widget: select
+                    options:
+                      - { label: Aus, value: none }
+                      - { label: Linie, value: line }
+                      - { label: Linie mit Logo, value: logo }
+                      - { label: Linie mit Favicon, value: favicon }
+                    default: none
+                    required: true
+                    hint: "Unter dem Hero: keine Linie, einfache Linie, oder Linie mit Logo/Favicon (wie Trennlinien-Embed)."
+                  - name: borderMarkAlign
+                    label: Markierung Position
+                    widget: select
+                    options:
+                      - { label: Links, value: left }
+                      - { label: Mitte, value: center }
+                      - { label: Rechts, value: right }
+                    default: center
+                    required: true
+                    hint: "Nur bei Logo oder Favicon. Standard: Mitte."
+                  - name: borderMarkSize
+                    label: Markierung Größe (px)
+                    widget: number
+                    value_type: int
+                    default: 24
+                    min: 8
+                    max: 120
+                    required: true
+                    hint: "Breite von Logo/Favicon in Pixeln. Standard 24."
               - name: glossar
                 label: Glossar
                 widget: object
@@ -1556,9 +1702,34 @@ collections:
                     hint: "Zeichen zwischen den Brotkrumen-Elementen."
                   - name: borderBottom
                     label: Trennlinie unten
-                    widget: boolean
-                    default: false
-                    hint: "1px Linie unter dem Hero-Block."
+                    widget: select
+                    options:
+                      - { label: Aus, value: none }
+                      - { label: Linie, value: line }
+                      - { label: Linie mit Logo, value: logo }
+                      - { label: Linie mit Favicon, value: favicon }
+                    default: none
+                    required: true
+                    hint: "Unter dem Hero: keine Linie, einfache Linie, oder Linie mit Logo/Favicon (wie Trennlinien-Embed)."
+                  - name: borderMarkAlign
+                    label: Markierung Position
+                    widget: select
+                    options:
+                      - { label: Links, value: left }
+                      - { label: Mitte, value: center }
+                      - { label: Rechts, value: right }
+                    default: center
+                    required: true
+                    hint: "Nur bei Logo oder Favicon. Standard: Mitte."
+                  - name: borderMarkSize
+                    label: Markierung Größe (px)
+                    widget: number
+                    value_type: int
+                    default: 24
+                    min: 8
+                    max: 120
+                    required: true
+                    hint: "Breite von Logo/Favicon in Pixeln. Standard 24."
 
           - name: contentWidth
             label: Inhaltsbreite

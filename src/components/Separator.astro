@@ -34,6 +34,8 @@ interface Props {
 	markAlign?: SeparatorMarkAlign | string;
 	/** Mark width in px (default: 24). */
 	markSize?: number;
+	/** Extra class on the root element (e.g. page-hero bottom rule). */
+	class?: string;
 }
 
 const {
@@ -43,6 +45,7 @@ const {
 	mark: markRaw = DEFAULT_SEPARATOR_MARK,
 	markAlign: markAlignRaw = DEFAULT_SEPARATOR_MARK_ALIGN,
 	markSize: markSizeRaw = DEFAULT_SEPARATOR_MARK_SIZE,
+	class: className,
 } = Astro.props;
 
 const heightPx = Math.min(24, Math.max(1, height));
@@ -87,6 +90,7 @@ const markStyle = withMark
 				"separator",
 				"separator--with-mark",
 				`separator--mark-${markAlign}`,
+				className,
 			]}
 			role="separator"
 			style={markStyle}
@@ -112,6 +116,6 @@ const markStyle = withMark
 			)}
 		</div>
 	) : (
-		<hr class="separator" style={lineStyle} />
+		<hr class:list={["separator", className]} style={lineStyle} />
 	)
 }

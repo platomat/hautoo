@@ -19,6 +19,7 @@ import {
 	type EntryHero,
 	type EntryToc,
 	type FooterCopyrightConfig,
+	type HeroBorderBottom,
 	type HeroCollectionKey,
 	type HeroTextAlign,
 	type SiteConfig,
@@ -31,6 +32,7 @@ import {
 	type SiteTocConfig,
 	siteAuthorsConfigSchema,
 } from "../cms/fields/site-config";
+import type { SeparatorMarkAlign } from "./separator";
 
 export type { HeroCollectionKey };
 
@@ -126,7 +128,9 @@ export type ResolvedHeroSettings = {
 	textAlign: HeroTextAlign;
 	showBreadcrumbs: boolean;
 	breadcrumbSeparator: BreadcrumbSeparator;
-	borderBottom: boolean;
+	borderBottom: HeroBorderBottom;
+	borderMarkAlign: SeparatorMarkAlign;
+	borderMarkSize: number;
 };
 
 /**
@@ -144,10 +148,9 @@ export function resolveHeroSettings(
 				? entry.showBreadcrumbs
 				: globalHero.showBreadcrumbs,
 		breadcrumbSeparator: globalHero.breadcrumbSeparator,
-		borderBottom:
-			typeof entry?.borderBottom === "boolean"
-				? entry.borderBottom
-				: globalHero.borderBottom,
+		borderBottom: entry?.borderBottom ?? globalHero.borderBottom,
+		borderMarkAlign: entry?.borderMarkAlign ?? globalHero.borderMarkAlign,
+		borderMarkSize: entry?.borderMarkSize ?? globalHero.borderMarkSize,
 	};
 }
 

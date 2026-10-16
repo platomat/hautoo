@@ -72,7 +72,7 @@ Auf **Seiten** und **Artikeln** folgen nach dem Änderungsdatum collapsible Obje
 
 | CMS-Gruppe | Frontmatter | Felder |
 | --- | --- | --- |
-| **Hero überschreiben** | `hero` | `textAlign`, `showBreadcrumbs`, `borderBottom`; Boolean-Overrides als Select (`null` / An / Aus). Unberührt + `omit_empty_optional_fields` = nicht in der YAML |
+| **Hero überschreiben** | `hero` | `textAlign`, `showBreadcrumbs`, `borderBottom` (`none`/`line`/`logo`/`favicon`), optional `borderMarkAlign` / `borderMarkSize`; Overrides als Select (`null` / Werte). Unberührt + `omit_empty_optional_fields` = nicht in der YAML |
 | **TOC überschreiben** | `toc` | `show` (Select wie Hero), `title`, `levels`; unberührt = globaler Default |
 | **Seitenhintergrund einstellen** | `background` | `image`, `overlay` (ohne CMS-Default; leer → 40 im Render), `attribution` |
 | **Inhaltsbreite** | `layout` | `contentWidth`, `afterHero`, `beforeFooter`; unberührt = Design → Inhaltsbreite / Inhaltsabstand |

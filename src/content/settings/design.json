@@ -95,7 +95,9 @@
       "textAlign": "center",
       "showBreadcrumbs": true,
       "breadcrumbSeparator": "/",
-      "borderBottom": true
+      "borderBottom": "line",
+      "borderMarkAlign": "center",
+      "borderMarkSize": 24
     },
     "glossar": {
       "textAlign": "left",

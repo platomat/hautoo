@@ -165,7 +165,7 @@ Anker-Sprünge (TOC, `#…`): bei aktivem Sticky setzt `html` `scroll-padding-to
 | Brotkrumen-Trenner | `/` | `/` · `•` · `→` · `-` zwischen den Elementen (pro Collection) |
 | Trennlinie unten | aus | optional `border-bottom` unter dem Hero |
 
-Seiten und Artikel überschreiben mit dem Objekt `hero` (`textAlign`, `showBreadcrumbs`, `borderBottom`) den Collection-Default. Komponente: `PageHero.astro` (`collection`-Prop; Klassen `.page-hero--align-*`, `.page-hero--border`, `.breadcrumbs`). Brotkrumen-Links nutzen die Linkfarbe (`--color-action`).
+Seiten und Artikel überschreiben mit dem Objekt `hero` (`textAlign`, `showBreadcrumbs`, `borderBottom` als `none`/`line`/`logo`/`favicon`, optional Mark-Position/-Größe) den Collection-Default. Komponente: `PageHero.astro` (`collection`-Prop; Klassen `.page-hero--align-*`, `.page-hero--border`, `.breadcrumbs`; untere Linie über `Separator`). Brotkrumen-Links nutzen die Linkfarbe (`--color-action`).
 
 ### UI-Icons (#31)
 

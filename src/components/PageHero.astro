@@ -4,6 +4,7 @@ import type {
 	HeroCollectionKey,
 } from "../cms/fields/site-config";
 import Icon from "./Icon.astro";
+import Separator from "./Separator.astro";
 import type { BreadcrumbItem } from "../lib/breadcrumbs";
 import { resolveHeroForEntry } from "../lib/site-config";
 
@@ -31,6 +32,11 @@ const hero = resolveHeroForEntry(heroProp, collection);
 const lead = description?.trim();
 const crumbs =
 	hero.showBreadcrumbs && breadcrumbs.length > 1 ? breadcrumbs : [];
+const showBorder = hero.borderBottom !== "none";
+const borderMark =
+	hero.borderBottom === "logo" || hero.borderBottom === "favicon"
+		? hero.borderBottom
+		: "none";
 ---
 
 <header
@@ -38,7 +44,7 @@ const crumbs =
 		"hero",
 		"page-hero",
 		`page-hero--align-${hero.textAlign}`,
-		hero.borderBottom && "page-hero--border",
+		showBorder && "page-hero--border",
 	]}
 >
 	{
@@ -82,4 +88,14 @@ const crumbs =
 	<h1>{title}</h1>
 	{lead && <p class="hero__lead page-hero__lead text-muted">{lead}</p>}
 	<slot name="below" />
+	{
+		showBorder && (
+			<Separator
+				class="page-hero__separator"
+				mark={borderMark}
+				markAlign={hero.borderMarkAlign}
+				markSize={hero.borderMarkSize}
+			/>
+		)
+	}
 </header>

@@ -134,9 +134,11 @@ Pro Collection eigene Defaults (Reihenfolge wie in der CMS-Leiste: Seiten, Artik
 | `hero.<collection>.textAlign` | `left` / `center` / `right` für Brotkrumen, Titel, Beschreibung | `left` |
 | `hero.<collection>.showBreadcrumbs` | Brotkrumen über dem Titel | `true` |
 | `hero.<collection>.breadcrumbSeparator` | Trenner zwischen Elementen: `/` · `•` · `→` · `-` | `/` |
-| `hero.<collection>.borderBottom` | 1px Linie unter dem Hero | `false` |
+| `hero.<collection>.borderBottom` | Unterer Abschluss: `none` / `line` / `logo` / `favicon` (Legacy-Bool `true`→`line`) | `none` |
+| `hero.<collection>.borderMarkAlign` | Position der Markierung bei Logo/Favicon: `left` / `center` / `right` | `center` |
+| `hero.<collection>.borderMarkSize` | Größe Logo/Favicon in px (8–120) | `24` |
 
-Lokale Überschreibung an **Seiten** und **Artikeln**: Objekt `hero` mit `textAlign`, `showBreadcrumbs`, `borderBottom`. Boolean-Overrides im CMS als Select „Wie global“ (`null`) / An / Aus; unberührt bleibt das Feld dank `omit_empty_optional_fields` aus der YAML. Umsetzung: `PageHero.astro`, `src/lib/breadcrumbs.ts`.
+Lokale Überschreibung an **Seiten** und **Artikeln**: Objekt `hero` mit `textAlign`, `showBreadcrumbs`, `borderBottom` (`none`/`line`/`logo`/`favicon`), optional `borderMarkAlign` / `borderMarkSize`. Overrides im CMS als Select „Wie global“ (`null`) bzw. Werte; unberührt bleibt das Feld dank `omit_empty_optional_fields` aus der YAML. Umsetzung: `PageHero.astro` (Separator-Komponente), `src/lib/breadcrumbs.ts`.
 
 ### Einstellungen → Content → TOC (#51)
 

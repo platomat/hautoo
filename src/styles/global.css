@@ -501,9 +501,9 @@ body.is-nav-locked {
 	justify-content: flex-end;
 }
 
-.page-hero--border {
-	padding-bottom: 1.5rem;
-	border-bottom: 1px solid var(--color-border);
+/* Bottom rule via Separator (line / logo / favicon); tighter than content embeds. */
+.page-hero--border .page-hero__separator {
+	margin-block: 1.5rem 0;
 }
 
 .breadcrumbs {
