@@ -28,7 +28,6 @@ EMBED_LINE = re.compile(
 # Inline mention in backticks or prose — not a rendered embed line
 EMBED_INLINE = re.compile(rf"\{{\{{(?:{_EMBED_NAMES})\b")
 
-HEADING = re.compile(r"^#{1,6}\s")
 LIST_ITEM = re.compile(r"^\s*([-*+]|\d+\.)\s")
 
 
