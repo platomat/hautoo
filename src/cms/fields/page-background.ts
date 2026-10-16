@@ -103,7 +103,7 @@ export function sanitizeAttributionHtml(input: string): string {
 }
 
 /**
- * Soft HTML for short CMS blurbs (site description / footer brand).
+ * Soft HTML for short CMS blurbs (site description, footer brand, footer claim).
  * Allows `<a href>`, `<b>`, `<strong>`, `<em>`, `<i>`, `<br>`.
  */
 export function sanitizeSoftHtml(input: string): string {

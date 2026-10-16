@@ -1052,7 +1052,7 @@ collections:
                 widget: text
                 required: false
                 default: ""
-                hint: "Text, reine URL oder HTML mit <a href> (wie Bildnachweis). Leer = nur © und Website-Titel."
+                hint: "Text, reine URL oder HTML: <a href>, <b>/<strong>, <i>/<em>, <br>. Leer = nur © und Website-Titel."
               - name: separator
                 label: Separator
                 widget: select

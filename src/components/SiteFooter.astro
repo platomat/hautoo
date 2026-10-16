@@ -8,7 +8,6 @@ import {
 import { withBuildId } from "../lib/build-id";
 import {
 	classifyAttribution,
-	sanitizeAttributionHtml,
 	sanitizeSoftHtml,
 } from "../cms/fields/page-background";
 import { getPublicPages } from "../lib/pages";
@@ -34,8 +33,8 @@ const websiteTitle = await getSiteWebsiteTitle();
 const footerCopyright = getFooterCopyrightConfig();
 const claimRaw = footerCopyright.claim.trim();
 const claimKind = claimRaw ? classifyAttribution(claimRaw) : null;
-const claimHtml =
-	claimKind === "html" ? sanitizeAttributionHtml(claimRaw) : "";
+// Soft HTML (a, b, strong, em, i, br) — not stock-photo allowlist (a only).
+const claimHtml = claimKind === "html" ? sanitizeSoftHtml(claimRaw) : "";
 const showClaim = Boolean(claimRaw);
 const claimSeparator = footerCopyright.separator;
 const showFooterCenter = footerCopyright.showCenter !== false;
