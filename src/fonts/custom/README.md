@@ -21,9 +21,24 @@ Pro Schrift einen Ordner unter `src/fonts/custom/<id>/` (Slug, z. B. `acme-dis
 
 `npm run sync:fonts` (oder `npm run dev` / `build`):
 
-1. Schrift im CMS unter Design → Schrift
+1. Schrift optional im CMS unter Design → Schrift (Site-weit)
 2. Katalog `site-fonts.generated.json`
-3. Bei Auswahl in Design: Kopie nach `public/fonts/<id>/`
-4. Neu: `src/styles/fonts.generated.css`
+3. **Immer** Auslieferung nach `public/fonts/<id>/` inkl. generierter `stylesheet.css`
+4. Wenn als Design-Schrift gewählt: zusätzlich in `src/styles/fonts.generated.css`
+
+### Nur für einzelne Elemente (Head-Code)
+
+Design kann Ubuntu bleiben. Im CMS z. B. Seiten-`headCode` oder globaler Head-HTML:
+
+```html
+<link rel="stylesheet" href="/fonts/acme-display/stylesheet.css" />
+<style>
+  .hero-title {
+    font-family: "Acme Display", system-ui, sans-serif;
+  }
+</style>
+```
+
+Der Browser lädt die WOFF2 erst, wenn die `font-family` wirklich genutzt wird.
 
 Danach Ordner plus generierten Katalog und die Font-Optionen in `config.yml` committen.
