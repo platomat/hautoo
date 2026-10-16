@@ -76,9 +76,9 @@ Beim Build landen u. a.:
 | Datei | Zweck bei Cloudflare Pages | Andernorts |
 | --- | --- | --- |
 | `_redirects` | CMS **Weiterleitungen** | Cloudflare. Apache/Nginx ignorieren sie. |
-| `.htaccess` | dieselben Regeln | Apache (`AllowOverride`). CF und Nginx ignorieren sie. |
-| `nginx-redirects.conf` | dieselben Regeln | Nur wirksam nach `include` im Nginx-`server`-Block. CF und Apache ignorieren die Datei. |
-| `_headers` | Cache-Control für `/_astro/*`, Fonts, HTML | Ebenso Cloudflare-Format. Sinnvolle Caches manuell setzen: lange für gehashte Bundles unter `/_astro/` und `/fonts/`, kurz/revalidate für HTML |
+| `_headers` | Cache-Control (`/_astro/*`, Fonts, HTML, …) | Cloudflare-Quelle (im Repo gepflegt). |
+| `.htaccess` | Redirects + dieselben Cache-Header | Apache (`AllowOverride`, `mod_headers`/`mod_setenvif`). CF und Nginx ignorieren sie. |
+| `nginx-redirects.conf` | Redirects + Cache-`location`s | Nur nach `include` im Nginx-`server`-Block. CF und Apache ignorieren die Datei. |
 
 Netlify versteht ähnliche Dateiformate, aber nicht 1:1 mit Cloudflare. Nicht blind kopieren; prüfen oder selbst abbilden.
 
@@ -97,9 +97,8 @@ Astro trägt Redirects zusätzlich in `astro.config` ein (lokal/`preview`). Für
 2. Inhalt von `dist/` auf den Webroot legen (nicht den Repo-Root)
 3. Pretty URLs / Directory Index prüfen (`/pfad/` öffnet `index.html`)
 4. `404.html` als Fehlerseite eintragen
-5. Apache: `.htaccess` mitnehmen. Nginx: `nginx-redirects.conf` im `server`-Block per `include` einbinden
-6. Cache-Header sinnvoll setzen (Vorbild: `public/_headers`)
-7. `/admin/` testen, wenn du online redigieren willst; Deploy-Pipeline nach CMS-Commits klären
+5. Apache: `.htaccess` mitnehmen (Redirects + Cache). Nginx: `nginx-redirects.conf` im `server`-Block per `include`
+6. `/admin/` testen, wenn du online redigieren willst; Deploy-Pipeline nach CMS-Commits klären
 
 ## Was dieser Text bewusst nicht abdeckt
 

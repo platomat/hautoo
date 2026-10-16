@@ -307,7 +307,7 @@ Ja, für die **Website selbst** weitgehend: [Astro](/glossar/astro/) baut rein s
 
 Einschränkungen:
 
-- **`_redirects` / `_headers`:** Cloudflare-Format. Parallel in `dist/`: `.htaccess` (Apache) und `nginx-redirects.conf` (Nginx, per `include`). Cloudflare ignoriert beide.
+- **`_redirects` / `_headers`:** Cloudflare-Format. Parallel in `dist/`: `.htaccess` und `nginx-redirects.conf` mit denselben Redirects und Cache-Headern (Apache bzw. Nginx-`include`). Cloudflare ignoriert beide.
 - **Pretty URLs:** Ordner wie `/artikel/folge-001/` brauchen `index.html`-Auflösung (üblich, muss der Server können).
 - **404:** `404.html` nur, wenn der Hoster sie als Fehlerseite kennt.
 - **CMS-[OAuth](/glossar/oauth/)-[Worker](/glossar/cloudflare-worker/):** läuft **nicht** im `dist/` (Cloudflare). Online redigieren geht weiter per GitHub-PAT; Deploy nach CMS-Commit musst du ohne Pages selbst anbinden.
