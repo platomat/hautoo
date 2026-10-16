@@ -1,4 +1,4 @@
-import GithubSlugger from "github-slugger";
+import { createHeadingSlugger } from "./heading-slug";
 
 export type TocDepth = 2 | 3 | 4;
 
@@ -61,7 +61,7 @@ export function resolveTocTitle(title: string | undefined | null): string {
 
 /**
  * Collect headings from Markdown body for the given depths (h2–h4).
- * IDs match Astro/Satteri via github-slugger (same as rendered heading anchors).
+ * IDs match rendered anchors (`hastHeadingIds` / ASCII slug helper).
  */
 export function extractTocEntries(
 	body: string | undefined,
@@ -73,7 +73,7 @@ export function extractTocEntries(
 
 	const allowed = new Set(normalizeTocLevels(levels));
 	const source = stripFencedCode(body);
-	const slugger = new GithubSlugger();
+	const slugger = createHeadingSlugger();
 	const entries: TocEntry[] = [];
 	const headingRe = /^(#{2,4})\s+(.+?)\s*#*\s*$/gm;
 

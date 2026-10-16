@@ -4,6 +4,7 @@ import { getPublicBlock } from "./blocks";
 import type { GlossarSort } from "./glossar";
 import { hastCmsAssets } from "./hast-cms-assets";
 import { hastExternalLinks } from "./hast-external-links";
+import { hastHeadingIds } from "./hast-heading-ids";
 import type { CategorySort } from "./categories";
 import type { TagSort } from "./tags";
 import type { MemberVideoEmbedProps } from "./member-video";
@@ -413,7 +414,7 @@ let markdownProcessor: Awaited<
 
 async function getProcessor() {
 	markdownProcessor ??= await createSatteriMarkdownProcessor({
-		hastPlugins: [hastCmsAssets, hastExternalLinks],
+		hastPlugins: [hastHeadingIds, hastCmsAssets, hastExternalLinks],
 	});
 	return markdownProcessor;
 }
