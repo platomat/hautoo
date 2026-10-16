@@ -9,6 +9,7 @@
     "default": "/assets/favicon.svg"
   },
   "footerCopyright": {
+    "startYear": 2026,
     "claim": "One of <a href=\"https://platomat.com/\">PlatoMat</a>",
     "separator": "•",
     "showCenter": true

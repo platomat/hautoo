@@ -1045,8 +1045,17 @@ collections:
             label: Footer copyright
             widget: object
             collapsed: false
-            hint: "Copyright-Zeile im Footer: links Claim, Mitte optional Mark/Icon."
+            hint: "Copyright-Zeile im Footer: Startjahr, Claim, Mitte optional Mark/Icon."
             fields:
+              - name: startYear
+                label: Startjahr
+                widget: number
+                required: true
+                default: 2026
+                value_type: int
+                min: 1970
+                max: 2100
+                hint: "Jahr, in dem das Projekt begann. Aktuelles Jahr allein; später Startjahr–aktuelles Jahr."
               - name: claim
                 label: Claim
                 widget: text

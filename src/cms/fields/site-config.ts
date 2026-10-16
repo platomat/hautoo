@@ -67,7 +67,12 @@ export type FooterCopyrightSeparator = z.infer<
 /** Optional claim after © year + site name in the footer. */
 export const footerCopyrightConfigSchema = z.object({
 	/**
-	 * Text or HTML (same allowlist as background.attribution: `<a href>`).
+	 * First calendar year of the project (© start).
+	 * Same year as now → `© 2026`; later → `© 2010-2026`.
+	 */
+	startYear: z.coerce.number().int().min(1970).max(2100).default(2026),
+	/**
+	 * Text or soft HTML (`<a>`, `<b>`/`<strong>`, `<i>`/`<em>`, `<br>`).
 	 * Empty = only © year and site name.
 	 */
 	claim: z.string().trim().default(""),

@@ -21,16 +21,12 @@ import {
 	getSiteWebsiteTitle,
 } from "../lib/site-config";
 
-/** First calendar year of the project (copyright range start). */
-const COPYRIGHT_START_YEAR = 2026;
-const currentYear = new Date().getFullYear();
-const copyrightYears =
-	currentYear > COPYRIGHT_START_YEAR
-		? `${COPYRIGHT_START_YEAR}-${currentYear}`
-		: String(COPYRIGHT_START_YEAR);
-
 const websiteTitle = await getSiteWebsiteTitle();
 const footerCopyright = getFooterCopyrightConfig();
+const startYear = footerCopyright.startYear;
+const currentYear = new Date().getFullYear();
+const copyrightYears =
+	currentYear > startYear ? `${startYear}-${currentYear}` : String(startYear);
 const claimRaw = footerCopyright.claim.trim();
 const claimKind = claimRaw ? classifyAttribution(claimRaw) : null;
 // Soft HTML (a, b, strong, em, i, br) — not stock-photo allowlist (a only).
