@@ -146,6 +146,7 @@ Globale Defaults unter **Einstellungen** im CMS (`settings`: General, Design, Co
 - **Suche im Header** (MiniSearch): statischer Suchindex beim Build.
 - **Dark Theme** mit [CSS-Variablen](/glossar/css-variable/), responsive Header mit Mobile-Menü.
 - **Farbpalette**, **Schrift**, **Sticky Header**, **Hero**, **Inhaltsbreite** und **Abstand** redaktionell unter Einstellungen → Design (siehe oben).
+- **Eigene Schriften:** Ordner `src/fonts/custom/<id>/` (z. B. Transfonter-CSS + WOFF2); Sync trägt sie automatisch in Design → Schrift und die lokale Auslieferung ein.
 - **Brotkrumen** mit wählbarem Trenner; Start als Haus-Icon; UI-Icons für Permalink und Kategorie ([#31](https://github.com/platomat/hautoo/issues/31)).
 - **Breakpoints** und gemeinsame Layout-Hilfsklassen ([docs/design](https://github.com/platomat/hautoo/blob/main/docs/design/README.md)).
 - **Vollbild-Hintergrund** optional mit Overlay und **Bildnachweis** für Seiten, Artikel und Autoren-Profile ([#93](https://github.com/platomat/hautoo/issues/93), [#94](https://github.com/platomat/hautoo/issues/94)); Nachweise gesammelt im Impressum.

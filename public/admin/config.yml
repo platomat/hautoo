@@ -1171,7 +1171,7 @@ collections:
             label: Schrift
             widget: object
             collapsed: false
-            hint: "Schriften werden beim Build von Fontsource (jsDelivr) geladen und lokal ausgeliefert — keine CDN-Anfrage beim Besuch. Katalog: Ubuntu, Inter, Open Sans, Source Sans 3, Roboto, Lato, Nunito Sans, IBM Plex Sans, Merriweather, Lora, Source Serif 4."
+            hint: "Schriften: Fontsource-Katalog plus eigene unter src/fonts/custom/<id>/ (stylesheet.css). Build liefert lokal aus public/fonts/."
             fields:
               - name: bodyFont
                 label: Basis-Schriftart
@@ -1179,17 +1179,17 @@ collections:
                 required: true
                 default: ubuntu
                 options: &font_family_options
-                  - { label: Ubuntu, value: ubuntu }
-                  - { label: Inter, value: inter }
-                  - { label: Open Sans, value: open-sans }
-                  - { label: Source Sans 3, value: source-sans-3 }
-                  - { label: Roboto, value: roboto }
-                  - { label: Lato, value: lato }
-                  - { label: Nunito Sans, value: nunito-sans }
-                  - { label: IBM Plex Sans, value: ibm-plex-sans }
-                  - { label: Merriweather, value: merriweather }
-                  - { label: Lora, value: lora }
-                  - { label: Source Serif 4, value: source-serif-4 }
+                  - { label: "Ubuntu", value: ubuntu }
+                  - { label: "Inter", value: inter }
+                  - { label: "Open Sans", value: open-sans }
+                  - { label: "Source Sans 3", value: source-sans-3 }
+                  - { label: "Roboto", value: roboto }
+                  - { label: "Lato", value: lato }
+                  - { label: "Nunito Sans", value: nunito-sans }
+                  - { label: "IBM Plex Sans", value: ibm-plex-sans }
+                  - { label: "Merriweather", value: merriweather }
+                  - { label: "Lora", value: lora }
+                  - { label: "Source Serif 4", value: source-serif-4 }
                 hint: "Schrift für Fließtext und UI. Wird beim Build lokal eingebettet."
               - name: baseSize
                 label: Basisgröße (px)

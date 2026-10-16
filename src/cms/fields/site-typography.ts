@@ -1,8 +1,16 @@
 import { z } from "astro/zod";
-import siteFontsCatalog from "./site-fonts.json";
+import curatedFontsCatalog from "./site-fonts.json";
+import generatedFontsCatalog from "./site-fonts.generated.json";
 
-/** Curated Fontsource IDs selectable in Design → Schrift. */
-export const SITE_FONT_OPTIONS = siteFontsCatalog.fonts;
+/**
+ * Fontsource presets (`site-fonts.json`) plus custom fonts from
+ * `src/fonts/custom/` (merged by `scripts/sync-site-fonts.mjs` into
+ * `site-fonts.generated.json`).
+ */
+export const SITE_FONT_OPTIONS =
+	generatedFontsCatalog.fonts?.length > 0
+		? generatedFontsCatalog.fonts
+		: curatedFontsCatalog.fonts;
 
 export const SITE_FONT_IDS = SITE_FONT_OPTIONS.map((font) => font.id) as [
 	string,

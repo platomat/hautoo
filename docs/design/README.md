@@ -34,15 +34,24 @@ Redaktionell unter **Einstellungen → Design → Schrift** (`design.typography`
 
 ### Bereitstellung (#71)
 
-Beim Build (`scripts/sync-site-fonts.mjs`, auch `predev`) werden die gewählten Schnitte von **Fontsource über jsDelivr** geladen und unter `public/fonts/<id>/` abgelegt. Besucher sehen **keine** externe Schrift-Anfrage.
+Beim Build (`scripts/sync-site-fonts.mjs`, auch `predev`):
+
+1. **Fontsource-Katalog** (`src/cms/fields/site-fonts.json`): gewählte Schnitte von jsDelivr nach `public/fonts/<id>/`
+2. **Eigene Schriften:** Ordner `src/fonts/custom/<id>/` mit Transfonter-`stylesheet.css` (+ Dateien). Der Sync liest `@font-face` (Stärken, Dateinamen), trägt die Schrift automatisch in CMS und Katalog ein und kopiert bei Auswahl nach `public/fonts/<id>/` (URLs werden fest auf `/fonts/<id>/…` gesetzt; der Pfad in Transfonter ist egal)
+
+Besucher sehen **keine** externe Schrift-Anfrage.
 
 | Artefakt | Rolle |
 | --- | --- |
-| `public/fonts/<id>/<weight>-normal-latin.woff2` (+ `latin-ext`) | Lokale Dateien |
-| `src/styles/fonts.generated.css` | `@font-face` (generiert, nicht von Hand editieren) |
+| `src/fonts/custom/<id>/` | Quelle für Self-Hosted Fonts (+ optional `meta.json`) |
+| `public/fonts/<id>/…` | Ausgelieferte Dateien |
+| `src/styles/fonts.generated.css` | `@font-face` (generiert) |
+| `src/cms/fields/site-fonts.generated.json` | CMS-/Zod-Katalog (Fontsource + custom, generiert) |
 | Inline `:root` in `BaseLayout` | Größen/Stärken/Transform (`src/lib/site-typography.ts`) |
 
-Preload der benötigten Latin-WOFF2 in `BaseLayout`. Stylesheets werden im Build inline (`build.inlineStylesheets: 'always'`). Fehlt ein gewählter Schnitt, wählt der Sync den nächsten verfügbaren Weight.
+Kurz: Ordner anlegen → `npm run sync:fonts` (oder dev/build) → Schrift erscheint unter Design → Schrift. Details: `src/fonts/custom/README.md`.
+
+Preload der benötigten Latin-WOFF2 in `BaseLayout`. Fehlt ein Fontsource-Schnitt, wählt der Sync den nächsten verfügbaren Weight.
 
 ## Links
 

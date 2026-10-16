@@ -1,0 +1,81 @@
+{
+	"fonts": [
+		{
+			"id": "ubuntu",
+			"label": "Ubuntu",
+			"family": "Ubuntu",
+			"fallback": "system-ui, sans-serif",
+			"source": "fontsource"
+		},
+		{
+			"id": "inter",
+			"label": "Inter",
+			"family": "Inter",
+			"fallback": "system-ui, sans-serif",
+			"source": "fontsource"
+		},
+		{
+			"id": "open-sans",
+			"label": "Open Sans",
+			"family": "Open Sans",
+			"fallback": "system-ui, sans-serif",
+			"source": "fontsource"
+		},
+		{
+			"id": "source-sans-3",
+			"label": "Source Sans 3",
+			"family": "Source Sans 3",
+			"fallback": "system-ui, sans-serif",
+			"source": "fontsource"
+		},
+		{
+			"id": "roboto",
+			"label": "Roboto",
+			"family": "Roboto",
+			"fallback": "system-ui, sans-serif",
+			"source": "fontsource"
+		},
+		{
+			"id": "lato",
+			"label": "Lato",
+			"family": "Lato",
+			"fallback": "system-ui, sans-serif",
+			"source": "fontsource"
+		},
+		{
+			"id": "nunito-sans",
+			"label": "Nunito Sans",
+			"family": "Nunito Sans",
+			"fallback": "system-ui, sans-serif",
+			"source": "fontsource"
+		},
+		{
+			"id": "ibm-plex-sans",
+			"label": "IBM Plex Sans",
+			"family": "IBM Plex Sans",
+			"fallback": "system-ui, sans-serif",
+			"source": "fontsource"
+		},
+		{
+			"id": "merriweather",
+			"label": "Merriweather",
+			"family": "Merriweather",
+			"fallback": "Georgia, serif",
+			"source": "fontsource"
+		},
+		{
+			"id": "lora",
+			"label": "Lora",
+			"family": "Lora",
+			"fallback": "Georgia, serif",
+			"source": "fontsource"
+		},
+		{
+			"id": "source-serif-4",
+			"label": "Source Serif 4",
+			"family": "Source Serif 4",
+			"fallback": "Georgia, serif",
+			"source": "fontsource"
+		}
+	]
+}

@@ -88,7 +88,7 @@ Umsetzung: `src/lib/site-colors.ts`, Inline-`:root` in `BaseLayout.astro`. Defau
 | `design.typography.headingFont` | Überschriften-Schriftart (Fontsource-ID) | `ubuntu` |
 | `design.typography.headings.h1`–`h6` | Je `size` (rem), `weight`, `transform` (`none` / `capitalize` / `uppercase` / `lowercase`) | Browser-ähnliche Größen, Weight 500, Transform none |
 
-Katalog: `src/cms/fields/site-fonts.json`. Sync: `scripts/sync-site-fonts.mjs` → `public/fonts/` + `src/styles/fonts.generated.css`. CSS-Variablen: `src/lib/site-typography.ts`.
+Katalog: Fontsource in `src/cms/fields/site-fonts.json`; Merge mit Custom aus `src/fonts/custom/` → `site-fonts.generated.json` (Sync). Sync: `scripts/sync-site-fonts.mjs` → `public/fonts/`, `fonts.generated.css`, CMS-Select in `config.yml`. CSS-Variablen: `src/lib/site-typography.ts`.
 
 ### Einstellungen → Design → Header (#44, #91)
 

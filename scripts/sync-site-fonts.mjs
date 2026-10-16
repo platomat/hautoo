@@ -1,19 +1,37 @@
 #!/usr/bin/env node
 /**
- * Download selected Design → Schrift fonts from Fontsource (jsDelivr) into
- * public/fonts/ and write src/styles/fonts.generated.css.
- * Run from predev/prebuild — visitor traffic never hits an external CDN.
+ * Sync Design → Schrift fonts into public/fonts/ + fonts.generated.css.
+ *
+ * 1) Fontsource (curated `site-fonts.json`): download selected weights via jsDelivr.
+ * 2) Custom: scan `src/fonts/custom/<id>/` (Transfonter-style stylesheet.css + files).
+ *    Paths inside the CSS only name files; we rewrite URLs to `/fonts/<id>/…`.
+ *
+ * Also writes `site-fonts.generated.json` (CMS + Zod) and updates font options in
+ * `public/admin/config.yml`. Run from predev/prebuild.
  */
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import {
+	copyFile,
+	mkdir,
+	readdir,
+	readFile,
+	stat,
+	writeFile,
+} from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
-const catalogPath = path.join(root, "src/cms/fields/site-fonts.json");
+const curatedCatalogPath = path.join(root, "src/cms/fields/site-fonts.json");
+const generatedCatalogPath = path.join(
+	root,
+	"src/cms/fields/site-fonts.generated.json",
+);
 const designPath = path.join(root, "src/content/settings/design.json");
 const outCssPath = path.join(root, "src/styles/fonts.generated.css");
 const fontsRoot = path.join(root, "public/fonts");
+const customRoot = path.join(root, "src/fonts/custom");
+const adminConfigPath = path.join(root, "public/admin/config.yml");
 
 const SUBSETS = ["latin", "latin-ext"];
 const HEADING_LEVELS = ["h1", "h2", "h3", "h4", "h5", "h6"];
@@ -61,8 +79,263 @@ function cdnUrl(fontId, subset, weight) {
 	return `https://cdn.jsdelivr.net/fontsource/fonts/${fontId}@latest/${subset}-${weight}-normal.woff2`;
 }
 
+function parseWeight(raw) {
+	const value = String(raw ?? "400").trim().toLowerCase();
+	if (value === "normal") return 400;
+	if (value === "bold") return 700;
+	const num = Number(value);
+	return Number.isFinite(num) ? num : 400;
+}
+
+function parseStyle(raw) {
+	const value = String(raw ?? "normal").trim().toLowerCase();
+	if (value.startsWith("italic") || value.startsWith("oblique")) {
+		return "italic";
+	}
+	return "normal";
+}
+
+function extractProp(block, name) {
+	const re = new RegExp(`${name}\\s*:\\s*([^;]+);`, "i");
+	const m = block.match(re);
+	return m ? m[1].trim() : undefined;
+}
+
+function extractUrls(srcValue) {
+	if (!srcValue) return [];
+	const urls = [];
+	const re = /url\(\s*['"]?([^'")]+)['"]?\s*\)/gi;
+	let m;
+	while ((m = re.exec(srcValue))) {
+		urls.push(m[1].trim());
+	}
+	return urls;
+}
+
+function pickPreferredUrl(urls) {
+	const rank = (u) => {
+		const lower = u.toLowerCase();
+		if (lower.includes(".woff2")) return 0;
+		if (lower.includes(".woff")) return 1;
+		if (lower.includes(".ttf") || lower.includes(".otf")) return 2;
+		return 9;
+	};
+	return [...urls].sort((a, b) => rank(a) - rank(b))[0];
+}
+
+function stripQuotes(value) {
+	return String(value ?? "")
+		.trim()
+		.replace(/^['"]|['"]$/g, "");
+}
+
+function titleFromId(id) {
+	return id
+		.split(/[-_]+/)
+		.filter(Boolean)
+		.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+		.join(" ");
+}
+
+/**
+ * @param {string} cssText
+ * @returns {{ family: string, weight: number, style: string, localFile: string }[]}
+ */
+function parseFontFaces(cssText) {
+	const faces = [];
+	const blocks = cssText.match(/@font-face\s*\{[\s\S]*?\}/gi) ?? [];
+	for (const block of blocks) {
+		const family = stripQuotes(extractProp(block, "font-family"));
+		const src = extractProp(block, "src");
+		const urls = extractUrls(src);
+		const localFile = pickPreferredUrl(
+			urls.filter((u) => !/^https?:\/\//i.test(u) && !u.startsWith("data:")),
+		);
+		if (!family || !localFile) {
+			continue;
+		}
+		faces.push({
+			family,
+			weight: parseWeight(extractProp(block, "font-weight")),
+			style: parseStyle(extractProp(block, "font-style")),
+			localFile: localFile.replace(/^\.\//, ""),
+		});
+	}
+	return faces;
+}
+
+async function findStylesheet(dir) {
+	const preferred = ["stylesheet.css", "fonts.css", "font.css"];
+	for (const name of preferred) {
+		try {
+			await stat(path.join(dir, name));
+			return name;
+		} catch {
+			/* missing */
+		}
+	}
+	const names = await readdir(dir);
+	const css = names.filter((n) => n.toLowerCase().endsWith(".css")).sort();
+	return css[0];
+}
+
+/**
+ * Discover custom font packages under src/fonts/custom/<id>/.
+ * @returns {Promise<{ id: string; label: string; family: string; fallback: string; source: "custom"; faces: { family: string; weight: number; style: string; localFile: string; absFile: string }[] }[]>}
+ */
+async function discoverCustomFonts() {
+	/** @type {Awaited<ReturnType<typeof discoverCustomFonts>>} */
+	const found = [];
+	let entries = [];
+	try {
+		entries = await readdir(customRoot, { withFileTypes: true });
+	} catch {
+		return found;
+	}
+
+	for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) {
+		if (!entry.isDirectory() || entry.name.startsWith(".")) continue;
+		const id = entry.name;
+		if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/i.test(id)) {
+			console.warn(
+				`[sync-site-fonts] skip custom "${id}" (use slug folder names, e.g. my-font)`,
+			);
+			continue;
+		}
+		const dir = path.join(customRoot, id);
+		const sheetName = await findStylesheet(dir);
+		if (!sheetName) {
+			console.warn(
+				`[sync-site-fonts] skip custom "${id}" (no stylesheet.css / *.css)`,
+			);
+			continue;
+		}
+		const cssText = await readFile(path.join(dir, sheetName), "utf8");
+		const parsed = parseFontFaces(cssText);
+		if (parsed.length === 0) {
+			console.warn(
+				`[sync-site-fonts] skip custom "${id}" (no @font-face with local url())`,
+			);
+			continue;
+		}
+
+		/** @type {{ label?: string; family?: string; fallback?: string }} */
+		let meta = {};
+		try {
+			meta = await readJson(path.join(dir, "meta.json"));
+		} catch {
+			/* optional */
+		}
+
+		const family = meta.family?.trim() || parsed[0].family;
+		const faces = [];
+		for (const face of parsed) {
+			const absFile = path.resolve(dir, face.localFile);
+			try {
+				await stat(absFile);
+			} catch {
+				console.warn(
+					`[sync-site-fonts] ${id}: missing file ${face.localFile}, skip face`,
+				);
+				continue;
+			}
+			faces.push({ ...face, family, absFile });
+		}
+		if (faces.length === 0) continue;
+
+		found.push({
+			id,
+			label: meta.label?.trim() || titleFromId(id),
+			family,
+			fallback: meta.fallback?.trim() || "system-ui, sans-serif",
+			source: "custom",
+			faces,
+		});
+		console.log(
+			`[sync-site-fonts] custom ${id}: ${faces.length} face(s) from ${sheetName}`,
+		);
+	}
+	return found;
+}
+
+function yamlDoubleQuoted(value) {
+	return `"${String(value).replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
+}
+
+/**
+ * Refresh Sveltia select options for body/heading fonts.
+ * @param {{ id: string; label: string }[]} fonts
+ */
+async function updateAdminConfigFontOptions(fonts) {
+	let yaml;
+	try {
+		yaml = await readFile(adminConfigPath, "utf8");
+	} catch {
+		console.warn("[sync-site-fonts] admin config.yml missing, skip CMS options");
+		return;
+	}
+
+	const optionsBlock = fonts
+		.map(
+			(font) =>
+				`                  - { label: ${yamlDoubleQuoted(font.label)}, value: ${font.id} }`,
+		)
+		.join("\n");
+
+	const replaced = yaml.replace(
+		/(options: &font_family_options\n)(?:\s*- \{ label: .+\n)+/,
+		`$1${optionsBlock}\n`,
+	);
+
+	if (replaced === yaml) {
+		console.warn(
+			"[sync-site-fonts] could not patch &font_family_options in config.yml",
+		);
+		return;
+	}
+
+	await writeFile(adminConfigPath, replaced, "utf8");
+	console.log("[sync-site-fonts] updated public/admin/config.yml font options");
+}
+
 async function main() {
-	const catalog = await readJson(catalogPath);
+	const curated = await readJson(curatedCatalogPath);
+	const customFonts = await discoverCustomFonts();
+	const customById = new Map(customFonts.map((font) => [font.id, font]));
+
+	const curatedIds = new Set(curated.fonts.map((f) => f.id));
+	for (const id of customById.keys()) {
+		if (curatedIds.has(id)) {
+			throw new Error(
+				`Custom font id "${id}" conflicts with Fontsource catalog entry`,
+			);
+		}
+	}
+
+	const mergedFonts = [
+		...curated.fonts.map((font) => ({
+			...font,
+			source: font.source ?? "fontsource",
+		})),
+		...customFonts.map(({ id, label, family, fallback, source }) => ({
+			id,
+			label,
+			family,
+			fallback,
+			source,
+		})),
+	];
+
+	await writeFile(
+		generatedCatalogPath,
+		`${JSON.stringify({ fonts: mergedFonts }, null, "\t")}\n`,
+		"utf8",
+	);
+	console.log(
+		`[sync-site-fonts] wrote ${path.relative(root, generatedCatalogPath)} (${mergedFonts.length} fonts)`,
+	);
+	await updateAdminConfigFontOptions(mergedFonts);
+
 	const design = await readJson(designPath);
 	const typography = design.typography ?? {};
 	const bodyFont = typography.bodyFont ?? "ubuntu";
@@ -76,17 +349,42 @@ async function main() {
 	}
 
 	const fontIds = [...new Set([bodyFont, headingFont])];
-	const familyById = new Map(
-		catalog.fonts.map((font) => [font.id, font.family]),
-	);
+	const familyById = new Map(mergedFonts.map((font) => [font.id, font.family]));
 
-	/** @type {Map<string, { family: string, faces: Array<{ weight: number, subset: string, file: string, unicodeRange: string }> }>} */
+	/** @type {Map<string, { family: string, faces: Array<{ weight: number, style?: string, subset?: string, file: string, unicodeRange?: string }> }>} */
 	const plan = new Map();
 
 	for (const fontId of fontIds) {
 		if (!familyById.has(fontId)) {
 			throw new Error(`Unknown font id "${fontId}" in design.typography`);
 		}
+
+		const custom = customById.get(fontId);
+		if (custom) {
+			const destDir = path.join(fontsRoot, fontId);
+			await mkdir(destDir, { recursive: true });
+			const faces = [];
+			const usedNames = new Set();
+			for (const face of custom.faces) {
+				const base = path.basename(face.absFile);
+				let destName = base;
+				if (usedNames.has(destName)) {
+					destName = `${face.weight}-${face.style}-${base}`;
+				}
+				usedNames.add(destName);
+				const dest = path.join(destDir, destName);
+				await copyFile(face.absFile, dest);
+				faces.push({
+					weight: face.weight,
+					style: face.style,
+					file: `/fonts/${fontId}/${destName}`,
+				});
+				console.log(`[sync-site-fonts] custom ${fontId}/${destName}`);
+			}
+			plan.set(fontId, { family: custom.family, faces });
+			continue;
+		}
+
 		let meta;
 		try {
 			meta = await fetchJson(`https://api.fontsource.org/v1/fonts/${fontId}`);
@@ -133,6 +431,7 @@ async function main() {
 					FALLBACK_UNICODE.latin;
 				faces.push({
 					weight,
+					style: "normal",
 					subset,
 					file: `/fonts/${fontId}/${fileName}`,
 					unicodeRange: unicodeRange.replaceAll(",", ", "),
@@ -149,20 +448,23 @@ async function main() {
 
 	const cssChunks = [
 		"/* Generated by scripts/sync-site-fonts.mjs — do not edit. */",
-		"/* Fonts from Fontsource via jsDelivr; served locally from public/fonts/. */",
+		"/* Fontsource via jsDelivr and/or src/fonts/custom/; served from public/fonts/. */",
 		"",
 	];
 
 	for (const [fontId, { family, faces }] of plan) {
 		cssChunks.push(`/* ${family} (${fontId}) */`);
 		for (const face of faces) {
+			const style = face.style ?? "normal";
+			const unicode = face.unicodeRange
+				? `\n\tunicode-range: ${face.unicodeRange};`
+				: "";
 			cssChunks.push(`@font-face {
 	font-family: "${family}";
 	src: url("${face.file}") format("woff2");
 	font-weight: ${face.weight};
-	font-style: normal;
-	font-display: swap;
-	unicode-range: ${face.unicodeRange};
+	font-style: ${style};
+	font-display: swap;${unicode}
 }`);
 			cssChunks.push("");
 		}
