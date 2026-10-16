@@ -303,11 +303,17 @@ Nein. Du brauchst keinen [FTP](/glossar/ftp/)-Zugang zum Hochladen von Dateien. 
 
 ### Funktioniert der Build auch auf normalem Hosting ohne Cloudflare Pages?
 
-Ja, für die **Website selbst** weitgehend. [Astro](/glossar/astro/) erzeugt rein statisches HTML, CSS und JS im Ordner `dist/` ([**Build**](/glossar/build/)). Den kannst du lokal oder bei Cloudflare bauen und auf Apache, Nginx, Netlify, S3 mit CDN oder ähnliches hochladen.
+Ja, für die **Website selbst** weitgehend: [Astro](/glossar/astro/) baut rein statisches HTML, CSS und JS (`dist/`). Das kannst du lokal oder bei [Cloudflare](/glossar/cloudflare-pages/) bauen und auf Apache, Nginx, Netlify, S3 mit CDN usw. legen. [Folge 011](/artikel/folge-011-cloudflare-setup/).
 
-Einschränkungen: Die Dateien `_redirects` und `_headers` sind Cloudflare-Format; woanders setzt du Weiterleitungen und Cache-Header selbst (z. B. `.htaccess` oder Nginx). Schöne URLs wie `/artikel/folge-001/` brauchen eine `index.html`-Auflösung im Ordner. Die `404.html` greift nur, wenn der Hoster sie als Fehlerseite kennt. **Member-Video** (R2-[Worker](/glossar/cloudflare-worker/)) und der CMS-[OAuth](/glossar/oauth/)-Worker stecken **nicht** in `dist/`; ohne sie fehlen Freischaltung und ggf. CMS-Login online. In `astro.config` steht die Site-URL: absolute Links in Sitemap und `llms.txt` zeigen auf diese Domain; bei anderer Domain anpassen und neu bauen.
+Einschränkungen:
 
-Kurz: Seiten und Artikel als Statik: ja. Cloudflare-only-Bausteine: separat behalten oder ersetzen. [Folge 011](/artikel/folge-011-cloudflare-setup/).
+- **`_redirects` / `_headers`:** Cloudflare-Format. Andernorts Redirects und Cache-Header selbst setzen (z. B. Apache `.htaccess`, Nginx).
+- **Pretty URLs:** Ordner wie `/artikel/folge-001/` brauchen `index.html`-Auflösung (üblich, muss der Server können).
+- **404:** `404.html` nur, wenn der Hoster sie als Fehlerseite kennt.
+- **Member-Video / R2-[Worker](/glossar/cloudflare-worker/) / CMS-[OAuth](/glossar/oauth/)-Worker:** laufen **nicht** im `dist/`. Die bleiben Cloudflare-Dienste; ohne sie fehlen Freischaltung und ggf. CMS-Login online.
+- **`site` in `astro.config`:** absolute URLs (Sitemap, `llms.txt`, …) zeigen auf die konfigurierte Domain; bei anderer Domain anpassen und neu bauen.
+
+Kurz: Statische Seiten und Artikel: ja. Cloudflare-only-Features: separat bzw. ersetzen.
 
 ### Was ist eine Preview-URL?
 
