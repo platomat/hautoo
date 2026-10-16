@@ -1,26 +1,29 @@
-# Custom fonts
+# Eigene Schriften
 
-Put one folder per font under \`src/fonts/custom/<id>/\` (slug, e.g. \`acme-display\`).
+Pro Schrift einen Ordner unter `src/fonts/custom/<id>/` (Slug, z. B. `acme-display`). Die ID darf nicht schon im Fontsource-Katalog stehen.
 
-Required:
-- \`stylesheet.css\` (or \`fonts.css\` / any \`*.css\`) with \`@font-face\` and **local** \`url(...)\` to the files in the same folder (Transfonter output is fine; the path you set in Transfonter is only for reading filenames, we rewrite to \`/fonts/<id>/\`).
-- The font files referenced by that CSS (preferably \`.woff2\`).
+## Pflicht
 
-Optional \`meta.json\`:
+- `stylesheet.css` (oder `fonts.css` / eine `*.css`) mit `@font-face` und **lokalen** `url(...)` zu Dateien im selben Ordner. Ausgabe von Transfonter ist ok: Der dort eingetragene Zielpfad dient nur dem Auslesen der Dateinamen; der Sync schreibt die URLs fest auf `/fonts/<id>/…`.
+- Die in der CSS referenzierten Font-Dateien (am besten `.woff2`).
 
-\`\`\`json
+## Optional: `meta.json`
+
+```json
 {
   "label": "Acme Display",
   "family": "Acme Display",
   "fallback": "system-ui, sans-serif"
 }
-\`\`\`
+```
 
-Then run \`npm run sync:fonts\` (or \`npm run dev\` / \`build\`). The sync:
-1. Adds the font to the CMS select (Design → Schrift)
-2. Writes catalog \`site-fonts.generated.json\`
-3. Copies files to \`public/fonts/<id>/\` when selected in Design
-4. Regenerates \`src/styles/fonts.generated.css\`
+## Sync
 
-Commit the folder plus the generated catalog / config.yml options after sync.
+`npm run sync:fonts` (oder `npm run dev` / `build`):
 
+1. Schrift im CMS unter Design → Schrift
+2. Katalog `site-fonts.generated.json`
+3. Bei Auswahl in Design: Kopie nach `public/fonts/<id>/`
+4. Neu: `src/styles/fonts.generated.css`
+
+Danach Ordner plus generierten Katalog und die Font-Optionen in `config.yml` committen.
