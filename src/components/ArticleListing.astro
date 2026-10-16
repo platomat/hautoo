@@ -206,6 +206,7 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 				layout === "list" ? "article-listing--list" : "article-listing--grid",
 				compact && "article-listing--compact",
 				showImage && `article-listing--image-${imageStyle}`,
+				linkable ? "article-listing--linkable" : "article-listing--nolink",
 			]}
 			style={`--article-listing-cols: ${col}; --article-listing-gap: ${gapRem}rem`}
 			aria-label="Artikel"
@@ -274,9 +275,7 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 											{copyInner}
 										</a>
 									) : (
-										<div class="article-listing__link article-listing__link--static">
-											{copyInner}
-										</div>
+										<div class="article-listing__main">{copyInner}</div>
 									)}
 									{showMeta && (
 										<div class="article-listing__meta text-sm text-muted">
@@ -412,20 +411,20 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 		min-width: 0;
 	}
 
-	.article-listing__link {
+	.article-listing__link,
+	.article-listing__main {
 		display: block;
 		color: inherit;
 		text-decoration: none;
 		min-width: 0;
 	}
 
-	.article-listing__link--static {
-		cursor: default;
+	.article-listing--linkable .article-listing__link:hover .article-listing__title {
+		color: var(--color-action);
 	}
 
-	.article-listing__link:not(.article-listing__link--static):hover
-		.article-listing__title {
-		color: var(--color-action);
+	.article-listing--nolink .article-listing__title {
+		color: var(--color-text);
 	}
 
 	.article-listing__copy {
