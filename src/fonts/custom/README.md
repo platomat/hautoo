@@ -17,7 +17,7 @@ Pro Schrift einen Ordner unter `src/fonts/custom/<id>/` (Slug, z. B. `acme-dis
 }
 ```
 
-## Sync
+## Sync (allgemein)
 
 `npm run sync:fonts` (oder `npm run dev` / `build`):
 
@@ -26,9 +26,16 @@ Pro Schrift einen Ordner unter `src/fonts/custom/<id>/` (Slug, z. B. `acme-dis
 3. **Immer** Auslieferung nach `public/fonts/<id>/` inkl. generierter `stylesheet.css`
 4. Wenn als Design-Schrift gewählt: zusätzlich in `src/styles/fonts.generated.css`
 
-### Nur für einzelne Elemente (Head-Code)
+Danach Ordner plus generierten Katalog und die Font-Optionen in `config.yml` committen.
 
-Design kann Ubuntu bleiben. Im CMS z. B. Seiten-`headCode` oder globaler Head-HTML:
+## Ablauf: nur für bestimmte Elemente (nicht als Site-Schrift)
+
+Design → Schrift bleibt z. B. Ubuntu. Die Custom-Schrift nutzt du nur per CSS/Head.
+
+1. Ordner anlegen, z. B. `src/fonts/custom/acme-display/` mit Transfonter-CSS + `.woff2` (optional `meta.json`).
+2. Sync ausführen: `npm run sync:fonts` (oder `dev`/`build`).  
+   Ergebnis u. a.: `/fonts/acme-display/stylesheet.css` und die Font-Dateien darunter.
+3. Im CMS Head-Code setzen (Seiten-`headCode` und/oder globaler Head-HTML), z. B.:
 
 ```html
 <link rel="stylesheet" href="/fonts/acme-display/stylesheet.css" />
@@ -39,6 +46,8 @@ Design kann Ubuntu bleiben. Im CMS z. B. Seiten-`headCode` oder globaler Head-
 </style>
 ```
 
-Der Browser lädt die WOFF2 erst, wenn die `font-family` wirklich genutzt wird.
+`font-family` muss zum Namen in der CSS bzw. in `meta.json` → `family` passen.
 
-Danach Ordner plus generierten Katalog und die Font-Optionen in `config.yml` committen.
+4. Speichern, deployen bzw. lokal prüfen. Der Browser lädt die WOFF2 erst, wenn die Klasse/`font-family` wirklich greift.
+
+Ohne den `<link>` (oder ohne Eintrag in `fonts.generated.css` über Design-Auswahl) kennt die Seite die `@font-face`-Regeln nicht.
