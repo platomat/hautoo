@@ -1,12 +1,9 @@
 ---
-title: Start
-description: 'hautuu: thematische Website mit Cursor, GitHub und Cloudflare.'
+title: hautoo
+description: Thematische Website mit Cursor, GitHub und Cloudflare.
 status: published
 publishDate: 2026-10-04
 modifiedDate: 2026-10-10
-hero:
-  showBreadcrumbs: false
-  borderBottom: false
 toc:
   show: false
 background:
@@ -33,21 +30,31 @@ seo:
 
 Willkommen bei **hautuu**.
 
-Schön, dass du da bist.
+## hautoo?
 
-Diese Website entsteht mit [Cursor](/glossar/cursor/), wird über [**GitHub**](/glossar/github/) versioniert und auf [Cloudflare](/glossar/cloudflare-pages/) ausgeliefert. Quellcode und Inhalte liegen im öffentlichen [Repository](/glossar/repository/): [github.com/platomat/hautoo](https://github.com/platomat/hautoo/).
+### Was ist hautoo?
 
-{{button-group items="hautoo als Vorlage benutzen|https://github.com/platomat/hautoo/generate|solid|action|_blank||Mehr Infos|/artikel/folge-024-github-template-privat/|outline|action|_self" fullWidthMobile="true"}}
+**hautuu** ist ein Lern- und Demo-Projekt.
 
-## Was hier entsteht
+### Wie genau funktioniert es?
 
-- Statische Website mit [**Astro**](/glossar/astro/)
-- Inhalte über [**Sveltia**](/glossar/sveltia/) (`pages`, `articles`, `categories`, `tags`, `glossar`, `menus`, `blocks`)
-- Artikel mit Text, Bildern und eingebetteten How-to-Videos (Vimeo/YouTube)
-- [**Glossar**](/glossar/) für Begriffe
-- Anleitungen für Menschen, die das nachbauen oder mitarbeiten wollen
+Diese Website entsteht mit [Cursor](/glossar/cursor/), wird über [GitHub](/glossar/github/) versioniert und auf [Cloudflare](/glossar/cloudflare-pages/) ausgeliefert. Quellcode und Inhalte liegen im öffentlichen [Repository](/glossar/repository/): [github.com/platomat/hautoo](https://github.com/platomat/hautoo/). Hier siehst du die [Stack-Übersicht](#stack-uebersicht).
 
-Live-Überblick: [**Features**](/features/).
+### Für wen ist hautoo?
+
+Für alle, die ihre Webseite selber mithilfe von KI erstellen wollen.
+
+### Wie geht man da nun ran?
+
+Schau dir die [Artikel](http://localhost:4321/artikel/) an, Folge für Folge, da zeige ich dir von Null auf 100, wie du selber eine Webseite erstellen kannst. Im [Glossar](http://localhost:4321/glossar/) werden alle Begriffe in diesem Zusammenhang erläutert. Aufkommende Fragen werden soweit wie möglich im [FAQ](http://localhost:4321/faq/) beantwortet.
+
+### Muss ich alles nachbauen?
+
+Nein, du kannst auch dieses Projekt als Vorlage nehmen und weiter daran basteln (lassen). Oder vielleicht reicht dir schon der aktuelle Stand, es ist ja schon ein kleines CMS.
+
+{{button-group items="Features|/features/|solid|action|_self||Demo|/features/demo/|solid|action|_self||hautoo als Vorlage benutzen|https://github.com/platomat/hautoo/generate|solid|action|_blank||Mehr Infos|/artikel/folge-024-github-template-privat/|outline|action|_self" fullWidthMobile="true"}}
+
+{{separator height="1" width="100" mark="logo"}}
 
 {{spacer}}
 

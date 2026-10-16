@@ -1,9 +1,10 @@
 ---
 title: TestArtikel mit Bild 2
-summary: Das ist ein TestArtikel mit Bild 2. Das ist ein TestArtikel mit Bild 2. Das ist ein TestArtikel mit Bild 2.
+summary: Das ist ein TestArtikel mit Bild 2. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
 pubDate: 2026-10-13
 status: published
 heroImage: /assets/brayden-law-kTQ1m-vTOsg-unsplash.webp
+showHeroImage: true
 categories:
   - deploy
 tags:
@@ -12,7 +13,7 @@ tagPlacement: hero
 authors:
   - testautor
 seo:
-  index_visibility: index
+  index_visibility: noindex
   follow_visibility: follow
   noarchive: false
   noimageindex: false

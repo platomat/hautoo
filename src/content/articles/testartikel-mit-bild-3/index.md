@@ -1,9 +1,10 @@
 ---
 title: TestArtikel mit Bild 3
-summary: Das ist ein TestArtikel mit Bild 3. Das ist ein TestArtikel mit Bild 3. Das ist ein TestArtikel mit Bild 3.
+summary: Das ist ein TestArtikel mit Bild 3. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
 pubDate: 2026-10-13
 status: published
 heroImage: /assets/sebastien-goldberg-9R_bNdo4-2I-unsplash.webp
+showHeroImage: true
 categories:
   - deploy
 tags:
@@ -12,7 +13,7 @@ tagPlacement: hero
 authors:
   - testautor
 seo:
-  index_visibility: index
+  index_visibility: noindex
   follow_visibility: follow
   noarchive: false
   noimageindex: false

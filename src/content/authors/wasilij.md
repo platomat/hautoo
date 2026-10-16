@@ -9,6 +9,18 @@ socialLinks:
     url: https://platomat.com/
     label: Meine Webseite
 showSocialInHero: true
+seo:
+  index_visibility: index
+  follow_visibility: follow
+  noarchive: false
+  noimageindex: false
+  nosnippet: false
+  max_snippet_enabled: true
+  max_snippet: -1
+  max_video_preview_enabled: true
+  max_video_preview: -1
+  max_image_preview_enabled: true
+  max_image_preview: large
 ---
 
 **hautuu** ist ein Lern- und Demo-Projekt: Wie man mit [**Cursor**](/glossar/cursor/) (KI), [**GitHub**](/glossar/github/) und [**Cloudflare**](/glossar/cloudflare-pages/) eine thematische, statische Website baut und pflegt, von leerem [**Repo**](/glossar/repository/) bis zur laufenden Site.
@@ -17,9 +29,9 @@ showSocialInHero: true
 
 Quellcode, Inhalte und Dokumentation liegen öffentlich auf [GitHub](/glossar/github/): [github.com/platomat/hautoo](https://github.com/platomat/hautoo/)
 
-Dort findest du auch [Issues](/glossar/issue/), den [Build](/glossar/build/)-Verlauf und die technische Doku unter [`docs/`](https://github.com/platomat/hautoo/tree/main/docs).
+Dort findest du auch [Issues](/glossar/issue/), den [Build](/glossar/build/)-Verlauf und die technische Doku unter [docs/](https://github.com/platomat/hautoo/tree/main/docs).
 
-{{button label="hautoo als Vorlage benutzen" href="https://github.com/platomat/hautoo/generate" target="_blank"}}
+{{button-group items="hautoo als Vorlage benutzen|https://github.com/platomat/hautoo/generate|solid|action|_blank||Mehr Infos|http://localhost:4321/artikel/folge-024-github-template-privat/|outline|action|_self" fullWidthMobile="true"}}
 
 Das ist das GitHub-[**Template**](/glossar/template/) (nicht der [**Fork**](/glossar/fork/)). Du gibst einen Repo-Namen ein (z. B. `meine-webseite`). Der Name ist nur der Ordner auf GitHub, nicht automatisch deine Domain. Stell das Repo auf **Private**, wenn der Quellcode nicht öffentlich auf GitHub liegen soll. Ein Fork von hautuu bliebe öffentlich.
 

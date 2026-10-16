@@ -71,31 +71,39 @@
       "textAlign": "left",
       "showBreadcrumbs": true,
       "breadcrumbSeparator": "/",
-      "borderBottom": false
+      "borderBottom": "logo",
+      "borderMarkAlign": "center",
+      "borderMarkSize": 24
     },
     "articles": {
       "textAlign": "left",
       "showBreadcrumbs": true,
       "breadcrumbSeparator": "/",
-      "borderBottom": false
+      "borderBottom": false,
+      "borderMarkAlign": "center",
+      "borderMarkSize": 24
     },
     "categories": {
       "textAlign": "left",
       "showBreadcrumbs": true,
       "breadcrumbSeparator": "/",
-      "borderBottom": false
+      "borderBottom": false,
+      "borderMarkAlign": "center",
+      "borderMarkSize": 24
     },
     "tags": {
       "textAlign": "left",
       "showBreadcrumbs": true,
       "breadcrumbSeparator": "/",
-      "borderBottom": false
+      "borderBottom": false,
+      "borderMarkAlign": "center",
+      "borderMarkSize": 24
     },
     "authors": {
       "textAlign": "center",
       "showBreadcrumbs": true,
       "breadcrumbSeparator": "/",
-      "borderBottom": "line",
+      "borderBottom": "logo",
       "borderMarkAlign": "center",
       "borderMarkSize": 24
     },
@@ -103,7 +111,9 @@
       "textAlign": "left",
       "showBreadcrumbs": true,
       "breadcrumbSeparator": "/",
-      "borderBottom": false
+      "borderBottom": false,
+      "borderMarkAlign": "center",
+      "borderMarkSize": 24
     }
   },
   "contentWidth": {
