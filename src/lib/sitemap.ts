@@ -110,6 +110,13 @@ function buildExcludedPathnames(): Set<string> {
 		excluded.add(`/glossar/${slug}/`);
 	}
 
+	for (const file of listFlatMarkdownFiles(path.join(contentRoot, "authors"))) {
+		const fm = readFrontmatter(file);
+		if (!isNoindexFrontmatter(fm)) continue;
+		const slug = path.basename(file, ".md");
+		excluded.add(`/autoren/${slug}/`);
+	}
+
 	return excluded;
 }
 

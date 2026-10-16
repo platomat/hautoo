@@ -688,6 +688,7 @@ collections:
           - member-video
           - video-consent-reset
           - repodoc
+      - *field_seo
 
   - name: glossar
     label: Glossar

@@ -363,6 +363,7 @@ Beispiel: Quellen `/alter-slug/` und `/noch-alter/` → Ziel `/neuer-slug/` mit 
 | `showSocialInHero` | nein | `true` = Social-Links im Hero nach der Kurzbeschreibung; `false` (Default) = keine Auto-Liste (per `{{author-social}}` platzieren) |
 | `body` | nein | Freier Inhalt mit Embeds; wenn gesetzt, ersetzt das automatische Artikel-Listing ([#85](https://github.com/platomat/hautoo/issues/85)) |
 | `modifiedDate` | nein | Letzte Änderung |
+| `seo` | nein | SEO-Partial (`&field_seo`); z. B. `noindex` für Test-Autoren (Sitemap, `llms.txt` / `agents.txt`) |
 
 ### Anzeige
 

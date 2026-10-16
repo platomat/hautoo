@@ -171,7 +171,9 @@ export async function collectAgentIndexLinks(): Promise<AgentIndexLink[]> {
 
 	const authors = await getCollection("authors");
 	for (const author of authors as AuthorEntry[]) {
+		if (!isSeoIndexable(author.data.seo)) continue;
 		const note =
+			plainTextFromCms(author.data.seo?.seo_description) ||
 			plainTextFromCms(author.data.description) ||
 			plainTextFromCms(author.data.bio);
 		links.push({

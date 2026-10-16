@@ -122,6 +122,7 @@ const authors = defineCollection({
 		 */
 		background: entryBackgroundSchema,
 		modifiedDate: modifiedDateSchema,
+		seo: seoSchema.optional(),
 	}),
 });
 
