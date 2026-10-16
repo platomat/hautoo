@@ -93,7 +93,7 @@ Astro trägt Redirects zusätzlich in `astro.config` ein (lokal/`preview`). Für
 
 ## Dist-Bridge (Pull-Deploy)
 
-Wenn Cloudflare (oder CI) baut und der **Fremdhost** das Artefakt selbst holen soll: öffentliches Hilfsrepo [hautoo-dist-brigde](https://github.com/platomat/hautoo-dist-brigde) (Dist-Brücke). Ablauf: `dist/` als ZIP ablegen, auf dem Server `php bin/dist-bridge.php` (feste ZIP-URL, Token nur per ENV/lokaler Config, kein Secret im Git).
+Wenn Cloudflare (oder CI) baut und der **Fremdhost** das Artefakt selbst holen soll: öffentliches Hilfsrepo [hautoo-dist-brigde](https://github.com/platomat/hautoo-dist-brigde). Build: `HAUTOO_DIST_BRIDGE=1` → ZIP in `dist/`. Server: ein Clone, mehrere Projekte via `./hdb.sh init` / `./hdb.sh pull beispiel.de` (Configs unter `config/*.local.php`, kein Secret im Git).
 
 ## Checkliste Fremdhosting
 
