@@ -42,6 +42,10 @@ export default defineConfig({
     define: {
       'import.meta.env.BUILD_ID': JSON.stringify(buildId),
     },
+    build: {
+      // Lightning CSS drops unprefixed `backdrop-filter` when `-webkit-` is present.
+      cssMinify: 'esbuild',
+    },
   },
 });
 
