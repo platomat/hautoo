@@ -76,7 +76,8 @@ Ohne passende Node-Version kann der Cloudflare-Build fehlschlagen, obwohl lokal 
 | Variable | Pflicht? | Zweck |
 | --- | --- | --- |
 | `NODE_VERSION` | ja | siehe oben |
-| `SITE` | optional | Öffentliche Origin für Canonical, Sitemap, `llms.txt` usw. Beispiel: `https://hautoo.storyofai.net`. Ohne `SITE` gilt der Default in `astro.config.mjs`. Build-Befehl bleibt `npm run build`. |
+| `SITE` | optional | Öffentliche Origin für Canonical, Sitemap, `llms.txt` usw. Beispiel: `https://hautoo.storyofai.net`. Bei Fremdhost-Pull: **Live-Domain**. Ohne `SITE` gilt der Default in `astro.config.mjs`. Build-Befehl bleibt `npm run build`. |
+| `HAUTOO_DIST_BRIDGE` | optional | `1`: nach dem Build ZIP als `dist/dist-bridge.zip` mitdeployen (für [Dist-Bridge](../hosting/README.md#dist-bridge-pull-deploy)). Ohne Variable: kein ZIP. |
 | `CONTACT_EMAIL` | optional | Kontaktadresse wenn nicht im CMS; siehe `.env.example` |
 
 Geheimnisse nur im Dashboard setzen, **niemals** ins öffentliche Repo. Siehe [Sicherheit](../sicherheit/README.md). Andere Domain / Fork: [Externes Hosting](../hosting/README.md).

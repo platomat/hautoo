@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "bash scripts/pack-dist-bridge.sh",
     "preview": "astro preview",
     "astro": "astro",
     "predev": "node scripts/sync-site-fonts.mjs && node scripts/sync-author-avatars.mjs && node scripts/build-search-index.mjs && node scripts/build-redirects.mjs",
