@@ -307,13 +307,13 @@ Ja, für die **Website selbst** weitgehend: [Astro](/glossar/astro/) baut rein s
 
 Einschränkungen:
 
-- **`_redirects` / `_headers`:** Cloudflare-Format. Andernorts Redirects und Cache-Header selbst setzen (z. B. Apache `.htaccess`, Nginx).
+- **`_redirects` / `_headers`:** Cloudflare-Format. Parallel in `dist/`: `.htaccess` (Apache) und `nginx-redirects.conf` (Nginx, per `include`). Cloudflare ignoriert beide.
 - **Pretty URLs:** Ordner wie `/artikel/folge-001/` brauchen `index.html`-Auflösung (üblich, muss der Server können).
 - **404:** `404.html` nur, wenn der Hoster sie als Fehlerseite kennt.
-- **Member-Video / R2-[Worker](/glossar/cloudflare-worker/) / CMS-[OAuth](/glossar/oauth/)-Worker:** laufen **nicht** im `dist/`. Die bleiben Cloudflare-Dienste; ohne sie fehlen Freischaltung und ggf. CMS-Login online.
-- **`site` in `astro.config`:** absolute URLs (Sitemap, `llms.txt`, …) zeigen auf die konfigurierte Domain; bei anderer Domain anpassen und neu bauen.
+- **CMS-[OAuth](/glossar/oauth/)-[Worker](/glossar/cloudflare-worker/):** läuft **nicht** im `dist/` (Cloudflare). Online redigieren geht weiter per GitHub-PAT; Deploy nach CMS-Commit musst du ohne Pages selbst anbinden.
+- **Domain beim Build:** absolute URLs (Sitemap, `llms.txt`, …) kommen aus `SITE` bzw. Default in `astro.config`; z. B. `SITE=https://www.beispiel.de npm run build`.
 
-Kurz: Statische Seiten und Artikel: ja. Cloudflare-only-Features: separat bzw. ersetzen.
+Kurz: Statische Seiten und Artikel: ja. Cloudflare-only-Extras: separat bzw. ersetzen. Vertiefung: [Externes Hosting](https://github.com/platomat/hautoo/blob/main/docs/hosting/README.md) im Repo.
 
 ### Was ist eine Preview-URL?
 

@@ -1,7 +1,17 @@
 import { defineHastPlugin } from "satteri";
 
-/** Must match `site` in `astro.config.mjs`. */
-const SITE_HOST = "hautoo.storyofai.net";
+/** Host from `SITE` (same as `astro.config` `site`), else hautuu default. */
+function siteHost(): string {
+	const raw = process.env.SITE?.trim() || "https://hautoo.storyofai.net";
+	try {
+		const withScheme = raw.includes("://") ? raw : `https://${raw}`;
+		return new URL(withScheme).hostname.replace(/^www\./, "");
+	} catch {
+		return "hautoo.storyofai.net";
+	}
+}
+
+const SITE_HOST = siteHost();
 
 function isExternalHref(href: string): boolean {
 	const trimmed = href.trim();

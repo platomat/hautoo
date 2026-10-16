@@ -30,19 +30,20 @@ Details: [Sprachen und Konventionen](./sprachen-und-konventionen.md)
 5. [Cursor (KI)](./cursor/README.md) — Mit dem Assistenten arbeiten
 6. [GitHub](./github/README.md) — Repo, Issues, Pull Requests, Zusammenarbeit
 7. [Cloudflare](./cloudflare/README.md) — Hosting, Domain, Deployments; [R2-Videos](./cloudflare/r2-videos.md)
-8. [Astro](./astro/README.md) — Statische Website
-9. [Sveltia CMS](./sveltia/README.md) — Inhalte pflegen (Collections)
-10. [CMS Fields (DRY)](./cms-fields/README.md) — Wiederverwendbare Felder (z. B. SEO)
+8. [Externes Hosting](./hosting/README.md) — `dist/` woanders ausliefern (ohne Cloudflare Pages)
+9. [Astro](./astro/README.md) — Statische Website
+10. [Sveltia CMS](./sveltia/README.md) — Inhalte pflegen (Collections)
+11. [CMS Fields (DRY)](./cms-fields/README.md) — Wiederverwendbare Felder (z. B. SEO)
 
 ### Inhalte der Website
 
-11. [Inhalte](./inhalte/README.md) — Seiten, Artikel, Tags, Glossar, Videos
-12. [Redaktion](./redaktion/README.md) — Regeln für Folgen, Glossar, FAQ und Querverweise (verbindlich für Menschen und Agenten)
+12. [Inhalte](./inhalte/README.md) — Seiten, Artikel, Tags, Glossar, Videos
+13. [Redaktion](./redaktion/README.md) — Regeln für Folgen, Glossar, FAQ und Querverweise (verbindlich für Menschen und Agenten)
 
 ### Weiterführend
 
-13. [Lokale Entwicklung](./entwicklung/README.md) — Setup auf dem eigenen Rechner
-14. [Glossar der Doku](./glossar.md) — Begriffe kurz erklärt
+14. [Lokale Entwicklung](./entwicklung/README.md) — Setup auf dem eigenen Rechner
+15. [Glossar der Doku](./glossar.md) — Begriffe kurz erklärt
 
 ## Schnellstart (Überblick)
 

@@ -6,6 +6,8 @@ Dokumentation und (geplante) Website-Grundlage, um mit **Cursor**, **GitHub** un
 
 **Domain:** [hautoo.storyofai.net](https://hautoo.storyofai.net)
 
+![Übersicht: Cursor und Sveltia → GitHub → Cloudflare/Astro → Website](./docs/assets/stack-uebersicht.jpg)
+
 ## Was hier entsteht
 
 - Statische Website mit **Astro**

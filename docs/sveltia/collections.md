@@ -288,7 +288,7 @@ Manuelle URL-Umleitungen, wenn Inhalte gelöscht oder verschoben wurden. Keine e
 | Ordner | `src/content/redirects/<slug>.md` |
 | Schema | `src/content.config.ts` |
 | Sveltia | Collection `redirects` (Label „Weiterleitungen“) |
-| Build | `scripts/build-redirects.mjs` → `public/_redirects` (Cloudflare Pages); zusätzlich Astro `redirects` in `astro.config.mjs` |
+| Build | `scripts/build-redirects.mjs` → `_redirects` (CF), `.htaccess` (Apache), `nginx-redirects.conf` (Nginx-`include`); Astro `redirects` in `astro.config.mjs` |
 
 ### Felder
 

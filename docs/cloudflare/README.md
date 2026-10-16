@@ -1,6 +1,6 @@
 # Cloudflare — Website online bringen
 
-Cloudflare hostet die gebaute **statische** Website (Astro → Ordner `dist/`) und liefert sie unter der Produktions-Domain aus.
+Cloudflare hostet die gebaute **statische** Website (Astro → Ordner `dist/`) und liefert sie unter der Produktions-Domain aus. Denselben Build woanders ausliefern: [Externes Hosting](../hosting/README.md).
 
 ## Ziel
 
@@ -73,11 +73,13 @@ Ohne passende Node-Version kann der Cloudflare-Build fehlschlagen, obwohl lokal 
 
 ### Secrets / weitere Variablen
 
-Aktuell braucht der reine Astro-Static-Build **keine** geheimen Umgebungsvariablen. Kommen später welche dazu:
+| Variable | Pflicht? | Zweck |
+| --- | --- | --- |
+| `NODE_VERSION` | ja | siehe oben |
+| `SITE` | optional | Öffentliche Origin für Canonical, Sitemap, `llms.txt` usw. Beispiel: `https://hautoo.storyofai.net`. Ohne `SITE` gilt der Default in `astro.config.mjs`. Build-Befehl bleibt `npm run build`. |
+| `CONTACT_EMAIL` | optional | Kontaktadresse wenn nicht im CMS; siehe `.env.example` |
 
-- nur im Cloudflare-Dashboard setzen
-- **niemals** ins öffentliche Repo committen  
-  Siehe [Sicherheit](../sicherheit/README.md).
+Geheimnisse nur im Dashboard setzen, **niemals** ins öffentliche Repo. Siehe [Sicherheit](../sicherheit/README.md). Andere Domain / Fork: [Externes Hosting](../hosting/README.md).
 
 Danach: **Save and Deploy**.
 
@@ -184,7 +186,7 @@ SSL/TLS-Modus der Zone: üblicherweise **Full** (oder **Full (strict)**), konsis
 | Was | Wo |
 | --- | --- |
 | Cache-Header | `public/_headers` → landet in `dist/` (Cloudflare Pages) |
-| Redirects | CMS-Collection **Weiterleitungen** → `scripts/build-redirects.mjs` schreibt `public/_redirects` (prebuild; nicht im Git) |
+| Redirects | CMS **Weiterleitungen** → `_redirects` (CF) plus `.htaccess` / `nginx-redirects.conf` für Fremdhosting (prebuild; nicht im Git; von Pages ignoriert) |
 | `/_astro/*`, `/fonts/*` | `max-age=31536000, immutable` (fingerprinted bzw. selten geändert) |
 | HTML / Rest | `max-age=0, must-revalidate` |
 | Build-ID | `import.meta.env.BUILD_ID` / `CF_PAGES_COMMIT_SHA` über `src/lib/build-id.ts` |

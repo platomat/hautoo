@@ -15,9 +15,12 @@ const buildId =
 	process.env.BUILD_ID ||
 	'dev';
 
+/** Public origin for canonical/sitemap/llms. Override: `SITE=https://example.com npm run build`. */
+const site = process.env.SITE?.trim() || 'https://hautoo.storyofai.net';
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://hautoo.storyofai.net',
+  site,
   redirects: loadAstroRedirects(),
   build: {
     // Avoid a render-blocking CSS round-trip (Lighthouse FCP/LCP).
