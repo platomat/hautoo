@@ -12,6 +12,8 @@ interface Props {
 	columns?: number;
 	/** Gap between items, in rem. */
 	gap?: number;
+	/** Link entry to the glossar single page (default true). */
+	linkable?: boolean;
 }
 
 const {
@@ -20,6 +22,7 @@ const {
 	layout = "list",
 	columns = 2,
 	gap = 1.5,
+	linkable = true,
 } = Astro.props;
 
 /** `count === 0` → all public entries. */
@@ -44,16 +47,29 @@ const gapRem = Math.min(8, Math.max(0, gap));
 			aria-label="Glossar"
 		>
 			<ul class="glossar-listing__list list-plain">
-				{entries.map((entry) => (
-					<li class="glossar-listing__item">
-						<a class="glossar-listing__link" href={getGlossarHref(entry)}>
+				{entries.map((entry) => {
+					const body = (
+						<>
 							<h2 class="glossar-listing__title">{entry.data.title}</h2>
 							<p class="glossar-listing__definition text-sm text-muted">
 								{entry.data.definition}
 							</p>
-						</a>
-					</li>
-				))}
+						</>
+					);
+					return (
+						<li class="glossar-listing__item">
+							{linkable ? (
+								<a class="glossar-listing__link" href={getGlossarHref(entry)}>
+									{body}
+								</a>
+							) : (
+								<div class="glossar-listing__link glossar-listing__link--static">
+									{body}
+								</div>
+							)}
+						</li>
+					);
+				})}
 			</ul>
 		</section>
 	)
@@ -110,7 +126,12 @@ const gapRem = Math.min(8, Math.max(0, gap));
 		flex: 1 1 auto;
 	}
 
-	.glossar-listing__link:hover .glossar-listing__title {
+	.glossar-listing__link--static {
+		cursor: default;
+	}
+
+	.glossar-listing__link:not(.glossar-listing__link--static):hover
+		.glossar-listing__title {
 		color: var(--color-action);
 	}
 

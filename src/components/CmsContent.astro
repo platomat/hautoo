@@ -48,6 +48,7 @@ const segments = await buildContentSegments(body);
 					categoryIds={segment.props.categories}
 					tagIds={segment.props.tags}
 					match={segment.props.match}
+					linkable={segment.props.linkable}
 				/>
 			);
 		}
@@ -59,6 +60,7 @@ const segments = await buildContentSegments(body);
 					layout={segment.props.layout}
 					columns={segment.props.columns}
 					gap={segment.props.gap}
+					linkable={segment.props.linkable}
 				/>
 			);
 		}

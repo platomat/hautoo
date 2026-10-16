@@ -63,6 +63,8 @@ interface Props {
 	 * Within a group, one matching slug is enough.
 	 */
 	match?: ArticleFilterMatch;
+	/** Link title/preview to the article page (default true). */
+	linkable?: boolean;
 	/** Less vertical margin (e.g. glossar related block). */
 	compact?: boolean;
 }
@@ -83,6 +85,7 @@ const {
 	authorId,
 	authorIds: authorIdsProp,
 	match = "all",
+	linkable = true,
 	compact = false,
 } = Astro.props;
 
@@ -220,43 +223,61 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 					const hasAuthors = showAuthors && articleAuthors.length > 0;
 					const previewImage = showImage ? previewImageFor(article) : undefined;
 					const href = getArticleHref(article);
+					const copyInner = (
+						<span class="article-listing__copy">
+							{showTitle && (
+								<h2 class="article-listing__title">{article.data.title}</h2>
+							)}
+							{showIntro && article.data.summary && (
+								<p class="article-listing__summary text-sm text-muted">
+									{article.data.summary}
+								</p>
+							)}
+							{!showTitle && !showIntro && (
+								<span class="visually-hidden">{article.data.title}</span>
+							)}
+						</span>
+					);
 					return (
 						<li class="article-listing__item">
 							<div class="article-listing__layout">
-								{previewImage && (
-									<a
-										class="article-listing__media"
-										href={href}
-										tabindex={-1}
-										aria-hidden="true"
-									>
-										<Image
-											class="article-listing__image"
-											src={previewImage}
-											alt=""
-											widths={[320, 480, 640]}
-											sizes="(max-width: 679px) 100vw, (max-width: 1023px) 50vw, 33vw"
-										/>
-									</a>
-								)}
+								{previewImage &&
+									(linkable ? (
+										<a
+											class="article-listing__media"
+											href={href}
+											tabindex={-1}
+											aria-hidden="true"
+										>
+											<Image
+												class="article-listing__image"
+												src={previewImage}
+												alt=""
+												widths={[320, 480, 640]}
+												sizes="(max-width: 679px) 100vw, (max-width: 1023px) 50vw, 33vw"
+											/>
+										</a>
+									) : (
+										<div class="article-listing__media" aria-hidden="true">
+											<Image
+												class="article-listing__image"
+												src={previewImage}
+												alt=""
+												widths={[320, 480, 640]}
+												sizes="(max-width: 679px) 100vw, (max-width: 1023px) 50vw, 33vw"
+											/>
+										</div>
+									))}
 								<div class="article-listing__body">
-									<a class="article-listing__link" href={href}>
-										<span class="article-listing__copy">
-											{showTitle && (
-												<h2 class="article-listing__title">
-													{article.data.title}
-												</h2>
-											)}
-											{showIntro && article.data.summary && (
-												<p class="article-listing__summary text-sm text-muted">
-													{article.data.summary}
-												</p>
-											)}
-											{!showTitle && !showIntro && (
-												<span class="visually-hidden">{article.data.title}</span>
-											)}
-										</span>
-									</a>
+									{linkable ? (
+										<a class="article-listing__link" href={href}>
+											{copyInner}
+										</a>
+									) : (
+										<div class="article-listing__link article-listing__link--static">
+											{copyInner}
+										</div>
+									)}
 									{showMeta && (
 										<div class="article-listing__meta text-sm text-muted">
 											{(hasCategories || hasTags) && (
@@ -398,7 +419,12 @@ function authorsFor(article: (typeof articles)[number]): AuthorEntry[] {
 		min-width: 0;
 	}
 
-	.article-listing__link:hover .article-listing__title {
+	.article-listing__link--static {
+		cursor: default;
+	}
+
+	.article-listing__link:not(.article-listing__link--static):hover
+		.article-listing__title {
 		color: var(--color-action);
 	}
 

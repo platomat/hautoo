@@ -125,6 +125,8 @@ export type ArticleListingEmbedProps = {
 	 * `any` = at least one group. Within a group, one matching slug is enough.
 	 */
 	match: ArticleListingFilterMatch;
+	/** Link card title/image to the article single page (default true). */
+	linkable: boolean;
 };
 
 export type GlossarListingEmbedProps = {
@@ -133,7 +135,23 @@ export type GlossarListingEmbedProps = {
 	layout: "grid" | "list";
 	columns: number;
 	gap: number;
+	/** Link entry to the glossar single page (default true). */
+	linkable: boolean;
 };
+
+/** Embed flag that defaults to `true` when the attr is omitted. */
+export function parseEmbedFlagDefaultTrue(
+	raw: string | undefined,
+): boolean {
+	if (raw === undefined || String(raw).trim() === "") {
+		return true;
+	}
+	const key = String(raw).trim().toLowerCase();
+	if (key === "false" || key === "0" || key === "no") {
+		return false;
+	}
+	return true;
+}
 
 export type TagListingEmbedProps = {
 	count: number;
@@ -276,6 +294,7 @@ const DEFAULT_LISTING: ArticleListingEmbedProps = {
 	categories: [],
 	tags: [],
 	match: "all",
+	linkable: true,
 };
 
 export function parseArticleListingImageStyle(
@@ -321,6 +340,7 @@ const DEFAULT_GLOSSAR_LISTING: GlossarListingEmbedProps = {
 	layout: "list",
 	columns: 2,
 	gap: 1.5,
+	linkable: true,
 };
 
 const DEFAULT_TAG_LISTING: TagListingEmbedProps = {
@@ -588,6 +608,7 @@ export function parseArticleListingProps(
 		categories: parseSlugList(attrs.categories),
 		tags: parseSlugList(attrs.tags),
 		match,
+		linkable: parseEmbedFlagDefaultTrue(attrs.linkable),
 	};
 }
 
@@ -606,6 +627,7 @@ export function parseGlossarListingProps(
 		layout,
 		columns: clampInt(attrs.columns, DEFAULT_GLOSSAR_LISTING.columns, 1, 4),
 		gap: clampRem(attrs.gap, DEFAULT_GLOSSAR_LISTING.gap, 0, 8),
+		linkable: parseEmbedFlagDefaultTrue(attrs.linkable),
 	};
 }
 

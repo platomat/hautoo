@@ -203,6 +203,13 @@
 				],
 				hint: "Nur wenn mehrere Filterarten gesetzt sind (Autoren und/oder Kategorien und/oder Tags).",
 			},
+			{
+				name: "linkable",
+				label: "Zur Artikelseite verlinken",
+				widget: "boolean",
+				default: true,
+				hint: "Aus: Karte ohne Link zur Einzelansicht (Taxonomie-Links bleiben).",
+			},
 		],
 		pattern: /^\{\{article-listing(?<attrs>[^}]*)\}\}\s*$/m,
 		fromBlock: (match) => {
@@ -230,6 +237,11 @@
 				allowedImage[rawImage]
 					? rawImage
 					: legacyImage[rawImage] || "top-cover";
+			const linkableRaw = (attrs.linkable || "").toLowerCase();
+			const linkable =
+				linkableRaw !== "false" &&
+				linkableRaw !== "0" &&
+				linkableRaw !== "no";
 			return {
 				count: attrs.count !== undefined && attrs.count !== "" ? attrs.count : "3",
 				sort: attrs.sort || "newest",
@@ -242,6 +254,7 @@
 				filterCategories: splitList(attrs.categories),
 				filterTags: splitList(attrs.tags),
 				match: attrs.match === "any" ? "any" : "all",
+				linkable,
 			};
 		},
 		toBlock: ({
@@ -256,6 +269,7 @@
 			filterCategories = [],
 			filterTags = [],
 			match = "all",
+			linkable = true,
 		}) => {
 			const showNormalized = normalizeArticleCardShow(show);
 			const showAttr = (
@@ -288,6 +302,9 @@
 			if ((authorsAttr || categoriesAttr || tagsAttr) && match === "any") {
 				parts.push(`match="any"`);
 			}
+			if (linkable === false || linkable === "false") {
+				parts.push(`linkable="false"`);
+			}
 			return `{{article-listing ${parts.join(" ")}}}`;
 		},
 		toPreview: ({
@@ -302,6 +319,7 @@
 			filterCategories = [],
 			filterTags = [],
 			match = "all",
+			linkable = true,
 		}) => {
 			const showNormalized = normalizeArticleCardShow(show);
 			const showLabel = (
@@ -341,7 +359,9 @@
 			const imageSuffix = hasImage
 				? ` · ${imageLabels[imageStyle] || imageStyle}`
 				: "";
-			return `<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Artikel-Listing · ${count === 0 || count === "0" ? "alle" : count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem · ${showLabel}${imageSuffix}${filterSuffix}</div>`;
+			const linkSuffix =
+				linkable === false || linkable === "false" ? " · ohne Link" : "";
+			return `<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Artikel-Listing · ${count === 0 || count === "0" ? "alle" : count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem · ${showLabel}${imageSuffix}${filterSuffix}${linkSuffix}</div>`;
 		},
 	});
 
@@ -635,16 +655,29 @@ CMS.registerEditorComponent({
 				max: 8,
 				step: 0.25,
 			},
+			{
+				name: "linkable",
+				label: "Zur Glossar-Seite verlinken",
+				widget: "boolean",
+				default: true,
+				hint: "Aus: Eintrag ohne Link zur Einzelansicht.",
+			},
 		],
 		pattern: /^\{\{glossar-listing(?<attrs>[^}]*)\}\}\s*$/m,
 		fromBlock: (match) => {
 			const attrs = parseAttrs(match?.groups?.attrs || "");
+			const linkableRaw = (attrs.linkable || "").toLowerCase();
+			const linkable =
+				linkableRaw !== "false" &&
+				linkableRaw !== "0" &&
+				linkableRaw !== "no";
 			return {
 				count: attrs.count !== undefined && attrs.count !== "" ? attrs.count : "0",
 				sort: attrs.sort || "title-asc",
 				layout: attrs.layout || "list",
 				columns: attrs.columns || "2",
 				gap: attrs.gap || "1.5",
+				linkable,
 			};
 		},
 		toBlock: ({
@@ -653,16 +686,32 @@ CMS.registerEditorComponent({
 			layout = "list",
 			columns = 2,
 			gap = 1.5,
-		}) =>
-			`{{glossar-listing count="${count}" sort="${sort}" layout="${layout}" columns="${columns}" gap="${gap}"}}`,
+			linkable = true,
+		}) => {
+			const parts = [
+				`count="${count}"`,
+				`sort="${sort}"`,
+				`layout="${layout}"`,
+				`columns="${columns}"`,
+				`gap="${gap}"`,
+			];
+			if (linkable === false || linkable === "false") {
+				parts.push(`linkable="false"`);
+			}
+			return `{{glossar-listing ${parts.join(" ")}}}`;
+		},
 		toPreview: ({
 			count = 0,
 			sort = "title-asc",
 			layout = "list",
 			columns = 2,
 			gap = 1.5,
-		}) =>
-			`<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Glossar-Listing · ${count === 0 || count === "0" ? "alle" : count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem</div>`,
+			linkable = true,
+		}) => {
+			const linkSuffix =
+				linkable === false || linkable === "false" ? " · ohne Link" : "";
+			return `<div style="padding:0.75rem 1rem;border:1px dashed #2e3833;border-radius:6px;color:#9aa89f;font-size:0.9rem">Glossar-Listing · ${count === 0 || count === "0" ? "alle" : count} · ${sort} · ${layout}${layout === "grid" ? ` · ${columns} Spalten` : ""} · gap ${gap}rem${linkSuffix}</div>`;
+		},
 	});
 
 
