@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.props;
-const articles = await getArticlesByTag(tag.id, { sort: "newest" });
+const articles = await getArticlesByTag(tag.id, { sort: "oldest" });
 const hashtag = formatTagHashtag(tag);
 const glossarEntry = await getGlossarForTag(tag.id);
 const breadcrumbs = buildTagBreadcrumbs(hashtag);
@@ -58,7 +58,7 @@ const widthClass = contentWidthClass(await resolveContentWidth("tags"));
 				<ArticleListing
 					tagId={tag.id}
 					count={0}
-					sort="newest"
+					sort="oldest"
 					layout="grid"
 					columns={1}
 					gap={3}
